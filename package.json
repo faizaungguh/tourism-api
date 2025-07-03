@@ -1,0 +1,17 @@
+{
+  "name": "tourism-api",
+  "version": "1.0.0",
+  "description": "REST API untuk Tourism Recommendation",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
