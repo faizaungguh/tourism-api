@@ -1,0 +1,9 @@
+{
+  "adminId": "ADM-0001",
+  "username": "superadmin",
+  "password": "kuncirahasia",
+  "name": "Super Admin",
+  "email": "super@admin.com",
+  "contactNumber": "080123456789",
+  "role": "admin" 
+}
