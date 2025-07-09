@@ -1,23 +1,42 @@
 import mongoose from "mongoose";
+import {
+  MONGO_URI as mongoUri,
+  MONGO_IP,
+  MONGO_PASSWORD,
+  MONGO_PORT,
+  MONGO_USER,
+  MONGO_DB,
+} from "../configs/variable.mjs";
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/tourism_api';
 const RETRY_DELAY = 5000;
 
-const connectionDB = () => {
-  return new Promise((resolve) => {
-    const connect = () => {
-      mongoose.connect(MONGO_URI)
-        .then(() => {
-          resolve();
-        })
-        .catch(error => {
-          console.error(`Tidak dapat menyambung ke DB: ${error.message}. Mencoba lagi dalam ${RETRY_DELAY / 1000} detik...`);
-          setTimeout(connect, RETRY_DELAY);
-        });
-    };
+const getMongoUri = () => {
+  if (mongoUri) {
+    console.log("Menyambungkan menggunakan MONGO_URI dari environment variables.");
+    return mongoUri;
+  }
 
-    connect();
-  });
+  if (MONGO_USER && MONGO_PASSWORD) {
+    console.log("Menyambungkan ke MongoDB dengan autentikasi.");
+    return `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+  }
+
+  console.log("Menyambungkan ke MongoDB tanpa autentikasi.");
+  return `mongodb://${MONGO_IP}:${MONGO_PORT}/${MONGO_DB}`;
+};
+
+const MONGO_URI = getMongoUri();
+
+const connectionDB = async () => {
+  while (true) {
+    try {
+      await mongoose.connect(MONGO_URI);
+      return;
+    } catch (error) {
+      console.error(`Tidak dapat menyambung ke DB: ${error.message}. Mencoba lagi dalam ${RETRY_DELAY / 1000} detik...`);
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+    }
+  }
 };
 
 // jika berhasil terkoneksi ke database
