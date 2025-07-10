@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import { addAdminValidation } from '../validations/admin.mjs';
+import { adminValidation } from '../validations/admin.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
 import { validate } from '../validations/validate.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 
-export const addAdmin = async (request) => {
+export const createAdmin = async (request) => {
   /** validasi input menggunakan validate */
-  const validatedRequest = validate(addAdminValidation, request);
+  const validatedRequest = validate(adminValidation, request);
 
   /** eck duplikasi username dan email */
   const checkDuplicate = await Admin.find({
@@ -42,6 +42,9 @@ export const addAdmin = async (request) => {
 
   /** hash password, untuk menyimpan dalam karakter acak */
   validatedRequest.password = await bcrypt.hash(validatedRequest.password, 10);
+
+  /** secara otomatis atur role menjadi 'admin' */
+  validatedRequest.role = 'admin';
 
   /** jika betul, lanjut simpan */
   const newAdmin = new Admin(validatedRequest);

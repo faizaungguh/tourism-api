@@ -1,6 +1,6 @@
 import validate from 'joi';
 
-export const addAdminValidation = validate.object({
+export const adminValidation = validate.object({
   username: validate.string().alphanum().min(5).max(12).required().messages({
     'string.base': 'Username hanya diperbolehkan berupa teks.',
     'string.alphanum': 'Username hanya boleh berisi huruf dan angka saja.',
@@ -54,9 +54,4 @@ export const addAdminValidation = validate.object({
       'any.required': 'Nomor kontak wajib diisi',
     }),
   photo: validate.string().allow(''),
-  role: validate.string().valid('admin', 'manager').required().messages({
-    'string.base': 'Role harus berupa teks',
-    'any.only': 'Role harus salah satu dari [admin, manager]',
-    'any.required': 'Role wajib diisi',
-  }),
 });
