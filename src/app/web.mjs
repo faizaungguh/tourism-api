@@ -19,7 +19,8 @@ if (process.env.NODE_ENV === 'development') {
 
 /** Route public dan private */
 web.use(express.json());
-web.use('/public', publicRouter);
+web.use('/', publicRouter);
+web.use('/', methodHandler(publicRouter));
 
 /** menangani semua request valid */
 web.use('/api', privateRouter);

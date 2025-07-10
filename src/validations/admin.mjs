@@ -62,7 +62,7 @@ export const listAdminValidation = validate.object({
   sort: validate.string().valid('asc', 'desc').default('desc'),
 });
 
-export const updateAdminValidation = validate
+export const patchAdminValidation = validate
   .object({
     username: validate.string().alphanum().min(5).max(12).messages({
       'string.base': 'Username hanya diperbolehkan berupa teks.',

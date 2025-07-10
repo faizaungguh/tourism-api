@@ -1,7 +1,21 @@
 import express from 'express';
+import * as auth from '../controllers/auth.mjs';
 
 export const publicRouter = new express.Router();
 
-publicRouter.get('/destination', (req, res) => {
-  res.status(200).json({ data: 'Sukses mengakses destination' });
-});
+/** Auth */
+publicRouter.post('/auth/register', auth.register);
+// publicRouter.get('/auth/login');
+// publicRouter.get('/auth/logout');
+
+/** Category */
+// publicRouter.get('/categories');
+
+/** Subdistricts */
+// publicRouter.get('/subdistricts');
+
+/** Destination */
+// publicRouter.get('/destinations');
+
+/** Recommendation */
+// publicRouter.get('/destinations/recommendations');

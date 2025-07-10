@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import {
   adminValidation,
   listAdminValidation,
-  updateAdminValidation,
+  patchAdminValidation,
 } from '../validations/admin.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
@@ -109,7 +109,7 @@ export const getDetailAdmin = async (adminId) => {
 
 export const updateAdmin = async (adminId, request) => {
   /** validasi update */
-  const validatedRequest = validate(updateAdminValidation, request);
+  const validatedRequest = validate(patchAdminValidation, request);
 
   /** cek apakah ada data yang dikirim */
   if (Object.keys(validatedRequest).length === 0) {
