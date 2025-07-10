@@ -11,4 +11,10 @@ export const getManager = async (req, res) => {
 
 export const putManager = async (req, res) => {};
 
-export const dropManager = async (req, res) => {};
+export const dropManager = async (req, res) => {
+  const { id: adminId } = req.query;
+  await managerService.deleteManager(adminId);
+  res.status(200).json({
+    message: 'Manajer berhasil dihapus',
+  });
+};

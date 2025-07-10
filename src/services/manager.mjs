@@ -57,21 +57,38 @@ export const registerManager = async (request) => {
 export const getDetailManager = async (adminId) => {
   /** validasi */
   if (!mongoose.Types.ObjectId.isValid(adminId)) {
-    throw new ResponseError(400, 'ID admin tidak valid');
+    throw new ResponseError(400, 'ID Manager tidak valid');
   }
 
-  /** cari admin berdasarkan id */
+  /** cari manager berdasarkan id */
   const admin = await Admin.findById(adminId).select('-password');
 
-  /** jika admin tidak ditemukan, tampilkan pesan error */
+  /** jika manager tidak ditemukan, tampilkan pesan error */
   if (!admin) {
-    throw new ResponseError(404, 'Admin tidak ditemukan');
+    throw new ResponseError(404, 'Manager tidak ditemukan');
   }
 
-  /** kembalikan data admin */
+  /** kembalikan data manager */
   return admin.toObject();
 };
 
 export const putManager = async (adminId, request) => {};
 
-export const deleteManager = async (adminId) => {};
+export const deleteManager = async (adminId) => {
+  if (!adminId) {
+    throw new ResponseError(400, 'Anda perlu memasukkan Id Manajer');
+  }
+
+  /** validasi apakah id yang dikirimkan adalah object id yang valid */
+  if (!mongoose.Types.ObjectId.isValid(adminId)) {
+    throw new ResponseError(400, 'ID admin tidak valid');
+  }
+
+  /** cari dan hapus manager berdasarkan id */
+  const admin = await Admin.findByIdAndDelete(adminId);
+
+  /** jika admin tidak ditemukan, tampilkan pesan error */
+  if (!admin) {
+    throw new ResponseError(404, 'Manajer tidak ditemukan');
+  }
+};

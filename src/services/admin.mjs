@@ -212,7 +212,7 @@ export const updateAdmin = async (adminId, request) => {
 
 export const deleteAdmin = async (adminId) => {
   if (!adminId) {
-    throw new ResponseError(400, 'Anda perlu memasukan Admin Id');
+    throw new ResponseError(400, 'Anda perlu memasukan Id Admin');
   }
   /** validasi apakah id yang dikirimkan adalah object id yang valid */
   if (!mongoose.Types.ObjectId.isValid(adminId)) {
