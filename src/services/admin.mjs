@@ -83,3 +83,21 @@ export const getAllAdmin = async (query) => {
     },
   };
 };
+
+export const getDetailAdmin = async (adminId) => {
+  /** validasi apakah id yang dikirimkan adalah object id yang valid */
+  if (!mongoose.Types.ObjectId.isValid(adminId)) {
+    throw new ResponseError(400, 'ID admin tidak valid');
+  }
+
+  /** cari admin berdasarkan id */
+  const admin = await Admin.findById(adminId).select('-password');
+
+  /** jika admin tidak ditemukan, tampilkan pesan error */
+  if (!admin) {
+    throw new ResponseError(404, 'Admin tidak ditemukan');
+  }
+
+  /** kembalikan data admin */
+  return admin.toObject();
+};
