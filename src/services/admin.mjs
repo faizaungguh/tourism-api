@@ -1,19 +1,15 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import {
-  adminValidation,
-  listAdminValidation,
-  patchAdminValidation,
-} from '../validations/admin.mjs';
+import * as check from '../validations/admin.mjs';
+import { validate } from '../validations/validate.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
-import { validate } from '../validations/validate.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 
 export const createAdmin = async (request) => {
   /** validasi input menggunakan validate */
-  const validatedRequest = validate(adminValidation, request);
+  const validatedRequest = validate(check.adminValidation, request);
 
   /** eck duplikasi username dan email */
   const checkDuplicate = await Admin.find({
@@ -61,17 +57,23 @@ export const createAdmin = async (request) => {
 
 export const getAllAdmin = async (query) => {
   /** validasi dan ambil nilai default dari query */
-  const validatedQuery = validate(listAdminValidation, query);
-  const { page, size, sort } = validatedQuery;
+  const validatedQuery = validate(check.listAdminValidation, query);
+  const { page, size, sort, role } = validatedQuery;
   const skip = (page - 1) * size;
 
   /** pengurutan ascending atau descending */
   const sortDirection = sort === 'asc' ? 1 : -1;
 
+  /** buat filter berdasarkan role jika ada */
+  const filter = {};
+  if (role) {
+    filter.role = role;
+  }
+
   /** query ke mongodb */
   const [totalItems, admins] = await Promise.all([
-    Admin.countDocuments(),
-    Admin.find()
+    Admin.countDocuments(filter),
+    Admin.find(filter)
       .select('-password')
       .sort({ createdAt: sortDirection })
       .skip(skip)
@@ -109,7 +111,7 @@ export const getDetailAdmin = async (adminId) => {
 
 export const updateAdmin = async (adminId, request) => {
   /** validasi update */
-  const validatedRequest = validate(patchAdminValidation, request);
+  const validatedRequest = validate(check.patchAdminValidation, request);
 
   /** cek apakah ada data yang dikirim */
   if (Object.keys(validatedRequest).length === 0) {

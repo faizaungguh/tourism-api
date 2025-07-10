@@ -1,9 +1,15 @@
-import { adminValidation } from '../validations/admin.mjs';
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import * as check from '../validations/admin.mjs';
+import { adminSchema } from '../schemas/admin.mjs';
 import { validate } from '../validations/validate.mjs';
+import { ResponseError } from '../errors/responseError.mjs';
+
+const Admin = mongoose.model('Admin', adminSchema);
 
 export const registerManager = async (request) => {
   /** validasi input */
-  const validatedRequest = validate(adminValidation, request);
+  const validatedRequest = validate(check.adminValidation, request);
 
   /** cek duplikasi */
   const checkDuplicate = await Admin.find({
