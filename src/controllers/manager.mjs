@@ -9,7 +9,14 @@ export const getManager = async (req, res) => {
   });
 };
 
-export const putManager = async (req, res) => {};
+export const putManager = async (req, res) => {
+  const { id: adminId } = req.query;
+  const result = await managerService.updateManager(adminId, req.body);
+  res.status(200).json({
+    message: 'Manajer berhasil diubah',
+    data: result,
+  });
+};
 
 export const dropManager = async (req, res) => {
   const { id: adminId } = req.query;

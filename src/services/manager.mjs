@@ -72,7 +72,106 @@ export const getDetailManager = async (adminId) => {
   return admin.toObject();
 };
 
-export const putManager = async (adminId, request) => {};
+export const updateManager = async (adminId, request) => {
+  /** validasi update */
+  const validatedRequest = validate(check.patchAdminValidation, request);
+
+  /** cek apakah ada data yang dikirim */
+  if (Object.keys(validatedRequest).length === 0) {
+    throw new ResponseError(400, 'Tidak ada data yang dikirim untuk diubah');
+  }
+
+  const originalAdmin = await Admin.findById(adminId).select('+password');
+  if (!originalAdmin) {
+    throw new ResponseError(404, 'Manajer tidak ditemukan.');
+  }
+
+  if (validatedRequest.oldPassword || validatedRequest.newPassword) {
+    if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
+      throw new ResponseError(
+        400,
+        'Anda harus memasukkan password lama dan baru.'
+      );
+    }
+
+    /** cocokkan password lama dengan yang ada di database */
+    const isPasswordMatch = await bcrypt.compare(
+      validatedRequest.oldPassword,
+      originalAdmin.password
+    );
+
+    if (!isPasswordMatch) {
+      throw new ResponseError(400, 'Password tidak sesuai', {
+        oldPassword: 'Password lama yang Anda masukkan salah.',
+      });
+    }
+
+    if (validatedRequest.newPassword === validatedRequest.oldPassword) {
+      throw new ResponseError(
+        400,
+        'Password baru tidak boleh sama dengan password lama.',
+        {
+          newPassword: 'Password baru tidak boleh sama dengan yang lama.',
+        }
+      );
+    }
+
+    /** Jika cocok, hash password baru */
+    validatedRequest.password = await bcrypt.hash(
+      validatedRequest.newPassword,
+      10
+    );
+
+    /** Hapus field sementara agar tidak tersimpan di database */
+    delete validatedRequest.oldPassword;
+    delete validatedRequest.newPassword;
+  }
+
+  /** cek duplikasi username / email */
+  const orConditions = [];
+
+  if (
+    validatedRequest.username &&
+    validatedRequest.username !== originalAdmin.username
+  ) {
+    orConditions.push({ username: validatedRequest.username });
+  }
+
+  if (
+    validatedRequest.email &&
+    validatedRequest.email !== originalAdmin.email
+  ) {
+    orConditions.push({ email: validatedRequest.email });
+  }
+
+  if (orConditions.length > 0) {
+    const checkDuplicate = await Admin.findOne({ $or: orConditions });
+
+    if (checkDuplicate) {
+      const duplicateErrors = {};
+      if (checkDuplicate.username === validatedRequest.username) {
+        duplicateErrors.username =
+          'Username ini sudah digunakan oleh akun lain.';
+      }
+      if (checkDuplicate.email === validatedRequest.email) {
+        duplicateErrors.email = 'Email ini sudah digunakan oleh akun lain.';
+      }
+      throw new ResponseError(
+        409,
+        'Data yang diberikan sudah terdaftar.',
+        duplicateErrors
+      );
+    }
+  }
+
+  const updatedAdmin = await Admin.findByIdAndUpdate(
+    adminId,
+    { $set: validatedRequest },
+    { new: true }
+  ).select('-password');
+
+  return updatedAdmin.toObject();
+};
 
 export const deleteManager = async (adminId) => {
   if (!adminId) {
