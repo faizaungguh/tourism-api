@@ -11,3 +11,15 @@ export const addAdmin = async (req, res, next) => {
     next(error);
   }
 };
+
+export const listAdmin = async (req, res, next) => {
+  try {
+    const result = await adminService.getAllAdmin(req.query);
+    res.status(200).json({
+      message: 'Menampilkan List Data Admin',
+      ...result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

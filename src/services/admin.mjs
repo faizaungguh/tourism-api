@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import { adminValidation } from '../validations/admin.mjs';
+import { adminValidation, listAdminValidation } from '../validations/admin.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
 import { validate } from '../validations/validate.mjs';
@@ -53,4 +53,33 @@ export const createAdmin = async (request) => {
   /** mengembalikan semua data kecuali password */
   const { password, ...result } = savedAdmin.toObject();
   return result;
+};
+
+export const getAllAdmin = async (query) => {
+  /** nilai default query */
+  const { page, size, sort } = query;
+  const skip = (page - 1) * size;
+
+  /** pengurutan ascending atau descending */
+  const sortDirection = query.sort === 'asc' ? 1 : -1;
+
+  /** query ke mongodb */
+  const [totalItems, admins] = await Promise.all([
+    Admin.countDocuments(),
+    Admin.find()
+      .select('-password')
+      .sort({ createdAt: sortDirection })
+      .skip(skip)
+      .limit(size),
+  ]);
+
+  return {
+    data: admins,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(totalItems / size),
+      totalItems,
+      size,
+    },
+  };
 };
