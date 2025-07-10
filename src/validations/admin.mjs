@@ -61,3 +61,54 @@ export const listAdminValidation = validate.object({
   size: validate.number().min(1).max(100).positive().default(10),
   sort: validate.string().valid('asc', 'desc').default('desc'),
 });
+
+export const updateAdminValidation = validate
+  .object({
+    username: validate.string().alphanum().min(5).max(12).messages({
+      'string.base': 'Username hanya diperbolehkan berupa teks.',
+      'string.alphanum': 'Username hanya boleh berisi huruf dan angka saja.',
+      'string.min': 'Username minimal terdiri dari 5 karakter.',
+      'string.max': 'Username maksimal terdiri dari 12 karakter.',
+    }),
+    name: validate.string().messages({
+      'string.empty': 'Name tidak boleh kosong.',
+    }),
+    email: validate
+      .string()
+      .email({ tlds: { allow: false } })
+      .pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+      .messages({
+        'string.base': 'Email harus berupa teks',
+        'string.email': 'Format email tidak valid, misal admin@gmail.com',
+        'string.pattern.base':
+          'Email mengandung karakter yang tidak diizinkan.',
+      }),
+    contactNumber: validate
+      .string()
+      .pattern(/^08[0-9]{8,11}$/)
+      .min(6)
+      .messages({
+        'string.base': 'Nomor kontak harus berupa teks',
+        'string.min': 'Nomor kontak minimal 8 digit',
+        'string.pattern.base':
+          'Format nomor kontak tidak valid. Contoh: 081234567890',
+      }),
+    photo: validate.string().allow(''),
+    oldPassword: validate.string(),
+    newPassword: validate
+      .string()
+      .min(6)
+      .pattern(new RegExp('^[a-zA-Z0-9#@$&]+$'))
+      .messages({
+        'string.base':
+          'Password baru harus berupa huruf, angka, dan karakter #, @, $, &',
+        'string.min': 'Password baru minimal harus memiliki 6 karakter',
+        'string.pattern.base':
+          'Password baru hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
+      }),
+  })
+  .and('oldPassword', 'newPassword')
+  .messages({
+    'object.and':
+      'Untuk mengubah password, Anda harus menyertakan password lama dan password baru.',
+  });

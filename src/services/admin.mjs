@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import { adminValidation, listAdminValidation } from '../validations/admin.mjs';
+import {
+  adminValidation,
+  listAdminValidation,
+  updateAdminValidation,
+} from '../validations/admin.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
 import { validate } from '../validations/validate.mjs';
@@ -56,12 +60,13 @@ export const createAdmin = async (request) => {
 };
 
 export const getAllAdmin = async (query) => {
-  /** nilai default query */
-  const { page, size, sort } = query;
+  /** validasi dan ambil nilai default dari query */
+  const validatedQuery = validate(listAdminValidation, query);
+  const { page, size, sort } = validatedQuery;
   const skip = (page - 1) * size;
 
   /** pengurutan ascending atau descending */
-  const sortDirection = query.sort === 'asc' ? 1 : -1;
+  const sortDirection = sort === 'asc' ? 1 : -1;
 
   /** query ke mongodb */
   const [totalItems, admins] = await Promise.all([
@@ -100,4 +105,123 @@ export const getDetailAdmin = async (adminId) => {
 
   /** kembalikan data admin */
   return admin.toObject();
+};
+
+export const updateAdmin = async (adminId, request) => {
+  /** validasi update */
+  const validatedRequest = validate(updateAdminValidation, request);
+
+  /** cek apakah ada data yang dikirim */
+  if (Object.keys(validatedRequest).length === 0) {
+    throw new ResponseError(400, 'Tidak ada data yang dikirim untuk diubah');
+  }
+
+  const originalAdmin = await Admin.findById(adminId).select('+password');
+  if (!originalAdmin) {
+    throw new ResponseError(404, 'Admin tidak ditemukan.');
+  }
+
+  if (validatedRequest.oldPassword || validatedRequest.newPassword) {
+    if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
+      throw new ResponseError(
+        400,
+        'Anda harus memasukkan password lama dan baru.'
+      );
+    }
+
+    /** cocokkan password lama dengan yang ada di database */
+    const isPasswordMatch = await bcrypt.compare(
+      validatedRequest.oldPassword,
+      originalAdmin.password
+    );
+
+    if (!isPasswordMatch) {
+      throw new ResponseError(400, 'Password tidak sesuai', {
+        oldPassword: 'Password lama yang Anda masukkan salah.',
+      });
+    }
+
+    if (validatedRequest.newPassword === validatedRequest.oldPassword) {
+      throw new ResponseError(
+        400,
+        'Password baru tidak boleh sama dengan password lama.',
+        {
+          newPassword: 'Password baru tidak boleh sama dengan yang lama.',
+        }
+      );
+    }
+
+    /** Jika cocok, hash password baru */
+    validatedRequest.password = await bcrypt.hash(
+      validatedRequest.newPassword,
+      10
+    );
+
+    /** Hapus field sementara agar tidak tersimpan di database */
+    delete validatedRequest.oldPassword;
+    delete validatedRequest.newPassword;
+  }
+
+  /** cek duplikasi username / email */
+  const orConditions = [];
+
+  if (
+    validatedRequest.username &&
+    validatedRequest.username !== originalAdmin.username
+  ) {
+    orConditions.push({ username: validatedRequest.username });
+  }
+
+  if (
+    validatedRequest.email &&
+    validatedRequest.email !== originalAdmin.email
+  ) {
+    orConditions.push({ email: validatedRequest.email });
+  }
+
+  if (orConditions.length > 0) {
+    const checkDuplicate = await Admin.findOne({ $or: orConditions });
+
+    if (checkDuplicate) {
+      const duplicateErrors = {};
+      if (checkDuplicate.username === validatedRequest.username) {
+        duplicateErrors.username =
+          'Username ini sudah digunakan oleh akun lain.';
+      }
+      if (checkDuplicate.email === validatedRequest.email) {
+        duplicateErrors.email = 'Email ini sudah digunakan oleh akun lain.';
+      }
+      throw new ResponseError(
+        409,
+        'Data yang diberikan sudah terdaftar.',
+        duplicateErrors
+      );
+    }
+  }
+
+  const updatedAdmin = await Admin.findByIdAndUpdate(
+    adminId,
+    { $set: validatedRequest },
+    { new: true }
+  ).select('-password');
+
+  return updatedAdmin.toObject();
+};
+
+export const deleteAdmin = async (adminId) => {
+  if (!adminId) {
+    throw new ResponseError(400, 'Anda perlu memasukan Admin Id');
+  }
+  /** validasi apakah id yang dikirimkan adalah object id yang valid */
+  if (!mongoose.Types.ObjectId.isValid(adminId)) {
+    throw new ResponseError(400, 'ID admin tidak valid');
+  }
+
+  /** cari dan hapus admin berdasarkan id */
+  const admin = await Admin.findByIdAndDelete(adminId);
+
+  /** jika admin tidak ditemukan, tampilkan pesan error */
+  if (!admin) {
+    throw new ResponseError(404, 'Admin tidak ditemukan');
+  }
 };
