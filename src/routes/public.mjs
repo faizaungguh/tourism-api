@@ -1,5 +1,6 @@
 import express from 'express';
 import * as auth from '../controllers/auth.mjs';
+import * as category from '../controllers/category.mjs';
 
 export const publicRouter = new express.Router();
 
@@ -9,7 +10,7 @@ publicRouter.post('/auth/register', auth.register);
 // publicRouter.get('/auth/logout');
 
 /** Category */
-// publicRouter.get('/categories');
+publicRouter.get('/categories', category.getCategory);
 
 /** Subdistricts */
 // publicRouter.get('/subdistricts');

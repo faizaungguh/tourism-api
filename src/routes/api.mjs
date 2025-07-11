@@ -18,8 +18,8 @@ privateRouter.delete('/managers', manager.dropManager);
 
 /** Category */
 privateRouter.post('/categories', category.postCategory);
-// privateRouter.put('/categories');
-// privateRouter.delete('/categories');
+privateRouter.put('/categories', category.patchCategory);
+privateRouter.delete('/categories', category.dropCategory);
 
 /** Subdistrict */
 // privateRouter.post('/subdistricts');
