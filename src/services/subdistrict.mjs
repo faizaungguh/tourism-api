@@ -60,7 +60,7 @@ export const getAllSubdistrict = async (query) => {
   ]);
 
   return {
-    data: subdistricts,
+    result: subdistricts,
     pagination: {
       currentPage: page,
       totalPages: Math.ceil(totalItems / size),

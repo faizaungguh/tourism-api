@@ -134,7 +134,7 @@ export const deleteManager = async (id) => {
   validate.isValidId(id);
 
   /** cek id */
-  const isAvailable = await Category.findById(id);
+  const isAvailable = await Admin.findById(id);
 
   if (!isAvailable) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
@@ -143,7 +143,7 @@ export const deleteManager = async (id) => {
   }
 
   /** cari id dan hapus */
-  await Category.findByIdAndDelete(id);
+  await Admin.findByIdAndDelete(id);
 
   return {
     message: 'Kategori dengan berhasil dihapus.',

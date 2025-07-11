@@ -9,10 +9,13 @@ export const postCategory = async (req, res) => {
 };
 
 export const getCategory = async (req, res) => {
-  const result = await categoryService.getAllCategory(req.query);
+  const { result, pagination } = await categoryService.getAllCategory(
+    req.query
+  );
   res.status(200).json({
     message: 'Menampilkan List Kategori',
-    data: result,
+    result,
+    pagination,
   });
 };
 

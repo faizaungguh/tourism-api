@@ -55,8 +55,7 @@ export const createAdmin = async (request) => {
   const savedAdmin = await newAdmin.save();
 
   /** mengembalikan semua data kecuali password */
-  const { password, ...result } = savedAdmin.toObject();
-  return result;
+  return savedAdmin;
 };
 
 export const getAllAdmin = async (query) => {
@@ -81,14 +80,13 @@ export const getAllAdmin = async (query) => {
   const [totalItems, admins] = await Promise.all([
     Admin.countDocuments(filter),
     Admin.find(filter)
-      .select('-password')
       .sort({ createdAt: sortDirection })
       .skip(skip)
       .limit(size),
   ]);
 
   return {
-    data: admins,
+    result: admins,
     pagination: {
       currentPage: page,
       totalPages: Math.ceil(totalItems / size),
@@ -102,7 +100,7 @@ export const getDetailAdmin = async (id) => {
   validate.isValidId(id);
 
   /** cari admin berdasarkan id */
-  const admin = await Admin.findById(id).select('-password');
+  const admin = await Admin.findById(id);
 
   /** jika admin tidak ditemukan, tampilkan pesan error */
   if (!admin) {
@@ -112,7 +110,7 @@ export const getDetailAdmin = async (id) => {
   }
 
   /** kembalikan data admin */
-  return admin.toObject();
+  return admin;
 };
 
 export const updateAdmin = async (id, request) => {
@@ -213,9 +211,9 @@ export const updateAdmin = async (id, request) => {
     id,
     { $set: validatedRequest },
     { new: true }
-  ).select('-password');
+  );
 
-  return updatedAdmin.toObject();
+  return updatedAdmin;
 };
 
 export const deleteAdmin = async (id) => {

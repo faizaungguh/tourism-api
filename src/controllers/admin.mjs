@@ -17,10 +17,11 @@ export const getAdmin = async (req, res) => {
       data: result,
     });
   } else {
-    const result = await adminService.getAllAdmin(req.query);
+    const { result, pagination } = await adminService.getAllAdmin(req.query);
     res.status(200).json({
       message: 'Menampilkan List Data Admin',
-      data: result,
+      result,
+      pagination,
     });
   }
 };

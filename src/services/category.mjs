@@ -60,7 +60,7 @@ export const getAllCategory = async (query) => {
   ]);
 
   return {
-    data: categories,
+    result: categories,
     pagination: {
       currentPage: page,
       totalPages: Math.ceil(totalItems / size),
