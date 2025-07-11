@@ -9,7 +9,7 @@ export const postSubdistrict = async (req, res) => {
 };
 
 export const getSubdistrict = async (req, res) => {
-  const result = await subdisctrictService.getAllCategory(req.query);
+  const result = await subdisctrictService.getAllSubdistrict(req.query);
   res.status(200).json({
     message: 'Menampilkan List Kecamatan',
     data: result,
@@ -18,7 +18,7 @@ export const getSubdistrict = async (req, res) => {
 
 export const patchSubdistrict = async (req, res) => {
   const { id: id } = req.query;
-  const result = await subdisctrictService.updateCategory(id, req.body);
+  const result = await subdisctrictService.updateSubdistrict(id, req.body);
   res.status(200).json({
     message: 'Kecamatan berhasil diubah',
     data: result,
@@ -27,7 +27,7 @@ export const patchSubdistrict = async (req, res) => {
 
 export const dropSubdistrict = async (req, res) => {
   const { id: id } = req.query;
-  await subdisctrictService.deleteCategory;
+  await subdisctrictService.deleteSubdistrict;
   res.status(200).json({
     message: 'Kecamatan berhasil dihapus',
   });

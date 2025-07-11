@@ -36,7 +36,39 @@ export const createSubdistrict = async (request) => {
   return savedSubdistrict.toObject();
 };
 
-export const getAllSubdistrict = async (query) => {};
+export const getAllSubdistrict = async (query) => {
+  /** validasi */
+  const validatedQuery = validate.requestCheck(
+    checker.listSubdistrictValidation,
+    query
+  );
+  const { page, size, sort } = validatedQuery;
+  const skip = (page - 1) * size;
+
+  /** pengurutan ascending atau descending */
+  const sortDirection = sort === 'asc' ? 1 : -1;
+
+  /** filter */
+  const filter = {};
+
+  const [totalItems, subdistricts] = await Promise.all([
+    Subdistrict.countDocuments(filter),
+    Subdistrict.find(filter)
+      .sort({ createdAt: sortDirection })
+      .skip(skip)
+      .limit(size),
+  ]);
+
+  return {
+    data: subdistricts,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(totalItems / size),
+      totalItems,
+      size,
+    },
+  };
+};
 
 export const updateSubdistrict = async (id, request) => {};
 
