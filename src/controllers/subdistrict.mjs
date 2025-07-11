@@ -27,8 +27,8 @@ export const patchSubdistrict = async (req, res) => {
 
 export const dropSubdistrict = async (req, res) => {
   const { id: id } = req.query;
-  await subdisctrictService.deleteSubdistrict;
+  await subdisctrictService.deleteSubdistrict(id);
   res.status(200).json({
-    message: 'Kecamatan berhasil dihapus',
+    message: 'Kategori berhasil dihapus',
   });
 };

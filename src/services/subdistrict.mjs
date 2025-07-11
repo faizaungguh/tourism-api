@@ -97,4 +97,22 @@ export const updateSubdistrict = async (id, request) => {
   return result;
 };
 
-export const deleteSubdistrict = async (id) => {};
+export const deleteSubdistrict = async (id) => {
+  validate.isValidId(id);
+
+  /** cek id */
+  const isAvailable = await Subdistrict.findById(id);
+
+  if (!isAvailable) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Kecamatan dengan Id ${id} tidak ditemukan`,
+    });
+  }
+
+  /** cari id dan hapus */
+  await Subdistrict.findByIdAndDelete(id);
+
+  return {
+    message: `Kecamatan dengan berhasil dihapus.`,
+  };
+};
