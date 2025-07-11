@@ -69,6 +69,34 @@ export const getAllCategory = async (query) => {
   };
 };
 
-export const updateCategory = async (id, request) => {};
+export const updateCategory = async (id, request) => {
+  /** validasi */
+  validate.isValidId(id);
+
+  /** cek req.body nya */
+  validate.isNotEmpty(request);
+
+  const validatedRequest = validate.requestCheck(
+    checker.categoryValidation,
+    request
+  );
+
+  const originalCategory = await Category.findById(id);
+  if (!originalCategory) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Kategori dengan id ${id} tidak ditemukan`,
+    });
+  }
+
+  const updatedCategory = await Category.findByIdAndUpdate(
+    id,
+    {
+      $set: validatedRequest,
+    },
+    { new: true }
+  );
+
+  return updatedCategory;
+};
 
 export const deleteCategory = async (id) => {};

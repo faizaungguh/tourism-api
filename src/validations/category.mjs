@@ -17,5 +17,5 @@ export const categoryValidation = validate.object({
 export const listCategoryValidation = validate.object({
   page: validate.number().min(1).positive().default(1),
   size: validate.number().min(1).max(20).positive().default(5),
-  sort: validate.string().valid('asc', 'desc').default('desc'),
+  sort: validate.string().valid('asc', 'desc').default('asc'),
 });

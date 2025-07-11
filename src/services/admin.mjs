@@ -116,8 +116,8 @@ export const getDetailAdmin = async (id) => {
 };
 
 export const updateAdmin = async (id, request) => {
-  validate.isValidId(id);
   /** validasi update */
+  validate.isValidId(id);
 
   /** cek apakah ada data yang dikirim */
   validate.isNotEmpty(request);
