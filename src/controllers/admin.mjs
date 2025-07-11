@@ -10,8 +10,8 @@ export const postAdmin = async (req, res) => {
 
 export const getAdmin = async (req, res) => {
   if (req.query.id) {
-    const adminId = req.query.id;
-    const result = await adminService.getDetailAdmin(adminId);
+    const id = req.query.id;
+    const result = await adminService.getDetailAdmin(id);
     res.status(200).json({
       message: 'Menampilkan Detail Admin',
       data: result,
@@ -26,8 +26,8 @@ export const getAdmin = async (req, res) => {
 };
 
 export const patchAdmin = async (req, res) => {
-  const { id: adminId } = req.query;
-  const result = await adminService.updateAdmin(adminId, req.body);
+  const { id: id } = req.query;
+  const result = await adminService.updateAdmin(id, req.body);
   res.status(200).json({
     message: 'Admin berhasil diubah',
     data: result,
@@ -35,8 +35,8 @@ export const patchAdmin = async (req, res) => {
 };
 
 export const dropAdmin = async (req, res) => {
-  const { id: adminId } = req.query;
-  await adminService.deleteAdmin(adminId);
+  const { id: id } = req.query;
+  await adminService.deleteAdmin(id);
   res.status(200).json({
     message: 'Admin berhasil dihapus',
   });

@@ -1,6 +1,7 @@
 import express from 'express';
 import * as admin from '../controllers/admin.mjs';
 import * as manager from '../controllers/manager.mjs';
+import * as category from '../controllers/category.mjs';
 
 export const privateRouter = new express.Router();
 
@@ -16,7 +17,7 @@ privateRouter.put('/managers', manager.putManager);
 privateRouter.delete('/managers', manager.dropManager);
 
 /** Category */
-// privateRouter.post('/categories');
+privateRouter.post('/categories', category.postCategory);
 // privateRouter.put('/categories');
 // privateRouter.delete('/categories');
 

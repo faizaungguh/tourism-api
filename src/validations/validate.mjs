@@ -1,9 +1,11 @@
 import { ResponseError } from '../errors/responseError.mjs';
+import mongoose from 'mongoose';
 
-export const validate = (schema, request) => {
+export const requestCheck = (schema, request) => {
   const { error, value } = schema.validate(request, {
     abortEarly: false,
     allowUnknown: false,
+    stripUnknown: true,
   });
 
   if (error) {
@@ -19,5 +21,27 @@ export const validate = (schema, request) => {
     );
   } else {
     return value;
+  }
+};
+
+export const isNotEmpty = (request) => {
+  if (!request || Object.keys(request).length === 0) {
+    throw new ResponseError(400, 'Kesalahan pengiriman', {
+      warn: 'Request body tidak boleh kosong.',
+    });
+  }
+};
+
+export const isValidId = (id) => {
+  if (!id) {
+    throw new ResponseError(400, 'Id kosong', {
+      warn: 'Anda harus menyertakan Id',
+    });
+  }
+  /** validasi apakah id yang dikirimkan adalah object id yang valid */
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new ResponseError(400, 'Id tidak valid', {
+      warn: 'Anda harus menyertakan Id yang valid',
+    });
   }
 };

@@ -1,15 +1,19 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import * as check from '../validations/admin.mjs';
-import { validate } from '../validations/validate.mjs';
+import * as checker from '../validations/admin.mjs';
+import * as validate from '../validations/validate.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 
 export const createAdmin = async (request) => {
+  validate.isNotEmpty(request);
   /** validasi input menggunakan validate */
-  const validatedRequest = validate(check.adminValidation, request);
+  const validatedRequest = validate.requestCheck(
+    checker.adminValidation,
+    request
+  );
 
   /** eck duplikasi username dan email */
   const checkDuplicate = await Admin.find({
@@ -57,7 +61,10 @@ export const createAdmin = async (request) => {
 
 export const getAllAdmin = async (query) => {
   /** validasi dan ambil nilai default dari query */
-  const validatedQuery = validate(check.listAdminValidation, query);
+  const validatedQuery = validate.requestCheck(
+    checker.listAdminValidation,
+    query
+  );
   const { page, size, sort, role } = validatedQuery;
   const skip = (page - 1) * size;
 
@@ -91,36 +98,40 @@ export const getAllAdmin = async (query) => {
   };
 };
 
-export const getDetailAdmin = async (adminId) => {
-  /** validasi apakah id yang dikirimkan adalah object id yang valid */
-  if (!mongoose.Types.ObjectId.isValid(adminId)) {
-    throw new ResponseError(400, 'ID admin tidak valid');
-  }
+export const getDetailAdmin = async (id) => {
+  validate.isValidId(id);
 
   /** cari admin berdasarkan id */
-  const admin = await Admin.findById(adminId).select('-password');
+  const admin = await Admin.findById(id).select('-password');
 
   /** jika admin tidak ditemukan, tampilkan pesan error */
   if (!admin) {
-    throw new ResponseError(404, 'Admin tidak ditemukan');
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Admin dengan Id ${id} tidak ditemukan`,
+    });
   }
 
   /** kembalikan data admin */
   return admin.toObject();
 };
 
-export const updateAdmin = async (adminId, request) => {
+export const updateAdmin = async (id, request) => {
+  validate.isValidId(id);
   /** validasi update */
-  const validatedRequest = validate(check.patchAdminValidation, request);
 
   /** cek apakah ada data yang dikirim */
-  if (Object.keys(validatedRequest).length === 0) {
-    throw new ResponseError(400, 'Tidak ada data yang dikirim untuk diubah');
-  }
+  validate.isNotEmpty(request);
 
-  const originalAdmin = await Admin.findById(adminId).select('+password');
+  const validatedRequest = validate.requestCheck(
+    checker.patchAdminValidation,
+    request
+  );
+
+  const originalAdmin = await Admin.findById(id).select('+password');
   if (!originalAdmin) {
-    throw new ResponseError(404, 'Admin tidak ditemukan.');
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Admin dengan Id ${id} tidak ditemukan`,
+    });
   }
 
   if (validatedRequest.oldPassword || validatedRequest.newPassword) {
@@ -144,13 +155,10 @@ export const updateAdmin = async (adminId, request) => {
     }
 
     if (validatedRequest.newPassword === validatedRequest.oldPassword) {
-      throw new ResponseError(
-        400,
-        'Password baru tidak boleh sama dengan password lama.',
-        {
-          newPassword: 'Password baru tidak boleh sama dengan yang lama.',
-        }
-      );
+      throw new ResponseError(400, 'Password tidak tersimpan', {
+        newPassword:
+          'Password Baru yang anda masukkan sama dengan Password Lama.',
+      });
     }
 
     /** Jika cocok, hash password baru */
@@ -202,7 +210,7 @@ export const updateAdmin = async (adminId, request) => {
   }
 
   const updatedAdmin = await Admin.findByIdAndUpdate(
-    adminId,
+    id,
     { $set: validatedRequest },
     { new: true }
   ).select('-password');
@@ -210,17 +218,11 @@ export const updateAdmin = async (adminId, request) => {
   return updatedAdmin.toObject();
 };
 
-export const deleteAdmin = async (adminId) => {
-  if (!adminId) {
-    throw new ResponseError(400, 'Anda perlu memasukan Id Admin');
-  }
-  /** validasi apakah id yang dikirimkan adalah object id yang valid */
-  if (!mongoose.Types.ObjectId.isValid(adminId)) {
-    throw new ResponseError(400, 'ID admin tidak valid');
-  }
+export const deleteAdmin = async (id) => {
+  validate.isValidId(id);
 
   /** cari dan hapus admin berdasarkan id */
-  const admin = await Admin.findByIdAndDelete(adminId);
+  const admin = await Admin.findByIdAndDelete(id);
 
   /** jika admin tidak ditemukan, tampilkan pesan error */
   if (!admin) {

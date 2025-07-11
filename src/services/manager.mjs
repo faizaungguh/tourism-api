@@ -1,89 +1,46 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import * as check from '../validations/admin.mjs';
+import * as checker from '../validations/admin.mjs';
+import * as validate from '../validations/validate.mjs';
 import { adminSchema } from '../schemas/admin.mjs';
-import { validate } from '../validations/validate.mjs';
 import { ResponseError } from '../errors/responseError.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 
-export const registerManager = async (request) => {
-  /** validasi input */
-  const validatedRequest = validate(check.adminValidation, request);
-
-  /** cek duplikasi */
-  const checkDuplicate = await Admin.find({
-    $or: [
-      { username: validatedRequest.username },
-      { email: validatedRequest.email },
-    ],
-  }).select('username email');
-
-  if (checkDuplicate.length > 0) {
-    const duplicateErrors = {};
-    checkDuplicate.forEach((admin) => {
-      if (admin.username === validatedRequest.username) {
-        duplicateErrors.username = 'Username telah terdaftar.';
-      }
-      if (admin.email === validatedRequest.email) {
-        duplicateErrors.email = 'Email telah terdaftar.';
-      }
-    });
-
-    if (Object.keys(duplicateErrors).length > 0) {
-      throw new ResponseError(
-        409,
-        'Data yang diberikan sudah terdaftar.',
-        duplicateErrors
-      );
-    }
-  }
-
-  /** hash password, untuk menyimpan dalam karakter acak */
-  validatedRequest.password = await bcrypt.hash(validatedRequest.password, 10);
-
-  /** role manager */
-  validatedRequest.role = 'manager';
-
-  /** jika betul, lanjut simpan */
-  const newAdmin = new Admin(validatedRequest);
-  const savedAdmin = await newAdmin.save();
-
-  /** mengembalikan semua data kecuali password */
-  const { password, ...result } = savedAdmin.toObject();
-  return result;
-};
-
-export const getDetailManager = async (adminId) => {
-  /** validasi */
-  if (!mongoose.Types.ObjectId.isValid(adminId)) {
-    throw new ResponseError(400, 'ID Manager tidak valid');
-  }
+export const getDetailManager = async (id) => {
+  validate.isValidId(id);
 
   /** cari manager berdasarkan id */
-  const admin = await Admin.findById(adminId).select('-password');
+  const admin = await Admin.findById(id).select('-password');
 
   /** jika manager tidak ditemukan, tampilkan pesan error */
   if (!admin) {
-    throw new ResponseError(404, 'Manager tidak ditemukan');
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Manajer dengan Id ${id} tidak ditemukan`,
+    });
   }
 
   /** kembalikan data manager */
   return admin.toObject();
 };
 
-export const updateManager = async (adminId, request) => {
-  /** validasi update */
-  const validatedRequest = validate(check.patchAdminValidation, request);
+export const updateManager = async (id, request) => {
+  validate.isValidId(id);
 
   /** cek apakah ada data yang dikirim */
-  if (Object.keys(validatedRequest).length === 0) {
-    throw new ResponseError(400, 'Tidak ada data yang dikirim untuk diubah');
-  }
+  validate.isNotEmpty(request);
 
-  const originalAdmin = await Admin.findById(adminId).select('+password');
+  /** validasi update */
+  const validatedRequest = validate.requestCheck(
+    checker.patchAdminValidation,
+    request
+  );
+
+  const originalAdmin = await Admin.findById(id).select('+password');
   if (!originalAdmin) {
-    throw new ResponseError(404, 'Manajer tidak ditemukan.');
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Manajer dengan Id ${id} tidak ditemukan`,
+    });
   }
 
   if (validatedRequest.oldPassword || validatedRequest.newPassword) {
@@ -165,7 +122,7 @@ export const updateManager = async (adminId, request) => {
   }
 
   const updatedAdmin = await Admin.findByIdAndUpdate(
-    adminId,
+    id,
     { $set: validatedRequest },
     { new: true }
   ).select('-password');
@@ -173,18 +130,11 @@ export const updateManager = async (adminId, request) => {
   return updatedAdmin.toObject();
 };
 
-export const deleteManager = async (adminId) => {
-  if (!adminId) {
-    throw new ResponseError(400, 'Anda perlu memasukkan Id Manajer');
-  }
-
-  /** validasi apakah id yang dikirimkan adalah object id yang valid */
-  if (!mongoose.Types.ObjectId.isValid(adminId)) {
-    throw new ResponseError(400, 'ID admin tidak valid');
-  }
+export const deleteManager = async (id) => {
+  validate.isValidId(id);
 
   /** cari dan hapus manager berdasarkan id */
-  const admin = await Admin.findByIdAndDelete(adminId);
+  const admin = await Admin.findByIdAndDelete(id);
 
   /** jika admin tidak ditemukan, tampilkan pesan error */
   if (!admin) {

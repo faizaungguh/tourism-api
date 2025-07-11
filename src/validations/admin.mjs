@@ -24,10 +24,16 @@ export const adminValidation = validate.object({
         'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
       'any.required': 'Password wajib diisi',
     }),
-  name: validate.string().required().messages({
-    'string.empty': 'Name tidak boleh kosong.',
-    'any.required': 'Name wajib diisi',
-  }),
+  name: validate
+    .string()
+    .pattern(/^[^<>]*$/)
+    .required()
+    .messages({
+      'string.empty': 'Name tidak boleh kosong.',
+      'string.pattern.base':
+        'Nama kategori tidak boleh mengandung skrip atau tag HTML.',
+      'any.required': 'Name wajib diisi',
+    }),
   email: validate
     .string()
     .email({ tlds: { allow: false } })
@@ -71,9 +77,16 @@ export const patchAdminValidation = validate
       'string.min': 'Username minimal terdiri dari 5 karakter.',
       'string.max': 'Username maksimal terdiri dari 12 karakter.',
     }),
-    name: validate.string().messages({
-      'string.empty': 'Name tidak boleh kosong.',
-    }),
+    name: validate
+      .string()
+      .pattern(/^[^<>]*$/)
+      .required()
+      .messages({
+        'string.empty': 'Name tidak boleh kosong.',
+        'string.pattern.base':
+          'Nama kategori tidak boleh mengandung skrip atau tag HTML.',
+        'any.required': 'Name wajib diisi',
+      }),
     email: validate
       .string()
       .email({ tlds: { allow: false } })
@@ -95,17 +108,20 @@ export const patchAdminValidation = validate
           'Format nomor kontak tidak valid. Contoh: 081234567890',
       }),
     photo: validate.string().allow(''),
-    oldPassword: validate.string(),
+    oldPassword: validate.string().messages({
+      'string.empty': 'Masukkan Password Lama anda.',
+    }),
     newPassword: validate
       .string()
       .min(6)
       .pattern(new RegExp('^[a-zA-Z0-9#@$&]+$'))
       .messages({
         'string.base':
-          'Password baru harus berupa huruf, angka, dan karakter #, @, $, &',
-        'string.min': 'Password baru minimal harus memiliki 6 karakter',
+          'Password harus berupa huruf, angka, dan karakter #, @, $, &',
+        'string.empty': 'Masukkan Password Baru anda.',
+        'string.min': 'Password minimal harus memiliki 6 karakter',
         'string.pattern.base':
-          'Password baru hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
+          'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
       }),
   })
   .and('oldPassword', 'newPassword')
