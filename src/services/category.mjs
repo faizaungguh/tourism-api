@@ -7,14 +7,15 @@ import { ResponseError } from '../errors/responseError.mjs';
 const Category = mongoose.model('Category', categorySchema);
 
 export const createCategory = async (request) => {
+  /** validasi request */
   validate.isNotEmpty(request);
-  /** validasi */
+
   const validatedRequest = validate.requestCheck(
     checker.categoryValidation,
     request
   );
 
-  /** cek duplikasi nama kategori (case-insensitive) */
+  /** cek duplikasi nama kategori */
   const checkDuplicate = await Category.findOne({
     name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
   });

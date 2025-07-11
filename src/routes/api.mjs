@@ -2,6 +2,7 @@ import express from 'express';
 import * as admin from '../controllers/admin.mjs';
 import * as manager from '../controllers/manager.mjs';
 import * as category from '../controllers/category.mjs';
+import * as subdistrict from '../controllers/subdistrict.mjs';
 
 export const privateRouter = new express.Router();
 
@@ -22,9 +23,9 @@ privateRouter.put('/categories', category.patchCategory);
 privateRouter.delete('/categories', category.dropCategory);
 
 /** Subdistrict */
-// privateRouter.post('/subdistricts');
-// privateRouter.put('/subdistricts');
-// privateRouter.delete('/subdistricts');
+privateRouter.post('/subdistricts', subdistrict.postSubdistrict);
+privateRouter.put('/subdistricts', subdistrict.patchSubdistrict);
+privateRouter.delete('/subdistricts', subdistrict.dropSubdistrict);
 
 /** Destination */
 // privateRouter.post('/destinations');
