@@ -133,11 +133,19 @@ export const updateManager = async (id, request) => {
 export const deleteManager = async (id) => {
   validate.isValidId(id);
 
-  /** cari dan hapus manager berdasarkan id */
-  const admin = await Admin.findByIdAndDelete(id);
+  /** cek id */
+  const isAvailable = await Category.findById(id);
 
-  /** jika admin tidak ditemukan, tampilkan pesan error */
-  if (!admin) {
-    throw new ResponseError(404, 'Manajer tidak ditemukan');
+  if (!isAvailable) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Kategori dengan Id ${id} tidak ditemukan`,
+    });
   }
+
+  /** cari id dan hapus */
+  await Category.findByIdAndDelete(id);
+
+  return {
+    message: 'Kategori dengan berhasil dihapus.',
+  };
 };

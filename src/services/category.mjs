@@ -99,4 +99,22 @@ export const updateCategory = async (id, request) => {
   return updatedCategory;
 };
 
-export const deleteCategory = async (id) => {};
+export const deleteCategory = async (id) => {
+  validate.isValidId(id);
+
+  /** cek id */
+  const isAvailable = await Category.findById(id);
+
+  if (!isAvailable) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Kategori dengan Id ${id} tidak ditemukan`,
+    });
+  }
+
+  /** cari id dan hapus */
+  await Category.findByIdAndDelete(id);
+
+  return {
+    message: `Kategori dengan berhasil dihapus.`,
+  };
+};

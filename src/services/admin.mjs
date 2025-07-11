@@ -221,11 +221,19 @@ export const updateAdmin = async (id, request) => {
 export const deleteAdmin = async (id) => {
   validate.isValidId(id);
 
-  /** cari dan hapus admin berdasarkan id */
-  const admin = await Admin.findByIdAndDelete(id);
+  /** cek id */
+  const isAvailable = await Admin.findById(id);
 
-  /** jika admin tidak ditemukan, tampilkan pesan error */
-  if (!admin) {
-    throw new ResponseError(404, 'Admin tidak ditemukan');
+  if (!isAvailable) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Admin dengan Id ${id} tidak ditemukan`,
+    });
   }
+
+  /** cari id dan hapus */
+  await Admin.findByIdAndDelete(id);
+
+  return {
+    message: 'Admin dengan berhasil dihapus.',
+  };
 };
