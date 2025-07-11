@@ -89,7 +89,7 @@ export const updateCategory = async (id, request) => {
     });
   }
 
-  const updatedCategory = await Category.findByIdAndUpdate(
+  const result = await Category.findByIdAndUpdate(
     id,
     {
       $set: validatedRequest,
@@ -97,7 +97,7 @@ export const updateCategory = async (id, request) => {
     { new: true }
   );
 
-  return updatedCategory;
+  return result;
 };
 
 export const deleteCategory = async (id) => {

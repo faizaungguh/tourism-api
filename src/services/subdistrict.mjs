@@ -70,6 +70,31 @@ export const getAllSubdistrict = async (query) => {
   };
 };
 
-export const updateSubdistrict = async (id, request) => {};
+export const updateSubdistrict = async (id, request) => {
+  validate.isValidId(id);
+  validate.isNotEmpty(request);
+
+  const validatedRequest = validate.requestCheck(
+    checker.subdistrictValidation,
+    request
+  );
+
+  const originalSubdistrict = await Subdistrict.findById(id);
+  if (!originalSubdistrict) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Kecamatan dengan id ${id} tidak ditemukan`,
+    });
+  }
+
+  const result = await Subdistrict.findByIdAndUpdate(
+    id,
+    {
+      $set: validatedRequest,
+    },
+    { new: true }
+  );
+
+  return result;
+};
 
 export const deleteSubdistrict = async (id) => {};
