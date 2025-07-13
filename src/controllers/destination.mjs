@@ -8,30 +8,30 @@ export const post = async (req, res) => {
   });
 };
 
-export const get = async (req, res) => {
-  if (req.query.id) {
-    const id = req.query.id;
-    const result = await destinationService.getDetailDestination(id);
-    res.status(200).json({
-      message: `Menampilkan Detail ${result.destinationTitle}`,
-      data: result,
-    });
-  } else {
-    const { result, pagination } = await destinationService.getAllDestination(
-      req.query
-    );
+export const list = async (req, res) => {
+  const { result, pagination } = await destinationService.getAllDestination(
+    req.query
+  );
 
-    const message =
-      pagination.totalItems > 0
-        ? 'Menampilkan List Data Destinasi'
-        : 'Data tidak ditemukan';
+  const message =
+    pagination.totalItems > 0
+      ? 'Menampilkan List Data Destinasi'
+      : 'Data tidak ditemukan';
 
-    res.status(200).json({
-      message,
-      result,
-      pagination,
-    });
-  }
+  res.status(200).json({
+    message,
+    result,
+    pagination,
+  });
+};
+
+export const detail = async (req, res) => {
+  const { id } = req.params;
+  const result = await destinationService.getDetailDestination(id);
+  res.status(200).json({
+    message: `Menampilkan Detail ${result.destinationTitle}`,
+    data: result,
+  });
 };
 
 export const slugCategory = async (req, res) => {
@@ -66,6 +66,23 @@ export const slug = async (req, res) => {
   });
 };
 
-export const patch = async (req, res) => {};
+export const patch = async (req, res) => {
+  const { id } = req.params;
+  const { adminId } = req.query;
+  const result = await destinationService.updateDestination(
+    id,
+    adminId,
+    req.body
+  );
+  res.status(200).json({
+    message: `Destinasi '${result.destinationTitle}' berhasil diubah`,
+    data: result,
+  });
+};
 
-export const drop = async (req, res) => {};
+export const drop = async (req, res) => {
+  const { id } = req.params;
+  const { adminId } = req.query;
+  const result = await destinationService.deleteDestination(id, adminId);
+  res.status(200).json(result);
+};

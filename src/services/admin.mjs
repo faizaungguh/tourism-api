@@ -118,7 +118,6 @@ export const updateAdmin = async (id, request) => {
     request
   );
 
-  // Panggil helper untuk melakukan proses update
   const updatedAdmin = await helper.updateAdmin(id, validatedRequest);
 
   return updatedAdmin;
@@ -140,6 +139,6 @@ export const deleteAdmin = async (id) => {
   await Admin.findByIdAndDelete(id);
 
   return {
-    message: 'Admin dengan berhasil dihapus.',
+    message: 'Admin berhasil dihapus.',
   };
 };

@@ -105,4 +105,16 @@ destinationSchema.pre('save', async function (next) {
       .replace(/ /g, '-')
       .replace(/[^\w-]+/g, '');
   }
+  next();
+});
+
+destinationSchema.pre('findOneAndUpdate', async function (next) {
+  const update = this.getUpdate();
+  if (update.$set && update.$set.destinationTitle) {
+    update.$set.slug = update.$set.destinationTitle
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+  }
+  next();
 });

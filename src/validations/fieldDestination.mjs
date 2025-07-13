@@ -9,7 +9,7 @@ export const objectId = () =>
 
 export const adminId = validate
   .string()
-  .required()
+
   .pattern(/^(adm|mng)-\d{4}$/)
   .messages({
     'any.required': 'ID Admin wajib diisi.',
@@ -45,7 +45,6 @@ export const description = validate
 export const locations = validate.object({
   adresses: validate
     .string()
-    .required()
     .pattern(/^[^<>]*$/)
     .messages({
       'string.empty': 'Alamat tidak boleh kosong.',
@@ -77,7 +76,6 @@ export const openingHour = validate.array().items(
         'saturday',
         'sunday'
       )
-      .required()
       .messages({
         'any.only':
           'Hari harus salah satu dari: monday, tuesday, wednesday, thursday, friday, saturday, sunday.',
@@ -93,7 +91,6 @@ export const facility = validate.array().items(
     name: validate
       .string()
       .trim()
-      .required()
       .pattern(/^[^<>]*$/)
       .messages({
         'string.empty': 'Nama fasilitas tidak boleh kosong.',
@@ -126,7 +123,6 @@ export const contact = validate.array().items(
         'twitter',
         'tiktok'
       )
-      .required()
       .messages({
         'any.only': 'Platform kontak tidak valid.',
         'any.required': 'Platform kontak wajib diisi.',
@@ -134,7 +130,6 @@ export const contact = validate.array().items(
     value: validate
       .string()
       .trim()
-      .required()
       .pattern(/^[^<>]*$/)
       .messages({
         'string.empty': 'Nilai kontak tidak boleh kosong.',
@@ -146,17 +141,17 @@ export const contact = validate.array().items(
 );
 
 export const ticket = validate.object({
-  adult: validate.number().min(0).required().default(0).messages({
+  adult: validate.number().min(0).default(0).messages({
     'number.base': 'Harga tiket dewasa harus berupa angka.',
     'number.min': 'Harga tiket dewasa tidak boleh kurang dari 0.',
     'any.required': 'Harga tiket dewasa wajib diisi.',
   }),
-  child: validate.number().min(0).required().default(0).messages({
+  child: validate.number().min(0).default(0).messages({
     'number.base': 'Harga tiket anak-anak harus berupa angka.',
     'number.min': 'Harga tiket anak-anak tidak boleh kurang dari 0.',
     'any.required': 'Harga tiket anak-anak wajib diisi.',
   }),
-  disability: validate.number().min(0).required().default(0).messages({
+  disability: validate.number().min(0).default(0).messages({
     'number.base': 'Harga tiket disabilitas harus berupa angka.',
     'number.min': 'Harga tiket disabilitas tidak boleh kurang dari 0.',
     'any.required': 'Harga tiket disabilitas wajib diisi.',

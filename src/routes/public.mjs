@@ -18,12 +18,15 @@ publicRouter.get('/categories', category.get);
 publicRouter.get('/subdistricts', subdistrict.get);
 
 /** Destination */
-publicRouter.get('/destinations/:categorySlug', destination.slugCategory);
 publicRouter.get(
-  '/destinations/:categorySlug/:destinationSlug',
+  '/destinations/category/:categorySlug',
+  destination.slugCategory
+);
+publicRouter.get(
+  '/destinations/category/:categorySlug/:destinationSlug',
   destination.slug
 );
-publicRouter.get('/destinations', destination.get);
+publicRouter.get('/destinations', destination.list);
 
 /** Recommendation */
 // publicRouter.get('/destinations/recommendations');

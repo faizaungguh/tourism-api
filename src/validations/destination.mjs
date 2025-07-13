@@ -14,6 +14,23 @@ export const destinationValidation = validate.object({
   parking: field.parking,
 });
 
+export const patchDestinationValidation = validate
+  .object({
+    destinationTitle: field.destinationTitle,
+    categories: field.categories,
+    description: field.description,
+    locations: field.locations,
+    openingHour: field.openingHour,
+    facility: field.facility,
+    contact: field.contact,
+    ticket: field.ticket,
+    parking: field.parking,
+  })
+  .min(1)
+  .messages({
+    'object.min': 'Setidaknya satu field harus diisi untuk update.',
+  });
+
 export const listDestinationValidation = validate.object({
   page: validate.number().min(1).positive().default(1),
   size: validate.number().min(1).max(100).positive().default(10),
