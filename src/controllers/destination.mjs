@@ -8,7 +8,22 @@ export const post = async (req, res) => {
   });
 };
 
-export const get = async (req, res) => {};
+export const get = async (req, res) => {
+  const { result, pagination } = await destinationService.getAllDestination(
+    req.query
+  );
+
+  const message =
+    pagination.totalItems > 0
+      ? 'Menampilkan List Data Destinasi'
+      : 'Data tidak ditemukan';
+
+  res.status(200).json({
+    message,
+    result,
+    pagination,
+  });
+};
 
 export const patch = async (req, res) => {};
 

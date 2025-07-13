@@ -61,8 +61,119 @@ export const createDestination = async (request) => {
   return savedDestination;
 };
 
-export const getAllDestination = async (query) => {};
+export const getAllDestination = async (query) => {
+  /** Validasi dan ambil nilai default dari query */
+  const validatedQuery = validate.requestCheck(
+    checker.listDestinationValidation,
+    query
+  );
+  const { page, size, sort, sortBy, search, category, subdistrict } =
+    validatedQuery;
+  const skip = (page - 1) * size;
+  const sortDirection = sort === 'asc' ? 1 : -1;
 
+  /** Tahap $match untuk filtering */
+  const andClauses = [];
+  if (search) {
+    andClauses.push({ destinationTitle: { $regex: search, $options: 'i' } });
+  }
+  if (category) {
+    /** filter berdasarkan nama kategori atau slug-nya */
+    andClauses.push({
+      $or: [
+        { 'categoryDetails.name': { $regex: `^${category}$`, $options: 'i' } },
+        { 'categoryDetails.slug': category },
+      ],
+    });
+  }
+  if (subdistrict) {
+    andClauses.push({
+      $or: [
+        {
+          'subdistrictDetails.name': {
+            $regex: `^${subdistrict}$`,
+            $options: 'i',
+          },
+        },
+        { 'subdistrictDetails.slug': subdistrict },
+      ],
+    });
+  }
+
+  /** Opsi pengurutan dinamis berdasarkan sortBy */
+  const sortStage = {};
+  if (sortBy === 'category') {
+    sortStage['categoryDetails.name'] = sortDirection;
+  } else if (sortBy === 'subdistrict') {
+    sortStage['subdistrictDetails.name'] = sortDirection;
+  } else if (sortBy === 'destinationTitle') {
+    sortStage.destinationTitle = sortDirection;
+  } else {
+    sortStage.createdAt = -1;
+  }
+
+  /** Aggregation Pipeline */
+  const pipeline = [
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'categories',
+        foreignField: '_id',
+        as: 'categoryDetails',
+      },
+    },
+    {
+      $lookup: {
+        from: 'subdistricts',
+        localField: 'locations.subdistrict',
+        foreignField: '_id',
+        as: 'subdistrictDetails',
+      },
+    },
+    { $unwind: '$categoryDetails' },
+    { $unwind: '$subdistrictDetails' },
+    /** Tambahkan tahap $match hanya jika ada kriteria filter */
+    ...(andClauses.length > 0 ? [{ $match: { $and: andClauses } }] : []),
+    {
+      $facet: {
+        metadata: [{ $count: 'totalItems' }],
+        data: [
+          { $sort: sortStage },
+          { $skip: skip },
+          { $limit: size },
+          {
+            $project: {
+              _id: 1,
+              destinationTitle: 1,
+              category: '$categoryDetails.name',
+              categorySlug: '$categoryDetails.slug',
+              subdistrict: '$subdistrictDetails.name',
+              subdistrictSlug: '$subdistrictDetails.slug',
+              address: '$locations.adresses',
+            },
+          },
+        ],
+      },
+    },
+  ];
+
+  const result = await Destination.aggregate(pipeline);
+
+  const data = result[0].data;
+  const totalItems = result[0].metadata[0]
+    ? result[0].metadata[0].totalItems
+    : 0;
+
+  return {
+    result: data,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(totalItems / size),
+      totalItems,
+      size,
+    },
+  };
+};
 export const getDetailDestination = async (id) => {};
 
 export const updateDestination = async (id, request) => {};
