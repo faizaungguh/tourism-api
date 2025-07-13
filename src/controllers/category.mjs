@@ -1,6 +1,6 @@
 import * as categoryService from '#services/category.mjs';
 
-export const postCategory = async (req, res) => {
+export const post = async (req, res) => {
   const result = await categoryService.createCategory(req.body);
   res.status(201).json({
     message: 'Kategori berhasil dibuat',
@@ -8,7 +8,7 @@ export const postCategory = async (req, res) => {
   });
 };
 
-export const getCategory = async (req, res) => {
+export const get = async (req, res) => {
   const { result, pagination } = await categoryService.getAllCategory(
     req.query
   );
@@ -19,7 +19,7 @@ export const getCategory = async (req, res) => {
   });
 };
 
-export const patchCategory = async (req, res) => {
+export const patch = async (req, res) => {
   const { id: id } = req.query;
   const result = await categoryService.updateCategory(id, req.body);
   res.status(200).json({
@@ -28,7 +28,7 @@ export const patchCategory = async (req, res) => {
   });
 };
 
-export const dropCategory = async (req, res) => {
+export const drop = async (req, res) => {
   const { id: id } = req.query;
   await categoryService.deleteCategory(id);
   res.status(200).json({

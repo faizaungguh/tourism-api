@@ -3,32 +3,33 @@ import * as admin from '#controllers/admin.mjs';
 import * as manager from '#controllers/manager.mjs';
 import * as category from '#controllers/category.mjs';
 import * as subdistrict from '#controllers/subdistrict.mjs';
+import * as destination from '#controllers/destination.mjs';
 
 export const privateRouter = new express.Router();
 
 /** Admin */
-privateRouter.post('/admins', admin.postAdmin);
-privateRouter.get('/admins', admin.getAdmin);
-privateRouter.put('/admins', admin.patchAdmin);
-privateRouter.delete('/admins', admin.dropAdmin);
+privateRouter.post('/admins', admin.post);
+privateRouter.get('/admins', admin.get);
+privateRouter.put('/admins', admin.patch);
+privateRouter.delete('/admins', admin.drop);
 
 /** Manager */
-privateRouter.get('/managers', manager.getManager);
-privateRouter.put('/managers', manager.putManager);
-privateRouter.delete('/managers', manager.dropManager);
+privateRouter.get('/managers', manager.get);
+privateRouter.put('/managers', manager.put);
+privateRouter.delete('/managers', manager.drop);
 
 /** Category */
-privateRouter.post('/categories', category.postCategory);
-privateRouter.put('/categories', category.patchCategory);
-privateRouter.delete('/categories', category.dropCategory);
+privateRouter.post('/categories', category.post);
+privateRouter.put('/categories', category.patch);
+privateRouter.delete('/categories', category.drop);
 
 /** Subdistrict */
-privateRouter.post('/subdistricts', subdistrict.postSubdistrict);
-privateRouter.put('/subdistricts', subdistrict.patchSubdistrict);
-privateRouter.delete('/subdistricts', subdistrict.dropSubdistrict);
+privateRouter.post('/subdistricts', subdistrict.post);
+privateRouter.put('/subdistricts', subdistrict.patch);
+privateRouter.delete('/subdistricts', subdistrict.drop);
 
 /** Destination */
-// privateRouter.post('/destinations');
+privateRouter.post('/destinations', destination.post);
 // privateRouter.put('/destinations');
 // privateRouter.delete('/destinations');
 

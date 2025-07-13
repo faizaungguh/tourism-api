@@ -1,6 +1,6 @@
 import * as subdistrictService from '#services/subdistrict.mjs';
 
-export const postSubdistrict = async (req, res) => {
+export const post = async (req, res) => {
   const result = await subdistrictService.createSubdistrict(req.body);
   res.status(201).json({
     message: 'Kecamatan berhasil dibuat',
@@ -8,7 +8,7 @@ export const postSubdistrict = async (req, res) => {
   });
 };
 
-export const getSubdistrict = async (req, res) => {
+export const get = async (req, res) => {
   const { result, pagination } = await subdistrictService.getAllSubdistrict(
     req.query
   );
@@ -19,7 +19,7 @@ export const getSubdistrict = async (req, res) => {
   });
 };
 
-export const patchSubdistrict = async (req, res) => {
+export const patch = async (req, res) => {
   const { id: id } = req.query;
   const result = await subdistrictService.updateSubdistrict(id, req.body);
   res.status(200).json({
@@ -28,7 +28,7 @@ export const patchSubdistrict = async (req, res) => {
   });
 };
 
-export const dropSubdistrict = async (req, res) => {
+export const drop = async (req, res) => {
   const { id: id } = req.query;
   await subdistrictService.deleteSubdistrict(id);
   res.status(200).json({

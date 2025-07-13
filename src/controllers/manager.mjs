@@ -1,6 +1,6 @@
 import * as managerService from '#services/manager.mjs';
 
-export const getManager = async (req, res) => {
+export const get = async (req, res) => {
   const id = req.query.id;
   const result = await managerService.getDetailManager(id);
   res.status(200).json({
@@ -9,7 +9,7 @@ export const getManager = async (req, res) => {
   });
 };
 
-export const putManager = async (req, res) => {
+export const put = async (req, res) => {
   const { id: id } = req.query;
   const result = await managerService.updateManager(id, req.body);
   res.status(200).json({
@@ -18,7 +18,7 @@ export const putManager = async (req, res) => {
   });
 };
 
-export const dropManager = async (req, res) => {
+export const drop = async (req, res) => {
   const { id: id } = req.query;
   await managerService.deleteManager(id);
   res.status(200).json({

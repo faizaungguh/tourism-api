@@ -4,7 +4,12 @@ const Schema = mongoose.Schema;
 export const destinationSchema = new Schema(
   {
     destinationsId: { type: String },
-    destinationTitle: { type: String, required: true, trim: true },
+    destinationTitle: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+    },
     categories: {
       type: Schema.Types.ObjectId,
       ref: 'Categories',
@@ -73,7 +78,6 @@ export const destinationSchema = new Schema(
             'facebook',
             'twitter',
             'tiktok',
-            'lainnya',
           ],
         },
         value: { type: String, required: true, trim: true },
