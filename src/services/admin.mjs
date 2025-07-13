@@ -64,11 +64,19 @@ export const getAllAdmin = async (query) => {
     checker.listAdminValidation,
     query
   );
-  const { page, size, sort, role } = validatedQuery;
+  const { page, size, sort, role, sortBy } = validatedQuery;
   const skip = (page - 1) * size;
 
   /** pengurutan ascending atau descending */
   const sortDirection = sort === 'asc' ? 1 : -1;
+
+  /** Opsi pengurutan dinamis berdasarkan sortBy */
+  const sortOptions = {};
+  if (sortBy) {
+    sortOptions[sortBy] = sortDirection;
+  } else {
+    sortOptions.createdAt = sortDirection;
+  }
 
   /** buat filter berdasarkan role jika ada */
   const filter = {};
@@ -79,10 +87,7 @@ export const getAllAdmin = async (query) => {
   /** query ke mongodb */
   const [totalItems, admins] = await Promise.all([
     Admin.countDocuments(filter),
-    Admin.find(filter)
-      .sort({ createdAt: sortDirection })
-      .skip(skip)
-      .limit(size),
+    Admin.find(filter).sort(sortOptions).skip(skip).limit(size),
   ]);
 
   return {

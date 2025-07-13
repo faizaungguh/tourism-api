@@ -49,7 +49,7 @@ export const destinationSchema = new Schema(
         isClosed: { type: Boolean, default: false },
       },
     ],
-    attractionList: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
+    // attractionList: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
     facility: [
       {
         name: { type: String, required: true, trim: true },
@@ -93,3 +93,12 @@ export const destinationSchema = new Schema(
   },
   { timestamps: true }
 );
+
+destinationSchema.pre('save', async function (next) {
+  if (this.isModified('destinationTitle') || this.isNew) {
+    this.slug = this.destinationTitle
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+  }
+});

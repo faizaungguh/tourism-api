@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 export const adminSchema = new Schema(
   {
     adminId: { type: String, unique: true },
-    username: { type: String, min: 5, max: 12, required: true },
+    username: { type: String, min: 5, unique: true, max: 12, required: true },
     password: { type: String, min: 6, required: true },
     name: { type: String, required: true },
-    email: { type: String, required: true },
+    email: { type: String, unique: true, required: true },
     contactNumber: { type: String, required: true },
     photo: { type: String },
     role: { type: String, required: true, enum: ['admin', 'manager'] },

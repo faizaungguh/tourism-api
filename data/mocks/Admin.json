@@ -1,7 +1,18 @@
-{
-    "username": "admin20",
-    "password": "Password20",
-    "name": "Admin 20",
-    "email": "admin20@gmail.com",
-    "contactNumber": "08518202023"
-}
+[
+    {
+        "username": "masteradmin",
+        "password": "rahasiAdmin",
+        "name": "Admin Master",
+        "email": "adminmaster@gmail.com",
+        "contactNumber": "08518202023",
+        "role": "admin"
+    },
+    {
+        "username": "managertourism",
+        "password": "RahasiaManager",
+        "name": "Manager Wisata",
+        "email": "managerwisata@gmail.com",
+        "contactNumber": "08518202023",
+        "role": "manager"
+    }
+]

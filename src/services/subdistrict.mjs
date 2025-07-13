@@ -4,7 +4,7 @@ import * as checker from '#validations/subdistrict.mjs';
 import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
-const Subdistrict = mongoose.model('Subdisctrict', SubdistrictSchema);
+const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
 
 export const createSubdistrict = async (request) => {
   /** validasi request */
@@ -42,21 +42,26 @@ export const getAllSubdistrict = async (query) => {
     checker.listSubdistrictValidation,
     query
   );
-  const { page, size, sort } = validatedQuery;
+  const { page, size, sort, sortBy } = validatedQuery;
   const skip = (page - 1) * size;
 
   /** pengurutan ascending atau descending */
   const sortDirection = sort === 'asc' ? 1 : -1;
+
+  /** Opsi pengurutan dinamis berdasarkan sortBy */
+  const sortOptions = {};
+  if (sortBy) {
+    sortOptions[sortBy] = sortDirection;
+  } else {
+    sortOptions.createdAt = sortDirection;
+  }
 
   /** filter */
   const filter = {};
 
   const [totalItems, subdistricts] = await Promise.all([
     Subdistrict.countDocuments(filter),
-    Subdistrict.find(filter)
-      .sort({ createdAt: sortDirection })
-      .skip(skip)
-      .limit(size),
+    Subdistrict.find(filter).sort(sortOptions).skip(skip).limit(size),
   ]);
 
   return {
@@ -90,7 +95,7 @@ export const updateSubdistrict = async (id, request) => {
   if (validatedRequest.name.toLowerCase() !== subdistrict.name.toLowerCase()) {
     const checkDuplicate = await Subdistrict.findOne({
       name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
-      _id: { $ne: id }, // Exclude self from duplicate check
+      _id: { $ne: id },
     });
     if (checkDuplicate) {
       throw new ResponseError(409, 'Duplikasi Kecamatan', {
@@ -99,7 +104,6 @@ export const updateSubdistrict = async (id, request) => {
     }
   }
 
-  // Apply the update and save to trigger pre('save') hook
   subdistrict.name = validatedRequest.name;
   const result = await subdistrict.save();
 

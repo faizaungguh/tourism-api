@@ -14,6 +14,10 @@ export const listAdminValidation = validate.object({
   size: validate.number().min(1).max(100).positive().default(10),
   sort: validate.string().valid('asc', 'desc').default('desc'),
   role: validate.string().valid('admin', 'manager'),
+  sortBy: validate
+    .string()
+    .valid('username', 'email', 'name', 'createdAt')
+    .optional(),
 });
 
 export const patchAdminValidation = validate

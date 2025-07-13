@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const Schema = mongoose.Schema;
 export const adminSchema = new Schema(
   {
     adminId: { type: String, unique: true },
-    username: { type: String, min: 5, max: 12, required: true },
+    username: { type: String, min: 5, max: 12, required: true, unique: true },
     password: { type: String, min: 6, required: true },
-    name: { type: String, required: true },
+    name: { type: String, unique: true, required: true },
     email: { type: String, required: true },
     contactNumber: { type: String, required: true },
     photo: { type: String },
@@ -36,6 +37,12 @@ adminSchema.pre('save', async function (next) {
     /** memberi nilai pada adminId untuk data baru */
     const formattedSequence = String(sequence).padStart(4, '0');
     this.adminId = `${prefix}-${formattedSequence}`;
+  }
+
+  /** hash password jika ada perubahan atau data baru */
+  if (this.isModified('password')) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
   }
 
   next();

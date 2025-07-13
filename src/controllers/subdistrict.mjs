@@ -1,7 +1,7 @@
-import * as subdisctrictService from '#services/subdistrict.mjs';
+import * as subdistrictService from '#services/subdistrict.mjs';
 
 export const postSubdistrict = async (req, res) => {
-  const result = await subdisctrictService.createSubdistrict(req.body);
+  const result = await subdistrictService.createSubdistrict(req.body);
   res.status(201).json({
     message: 'Kecamatan berhasil dibuat',
     data: result,
@@ -9,7 +9,7 @@ export const postSubdistrict = async (req, res) => {
 };
 
 export const getSubdistrict = async (req, res) => {
-  const { result, pagination } = await subdisctrictService.getAllSubdistrict(
+  const { result, pagination } = await subdistrictService.getAllSubdistrict(
     req.query
   );
   res.status(200).json({
@@ -21,7 +21,7 @@ export const getSubdistrict = async (req, res) => {
 
 export const patchSubdistrict = async (req, res) => {
   const { id: id } = req.query;
-  const result = await subdisctrictService.updateSubdistrict(id, req.body);
+  const result = await subdistrictService.updateSubdistrict(id, req.body);
   res.status(200).json({
     message: 'Kecamatan berhasil diubah',
     data: result,
@@ -30,7 +30,7 @@ export const patchSubdistrict = async (req, res) => {
 
 export const dropSubdistrict = async (req, res) => {
   const { id: id } = req.query;
-  await subdisctrictService.deleteSubdistrict(id);
+  await subdistrictService.deleteSubdistrict(id);
   res.status(200).json({
     message: 'Kategori berhasil dihapus',
   });
