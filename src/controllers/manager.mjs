@@ -1,27 +1,27 @@
 import * as managerService from '#services/manager.mjs';
 
 export const get = async (req, res) => {
-  const id = req.query.id;
-  const result = await managerService.getDetailManager(id);
+  const { id } = req.params;
+  const result = await managerService.getDetail(id);
   res.status(200).json({
-    message: 'Menampilkan Detail Manager',
+    message: `Menampilkan Detail Manager '${result.name}'`,
     data: result,
   });
 };
 
 export const put = async (req, res) => {
-  const { id: id } = req.query;
-  const result = await managerService.updateManager(id, req.body);
+  const { id } = req.params;
+  const result = await managerService.update(id, req.body);
   res.status(200).json({
-    message: 'Manajer berhasil diubah',
+    message: `Data manajer '${result.name}' berhasil diubah`,
     data: result,
   });
 };
 
 export const drop = async (req, res) => {
-  const { id: id } = req.query;
-  await managerService.deleteManager(id);
+  const { id } = req.params;
+  const result = await managerService.drop(id);
   res.status(200).json({
-    message: 'Manajer berhasil dihapus',
+    message: `Manajer '${result.name}' telah berhasil dihapus`,
   });
 };

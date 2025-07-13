@@ -13,7 +13,7 @@ const Category = mongoose.model('Category', categorySchema);
 const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
 const Admin = mongoose.model('Admin', adminSchema);
 
-export const createDestination = async (request) => {
+export const create = async (request) => {
   validate.isNotEmpty(request);
 
   /** validasi request */
@@ -86,7 +86,7 @@ export const createDestination = async (request) => {
   return savedDestination;
 };
 
-export const getAllDestination = async (query) => {
+export const getAll = async (query) => {
   /** Validasi dan ambil nilai default dari query */
   const validatedQuery = validate.requestCheck(
     checker.listDestinationValidation,
@@ -116,13 +116,15 @@ export const getAllDestination = async (query) => {
   };
 };
 
-export const getDetailDestination = async (id) => {
+export const getDetail = async (id) => {
   /** Validasi ID */
   validate.isValidId(id);
 
   const destinationExists = await Destination.findById(id).select('_id').lean();
   if (!destinationExists) {
-    throw new ResponseError(404, 'Destinasi tidak ditemukan.');
+    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+      message: `Destinasi dengan id ${id} tidak ditemukan`,
+    });
   }
 
   /** Dapatkan aggregation pipeline dari helper */
@@ -135,10 +137,14 @@ export const getDetailDestination = async (id) => {
 
 export const getDetailSlug = async (categorySlug, destinationSlug) => {
   if (!categorySlug || typeof categorySlug !== 'string') {
-    throw new ResponseError(400, 'Category slug tidak valid.');
+    throw new ResponseError(400, 'Category slug tidak valid.', {
+      message: `Kategori ${categorySlug} tidak valid`,
+    });
   }
   if (!destinationSlug || typeof destinationSlug !== 'string') {
-    throw new ResponseError(400, 'Destination slug tidak valid.');
+    throw new ResponseError(400, 'Destination slug tidak valid.', {
+      message: `Destinasi ${destinationSlug} tidak valid`,
+    });
   }
 
   const category = await Category.findOne({ slug: categorySlug })
@@ -163,7 +169,7 @@ export const getDetailSlug = async (categorySlug, destinationSlug) => {
   return result[0];
 };
 
-export const updateDestination = async (id, adminId, request) => {
+export const update = async (id, adminId, request) => {
   // 1. Validasi dasar
   validate.isValidId(id);
   validate.isNotEmpty(request);
@@ -279,7 +285,7 @@ export const updateDestination = async (id, adminId, request) => {
   return result[0];
 };
 
-export const deleteDestination = async (id, adminId) => {
+export const drop = async (id, adminId) => {
   // 1. Validasi dasar
   validate.isValidId(id);
 

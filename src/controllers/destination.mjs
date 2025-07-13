@@ -1,7 +1,7 @@
 import * as destinationService from '#services/destination.mjs';
 
 export const post = async (req, res) => {
-  const result = await destinationService.createDestination(req.body);
+  const result = await destinationService.create(req.body);
   res.status(201).json({
     message: 'Tempat Wisata baru berhasil ditambahkan',
     data: result,
@@ -9,9 +9,7 @@ export const post = async (req, res) => {
 };
 
 export const list = async (req, res) => {
-  const { result, pagination } = await destinationService.getAllDestination(
-    req.query
-  );
+  const { result, pagination } = await destinationService.getAll(req.query);
 
   const message =
     pagination.totalItems > 0
@@ -27,7 +25,7 @@ export const list = async (req, res) => {
 
 export const detail = async (req, res) => {
   const { id } = req.params;
-  const result = await destinationService.getDetailDestination(id);
+  const result = await destinationService.getDetail(id);
   res.status(200).json({
     message: `Menampilkan Detail ${result.destinationTitle}`,
     data: result,
@@ -42,9 +40,7 @@ export const slugCategory = async (req, res) => {
     category: categorySlug,
   };
 
-  const { result, pagination } = await destinationService.getAllDestination(
-    query
-  );
+  const { result, pagination } = await destinationService.getAll(query);
 
   const message =
     pagination.totalItems > 0
@@ -69,11 +65,7 @@ export const slug = async (req, res) => {
 export const patch = async (req, res) => {
   const { id } = req.params;
   const { adminId } = req.query;
-  const result = await destinationService.updateDestination(
-    id,
-    adminId,
-    req.body
-  );
+  const result = await destinationService.update(id, adminId, req.body);
   res.status(200).json({
     message: `Destinasi '${result.destinationTitle}' berhasil diubah`,
     data: result,
@@ -83,6 +75,6 @@ export const patch = async (req, res) => {
 export const drop = async (req, res) => {
   const { id } = req.params;
   const { adminId } = req.query;
-  const result = await destinationService.deleteDestination(id, adminId);
+  const result = await destinationService.drop(id, adminId);
   res.status(200).json(result);
 };

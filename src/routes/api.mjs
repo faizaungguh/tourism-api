@@ -9,14 +9,15 @@ export const privateRouter = new express.Router();
 
 /** Admin */
 privateRouter.post('/admins', admin.post);
-privateRouter.get('/admins', admin.get);
-privateRouter.put('/admins', admin.patch);
-privateRouter.delete('/admins', admin.drop);
+privateRouter.get('/admins', admin.list);
+privateRouter.get('/admins/:id', admin.get);
+privateRouter.put('/admins/:id', admin.patch);
+privateRouter.delete('/admins/:id', admin.drop);
 
 /** Manager */
-privateRouter.get('/managers', manager.get);
-privateRouter.put('/managers', manager.put);
-privateRouter.delete('/managers', manager.drop);
+privateRouter.get('/managers/:id', manager.get);
+privateRouter.put('/managers/:id', manager.put);
+privateRouter.delete('/managers/:id', manager.drop);
 
 /** Category */
 privateRouter.post('/categories', category.post);

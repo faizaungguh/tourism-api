@@ -2,32 +2,66 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
+import * as helper from '#helpers/adminPipeline.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
+import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
+const Destination = mongoose.model('Destination', destinationSchema);
 
-export const getDetailManager = async (id) => {
+export const getAll = async (query) => {
+  const validatedQuery = validate.requestCheck(
+    checker.listAdminValidation,
+    query
+  );
+
+  const pipeline = helper.listAdmins(validatedQuery);
+
+  // Tambahkan filter di awal pipeline untuk hanya mengambil role 'manager'
+  pipeline.unshift({ $match: { role: 'manager' } });
+
+  const result = await Admin.aggregate(pipeline);
+
+  const data = result[0]?.data || [];
+  const totalItems = result[0]?.metadata[0]
+    ? result[0].metadata[0].totalItems
+    : 0;
+
+  const { page, size } = validatedQuery;
+
+  return {
+    result: data,
+    pagination: {
+      currentPage: page,
+      totalPages: Math.ceil(totalItems / size),
+      totalItems,
+      size,
+    },
+  };
+};
+
+export const getDetail = async (id) => {
   validate.isValidId(id);
 
-  /** cari manager berdasarkan id */
-  const admin = await Admin.findById(id).select('-password');
+  /** Cari manager berdasarkan id dan pastikan role-nya adalah 'manager' */
+  const manager = await Admin.findOne({ _id: id, role: 'manager' }).select(
+    '-password'
+  );
 
-  /** jika manager tidak ditemukan, tampilkan pesan error */
-  if (!admin) {
+  /** Jika manager tidak ditemukan, tampilkan pesan error */
+  if (!manager) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Manajer dengan Id ${id} tidak ditemukan`,
     });
   }
 
   /** kembalikan data manager */
-  return admin.toObject();
+  return manager.toObject();
 };
 
-export const updateManager = async (id, request) => {
+export const update = async (id, request) => {
   validate.isValidId(id);
-
-  /** cek apakah ada data yang dikirim */
   validate.isNotEmpty(request);
 
   /** validasi update */
@@ -36,8 +70,17 @@ export const updateManager = async (id, request) => {
     request
   );
 
-  const originalAdmin = await Admin.findById(id).select('+password');
-  if (!originalAdmin) {
+  /** Pastikan role tidak bisa diubah dari 'manager' */
+  if (validatedRequest.role && validatedRequest.role !== 'manager') {
+    throw new ResponseError(400, 'Role manajer tidak dapat diubah.');
+  }
+
+  /** Cari manager berdasarkan id dan role, lalu ambil data aslinya (termasuk password) */
+  const originalManager = await Admin.findOne({
+    _id: id,
+    role: 'manager',
+  }).select('+password');
+  if (!originalManager) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Manajer dengan Id ${id} tidak ditemukan`,
     });
@@ -54,7 +97,7 @@ export const updateManager = async (id, request) => {
     /** cocokkan password lama dengan yang ada di database */
     const isPasswordMatch = await bcrypt.compare(
       validatedRequest.oldPassword,
-      originalAdmin.password
+      originalManager.password
     );
 
     if (!isPasswordMatch) {
@@ -89,14 +132,14 @@ export const updateManager = async (id, request) => {
 
   if (
     validatedRequest.username &&
-    validatedRequest.username !== originalAdmin.username
+    validatedRequest.username !== originalManager.username
   ) {
     orConditions.push({ username: validatedRequest.username });
   }
 
   if (
     validatedRequest.email &&
-    validatedRequest.email !== originalAdmin.email
+    validatedRequest.email !== originalManager.email
   ) {
     orConditions.push({ email: validatedRequest.email });
   }
@@ -130,22 +173,29 @@ export const updateManager = async (id, request) => {
   return updatedAdmin.toObject();
 };
 
-export const deleteManager = async (id) => {
+export const drop = async (id) => {
   validate.isValidId(id);
 
-  /** cek id */
-  const isAvailable = await Admin.findById(id);
+  /** 1. Cek apakah manajer ini memiliki destinasi yang terkait */
+  const destinationCount = await Destination.countDocuments({ createdBy: id });
 
-  if (!isAvailable) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Kategori dengan Id ${id} tidak ditemukan`,
+  if (destinationCount > 0) {
+    throw new ResponseError(409, 'Manajer memiliki destinasi wisata.', {
+      message: `Tidak dapat menghapus manajer. Hapus ${destinationCount} destinasi yang terkait terlebih dahulu.`,
     });
   }
 
-  /** cari id dan hapus */
-  await Admin.findByIdAndDelete(id);
+  /** 2. Jika tidak ada, lanjutkan proses penghapusan */
+  const deletedManager = await Admin.findOneAndDelete({
+    _id: id,
+    role: 'manager',
+  });
 
-  return {
-    message: 'Kategori dengan berhasil dihapus.',
-  };
+  if (!deletedManager) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Manajer dengan Id ${id} tidak ditemukan`,
+    });
+  }
+
+  return deletedManager;
 };

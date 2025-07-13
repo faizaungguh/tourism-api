@@ -8,7 +8,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 
-export const createAdmin = async (request) => {
+export const create = async (request) => {
   validate.isNotEmpty(request);
   /** validasi input menggunakan validate */
   const validatedRequest = validate.requestCheck(
@@ -59,7 +59,7 @@ export const createAdmin = async (request) => {
   return savedAdmin;
 };
 
-export const getAllAdmin = async (query) => {
+export const getAll = async (query) => {
   /** validasi dan ambil nilai default dari query */
   const validatedQuery = validate.requestCheck(
     checker.listAdminValidation,
@@ -89,7 +89,7 @@ export const getAllAdmin = async (query) => {
   };
 };
 
-export const getDetailAdmin = async (id) => {
+export const getDetail = async (id) => {
   validate.isValidId(id);
 
   /** cari admin berdasarkan id */
@@ -106,7 +106,7 @@ export const getDetailAdmin = async (id) => {
   return admin;
 };
 
-export const updateAdmin = async (id, request) => {
+export const update = async (id, request) => {
   /** validasi update */
   validate.isValidId(id);
 
@@ -123,22 +123,18 @@ export const updateAdmin = async (id, request) => {
   return updatedAdmin;
 };
 
-export const deleteAdmin = async (id) => {
+export const drop = async (id) => {
   validate.isValidId(id);
 
-  /** cek id */
-  const isAvailable = await Admin.findById(id);
+  /** cari id dan hapus, lalu kembalikan dokumen yang dihapus */
+  const deletedAdmin = await Admin.findByIdAndDelete(id);
 
-  if (!isAvailable) {
+  if (!deletedAdmin) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Admin dengan Id ${id} tidak ditemukan`,
     });
   }
 
-  /** cari id dan hapus */
-  await Admin.findByIdAndDelete(id);
-
-  return {
-    message: 'Admin berhasil dihapus.',
-  };
+  // kembalikan data admin yang dihapus
+  return deletedAdmin;
 };
