@@ -6,7 +6,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { categorySchema } from '#schemas/category.mjs';
 import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
-import { objectId } from '#validations/fieldDestination.mjs';
+import { allDestinationPipeline } from '#helpers/destinationPipeline.mjs';
 
 const Destination = mongoose.model('Destination', destinationSchema);
 const Category = mongoose.model('Category', categorySchema);
@@ -92,95 +92,9 @@ export const getAllDestination = async (query) => {
     checker.listDestinationValidation,
     query
   );
-  const { page, size, sort, sortBy, search, category, subdistrict } =
-    validatedQuery;
-  const skip = (page - 1) * size;
-  const sortDirection = sort === 'asc' ? 1 : -1;
 
-  /** Tahap $match untuk filtering */
-  const andClauses = [];
-  if (search) {
-    andClauses.push({ destinationTitle: { $regex: search, $options: 'i' } });
-  }
-  if (category) {
-    /** filter berdasarkan nama kategori atau slug-nya */
-    andClauses.push({
-      $or: [
-        { 'categoryDetails.name': { $regex: `^${category}$`, $options: 'i' } },
-        { 'categoryDetails.slug': category },
-      ],
-    });
-  }
-  if (subdistrict) {
-    andClauses.push({
-      $or: [
-        {
-          'subdistrictDetails.name': {
-            $regex: `^${subdistrict}$`,
-            $options: 'i',
-          },
-        },
-        { 'subdistrictDetails.slug': subdistrict },
-      ],
-    });
-  }
-
-  /** Opsi pengurutan dinamis berdasarkan sortBy */
-  const sortStage = {};
-  if (sortBy === 'category') {
-    sortStage['categoryDetails.name'] = sortDirection;
-  } else if (sortBy === 'subdistrict') {
-    sortStage['subdistrictDetails.name'] = sortDirection;
-  } else if (sortBy === 'destinationTitle') {
-    sortStage.destinationTitle = sortDirection;
-  } else {
-    sortStage.createdAt = -1;
-  }
-
-  /** Aggregation Pipeline */
-  const pipeline = [
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'categories',
-        foreignField: '_id',
-        as: 'categoryDetails',
-      },
-    },
-    {
-      $lookup: {
-        from: 'subdistricts',
-        localField: 'locations.subdistrict',
-        foreignField: '_id',
-        as: 'subdistrictDetails',
-      },
-    },
-    { $unwind: '$categoryDetails' },
-    { $unwind: '$subdistrictDetails' },
-    /** Tambahkan tahap $match hanya jika ada kriteria filter */
-    ...(andClauses.length > 0 ? [{ $match: { $and: andClauses } }] : []),
-    {
-      $facet: {
-        metadata: [{ $count: 'totalItems' }],
-        data: [
-          { $sort: sortStage },
-          { $skip: skip },
-          { $limit: size },
-          {
-            $project: {
-              _id: 1,
-              destinationTitle: 1,
-              category: '$categoryDetails.name',
-              categorySlug: '$categoryDetails.slug',
-              subdistrict: '$subdistrictDetails.name',
-              subdistrictSlug: '$subdistrictDetails.slug',
-              address: '$locations.adresses',
-            },
-          },
-        ],
-      },
-    },
-  ];
+  /** Dapatkan aggregation pipeline dari helper */
+  const pipeline = allDestinationPipeline(validatedQuery);
 
   const result = await Destination.aggregate(pipeline);
 
@@ -188,6 +102,8 @@ export const getAllDestination = async (query) => {
   const totalItems = result[0].metadata[0]
     ? result[0].metadata[0].totalItems
     : 0;
+
+  const { page, size } = validatedQuery;
 
   return {
     result: data,
@@ -274,6 +190,8 @@ export const getDetailDestination = async (id) => {
 
   return result[0] || null;
 };
+
+export const getDetailSlug = async (slug) => {};
 
 export const updateDestination = async (id, request) => {};
 

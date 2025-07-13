@@ -9,15 +9,16 @@
     "start": "cross-env NODE_ENV=production PORT=3000 node app.mjs"
   },
   "imports": {
-    "#app/*":"./src/app/*",
-    "#configs/*":"./src/configs/*",
-    "#controllers/*":"./src/controllers/*",
-    "#errors/*":"./src/errors/*",
-    "#middlewares/*":"./src/middlewares/*",
-    "#routes/*":"./src/routes/*",
-    "#schemas/*":"./src/schemas/*",
-    "#services/*":"./src/services/*",
-    "#validations/*":"./src/validations/*"
+    "#app/*": "./src/app/*",
+    "#configs/*": "./src/configs/*",
+    "#controllers/*": "./src/controllers/*",
+    "#errors/*": "./src/errors/*",
+    "#middlewares/*": "./src/middlewares/*",
+    "#routes/*": "./src/routes/*",
+    "#helpers/*": "./src/helpers/*",
+    "#schemas/*": "./src/schemas/*",
+    "#services/*": "./src/services/*",
+    "#validations/*": "./src/validations/*"
   },
   "keywords": [],
   "author": "",

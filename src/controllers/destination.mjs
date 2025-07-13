@@ -34,6 +34,11 @@ export const get = async (req, res) => {
   }
 };
 
+export const slug = async (req, res) => {
+  const { slug } = req.params;
+  const result = await destinationService;
+};
+
 export const patch = async (req, res) => {};
 
 export const drop = async (req, res) => {};
