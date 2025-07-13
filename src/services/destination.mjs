@@ -5,10 +5,12 @@ import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { categorySchema } from '#schemas/category.mjs';
 import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
+import { adminSchema } from '#schemas/admin.mjs';
 
 const Destination = mongoose.model('Destination', destinationSchema);
 const Category = mongoose.model('Category', categorySchema);
 const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
+const Admin = mongoose.model('Admin', adminSchema);
 
 export const createDestination = async (request) => {
   validate.isNotEmpty(request);
@@ -19,7 +21,24 @@ export const createDestination = async (request) => {
     request
   );
 
-  /** Cek duplikasi judul dan validasi keberadaan Kategori & Kecamatan */
+  /** 1. Cek adminId dan role manager terlebih dahulu */
+  const admin = await Admin.findOne({
+    adminId: validatedRequest.adminId,
+  }).select('role');
+
+  if (!admin) {
+    throw new ResponseError(404, 'Admin tidak ditemukan.', {
+      adminId: `Admin dengan ID "${validatedRequest.adminId}" tidak ditemukan.`,
+    });
+  }
+
+  if (admin.role !== 'manager') {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message: 'Hanya manajer yang dapat membuat destinasi wisata',
+    });
+  }
+
+  /** 2. Cek duplikasi judul dan validasi keberadaan Kategori & Kecamatan */
   const [existingDestination, categoryDoc, subdistrictDoc] = await Promise.all([
     Destination.findOne({
       destinationTitle: validatedRequest.destinationTitle,
@@ -32,10 +51,10 @@ export const createDestination = async (request) => {
     }).select('_id'),
   ]);
 
-  /** munculkan pesan error jika ada duplikasi */
+  /** 3. Munculkan pesan error jika ada data yang tidak valid */
   if (existingDestination) {
-    throw new ResponseError(409, 'Destinasi Wisata tidak tersedia.', {
-      destinationTitle: 'Destinasi Wisata tersebut ini sudah digunakan.',
+    throw new ResponseError(409, 'Judul destinasi sudah ada.', {
+      destinationTitle: 'Judul destinasi wisata ini sudah digunakan.',
     });
   }
 
@@ -51,9 +70,14 @@ export const createDestination = async (request) => {
     });
   }
 
-  /** jika tidak ada duplikasi, simpan data */
+  /** 4. Jika semua valid, siapkan dan simpan data */
   validatedRequest.categories = categoryDoc._id;
   validatedRequest.locations.subdistrict = subdistrictDoc._id;
+
+  // Ganti nama field `adminId` menjadi `createdBy` dan simpan _id admin
+  validatedRequest.createdBy = admin._id;
+  delete validatedRequest.adminId;
+
   const newDestination = new Destination(validatedRequest);
   const savedDestination = await newDestination.save();
 

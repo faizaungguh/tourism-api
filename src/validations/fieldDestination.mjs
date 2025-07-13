@@ -7,6 +7,16 @@ export const objectId = () =>
     'string.length': 'Panjang ID harus 24 karakter heksadesimal.',
   });
 
+export const adminId = validate
+  .string()
+  .required()
+  .pattern(/^(adm|mng)-\d{4}$/)
+  .messages({
+    'any.required': 'ID Admin wajib diisi.',
+    'string.pattern.base':
+      'Format ID Admin tidak valid. Contoh: mng-0001 atau adm-0001.',
+  });
+
 export const destinationTitle = validate
   .string()
   .trim()
