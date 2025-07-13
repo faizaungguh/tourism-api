@@ -36,7 +36,11 @@ export const get = async (req, res) => {
 
 export const slug = async (req, res) => {
   const { slug } = req.params;
-  const result = await destinationService;
+  const result = await destinationService.getDetailSlug(slug);
+  res.status(200).json({
+    message: 'Menampilkan Destinasi Wisata',
+    data: result,
+  });
 };
 
 export const patch = async (req, res) => {};
