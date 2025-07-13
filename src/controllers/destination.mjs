@@ -34,6 +34,26 @@ export const get = async (req, res) => {
   }
 };
 
+export const slugCategory = async (req, res) => {
+  const { categorySlug } = req.params;
+
+  const query = {
+    ...req.query,
+    category: categorySlug,
+  };
+
+  const { result, pagination } = await destinationService.getAllDestination(
+    query
+  );
+
+  const message =
+    pagination.totalItems > 0
+      ? `Menampilkan destinasi '${result[0].category}'`
+      : `Tidak ditemukan kategori ${categorySlug}`;
+
+  res.status(200).json({ message, result, pagination });
+};
+
 export const slug = async (req, res) => {
   const { categorySlug, destinationSlug } = req.params;
   const result = await destinationService.getDetailSlug(
