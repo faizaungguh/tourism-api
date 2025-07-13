@@ -3,11 +3,7 @@ import morgan from 'morgan';
 import { logger } from '#app/logging.mjs';
 import { publicRouter } from '#routes/public.mjs';
 import { privateRouter } from '#routes/api.mjs';
-import {
-  errorHandler,
-  methodHandler,
-  notFoundEndpoint,
-} from '../errors/error.mjs';
+import * as handler from '../errors/error.mjs';
 
 export const web = express();
 
@@ -20,15 +16,15 @@ if (process.env.NODE_ENV === 'development') {
 /** Route public dan private */
 web.use(express.json());
 web.use('/', publicRouter);
-web.use('/', methodHandler(publicRouter));
+web.use('/', handler.method(publicRouter));
 
 /** menangani semua request valid */
 web.use('/api', privateRouter);
 
 /** periksa jika ada method yang tidak diperkenankan */
-web.use('/api', methodHandler(privateRouter));
+web.use('/api', handler.method(privateRouter));
 
 /** periksa jika tidak menemukan endpoint */
-web.use(notFoundEndpoint);
+web.use(handler.notFoundEndpoint);
 /** menangkap semua error */
-web.use(errorHandler);
+web.use(handler.error);

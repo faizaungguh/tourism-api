@@ -75,7 +75,6 @@ export const create = async (request) => {
   validatedRequest.categories = categoryDoc._id;
   validatedRequest.locations.subdistrict = subdistrictDoc._id;
 
-  // Ganti nama field `adminId` menjadi `createdBy` dan simpan _id admin
   validatedRequest.createdBy = admin._id;
   delete validatedRequest.adminId;
 
@@ -170,7 +169,6 @@ export const getDetailSlug = async (categorySlug, destinationSlug) => {
 };
 
 export const update = async (id, adminId, request) => {
-  // 1. Validasi dasar
   validate.isValidId(id);
   validate.isNotEmpty(request);
 
@@ -180,14 +178,12 @@ export const update = async (id, adminId, request) => {
     });
   }
 
-  // 2. Otorisasi: Hanya manajer ('mng-') yang bisa lanjut
   if (!adminId.startsWith('mng-')) {
     throw new ResponseError(403, 'Akses ditolak.', {
       message: 'Hanya manajer yang dapat mengubah destinasi.',
     });
   }
 
-  // 3. Cek kepemilikan (Ownership)
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
     Destination.findById(id).select('createdBy destinationTitle').lean(),
@@ -211,20 +207,18 @@ export const update = async (id, adminId, request) => {
     });
   }
 
-  // 4. Validasi request body
   const validatedRequest = validate.requestCheck(
     checker.patchDestinationValidation,
     request
   );
 
-  // 5. Cek keunikan destinationTitle jika diubah
   if (
     validatedRequest.destinationTitle &&
     validatedRequest.destinationTitle !== destinationToUpdate.destinationTitle
   ) {
     const existingDestination = await Destination.findOne({
       destinationTitle: validatedRequest.destinationTitle,
-      _id: { $ne: id }, // Pastikan tidak sama dengan ID destinasi saat ini
+      _id: { $ne: id },
     }).select('destinationTitle');
 
     if (existingDestination) {
@@ -236,9 +230,7 @@ export const update = async (id, adminId, request) => {
     validatedRequest.destinationTitle &&
     validatedRequest.destinationTitle === destinationToUpdate.destinationTitle
   ) {
-    // Jika judul sama, tidak perlu diubah. Hapus dari objek update.
     delete validatedRequest.destinationTitle;
-    // Jika hanya destinationTitle yang dikirim dan itu sama, maka tidak ada yang diupdate.
     if (Object.keys(validatedRequest).length === 0) {
       const pipeline = helper.getDestination(id);
       const result = await Destination.aggregate(pipeline);
@@ -246,7 +238,6 @@ export const update = async (id, adminId, request) => {
     }
   }
 
-  // 6. Handle relasi (Kategori & Kecamatan) jika ada di request
   if (validatedRequest.categories) {
     const categoryDoc = await Category.findOne({
       name: validatedRequest.categories,
@@ -275,10 +266,8 @@ export const update = async (id, adminId, request) => {
     validatedRequest.locations.subdistrict = subdistrictDoc._id;
   }
 
-  // 7. Lakukan update
   await Destination.findByIdAndUpdate(id, { $set: validatedRequest });
 
-  // 8. Ambil dan kembalikan data terbaru yang sudah di-populate
   const pipeline = helper.getDestination(id);
   const result = await Destination.aggregate(pipeline);
 
@@ -286,7 +275,6 @@ export const update = async (id, adminId, request) => {
 };
 
 export const drop = async (id, adminId) => {
-  // 1. Validasi dasar
   validate.isValidId(id);
 
   if (!adminId) {
@@ -295,14 +283,12 @@ export const drop = async (id, adminId) => {
     });
   }
 
-  // 2. Otorisasi: Hanya manajer ('mng-') yang bisa lanjut
   if (!adminId.startsWith('mng-')) {
     throw new ResponseError(403, 'Akses ditolak.', {
       message: 'Hanya manajer yang dapat menghapus destinasi.',
     });
   }
 
-  // 3. Cek kepemilikan (Ownership)
   const [admin, destinationToDelete] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
     Destination.findById(id).select('createdBy destinationTitle').lean(),
@@ -326,11 +312,25 @@ export const drop = async (id, adminId) => {
     });
   }
 
-  // 4. Lakukan penghapusan
   await Destination.findByIdAndDelete(id);
 
-  // 5. Kembalikan pesan sukses
   return {
     message: `Destinasi '${destinationToDelete.destinationTitle}' berhasil dihapus.`,
   };
+};
+
+export const search = async (searchTerm) => {
+  if (
+    !searchTerm ||
+    typeof searchTerm !== 'string' ||
+    searchTerm.trim() === ''
+  ) {
+    throw new ResponseError(400, 'Parameter pencarian tidak valid.');
+  }
+
+  /** Dapatkan aggregation pipeline dari helper */
+  const pipeline = helper.searchDestination(searchTerm);
+
+  const results = await Destination.aggregate(pipeline);
+  return results;
 };

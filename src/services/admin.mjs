@@ -135,6 +135,5 @@ export const drop = async (id) => {
     });
   }
 
-  // kembalikan data admin yang dihapus
   return deletedAdmin;
 };

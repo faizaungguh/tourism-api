@@ -1,7 +1,7 @@
-import * as authManagerService from '#services/auth.mjs';
+import * as authService from '#services/auth.mjs';
 
 export const register = async (req, res) => {
-  const result = await authManagerService.registerManager(req.body);
+  const result = await authService.registerManager(req.body);
   res.status(201).json({
     message: 'Manager berhasil dibuat',
     data: result,

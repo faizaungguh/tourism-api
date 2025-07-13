@@ -1,7 +1,7 @@
 import { ResponseError } from '#errors/responseError.mjs';
 import { logger } from '#app/logging.mjs';
 
-export const methodHandler = (router) => (req, res, next) => {
+export const method = (router) => (req, res, next) => {
   /** mencari cek rute endpoint */
   const match = router.stack.find(
     (layer) => layer.route && layer.route.path === req.path
@@ -38,7 +38,7 @@ export const notFoundEndpoint = (req, res, next) => {
 };
 
 /** menampilkan pesan error */
-export const errorHandler = (err, req, res, next) => {
+export const error = (err, req, res, next) => {
   if (!err) {
     next();
     return;

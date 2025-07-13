@@ -1,38 +1,31 @@
 import mongoose from 'mongoose';
-import {
-  MONGO_URI as mongoUri,
-  MONGO_IP,
-  MONGO_PASSWORD,
-  MONGO_PORT,
-  MONGO_USER,
-  MONGO_DB,
-} from '#configs/variable.mjs';
+import * as environment from '#configs/variable.mjs';
 
 const RETRY_DELAY = 5000;
 
 const getMongoUri = () => {
-  if (mongoUri) {
+  if (environment.MONGO_URI) {
     console.log(
       'Menyambungkan menggunakan MONGO_URI dari environment variables.'
     );
-    return mongoUri;
+    return environment.MONGO_URI;
   }
 
-  if (MONGO_USER && MONGO_PASSWORD) {
+  if (environment.MONGO_USER && environment.MONGO_PASSWORD) {
     console.log('Menyambungkan ke MongoDB dengan autentikasi.');
-    return `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+    return `mongodb://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_IP}:${environment.MONGO_PORT}/${environment.MONGO_DB}?authSource=admin`;
   }
 
   console.log('Menyambungkan ke MongoDB tanpa autentikasi.');
-  return `mongodb://${MONGO_IP}:${MONGO_PORT}/${MONGO_DB}`;
+  return `mongodb://${environment.MONGO_IP}:${environment.MONGO_PORT}/${environment.MONGO_DB}`;
 };
 
-const MONGO_URI = getMongoUri();
+const mongoUri = getMongoUri();
 
 const connectionDB = async () => {
   while (true) {
     try {
-      await mongoose.connect(MONGO_URI);
+      await mongoose.connect(mongoUri);
       return;
     } catch (error) {
       console.error(

@@ -27,6 +27,7 @@ publicRouter.get(
   destination.slug
 );
 publicRouter.get('/destinations', destination.list);
+publicRouter.get('/destinations/:search', destination.search);
 
 /** Recommendation */
 // publicRouter.get('/destinations/recommendations');

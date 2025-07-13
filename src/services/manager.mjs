@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/adminPipeline.mjs';
+import * as verify from '#helpers/manager.mjs';
+import * as ensure from '#helpers/password.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -18,7 +19,6 @@ export const getAll = async (query) => {
 
   const pipeline = helper.listAdmins(validatedQuery);
 
-  // Tambahkan filter di awal pipeline untuk hanya mengambil role 'manager'
   pipeline.unshift({ $match: { role: 'manager' } });
 
   const result = await Admin.aggregate(pipeline);
@@ -72,14 +72,17 @@ export const update = async (id, request) => {
 
   /** Pastikan role tidak bisa diubah dari 'manager' */
   if (validatedRequest.role && validatedRequest.role !== 'manager') {
-    throw new ResponseError(400, 'Role manajer tidak dapat diubah.');
+    throw new ResponseError(400, 'Menolak pengubahan role.', {
+      message: 'role tidak dapat diubah',
+    });
   }
 
-  /** Cari manager berdasarkan id dan role, lalu ambil data aslinya (termasuk password) */
+  /** Cari manager berdasarkan id dan role, lalu ambil data aslinya */
   const originalManager = await Admin.findOne({
     _id: id,
     role: 'manager',
   }).select('+password');
+
   if (!originalManager) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Manajer dengan Id ${id} tidak ditemukan`,
@@ -87,82 +90,18 @@ export const update = async (id, request) => {
   }
 
   if (validatedRequest.oldPassword || validatedRequest.newPassword) {
-    if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
-      throw new ResponseError(
-        400,
-        'Anda harus memasukkan password lama dan baru.'
-      );
-    }
-
-    /** cocokkan password lama dengan yang ada di database */
-    const isPasswordMatch = await bcrypt.compare(
-      validatedRequest.oldPassword,
+    validatedRequest.password = await ensure.passwordUpdate(
+      {
+        oldPassword: validatedRequest.oldPassword,
+        newPassword: validatedRequest.newPassword,
+      },
       originalManager.password
     );
-
-    if (!isPasswordMatch) {
-      throw new ResponseError(400, 'Password tidak sesuai', {
-        oldPassword: 'Password lama yang Anda masukkan salah.',
-      });
-    }
-
-    if (validatedRequest.newPassword === validatedRequest.oldPassword) {
-      throw new ResponseError(
-        400,
-        'Password baru tidak boleh sama dengan password lama.',
-        {
-          newPassword: 'Password baru tidak boleh sama dengan yang lama.',
-        }
-      );
-    }
-
-    /** Jika cocok, hash password baru */
-    validatedRequest.password = await bcrypt.hash(
-      validatedRequest.newPassword,
-      10
-    );
-
-    /** Hapus field sementara agar tidak tersimpan di database */
     delete validatedRequest.oldPassword;
     delete validatedRequest.newPassword;
   }
 
-  /** cek duplikasi username / email */
-  const orConditions = [];
-
-  if (
-    validatedRequest.username &&
-    validatedRequest.username !== originalManager.username
-  ) {
-    orConditions.push({ username: validatedRequest.username });
-  }
-
-  if (
-    validatedRequest.email &&
-    validatedRequest.email !== originalManager.email
-  ) {
-    orConditions.push({ email: validatedRequest.email });
-  }
-
-  if (orConditions.length > 0) {
-    const checkDuplicate = await Admin.findOne({ $or: orConditions });
-
-    if (checkDuplicate) {
-      const duplicateErrors = {};
-      if (checkDuplicate.username === validatedRequest.username) {
-        duplicateErrors.username =
-          'Username ini sudah digunakan oleh akun lain.';
-      }
-      if (checkDuplicate.email === validatedRequest.email) {
-        duplicateErrors.email = 'Email ini sudah digunakan oleh akun lain.';
-      }
-      throw new ResponseError(
-        409,
-        'Data yang diberikan sudah terdaftar.',
-        duplicateErrors
-      );
-    }
-  }
+  await verify.checkDuplicate(validatedRequest, originalManager);
 
   const updatedAdmin = await Admin.findByIdAndUpdate(
     id,
