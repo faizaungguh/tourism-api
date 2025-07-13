@@ -18,7 +18,10 @@ publicRouter.get('/categories', category.get);
 publicRouter.get('/subdistricts', subdistrict.get);
 
 /** Destination */
-publicRouter.get('/destinations/:slug', destination.slug);
+publicRouter.get(
+  '/destinations/:categorySlug/:destinationSlug',
+  destination.slug
+);
 publicRouter.get('/destinations', destination.get);
 
 /** Recommendation */

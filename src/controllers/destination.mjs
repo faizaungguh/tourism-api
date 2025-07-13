@@ -13,7 +13,7 @@ export const get = async (req, res) => {
     const id = req.query.id;
     const result = await destinationService.getDetailDestination(id);
     res.status(200).json({
-      message: 'Menampilkan Detail Destinasi',
+      message: `Menampilkan Detail ${result.destinationTitle}`,
       data: result,
     });
   } else {
@@ -35,10 +35,13 @@ export const get = async (req, res) => {
 };
 
 export const slug = async (req, res) => {
-  const { slug } = req.params;
-  const result = await destinationService.getDetailSlug(slug);
+  const { categorySlug, destinationSlug } = req.params;
+  const result = await destinationService.getDetailSlug(
+    categorySlug,
+    destinationSlug
+  );
   res.status(200).json({
-    message: 'Menampilkan Destinasi Wisata',
+    message: `Menampilkan Detail Wisata dari ${result.destinationTitle}`,
     data: result,
   });
 };

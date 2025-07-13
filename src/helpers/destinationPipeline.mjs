@@ -167,10 +167,13 @@ export const getDestination = (id) => {
   ];
 };
 
-export const getDestinationSlug = (slug) => {
+export const getDestinationSlug = (destinationSlug, categoryId) => {
   return [
     {
-      $match: { slug },
+      $match: {
+        slug: destinationSlug,
+        categories: new mongoose.Types.ObjectId(categoryId),
+      },
     },
     ...detailDestinationPipeline,
   ];

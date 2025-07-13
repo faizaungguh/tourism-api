@@ -133,18 +133,31 @@ export const getDetailDestination = async (id) => {
   return result[0] || null;
 };
 
-export const getDetailSlug = async (slug) => {
-  if (!slug || typeof slug !== 'string') {
-    throw new ResponseError(400, 'Slug tidak valid.');
+export const getDetailSlug = async (categorySlug, destinationSlug) => {
+  if (!categorySlug || typeof categorySlug !== 'string') {
+    throw new ResponseError(400, 'Category slug tidak valid.');
+  }
+  if (!destinationSlug || typeof destinationSlug !== 'string') {
+    throw new ResponseError(400, 'Destination slug tidak valid.');
   }
 
-  const pipeline = helper.getDestinationSlug(slug);
+  const category = await Category.findOne({ slug: categorySlug })
+    .select('_id')
+    .lean();
+  if (!category) {
+    throw new ResponseError(
+      404,
+      `Kategori dengan slug "${categorySlug}" tidak ditemukan.`
+    );
+  }
+
+  const pipeline = helper.getDestinationSlug(destinationSlug, category._id);
   const result = await Destination.aggregate(pipeline);
 
   if (result.length === 0) {
     throw new ResponseError(
       404,
-      `Destinasi dengan slug "${slug}" tidak ditemukan.`
+      `Destinasi dengan slug "${destinationSlug}" tidak ditemukan di kategori ini.`
     );
   }
   return result[0];
