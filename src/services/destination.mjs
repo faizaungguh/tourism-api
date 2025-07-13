@@ -6,6 +6,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { categorySchema } from '#schemas/category.mjs';
 import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
+import { objectId } from '#validations/fieldDestination.mjs';
 
 const Destination = mongoose.model('Destination', destinationSchema);
 const Category = mongoose.model('Category', categorySchema);
@@ -198,7 +199,81 @@ export const getAllDestination = async (query) => {
     },
   };
 };
-export const getDetailDestination = async (id) => {};
+
+export const getDetailDestination = async (id) => {
+  /** Validasi ID */
+  validate.isValidId(id);
+
+  const destinationExists = await Destination.findById(id).select('_id').lean();
+  if (!destinationExists) {
+    throw new ResponseError(404, 'Destinasi tidak ditemukan.');
+  }
+
+  const pipeline = [
+    {
+      $match: {
+        _id: new mongoose.Types.ObjectId(id),
+      },
+    },
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'categories',
+        foreignField: '_id',
+        as: 'categoryDetails',
+      },
+    },
+    {
+      $lookup: {
+        from: 'subdistricts',
+        localField: 'locations.subdistrict',
+        foreignField: '_id',
+        as: 'subdistrictDetails',
+      },
+    },
+    {
+      $lookup: {
+        from: 'admins',
+        localField: 'createdBy',
+        foreignField: '_id',
+        as: 'adminDetails',
+      },
+    },
+    { $unwind: { path: '$categoryDetails', preserveNullAndEmptyArrays: true } },
+    {
+      $unwind: {
+        path: '$subdistrictDetails',
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+    { $unwind: { path: '$adminDetails', preserveNullAndEmptyArrays: true } },
+    {
+      $project: {
+        _id: 1,
+        destinationTitle: 1,
+        description: 1,
+        category: '$categoryDetails.name',
+        categorySlug: '$categoryDetails.slug',
+        createdBy: '$adminDetails.name',
+        slug: 1,
+        locations: {
+          address: '$locations.adresses',
+          subdistrict: '$subdistrictDetails.name',
+          coordinates: '$locations.coordinates',
+        },
+        openingHour: 1,
+        facility: 1,
+        contact: 1,
+        ticketPrice: '$ticket',
+        parking: 1,
+      },
+    },
+  ];
+
+  const result = await Destination.aggregate(pipeline);
+
+  return result[0] || null;
+};
 
 export const updateDestination = async (id, request) => {};
 

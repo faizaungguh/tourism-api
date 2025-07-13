@@ -9,20 +9,29 @@ export const post = async (req, res) => {
 };
 
 export const get = async (req, res) => {
-  const { result, pagination } = await destinationService.getAllDestination(
-    req.query
-  );
+  if (req.query.id) {
+    const id = req.query.id;
+    const result = await destinationService.getDetailDestination(id);
+    res.status(200).json({
+      message: 'Menampilkan Detail Destinasi',
+      data: result,
+    });
+  } else {
+    const { result, pagination } = await destinationService.getAllDestination(
+      req.query
+    );
 
-  const message =
-    pagination.totalItems > 0
-      ? 'Menampilkan List Data Destinasi'
-      : 'Data tidak ditemukan';
+    const message =
+      pagination.totalItems > 0
+        ? 'Menampilkan List Data Destinasi'
+        : 'Data tidak ditemukan';
 
-  res.status(200).json({
-    message,
-    result,
-    pagination,
-  });
+    res.status(200).json({
+      message,
+      result,
+      pagination,
+    });
+  }
 };
 
 export const patch = async (req, res) => {};
