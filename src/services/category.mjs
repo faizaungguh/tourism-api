@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import * as validate from '../validations/validate.mjs';
-import * as checker from '../validations/category.mjs';
-import { categorySchema } from '../schemas/category.mjs';
-import { ResponseError } from '../errors/responseError.mjs';
+import * as validate from '#validations/validate.mjs';
+import * as checker from '#validations/category.mjs';
+import { categorySchema } from '#schemas/category.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 const Category = mongoose.model('Category', categorySchema);
 
@@ -87,6 +87,20 @@ export const updateCategory = async (id, request) => {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Kategori dengan id ${id} tidak ditemukan`,
     });
+  }
+
+  /** cek duplikasi */
+  if (
+    validatedRequest.name.toLowerCase() !== originalCategory.name.toLowerCase()
+  ) {
+    const checkDuplicate = await Category.findOne({
+      name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
+    });
+    if (checkDuplicate) {
+      throw new ResponseError(409, 'Duplikasi Kategori', {
+        name: 'Kategori dengan nama yang sama sudah terdaftar.',
+      });
+    }
   }
 
   const result = await Category.findByIdAndUpdate(

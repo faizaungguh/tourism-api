@@ -1,4 +1,4 @@
-import * as managerService from '../services/manager.mjs';
+import * as managerService from '#services/manager.mjs';
 
 export const getManager = async (req, res) => {
   const id = req.query.id;

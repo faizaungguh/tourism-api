@@ -6,7 +6,7 @@ import {
   MONGO_PORT,
   MONGO_USER,
   MONGO_DB,
-} from '../configs/variable.mjs';
+} from '#configs/variable.mjs';
 
 const RETRY_DELAY = 5000;
 

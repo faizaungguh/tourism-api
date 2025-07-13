@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import * as validate from '../validations/validate.mjs';
-import * as checker from '../validations/subdistrict.mjs';
-import { SubdistrictSchema } from '../schemas/subdistrict.mjs';
-import { ResponseError } from '../errors/responseError.mjs';
+import * as validate from '#validations/validate.mjs';
+import * as checker from '#validations/subdistrict.mjs';
+import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 const Subdistrict = mongoose.model('Subdisctrict', SubdistrictSchema);
 
@@ -79,20 +79,29 @@ export const updateSubdistrict = async (id, request) => {
     request
   );
 
-  const originalSubdistrict = await Subdistrict.findById(id);
-  if (!originalSubdistrict) {
+  const subdistrict = await Subdistrict.findById(id);
+  if (!subdistrict) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Kecamatan dengan id ${id} tidak ditemukan`,
     });
   }
 
-  const result = await Subdistrict.findByIdAndUpdate(
-    id,
-    {
-      $set: validatedRequest,
-    },
-    { new: true }
-  );
+  /** cek duplikasi if name is changed */
+  if (validatedRequest.name.toLowerCase() !== subdistrict.name.toLowerCase()) {
+    const checkDuplicate = await Subdistrict.findOne({
+      name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
+      _id: { $ne: id }, // Exclude self from duplicate check
+    });
+    if (checkDuplicate) {
+      throw new ResponseError(409, 'Duplikasi Kecamatan', {
+        name: 'Kecamatan dengan nama yang sama sudah terdaftar.',
+      });
+    }
+  }
+
+  // Apply the update and save to trigger pre('save') hook
+  subdistrict.name = validatedRequest.name;
+  const result = await subdistrict.save();
 
   return result;
 };

@@ -1,6 +1,6 @@
-import { PORT } from './src/configs/variable.mjs';
-import { web } from './src/app/web.mjs';
-import connectionDB from './src/app/db.mjs';
+import { PORT } from '#configs/variable.mjs';
+import { web } from '#app/web.mjs';
+import connectionDB from '#app/db.mjs';
 
 const startServer = async () => {
   try {

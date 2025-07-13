@@ -1,7 +1,7 @@
 import express from 'express';
-import * as auth from '../controllers/auth.mjs';
-import * as category from '../controllers/category.mjs';
-import * as subdistrict from '../controllers/subdistrict.mjs';
+import * as auth from '#controllers/auth.mjs';
+import * as category from '#controllers/category.mjs';
+import * as subdistrict from '#controllers/subdistrict.mjs';
 
 export const publicRouter = new express.Router();
 

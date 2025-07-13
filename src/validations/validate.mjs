@@ -1,4 +1,4 @@
-import { ResponseError } from '../errors/responseError.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 import mongoose from 'mongoose';
 
 export const requestCheck = (schema, request) => {

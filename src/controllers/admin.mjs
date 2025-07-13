@@ -1,4 +1,4 @@
-import * as adminService from '../services/admin.mjs';
+import * as adminService from '#services/admin.mjs';
 
 export const postAdmin = async (req, res) => {
   const result = await adminService.createAdmin(req.body);

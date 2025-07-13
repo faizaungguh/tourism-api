@@ -1,8 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
-import { logger } from './logging.mjs';
-import { publicRouter } from '../routes/public.mjs';
-import { privateRouter } from '../routes/api.mjs';
+import { logger } from '#app/logging.mjs';
+import { publicRouter } from '#routes/public.mjs';
+import { privateRouter } from '#routes/api.mjs';
 import {
   errorHandler,
   methodHandler,

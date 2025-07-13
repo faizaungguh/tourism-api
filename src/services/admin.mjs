@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import * as checker from '../validations/admin.mjs';
-import * as validate from '../validations/validate.mjs';
-import { adminSchema } from '../schemas/admin.mjs';
-import { ResponseError } from '../errors/responseError.mjs';
+import * as checker from '#validations/admin.mjs';
+import * as validate from '#validations/validate.mjs';
+import { adminSchema } from '#schemas/admin.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 

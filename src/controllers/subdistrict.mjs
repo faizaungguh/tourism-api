@@ -1,4 +1,4 @@
-import * as subdisctrictService from '../services/subdistrict.mjs';
+import * as subdisctrictService from '#services/subdistrict.mjs';
 
 export const postSubdistrict = async (req, res) => {
   const result = await subdisctrictService.createSubdistrict(req.body);

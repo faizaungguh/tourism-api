@@ -1,4 +1,4 @@
-import * as authManagerService from '../services/auth.mjs';
+import * as authManagerService from '#services/auth.mjs';
 
 export const register = async (req, res) => {
   const result = await authManagerService.registerManager(req.body);

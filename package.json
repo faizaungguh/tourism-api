@@ -8,6 +8,17 @@
     "dev": "cross-env NODE_ENV=development PORT=3000 node --watch app.mjs",
     "start": "cross-env NODE_ENV=production PORT=3000 node app.mjs"
   },
+  "imports": {
+    "#app/*":"./src/app/*",
+    "#configs/*":"./src/configs/*",
+    "#controllers/*":"./src/controllers/*",
+    "#errors/*":"./src/errors/*",
+    "#middlewares/*":"./src/middlewares/*",
+    "#routes/*":"./src/routes/*",
+    "#schemas/*":"./src/schemas/*",
+    "#services/*":"./src/services/*",
+    "#validations/*":"./src/validations/*"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -1,5 +1,5 @@
-import { ResponseError } from './responseError.mjs';
-import { logger } from '../app/logging.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
+import { logger } from '#app/logging.mjs';
 
 export const methodHandler = (router) => (req, res, next) => {
   /** mencari cek rute endpoint */

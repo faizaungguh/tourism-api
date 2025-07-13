@@ -1,8 +1,8 @@
 import express from 'express';
-import * as admin from '../controllers/admin.mjs';
-import * as manager from '../controllers/manager.mjs';
-import * as category from '../controllers/category.mjs';
-import * as subdistrict from '../controllers/subdistrict.mjs';
+import * as admin from '#controllers/admin.mjs';
+import * as manager from '#controllers/manager.mjs';
+import * as category from '#controllers/category.mjs';
+import * as subdistrict from '#controllers/subdistrict.mjs';
 
 export const privateRouter = new express.Router();
 
