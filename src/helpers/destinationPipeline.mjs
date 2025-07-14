@@ -170,7 +170,6 @@ const detailDestinationPipeline = [
           input: '$attractionList',
           as: 'attraction',
           in: {
-            id: '$$attraction._id',
             name: '$$attraction.name',
             slug: '$$attraction.slug',
             description: '$$attraction.description',

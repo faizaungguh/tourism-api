@@ -32,6 +32,7 @@ export const create = async (request) => {
     throw new ResponseError(404, 'Admin tidak ditemukan.', {
       adminId: `Admin dengan ID "${validatedRequest.adminId}" tidak ditemukan.`,
     });
+    S;
   }
 
   if (admin.role !== 'manager') {
@@ -82,8 +83,10 @@ export const create = async (request) => {
   const newDestination = new Destination(validatedRequest);
   const savedDestination = await newDestination.save();
 
-  /** kembalikan data yang sudah disimpan */
-  return savedDestination;
+  /** Ambil data yang baru disimpan dengan detail yang sudah di-populate */
+  const pipeline = helper.getDestination(savedDestination._id);
+  const [result] = await Destination.aggregate(pipeline);
+  return result;
 };
 
 export const getAll = async (query) => {
