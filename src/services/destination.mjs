@@ -177,9 +177,16 @@ export const getDetailSlug = async (categorySlug, destinationSlug) => {
   return result[0];
 };
 
-export const update = async (id, adminId, request) => {
-  validate.isValidId(id);
-  validate.isNotEmpty(request);
+export const update = async (destinationSlug, adminId, request) => {
+  if (
+    !destinationSlug ||
+    typeof destinationSlug !== 'string' ||
+    destinationSlug.trim() === ''
+  ) {
+    throw new ResponseError(400, 'Destination slug tidak valid.', {
+      message: 'Slug destinasi harus berupa string yang tidak kosong.',
+    });
+  }
 
   if (!adminId) {
     throw new ResponseError(401, 'Unauthorized', {
@@ -195,7 +202,9 @@ export const update = async (id, adminId, request) => {
 
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
-    Destination.findById(id).select('createdBy destinationTitle').lean(),
+    Destination.findOne({ slug: destinationSlug })
+      .select('_id createdBy destinationTitle')
+      .lean(),
   ]);
 
   if (!admin) {
@@ -206,7 +215,7 @@ export const update = async (id, adminId, request) => {
 
   if (!destinationToUpdate) {
     throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-      id: `Destinasi dengan ID "${id}" tidak ditemukan.`,
+      destinationSlug: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
     });
   }
 
@@ -227,7 +236,7 @@ export const update = async (id, adminId, request) => {
   ) {
     const existingDestination = await Destination.findOne({
       destinationTitle: validatedRequest.destinationTitle,
-      _id: { $ne: id },
+      _id: { $ne: destinationToUpdate._id },
     }).select('destinationTitle');
 
     if (existingDestination) {
@@ -241,7 +250,7 @@ export const update = async (id, adminId, request) => {
   ) {
     delete validatedRequest.destinationTitle;
     if (Object.keys(validatedRequest).length === 0) {
-      const pipeline = helper.getDestination(id);
+      const pipeline = helper.getDestination(destinationSlug);
       const result = await Destination.aggregate(pipeline);
       return result[0];
     }
@@ -275,9 +284,12 @@ export const update = async (id, adminId, request) => {
     validatedRequest.locations.subdistrict = subdistrictDoc._id;
   }
 
-  await Destination.findByIdAndUpdate(id, { $set: validatedRequest });
+  await Destination.findOneAndUpdate(
+    { slug: destinationSlug },
+    { $set: validatedRequest }
+  );
 
-  const pipeline = helper.getDestination(id);
+  const pipeline = helper.getDestination(destinationSlug);
   const result = await Destination.aggregate(pipeline);
 
   return result[0];

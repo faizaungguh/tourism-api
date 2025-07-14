@@ -63,9 +63,13 @@ export const slug = async (req, res) => {
 };
 
 export const patch = async (req, res) => {
-  const { id } = req.params;
+  const { destinationSlug } = req.params;
   const { adminId } = req.query;
-  const result = await destinationService.update(id, adminId, req.body);
+  const result = await destinationService.update(
+    destinationSlug,
+    adminId,
+    req.body
+  );
   res.status(200).json({
     message: `Destinasi '${result.destinationTitle}' berhasil diubah`,
     data: result,
