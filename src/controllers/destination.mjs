@@ -78,19 +78,3 @@ export const drop = async (req, res) => {
   const result = await destinationService.drop(id, adminId);
   res.status(200).json(result);
 };
-
-export const search = async (req, res) => {
-  const { search: searchTerm } = req.params;
-  const result = await destinationService.search(searchTerm);
-
-  const message =
-    result.length > 0
-      ? `Menampilkan ${result.length} hasil pencarian untuk "${searchTerm}"`
-      : `Tidak ada hasil untuk pencarian "${searchTerm}"`;
-
-  res.status(200).json({
-    message,
-    count: result.length,
-    data: result,
-  });
-};

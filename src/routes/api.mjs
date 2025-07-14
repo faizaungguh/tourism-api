@@ -4,6 +4,7 @@ import * as manager from '#controllers/manager.mjs';
 import * as category from '#controllers/category.mjs';
 import * as subdistrict from '#controllers/subdistrict.mjs';
 import * as destination from '#controllers/destination.mjs';
+import * as attraction from '#controllers/attraction.mjs';
 
 export const privateRouter = new express.Router();
 
@@ -35,6 +36,10 @@ privateRouter.put('/destinations/:id', destination.patch);
 privateRouter.delete('/destinations/:id', destination.drop);
 
 /** Attraction */
+privateRouter.post(
+  '/destinations/:destinationSlug/attractions',
+  attraction.create
+);
 // privateRouter.post('/attractions');
 // privateRouter.put('/attractions');
 // privateRouter.delete('/attractions');

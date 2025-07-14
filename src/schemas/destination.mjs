@@ -54,7 +54,7 @@ export const destinationSchema = new Schema(
         isClosed: { type: Boolean, default: false },
       },
     ],
-    // attractionList: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
+    attractions: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
     facility: [
       {
         name: { type: String, required: true, trim: true },
@@ -84,9 +84,9 @@ export const destinationSchema = new Schema(
       },
     ],
     ticket: {
-      adult: { type: Number, required: true, default: 0 },
-      child: { type: Number, required: true, default: 0 },
-      disability: { type: Number, required: true, default: 0 },
+      adult: { type: Number },
+      child: { type: Number },
+      disability: { type: Number },
     },
     slug: { type: String, lowercase: true, unique: true },
     parking: {

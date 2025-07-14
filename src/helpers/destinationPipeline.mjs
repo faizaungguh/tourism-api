@@ -5,7 +5,12 @@ const buildFilterStage = (validatedQuery) => {
   const andClauses = [];
 
   if (search) {
-    andClauses.push({ destinationTitle: { $regex: search, $options: 'i' } });
+    andClauses.push({
+      $or: [
+        { destinationTitle: { $regex: search, $options: 'i' } },
+        { description: { $regex: search, $options: 'i' } },
+      ],
+    });
   }
 
   if (category) {
@@ -128,6 +133,14 @@ const detailDestinationPipeline = [
       as: 'adminDetails',
     },
   },
+  {
+    $lookup: {
+      from: 'attractions',
+      localField: 'attractions',
+      foreignField: '_id',
+      as: 'attractionList',
+    },
+  },
   { $unwind: { path: '$categoryDetails', preserveNullAndEmptyArrays: true } },
   {
     $unwind: { path: '$subdistrictDetails', preserveNullAndEmptyArrays: true },
@@ -152,6 +165,20 @@ const detailDestinationPipeline = [
       contact: 1,
       ticketPrice: '$ticket',
       parking: 1,
+      attractions: {
+        $map: {
+          input: '$attractionList',
+          as: 'attraction',
+          in: {
+            id: '$$attraction._id',
+            name: '$$attraction.name',
+            slug: '$$attraction.slug',
+            description: '$$attraction.description',
+            ticketType: '$$attraction.ticketType',
+            ticket: '$$attraction.ticket',
+          },
+        },
+      },
     },
   },
 ];
@@ -176,56 +203,5 @@ export const getDestinationSlug = (destinationSlug, categoryId) => {
       },
     },
     ...detailDestinationPipeline,
-  ];
-};
-
-export const searchDestination = (searchTerm) => {
-  return [
-    {
-      $match: {
-        $or: [
-          { destinationTitle: { $regex: searchTerm, $options: 'i' } },
-          { description: { $regex: searchTerm, $options: 'i' } },
-        ],
-      },
-    },
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'categories',
-        foreignField: '_id',
-        as: 'categoryInfo',
-      },
-    },
-    { $unwind: { path: '$categoryInfo', preserveNullAndEmptyArrays: true } },
-    {
-      $lookup: {
-        from: 'subdistricts',
-        localField: 'locations.subdistrict',
-        foreignField: '_id',
-        as: 'subdistrictInfo',
-      },
-    },
-    { $unwind: { path: '$subdistrictInfo', preserveNullAndEmptyArrays: true } },
-    {
-      $project: {
-        _id: 0,
-        id: '$_id',
-        destinationTitle: 1,
-        slug: 1,
-        description: 1,
-        address: '$locations.address',
-        city: '$locations.city',
-        subdistrict: '$subdistrictInfo.name',
-        category: '$categoryInfo.name',
-        categorySlug: '$categoryInfo.slug',
-        images: 1,
-        ticketPrice: 1,
-        openingHours: 1,
-        contact: 1,
-        website: 1,
-        facilities: 1,
-      },
-    },
   ];
 };

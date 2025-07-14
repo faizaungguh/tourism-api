@@ -9,7 +9,6 @@ export const objectId = () =>
 
 export const adminId = validate
   .string()
-
   .pattern(/^(adm|mng)-\d{4}$/)
   .messages({
     'any.required': 'ID Admin wajib diisi.',
