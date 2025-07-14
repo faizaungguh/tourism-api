@@ -74,7 +74,15 @@ export const create = async (adminId, destinationSlug, request) => {
     { $push: { attractions: savedAttraction._id } }
   );
 
-  return savedAttraction.toObject();
+  const { name, slug, description, ticketType, ticket } = savedAttraction;
+
+  return {
+    name,
+    slug,
+    description,
+    ticketType,
+    ticket,
+  };
 };
 
 export const update = async (
@@ -84,10 +92,9 @@ export const update = async (
   request
 ) => {
   validate.isNotEmpty(request);
-
   /** 1. Otorisasi: Pastikan admin adalah manajer dan pemilik destinasi */
   if (!adminId) {
-    throw new ResponseError(401, 'Unauthorized', {
+    throw new ResponseError(403, 'Unauthorized', {
       message: 'Admin ID diperlukan untuk otorisasi.',
     });
   }
@@ -156,7 +163,67 @@ export const update = async (
   Object.assign(attractionToUpdate, validatedRequest);
   const updatedAttraction = await attractionToUpdate.save();
 
-  return updatedAttraction.toObject();
+  const { name, slug, description, ticketType, ticket } = updatedAttraction;
+
+  return {
+    name,
+    slug,
+    description,
+    ticketType,
+    ticket,
+  };
 };
 
-export const drop = async () => {};
+export const drop = async (adminId, destinationSlug, attractionSlug) => {
+  /** 1. Otorisasi: Pastikan admin adalah manajer dan pemilik destinasi */
+  if (!adminId) {
+    throw new ResponseError(401, 'Unauthorized', {
+      message: 'Admin ID diperlukan untuk otorisasi.',
+    });
+  }
+
+  const admin = await Admin.findOne({ adminId }).select('_id role').lean();
+
+  if (!admin || admin.role !== 'manager') {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message: 'Hanya manajer yang dapat menghapus wahana wisata.',
+    });
+  }
+
+  const destination = await Destination.findOne({ slug: destinationSlug })
+    .select('_id createdBy')
+    .lean();
+
+  if (!destination) {
+    throw new ResponseError(404, 'Destinasi tidak ditemukan', {
+      message: `Destinasi dengan slug '${destinationSlug}' tidak ditemukan.`,
+    });
+  }
+
+  if (destination.createdBy.toString() !== admin._id.toString()) {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message:
+        'Anda tidak memiliki izin untuk menghapus wahana di destinasi ini.',
+    });
+  }
+
+  /** 2. Cari dan hapus wahana */
+  const attractionToDelete = await Attraction.findOneAndDelete({
+    slug: attractionSlug,
+    destination: destination._id,
+  });
+
+  if (!attractionToDelete) {
+    throw new ResponseError(404, 'Wahana tidak ditemukan', {
+      message: `Wahana dengan slug '${attractionSlug}' tidak ditemukan di destinasi ini.`,
+    });
+  }
+
+  /** 3. Hapus referensi dari dokumen destinasi */
+  await Destination.updateOne(
+    { _id: destination._id },
+    { $pull: { attractions: attractionToDelete._id } }
+  );
+
+  return attractionToDelete.toObject();
+};

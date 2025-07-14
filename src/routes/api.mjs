@@ -44,4 +44,7 @@ privateRouter.put(
   '/destinations/:destinationSlug/attractions/:attractionSlug',
   attraction.patch
 );
-// privateRouter.delete('/attractions');
+privateRouter.delete(
+  '/destinations/:destinationSlug/attractions/:attractionSlug',
+  attraction.drop
+);
