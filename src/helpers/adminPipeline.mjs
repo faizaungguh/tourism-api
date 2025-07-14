@@ -1,10 +1,14 @@
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+import * as verify from '#helpers/manager.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
-import * as verify from '#helpers/manager.mjs';
+import { destinationSchema } from '#schemas/destination.mjs';
 
 const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
+const Destination =
+  mongoose.models.Destination ||
+  mongoose.model('Destination', destinationSchema);
 
 const buildFilterStage = (validatedQuery) => {
   const { role } = validatedQuery;
@@ -114,42 +118,8 @@ export const updateAdmin = async (id, validatedRequest) => {
     delete validatedRequest.newPassword;
   }
 
-  /** cek duplikasi username / email */
-  const orConditions = [];
-
-  if (
-    validatedRequest.username &&
-    validatedRequest.username !== originalAdmin.username
-  ) {
-    orConditions.push({ username: validatedRequest.username });
-  }
-
-  if (
-    validatedRequest.email &&
-    validatedRequest.email !== originalAdmin.email
-  ) {
-    orConditions.push({ email: validatedRequest.email });
-  }
-
-  if (orConditions.length > 0) {
-    const checkDuplicate = await Admin.findOne({ $or: orConditions });
-
-    if (checkDuplicate) {
-      const duplicateErrors = {};
-      if (checkDuplicate.username === validatedRequest.username) {
-        duplicateErrors.username =
-          'Username ini sudah digunakan oleh akun lain.';
-      }
-      if (checkDuplicate.email === validatedRequest.email) {
-        duplicateErrors.email = 'Email ini sudah digunakan oleh akun lain.';
-      }
-      throw new ResponseError(
-        409,
-        'Data yang diberikan sudah terdaftar.',
-        duplicateErrors
-      );
-    }
-  }
+  /** Cek duplikasi username/email menggunakan helper */
+  await verify.checkDuplicate(validatedRequest, originalAdmin);
 
   return Admin.findOneAndUpdate(
     { adminId: id },
@@ -159,22 +129,18 @@ export const updateAdmin = async (id, validatedRequest) => {
 };
 
 export const updateManager = async (id, adminId, validatedRequest) => {
-  // 1. Otorisasi: Pastikan manajer hanya mengubah profilnya sendiri.
-  //    `id` dari URL harus sama dengan `adminId` dari pengguna yang terotentikasi.
   if (id !== adminId) {
     throw new ResponseError(403, 'Akses ditolak.', {
       message: 'Anda tidak diizinkan mengubah data manajer lain.',
     });
   }
 
-  // 2. Validasi: Pastikan role tidak bisa diubah dari 'manager'
   if (validatedRequest.role && validatedRequest.role !== 'manager') {
     throw new ResponseError(400, 'Menolak pengubahan role.', {
       message: 'Role tidak dapat diubah.',
     });
   }
 
-  // 3. Cari data manajer yang akan diubah
   const originalManager = await Admin.findOne({
     adminId: id,
     role: 'manager',
@@ -186,7 +152,6 @@ export const updateManager = async (id, adminId, validatedRequest) => {
     });
   }
 
-  // 4. Logika pembaruan password
   if (validatedRequest.oldPassword || validatedRequest.newPassword) {
     if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
       throw new ResponseError(
@@ -221,10 +186,8 @@ export const updateManager = async (id, adminId, validatedRequest) => {
     delete validatedRequest.newPassword;
   }
 
-  // 5. Cek duplikasi username/email
   await verify.checkDuplicate(validatedRequest, originalManager);
 
-  // 6. Lakukan pembaruan
   const updatedManager = await Admin.findOneAndUpdate(
     { adminId: id, role: 'manager' },
     { $set: validatedRequest },
@@ -232,4 +195,50 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   ).select('-_id -password -__v -createdAt -updatedAt');
 
   return updatedManager.toObject();
+};
+
+export const dropManager = async (id, adminId) => {
+  if (id !== adminId) {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message: 'Anda tidak diizinkan menghapus akun manajer lain.',
+    });
+  }
+
+  const managerToDelete = await Admin.findOne({
+    adminId: id,
+    role: 'manager',
+  })
+    .select('_id')
+    .lean();
+
+  if (!managerToDelete) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Manajer dengan Id ${id} tidak ditemukan`,
+    });
+  }
+
+  /** Cek apakah manajer ini memiliki destinasi yang terkait */
+  const destinationCount = await Destination.countDocuments({
+    createdBy: managerToDelete._id,
+  });
+
+  if (destinationCount > 0) {
+    throw new ResponseError(409, 'Manajer memiliki destinasi wisata.', {
+      message: `Tidak dapat menghapus manajer. Hapus ${destinationCount} destinasi yang terkait terlebih dahulu.`,
+    });
+  }
+
+  /** Jika tidak ada, lanjutkan proses penghapusan */
+  const deletedManager = await Admin.findOneAndDelete({
+    adminId: id,
+    role: 'manager',
+  });
+
+  if (!deletedManager) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Manajer dengan Id ${id} tidak ditemukan`,
+    });
+  }
+
+  return deletedManager;
 };

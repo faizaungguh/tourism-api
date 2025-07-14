@@ -15,7 +15,6 @@ const Admin = mongoose.model('Admin', adminSchema);
 
 export const create = async (request) => {
   validate.isNotEmpty(request);
-
   /** validasi request */
   const validatedRequest = validate.requestCheck(
     checker.destinationValidation,

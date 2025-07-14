@@ -10,13 +10,13 @@ const Admin = mongoose.model('Admin', adminSchema);
 
 export const create = async (request) => {
   validate.isNotEmpty(request);
-  /** validasi input menggunakan validate */
+  /** Validasi input request. */
   const validatedRequest = validate.requestCheck(
     checker.adminValidation,
     request
   );
 
-  /** eck duplikasi username dan email */
+  /** Cek duplikasi username dan email. */
   const checkDuplicate = await Admin.find({
     $or: [
       { username: validatedRequest.username },
@@ -24,7 +24,7 @@ export const create = async (request) => {
     ],
   }).select('username email');
 
-  /** munculkan pesan error jika ditemui duplikasi */
+  /** Lempar error jika ditemukan duplikasi. */
   if (checkDuplicate.length > 0) {
     const duplicateErrors = {};
     checkDuplicate.forEach((admin) => {
@@ -45,17 +45,17 @@ export const create = async (request) => {
     }
   }
 
-  /** hash password, untuk menyimpan dalam karakter acak */
+  /** Hash password sebelum disimpan. */
   validatedRequest.password = await bcrypt.hash(validatedRequest.password, 10);
 
-  /** secara otomatis atur role menjadi 'admin' */
+  /** Atur role secara otomatis menjadi 'admin'. */
   validatedRequest.role = 'admin';
 
-  /** jika betul, lanjut simpan */
+  /** Simpan data admin baru ke database. */
   const newAdmin = new Admin(validatedRequest);
   const savedAdmin = await newAdmin.save();
 
-  /** mengembalikan semua data kecuali password */
+  /** Kembalikan data admin yang sudah disimpan. */
   return savedAdmin;
 };
 

@@ -3,11 +3,9 @@ import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/adminPipeline.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
-import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
-const Destination = mongoose.model('Destination', destinationSchema);
 
 export const getAll = async (query) => {
   const validatedQuery = validate.requestCheck(
@@ -85,47 +83,6 @@ export const update = async (id, adminId, request) => {
 };
 
 export const drop = async (id, adminId) => {
-  if (id !== adminId) {
-    throw new ResponseError(403, 'Akses ditolak.', {
-      message: 'Anda tidak diizinkan menghapus akun manajer lain.',
-    });
-  }
-
-  const managerToDelete = await Admin.findOne({
-    adminId: id,
-    role: 'manager',
-  })
-    .select('_id')
-    .lean();
-
-  if (!managerToDelete) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Manajer dengan Id ${id} tidak ditemukan`,
-    });
-  }
-
-  /** 1. Cek apakah manajer ini memiliki destinasi yang terkait */
-  const destinationCount = await Destination.countDocuments({
-    createdBy: managerToDelete._id,
-  });
-
-  if (destinationCount > 0) {
-    throw new ResponseError(409, 'Manajer memiliki destinasi wisata.', {
-      message: `Tidak dapat menghapus manajer. Hapus ${destinationCount} destinasi yang terkait terlebih dahulu.`,
-    });
-  }
-
-  /** 2. Jika tidak ada, lanjutkan proses penghapusan */
-  const deletedManager = await Admin.findOneAndDelete({
-    adminId: id,
-    role: 'manager',
-  });
-
-  if (!deletedManager) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Manajer dengan Id ${id} tidak ditemukan`,
-    });
-  }
-
+  const deletedManager = await helper.dropManager(id, adminId);
   return deletedManager;
 };
