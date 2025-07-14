@@ -26,7 +26,7 @@ publicRouter.get(
   '/destinations/category/:categorySlug/:destinationSlug',
   destination.slug
 );
-publicRouter.get('/destination/:id', destination.detail);
+publicRouter.get('/destinations/:destinationSlug', destination.detail);
 publicRouter.get('/destinations', destination.list);
 
 /** Recommendation */

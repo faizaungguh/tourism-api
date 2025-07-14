@@ -183,15 +183,12 @@ const detailDestinationPipeline = [
   },
 ];
 
-export const getDestination = (id) => {
-  return [
-    {
-      $match: {
-        _id: new mongoose.Types.ObjectId(id),
-      },
-    },
-    ...detailDestinationPipeline,
-  ];
+export const getDestination = (identifier) => {
+  const matchQuery = mongoose.Types.ObjectId.isValid(identifier)
+    ? { _id: new mongoose.Types.ObjectId(identifier) }
+    : { slug: identifier };
+
+  return [{ $match: matchQuery }, ...detailDestinationPipeline];
 };
 
 export const getDestinationSlug = (destinationSlug, categoryId) => {

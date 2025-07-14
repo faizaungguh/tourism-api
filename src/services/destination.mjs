@@ -114,23 +114,28 @@ export const getAll = async (query) => {
   };
 };
 
-export const getDetail = async (id) => {
-  /** Validasi ID */
-  validate.isValidId(id);
-
-  const destinationExists = await Destination.findById(id).select('_id').lean();
-  if (!destinationExists) {
-    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-      message: `Destinasi dengan id ${id} tidak ditemukan`,
+export const getDetail = async (destinationSlug) => {
+  /** Validasi slug */
+  if (
+    !destinationSlug ||
+    typeof destinationSlug !== 'string' ||
+    destinationSlug.trim() === ''
+  ) {
+    throw new ResponseError(400, 'Destination slug tidak valid.', {
+      message: 'Slug destinasi harus berupa string yang tidak kosong.',
     });
   }
 
-  /** Dapatkan aggregation pipeline dari helper */
-  const pipeline = helper.getDestination(id);
-
+  const pipeline = helper.getDestination(destinationSlug);
   const result = await Destination.aggregate(pipeline);
 
-  return result[0] || null;
+  if (!result || result.length === 0) {
+    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+      message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan`,
+    });
+  }
+
+  return result[0];
 };
 
 export const getDetailSlug = async (categorySlug, destinationSlug) => {
