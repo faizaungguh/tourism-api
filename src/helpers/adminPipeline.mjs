@@ -46,7 +46,18 @@ export const listAdmins = (validatedQuery) => {
           sortStage,
           { $skip: skip },
           { $limit: size },
-          { $project: { password: 0 } },
+          {
+            $project: {
+              _id: 0,
+              __v: 0,
+              password: 0,
+              createdAt: 0,
+              updatedAt: 0,
+              contactNumber: 0,
+              email: 0,
+              role: 0,
+            },
+          },
         ],
       },
     },
@@ -54,7 +65,9 @@ export const listAdmins = (validatedQuery) => {
 };
 
 export const updateAdmin = async (id, validatedRequest) => {
-  const originalAdmin = await Admin.findById(id).select('+password');
+  const originalAdmin = await Admin.findOne({ adminId: id }).select(
+    '+password'
+  );
   if (!originalAdmin) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Admin dengan Id ${id} tidak ditemukan`,
@@ -136,5 +149,9 @@ export const updateAdmin = async (id, validatedRequest) => {
     }
   }
 
-  return Admin.findByIdAndUpdate(id, { $set: validatedRequest }, { new: true });
+  return Admin.findOneAndUpdate(
+    { adminId: id },
+    { $set: validatedRequest },
+    { new: true }
+  );
 };

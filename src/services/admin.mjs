@@ -90,10 +90,8 @@ export const getAll = async (query) => {
 };
 
 export const getDetail = async (id) => {
-  validate.isValidId(id);
-
-  /** cari admin berdasarkan id */
-  const admin = await Admin.findById(id);
+  /** cari admin berdasarkan adminId */
+  const admin = await Admin.findOne({ adminId: id }).select('-password -__v');
 
   /** jika admin tidak ditemukan, tampilkan pesan error */
   if (!admin) {
@@ -107,9 +105,6 @@ export const getDetail = async (id) => {
 };
 
 export const update = async (id, request) => {
-  /** validasi update */
-  validate.isValidId(id);
-
   /** cek apakah ada data yang dikirim */
   validate.isNotEmpty(request);
 
@@ -124,10 +119,8 @@ export const update = async (id, request) => {
 };
 
 export const drop = async (id) => {
-  validate.isValidId(id);
-
-  /** cari id dan hapus, lalu kembalikan dokumen yang dihapus */
-  const deletedAdmin = await Admin.findByIdAndDelete(id);
+  /** cari adminId dan hapus, lalu kembalikan dokumen yang dihapus */
+  const deletedAdmin = await Admin.findOneAndDelete({ adminId: id });
 
   if (!deletedAdmin) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
