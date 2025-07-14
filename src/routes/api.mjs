@@ -40,6 +40,8 @@ privateRouter.post(
   '/destinations/:destinationSlug/attractions',
   attraction.create
 );
-// privateRouter.post('/attractions');
-// privateRouter.put('/attractions');
+privateRouter.put(
+  '/destinations/:destinationSlug/attractions/:attractionSlug',
+  attraction.patch
+);
 // privateRouter.delete('/attractions');

@@ -14,3 +14,19 @@ export const create = async (req, res) => {
     data: result,
   });
 };
+
+export const patch = async (req, res) => {
+  const { adminId } = req.query;
+  const { destinationSlug, attractionSlug } = req.params;
+  const result = await attractionService.update(
+    adminId,
+    destinationSlug,
+    attractionSlug,
+    req.body
+  );
+
+  res.status(200).json({
+    message: `Wahana Wisata '${result.name}' berhasil diubah`,
+    data: result,
+  });
+};
