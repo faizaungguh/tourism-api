@@ -6,11 +6,13 @@ import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { categorySchema } from '#schemas/category.mjs';
 import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
+import { attractionSchema } from '#schemas/attraction.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 
 const Destination = mongoose.model('Destination', destinationSchema);
 const Category = mongoose.model('Category', categorySchema);
 const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
+const Attraction = mongoose.model('Attraction', attractionSchema);
 const Admin = mongoose.model('Admin', adminSchema);
 
 export const create = async (request) => {
@@ -278,8 +280,16 @@ export const update = async (id, adminId, request) => {
   return result[0];
 };
 
-export const drop = async (id, adminId) => {
-  validate.isValidId(id);
+export const drop = async (destinationSlug, adminId) => {
+  if (
+    !destinationSlug ||
+    typeof destinationSlug !== 'string' ||
+    destinationSlug.trim() === ''
+  ) {
+    throw new ResponseError(400, 'Destination slug tidak valid.', {
+      message: 'Slug destinasi harus berupa string yang tidak kosong.',
+    });
+  }
 
   if (!adminId) {
     throw new ResponseError(401, 'Unauthorized', {
@@ -293,62 +303,45 @@ export const drop = async (id, adminId) => {
     });
   }
 
-  const session = await mongoose.startSession();
+  const [admin, destinationToDelete] = await Promise.all([
+    Admin.findOne({ adminId }).select('_id').lean(),
+    Destination.findOne({ slug: destinationSlug })
+      .select('_id createdBy destinationTitle attractions')
+      .lean(),
+  ]);
 
-  try {
-    session.startTransaction();
-
-    const [admin, destinationToDelete] = await Promise.all([
-      Admin.findOne({ adminId }).select('_id').lean().session(session),
-      Destination.findById(id)
-        .select('createdBy destinationTitle attractions')
-        .lean()
-        .session(session),
-    ]);
-
-    if (!admin) {
-      throw new ResponseError(404, 'Admin tidak ditemukan.', {
-        adminId: `Admin dengan ID "${adminId}" tidak ditemukan.`,
-      });
-    }
-
-    if (!destinationToDelete) {
-      throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-        id: `Destinasi dengan ID "${id}" tidak ditemukan.`,
-      });
-    }
-
-    if (destinationToDelete.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Akses ditolak.', {
-        message: 'Anda tidak memiliki izin untuk menghapus destinasi ini.',
-      });
-    }
-
-    // Hapus semua wahana wisata yang terkait
-    if (
-      destinationToDelete.attractions &&
-      destinationToDelete.attractions.length > 0
-    ) {
-      await Attraction.deleteMany(
-        { _id: { $in: destinationToDelete.attractions } },
-        { session }
-      );
-    }
-
-    // Hapus destinasi itu sendiri
-    await Destination.findByIdAndDelete(id, { session });
-
-    await session.commitTransaction();
-
-    return {
-      message: `Destinasi '${destinationToDelete.destinationTitle}' dan semua wahananya berhasil dihapus.`,
-    };
-  } catch (error) {
-    await session.abortTransaction();
-    throw error;
-  } finally {
-    session.endSession();
+  if (!admin) {
+    throw new ResponseError(404, 'Admin tidak ditemukan.', {
+      adminId: `Admin dengan ID "${adminId}" tidak ditemukan.`,
+    });
   }
+
+  if (!destinationToDelete) {
+    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+      message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
+    });
+  }
+
+  if (destinationToDelete.createdBy.toString() !== admin._id.toString()) {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message: 'Anda tidak memiliki izin untuk menghapus destinasi ini.',
+    });
+  }
+
+  if (
+    destinationToDelete.attractions &&
+    destinationToDelete.attractions.length > 0
+  ) {
+    await Attraction.deleteMany({
+      _id: { $in: destinationToDelete.attractions },
+    });
+  }
+
+  await Destination.findByIdAndDelete(destinationToDelete._id);
+
+  return {
+    message: `Destinasi '${destinationToDelete.destinationTitle}' dan semua wahananya berhasil dihapus.`,
+  };
 };
 
 export const search = async (searchTerm) => {

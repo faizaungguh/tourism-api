@@ -148,7 +148,7 @@ const detailDestinationPipeline = [
   { $unwind: { path: '$adminDetails', preserveNullAndEmptyArrays: true } },
   {
     $project: {
-      _id: 1,
+      _id: 0,
       destinationTitle: 1,
       description: 1,
       category: '$categoryDetails.name',

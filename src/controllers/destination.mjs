@@ -73,8 +73,8 @@ export const patch = async (req, res) => {
 };
 
 export const drop = async (req, res) => {
-  const { id } = req.params;
+  const { destinationSlug } = req.params;
   const { adminId } = req.query;
-  const result = await destinationService.drop(id, adminId);
+  const result = await destinationService.drop(destinationSlug, adminId);
   res.status(200).json(result);
 };

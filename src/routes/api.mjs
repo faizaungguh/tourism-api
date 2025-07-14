@@ -33,7 +33,7 @@ privateRouter.delete('/subdistricts', subdistrict.drop);
 /** Destination */
 privateRouter.post('/destinations', destination.post);
 privateRouter.put('/destinations/:id', destination.patch);
-privateRouter.delete('/destinations/:id', destination.drop);
+privateRouter.delete('/destinations/:destinationSlug', destination.drop);
 
 /** Attraction */
 privateRouter.post(
