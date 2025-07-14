@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import { ResponseError } from '#errors/responseError.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
+import * as verify from '#helpers/manager.mjs';
 
 const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
 
@@ -68,6 +69,7 @@ export const updateAdmin = async (id, validatedRequest) => {
   const originalAdmin = await Admin.findOne({ adminId: id }).select(
     '+password'
   );
+
   if (!originalAdmin) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Admin dengan Id ${id} tidak ditemukan`,
@@ -154,4 +156,80 @@ export const updateAdmin = async (id, validatedRequest) => {
     { $set: validatedRequest },
     { new: true }
   );
+};
+
+export const updateManager = async (id, adminId, validatedRequest) => {
+  // 1. Otorisasi: Pastikan manajer hanya mengubah profilnya sendiri.
+  //    `id` dari URL harus sama dengan `adminId` dari pengguna yang terotentikasi.
+  if (id !== adminId) {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message: 'Anda tidak diizinkan mengubah data manajer lain.',
+    });
+  }
+
+  // 2. Validasi: Pastikan role tidak bisa diubah dari 'manager'
+  if (validatedRequest.role && validatedRequest.role !== 'manager') {
+    throw new ResponseError(400, 'Menolak pengubahan role.', {
+      message: 'Role tidak dapat diubah.',
+    });
+  }
+
+  // 3. Cari data manajer yang akan diubah
+  const originalManager = await Admin.findOne({
+    adminId: id,
+    role: 'manager',
+  }).select('+password');
+
+  if (!originalManager) {
+    throw new ResponseError(404, 'Id tidak ditemukan', {
+      message: `Manajer dengan Id ${id} tidak ditemukan`,
+    });
+  }
+
+  // 4. Logika pembaruan password
+  if (validatedRequest.oldPassword || validatedRequest.newPassword) {
+    if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
+      throw new ResponseError(
+        400,
+        'Anda harus memasukkan password lama dan baru.'
+      );
+    }
+
+    const isPasswordMatch = await bcrypt.compare(
+      validatedRequest.oldPassword,
+      originalManager.password
+    );
+
+    if (!isPasswordMatch) {
+      throw new ResponseError(400, 'Password tidak sesuai', {
+        oldPassword: 'Password lama yang Anda masukkan salah.',
+      });
+    }
+
+    if (validatedRequest.newPassword === validatedRequest.oldPassword) {
+      throw new ResponseError(400, 'Password tidak tersimpan', {
+        newPassword:
+          'Password Baru yang anda masukkan sama dengan Password Lama.',
+      });
+    }
+
+    validatedRequest.password = await bcrypt.hash(
+      validatedRequest.newPassword,
+      10
+    );
+    delete validatedRequest.oldPassword;
+    delete validatedRequest.newPassword;
+  }
+
+  // 5. Cek duplikasi username/email
+  await verify.checkDuplicate(validatedRequest, originalManager);
+
+  // 6. Lakukan pembaruan
+  const updatedManager = await Admin.findOneAndUpdate(
+    { adminId: id, role: 'manager' },
+    { $set: validatedRequest },
+    { new: true }
+  ).select('-_id -password -__v -createdAt -updatedAt');
+
+  return updatedManager.toObject();
 };

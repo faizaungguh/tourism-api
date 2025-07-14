@@ -2,8 +2,6 @@ import mongoose from 'mongoose';
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/adminPipeline.mjs';
-import * as verify from '#helpers/manager.mjs';
-import * as ensure from '#helpers/password.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -42,11 +40,9 @@ export const getAll = async (query) => {
 };
 
 export const getDetail = async (id) => {
-  validate.isValidId(id);
-
-  /** Cari manager berdasarkan id dan pastikan role-nya adalah 'manager' */
-  const manager = await Admin.findOne({ _id: id, role: 'manager' }).select(
-    '-password'
+  /** Cari manager berdasarkan adminId dan pastikan role-nya adalah 'manager' */
+  const manager = await Admin.findOne({ adminId: id, role: 'manager' }).select(
+    '-_id -password -__v -createdAt -updatedAt'
   );
 
   /** Jika manager tidak ditemukan, tampilkan pesan error */
@@ -60,63 +56,58 @@ export const getDetail = async (id) => {
   return manager.toObject();
 };
 
-export const update = async (id, request) => {
-  validate.isValidId(id);
-  validate.isNotEmpty(request);
+export const update = async (id, adminId, request) => {
+  if (!adminId) {
+    throw new ResponseError(401, 'Otorisasi Gagal', {
+      message:
+        'adminId dari pengguna yang melakukan perubahan harus disertakan di body request.',
+    });
+  }
+
+  const updatePayload = { ...request };
+  delete updatePayload.adminId;
+
+  validate.isNotEmpty(updatePayload);
 
   /** validasi update */
   const validatedRequest = validate.requestCheck(
     checker.patchAdminValidation,
-    request
+    updatePayload
   );
 
-  /** Pastikan role tidak bisa diubah dari 'manager' */
-  if (validatedRequest.role && validatedRequest.role !== 'manager') {
-    throw new ResponseError(400, 'Menolak pengubahan role.', {
-      message: 'role tidak dapat diubah',
+  const updatedManager = await helper.updateManager(
+    id,
+    adminId,
+    validatedRequest
+  );
+
+  return updatedManager;
+};
+
+export const drop = async (id, adminId) => {
+  if (id !== adminId) {
+    throw new ResponseError(403, 'Akses ditolak.', {
+      message: 'Anda tidak diizinkan menghapus akun manajer lain.',
     });
   }
 
-  /** Cari manager berdasarkan id dan role, lalu ambil data aslinya */
-  const originalManager = await Admin.findOne({
-    _id: id,
+  const managerToDelete = await Admin.findOne({
+    adminId: id,
     role: 'manager',
-  }).select('+password');
+  })
+    .select('_id')
+    .lean();
 
-  if (!originalManager) {
+  if (!managerToDelete) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
       message: `Manajer dengan Id ${id} tidak ditemukan`,
     });
   }
 
-  if (validatedRequest.oldPassword || validatedRequest.newPassword) {
-    validatedRequest.password = await ensure.passwordUpdate(
-      {
-        oldPassword: validatedRequest.oldPassword,
-        newPassword: validatedRequest.newPassword,
-      },
-      originalManager.password
-    );
-    delete validatedRequest.oldPassword;
-    delete validatedRequest.newPassword;
-  }
-
-  await verify.checkDuplicate(validatedRequest, originalManager);
-
-  const updatedAdmin = await Admin.findByIdAndUpdate(
-    id,
-    { $set: validatedRequest },
-    { new: true }
-  ).select('-password');
-
-  return updatedAdmin.toObject();
-};
-
-export const drop = async (id) => {
-  validate.isValidId(id);
-
   /** 1. Cek apakah manajer ini memiliki destinasi yang terkait */
-  const destinationCount = await Destination.countDocuments({ createdBy: id });
+  const destinationCount = await Destination.countDocuments({
+    createdBy: managerToDelete._id,
+  });
 
   if (destinationCount > 0) {
     throw new ResponseError(409, 'Manajer memiliki destinasi wisata.', {
@@ -126,7 +117,7 @@ export const drop = async (id) => {
 
   /** 2. Jika tidak ada, lanjutkan proses penghapusan */
   const deletedManager = await Admin.findOneAndDelete({
-    _id: id,
+    adminId: id,
     role: 'manager',
   });
 
