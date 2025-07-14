@@ -20,9 +20,8 @@ export const put = async (req, res) => {
 };
 
 export const drop = async (req, res) => {
-  const { id } = req.params;
-  const { adminId } = req.body;
-  const result = await managerService.drop(id, adminId);
+  const { id: adminId } = req.params;
+  const result = await managerService.drop(adminId);
   res.status(200).json({
     message: `Manajer '${result.name}' telah berhasil dihapus`,
   });

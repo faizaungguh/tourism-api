@@ -82,7 +82,7 @@ export const update = async (id, adminId, request) => {
   return updatedManager;
 };
 
-export const drop = async (id, adminId) => {
-  const deletedManager = await helper.dropManager(id, adminId);
+export const drop = async (adminId) => {
+  const deletedManager = await helper.dropManager(adminId);
   return deletedManager;
 };

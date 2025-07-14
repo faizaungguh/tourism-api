@@ -197,15 +197,9 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   return updatedManager.toObject();
 };
 
-export const dropManager = async (id, adminId) => {
-  if (id !== adminId) {
-    throw new ResponseError(403, 'Akses ditolak.', {
-      message: 'Anda tidak diizinkan menghapus akun manajer lain.',
-    });
-  }
-
+export const dropManager = async (managerId) => {
   const managerToDelete = await Admin.findOne({
-    adminId: id,
+    adminId: managerId,
     role: 'manager',
   })
     .select('_id')
@@ -213,7 +207,7 @@ export const dropManager = async (id, adminId) => {
 
   if (!managerToDelete) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Manajer dengan Id ${id} tidak ditemukan`,
+      message: `Manajer dengan Id ${managerId} tidak ditemukan`,
     });
   }
 
@@ -230,13 +224,13 @@ export const dropManager = async (id, adminId) => {
 
   /** Jika tidak ada, lanjutkan proses penghapusan */
   const deletedManager = await Admin.findOneAndDelete({
-    adminId: id,
+    adminId: managerId,
     role: 'manager',
   });
 
   if (!deletedManager) {
     throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Manajer dengan Id ${id} tidak ditemukan`,
+      message: `Manajer dengan Id ${managerId} tidak ditemukan`,
     });
   }
 

@@ -288,34 +288,62 @@ export const drop = async (id, adminId) => {
     });
   }
 
-  const [admin, destinationToDelete] = await Promise.all([
-    Admin.findOne({ adminId }).select('_id').lean(),
-    Destination.findById(id).select('createdBy destinationTitle').lean(),
-  ]);
+  const session = await mongoose.startSession();
 
-  if (!admin) {
-    throw new ResponseError(404, 'Admin tidak ditemukan.', {
-      adminId: `Admin dengan ID "${adminId}" tidak ditemukan.`,
-    });
+  try {
+    session.startTransaction();
+
+    const [admin, destinationToDelete] = await Promise.all([
+      Admin.findOne({ adminId }).select('_id').lean().session(session),
+      Destination.findById(id)
+        .select('createdBy destinationTitle attractions')
+        .lean()
+        .session(session),
+    ]);
+
+    if (!admin) {
+      throw new ResponseError(404, 'Admin tidak ditemukan.', {
+        adminId: `Admin dengan ID "${adminId}" tidak ditemukan.`,
+      });
+    }
+
+    if (!destinationToDelete) {
+      throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+        id: `Destinasi dengan ID "${id}" tidak ditemukan.`,
+      });
+    }
+
+    if (destinationToDelete.createdBy.toString() !== admin._id.toString()) {
+      throw new ResponseError(403, 'Akses ditolak.', {
+        message: 'Anda tidak memiliki izin untuk menghapus destinasi ini.',
+      });
+    }
+
+    // Hapus semua wahana wisata yang terkait
+    if (
+      destinationToDelete.attractions &&
+      destinationToDelete.attractions.length > 0
+    ) {
+      await Attraction.deleteMany(
+        { _id: { $in: destinationToDelete.attractions } },
+        { session }
+      );
+    }
+
+    // Hapus destinasi itu sendiri
+    await Destination.findByIdAndDelete(id, { session });
+
+    await session.commitTransaction();
+
+    return {
+      message: `Destinasi '${destinationToDelete.destinationTitle}' dan semua wahananya berhasil dihapus.`,
+    };
+  } catch (error) {
+    await session.abortTransaction();
+    throw error;
+  } finally {
+    session.endSession();
   }
-
-  if (!destinationToDelete) {
-    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-      id: `Destinasi dengan ID "${id}" tidak ditemukan.`,
-    });
-  }
-
-  if (destinationToDelete.createdBy.toString() !== admin._id.toString()) {
-    throw new ResponseError(403, 'Akses ditolak.', {
-      message: 'Anda tidak memiliki izin untuk menghapus destinasi ini.',
-    });
-  }
-
-  await Destination.findByIdAndDelete(id);
-
-  return {
-    message: `Destinasi '${destinationToDelete.destinationTitle}' berhasil dihapus.`,
-  };
 };
 
 export const search = async (searchTerm) => {
