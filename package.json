@@ -5,15 +5,36 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev": "node --watch app.mjs"
+    "dev": "cross-env NODE_ENV=development PORT=3000 node --watch app.mjs",
+    "start": "cross-env NODE_ENV=production PORT=3000 node app.mjs"
+  },
+  "imports": {
+    "#app/*": "./src/app/*",
+    "#configs/*": "./src/configs/*",
+    "#controllers/*": "./src/controllers/*",
+    "#errors/*": "./src/errors/*",
+    "#middlewares/*": "./src/middlewares/*",
+    "#routes/*": "./src/routes/*",
+    "#helpers/*": "./src/helpers/*",
+    "#schemas/*": "./src/schemas/*",
+    "#services/*": "./src/services/*",
+    "#validations/*": "./src/validations/*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
-    "dotenv": "^17.1.0",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.0",
     "express": "^5.1.0",
-    "mongoose": "^8.16.2"
+    "joi": "^17.13.3",
+    "mongoose": "^8.16.2",
+    "nanoid": "^5.1.5",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "morgan": "^1.10.0"
   }
 }
