@@ -1,5 +1,5 @@
 import validate from 'joi';
-import * as field from '#validations/fieldAdmin.mjs';
+import { field } from '#validations/fieldAdmin.mjs';
 
 export const adminValidation = validate.object({
   username: field.username,

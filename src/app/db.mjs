@@ -1,19 +1,18 @@
 import mongoose from 'mongoose';
-import * as environment from '#configs/variable.mjs';
+import { config } from '#configs/variable.mjs';
 
 const getMongoUri = () => {
-  let uri;
-  if (environment.MONGO_URI) {
+  let uri = config.MONGO_URI;
+  if (config.MONGO_URI) {
     console.log(
       'Menyambungkan menggunakan MONGO_URI dari environment variables.'
     );
-    uri = environment.MONGO_URI;
-  } else if (environment.MONGO_USER && environment.MONGO_PASSWORD) {
+  } else if (config.MONGO_USER && config.MONGO_PASSWORD) {
     console.log('Menyambungkan ke MongoDB dengan autentikasi.');
-    uri = `mongodb://${environment.MONGO_USER}:${environment.MONGO_PASSWORD}@${environment.MONGO_IP}:${environment.MONGO_PORT}/${environment.MONGO_DB}?authSource=admin`;
+    uri = `mongodb://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_IP}:${config.MONGO_PORT}/${config.MONGO_DB}?authSource=admin`;
   } else {
     console.log('Menyambungkan ke MongoDB tanpa autentikasi.');
-    uri = `mongodb://${environment.MONGO_IP}:${environment.MONGO_PORT}/${environment.MONGO_DB}`;
+    uri = `mongodb://${config.MONGO_IP}:${config.MONGO_PORT}/${config.MONGO_DB}`;
   }
 
   const url = new URL(uri);

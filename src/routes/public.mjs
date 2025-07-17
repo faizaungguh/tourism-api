@@ -1,8 +1,8 @@
 import express from 'express';
-import * as auth from '#controllers/auth.mjs';
-import * as category from '#controllers/category.mjs';
-import * as subdistrict from '#controllers/subdistrict.mjs';
-import * as destination from '#controllers/destination.mjs';
+import { auth } from '#controllers/auth.mjs';
+import { category } from '#controllers/category.mjs';
+import { subdistrict } from '#controllers/subdistrict.mjs';
+import { destination } from '#controllers/destination.mjs';
 
 export const publicRouter = new express.Router();
 
@@ -18,16 +18,14 @@ publicRouter.get('/categories', category.get);
 publicRouter.get('/subdistricts', subdistrict.get);
 
 /** Destination */
-publicRouter.get(
-  '/destinations/category/:categorySlug',
-  destination.slugCategory
-);
-publicRouter.get(
-  '/destinations/category/:categorySlug/:destinationSlug',
-  destination.slug
-);
-publicRouter.get('/destinations/:destinationSlug', destination.detail);
-publicRouter.get('/destinations', destination.list);
+publicRouter
+  .get('/destinations/category/:categorySlug', destination.slugCategory)
+  .get(
+    '/destinations/category/:categorySlug/:destinationSlug',
+    destination.slug
+  )
+  .get('/destinations/:destinationSlug', destination.detail)
+  .get('/destinations', destination.list);
 
 /** Recommendation */
 // publicRouter.get('/destinations/recommendations');
