@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import * as checker from '#validations/admin.mjs';
+import jwt from 'jsonwebtoken';
 import * as validate from '#validations/validate.mjs';
+import { validation } from '#validations/auth.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
+import { config } from '#configs/variable.mjs';
 
 const Admin = mongoose.model('Admin', adminSchema);
 
@@ -12,7 +14,7 @@ export const authService = {
     validate.isNotEmpty(request);
     /** validasi input */
     const validatedRequest = validate.requestCheck(
-      checker.adminValidation,
+      validation.register,
       request
     );
 
@@ -60,5 +62,36 @@ export const authService = {
     /** mengembalikan semua data kecuali password */
     const { password, ...result } = savedAdmin.toObject();
     return result;
+  },
+
+  signIn: async (request) => {
+    const loginRequest = validate.requestCheck(validation.login, request);
+
+    const admin = await Admin.findOne({ username: loginRequest.username });
+
+    if (!admin) {
+      throw new ResponseError(401, 'Anda tidak bisa login', {
+        username: 'username salah',
+      });
+    }
+
+    const isPasswordValid = await bcrypt.compare(
+      loginRequest.password,
+      admin.password
+    );
+
+    if (!isPasswordValid) {
+      throw new ResponseError(401, 'Anda tidak bisa login.', {
+        password: 'Password yang Anda masukkan salah.',
+      });
+    }
+
+    const payload = {
+      id: admin.adminId,
+      role: admin.role,
+    };
+
+    const token = jwt.sign(payload, config.JWT_SECRET, { expiresIn: '1h' });
+    return { token, ...payload };
   },
 };

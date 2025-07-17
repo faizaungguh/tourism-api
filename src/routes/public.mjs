@@ -8,8 +8,8 @@ export const publicRouter = new express.Router();
 
 /** Auth */
 publicRouter.post('/auth/register', auth.register);
-// publicRouter.get('/auth/login');
-// publicRouter.get('/auth/logout');
+publicRouter.post('/auth/login', auth.signin);
+publicRouter.delete('/auth/logout', auth.signout);
 
 /** Category */
 publicRouter.get('/categories', category.get);
