@@ -69,6 +69,49 @@ export const listAdmins = (validatedQuery) => {
   ];
 };
 
+export const createAdmin = async (validatedRequest) => {
+  /** Cek duplikasi username, email, dan name. */
+  const checkDuplicate = await Admin.find({
+    $or: [
+      { username: validatedRequest.username },
+      { email: validatedRequest.email },
+      { name: validatedRequest.name },
+    ],
+  }).select('username name email');
+
+  /** Lempar error jika ditemukan duplikasi. */
+  if (checkDuplicate.length > 0) {
+    const duplicateErrors = {};
+    checkDuplicate.forEach((admin) => {
+      if (admin.username === validatedRequest.username) {
+        duplicateErrors.username = 'Username telah terdaftar.';
+      }
+      if (admin.email === validatedRequest.email) {
+        duplicateErrors.email = 'Email telah terdaftar.';
+      }
+      if (admin.name === validatedRequest.name) {
+        duplicateErrors.name = 'Name telah terdaftar.';
+      }
+    });
+
+    if (Object.keys(duplicateErrors).length > 0) {
+      throw new ResponseError(
+        409,
+        'Data yang diberikan sudah terdaftar.',
+        duplicateErrors
+      );
+    }
+  }
+
+  /** Hash password sebelum disimpan. */
+  validatedRequest.password = await bcrypt.hash(validatedRequest.password, 10);
+
+  /** Atur role secara otomatis menjadi 'admin'. */
+  validatedRequest.role = 'admin';
+
+  return Admin.create(validatedRequest);
+};
+
 export const updateAdmin = async (id, validatedRequest) => {
   const originalAdmin = await Admin.findOne({ adminId: id }).select(
     '+password'

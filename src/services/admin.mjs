@@ -1,66 +1,24 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/adminPipeline.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-
-const Admin = mongoose.model('Admin', adminSchema);
 
 export const adminService = {
   create: async (request) => {
     validate.isNotEmpty(request);
+
     /** Validasi input request. */
     const validatedRequest = validate.requestCheck(
       checker.adminValidation,
       request
     );
 
-    /** Cek duplikasi username dan email. */
-    const checkDuplicate = await Admin.find({
-      $or: [
-        { username: validatedRequest.username },
-        { email: validatedRequest.email },
-      ],
-    }).select('username email');
+    const newAdmin = await helper.createAdmin(validatedRequest);
 
-    /** Lempar error jika ditemukan duplikasi. */
-    if (checkDuplicate.length > 0) {
-      const duplicateErrors = {};
-      checkDuplicate.forEach((admin) => {
-        if (admin.username === validatedRequest.username) {
-          duplicateErrors.username = 'Username telah terdaftar.';
-        }
-        if (admin.email === validatedRequest.email) {
-          duplicateErrors.email = 'Email telah terdaftar.';
-        }
-      });
-
-      if (Object.keys(duplicateErrors).length > 0) {
-        throw new ResponseError(
-          409,
-          'Data yang diberikan sudah terdaftar.',
-          duplicateErrors
-        );
-      }
+    if (!newAdmin) {
+      throw new ResponseError(500, 'Gagal membuat admin');
     }
-
-    /** Hash password sebelum disimpan. */
-    validatedRequest.password = await bcrypt.hash(
-      validatedRequest.password,
-      10
-    );
-
-    /** Atur role secara otomatis menjadi 'admin'. */
-    validatedRequest.role = 'admin';
-
-    /** Simpan data admin baru ke database. */
-    const newAdmin = new Admin(validatedRequest);
-    const savedAdmin = await newAdmin.save();
-
-    /** Kembalikan data admin yang sudah disimpan. */
-    return savedAdmin;
+    return newAdmin;
   },
 
   getAll: async (query) => {

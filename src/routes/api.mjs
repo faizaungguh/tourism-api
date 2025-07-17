@@ -6,23 +6,35 @@ import { subdistrict } from '#controllers/subdistrict.mjs';
 import { destination } from '#controllers/destination.mjs';
 import { attraction } from '#controllers/attraction.mjs';
 import { auth } from '#controllers/auth.mjs';
+import { authMiddleware } from '#middlewares/auth.mjs';
 
 export const privateRouter = new express.Router();
 
-privateRouter.delete('/signout', auth.signout);
+privateRouter.delete(
+  '/signout',
+  authMiddleware.protect('manager', 'admin'),
+  auth.signout
+);
+
 /** Admin */
 privateRouter
-  .post('/admins', admin.post)
-  .get('/admins', admin.list)
-  .get('/admins/:id', admin.get)
-  .put('/admins/:id', admin.patch)
-  .delete('/admins/:id', admin.drop);
+  .route('/admins')
+  .all(authMiddleware.protect('admin'))
+  .post(admin.post)
+  .get(admin.list);
+privateRouter
+  .route('/admins/:id')
+  .all(authMiddleware.protect('admin'))
+  .get(admin.get)
+  .put(admin.patch)
+  .delete(admin.drop);
 
 /** Manager */
 privateRouter
-  .get('/managers/:id', manager.get)
-  .put('/managers/:id', manager.put)
-  .delete('/managers/:id', manager.drop);
+  .route('/managers/:id')
+  .get(authMiddleware.protect('manager', 'admin'), manager.get)
+  .put(authMiddleware.protect('manager'), manager.put)
+  .delete(authMiddleware.protect('manager', 'admin'), manager.drop);
 
 /** Category */
 privateRouter

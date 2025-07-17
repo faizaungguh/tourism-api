@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 import { config } from '#configs/variable.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -33,5 +34,26 @@ export const authMiddleware = {
     }
   },
 
-  deleteToken: async (req, res, next) => {},
+  protect: (...roles) => {
+    return async (req, res, next) => {
+      if (!req.admin) {
+        return next(
+          new ResponseError(401, 'Tidak terautentikasi', {
+            error: 'Anda harus login terlebih dahulu.',
+          })
+        );
+      }
+
+      if (roles.length > 0 && !roles.includes(req.admin.role)) {
+        const allowedRoles = roles.join(' atau ');
+        return next(
+          new ResponseError(403, 'Akses ditolak', {
+            error: `Anda tidak memiliki izin. Role yang diizinkan: ${allowedRoles}.`,
+          })
+        );
+      }
+
+      next();
+    };
+  },
 };
