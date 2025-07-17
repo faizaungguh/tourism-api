@@ -23,8 +23,9 @@ export const authService = {
       $or: [
         { username: validatedRequest.username },
         { email: validatedRequest.email },
+        { name: validatedRequest.name },
       ],
-    }).select('username email');
+    }).select('username name email');
 
     if (checkDuplicate.length > 0) {
       const duplicateErrors = {};
@@ -34,6 +35,9 @@ export const authService = {
         }
         if (admin.email === validatedRequest.email) {
           duplicateErrors.email = 'Email telah terdaftar.';
+        }
+        if (admin.name === validatedRequest.name) {
+          duplicateErrors.name = 'Nama telah terdaftar.';
         }
       });
 

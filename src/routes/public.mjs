@@ -7,8 +7,8 @@ import { destination } from '#controllers/destination.mjs';
 export const publicRouter = new express.Router();
 
 /** Auth */
-publicRouter.post('/auth/register', auth.register);
-publicRouter.post('/auth/signin', auth.signin);
+publicRouter.post('/signup', auth.register);
+publicRouter.post('/signin', auth.signin);
 
 /** Category */
 publicRouter.get('/categories', category.get);
@@ -18,11 +18,11 @@ publicRouter.get('/subdistricts', subdistrict.get);
 
 /** Destination */
 publicRouter
-  .get('/destinations/category/:categorySlug', destination.slugCategory)
   .get(
     '/destinations/category/:categorySlug/:destinationSlug',
     destination.slug
   )
+  .get('/destinations/category/:categorySlug', destination.slugCategory)
   .get('/destinations/:destinationSlug', destination.detail)
   .get('/destinations', destination.list);
 

@@ -7,7 +7,7 @@ export const adminSchema = new Schema(
     adminId: { type: String, unique: true },
     username: { type: String, min: 5, max: 12, required: true, unique: true },
     password: { type: String, min: 6, required: true },
-    name: { type: String, unique: true, required: true },
+    name: { type: String, required: true },
     email: { type: String, required: true },
     contactNumber: { type: String, required: true },
     photo: { type: String },
