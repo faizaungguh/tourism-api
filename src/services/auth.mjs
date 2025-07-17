@@ -92,6 +92,9 @@ export const authService = {
     };
 
     const token = jwt.sign(payload, config.JWT_SECRET, { expiresIn: '1h' });
-    return { token, ...payload };
+    return {
+      token: token,
+      user: payload,
+    };
   },
 };

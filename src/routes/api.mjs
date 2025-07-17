@@ -5,8 +5,11 @@ import { category } from '#controllers/category.mjs';
 import { subdistrict } from '#controllers/subdistrict.mjs';
 import { destination } from '#controllers/destination.mjs';
 import { attraction } from '#controllers/attraction.mjs';
+import { auth } from '#controllers/auth.mjs';
 
 export const privateRouter = new express.Router();
+
+privateRouter.delete('/signout', auth.signout);
 /** Admin */
 privateRouter
   .post('/admins', admin.post)

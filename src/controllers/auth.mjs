@@ -11,14 +11,23 @@ export const auth = {
 
   signin: async (req, res) => {
     const result = await authService.signIn(req.body);
+    const { token, user } = result;
+
+    res.cookie('accessToken', token, {
+      httpOnly: true,
+      sameSite: 'strict',
+      maxAge: 3600 * 1000,
+      path: '/',
+    });
+
     res.status(200).json({
       message: 'Anda berhasil login',
-      data: result,
+      data: user,
     });
   },
 
-  signout: async (req, res, next) => {
-    await authService.signOut(req.admin);
+  signout: async (req, res) => {
+    res.clearCookie('accessToken', { path: '/' });
     res.status(200).json({ message: 'Berhasil logout' });
   },
 };
