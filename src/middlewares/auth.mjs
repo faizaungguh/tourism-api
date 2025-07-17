@@ -24,7 +24,7 @@ export const authMiddleware = {
       const decoded = jwt.verify(token, config.JWT_SECRET);
 
       req.admin = await Admin.findOne({ adminId: decoded.id }).select(
-        '-password'
+        'adminId role -_id'
       );
 
       if (!req.admin) {

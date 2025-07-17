@@ -43,7 +43,7 @@ export const managerService = {
     const manager = await Admin.findOne({
       adminId: id,
       role: 'manager',
-    }).select('-_id -password -__v -createdAt -updatedAt');
+    }).select('-_id -password -__v');
 
     /** Jika manager tidak ditemukan, tampilkan pesan error */
     if (!manager) {
@@ -56,28 +56,18 @@ export const managerService = {
     return manager.toObject();
   },
 
-  update: async (id, adminId, request) => {
-    if (!adminId) {
-      throw new ResponseError(401, 'Otorisasi Gagal', {
-        message:
-          'adminId dari pengguna yang melakukan perubahan harus disertakan di body request.',
-      });
-    }
-
-    const updatePayload = { ...request };
-    delete updatePayload.adminId;
-
-    validate.isNotEmpty(updatePayload);
+  update: async (id, admin, request) => {
+    validate.isNotEmpty(request);
 
     /** validasi update */
     const validatedRequest = validate.requestCheck(
       checker.patchAdminValidation,
-      updatePayload
+      request
     );
 
     const updatedManager = await helper.updateManager(
       id,
-      adminId,
+      admin.adminId,
       validatedRequest
     );
 
@@ -85,7 +75,7 @@ export const managerService = {
   },
 
   drop: async (adminId) => {
-    const deletedManager = await helper.dropManager(adminId);
+    const deletedManager = await helper.dropManager(adminId, 'manager');
     return deletedManager;
   },
 };

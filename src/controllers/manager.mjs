@@ -1,8 +1,17 @@
 import { managerService } from '#services/manager.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 export const manager = {
   get: async (req, res) => {
     const { id } = req.params;
+    const admin = req.admin;
+
+    if (admin.role === 'manager' && admin.adminId !== id) {
+      throw new ResponseError(403, 'Akses ditolak.', {
+        message: 'Manager hanya dapat melihat datanya sendiri.',
+      });
+    }
+
     const result = await managerService.getDetail(id);
     res.status(200).json({
       message: `Menampilkan Detail Manager '${result.name}'`,
@@ -12,8 +21,15 @@ export const manager = {
 
   put: async (req, res) => {
     const { id } = req.params;
-    const { adminId } = req.body;
-    const result = await managerService.update(id, adminId, req.body);
+    const admin = req.admin;
+
+    if (admin.role === 'manager' && admin.adminId !== id) {
+      throw new ResponseError(403, 'Akses ditolak.', {
+        message: 'Anda tidak diizinkan mengubah data manajer lain.',
+      });
+    }
+
+    const result = await managerService.update(id, admin, req.body);
     res.status(200).json({
       message: `Data manajer '${result.name}' berhasil diubah`,
       data: result,
@@ -21,8 +37,16 @@ export const manager = {
   },
 
   drop: async (req, res) => {
-    const { id: adminId } = req.params;
-    const result = await managerService.drop(adminId);
+    const { id } = req.params;
+    const admin = req.admin;
+
+    if (admin.role === 'manager' && admin.adminId !== id) {
+      throw new ResponseError(403, 'Akses ditolak.', {
+        message: 'Anda tidak diizinkan menghapus data manajer lain.',
+      });
+    }
+
+    const result = await managerService.drop(id);
     res.status(200).json({
       message: `Manajer '${result.name}' telah berhasil dihapus`,
     });

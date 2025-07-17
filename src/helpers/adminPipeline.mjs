@@ -240,10 +240,9 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   return updatedManager.toObject();
 };
 
-export const dropManager = async (managerId) => {
+export const dropManager = async (managerId, role) => {
   const managerToDelete = await Admin.findOne({
     adminId: managerId,
-    role: 'manager',
   })
     .select('_id')
     .lean();

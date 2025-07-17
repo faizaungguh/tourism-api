@@ -28,9 +28,17 @@ privateRouter
 /** Manager */
 privateRouter
   .route('/managers/:id')
-  .get(manager.get)
-  .put(manager.put)
-  .delete(manager.drop);
+  .get(
+    authMiddleware.protect,
+    authMiddleware.authorize('admin', 'manager'),
+    manager.get
+  )
+  .put(authMiddleware.protect, authMiddleware.authorize('manager'), manager.put)
+  .delete(
+    authMiddleware.protect,
+    authMiddleware.authorize('admin', 'manager'),
+    manager.drop
+  );
 
 /** Category */
 privateRouter
