@@ -10,21 +10,17 @@ import { authMiddleware } from '#middlewares/auth.mjs';
 
 export const privateRouter = new express.Router();
 
-privateRouter.delete(
-  '/signout',
-  authMiddleware.protect('manager', 'admin'),
-  auth.signout
-);
+privateRouter.delete('/signout', auth.signout);
 
 /** Admin */
 privateRouter
   .route('/admins')
-  .all(authMiddleware.protect('admin'))
+  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
   .post(admin.post)
   .get(admin.list);
 privateRouter
   .route('/admins/:id')
-  .all(authMiddleware.protect('admin'))
+  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
   .get(admin.get)
   .put(admin.patch)
   .delete(admin.drop);
@@ -32,36 +28,36 @@ privateRouter
 /** Manager */
 privateRouter
   .route('/managers/:id')
-  .get(authMiddleware.protect('manager', 'admin'), manager.get)
-  .put(authMiddleware.protect('manager'), manager.put)
-  .delete(authMiddleware.protect('manager', 'admin'), manager.drop);
+  .get(manager.get)
+  .put(manager.put)
+  .delete(manager.drop);
 
 /** Category */
 privateRouter
-  .post('/categories', category.post)
-  .put('/categories', category.patch)
-  .delete('/categories', category.drop);
+  .route('/categories')
+  .post(category.post)
+  .put(category.patch)
+  .delete(category.drop);
 
 /** Subdistrict */
 privateRouter
-  .post('/subdistricts', subdistrict.post)
-  .put('/subdistricts', subdistrict.patch)
-  .delete('/subdistricts', subdistrict.drop);
+  .route('/subdistricts')
+  .post(subdistrict.post)
+  .put(subdistrict.patch)
+  .delete(subdistrict.drop);
 
 /** Destination */
+privateRouter.post('/destinations', destination.post);
 privateRouter
-  .post('/destinations', destination.post)
-  .put('/destinations/:destinationSlug', destination.patch)
-  .delete('/destinations/:destinationSlug', destination.drop);
+  .route('/destinations/:destinationSlug')
+  .put(destination.patch)
+  .delete(destination.drop);
 
 /** Attraction */
 privateRouter
-  .post('/destinations/:destinationSlug/attractions', attraction.create)
-  .put(
-    '/destinations/:destinationSlug/attractions/:attractionSlug',
-    attraction.patch
-  )
-  .delete(
-    '/destinations/:destinationSlug/attractions/:attractionSlug',
-    attraction.drop
-  );
+  .route('/destinations/:destinationSlug/attractions')
+  .post(attraction.create);
+privateRouter
+  .route('/destinations/:destinationSlug/attractions/:attractionSlug')
+  .put(attraction.patch)
+  .delete(attraction.drop);

@@ -1,49 +1,44 @@
-import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken';
 import { config } from '#configs/variable.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
-const Admin = mongoose.model('Admin', adminSchema);
+const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
 
 export const authMiddleware = {
-  getToken: async (req, res, next) => {
+  protect: async (req, res, next) => {
     let token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith('Bearer')
-    ) {
-      try {
-        token = req.headers.authorization.split(' ')[1];
-        const decoded = jwt.verify(token, config.JWT_SECRET);
 
-        req.admin = await Admin.findById(decoded.id).selec('-password');
+    if (req.cookies.accessToken) {
+      token = req.cookies.accessToken;
+    }
 
-        if (!req.admin) {
-          return next(
-            new ResponseError(403, 'Tidak dapat mengidentifikasi admin', {
-              error: 'Mohon maaf permintaan untuk login ditolak',
-            })
-          );
-        }
+    if (!token) {
+      return next(
+        new ResponseError(401, 'Tidak terautentikasi, silakan login')
+      );
+    }
 
-        next();
-      } catch (error) {
-        return next(new ResponseError(403));
+    try {
+      const decoded = jwt.verify(token, config.JWT_SECRET);
+
+      req.admin = await Admin.findOne({ adminId: decoded.id }).select(
+        '-password'
+      );
+
+      if (!req.admin) {
+        return next(new ResponseError(401, 'Admin tidak ditemukan'));
       }
+
+      next();
+    } catch (error) {
+      return next(new ResponseError(401, 'Token tidak valid atau kedaluwarsa'));
     }
   },
 
-  protect: (...roles) => {
+  authorize: (...roles) => {
     return async (req, res, next) => {
-      if (!req.admin) {
-        return next(
-          new ResponseError(401, 'Tidak terautentikasi', {
-            error: 'Anda harus login terlebih dahulu.',
-          })
-        );
-      }
-
       if (roles.length > 0 && !roles.includes(req.admin.role)) {
         const allowedRoles = roles.join(' atau ');
         return next(

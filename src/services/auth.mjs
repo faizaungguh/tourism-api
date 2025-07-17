@@ -7,7 +7,7 @@ import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { config } from '#configs/variable.mjs';
 
-const Admin = mongoose.model('Admin', adminSchema);
+const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
 
 export const authService = {
   registerManager: async (request) => {

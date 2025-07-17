@@ -1,8 +1,11 @@
+import mongoose from 'mongoose';
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/adminPipeline.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
+import { adminSchema } from '#schemas/admin.mjs';
 
+const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
 export const adminService = {
   create: async (request) => {
     validate.isNotEmpty(request);
