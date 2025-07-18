@@ -229,7 +229,7 @@ export const updateManager = async (id, adminId, validatedRequest) => {
     { adminId: id, role: 'manager' },
     { $set: validatedRequest },
     { new: true }
-  ).select('-_id -password -__v -createdAt -updatedAt');
+  ).select('-_id -password -__v');
 
   return updatedManager.toObject();
 };

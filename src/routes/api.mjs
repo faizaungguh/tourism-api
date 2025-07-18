@@ -68,17 +68,23 @@ privateRouter
   .delete(subdistrict.drop);
 
 /** Destination */
-privateRouter.post('/destinations', destination.post);
+privateRouter.post(
+  '/destinations',
+  authMiddleware.protect,
+  authMiddleware.authorize('manager'),
+  destination.post
+);
 privateRouter
-  .route('/destinations/:destinationSlug')
+  .route('/destinations/:slug')
+  .all(authMiddleware.protect, authMiddleware.authorize('manager'))
   .put(destination.patch)
   .delete(destination.drop);
 
 /** Attraction */
 privateRouter
-  .route('/destinations/:destinationSlug/attractions')
+  .route('/destinations/:destination-slug/attractions')
   .post(attraction.create);
 privateRouter
-  .route('/destinations/:destinationSlug/attractions/:attractionSlug')
+  .route('/destinations/:destination-slug/attractions/:attraction-slug')
   .put(attraction.patch)
   .delete(attraction.drop);

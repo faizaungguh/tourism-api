@@ -1,4 +1,9 @@
 import mongoose from 'mongoose';
+import { Destination } from '#schemas/destination.mjs';
+import { Category } from '#schemas/category.mjs';
+import { Subdistrict } from '#schemas/subdistrict.mjs';
+import { Admin } from '#schemas/admin.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 const buildFilterStage = (validatedQuery) => {
   const { search, category, subdistrict } = validatedQuery;
@@ -68,7 +73,7 @@ export const listDestination = (validatedQuery) => {
     {
       $lookup: {
         from: 'categories',
-        localField: 'categories',
+        localField: 'category',
         foreignField: '_id',
         as: 'categoryDetails',
       },
@@ -112,7 +117,7 @@ const detailDestinationPipeline = [
   {
     $lookup: {
       from: 'categories',
-      localField: 'categories',
+      localField: 'category',
       foreignField: '_id',
       as: 'categoryDetails',
     },
@@ -182,6 +187,59 @@ const detailDestinationPipeline = [
   },
 ];
 
+export const createDestination = async (adminId, validatedRequest) => {
+  const [existingDestination, categoryDoc, subdistrictDoc, managerDoc] =
+    await Promise.all([
+      Destination.findOne({
+        destinationTitle: validatedRequest.destinationTitle,
+      })
+        .select('destinationTitle')
+        .lean(),
+      Category.findOne({ name: validatedRequest.categories })
+        .select('_id')
+        .lean(),
+      Subdistrict.findOne({ name: validatedRequest.locations.subdistrict })
+        .select('_id')
+        .lean(),
+      Admin.findOne({ adminId }).select('_id').lean(),
+    ]);
+
+  const errors = {};
+  if (existingDestination) {
+    errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
+  }
+  if (!categoryDoc) {
+    errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
+  }
+  if (!subdistrictDoc) {
+    errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
+  }
+  if (!managerDoc) {
+    errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
+  }
+
+  if (Object.keys(errors).length > 0) {
+    throw new ResponseError(400, 'Gagal menambahkan destinasi baru.', errors);
+  }
+
+  /** Jika semua valid, siapkan dan simpan data */
+  const { categories, ...rest } = validatedRequest;
+  const destinationData = {
+    ...rest,
+    category: categoryDoc._id,
+    locations: {
+      ...validatedRequest.locations,
+      subdistrict: subdistrictDoc._id,
+    },
+    createdBy: managerDoc._id,
+  };
+
+  const newDestination = new Destination(destinationData);
+  const savedDestination = await newDestination.save();
+
+  return savedDestination;
+};
+
 export const getDestination = (identifier) => {
   const matchQuery = mongoose.Types.ObjectId.isValid(identifier)
     ? { _id: new mongoose.Types.ObjectId(identifier) }
@@ -195,7 +253,7 @@ export const getDestinationSlug = (destinationSlug, categoryId) => {
     {
       $match: {
         slug: destinationSlug,
-        categories: new mongoose.Types.ObjectId(categoryId),
+        category: new mongoose.Types.ObjectId(categoryId),
       },
     },
     ...detailDestinationPipeline,

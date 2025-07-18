@@ -10,74 +10,16 @@ import { Attraction } from '#schemas/attraction.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const destinationService = {
-  create: async (request) => {
-    validate.isNotEmpty(request);
-    /** validasi request */
+  create: async (adminId, request) => {
     const validatedRequest = validate.requestCheck(
       checker.destinationValidation,
       request
     );
 
-    /** 1. Cek adminId dan role manager terlebih dahulu */
-    const admin = await Admin.findOne({
-      adminId: validatedRequest.adminId,
-    }).select('role');
-
-    if (!admin) {
-      throw new ResponseError(404, 'Admin tidak ditemukan.', {
-        adminId: `Admin dengan ID "${validatedRequest.adminId}" tidak ditemukan.`,
-      });
-      S;
-    }
-
-    if (admin.role !== 'manager') {
-      throw new ResponseError(403, 'Akses ditolak.', {
-        message: 'Hanya manajer yang dapat membuat destinasi wisata',
-      });
-    }
-
-    /** 2. Cek duplikasi judul dan validasi keberadaan Kategori & Kecamatan */
-    const [existingDestination, categoryDoc, subdistrictDoc] =
-      await Promise.all([
-        Destination.findOne({
-          destinationTitle: validatedRequest.destinationTitle,
-        }).select('destinationTitle'),
-        Category.findOne({
-          name: validatedRequest.categories,
-        }).select('_id'),
-        Subdistrict.findOne({
-          name: validatedRequest.locations.subdistrict,
-        }).select('_id'),
-      ]);
-
-    /** 3. Munculkan pesan error jika ada data yang tidak valid */
-    if (existingDestination) {
-      throw new ResponseError(409, 'Judul destinasi sudah ada.', {
-        destinationTitle: 'Judul destinasi wisata ini sudah digunakan.',
-      });
-    }
-
-    if (!categoryDoc) {
-      throw new ResponseError(404, 'Kategori tidak ditemukan.', {
-        categories: `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`,
-      });
-    }
-
-    if (!subdistrictDoc) {
-      throw new ResponseError(404, 'Kecamatan tidak ditemukan.', {
-        subdistrict: `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`,
-      });
-    }
-
-    /** 4. Jika semua valid, siapkan dan simpan data */
-    validatedRequest.categories = categoryDoc._id;
-    validatedRequest.locations.subdistrict = subdistrictDoc._id;
-
-    validatedRequest.createdBy = admin._id;
-    delete validatedRequest.adminId;
-
-    const newDestination = new Destination(validatedRequest);
-    const savedDestination = await newDestination.save();
+    const savedDestination = await helper.createDestination(
+      adminId,
+      validatedRequest
+    );
 
     /** Ambil data yang baru disimpan dengan detail yang sudah di-populate */
     const pipeline = helper.getDestination(savedDestination._id);
@@ -253,17 +195,19 @@ export const destinationService = {
     }
 
     if (validatedRequest.categories) {
+      const categoryName = validatedRequest.categories;
       const categoryDoc = await Category.findOne({
-        name: validatedRequest.categories,
+        name: categoryName,
       })
         .select('_id')
         .lean();
       if (!categoryDoc) {
         throw new ResponseError(404, 'Kategori tidak ditemukan.', {
-          categories: `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`,
+          categories: `Kategori dengan nama "${categoryName}" tidak ada.`,
         });
       }
-      validatedRequest.categories = categoryDoc._id;
+      validatedRequest.category = categoryDoc._id;
+      delete validatedRequest.categories;
     }
 
     if (validatedRequest.locations && validatedRequest.locations.subdistrict) {

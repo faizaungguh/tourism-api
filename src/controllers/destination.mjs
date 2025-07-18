@@ -2,7 +2,10 @@ import { destinationService } from '#services/destination.mjs';
 
 export const destination = {
   post: async (req, res) => {
-    const result = await destinationService.create(req.body);
+    const adminId = req.admin.adminId;
+    const request = req.body;
+
+    const result = await destinationService.create(adminId, request);
     res.status(201).json({
       message: 'Tempat Wisata baru berhasil ditambahkan',
       data: result,

@@ -1,20 +1,8 @@
 import validate from 'joi';
 
-export const objectId = () =>
-  validate.string().hex().length(24).messages({
-    'string.base': 'ID harus berupa teks.',
-    'string.hex': 'Format ID tidak valid.',
-    'string.length': 'Panjang ID harus 24 karakter heksadesimal.',
-  });
-
-export const adminId = validate
-  .string()
-  .pattern(/^(adm|mng)-\d{4}$/)
-  .messages({
-    'any.required': 'ID Admin wajib diisi.',
-    'string.pattern.base':
-      'Format ID Admin tidak valid. Contoh: mng-0001 atau adm-0001.',
-  });
+export const adminId = validate.string().messages({
+  'any.required': 'ID Admin wajib diisi.',
+});
 
 export const destinationTitle = validate
   .string()

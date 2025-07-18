@@ -2,7 +2,6 @@ import validate from 'joi';
 import * as field from '#validations/fieldDestination.mjs';
 
 export const destinationValidation = validate.object({
-  adminId: field.adminId.required(),
   destinationTitle: field.destinationTitle.required(),
   categories: field.categories.required(),
   description: field.description.required(),

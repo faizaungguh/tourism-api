@@ -18,7 +18,9 @@ export const adminService = {
     const newAdmin = await helper.createAdmin(validatedRequest);
 
     if (!newAdmin) {
-      throw new ResponseError(500, 'Gagal membuat admin');
+      throw new ResponseError(400, 'Gagal membuat admin', {
+        message: 'Gagal membuat admin karena kesalahan pada server',
+      });
     }
     return newAdmin;
   },
