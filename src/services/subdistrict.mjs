@@ -73,8 +73,7 @@ export const subdistrictService = {
     };
   },
 
-  updateSubdistrict: async (id, request) => {
-    validate.isValidId(id);
+  updateSubdistrict: async (slug, request) => {
     validate.isNotEmpty(request);
 
     const validatedRequest = validate.requestCheck(
@@ -82,51 +81,46 @@ export const subdistrictService = {
       request
     );
 
-    const subdistrict = await Subdistrict.findById(id);
-    if (!subdistrict) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
-        message: `Kecamatan dengan id ${id} tidak ditemukan`,
+    const originalSubdistrict = await Subdistrict.findOne({ slug });
+    if (!originalSubdistrict) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Kecamatan ${slug} tidak ditemukan`,
       });
     }
 
     /** cek duplikasi if name is changed */
-    if (
-      validatedRequest.name.toLowerCase() !== subdistrict.name.toLowerCase()
-    ) {
+    const isNameChanged =
+      validatedRequest.name &&
+      validatedRequest.name.toLowerCase() !==
+        originalSubdistrict.name.toLowerCase();
+
+    if (isNameChanged) {
       const checkDuplicate = await Subdistrict.findOne({
         name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
-        _id: { $ne: id },
+        _id: { $ne: originalSubdistrict._id },
       });
       if (checkDuplicate) {
-        throw new ResponseError(409, 'Duplikasi Kecamatan', {
+        throw new ResponseError(409, 'Duplikasi nama kecamatan', {
           name: 'Kecamatan dengan nama yang sama sudah terdaftar.',
         });
       }
     }
 
-    subdistrict.name = validatedRequest.name;
-    const result = await subdistrict.save();
+    originalSubdistrict.set(validatedRequest);
+    const result = await originalSubdistrict.save();
 
     return result;
   },
 
-  deleteSubdistrict: async (id) => {
-    validate.isValidId(id);
+  deleteSubdistrict: async (slug) => {
+    const deletedSubdistrict = await Subdistrict.findOneAndDelete({ slug });
 
-    /** cek id */
-    const isAvailable = await Subdistrict.findById(id);
-
-    if (!isAvailable) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
-        message: `Kecamatan dengan Id ${id} tidak ditemukan`,
+    if (!deletedSubdistrict) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Kecamatan dengan slug '${slug}' tidak ditemukan`,
       });
     }
 
-    /** cari id dan hapus */
-    await Subdistrict.findByIdAndDelete(id);
-
-    return {
-      message: `Kecamatan dengan berhasil dihapus.`,
-    };
+    return;
   },
 };

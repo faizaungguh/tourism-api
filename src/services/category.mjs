@@ -78,10 +78,10 @@ export const categoryService = {
       request
     );
 
-    const originalCategory = await Category.findOne({ slug: slug });
+    const originalCategory = await Category.findOne({ slug });
     if (!originalCategory) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
-        message: `Kategori dengan slug ${slug} tidak ditemukan`,
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Kategori ${slug} tidak ditemukan`,
       });
     }
 
@@ -94,7 +94,7 @@ export const categoryService = {
         name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
       });
       if (checkDuplicate) {
-        throw new ResponseError(409, 'Duplikasi Kategori', {
+        throw new ResponseError(409, 'Duplikasi data ubahan', {
           name: 'Kategori dengan nama yang sama sudah terdaftar.',
         });
       }

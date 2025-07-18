@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import * as validate from '#validations/validate.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -48,10 +47,10 @@ export const authService = {
     }
 
     /** hash password, untuk menyimpan dalam karakter acak */
-    validatedRequest.password = await bcrypt.hash(
-      validatedRequest.password,
-      10
-    );
+    // validatedRequest.password = await bcrypt.hash(
+    //   validatedRequest.password,
+    //   10
+    // );
 
     /** role manager */
     validatedRequest.role = 'manager';
@@ -76,10 +75,7 @@ export const authService = {
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(
-      loginRequest.password,
-      admin.password
-    );
+    const isPasswordValid = await admin.comparePassword(loginRequest.password);
 
     if (!isPasswordValid) {
       throw new ResponseError(401, 'Anda tidak bisa login.', {

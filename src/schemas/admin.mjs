@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-const adminSchema = new mongoose.Schema(
+const adminSchema = new Schema(
   {
     adminId: { type: String, unique: true },
     username: { type: String, min: 5, unique: true, max: 12, required: true },
@@ -26,18 +26,15 @@ const Counter =
 adminSchema.pre('save', async function (next) {
   if (this.isNew) {
     try {
-      // 1. Tentukan ID counter dan prefix berdasarkan role
       const counterId = this.role === 'admin' ? 'admin_id' : 'manager_id';
       const prefix = this.role === 'admin' ? 'adm' : 'mng';
 
-      // 2. Temukan dan perbarui dokumen counter secara atomik (mencegah race condition)
       const counter = await Counter.findByIdAndUpdate(
         { _id: counterId },
         { $inc: { seq: 1 } },
         { new: true, upsert: true }
       );
 
-      // 3. Format nomor urut dan buat adminId
       const sequence = counter.seq;
       const formattedSequence = String(sequence).padStart(4, '0');
       this.adminId = `${prefix}-${formattedSequence}`;
@@ -59,6 +56,10 @@ adminSchema.pre('save', async function (next) {
 
   next();
 });
+
+adminSchema.methods.comparePassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 export const Admin =
   mongoose.models.Admin || mongoose.model('Admin', adminSchema);

@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { nanoid } from 'nanoid';
 
-const attractionSchema = new mongoose.Schema(
+const attractionSchema = new Schema(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, required: true },

@@ -55,9 +55,15 @@ privateRouter
   .delete(category.drop);
 
 /** Subdistrict */
+privateRouter.post(
+  '/subdistricts',
+  authMiddleware.protect,
+  authMiddleware.authorize('admin'),
+  subdistrict.post
+);
 privateRouter
-  .route('/subdistricts')
-  .post(subdistrict.post)
+  .route('/subdistricts/:slug')
+  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
   .put(subdistrict.patch)
   .delete(subdistrict.drop);
 

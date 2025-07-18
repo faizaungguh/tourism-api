@@ -21,8 +21,8 @@ export const subdistrict = {
   },
 
   patch: async (req, res) => {
-    const { id: id } = req.query;
-    const result = await subdistrictService.updateSubdistrict(id, req.body);
+    const { slug } = req.params;
+    const result = await subdistrictService.updateSubdistrict(slug, req.body);
     res.status(200).json({
       message: 'Kecamatan berhasil diubah',
       data: result,
@@ -30,10 +30,10 @@ export const subdistrict = {
   },
 
   drop: async (req, res) => {
-    const { id: id } = req.query;
-    await subdistrictService.deleteSubdistrict(id);
+    const { slug } = req.params;
+    await subdistrictService.deleteSubdistrict(slug);
     res.status(200).json({
-      message: 'Kategori berhasil dihapus',
+      message: `Kecamatan ${slug} berhasil dihapus`,
     });
   },
 };
