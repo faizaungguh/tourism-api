@@ -83,6 +83,19 @@ const deleteData = async () => {
   }
 };
 
+const deleteAllData = async () => {
+  try {
+    await connectionDB();
+    console.log(`Memulai penghapusan seluruh koleksi dari database...`);
+    await mongoose.connection.dropDatabase();
+    console.log('Database berhasil dihapus beserta seluruh koleksinya.');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat menghapus database:', error);
+    process.exit(1);
+  }
+};
+
 if (process.argv[2] === '--import-admin') {
   importAdmin();
 } else if (process.argv[2] === '--delete-admin') {
@@ -91,4 +104,6 @@ if (process.argv[2] === '--import-admin') {
   importData();
 } else if (process.argv[2] === '--delete-default') {
   deleteData();
+} else if (process.argv[2] === '--delete-all') {
+  deleteAllData();
 }

@@ -1,17 +1,17 @@
 [
     {
-        "username": "admin_master",
-        "password": "rahasiAdmin1",
-        "name": "Admin Master",
-        "email": "admin.master@example.com",
+        "username": "admin01",
+        "password": "rahasiaAdmin01",
+        "name": "Admin 01",
+        "email": "admin01@example.com",
         "contactNumber": "081234567890",
         "role": "admin"
     },
     {
-        "username": "manager_pemasaran",
-        "password": "RahasiaManager3",
-        "name": "Manager Pemasaran",
-        "email": "manager.pemasaran@example.com",
+        "username": "manager01",
+        "password": "rahasiaManager01",
+        "name": "Manager Wisata 01",
+        "email": "manager01@example.com",
         "contactNumber": "08518202025",
         "role": "manager"
     }

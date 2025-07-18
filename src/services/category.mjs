@@ -2,9 +2,11 @@ import mongoose from 'mongoose';
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/category.mjs';
 import { categorySchema } from '#schemas/category.mjs';
+import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 const Category = mongoose.model('Category', categorySchema);
+const Destination = mongoose.model('Destination', destinationSchema);
 
 export const categoryService = {
   createCategory: async (request) => {
@@ -71,10 +73,7 @@ export const categoryService = {
     };
   },
 
-  updateCategory: async (id, request) => {
-    /** validasi */
-    validate.isValidId(id);
-
+  updateCategory: async (slug, request) => {
     /** cek req.body nya */
     validate.isNotEmpty(request);
 
@@ -83,10 +82,10 @@ export const categoryService = {
       request
     );
 
-    const originalCategory = await Category.findById(id);
+    const originalCategory = await Category.findOne({ slug: slug });
     if (!originalCategory) {
       throw new ResponseError(404, 'Id tidak ditemukan', {
-        message: `Kategori dengan id ${id} tidak ditemukan`,
+        message: `Kategori dengan slug ${slug} tidak ditemukan`,
       });
     }
 
@@ -105,34 +104,43 @@ export const categoryService = {
       }
     }
 
-    const result = await Category.findByIdAndUpdate(
-      id,
+    const result = await Category.findOneAndUpdate(
+      { slug: slug },
       {
         $set: validatedRequest,
       },
       { new: true }
-    );
+    ).select('-_id -__v -createdAt -updatedAt');
 
     return result;
   },
 
-  deleteCaegory: async (id) => {
-    validate.isValidId(id);
-
+  deleteCategory: async (slug) => {
     /** cek id */
-    const isAvailable = await Category.findById(id);
-
-    if (!isAvailable) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
-        message: `Kategori dengan Id ${id} tidak ditemukan`,
+    const categoryToDelete = await Category.findOne({ slug });
+    console.log(categoryToDelete._id);
+    if (!categoryToDelete) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Kategori ${slug} tidak ditemukan`,
       });
     }
 
-    /** cari id dan hapus */
-    await Category.findByIdAndDelete(id);
+    /** Cek apakah kategori ini masih digunakan oleh destinasi lain */
+    const destinationCount = await Destination.countDocuments({
+      category: categoryToDelete._id,
+    });
 
-    return {
-      message: `Kategori dengan berhasil dihapus.`,
-    };
+    if (destinationCount > 0) {
+      throw new ResponseError(
+        409,
+        'Kategori masih digunakan oleh destinasi lain.',
+        {
+          message: `Tidak dapat menghapus kategori. Hapus ${destinationCount} destinasi yang terkait terlebih dahulu.`,
+        }
+      );
+    }
+
+    /** cari slug dan hapus */
+    await Category.findOneAndDelete({ slug: slug });
   },
 };

@@ -9,3 +9,6 @@ delete-admin:
 	
 delete-data:
 	node data/seeds/seeds.mjs --delete-default
+
+delete-all:
+	node data/seeds/seeds.mjs --delete-all

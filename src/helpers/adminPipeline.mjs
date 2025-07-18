@@ -5,10 +5,8 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { adminSchema } from '#schemas/admin.mjs';
 import { destinationSchema } from '#schemas/destination.mjs';
 
-const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
-const Destination =
-  mongoose.models.Destination ||
-  mongoose.model('Destination', destinationSchema);
+const Admin = mongoose.model('Admin', adminSchema);
+const Destination = mongoose.model('Destination', destinationSchema);
 
 const buildFilterStage = (validatedQuery) => {
   const { role } = validatedQuery;
@@ -269,12 +267,6 @@ export const dropManager = async (managerId, role) => {
     adminId: managerId,
     role: 'manager',
   });
-
-  if (!deletedManager) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Manajer dengan Id ${managerId} tidak ditemukan`,
-    });
-  }
 
   return deletedManager;
 };

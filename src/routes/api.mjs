@@ -43,7 +43,14 @@ privateRouter
 /** Category */
 privateRouter
   .route('/categories')
-  .post(category.post)
+  .post(
+    authMiddleware.protect,
+    authMiddleware.authorize('admin'),
+    category.post
+  );
+privateRouter
+  .route('/categories/:slug')
+  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
   .put(category.patch)
   .delete(category.drop);
 
