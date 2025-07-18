@@ -121,118 +121,25 @@ export const destinationService = {
       typeof destinationSlug !== 'string' ||
       destinationSlug.trim() === ''
     ) {
-      throw new ResponseError(400, 'Destination slug tidak valid.', {
-        message: 'Slug destinasi harus berupa string yang tidak kosong.',
-      });
+      throw new ResponseError(400, 'Destination slug tidak valid.');
     }
-
-    if (!adminId) {
-      throw new ResponseError(401, 'Unauthorized', {
-        message: 'Admin ID diperlukan untuk otorisasi.',
-      });
-    }
-
-    if (!adminId.startsWith('mng-')) {
-      throw new ResponseError(403, 'Akses ditolak.', {
-        message: 'Hanya manajer yang dapat mengubah destinasi.',
-      });
-    }
-
-    const [admin, destinationToUpdate] = await Promise.all([
-      Admin.findOne({ adminId }).select('_id').lean(),
-      Destination.findOne({ slug: destinationSlug })
-        .select('_id createdBy destinationTitle')
-        .lean(),
-    ]);
-
-    if (!admin) {
-      throw new ResponseError(404, 'Admin tidak ditemukan.', {
-        adminId: `Admin dengan ID "${adminId}" tidak ditemukan.`,
-      });
-    }
-
-    if (!destinationToUpdate) {
-      throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-        destinationSlug: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
-      });
-    }
-
-    if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Akses ditolak.', {
-        message: 'Anda tidak memiliki izin untuk mengubah destinasi ini.',
-      });
-    }
+    validate.isNotEmpty(request);
 
     const validatedRequest = validate.requestCheck(
       checker.patchDestinationValidation,
       request
     );
 
-    if (
-      validatedRequest.destinationTitle &&
-      validatedRequest.destinationTitle !== destinationToUpdate.destinationTitle
-    ) {
-      const existingDestination = await Destination.findOne({
-        destinationTitle: validatedRequest.destinationTitle,
-        _id: { $ne: destinationToUpdate._id },
-      }).select('destinationTitle');
-
-      if (existingDestination) {
-        throw new ResponseError(409, 'Judul destinasi sudah ada.', {
-          destinationTitle: 'Judul destinasi wisata ini sudah digunakan.',
-        });
-      }
-    } else if (
-      validatedRequest.destinationTitle &&
-      validatedRequest.destinationTitle === destinationToUpdate.destinationTitle
-    ) {
-      delete validatedRequest.destinationTitle;
-      if (Object.keys(validatedRequest).length === 0) {
-        const pipeline = helper.getDestination(destinationSlug);
-        const result = await Destination.aggregate(pipeline);
-        return result[0];
-      }
-    }
-
-    if (validatedRequest.categories) {
-      const categoryName = validatedRequest.categories;
-      const categoryDoc = await Category.findOne({
-        name: categoryName,
-      })
-        .select('_id')
-        .lean();
-      if (!categoryDoc) {
-        throw new ResponseError(404, 'Kategori tidak ditemukan.', {
-          categories: `Kategori dengan nama "${categoryName}" tidak ada.`,
-        });
-      }
-      validatedRequest.category = categoryDoc._id;
-      delete validatedRequest.categories;
-    }
-
-    if (validatedRequest.locations && validatedRequest.locations.subdistrict) {
-      const subdistrictDoc = await Subdistrict.findOne({
-        name: validatedRequest.locations.subdistrict,
-      })
-        .select('_id')
-        .lean();
-      if (!subdistrictDoc) {
-        throw new ResponseError(404, 'Kecamatan tidak ditemukan.', {
-          subdistrict: `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`,
-        });
-      }
-      validatedRequest.locations.subdistrict = subdistrictDoc._id;
-    }
-
-    await Destination.findOneAndUpdate(
-      { slug: destinationSlug },
-      { $set: validatedRequest }
+    const updatedDestination = await helper.patchDestination(
+      destinationSlug,
+      adminId,
+      validatedRequest
     );
 
-    const pipeline = helper.getDestination(destinationSlug);
-    const result = await Destination.aggregate(pipeline);
+    const pipeline = helper.getDestination(updatedDestination._id);
+    const [result] = await Destination.aggregate(pipeline);
 
-    return result[0];
+    return result;
   },
 
   drop: async (destinationSlug, adminId) => {

@@ -67,12 +67,13 @@ export const destination = {
   },
 
   patch: async (req, res) => {
-    const { destinationSlug } = req.params;
-    const { adminId } = req.query;
+    const adminId = req.admin.adminId;
+    const request = req.body;
+    const { slug: destinationSlug } = req.params;
     const result = await destinationService.update(
       destinationSlug,
       adminId,
-      req.body
+      request
     );
     res.status(200).json({
       message: `Destinasi '${result.destinationTitle}' berhasil diubah`,
@@ -81,8 +82,8 @@ export const destination = {
   },
 
   drop: async (req, res) => {
-    const { destinationSlug } = req.params;
-    const { adminId } = req.query;
+    const { slug: destinationSlug } = req.params;
+    const adminId = req.admin.adminId;
     const result = await destinationService.drop(destinationSlug, adminId);
     res.status(200).json(result);
   },

@@ -30,7 +30,7 @@ export const description = validate
   });
 
 export const locations = validate.object({
-  adresses: validate
+  addresses: validate
     .string()
     .pattern(/^[^<>]*$/)
     .messages({

@@ -4,6 +4,7 @@ import { Category } from '#schemas/category.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
+import { adminId } from '#validations/fieldDestination.mjs';
 
 const buildFilterStage = (validatedQuery) => {
   const { search, category, subdistrict } = validatedQuery;
@@ -238,6 +239,112 @@ export const createDestination = async (adminId, validatedRequest) => {
   const savedDestination = await newDestination.save();
 
   return savedDestination;
+};
+
+export const patchDestination = async (
+  destinationSlug,
+  adminId,
+  validatedRequest
+) => {
+  const [admin, destinationToUpdate] = await Promise.all([
+    Admin.findOne({ adminId }).select('_id').lean(),
+    Destination.findOne({ slug: destinationSlug }).select(
+      '_id createdBy destinationTitle'
+    ),
+  ]);
+
+  if (!admin) {
+    throw new ResponseError(404, 'Admin tidak ditemukan.');
+  }
+  if (!destinationToUpdate) {
+    throw new ResponseError(404, 'Destinasi tidak ditemukan.');
+  }
+  if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
+    throw new ResponseError(
+      403,
+      'Akses ditolak: Anda bukan pemilik destinasi ini.'
+    );
+  }
+
+  const errors = {};
+  const finalUpdates = {};
+
+  if (
+    validatedRequest.destinationTitle &&
+    validatedRequest.destinationTitle !== destinationToUpdate.destinationTitle
+  ) {
+    const existingTitle = await Destination.findOne({
+      destinationTitle: validatedRequest.destinationTitle,
+      _id: { $ne: destinationToUpdate._id },
+    }).lean();
+    if (existingTitle) {
+      errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
+    } else {
+      finalUpdates.destinationTitle = validatedRequest.destinationTitle;
+    }
+  }
+
+  if (validatedRequest.categories) {
+    const categoryDoc = await Category.findOne({
+      name: validatedRequest.categories,
+    })
+      .select('_id')
+      .lean();
+    if (!categoryDoc) {
+      errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
+    } else {
+      finalUpdates.category = categoryDoc._id;
+    }
+  }
+
+  if (validatedRequest.locations) {
+    if (validatedRequest.locations.subdistrict) {
+      const subdistrictDoc = await Subdistrict.findOne({
+        name: validatedRequest.locations.subdistrict,
+      })
+        .select('_id')
+        .lean();
+      if (!subdistrictDoc) {
+        errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
+      } else {
+        finalUpdates['locations.subdistrict'] = subdistrictDoc._id;
+      }
+    }
+    if (validatedRequest.locations.addresses) {
+      finalUpdates['locations.addresses'] =
+        validatedRequest.locations.addresses;
+    }
+    if (validatedRequest.locations.coordinates) {
+      finalUpdates['locations.coordinates'] =
+        validatedRequest.locations.coordinates;
+    }
+  }
+
+  if (Object.keys(errors).length > 0) {
+    throw new ResponseError(400, 'Gagal mengubah destinasi wisata.', errors);
+  }
+
+  for (const key of Object.keys(validatedRequest)) {
+    if (
+      key !== 'destinationTitle' &&
+      key !== 'categories' &&
+      key !== 'locations'
+    ) {
+      finalUpdates[key] = validatedRequest[key];
+    }
+  }
+
+  if (Object.keys(finalUpdates).length === 0) {
+    return destinationToUpdate;
+  }
+
+  const updatedDestination = await Destination.findByIdAndUpdate(
+    destinationToUpdate._id,
+    { $set: finalUpdates },
+    { new: true, runValidators: true }
+  );
+
+  return updatedDestination;
 };
 
 export const getDestination = (identifier) => {

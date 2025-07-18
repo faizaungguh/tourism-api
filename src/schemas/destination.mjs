@@ -15,7 +15,7 @@ const destinationSchema = new Schema(
       required: true,
     },
     createdBy: { type: Schema.Types.ObjectId, ref: 'Admin', required: true },
-    description: { type: String, required: true },
+    description: { type: String },
     profilePhoto: { type: String },
     headlinePhoto: { type: String },
     galleryPhoto: [
@@ -26,7 +26,7 @@ const destinationSchema = new Schema(
       },
     ],
     locations: {
-      adresses: { type: String, required: true },
+      addresses: { type: String },
       subdistrict: {
         type: Schema.Types.ObjectId,
         ref: 'Subdistrict',
@@ -38,7 +38,6 @@ const destinationSchema = new Schema(
       {
         day: {
           type: String,
-          required: true,
           enum: [
             'monday',
             'tuesday',
@@ -56,7 +55,7 @@ const destinationSchema = new Schema(
     attractions: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
     facility: [
       {
-        name: { type: String, required: true, trim: true },
+        name: { type: String, trim: true },
         availability: { type: Boolean, default: false },
         number: { type: Number, default: 0 },
         disabilityAccess: { type: Boolean, default: false },
@@ -67,7 +66,6 @@ const destinationSchema = new Schema(
       {
         platform: {
           type: String,
-          required: true,
           enum: [
             'phone',
             'whatsapp',
@@ -79,7 +77,7 @@ const destinationSchema = new Schema(
             'tiktok',
           ],
         },
-        value: { type: String, required: true, trim: true },
+        value: { type: String, trim: true },
       },
     ],
     ticket: {
