@@ -83,7 +83,11 @@ privateRouter
 /** Attraction */
 privateRouter
   .route('/destinations/:destination-slug/attractions')
-  .post(attraction.create);
+  .post(
+    authMiddleware.protect,
+    authMiddleware.authorize('manager'),
+    attraction.create
+  );
 privateRouter
   .route('/destinations/:destination-slug/attractions/:attraction-slug')
   .put(attraction.patch)

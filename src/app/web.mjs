@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import { logger } from '#app/logging.mjs';
 import { publicRouter } from '#routes/public.mjs';
 import { privateRouter } from '#routes/api.mjs';
-import * as handler from '../errors/error.mjs';
+import * as handler from '#middlewares/error.mjs';
 
 export const web = express();
 
