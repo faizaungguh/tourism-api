@@ -112,9 +112,9 @@ export const categoryService = {
   },
 
   deleteCategory: async (slug) => {
-    /** cek id */
+    /** Cek apakah kategori ada */
     const categoryToDelete = await Category.findOne({ slug });
-    console.log(categoryToDelete._id);
+
     if (!categoryToDelete) {
       throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Kategori ${slug} tidak ditemukan`,

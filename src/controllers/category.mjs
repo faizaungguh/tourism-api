@@ -33,7 +33,7 @@ export const category = {
     const { slug } = req.params;
     await categoryService.deleteCategory(slug);
     res.status(200).json({
-      message: 'Kategori berhasil dihapus',
+      message: `Kategori '${slug}' berhasil dihapus`,
     });
   },
 };
