@@ -1,10 +1,7 @@
-import mongoose from 'mongoose';
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/subdistrict.mjs';
-import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
+import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-
-const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
 
 export const subdistrictService = {
   createSubdistrict: async (request) => {

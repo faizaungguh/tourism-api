@@ -1,8 +1,7 @@
 import { ResponseError } from '#errors/responseError.mjs';
-import mongoose from 'mongoose';
+import { Admin } from '#schemas/admin.mjs';
 
 export const checkDuplicate = async (dataToUpdate, originalData = null) => {
-  const Admin = mongoose.model('Admin');
   const orConditions = [];
 
   if (

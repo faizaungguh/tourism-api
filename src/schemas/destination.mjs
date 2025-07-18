@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
-export const destinationSchema = new Schema(
+const destinationSchema = new mongoose.Schema(
   {
     destinationsId: { type: String },
     destinationTitle: {
@@ -10,9 +9,9 @@ export const destinationSchema = new Schema(
       required: true,
       trim: true,
     },
-    categories: {
+    category: {
       type: Schema.Types.ObjectId,
-      ref: 'Categories',
+      ref: 'Category',
       required: true,
     },
     createdBy: { type: Schema.Types.ObjectId, ref: 'Admin', required: true },
@@ -118,3 +117,5 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   }
   next();
 });
+
+export const Destination = mongoose.model('Destination', destinationSchema);

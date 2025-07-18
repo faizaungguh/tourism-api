@@ -1,16 +1,15 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
-export const SubdistrictSchema = new Schema(
+const subdistrictSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    code: { type: String },
-    slug: { type: String },
+    code: { type: String, unique: true },
+    slug: { type: String, unique: true },
   },
   { timestamps: true }
 );
 
-SubdistrictSchema.pre('save', async function (next) {
+subdistrictSchema.pre('save', async function (next) {
   if (this.isModified('name') || this.isNew) {
     this.slug = this.name
       .toLowerCase()
@@ -20,3 +19,5 @@ SubdistrictSchema.pre('save', async function (next) {
 
   next();
 });
+
+export const Subdistrict = mongoose.model('Subdistrict', subdistrictSchema);

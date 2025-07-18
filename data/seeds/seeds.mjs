@@ -1,18 +1,15 @@
 import mongoose from 'mongoose';
 import { createRequire } from 'module';
 import connectionDB from '#app/db.mjs';
-import { SubdistrictSchema } from './schema/subdistrict.mjs';
-import { categorySchema } from './schema/category.mjs';
-import { adminSchema } from './schema/admin.mjs';
+import { Admin } from './schema/admin.mjs';
+import { Subdistrict } from './schema/subdistrict.mjs';
+import { Category } from './schema/category.mjs';
 
 const require = createRequire(import.meta.url);
 const subdistrictData = require('../mocks/Subdistricts.json');
 const categoryData = require('../mocks/Categories.json');
-const adminDefault = require('../mocks/Admin.json');
-
-const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
-const Category = mongoose.model('Category', categorySchema);
-const Admin = mongoose.model('Admin', adminSchema);
+const multiAdmin = require('../mocks/Admin.json');
+const adminDefault = require('../mocks/Default.json');
 
 const importAdmin = async () => {
   try {
@@ -22,8 +19,17 @@ const importAdmin = async () => {
     /**  Menghapus data lama untuk memastikan data bersih */
     await Admin.deleteMany();
 
-    await Admin.create(adminDefault);
-    console.log('1 Admin dan 1 Manager berhasil diimpor!');
+    const createdAdmins = await Admin.create(adminDefault);
+    const adminCount = adminDefault.filter(
+      (adm) => adm.role === 'admin'
+    ).length;
+    const managerCount = adminDefault.filter(
+      (adm) => adm.role === 'manager'
+    ).length;
+
+    console.log(
+      `${adminCount} Admin dan ${managerCount} Manager berhasil diimpor! (Total: ${createdAdmins.length})`
+    );
     process.exit(0);
   } catch (error) {
     console.error('Error saat mengimpor data:', error);
@@ -56,9 +62,11 @@ const importData = async () => {
     await Subdistrict.deleteMany();
     await Category.deleteMany();
 
-    await Subdistrict.create(subdistrictData);
-    await Category.create(categoryData);
-    console.log('Data Kecamatan dan Kategori berhasil diimpor!');
+    const subdistricts = await Subdistrict.create(subdistrictData);
+    const categories = await Category.create(categoryData);
+    console.log(
+      `${subdistricts.length} Kecamatan dan ${categories.length} Kategori berhasil diimpor!`
+    );
     process.exit(0);
   } catch (error) {
     console.error('Error saat mengimpor data:', error);
@@ -79,6 +87,44 @@ const deleteData = async () => {
     process.exit(0);
   } catch (error) {
     console.error('Error saat mengimpor data:', error);
+    process.exit(1);
+  }
+};
+
+const importAllData = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai import semua data...');
+
+    // Menghapus data lama untuk memastikan data bersih
+    await Admin.deleteMany();
+    await Subdistrict.deleteMany();
+    await Category.deleteMany();
+    console.log(
+      'Data lama (Admin, Manager, Kecamatan, Kategori) berhasil dihapus.'
+    );
+
+    // Impor data baru
+    const createdAdmins = await Admin.create(multiAdmin);
+    const subdistricts = await Subdistrict.create(subdistrictData);
+    const categories = await Category.create(categoryData);
+
+    const adminCount = multiAdmin.filter((adm) => adm.role === 'admin').length;
+    const managerCount = multiAdmin.filter(
+      (adm) => adm.role === 'manager'
+    ).length;
+
+    console.log('\n--- Ringkasan Impor ---');
+    console.log(
+      `- ${adminCount} Admin dan ${managerCount} Manager berhasil diimpor. (Total: ${createdAdmins.length})`
+    );
+    console.log(`- ${subdistricts.length} Kecamatan berhasil diimpor.`);
+    console.log(`- ${categories.length} Kategori berhasil diimpor.`);
+    console.log('-------------------------\n');
+    console.log('Semua data default berhasil diimpor!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mengimpor semua data:', error);
     process.exit(1);
   }
 };
@@ -104,6 +150,8 @@ if (process.argv[2] === '--import-admin') {
   importData();
 } else if (process.argv[2] === '--delete-default') {
   deleteData();
+} else if (process.argv[2] === '--import-all') {
+  importAllData();
 } else if (process.argv[2] === '--delete-all') {
   deleteAllData();
 }

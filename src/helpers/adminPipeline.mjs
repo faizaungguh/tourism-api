@@ -1,12 +1,8 @@
 import bcrypt from 'bcrypt';
-import mongoose from 'mongoose';
 import * as verify from '#helpers/manager.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
-import { destinationSchema } from '#schemas/destination.mjs';
-
-const Admin = mongoose.model('Admin', adminSchema);
-const Destination = mongoose.model('Destination', destinationSchema);
+import { Admin } from '#schemas/admin.mjs';
+import { Destination } from '#schemas/destination.mjs';
 
 const buildFilterStage = (validatedQuery) => {
   const { role } = validatedQuery;

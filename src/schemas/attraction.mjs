@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
 import { nanoid } from 'nanoid';
 
-const Schema = mongoose.Schema;
-
-export const attractionSchema = new Schema(
+const attractionSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, required: true },
@@ -52,3 +50,5 @@ attractionSchema.pre('save', async function (next) {
   }
   next();
 });
+
+export const Attraction = mongoose.model('Attraction', attractionSchema);

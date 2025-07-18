@@ -1,13 +1,10 @@
-import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import * as validate from '#validations/validate.mjs';
-import { validation } from '#validations/auth.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
+import { validation } from '#validations/auth.mjs';
 import { config } from '#configs/variable.mjs';
-
-const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
+import { Admin } from '#schemas/admin.mjs';
 
 export const authService = {
   registerManager: async (request) => {

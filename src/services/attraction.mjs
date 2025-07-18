@@ -1,14 +1,9 @@
-import mongoose from 'mongoose';
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/attraction.mjs';
-import { attractionSchema } from '#schemas/attraction.mjs';
-import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
-
-const Attraction = mongoose.model('Attraction', attractionSchema);
-const Destination = mongoose.model('Destination', destinationSchema);
-const Admin = mongoose.model('Admin', adminSchema);
+import { Attraction } from '#schemas/attraction.mjs';
+import { Destination } from '#schemas/destination.mjs';
+import { Admin } from '#schemas/admin.mjs';
 
 export const attractionService = {
   create: async (adminId, destinationSlug, request) => {

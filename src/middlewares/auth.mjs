@@ -1,10 +1,7 @@
-import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { config } from '#configs/variable.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
+import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-
-const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);
 
 export const authMiddleware = {
   protect: async (req, res, next) => {

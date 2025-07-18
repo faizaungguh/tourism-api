@@ -1,11 +1,8 @@
-import mongoose from 'mongoose';
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/adminPipeline.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-
-const Admin = mongoose.model('Admin', adminSchema);
+import { Admin } from '#schemas/admin.mjs';
 
 export const managerService = {
   getAll: async (query) => {

@@ -8,10 +8,74 @@
         "role": "admin"
     },
     {
+        "username": "admin02",
+        "password": "rahasiaAdmin02",
+        "name": "Admin 02",
+        "email": "admin02@example.com",
+        "contactNumber": "081234567890",
+        "role": "admin"
+    },
+    {
+        "username": "admin03",
+        "password": "rahasiaAdmin03",
+        "name": "Admin 03",
+        "email": "admin03@example.com",
+        "contactNumber": "081234567890",
+        "role": "admin"
+    },
+    {
+        "username": "admin04",
+        "password": "rahasiaAdmin04",
+        "name": "Admin 04",
+        "email": "admin04@example.com",
+        "contactNumber": "081234567890",
+        "role": "admin"
+    },
+    {
+        "username": "admin05",
+        "password": "rahasiaAdmin05",
+        "name": "Admin 05",
+        "email": "admin05@example.com",
+        "contactNumber": "081234567890",
+        "role": "admin"
+    },
+    {
         "username": "manager01",
         "password": "rahasiaManager01",
         "name": "Manager Wisata 01",
         "email": "manager01@example.com",
+        "contactNumber": "08518202025",
+        "role": "manager"
+    },
+    {
+        "username": "manager02",
+        "password": "rahasiaManager02",
+        "name": "Manager Wisata 02",
+        "email": "manager02@example.com",
+        "contactNumber": "08518202025",
+        "role": "manager"
+    },
+    {
+        "username": "manager03",
+        "password": "rahasiaManager03",
+        "name": "Manager Wisata 03",
+        "email": "manager03@example.com",
+        "contactNumber": "08518202025",
+        "role": "manager"
+    },
+    {
+        "username": "manager04",
+        "password": "rahasiaManager04",
+        "name": "Manager Wisata 04",
+        "email": "manager04@example.com",
+        "contactNumber": "08518202025",
+        "role": "manager"
+    },
+    {
+        "username": "manager05",
+        "password": "rahasiaManager05",
+        "name": "Manager Wisata 05",
+        "email": "manager05@example.com",
         "contactNumber": "08518202025",
         "role": "manager"
     }

@@ -1,12 +1,8 @@
-import mongoose from 'mongoose';
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/category.mjs';
-import { categorySchema } from '#schemas/category.mjs';
-import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-
-const Category = mongoose.model('Category', categorySchema);
-const Destination = mongoose.model('Destination', destinationSchema);
+import { Destination } from '#schemas/destination.mjs';
+import { Category } from '#schemas/category.mjs';
 
 export const categoryService = {
   createCategory: async (request) => {

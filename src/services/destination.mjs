@@ -2,18 +2,12 @@ import mongoose from 'mongoose';
 import * as checker from '#validations/destination.mjs';
 import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/destinationPipeline.mjs';
-import { destinationSchema } from '#schemas/destination.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import { categorySchema } from '#schemas/category.mjs';
-import { SubdistrictSchema } from '#schemas/subdistrict.mjs';
-import { attractionSchema } from '#schemas/attraction.mjs';
-import { adminSchema } from '#schemas/admin.mjs';
-
-const Destination = mongoose.model('Destination', destinationSchema);
-const Category = mongoose.model('Category', categorySchema);
-const Subdistrict = mongoose.model('Subdistrict', SubdistrictSchema);
-const Attraction = mongoose.model('Attraction', attractionSchema);
-const Admin = mongoose.model('Admin', adminSchema);
+import { Destination } from '#schemas/destination.mjs';
+import { Category } from '#schemas/category.mjs';
+import { Subdistrict } from '#schemas/subdistrict.mjs';
+import { Attraction } from '#schemas/attraction.mjs';
+import { Admin } from '#schemas/admin.mjs';
 
 export const destinationService = {
   create: async (request) => {

@@ -1,20 +1,19 @@
 import mongoose from 'mongoose';
 
-const generateSlug = (name) => {
-  return name
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '');
-};
-
-const Schema = mongoose.Schema;
-export const categorySchema = new Schema(
+const categorySchema = new mongoose.Schema(
   {
     name: { type: String, required: true, unique: true, trim: true },
     slug: { type: String, unique: true, lowercase: true },
   },
   { timestamps: true }
 );
+
+const generateSlug = (name) => {
+  return name
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+};
 
 categorySchema.pre('save', async function (next) {
   if (this.isModified('name') || this.isNew) {
@@ -31,3 +30,5 @@ categorySchema.pre('findOneAndUpdate', function (next) {
   }
   next();
 });
+
+export const Category = mongoose.model('Category', categorySchema);
