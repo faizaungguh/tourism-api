@@ -4,7 +4,27 @@ import { Category } from '#schemas/category.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import { adminId } from '#validations/fieldDestination.mjs';
+
+const _findRelatedDocs = async ({ categories, subdistrict }) => {
+  const promises = [];
+
+  if (categories) {
+    promises.push(Category.findOne({ name: categories }).select('_id').lean());
+  } else {
+    promises.push(Promise.resolve(null));
+  }
+
+  if (subdistrict) {
+    promises.push(
+      Subdistrict.findOne({ name: subdistrict }).select('_id').lean()
+    );
+  } else {
+    promises.push(Promise.resolve(null));
+  }
+
+  const [categoryDoc, subdistrictDoc] = await Promise.all(promises);
+  return { categoryDoc, subdistrictDoc };
+};
 
 const buildFilterStage = (validatedQuery) => {
   const { search, category, subdistrict } = validatedQuery;
@@ -50,68 +70,14 @@ const buildSortStage = (validatedQuery) => {
   const sortDirection = sort === 'asc' ? 1 : -1;
   const sortStage = {};
 
-  if (sortBy === 'category') {
-    sortStage['categoryDetails.name'] = sortDirection;
-  } else if (sortBy === 'subdistrict') {
+  if (sortBy === 'category') sortStage['categoryDetails.name'] = sortDirection;
+  else if (sortBy === 'subdistrict')
     sortStage['subdistrictDetails.name'] = sortDirection;
-  } else if (sortBy === 'destinationTitle') {
+  else if (sortBy === 'destinationTitle')
     sortStage.destinationTitle = sortDirection;
-  } else {
-    sortStage.createdAt = -1;
-  }
+  else sortStage.createdAt = -1;
 
   return { $sort: sortStage };
-};
-
-export const listDestination = (validatedQuery) => {
-  const { page, size } = validatedQuery;
-  const skip = (page - 1) * size;
-
-  const filterStage = buildFilterStage(validatedQuery);
-  const sortStage = buildSortStage(validatedQuery);
-
-  return [
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'category',
-        foreignField: '_id',
-        as: 'categoryDetails',
-      },
-    },
-    {
-      $lookup: {
-        from: 'subdistricts',
-        localField: 'locations.subdistrict',
-        foreignField: '_id',
-        as: 'subdistrictDetails',
-      },
-    },
-    { $unwind: '$categoryDetails' },
-    { $unwind: '$subdistrictDetails' },
-    ...filterStage,
-    {
-      $facet: {
-        metadata: [{ $count: 'totalItems' }],
-        data: [
-          sortStage,
-          { $skip: skip },
-          { $limit: size },
-          {
-            $project: {
-              _id: 1,
-              destinationTitle: 1,
-              category: '$categoryDetails.name',
-              categorySlug: '$categoryDetails.slug',
-              subdistrict: '$subdistrictDetails.name',
-              subdistrictSlug: '$subdistrictDetails.slug',
-              address: '$locations.adresses',
-            },
-          },
-        ],
-      },
-    },
-  ];
 };
 
 const detailDestinationPipeline = [
@@ -162,7 +128,7 @@ const detailDestinationPipeline = [
       createdBy: '$adminDetails.name',
       slug: 1,
       locations: {
-        address: '$locations.adresses',
+        address: '$locations.addresses',
         subdistrict: '$subdistrictDetails.name',
         coordinates: '$locations.coordinates',
       },
@@ -188,42 +154,83 @@ const detailDestinationPipeline = [
   },
 ];
 
+export const listDestination = (validatedQuery) => {
+  const { page, size } = validatedQuery;
+  const skip = (page - 1) * size;
+  const filterStage = buildFilterStage(validatedQuery);
+  const sortStage = buildSortStage(validatedQuery);
+
+  return [
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'category',
+        foreignField: '_id',
+        as: 'categoryDetails',
+      },
+    },
+    {
+      $lookup: {
+        from: 'subdistricts',
+        localField: 'locations.subdistrict',
+        foreignField: '_id',
+        as: 'subdistrictDetails',
+      },
+    },
+    { $unwind: '$categoryDetails' },
+    { $unwind: '$subdistrictDetails' },
+    ...filterStage,
+    {
+      $facet: {
+        metadata: [{ $count: 'totalItems' }],
+        data: [
+          sortStage,
+          { $skip: skip },
+          { $limit: size },
+          {
+            $project: {
+              _id: 1,
+              destinationTitle: 1,
+              category: '$categoryDetails.name',
+              categorySlug: '$categoryDetails.slug',
+              subdistrict: '$subdistrictDetails.name',
+              subdistrictSlug: '$subdistrictDetails.slug',
+              address: '$locations.addresses',
+            },
+          },
+        ],
+      },
+    },
+  ];
+};
+
 export const createDestination = async (adminId, validatedRequest) => {
-  const [existingDestination, categoryDoc, subdistrictDoc, managerDoc] =
-    await Promise.all([
-      Destination.findOne({
-        destinationTitle: validatedRequest.destinationTitle,
-      })
-        .select('destinationTitle')
-        .lean(),
-      Category.findOne({ name: validatedRequest.categories })
-        .select('_id')
-        .lean(),
-      Subdistrict.findOne({ name: validatedRequest.locations.subdistrict })
-        .select('_id')
-        .lean(),
-      Admin.findOne({ adminId }).select('_id').lean(),
-    ]);
+  const [existingDestination, managerDoc] = await Promise.all([
+    Destination.findOne({ destinationTitle: validatedRequest.destinationTitle })
+      .select('destinationTitle')
+      .lean(),
+    Admin.findOne({ adminId }).select('_id').lean(),
+  ]);
+
+  const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
+    categories: validatedRequest.categories,
+    subdistrict: validatedRequest.locations.subdistrict,
+  });
 
   const errors = {};
-  if (existingDestination) {
+  if (existingDestination)
     errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
-  }
-  if (!categoryDoc) {
-    errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
-  }
-  if (!subdistrictDoc) {
-    errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
-  }
-  if (!managerDoc) {
+  if (!managerDoc)
     errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
-  }
+  if (!categoryDoc)
+    errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
+  if (!subdistrictDoc)
+    errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
 
   if (Object.keys(errors).length > 0) {
     throw new ResponseError(400, 'Gagal menambahkan destinasi baru.', errors);
   }
 
-  /** Jika semua valid, siapkan dan simpan data */
   const { categories, ...rest } = validatedRequest;
   const destinationData = {
     ...rest,
@@ -236,9 +243,7 @@ export const createDestination = async (adminId, validatedRequest) => {
   };
 
   const newDestination = new Destination(destinationData);
-  const savedDestination = await newDestination.save();
-
-  return savedDestination;
+  return newDestination.save();
 };
 
 export const patchDestination = async (
@@ -253,12 +258,9 @@ export const patchDestination = async (
     ),
   ]);
 
-  if (!admin) {
-    throw new ResponseError(404, 'Admin tidak ditemukan.');
-  }
-  if (!destinationToUpdate) {
+  if (!admin) throw new ResponseError(404, 'Admin tidak ditemukan.');
+  if (!destinationToUpdate)
     throw new ResponseError(404, 'Destinasi tidak ditemukan.');
-  }
   if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
     throw new ResponseError(
       403,
@@ -269,6 +271,23 @@ export const patchDestination = async (
   const errors = {};
   const finalUpdates = {};
 
+  const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
+    categories: validatedRequest.categories,
+    subdistrict: validatedRequest.locations?.subdistrict,
+  });
+
+  if (validatedRequest.categories) {
+    if (!categoryDoc)
+      errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
+    else finalUpdates.category = categoryDoc._id;
+  }
+
+  if (validatedRequest.locations?.subdistrict) {
+    if (!subdistrictDoc)
+      errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
+    else finalUpdates['locations.subdistrict'] = subdistrictDoc._id;
+  }
+
   if (
     validatedRequest.destinationTitle &&
     validatedRequest.destinationTitle !== destinationToUpdate.destinationTitle
@@ -277,47 +296,9 @@ export const patchDestination = async (
       destinationTitle: validatedRequest.destinationTitle,
       _id: { $ne: destinationToUpdate._id },
     }).lean();
-    if (existingTitle) {
+    if (existingTitle)
       errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
-    } else {
-      finalUpdates.destinationTitle = validatedRequest.destinationTitle;
-    }
-  }
-
-  if (validatedRequest.categories) {
-    const categoryDoc = await Category.findOne({
-      name: validatedRequest.categories,
-    })
-      .select('_id')
-      .lean();
-    if (!categoryDoc) {
-      errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
-    } else {
-      finalUpdates.category = categoryDoc._id;
-    }
-  }
-
-  if (validatedRequest.locations) {
-    if (validatedRequest.locations.subdistrict) {
-      const subdistrictDoc = await Subdistrict.findOne({
-        name: validatedRequest.locations.subdistrict,
-      })
-        .select('_id')
-        .lean();
-      if (!subdistrictDoc) {
-        errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
-      } else {
-        finalUpdates['locations.subdistrict'] = subdistrictDoc._id;
-      }
-    }
-    if (validatedRequest.locations.addresses) {
-      finalUpdates['locations.addresses'] =
-        validatedRequest.locations.addresses;
-    }
-    if (validatedRequest.locations.coordinates) {
-      finalUpdates['locations.coordinates'] =
-        validatedRequest.locations.coordinates;
-    }
+    else finalUpdates.destinationTitle = validatedRequest.destinationTitle;
   }
 
   if (Object.keys(errors).length > 0) {
@@ -334,17 +315,23 @@ export const patchDestination = async (
     }
   }
 
+  if (validatedRequest.locations?.addresses) {
+    finalUpdates['locations.addresses'] = validatedRequest.locations.addresses;
+  }
+  if (validatedRequest.locations?.coordinates) {
+    finalUpdates['locations.coordinates'] =
+      validatedRequest.locations.coordinates;
+  }
+
   if (Object.keys(finalUpdates).length === 0) {
     return destinationToUpdate;
   }
 
-  const updatedDestination = await Destination.findByIdAndUpdate(
+  return Destination.findByIdAndUpdate(
     destinationToUpdate._id,
     { $set: finalUpdates },
     { new: true, runValidators: true }
   );
-
-  return updatedDestination;
 };
 
 export const getDestination = (identifier) => {

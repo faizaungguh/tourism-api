@@ -116,4 +116,13 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   next();
 });
 
+destinationSchema.pre('deleteOne', { document: true }, async function (next) {
+  if (this.attractions && this.attractions.length > 0) {
+    await mongoose
+      .model('Attraction')
+      .deleteMany({ _id: { $in: this.attractions } });
+  }
+  next();
+});
+
 export const Destination = mongoose.model('Destination', destinationSchema);
