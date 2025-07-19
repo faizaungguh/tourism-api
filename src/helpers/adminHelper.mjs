@@ -54,49 +54,6 @@ export const listAdmins = (validatedQuery) => {
   ];
 };
 
-export const createAdmin = async (validatedRequest) => {
-  /** Cek duplikasi username, email, dan name. */
-  const checkDuplicate = await Admin.find({
-    $or: [
-      { username: validatedRequest.username },
-      { email: validatedRequest.email },
-      { name: validatedRequest.name },
-    ],
-  }).select('username name email');
-
-  /** Lempar error jika ditemukan duplikasi. */
-  if (checkDuplicate.length > 0) {
-    const duplicateErrors = {};
-    checkDuplicate.forEach((admin) => {
-      if (admin.username === validatedRequest.username) {
-        duplicateErrors.username = 'Username telah terdaftar.';
-      }
-      if (admin.email === validatedRequest.email) {
-        duplicateErrors.email = 'Email telah terdaftar.';
-      }
-      if (admin.name === validatedRequest.name) {
-        duplicateErrors.name = 'Name telah terdaftar.';
-      }
-    });
-
-    if (Object.keys(duplicateErrors).length > 0) {
-      throw new ResponseError(
-        409,
-        'Data yang diberikan sudah terdaftar.',
-        duplicateErrors
-      );
-    }
-  }
-
-  /** Hash password sebelum disimpan. */
-  validatedRequest.password = await bcrypt.hash(validatedRequest.password, 10);
-
-  /** Atur role secara otomatis menjadi 'admin'. */
-  validatedRequest.role = 'admin';
-
-  return Admin.create(validatedRequest);
-};
-
 export const updateAdmin = async (id, validatedRequest) => {
   const originalAdmin = await Admin.findOne({ adminId: id }).select(
     '+password'
@@ -223,37 +180,4 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   ).select('-_id -password -__v');
 
   return updatedManager.toObject();
-};
-
-export const dropManager = async (managerId, role) => {
-  const managerToDelete = await Admin.findOne({
-    adminId: managerId,
-  })
-    .select('_id')
-    .lean();
-
-  if (!managerToDelete) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
-      message: `Manajer dengan Id ${managerId} tidak ditemukan`,
-    });
-  }
-
-  /** Cek apakah manajer ini memiliki destinasi yang terkait */
-  const destinationCount = await Destination.countDocuments({
-    createdBy: managerToDelete._id,
-  });
-
-  if (destinationCount > 0) {
-    throw new ResponseError(409, 'Manajer memiliki destinasi wisata.', {
-      message: `Tidak dapat menghapus manajer. Hapus ${destinationCount} destinasi yang terkait terlebih dahulu.`,
-    });
-  }
-
-  /** Jika tidak ada, lanjutkan proses penghapusan */
-  const deletedManager = await Admin.findOneAndDelete({
-    adminId: managerId,
-    role: 'manager',
-  });
-
-  return deletedManager;
 };

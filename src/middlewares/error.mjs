@@ -40,6 +40,18 @@ export const handler = {
       return;
     }
 
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+      logger.warn(
+        `Error pada Klien 400: Gagal mem-parsing JSON body - ${err.message}`
+      );
+      return res.status(400).json({
+        errors: {
+          message:
+            'Format JSON tidak valid. Mohon periksa kembali body request Anda.',
+        },
+      });
+    }
+
     if (err instanceof ResponseError) {
       logger.warn(`Error pada Klien ${err.status}: ${err.message}`);
       res.status(err.status).json({

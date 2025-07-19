@@ -47,6 +47,7 @@ export const manager = {
     }
 
     const result = await managerService.drop(id);
+    res.clearCookie('accessToken', { path: '/' });
     res.status(200).json({
       message: `Manajer '${result.name}' telah berhasil dihapus`,
     });

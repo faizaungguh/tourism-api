@@ -38,7 +38,11 @@ export const admin = {
 
   drop: async (req, res) => {
     const { id } = req.params;
+    const adminId = req.admin.adminId;
     const result = await adminService.drop(id);
+    if (adminId === id) {
+      res.clearCookie('accessToken', { path: '/' });
+    }
     res.status(200).json({
       message: `Admin '${result.name}' telah berhasil dihapus`,
     });

@@ -72,7 +72,19 @@ export const managerService = {
   },
 
   drop: async (adminId) => {
-    const deletedManager = await helper.dropManager(adminId, 'manager');
-    return deletedManager;
+    const manager = await Admin.findOne({
+      adminId: adminId,
+      role: 'manager',
+    });
+
+    if (!manager) {
+      throw new ResponseError(404, 'Id tidak ditemukan', {
+        message: `Manajer dengan Id ${managerId} tidak ditemukan`,
+      });
+    }
+
+    await manager.deleteOne();
+
+    return manager;
   },
 };
