@@ -9,20 +9,14 @@ export const adminService = {
   create: async (request) => {
     validate.isNotEmpty(request);
 
-    /** Validasi input request. */
     const validatedRequest = validate.requestCheck(
       checker.adminValidation,
       request
     );
 
-    const newAdmin = await helper.createAdmin(validatedRequest);
+    validatedRequest.role = 'admin';
 
-    if (!newAdmin) {
-      throw new ResponseError(400, 'Gagal membuat admin', {
-        message: 'Gagal membuat admin karena kesalahan pada server',
-      });
-    }
-    return newAdmin;
+    return Admin.create(validatedRequest);
   },
 
   getAll: async (query) => {

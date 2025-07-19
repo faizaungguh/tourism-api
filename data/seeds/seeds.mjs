@@ -96,7 +96,6 @@ const importAllData = async () => {
     await connectionDB();
     console.log('Memulai import semua data...');
 
-    // Menghapus data lama untuk memastikan data bersih
     await Admin.deleteMany();
     await Subdistrict.deleteMany();
     await Category.deleteMany();
@@ -104,7 +103,6 @@ const importAllData = async () => {
       'Data lama (Admin, Manager, Kecamatan, Kategori) berhasil dihapus.'
     );
 
-    // Impor data baru
     const createdAdmins = await Admin.create(multiAdmin);
     const subdistricts = await Subdistrict.create(subdistrictData);
     const categories = await Category.create(categoryData);

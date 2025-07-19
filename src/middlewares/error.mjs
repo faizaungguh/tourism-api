@@ -3,12 +3,10 @@ import { logger } from '#app/logging.mjs';
 
 export const handler = {
   method: (router) => (req, res, next) => {
-    /** mencari cek rute endpoint */
     const match = router.stack.find(
-      (layer) => layer.route && layer.regexp.test(req.path)
+      (layer) => layer.route && layer.regexp && layer.regexp.test(req.path)
     );
 
-    /** jika path ditemukan tetapi metodenya tidak cocok */
     if (match && !match.route.methods[req.method.toLowerCase()]) {
       const allowedMethods = Object.keys(match.route.methods)
         .filter((method) => method !== '_all')
@@ -24,11 +22,9 @@ export const handler = {
       );
     }
 
-    /** jika tidak ada masalah, lanjutkan */
     return next();
   },
 
-  /** jika endpoint dipanggil tapi tidak terdaftar */
   notFoundEndpoint: (req, res, next) => {
     next(
       new ResponseError(
@@ -38,7 +34,6 @@ export const handler = {
     );
   },
 
-  /** menampilkan pesan error */
   error: (err, req, res, next) => {
     if (!err) {
       next();
@@ -49,11 +44,9 @@ export const handler = {
       logger.warn(`Error pada Klien ${err.status}: ${err.message}`);
       res.status(err.status).json({
         message: err.message,
-        /** error 4xx adalah ketika kesalahan ada pada sisi klien */
         ...(Object.keys(err.errors).length > 0 && { errors: err.errors }),
       });
     } else {
-      /** error 5xx adalah ketika kesalahan ada pada server */
       logger.error('Error pada Server:', err);
       res.status(500).json({
         message: 'Maaf, terjadi kesalahan pada server kami.',

@@ -17,7 +17,7 @@ export const listAdminValidation = validate.object({
   sortBy: validate
     .string()
     .valid('username', 'email', 'name', 'createdAt')
-    .optional(),
+    .default('createdAt'),
 });
 
 export const patchAdminValidation = validate

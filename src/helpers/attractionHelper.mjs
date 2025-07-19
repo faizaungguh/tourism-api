@@ -16,7 +16,6 @@ export const validateAttractionAccess = async (
     Attraction.findOne({ slug: attractionSlug }).select('_id name destination'),
   ]);
 
-  // 1. Cek apakah destinasi, admin, dan wahana ditemukan
   if (!destination) {
     throw new ResponseError(
       404,
@@ -36,7 +35,6 @@ export const validateAttractionAccess = async (
     );
   }
 
-  // 2. Cek otorisasi: apakah admin adalah pemilik destinasi
   if (destination.createdBy.toString() !== admin._id.toString()) {
     throw new ResponseError(
       403,
@@ -44,7 +42,6 @@ export const validateAttractionAccess = async (
     );
   }
 
-  // 3. Cek integritas: apakah wahana benar-benar milik destinasi tersebut
   if (attraction.destination.toString() !== destination._id.toString()) {
     throw new ResponseError(
       404,
@@ -52,7 +49,6 @@ export const validateAttractionAccess = async (
     );
   }
 
-  // Jika semua pengecekan lolos, kembalikan dokumen yang relevan
   return { destination, attraction };
 };
 
