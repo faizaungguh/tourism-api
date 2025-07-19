@@ -1,36 +1,21 @@
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/attraction.mjs';
+import * as helper from '#helpers/attractionPipeline.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const attractionService = {
-  create: async (adminId, destinationSlug, request) => {
-    validate.isNotEmpty(request);
-
-    /** 1. Otorisasi: Pastikan admin adalah manajer dan pemilik destinasi */
-    if (!adminId) {
-      throw new ResponseError(401, 'Unauthorized', {
-        message: 'Admin ID diperlukan untuk otorisasi.',
-      });
-    }
-
-    const admin = await Admin.findOne({ adminId }).select('_id role').lean();
-
-    if (!admin || admin.role !== 'manager') {
-      throw new ResponseError(403, 'Akses ditolak.', {
-        message: 'Hanya manajer yang dapat menambahkan wahana wisata.',
-      });
-    }
-
-    const destination = await Destination.findOne({ slug: destinationSlug })
-      .select('_id createdBy')
-      .lean();
+  create: async (adminId, slug, request) => {
+    const [destination, admin] = await Promise.all([
+      Destination.findOne({ slug: slug }).select('_id createdBy').lean(),
+      Admin.findOne({ adminId: adminId }).select('_id').lean(),
+    ]);
 
     if (!destination) {
       throw new ResponseError(404, 'Destinasi tidak ditemukan', {
-        message: `Destinasi dengan slug '${destinationSlug}' tidak ditemukan.`,
+        message: `Destinasi dengan slug '${slug}' tidak ditemukan.`,
       });
     }
 
@@ -41,44 +26,22 @@ export const attractionService = {
       });
     }
 
-    /** 2. Validasi request body */
     const validatedRequest = validate.requestCheck(
       checker.createAttractionValidation,
       request
     );
 
-    /** 3. Cek duplikasi nama wahana di dalam destinasi yang sama */
-    const existingAttraction = await Attraction.findOne({
-      name: validatedRequest.name,
-      destination: destination._id,
-    }).select('name');
-
-    if (existingAttraction) {
-      throw new ResponseError(409, 'Nama wahana sudah ada di destinasi ini.', {
-        name: `Wahana dengan nama '${validatedRequest.name}' sudah terdaftar.`,
-      });
-    }
-
-    /** 4. Siapkan dan simpan data */
-    validatedRequest.destination = destination._id;
-
-    const newAttraction = new Attraction(validatedRequest);
-    const savedAttraction = await newAttraction.save();
-
-    await Destination.updateOne(
-      { _id: destination._id },
-      { $push: { attractions: savedAttraction._id } }
+    const newAttraction = await helper.createAttraction(
+      destination._id,
+      validatedRequest
     );
 
-    const { name, slug, description, ticketType, ticket } = savedAttraction;
+    await Destination.findByIdAndUpdate(destination._id, {
+      $push: { attractions: newAttraction._id },
+    });
 
-    return {
-      name,
-      slug,
-      description,
-      ticketType,
-      ticket,
-    };
+    const { name, description, ticketType, ticket } = newAttraction;
+    return { name, description, ticketType, ticket };
   },
 
   update: async (adminId, destinationSlug, attractionSlug, request) => {

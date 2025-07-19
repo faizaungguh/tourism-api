@@ -82,7 +82,7 @@ privateRouter
 
 /** Attraction */
 privateRouter
-  .route('/destinations/:destination-slug/attractions')
+  .route('/destinations/:destinations/attractions')
   .post(
     authMiddleware.protect,
     authMiddleware.authorize('manager'),

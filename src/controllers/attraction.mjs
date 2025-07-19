@@ -2,9 +2,10 @@ import { attractionService } from '#services/attraction.mjs';
 
 export const attraction = {
   create: async (req, res) => {
-    const { adminId } = req.query;
-    const slug = req.params['destination-slug'];
-    const result = await attractionService.create(adminId, slug, req.body);
+    const adminId = req.admin.adminId;
+    const request = req.body;
+    const slug = req.params.destinations;
+    const result = await attractionService.create(adminId, slug, request);
 
     res.status(201).json({
       message: `Wahana Wisata '${result.name}' berhasil ditambahkan ke destinasi`,
