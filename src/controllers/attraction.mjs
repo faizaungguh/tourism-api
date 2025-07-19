@@ -14,13 +14,15 @@ export const attraction = {
   },
 
   patch: async (req, res) => {
-    const { adminId } = req.query;
-    const { destinationSlug, attractionSlug } = req.params;
+    const adminId = req.admin.adminId;
+    const destinationSlug = req.params.destinations;
+    const attractionSlug = req.params.attractions;
+    const request = req.body;
     const result = await attractionService.update(
       adminId,
       destinationSlug,
       attractionSlug,
-      req.body
+      request
     );
 
     res.status(200).json({

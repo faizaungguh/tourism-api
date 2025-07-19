@@ -89,6 +89,7 @@ privateRouter
     attraction.create
   );
 privateRouter
-  .route('/destinations/:destination-slug/attractions/:attraction-slug')
+  .route('/destinations/:destinations/attractions/:attractions')
+  .all(authMiddleware.protect, authMiddleware.authorize('manager'))
   .put(attraction.patch)
   .delete(attraction.drop);
