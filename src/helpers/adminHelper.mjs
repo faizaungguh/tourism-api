@@ -17,16 +17,9 @@ const buildFilterStage = (validatedQuery) => {
 
 const buildSortStage = (validatedQuery) => {
   const { sort, sortBy } = validatedQuery;
-  const sortDirection = sort === 'asc' ? 1 : -1;
-  const sortStage = {};
-
-  if (sortBy) {
-    sortStage[sortBy] = sortDirection;
-  } else {
-    sortStage.createdAt = -1;
-  }
-
-  return { $sort: sortStage };
+  return {
+    $sort: { [sortBy]: sort === 'asc' ? 1 : -1 },
+  };
 };
 
 export const listAdmins = (validatedQuery) => {
@@ -48,13 +41,11 @@ export const listAdmins = (validatedQuery) => {
           {
             $project: {
               _id: 0,
-              __v: 0,
-              password: 0,
-              createdAt: 0,
-              updatedAt: 0,
-              contactNumber: 0,
               email: 0,
+              contactNumber: 0,
               role: 0,
+              password: 0,
+              __v: 0,
             },
           },
         ],

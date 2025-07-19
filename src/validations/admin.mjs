@@ -16,7 +16,7 @@ export const listAdminValidation = validate.object({
   role: validate.string().valid('admin', 'manager'),
   sortBy: validate
     .string()
-    .valid('username', 'email', 'name', 'createdAt')
+    .valid('username', 'email', 'name', 'createdAt', 'adminId')
     .default('createdAt'),
 });
 

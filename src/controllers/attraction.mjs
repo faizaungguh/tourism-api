@@ -35,12 +35,10 @@ export const attraction = {
     const adminId = req.admin.adminId;
     const destinationSlug = req.params.destinations;
     const attractionSlug = req.params.attractions;
-    const request = req.body;
-    const result = await attractionService.update(
+    const result = await attractionService.drop(
       adminId,
       destinationSlug,
-      attractionSlug,
-      request
+      attractionSlug
     );
 
     res.status(200).json({
