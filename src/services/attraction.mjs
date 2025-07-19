@@ -1,6 +1,6 @@
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/attraction.mjs';
-import * as helper from '#helpers/attractionPipeline.mjs';
+import * as helper from '#helpers/attractionHelper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { Destination } from '#schemas/destination.mjs';

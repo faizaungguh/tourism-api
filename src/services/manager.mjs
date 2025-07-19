@@ -1,6 +1,6 @@
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
-import * as helper from '#helpers/adminPipeline.mjs';
+import * as helper from '#helpers/adminHelper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
