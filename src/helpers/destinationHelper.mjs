@@ -219,7 +219,7 @@ export const createDestination = async (adminId, validatedRequest) => {
 
   const errors = {};
   if (existingDestination)
-    errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
+    errors.destinationTitle = `Tempat wisata dengan nama ${validatedRequest.destinationTitle} sudah digunakan, masukkan nama lain.`;
   if (!managerDoc)
     errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
   if (!categoryDoc)
@@ -228,7 +228,7 @@ export const createDestination = async (adminId, validatedRequest) => {
     errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
 
   if (Object.keys(errors).length > 0) {
-    throw new ResponseError(400, 'Gagal menambahkan destinasi baru.', errors);
+    throw new ResponseError(400, 'Data gagal ditambahkan.', errors);
   }
 
   const { categories, ...rest } = validatedRequest;
@@ -258,14 +258,18 @@ export const patchDestination = async (
     ),
   ]);
 
-  if (!admin) throw new ResponseError(404, 'Admin tidak ditemukan.');
+  if (!admin)
+    throw new ResponseError(404, 'Data tidak ditemukan.', {
+      message: `Data dengan ID ${adminId} tidak terdaftar`,
+    });
   if (!destinationToUpdate)
-    throw new ResponseError(404, 'Destinasi tidak ditemukan.');
+    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+      message: `Tempat wisata dengan nama ${validatedRequest.destinationTitle} telah terdaftar`,
+    });
   if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
-    throw new ResponseError(
-      403,
-      'Akses ditolak: Anda bukan pemilik destinasi ini.'
-    );
+    throw new ResponseError(403, 'Akses anda ditolak', {
+      message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
+    });
   }
 
   const errors = {};
@@ -302,7 +306,7 @@ export const patchDestination = async (
   }
 
   if (Object.keys(errors).length > 0) {
-    throw new ResponseError(400, 'Gagal mengubah destinasi wisata.', errors);
+    throw new ResponseError(400, 'Data gagal diubah.', errors);
   }
 
   for (const key of Object.keys(validatedRequest)) {

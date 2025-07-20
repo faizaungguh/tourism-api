@@ -13,7 +13,10 @@ export const authMiddleware = {
 
     if (!token) {
       return next(
-        new ResponseError(401, 'Tidak terautentikasi, silakan login')
+        new ResponseError(401, 'Akun tidak terotentikasi', {
+          message:
+            'Anda tidak memiliki akses ke akun anda, silakan signin terlebih dahulu',
+        })
       );
     }
 
@@ -25,12 +28,22 @@ export const authMiddleware = {
       );
 
       if (!req.admin) {
-        return next(new ResponseError(401, 'Admin tidak ditemukan'));
+        return next(
+          new ResponseError(401, 'Admin tidak ditemukan', {
+            message:
+              'Data Admin yang anda masukkan salah, dan sekarang anda tidak memiliki akses ke akun anda',
+          })
+        );
       }
 
       next();
     } catch (error) {
-      return next(new ResponseError(401, 'Token tidak valid atau kedaluwarsa'));
+      return next(
+        new ResponseError(401, 'Token tidak valid', {
+          message:
+            'Anda tidak memiliki akses untuk masuk ke dalam akun anda, karena token akses anda tidak valid atau sudah kedaluarsa',
+        })
+      );
     }
   },
 

@@ -44,7 +44,7 @@ export const managerService = {
 
     /** Jika manager tidak ditemukan, tampilkan pesan error */
     if (!manager) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Manajer dengan Id ${id} tidak ditemukan`,
       });
     }
@@ -78,7 +78,7 @@ export const managerService = {
     });
 
     if (!manager) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Manajer dengan Id ${managerId} tidak ditemukan`,
       });
     }

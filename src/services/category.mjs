@@ -14,17 +14,6 @@ export const categoryService = {
       request
     );
 
-    /** cek duplikasi nama kategori */
-    const checkDuplicate = await Category.findOne({
-      name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
-    });
-
-    if (checkDuplicate) {
-      throw new ResponseError(409, 'Duplikasi Kategori', {
-        name: 'Kategori dengan nama yang sama sudah terdaftar.',
-      });
-    }
-
     /** Buat instance baru dari model Category */
     const data = new Category(validatedRequest);
 
@@ -70,9 +59,6 @@ export const categoryService = {
   },
 
   updateCategory: async (slug, request) => {
-    /** cek req.body nya */
-    validate.isNotEmpty(request);
-
     const validatedRequest = validate.requestCheck(
       checker.categoryValidation,
       request
@@ -83,21 +69,6 @@ export const categoryService = {
       throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Kategori ${slug} tidak ditemukan`,
       });
-    }
-
-    /** cek duplikasi */
-    if (
-      validatedRequest.name.toLowerCase() !==
-      originalCategory.name.toLowerCase()
-    ) {
-      const checkDuplicate = await Category.findOne({
-        name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
-      });
-      if (checkDuplicate) {
-        throw new ResponseError(409, 'Duplikasi data ubahan', {
-          name: 'Kategori dengan nama yang sama sudah terdaftar.',
-        });
-      }
     }
 
     const result = await Category.findOneAndUpdate(
@@ -121,22 +92,7 @@ export const categoryService = {
       });
     }
 
-    /** Cek apakah kategori ini masih digunakan oleh destinasi lain */
-    const destinationCount = await Destination.countDocuments({
-      category: categoryToDelete._id,
-    });
-
-    if (destinationCount > 0) {
-      throw new ResponseError(
-        409,
-        'Kategori masih digunakan oleh destinasi lain.',
-        {
-          message: `Tidak dapat menghapus kategori. Hapus ${destinationCount} destinasi yang terkait terlebih dahulu.`,
-        }
-      );
-    }
-
     /** cari slug dan hapus */
-    await Category.findOneAndDelete({ slug: slug });
+    await Category.deleteOne({ slug: slug });
   },
 };

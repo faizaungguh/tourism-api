@@ -26,7 +26,7 @@ export const requestCheck = (schema, request) => {
 
 export const isNotEmpty = (request) => {
   if (!request || Object.keys(request).length === 0) {
-    throw new ResponseError(400, 'Kesalahan pengiriman', {
+    throw new ResponseError(400, 'Data tidak lengkap', {
       message: 'Request body tidak boleh kosong.',
     });
   }
@@ -34,13 +34,13 @@ export const isNotEmpty = (request) => {
 
 export const isValidId = (id) => {
   if (!id) {
-    throw new ResponseError(400, 'Id kosong', {
+    throw new ResponseError(400, 'Data tidak lengkap', {
       message: 'Anda harus menyertakan Id',
     });
   }
   /** validasi apakah id yang dikirimkan adalah object id yang valid */
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    throw new ResponseError(400, 'Id tidak valid', {
+    throw new ResponseError(400, 'Data tidak lengkap', {
       message: 'Anda harus menyertakan Id yang valid',
     });
   }

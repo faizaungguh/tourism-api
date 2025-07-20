@@ -95,20 +95,18 @@ export const destinationService = {
       .select('_id')
       .lean();
     if (!category) {
-      throw new ResponseError(
-        404,
-        `Kategori dengan slug "${categorySlug}" tidak ditemukan.`
-      );
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Kategori dengan slug "${categorySlug}" tidak ditemukan.`,
+      });
     }
 
     const pipeline = helper.getDestinationSlug(destinationSlug, category._id);
     const result = await Destination.aggregate(pipeline);
 
     if (result.length === 0) {
-      throw new ResponseError(
-        404,
-        `Destinasi dengan slug "${destinationSlug}" tidak ditemukan di kategori ini.`
-      );
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan di kategori ini.`,
+      });
     }
     return result[0];
   },
@@ -152,7 +150,7 @@ export const destinationService = {
     }
 
     if (!adminId) {
-      throw new ResponseError(401, 'Unauthorized', {
+      throw new ResponseError(401, 'Data tidak lengkap', {
         message: 'Admin ID diperlukan untuk otorisasi.',
       });
     }
@@ -177,7 +175,7 @@ export const destinationService = {
     }
 
     if (!destinationToDelete) {
-      throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+      throw new ResponseError(404, 'Data tidak ditemukan.', {
         message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
       });
     }
@@ -210,7 +208,9 @@ export const destinationService = {
       typeof searchTerm !== 'string' ||
       searchTerm.trim() === ''
     ) {
-      throw new ResponseError(400, 'Parameter pencarian tidak valid.');
+      throw new ResponseError(400, 'Parameter tidak valid.', {
+        message: 'Dalam pencarian, hanya mendukung teks',
+      });
     }
 
     /** Dapatkan aggregation pipeline dari helper */

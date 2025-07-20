@@ -4,10 +4,9 @@ export const passwordUpdate = async (passwords, correctHashedPassword) => {
   const { oldPassword, newPassword } = passwords;
 
   if (!oldPassword || !newPassword) {
-    throw new ResponseError(
-      400,
-      'Anda harus memasukkan password lama dan baru.'
-    );
+    throw new ResponseError(422, 'Data kosong.', {
+      message: 'Anda harus memasukkan password lama dan password baru anda',
+    });
   }
 
   const isPasswordMatch = await bcrypt.compare(

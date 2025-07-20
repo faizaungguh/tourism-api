@@ -15,7 +15,7 @@ export const login = async (loginRequest) => {
   const admin = await Admin.findOne({ username: loginRequest.username });
 
   if (!admin || !(await admin.comparePassword(loginRequest.password))) {
-    throw new ResponseError(401, 'Gagal melakukan otentikasi', {
+    throw new ResponseError(401, 'Pencocokan data gagal.', {
       message: 'Username atau password yang Anda masukkan salah.',
     });
   }

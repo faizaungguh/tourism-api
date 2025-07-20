@@ -17,36 +17,31 @@ export const validateAttractionAccess = async (
   ]);
 
   if (!destination) {
-    throw new ResponseError(
-      404,
-      `Destinasi dengan slug '${destinationSlug}' tidak ditemukan.`
-    );
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Destinasi dengan slug '${destinationSlug}' tidak ditemukan.`,
+    });
   }
   if (!admin) {
-    throw new ResponseError(
-      404,
-      `Admin dengan ID '${adminId}' tidak ditemukan.`
-    );
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Admin dengan ID '${adminId}' tidak ditemukan.`,
+    });
   }
   if (!attraction) {
-    throw new ResponseError(
-      404,
-      `Wahana dengan slug '${attractionSlug}' tidak ditemukan.`
-    );
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Wahana dengan slug '${attractionSlug}' tidak ditemukan.`,
+    });
   }
 
   if (destination.createdBy.toString() !== admin._id.toString()) {
-    throw new ResponseError(
-      403,
-      'Akses ditolak. Anda tidak berhak mengelola wahana di destinasi ini.'
-    );
+    throw new ResponseError(403, 'Akses anda ditolak', {
+      message: 'Anda tidak memiliki hak mengelola wahana di destinasi ini.',
+    });
   }
 
   if (attraction.destination.toString() !== destination._id.toString()) {
-    throw new ResponseError(
-      404,
-      `Wahana '${attractionSlug}' tidak ditemukan di dalam destinasi '${destinationSlug}'.`
-    );
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Wahana '${attractionSlug}' tidak ditemukan di dalam destinasi '${destinationSlug}'.`,
+    });
   }
 
   return { destination, attraction };
@@ -59,7 +54,7 @@ export const createAttraction = async (destinationId, validatedRequest) => {
   }).select('name');
 
   if (existingAttraction) {
-    throw new ResponseError(409, 'Nama wahana sudah ada di destinasi ini.', {
+    throw new ResponseError(409, 'Duplikasi data.', {
       name: `Wahana dengan nama '${validatedRequest.name}' sudah terdaftar.`,
     });
   }
@@ -87,7 +82,7 @@ export const patchAttraction = async (attractionToUpdate, validatedRequest) => {
     }).select('name');
 
     if (existingAttraction) {
-      throw new ResponseError(409, 'Nama wahana sudah ada di destinasi ini.', {
+      throw new ResponseError(409, 'Duplikasi Data.', {
         name: `Wahana dengan nama '${validatedRequest.name}' sudah terdaftar.`,
       });
     }

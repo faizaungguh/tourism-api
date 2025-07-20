@@ -13,17 +13,6 @@ export const subdistrictService = {
       request
     );
 
-    /** cek duplikasi nama kecamatan */
-    const checkDuplicate = await Subdistrict.findOne({
-      name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
-    });
-
-    if (checkDuplicate) {
-      throw new ResponseError(409, 'Duplikasi Kecamatan', {
-        name: 'Kecamatan dengan nama yang sama sudah terdaftar.',
-      });
-    }
-
     /** ambil data yang telah valid */
     const data = new Subdistrict(validatedRequest);
 
@@ -88,24 +77,6 @@ export const subdistrictService = {
       });
     }
 
-    /** cek duplikasi if name is changed */
-    const isNameChanged =
-      validatedRequest.name &&
-      validatedRequest.name.toLowerCase() !==
-        originalSubdistrict.name.toLowerCase();
-
-    if (isNameChanged) {
-      const checkDuplicate = await Subdistrict.findOne({
-        name: { $regex: new RegExp(`^${validatedRequest.name}$`, 'i') },
-        _id: { $ne: originalSubdistrict._id },
-      });
-      if (checkDuplicate) {
-        throw new ResponseError(409, 'Duplikasi nama kecamatan', {
-          name: 'Kecamatan dengan nama yang sama sudah terdaftar.',
-        });
-      }
-    }
-
     originalSubdistrict.set(validatedRequest);
     const result = await originalSubdistrict.save();
 
@@ -113,7 +84,7 @@ export const subdistrictService = {
   },
 
   deleteSubdistrict: async (slug) => {
-    const deletedSubdistrict = await Subdistrict.findOneAndDelete({ slug });
+    const deletedSubdistrict = await Subdistrict.deleteOne({ slug });
 
     if (!deletedSubdistrict) {
       throw new ResponseError(404, 'Data tidak ditemukan', {

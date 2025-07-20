@@ -3,12 +3,13 @@ import { auth } from '#controllers/auth.mjs';
 import { category } from '#controllers/category.mjs';
 import { subdistrict } from '#controllers/subdistrict.mjs';
 import { destination } from '#controllers/destination.mjs';
+import { shield } from '#configs/security.mjs';
 
 export const publicRouter = new express.Router();
 
 /** Auth */
 publicRouter.post('/signup', auth.register);
-publicRouter.post('/signin', auth.signin);
+publicRouter.post('/signin', shield.authLimiter, auth.signin);
 
 /** Category */
 publicRouter.get('/categories', category.get);

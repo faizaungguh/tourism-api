@@ -5,6 +5,7 @@ import { logger } from '#app/logging.mjs';
 import { publicRouter } from '#routes/public.mjs';
 import { privateRouter } from '#routes/api.mjs';
 import { handler } from '#middlewares/error.mjs';
+import { shield } from '#configs/security.mjs';
 
 export const web = express();
 
@@ -15,11 +16,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 /** Route public dan private */
-web.use(express.json());
-web.use(cookieParser());
+web.use(express.json({ limit: '15kb' }));
+web.use(shield.cors, shield.session, shield.helm);
 
 /** Route */
-web.use('/', publicRouter);
+web.use('/', shield.generalLimiter, publicRouter);
 web.use('/', handler.method(publicRouter));
 web.use('/api', privateRouter);
 web.use('/api', handler.method(privateRouter));

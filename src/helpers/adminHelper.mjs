@@ -54,53 +54,58 @@ export const listAdmins = (validatedQuery) => {
   ];
 };
 
+const _handlePasswordUpdate = async (
+  validatedRequest,
+  originalPasswordHash
+) => {
+  if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
+    throw new ResponseError(422, 'Data kosong.', {
+      message: 'Anda harus memasukkan password lama dan password baru anda',
+    });
+  }
+
+  const isPasswordMatch = await bcrypt.compare(
+    validatedRequest.oldPassword,
+    originalPasswordHash
+  );
+
+  if (!isPasswordMatch) {
+    throw new ResponseError(401, 'Data ubahan ditolak.', {
+      oldPassword: 'Password lama yang Anda masukkan salah.',
+    });
+  }
+
+  if (validatedRequest.newPassword === validatedRequest.oldPassword) {
+    throw new ResponseError(401, 'Data ubahan ditolak', {
+      newPassword:
+        'Password Baru yang anda masukkan sama dengan Password Lama.',
+    });
+  }
+
+  /** Jika cocok, hash password baru */
+  validatedRequest.password = await bcrypt.hash(
+    validatedRequest.newPassword,
+    10
+  );
+
+  /** Hapus field sementara agar tidak tersimpan di database */
+  delete validatedRequest.oldPassword;
+  delete validatedRequest.newPassword;
+};
+
 export const updateAdmin = async (id, validatedRequest) => {
   const originalAdmin = await Admin.findOne({ adminId: id }).select(
     '+password'
   );
 
   if (!originalAdmin) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
+    throw new ResponseError(404, 'Data tidak ditemukan', {
       message: `Admin dengan Id ${id} tidak ditemukan`,
     });
   }
 
   if (validatedRequest.oldPassword || validatedRequest.newPassword) {
-    if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
-      throw new ResponseError(
-        400,
-        'Anda harus memasukkan password lama dan baru.'
-      );
-    }
-
-    /** cocokkan password lama dengan yang ada di database */
-    const isPasswordMatch = await bcrypt.compare(
-      validatedRequest.oldPassword,
-      originalAdmin.password
-    );
-
-    if (!isPasswordMatch) {
-      throw new ResponseError(400, 'Password tidak sesuai', {
-        oldPassword: 'Password lama yang Anda masukkan salah.',
-      });
-    }
-
-    if (validatedRequest.newPassword === validatedRequest.oldPassword) {
-      throw new ResponseError(400, 'Password tidak tersimpan', {
-        newPassword:
-          'Password Baru yang anda masukkan sama dengan Password Lama.',
-      });
-    }
-
-    /** Jika cocok, hash password baru */
-    validatedRequest.password = await bcrypt.hash(
-      validatedRequest.newPassword,
-      10
-    );
-
-    /** Hapus field sementara agar tidak tersimpan di database */
-    delete validatedRequest.oldPassword;
-    delete validatedRequest.newPassword;
+    await _handlePasswordUpdate(validatedRequest, originalAdmin.password);
   }
 
   /** Cek duplikasi username/email menggunakan helper */
@@ -115,14 +120,14 @@ export const updateAdmin = async (id, validatedRequest) => {
 
 export const updateManager = async (id, adminId, validatedRequest) => {
   if (id !== adminId) {
-    throw new ResponseError(403, 'Akses ditolak.', {
+    throw new ResponseError(403, 'Akses anda ditolak.', {
       message: 'Anda tidak diizinkan mengubah data manajer lain.',
     });
   }
 
   if (validatedRequest.role && validatedRequest.role !== 'manager') {
-    throw new ResponseError(400, 'Menolak pengubahan role.', {
-      message: 'Role tidak dapat diubah.',
+    throw new ResponseError(400, 'Data ubahan ditolak.', {
+      message: 'Role yang anda miliki tidak dapat diubah.',
     });
   }
 
@@ -132,43 +137,13 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   }).select('+password');
 
   if (!originalManager) {
-    throw new ResponseError(404, 'Id tidak ditemukan', {
+    throw new ResponseError(404, 'Data tidak ditemukan', {
       message: `Manajer dengan Id ${id} tidak ditemukan`,
     });
   }
 
   if (validatedRequest.oldPassword || validatedRequest.newPassword) {
-    if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
-      throw new ResponseError(
-        400,
-        'Anda harus memasukkan password lama dan baru.'
-      );
-    }
-
-    const isPasswordMatch = await bcrypt.compare(
-      validatedRequest.oldPassword,
-      originalManager.password
-    );
-
-    if (!isPasswordMatch) {
-      throw new ResponseError(400, 'Password tidak sesuai', {
-        oldPassword: 'Password lama yang Anda masukkan salah.',
-      });
-    }
-
-    if (validatedRequest.newPassword === validatedRequest.oldPassword) {
-      throw new ResponseError(400, 'Password tidak tersimpan', {
-        newPassword:
-          'Password Baru yang anda masukkan sama dengan Password Lama.',
-      });
-    }
-
-    validatedRequest.password = await bcrypt.hash(
-      validatedRequest.newPassword,
-      10
-    );
-    delete validatedRequest.oldPassword;
-    delete validatedRequest.newPassword;
+    await _handlePasswordUpdate(validatedRequest, originalManager.password);
   }
 
   await verify.checkDuplicate(validatedRequest, originalManager);
