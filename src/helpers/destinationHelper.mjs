@@ -15,9 +15,7 @@ const _findRelatedDocs = async ({ categories, subdistrict }) => {
   }
 
   if (subdistrict) {
-    promises.push(
-      Subdistrict.findOne({ name: subdistrict }).select('_id').lean()
-    );
+    promises.push(Subdistrict.findOne({ name: subdistrict }).select('_id').lean());
   } else {
     promises.push(Promise.resolve(null));
   }
@@ -71,10 +69,8 @@ const buildSortStage = (validatedQuery) => {
   const sortStage = {};
 
   if (sortBy === 'category') sortStage['categoryDetails.name'] = sortDirection;
-  else if (sortBy === 'subdistrict')
-    sortStage['subdistrictDetails.name'] = sortDirection;
-  else if (sortBy === 'destinationTitle')
-    sortStage.destinationTitle = sortDirection;
+  else if (sortBy === 'subdistrict') sortStage['subdistrictDetails.name'] = sortDirection;
+  else if (sortBy === 'destinationTitle') sortStage.destinationTitle = sortDirection;
   else sortStage.createdAt = -1;
 
   return { $sort: sortStage };
@@ -220,8 +216,7 @@ export const createDestination = async (adminId, validatedRequest) => {
   const errors = {};
   if (existingDestination)
     errors.destinationTitle = `Tempat wisata dengan nama ${validatedRequest.destinationTitle} sudah digunakan, masukkan nama lain.`;
-  if (!managerDoc)
-    errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
+  if (!managerDoc) errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
   if (!categoryDoc)
     errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
   if (!subdistrictDoc)
@@ -246,16 +241,10 @@ export const createDestination = async (adminId, validatedRequest) => {
   return newDestination.save();
 };
 
-export const patchDestination = async (
-  destinationSlug,
-  adminId,
-  validatedRequest
-) => {
+export const patchDestination = async (destinationSlug, adminId, validatedRequest) => {
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
-    Destination.findOne({ slug: destinationSlug }).select(
-      '_id createdBy destinationTitle'
-    ),
+    Destination.findOne({ slug: destinationSlug }).select('_id createdBy destinationTitle'),
   ]);
 
   if (!admin)
@@ -281,8 +270,7 @@ export const patchDestination = async (
   });
 
   if (validatedRequest.categories) {
-    if (!categoryDoc)
-      errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
+    if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
     else finalUpdates.category = categoryDoc._id;
   }
 
@@ -300,8 +288,7 @@ export const patchDestination = async (
       destinationTitle: validatedRequest.destinationTitle,
       _id: { $ne: destinationToUpdate._id },
     }).lean();
-    if (existingTitle)
-      errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
+    if (existingTitle) errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
     else finalUpdates.destinationTitle = validatedRequest.destinationTitle;
   }
 
@@ -310,11 +297,7 @@ export const patchDestination = async (
   }
 
   for (const key of Object.keys(validatedRequest)) {
-    if (
-      key !== 'destinationTitle' &&
-      key !== 'categories' &&
-      key !== 'locations'
-    ) {
+    if (key !== 'destinationTitle' && key !== 'categories' && key !== 'locations') {
       finalUpdates[key] = validatedRequest[key];
     }
   }
@@ -323,8 +306,7 @@ export const patchDestination = async (
     finalUpdates['locations.addresses'] = validatedRequest.locations.addresses;
   }
   if (validatedRequest.locations?.coordinates) {
-    finalUpdates['locations.coordinates'] =
-      validatedRequest.locations.coordinates;
+    finalUpdates['locations.coordinates'] = validatedRequest.locations.coordinates;
   }
 
   if (Object.keys(finalUpdates).length === 0) {
@@ -344,16 +326,4 @@ export const getDestination = (identifier) => {
     : { slug: identifier };
 
   return [{ $match: matchQuery }, ...detailDestinationPipeline];
-};
-
-export const getDestinationSlug = (destinationSlug, categoryId) => {
-  return [
-    {
-      $match: {
-        slug: destinationSlug,
-        category: new mongoose.Types.ObjectId(categoryId),
-      },
-    },
-    ...detailDestinationPipeline,
-  ];
 };

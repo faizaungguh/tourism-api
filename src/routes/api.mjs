@@ -7,14 +7,14 @@ import { destination } from '#controllers/destination.mjs';
 import { attraction } from '#controllers/attraction.mjs';
 import { auth } from '#controllers/auth.mjs';
 import { authMiddleware } from '#middlewares/auth.mjs';
-import { handler } from '#middlewares/error.mjs'; // Impor handler
+import { handler } from '#middlewares/error.mjs';
 
 export const privateRouter = new express.Router();
 
 privateRouter
   .route('/signout')
   .all(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'))
-  .post(auth.signout)
+  .delete(auth.signout)
   .all(handler.method(['DELETE']));
 
 /** Admin */
@@ -45,7 +45,7 @@ privateRouter
 privateRouter
   .route('/categories')
   .post(authMiddleware.protect, authMiddleware.authorize('admin'), category.post)
-  .all(handler.method(['POST'])); // Handler untuk /categories
+  .all(handler.method(['POST']));
 
 privateRouter
   .route('/categories/:slug')

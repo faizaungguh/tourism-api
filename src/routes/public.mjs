@@ -33,27 +33,7 @@ publicRouter
 
 /** Destination */
 publicRouter
-  .route('/destinations/category/:categorySlug/:destinationSlug')
-  .get(destination.detailCategory)
-  .all(handler.method(['GET']));
-
-publicRouter
-  .route('/destinations/category/:categorySlug')
-  .get(destination.slugCategory)
-  .all(handler.method(['GET']));
-
-publicRouter
-  .route('/destinations/subdistrict/:subdistrictSlug/:destinationSlug')
-  .get(destination.detailSubdistrict)
-  .all(handler.method(['GET']));
-
-publicRouter
-  .route('/destinations/subdistrict/:subdistrictSlug')
-  .get(destination.slugSubdistrict)
-  .all(handler.method(['GET']));
-
-publicRouter
-  .route('/destinations/details/:destinationSlug')
+  .route('/destinations/:destinationSlug')
   .get(destination.detail)
   .all(handler.method(['GET']));
 
