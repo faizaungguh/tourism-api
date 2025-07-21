@@ -55,7 +55,7 @@ export const destinationService = {
     };
   },
 
-  getDetail: async (destinationSlug) => {
+  getDetailDestination: async (destinationSlug) => {
     /** Validasi slug */
     if (
       !destinationSlug ||

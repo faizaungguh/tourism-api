@@ -2,35 +2,27 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { logger } from '#app/logging.mjs';
 
 export const handler = {
-  method: (router) => (req, res, next) => {
-    const match = router.stack.find(
-      (layer) => layer.route && layer.regexp && layer.regexp.test(req.path)
-    );
-
-    if (match && !match.route.methods[req.method.toLowerCase()]) {
-      const allowedMethods = Object.keys(match.route.methods)
-        .filter((method) => method !== '_all')
-        .map((method) => method.toUpperCase())
+  method: (allowed = []) => {
+    return (req, res, next) => {
+      const allowedMethodsString = allowed
+        .map((m) => m.toUpperCase())
         .join(', ');
 
-      res.set('Allow', allowedMethods);
-      return next(
-        new ResponseError(
-          405,
-          `Metode ${req.method} tidak diizinkan untuk path ${req.path}.`
-        )
-      );
-    }
+      res.set('Allow', allowedMethodsString);
 
-    return next();
+      next(
+        new ResponseError(405, 'Method ini dilarang', {
+          message: `Metode ${req.method} tidak diizinkan untuk mengakses ${req.path}.`,
+        })
+      );
+    };
   },
 
   notFoundEndpoint: (req, res, next) => {
     next(
-      new ResponseError(
-        404,
-        `Maaf, Endpoint untuk ${req.method} ${req.path} tidak ditemukan. Pastikan URL sudah benar.`
-      )
+      new ResponseError(404, 'Url tidak terdaftar', {
+        message: `Maaf, Endpoint untuk ${req.method} ${req.path} tidak ditemukan. Pastikan URL sudah benar.`,
+      })
     );
   },
 
@@ -45,7 +37,7 @@ export const handler = {
         `Error pada Klien 400: Gagal mem-parsing JSON body - ${err.message}`
       );
       return res.status(422).json({
-        message: 'Data yang diberikan tidak valid',
+        message: 'Data anda tidak valid',
         errors: {
           message:
             'Format JSON tidak valid. Mohon periksa kembali body request Anda.',
@@ -62,7 +54,8 @@ export const handler = {
     } else {
       logger.error('Error pada Server:', err);
       res.status(500).json({
-        message: 'Maaf, terjadi kesalahan pada server kami.',
+        message: 'Server tidak melayani',
+        errors: { message: 'Maaf, terjadi kesalahan pada server kami.' },
       });
     }
   },

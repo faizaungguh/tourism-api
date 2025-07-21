@@ -15,6 +15,7 @@ export const shield = {
       }
     },
     credentials: true,
+    method: ['POST', 'GET', 'PUT', 'DELETE'],
     optionsSuccessStatus: 200,
   }),
 
@@ -39,14 +40,14 @@ export const shield = {
   }),
 
   generalLimiter: rateLimit({
-    windowMs: 15 * 60 * 1000,
-    limit: 200,
+    windowMs: 1 * 60 * 1000,
+    limit: 50,
     standardHeaders: 'draft-7',
     legacyHeaders: false,
     message: {
       status: 'error',
       message:
-        'Terlalu banyak permintaan dengan tidak wajar, silakan coba lagi setelah 15 menit.',
+        'Terlalu banyak permintaan akses dengan tidak wajar, silakan coba lagi setelah 1 menit.',
     },
   }),
 
@@ -58,7 +59,19 @@ export const shield = {
     message: {
       status: 'error',
       message:
-        'Terlalu banyak percobaan masuk akun yang tidak wajar, silakan coba lagi setelah 15 menit.',
+        'Terlalu banyak percobaan masuk akun dengan tidak wajar, silakan coba lagi setelah 15 menit.',
+    },
+  }),
+
+  adminLimiter: rateLimit({
+    windowMs: 1 * 60 * 1000,
+    limit: 50,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
+    message: {
+      status: 'error',
+      message:
+        'Terlalu banyak percobaan masuk akun yang tidak wajar, silakan coba lagi setelah 1 menit.',
     },
   }),
 };

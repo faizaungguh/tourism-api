@@ -21,9 +21,7 @@ web.use(shield.cors, shield.session, shield.helm);
 
 /** Route */
 web.use('/', shield.generalLimiter, publicRouter);
-web.use('/', handler.method(publicRouter));
-web.use('/api', privateRouter);
-web.use('/api', handler.method(privateRouter));
+web.use('/api', shield.adminLimiter, privateRouter);
 
 web.use(handler.notFoundEndpoint);
 web.use(handler.error);

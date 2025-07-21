@@ -5,8 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development PORT=3000 node --watch app.mjs",
-    "start": "cross-env NODE_ENV=production PORT=3000 node app.mjs"
+    "dev": "cross-env NODE_ENV=development PORT=3000 node --watch src/app.mjs",
+    "start": "cross-env NODE_ENV=production PORT=3000 node src/app.mjs"
   },
   "imports": {
     "#app/*": "./src/app/*",

@@ -29,7 +29,9 @@ export const destination = {
 
   detail: async (req, res) => {
     const { destinationSlug } = req.params;
-    const result = await destinationService.getDetail(destinationSlug);
+    const result = await destinationService.getDetailDestination(
+      destinationSlug
+    );
     res.status(200).json({
       message: `Menampilkan Detail ${result.destinationTitle}`,
       data: result,
@@ -54,10 +56,40 @@ export const destination = {
     res.status(200).json({ message, result, pagination });
   },
 
-  slug: async (req, res) => {
+  slugSubdistrict: async (req, res) => {
+    const { subdistrictSlug } = req.params;
+
+    const query = {
+      ...req.query,
+      subdistrict: subdistrictSlug,
+    };
+
+    const { result, pagination } = await destinationService.getAll(query);
+
+    const message =
+      pagination.totalItems > 0
+        ? `Menampilkan destinasi di '${result[0].subdistrict}'`
+        : `Tidak ditemukan destinasi di ${subdistrictSlug}`;
+
+    res.status(200).json({ message, result, pagination });
+  },
+
+  detailCategory: async (req, res) => {
     const { categorySlug, destinationSlug } = req.params;
     const result = await destinationService.getDetailSlug(
       categorySlug,
+      destinationSlug
+    );
+    res.status(200).json({
+      message: `Menampilkan Detail Wisata dari ${result.destinationTitle}`,
+      data: result,
+    });
+  },
+
+  detailSubdistrict: async (req, res) => {
+    const { subdistrictSlug, destinationSlug } = req.params;
+    const result = await destinationService.getDetailSlug(
+      subdistrictSlug,
       destinationSlug
     );
     res.status(200).json({
