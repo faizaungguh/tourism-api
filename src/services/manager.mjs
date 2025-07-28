@@ -6,10 +6,7 @@ import { Admin } from '#schemas/admin.mjs';
 
 export const managerService = {
   getAll: async (query) => {
-    const validatedQuery = validate.requestCheck(
-      checker.listAdminValidation,
-      query
-    );
+    const validatedQuery = validate.requestCheck(checker.listAdminValidation, query);
 
     const pipeline = helper.listAdmins(validatedQuery);
 
@@ -18,9 +15,7 @@ export const managerService = {
     const result = await Admin.aggregate(pipeline);
 
     const data = result[0]?.data || [];
-    const totalItems = result[0]?.metadata[0]
-      ? result[0].metadata[0].totalItems
-      : 0;
+    const totalItems = result[0]?.metadata[0] ? result[0].metadata[0].totalItems : 0;
 
     const { page, size } = validatedQuery;
 
@@ -40,7 +35,9 @@ export const managerService = {
     const manager = await Admin.findOne({
       adminId: id,
       role: 'manager',
-    }).select('-_id -password -__v');
+    })
+      .select('-_id -password -__v')
+      .lean();
 
     /** Jika manager tidak ditemukan, tampilkan pesan error */
     if (!manager) {
@@ -49,24 +46,22 @@ export const managerService = {
       });
     }
 
+    if (manager.photo) {
+      const baseUrl = process.env.APP_URL || 'http://localhost:3000';
+      manager.photo = `${baseUrl}/${manager.photo.replace(/\\/g, '/')}`;
+    }
+
     /** kembalikan data manager */
-    return manager.toObject();
+    return manager;
   },
 
   update: async (id, admin, request) => {
     validate.isNotEmpty(request);
 
     /** validasi update */
-    const validatedRequest = validate.requestCheck(
-      checker.patchAdminValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.patchAdminValidation, request);
 
-    const updatedManager = await helper.updateManager(
-      id,
-      admin.adminId,
-      validatedRequest
-    );
+    const updatedManager = await helper.updateManager(id, admin.adminId, validatedRequest);
 
     return updatedManager;
   },
