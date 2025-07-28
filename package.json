@@ -35,7 +35,9 @@
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.2",
+    "multer": "^2.0.2",
     "nanoid": "^5.1.5",
+    "sharp": "^0.34.3",
     "winston": "^3.17.0"
   },
   "devDependencies": {

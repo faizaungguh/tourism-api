@@ -8,6 +8,8 @@ import { attraction } from '#controllers/attraction.mjs';
 import { auth } from '#controllers/auth.mjs';
 import { authMiddleware } from '#middlewares/auth.mjs';
 import { handler } from '#middlewares/error.mjs';
+import { media } from '#controllers/media.mjs';
+import { uploadMedia } from '#middlewares/media.mjs';
 
 export const privateRouter = new express.Router();
 
@@ -98,3 +100,9 @@ privateRouter
   .put(attraction.patch)
   .delete(attraction.drop)
   .all(handler.method(['PUT', 'DELETE']));
+
+/** Media Upload */
+privateRouter
+  .route('/admins/:id/photo')
+  .all(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'))
+  .post(uploadMedia.profileAdmin, media.addAdminProfile);

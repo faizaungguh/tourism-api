@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === 'development') {
 
 /** Route public dan private */
 web.use(express.json({ limit: '15kb' }));
+web.use(express.static('public'));
 web.use(shield.cors, shield.session, shield.helm);
 
 /** Route */
