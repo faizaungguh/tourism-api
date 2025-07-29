@@ -1,14 +1,8 @@
 import multer from 'multer';
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises';
 import sharp from 'sharp';
 import { ResponseError } from '#errors/responseError.mjs';
-
-const ensureExists = (path) => {
-  if (!fs.existsSync(path)) {
-    fs.mkdirSync(path, { recursive: true });
-  }
-};
 
 const uploadPhoto = (options) => {
   const uploader = multer({
@@ -33,15 +27,11 @@ const uploadPhoto = (options) => {
         if (err.code === 'LIMIT_FILE_SIZE') {
           return next(
             new ResponseError(413, 'Ukuran file terlalu besar', {
-              errors: { photo: 'Ukuran file tidak boleh melebihi 200KB.' },
+              photo: 'Ukuran file tidak boleh melebihi 200KB.',
             })
           );
         }
-        return next(
-          new ResponseError(400, 'Gagal mengunggah file', {
-            errors: { photo: err.message },
-          })
-        );
+        return next(new ResponseError(400, 'Gagal mengunggah file', err.message));
       } else if (err) {
         return next(err);
       }
@@ -53,7 +43,7 @@ const uploadPhoto = (options) => {
     try {
       if (!req.file) {
         throw new ResponseError(400, 'File tidak ditemukan', {
-          errors: { photo: 'File gambar wajib diunggah.' },
+          photo: 'File gambar wajib diunggah.',
         });
       }
       const { role, adminId } = req.admin;
@@ -64,7 +54,7 @@ const uploadPhoto = (options) => {
       const dir = path.join('public', 'images', options.subfolder, role, adminId);
       const outputPath = path.join(dir, filename);
 
-      ensureExists(dir);
+      await fs.mkdir(dir, { recursive: true });
 
       await sharp(req.file.buffer).webp({ quality: 80 }).toFile(outputPath);
 

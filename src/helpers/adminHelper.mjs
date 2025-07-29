@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import * as verify from '#helpers/duplication.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
-import { Destination } from '#schemas/destination.mjs';
 
 const buildFilterStage = (validatedQuery) => {
   const { role } = validatedQuery;
@@ -41,6 +40,7 @@ export const listAdmins = (validatedQuery) => {
           {
             $project: {
               _id: 0,
+              __v: 0,
               email: 0,
               contactNumber: 0,
               role: 0,
@@ -118,7 +118,7 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   const originalManager = await Admin.findOne({
     adminId: id,
     role: 'manager',
-  }).select('+password');
+  }).select('+password, -__v');
 
   if (!originalManager) {
     throw new ResponseError(404, 'Data tidak ditemukan', {

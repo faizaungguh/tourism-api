@@ -1,5 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
+import fs from 'fs/promises';
+import path from 'path';
+import { logger } from '#app/logging.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 const adminSchema = new Schema(
@@ -89,25 +92,45 @@ adminSchema.pre('save', async function (next) {
   next();
 });
 
-adminSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
-  if (this.role !== 'manager') {
-    return next();
+adminSchema.pre('findOneAndDelete', async function (next) {
+  try {
+    const admin = await this.model.findOne(this.getFilter()).lean();
+
+    if (!admin) {
+      return next();
+    }
+
+    if (admin.role === 'manager') {
+      const Destination = mongoose.model('Destination');
+      const destinationCount = await Destination.countDocuments({
+        createdBy: admin._id,
+      });
+
+      if (destinationCount > 0) {
+        const error = new ResponseError(409, 'Penghapusan Manager gagal', {
+          message: `Manajer tidak dapat dihapus karena masih memiliki ${destinationCount} destinasi. Hapus destinasi terlebih dahulu.`,
+        });
+        return next(error);
+      }
+    }
+
+    if (admin.photo) {
+      const relativePhotoDir = path.dirname(admin.photo);
+      const absolutePhotoDir = path.join(process.cwd(), 'public', relativePhotoDir);
+
+      await fs.rm(absolutePhotoDir, { recursive: true, force: true }).catch((error) => {
+        logger.error('Gagal menghapus folder foto admin saat proses penghapusan', {
+          adminId: admin.adminId,
+          path: absolutePhotoDir,
+          error: { message: error.message, stack: error.stack },
+        });
+      });
+    }
+
+    next();
+  } catch (error) {
+    next(error);
   }
-
-  const Destination = mongoose.model('Destination');
-
-  const destinationCount = await Destination.countDocuments({
-    createdBy: this._id,
-  });
-
-  if (destinationCount > 0) {
-    const error = new ResponseError(409, 'Penghapusan Manager gagal', {
-      message: `Manajer tidak dapat dihapus karena masih memiliki ${destinationCount} destinasi. Hapus destinasi terlebih dahulu.`,
-    });
-    return next(error);
-  }
-
-  next();
 });
 
 adminSchema.methods.comparePassword = async function (enteredPassword) {

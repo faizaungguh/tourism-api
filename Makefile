@@ -14,7 +14,7 @@ import-all:
 	node data/seeds/seeds.mjs --import-all
 
 delete-all:
-	node data/seeds/seeds.mjs --delete-all
+	node data/seeds/seeds.mjs --delete-all && rm -rf public/images
 
 dev-default:
 	node data/seeds/seeds.mjs --delete-all && node data/seeds/seeds.mjs --import-all
