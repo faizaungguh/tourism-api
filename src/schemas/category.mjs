@@ -6,7 +6,14 @@ const categorySchema = new mongoose.Schema(
     name: { type: String, required: true, unique: true, trim: true },
     slug: { type: String, unique: true, lowercase: true },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      transform: function (doc, ret) {
+        delete ret.__v, delete ret._id;
+      },
+    },
+  }
 );
 
 const generateSlug = (name) => {
@@ -21,10 +28,7 @@ categorySchema.pre('save', async function (next) {
     const existingCategory = await this.constructor.findOne({
       name: this.name,
     });
-    if (
-      existingCategory &&
-      existingCategory._id.toString() !== this._id.toString()
-    ) {
+    if (existingCategory && existingCategory._id.toString() !== this._id.toString()) {
       return next(
         new ResponseError(409, 'Duplikasi nama Kategori', {
           message: `Kategori dengan nama '${this.name}' sudah ada.`,
@@ -50,34 +54,28 @@ categorySchema.pre('findOneAndUpdate', async function (next) {
       _id: { $ne: filter._id },
     });
     if (existingCategory) {
-      return next(
-        new ResponseError(409, `Kategori dengan nama '${newName}' sudah ada.`)
-      );
+      return next(new ResponseError(409, `Kategori dengan nama '${newName}' sudah ada.`));
     }
     update.$set.slug = generateSlug(newName);
   }
   next();
 });
 
-categorySchema.pre(
-  'deleteOne',
-  { document: true, query: false },
-  async function (next) {
-    const Destination = mongoose.model('Destination');
-    const destinationCount = await Destination.countDocuments({
-      category: this._id,
-    });
+categorySchema.pre('deleteOne', { document: true, query: false }, async function (next) {
+  const Destination = mongoose.model('Destination');
+  const destinationCount = await Destination.countDocuments({
+    category: this._id,
+  });
 
-    if (destinationCount > 0) {
-      const error = new ResponseError(
-        409,
-        `Kategori tidak dapat dihapus karena masih digunakan oleh ${destinationCount} destinasi.`
-      );
-      return next(error);
-    }
-
-    next();
+  if (destinationCount > 0) {
+    const error = new ResponseError(
+      409,
+      `Kategori tidak dapat dihapus karena masih digunakan oleh ${destinationCount} destinasi.`
+    );
+    return next(error);
   }
-);
+
+  next();
+});
 
 export const Category = mongoose.model('Category', categorySchema);

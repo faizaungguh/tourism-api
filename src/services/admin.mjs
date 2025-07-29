@@ -42,7 +42,7 @@ export const adminService = {
 
   getDetail: async (id) => {
     /** cari admin berdasarkan adminId */
-    const admin = await Admin.findOne({ adminId: id }).select('-password -__v').lean();
+    const admin = await Admin.findOne({ adminId: id }).lean();
 
     /** jika admin tidak ditemukan, tampilkan pesan error */
     if (!admin) {

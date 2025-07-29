@@ -46,7 +46,6 @@ export const listAdmins = (validatedQuery) => {
               role: 0,
               password: 0,
               photo: 0,
-              __v: 0,
             },
           },
         ],
@@ -137,7 +136,7 @@ export const updateManager = async (id, adminId, validatedRequest) => {
     { adminId: id, role: 'manager' },
     { $set: validatedRequest },
     { new: true }
-  ).select('-_id -password -__v');
+  );
 
   return updatedManager.toObject();
 };

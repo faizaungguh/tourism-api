@@ -35,9 +35,7 @@ export const managerService = {
     const manager = await Admin.findOne({
       adminId: id,
       role: 'manager',
-    })
-      .select('-_id -password -__v')
-      .lean();
+    }).lean();
 
     /** Jika manager tidak ditemukan, tampilkan pesan error */
     if (!manager) {

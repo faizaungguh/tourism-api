@@ -13,7 +13,14 @@ const adminSchema = new Schema(
     photo: { type: String },
     role: { type: String, required: true, enum: ['admin', 'manager'] },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      transform: function (doc, ret) {
+        delete ret.__v, delete ret._id, delete ret.password;
+      },
+    },
+  }
 );
 
 const counterSchema = new mongoose.Schema({
@@ -21,8 +28,7 @@ const counterSchema = new mongoose.Schema({
   seq: { type: Number, default: 0 },
 });
 
-const Counter =
-  mongoose.models.Counter || mongoose.model('Counter', counterSchema);
+const Counter = mongoose.models.Counter || mongoose.model('Counter', counterSchema);
 
 adminSchema.pre('save', async function (next) {
   if (
@@ -32,12 +38,9 @@ adminSchema.pre('save', async function (next) {
     this.isModified('name')
   ) {
     const orClauses = [];
-    if (this.isNew || this.isModified('username'))
-      orClauses.push({ username: this.username });
-    if (this.isNew || this.isModified('email'))
-      orClauses.push({ email: this.email });
-    if (this.isNew || this.isModified('name'))
-      orClauses.push({ name: this.name });
+    if (this.isNew || this.isModified('username')) orClauses.push({ username: this.username });
+    if (this.isNew || this.isModified('email')) orClauses.push({ email: this.email });
+    if (this.isNew || this.isModified('name')) orClauses.push({ name: this.name });
 
     if (orClauses.length > 0) {
       const existingAdmins = await this.constructor.find({ $or: orClauses });
@@ -48,8 +51,7 @@ adminSchema.pre('save', async function (next) {
             errors.username = 'Username yang anda masukkan telah terdaftar.';
           if (admin.email === this.email)
             errors.email = 'Email yang anda masukkan telah terdaftar.';
-          if (admin.name === this.name)
-            errors.name = 'Name yang anda masukkan telah terdaftar.';
+          if (admin.name === this.name) errors.name = 'Name yang anda masukkan telah terdaftar.';
         }
       });
 
@@ -80,43 +82,36 @@ adminSchema.pre('save', async function (next) {
       const salt = await bcrypt.genSalt(10);
       this.password = await bcrypt.hash(this.password, salt);
     } catch (error) {
-      return next(
-        new Error('Gagal melakukan hashing password: ' + error.message)
-      );
+      return next(new Error('Gagal melakukan hashing password: ' + error.message));
     }
   }
 
   next();
 });
 
-adminSchema.pre(
-  'deleteOne',
-  { document: true, query: false },
-  async function (next) {
-    if (this.role !== 'manager') {
-      return next();
-    }
-
-    const Destination = mongoose.model('Destination');
-
-    const destinationCount = await Destination.countDocuments({
-      createdBy: this._id,
-    });
-
-    if (destinationCount > 0) {
-      const error = new ResponseError(409, 'Penghapusan Manager gagal', {
-        message: `Manajer tidak dapat dihapus karena masih memiliki ${destinationCount} destinasi. Hapus destinasi terlebih dahulu.`,
-      });
-      return next(error);
-    }
-
-    next();
+adminSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
+  if (this.role !== 'manager') {
+    return next();
   }
-);
+
+  const Destination = mongoose.model('Destination');
+
+  const destinationCount = await Destination.countDocuments({
+    createdBy: this._id,
+  });
+
+  if (destinationCount > 0) {
+    const error = new ResponseError(409, 'Penghapusan Manager gagal', {
+      message: `Manajer tidak dapat dihapus karena masih memiliki ${destinationCount} destinasi. Hapus destinasi terlebih dahulu.`,
+    });
+    return next(error);
+  }
+
+  next();
+});
 
 adminSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-export const Admin =
-  mongoose.models.Admin || mongoose.model('Admin', adminSchema);
+export const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);

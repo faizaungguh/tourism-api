@@ -9,10 +9,7 @@ export const categoryService = {
     /** validasi request */
     validate.isNotEmpty(request);
 
-    const validatedRequest = validate.requestCheck(
-      checker.categoryValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.categoryValidation, request);
 
     /** Buat instance baru dari model Category */
     const data = new Category(validatedRequest);
@@ -26,10 +23,7 @@ export const categoryService = {
 
   getAllCategory: async (query) => {
     /** validasi */
-    const validatedQuery = validate.requestCheck(
-      checker.listCategoryValidation,
-      query
-    );
+    const validatedQuery = validate.requestCheck(checker.listCategoryValidation, query);
     const { page, size, sort } = validatedQuery;
     const skip = (page - 1) * size;
 
@@ -41,10 +35,7 @@ export const categoryService = {
 
     const [totalItems, categories] = await Promise.all([
       Category.countDocuments(filter),
-      Category.find(filter)
-        .sort({ createdAt: sortDirection })
-        .skip(skip)
-        .limit(size),
+      Category.find(filter).sort({ createdAt: sortDirection }).skip(skip).limit(size),
     ]);
 
     return {
@@ -59,10 +50,7 @@ export const categoryService = {
   },
 
   updateCategory: async (slug, request) => {
-    const validatedRequest = validate.requestCheck(
-      checker.categoryValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.categoryValidation, request);
 
     const originalCategory = await Category.findOne({ slug });
     if (!originalCategory) {
@@ -77,7 +65,7 @@ export const categoryService = {
         $set: validatedRequest,
       },
       { new: true }
-    ).select('-_id -__v -createdAt -updatedAt');
+    );
 
     return result;
   },

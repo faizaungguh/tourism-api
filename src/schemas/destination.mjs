@@ -38,15 +38,7 @@ const destinationSchema = new Schema(
       {
         day: {
           type: String,
-          enum: [
-            'monday',
-            'tuesday',
-            'wednesday',
-            'thursday',
-            'friday',
-            'saturday',
-            'sunday',
-          ],
+          enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
         },
         hours: { type: String, default: 'Tutup' },
         isClosed: { type: Boolean, default: false },
@@ -92,7 +84,14 @@ const destinationSchema = new Schema(
       bus: { capacity: { type: Number }, price: { type: Number } },
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      transform: function (doc, ret) {
+        delete ret.__v, delete ret._id;
+      },
+    },
+  }
 );
 
 destinationSchema.pre('save', async function (next) {
@@ -118,9 +117,7 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
 
 destinationSchema.pre('deleteOne', { document: true }, async function (next) {
   if (this.attractions && this.attractions.length > 0) {
-    await mongoose
-      .model('Attraction')
-      .deleteMany({ _id: { $in: this.attractions } });
+    await mongoose.model('Attraction').deleteMany({ _id: { $in: this.attractions } });
   }
   next();
 });
