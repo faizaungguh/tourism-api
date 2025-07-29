@@ -128,11 +128,6 @@ const detailDestinationPipeline = [
         subdistrict: '$subdistrictDetails.name',
         coordinates: '$locations.coordinates',
       },
-      openingHour: 1,
-      facility: 1,
-      contact: 1,
-      ticketPrice: '$ticket',
-      parking: 1,
       attractions: {
         $map: {
           input: '$attractionList',
@@ -146,6 +141,42 @@ const detailDestinationPipeline = [
           },
         },
       },
+      openingHour: {
+        $map: {
+          input: '$openingHour',
+          as: 'oh',
+          in: {
+            day: '$$oh.day',
+            hours: '$$oh.hours',
+            isClosed: '$$oh.isClosed',
+          },
+        },
+      },
+      facility: {
+        $map: {
+          input: '$facility',
+          as: 'f',
+          in: {
+            name: '$$f.name',
+            availability: '$$f.availability',
+            number: '$$f.number',
+            disabilityAccess: '$$f.disabilityAccess',
+            photo: '$$f.photo',
+          },
+        },
+      },
+      contact: {
+        $map: {
+          input: '$contact',
+          as: 'c',
+          in: {
+            platform: '$$c.platform',
+            value: '$$c.value',
+          },
+        },
+      },
+      ticketPrice: '$ticket',
+      parking: 1,
     },
   },
 ];
@@ -185,7 +216,7 @@ export const listDestination = (validatedQuery) => {
           { $limit: size },
           {
             $project: {
-              _id: 1,
+              _id: 0,
               destinationTitle: 1,
               category: '$categoryDetails.name',
               categorySlug: '$categoryDetails.slug',

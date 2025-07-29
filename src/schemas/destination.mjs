@@ -1,8 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
+import { customAlphabet } from 'nanoid';
+import { Subdistrict } from './subdistrict.mjs';
 
 const destinationSchema = new Schema(
   {
-    destinationsId: { type: String },
+    destinationsId: { type: String, unique: true },
     destinationTitle: {
       type: String,
       unique: true,
@@ -42,6 +44,7 @@ const destinationSchema = new Schema(
         },
         hours: { type: String, default: 'Tutup' },
         isClosed: { type: Boolean, default: false },
+        _id: false,
       },
     ],
     attractions: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
@@ -101,6 +104,40 @@ destinationSchema.pre('save', async function (next) {
       .replace(/ /g, '-')
       .replace(/[^\w-]+/g, '');
   }
+
+  if (this.isNew) {
+    try {
+      const subdistrictIdentifier = this.locations.subdistrict;
+      let subdistrictDoc;
+
+      if (mongoose.Types.ObjectId.isValid(subdistrictIdentifier)) {
+        subdistrictDoc = await Subdistrict.findById(subdistrictIdentifier);
+      } else {
+        subdistrictDoc = await Subdistrict.findOne({ name: subdistrictIdentifier });
+      }
+
+      if (!subdistrictDoc) {
+        throw new Error(`Kecamatan dengan input "${subdistrictIdentifier}" tidak ditemukan.`);
+      }
+
+      const prefix = subdistrictDoc.abbrevation;
+
+      this.locations.subdistrict = subdistrictDoc._id;
+
+      const nanoid = customAlphabet('0123456789abcdefghijklmnopqrstuvwxyz', 8);
+      let generatedId;
+      while (true) {
+        const randomPart = nanoid();
+        generatedId = `${prefix}-${randomPart}`;
+        const existingDestination = await this.constructor.findOne({ destinationsId: generatedId });
+        if (!existingDestination) break;
+      }
+      this.destinationsId = generatedId;
+    } catch (error) {
+      return next(error);
+    }
+  }
+
   next();
 });
 
@@ -114,7 +151,6 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   }
   next();
 });
-
 destinationSchema.pre('deleteOne', { document: true }, async function (next) {
   if (this.attractions && this.attractions.length > 0) {
     await mongoose.model('Attraction').deleteMany({ _id: { $in: this.attractions } });
