@@ -45,6 +45,7 @@ export const listAdmins = (validatedQuery) => {
               contactNumber: 0,
               role: 0,
               password: 0,
+              photo: 0,
               __v: 0,
             },
           },
@@ -54,20 +55,14 @@ export const listAdmins = (validatedQuery) => {
   ];
 };
 
-const _handlePasswordUpdate = async (
-  validatedRequest,
-  originalPasswordHash
-) => {
+const _handlePasswordUpdate = async (validatedRequest, originalPasswordHash) => {
   if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
     throw new ResponseError(422, 'Data kosong.', {
       message: 'Anda harus memasukkan password lama dan password baru anda',
     });
   }
 
-  const isPasswordMatch = await bcrypt.compare(
-    validatedRequest.oldPassword,
-    originalPasswordHash
-  );
+  const isPasswordMatch = await bcrypt.compare(validatedRequest.oldPassword, originalPasswordHash);
 
   if (!isPasswordMatch) {
     throw new ResponseError(401, 'Data ubahan ditolak.', {
@@ -77,16 +72,12 @@ const _handlePasswordUpdate = async (
 
   if (validatedRequest.newPassword === validatedRequest.oldPassword) {
     throw new ResponseError(401, 'Data ubahan ditolak', {
-      newPassword:
-        'Password Baru yang anda masukkan sama dengan Password Lama.',
+      newPassword: 'Password Baru yang anda masukkan sama dengan Password Lama.',
     });
   }
 
   /** Jika cocok, hash password baru */
-  validatedRequest.password = await bcrypt.hash(
-    validatedRequest.newPassword,
-    10
-  );
+  validatedRequest.password = await bcrypt.hash(validatedRequest.newPassword, 10);
 
   /** Hapus field sementara agar tidak tersimpan di database */
   delete validatedRequest.oldPassword;
@@ -94,9 +85,7 @@ const _handlePasswordUpdate = async (
 };
 
 export const updateAdmin = async (id, validatedRequest) => {
-  const originalAdmin = await Admin.findOne({ adminId: id }).select(
-    '+password'
-  );
+  const originalAdmin = await Admin.findOne({ adminId: id }).select('+password');
 
   if (!originalAdmin) {
     throw new ResponseError(404, 'Data tidak ditemukan', {
@@ -111,11 +100,7 @@ export const updateAdmin = async (id, validatedRequest) => {
   /** Cek duplikasi username/email menggunakan helper */
   await verify.checkDuplicate(validatedRequest, originalAdmin);
 
-  return Admin.findOneAndUpdate(
-    { adminId: id },
-    { $set: validatedRequest },
-    { new: true }
-  );
+  return Admin.findOneAndUpdate({ adminId: id }, { $set: validatedRequest }, { new: true });
 };
 
 export const updateManager = async (id, adminId, validatedRequest) => {

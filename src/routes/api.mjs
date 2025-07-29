@@ -15,8 +15,7 @@ export const privateRouter = new express.Router();
 
 privateRouter
   .route('/signout')
-  .all(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'))
-  .delete(auth.signout)
+  .delete(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'), auth.signout)
   .all(handler.method(['DELETE']));
 
 /** Admin */
@@ -36,6 +35,11 @@ privateRouter
   .all(handler.method(['GET', 'PUT', 'DELETE']));
 
 /** Manager */
+privateRouter
+  .route('/managers')
+  .get(authMiddleware.protect, authMiddleware.authorize('admin'), manager.list)
+  .all(handler.method(['GET']));
+
 privateRouter
   .route('/managers/:id')
   .get(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'), manager.get)
@@ -57,13 +61,10 @@ privateRouter
   .all(handler.method(['PUT', 'DELETE']));
 
 /** Subdistrict */
-privateRouter.post(
-  '/subdistricts',
-  authMiddleware.protect,
-  authMiddleware.authorize('admin'),
-  subdistrict.post
-);
-privateRouter.all('/subdistricts', handler.method(['POST']));
+privateRouter
+  .route('/subdistricts')
+  .post(authMiddleware.protect, authMiddleware.authorize('admin'), subdistrict.post)
+  .all(handler.method(['POST']));
 
 privateRouter
   .route('/subdistricts/:slug')
@@ -73,13 +74,10 @@ privateRouter
   .all(handler.method(['PUT', 'DELETE']));
 
 /** Destination */
-privateRouter.post(
-  '/destinations',
-  authMiddleware.protect,
-  authMiddleware.authorize('manager'),
-  destination.post
-);
-privateRouter.all('/destinations', handler.method(['POST']));
+privateRouter
+  .route('/destinations')
+  .post(authMiddleware.protect, authMiddleware.authorize('manager'), destination.post)
+  .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:slug')
@@ -105,4 +103,5 @@ privateRouter
 privateRouter
   .route('/admins/:id/photo')
   .all(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'))
-  .post(uploadMedia.profileAdmin, media.addAdminProfile);
+  .post(uploadMedia.profileAdmin, media.addAdminProfile)
+  .all(handler.method(['POST']));

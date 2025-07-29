@@ -2,6 +2,15 @@ import { managerService } from '#services/manager.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 export const manager = {
+  list: async (req, res) => {
+    const { result, pagination } = await managerService.getAll(req.query);
+    res.status(200).json({
+      message: 'Menampilkan daftar Manajer',
+      data: result,
+      pagination,
+    });
+  },
+
   get: async (req, res) => {
     const { id } = req.params;
     const admin = req.admin;
