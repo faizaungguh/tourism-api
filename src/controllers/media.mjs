@@ -1,28 +1,36 @@
 import fs from 'fs/promises';
+import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
 import { mediaService } from '#services/media.mjs';
 
 export const media = {
-  addAdminProfile: async (req, res, next) => {
+  adminPhoto: async (req, res, next) => {
     try {
-      const { adminId } = req.admin;
       const { id } = req.params;
+      const { adminId } = req.admin;
 
       if (adminId !== id) {
         throw new ResponseError(403, 'Akses ditolak.', {
-          message: 'Admin dan Manager hanya dapat mengakses data anda sendiri.',
+          message: 'Anda hanya dapat mengubah foto profil sendiri.',
         });
       }
 
-      const photoPath = await mediaService.addAdminProfile(id, req.file);
+      const newPhotoPath = req.processedFiles?.photo;
+      if (!newPhotoPath) {
+        throw new ResponseError(422, 'Dokumen tidak ditemukan', {
+          photo: 'Anda harus menyertakan dokumen gambar',
+        });
+      }
+
+      await mediaService.updateAdminPhoto(req.foundAdmin, newPhotoPath);
+
       res.status(200).json({
-        message: `Foto profile ${id} terbaru telah ditambahkan`,
-        data: { path: photoPath },
+        message: `Foto profil untuk ${id} berhasil diperbarui.`,
       });
     } catch (error) {
-      if (error.status === 429 && req.file?.path) {
-        fs.unlink(req.file.path).catch((err) =>
-          console.error(`Gagal membersihkan file duplikat: ${req.file.path}`, err)
+      if (req.processedFiles?.photo) {
+        fs.unlink(path.join('public', req.processedFiles.photo)).catch((err) =>
+          console.error(`Gagal membersihkan file: ${req.processedFiles.photo}`, err)
         );
       }
       next(error);

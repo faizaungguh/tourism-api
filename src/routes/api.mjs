@@ -101,7 +101,7 @@ privateRouter
 
 /** Media Upload */
 privateRouter
-  .route('/admins/:id/photo')
+  .route('/media/:id/photo')
   .all(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'))
-  .post(uploadMedia.profileAdmin, media.addAdminProfile)
-  .all(handler.method(['POST']));
+  .put(uploadMedia.profileAdmin, media.adminPhoto)
+  .all(handler.method(['PUT']));
