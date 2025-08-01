@@ -15,20 +15,20 @@ export const privateRouter = new express.Router();
 
 privateRouter
   .route('/signout')
-  .delete(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'), auth.signout)
+  .delete(authMiddleware.authorize('admin', 'manager'), auth.signout)
   .all(handler.method(['DELETE']));
 
 /** Admin */
 privateRouter
   .route('/admins')
-  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
+  .all(authMiddleware.authorize('admin'))
   .get(admin.list)
   .post(admin.post)
   .all(handler.method(['GET', 'POST']));
 
 privateRouter
   .route('/admins/:id')
-  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
+  .all(authMiddleware.authorize('admin'))
   .get(admin.get)
   .put(admin.patch)
   .delete(admin.drop)
@@ -37,25 +37,25 @@ privateRouter
 /** Manager */
 privateRouter
   .route('/managers')
-  .get(authMiddleware.protect, authMiddleware.authorize('admin'), manager.list)
+  .get(authMiddleware.authorize('admin'), manager.list)
   .all(handler.method(['GET']));
 
 privateRouter
   .route('/managers/:id')
-  .get(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'), manager.get)
-  .put(authMiddleware.protect, authMiddleware.authorize('manager'), manager.put)
-  .delete(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'), manager.drop)
+  .get(authMiddleware.authorize('admin', 'manager'), manager.get)
+  .put(authMiddleware.authorize('manager'), manager.put)
+  .delete(authMiddleware.authorize('admin', 'manager'), manager.drop)
   .all(handler.method(['GET', 'PUT', 'DELETE']));
 
 /** Category */
 privateRouter
   .route('/categories')
-  .post(authMiddleware.protect, authMiddleware.authorize('admin'), category.post)
+  .post(authMiddleware.authorize('admin'), category.post)
   .all(handler.method(['POST']));
 
 privateRouter
   .route('/categories/:slug')
-  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
+  .all(authMiddleware.authorize('admin'))
   .put(category.patch)
   .delete(category.drop)
   .all(handler.method(['PUT', 'DELETE']));
@@ -63,12 +63,12 @@ privateRouter
 /** Subdistrict */
 privateRouter
   .route('/subdistricts')
-  .post(authMiddleware.protect, authMiddleware.authorize('admin'), subdistrict.post)
+  .post(authMiddleware.authorize('admin'), subdistrict.post)
   .all(handler.method(['POST']));
 
 privateRouter
   .route('/subdistricts/:slug')
-  .all(authMiddleware.protect, authMiddleware.authorize('admin'))
+  .all(authMiddleware.authorize('admin'))
   .put(subdistrict.patch)
   .delete(subdistrict.drop)
   .all(handler.method(['PUT', 'DELETE']));
@@ -76,12 +76,12 @@ privateRouter
 /** Destination */
 privateRouter
   .route('/destinations')
-  .post(authMiddleware.protect, authMiddleware.authorize('manager'), destination.post)
+  .post(authMiddleware.authorize('manager'), destination.post)
   .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:slug')
-  .all(authMiddleware.protect, authMiddleware.authorize('manager'))
+  .all(authMiddleware.authorize('manager'))
   .put(destination.patch)
   .delete(destination.drop)
   .all(handler.method(['PUT', 'DELETE']));
@@ -89,12 +89,12 @@ privateRouter
 /** Attraction */
 privateRouter
   .route('/destinations/:destinations/attractions')
-  .post(authMiddleware.protect, authMiddleware.authorize('manager'), attraction.create)
+  .post(authMiddleware.authorize('manager'), attraction.create)
   .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions')
-  .all(authMiddleware.protect, authMiddleware.authorize('manager'))
+  .all(authMiddleware.authorize('manager'))
   .put(attraction.patch)
   .delete(attraction.drop)
   .all(handler.method(['PUT', 'DELETE']));
@@ -102,6 +102,6 @@ privateRouter
 /** Media Upload */
 privateRouter
   .route('/media/:id/photo')
-  .all(authMiddleware.protect, authMiddleware.authorize('admin', 'manager'))
+  .all(authMiddleware.authorize('admin', 'manager'))
   .put(uploadMedia.profileAdmin, media.adminPhoto)
   .all(handler.method(['PUT']));

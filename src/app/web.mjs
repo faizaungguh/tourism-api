@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import { logger } from '#app/logging.mjs';
 import { publicRouter } from '#routes/public.mjs';
+import { authMiddleware } from '#middlewares/auth.mjs';
 import { privateRouter } from '#routes/api.mjs';
 import { handler } from '#middlewares/error.mjs';
 import { shield } from '#configs/security.mjs';
@@ -22,7 +23,7 @@ web.use(shield.cors, shield.session, shield.helm);
 
 /** Route */
 web.use('/', shield.generalLimiter, publicRouter);
-web.use('/api', shield.adminLimiter, privateRouter);
+web.use('/api', authMiddleware.protect, shield.adminLimiter, privateRouter);
 
 web.use(handler.notFoundEndpoint);
 web.use(handler.error);
