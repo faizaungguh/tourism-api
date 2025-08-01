@@ -49,7 +49,7 @@ const createMedia = (uploader, limits) => (req, res, next) => {
   });
 };
 
-const saveMedia = (options) => async (req, res, next) => {
+const saveAdminPhoto = (options) => async (req, res, next) => {
   try {
     if (!req.file) return next();
 
@@ -105,7 +105,7 @@ export const uploadMedia = {
   profileAdmin: [
     checkExisted,
     createMedia(adminMedia.uploader, adminMedia.limits),
-    saveMedia({
+    saveAdminPhoto({
       subfolder: 'profile',
       getDynamicPath: (req) => req.params.id,
     }),

@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import { customAlphabet } from 'nanoid';
 import { Subdistrict } from './subdistrict.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 const destinationSchema = new Schema(
   {
@@ -24,7 +25,6 @@ const destinationSchema = new Schema(
       {
         url: { type: String },
         caption: { type: String, trim: true },
-        altText: { type: String, trim: true },
       },
     ],
     locations: {
@@ -50,11 +50,16 @@ const destinationSchema = new Schema(
     attractions: [{ type: Schema.Types.ObjectId, ref: 'Attraction' }],
     facility: [
       {
-        name: { type: String, trim: true },
+        name: { type: String, trim: true, required: true },
         availability: { type: Boolean, default: false },
         number: { type: Number, default: 0 },
         disabilityAccess: { type: Boolean, default: false },
-        photo: { type: [String], default: [] },
+        photo: [
+          {
+            url: { type: String },
+            caption: { type: String, trim: true },
+          },
+        ],
       },
     ],
     contact: [
@@ -98,6 +103,26 @@ const destinationSchema = new Schema(
 );
 
 destinationSchema.pre('save', async function (next) {
+  if (this.isModified('openingHour') && this.openingHour) {
+    this.openingHour.forEach((day) => {
+      if (day.isClosed) {
+        day.hours = 'Tutup';
+      }
+    });
+  }
+
+  if ((this.isModified('facility') || this.isNew) && this.facility && this.facility.length > 0) {
+    const names = this.facility.map((f) => f.name);
+    const isUnique = new Set(names).size === names.length;
+    if (!isUnique) {
+      return next(
+        new ResponseError(409, 'Konflik data fasilitas', {
+          message: 'Nama fasilitas tidak boleh duplikat dalam satu destinasi.',
+        })
+      );
+    }
+  }
+
   if (this.isModified('destinationTitle') || this.isNew) {
     this.slug = this.destinationTitle
       .toLowerCase()
@@ -117,7 +142,9 @@ destinationSchema.pre('save', async function (next) {
       }
 
       if (!subdistrictDoc) {
-        throw new Error(`Kecamatan dengan input "${subdistrictIdentifier}" tidak ditemukan.`);
+        throw new ResponseError(404, 'Data tidak ditemukan', {
+          message: `Kecamatan dengan input "${subdistrictIdentifier}" tidak ditemukan.`,
+        });
       }
 
       const prefix = subdistrictDoc.abbrevation;
@@ -143,6 +170,15 @@ destinationSchema.pre('save', async function (next) {
 
 destinationSchema.pre('findOneAndUpdate', async function (next) {
   const update = this.getUpdate();
+
+  if (update.$set && update.$set.openingHour && Array.isArray(update.$set.openingHour)) {
+    update.$set.openingHour.forEach((day) => {
+      if (day.isClosed) {
+        day.hours = 'Tutup';
+      }
+    });
+  }
+
   if (update.$set && update.$set.destinationTitle) {
     update.$set.slug = update.$set.destinationTitle
       .toLowerCase()

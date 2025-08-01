@@ -6,9 +6,9 @@ import { subdistrict } from '#controllers/subdistrict.mjs';
 import { destination } from '#controllers/destination.mjs';
 import { attraction } from '#controllers/attraction.mjs';
 import { auth } from '#controllers/auth.mjs';
+import { media } from '#controllers/media.mjs';
 import { authMiddleware } from '#middlewares/auth.mjs';
 import { handler } from '#middlewares/error.mjs';
-import { media } from '#controllers/media.mjs';
 import { uploadMedia } from '#middlewares/media.mjs';
 
 export const privateRouter = new express.Router();
@@ -88,7 +88,7 @@ privateRouter
 
 /** Attraction */
 privateRouter
-  .route('/destinations/:destinations/attractions')
+  .route('/destinations/:slug/attractions')
   .post(authMiddleware.authorize('manager'), attraction.create)
   .all(handler.method(['POST']));
 
