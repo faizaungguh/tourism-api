@@ -117,6 +117,7 @@ const detailDestinationPipeline = [
   {
     $project: {
       _id: 0,
+      destinationsId: 1,
       destinationTitle: 1,
       description: 1,
       category: '$categoryDetails.name',
@@ -217,6 +218,7 @@ export const listDestination = (validatedQuery) => {
           {
             $project: {
               _id: 0,
+              destinationId: 1,
               destinationTitle: 1,
               category: '$categoryDetails.name',
               categorySlug: '$categoryDetails.slug',
@@ -275,7 +277,9 @@ export const createDestination = async (adminId, validatedRequest) => {
 export const patchDestination = async (destinationSlug, adminId, validatedRequest) => {
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
-    Destination.findOne({ slug: destinationSlug }).select('_id createdBy destinationTitle'),
+    Destination.findOne({ slug: destinationSlug }).select(
+      '_id createdBy destinationTitle facility openingHour'
+    ),
   ]);
 
   if (!admin)
@@ -284,7 +288,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     });
   if (!destinationToUpdate)
     throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-      message: `Tempat wisata dengan nama ${validatedRequest.destinationTitle} telah terdaftar`,
+      message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
     });
   if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
     throw new ResponseError(403, 'Akses anda ditolak', {
@@ -293,7 +297,8 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
   }
 
   const errors = {};
-  const finalUpdates = {};
+  const updateOperation = { $set: {} };
+  const options = { new: true, runValidators: true };
 
   const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
     categories: validatedRequest.categories,
@@ -302,13 +307,13 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
 
   if (validatedRequest.categories) {
     if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
-    else finalUpdates.category = categoryDoc._id;
+    else updateOperation.$set.category = categoryDoc._id;
   }
 
   if (validatedRequest.locations?.subdistrict) {
     if (!subdistrictDoc)
       errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
-    else finalUpdates['locations.subdistrict'] = subdistrictDoc._id;
+    else updateOperation.$set['locations.subdistrict'] = subdistrictDoc._id;
   }
 
   if (
@@ -320,7 +325,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
       _id: { $ne: destinationToUpdate._id },
     }).lean();
     if (existingTitle) errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
-    else finalUpdates.destinationTitle = validatedRequest.destinationTitle;
+    else updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
   }
 
   if (Object.keys(errors).length > 0) {
@@ -328,27 +333,70 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
   }
 
   for (const key of Object.keys(validatedRequest)) {
-    if (key !== 'destinationTitle' && key !== 'categories' && key !== 'locations') {
-      finalUpdates[key] = validatedRequest[key];
+    if (!['destinationTitle', 'categories', 'locations', 'openingHour'].includes(key)) {
+      updateOperation.$set[key] = validatedRequest[key];
     }
   }
 
   if (validatedRequest.locations?.addresses) {
-    finalUpdates['locations.addresses'] = validatedRequest.locations.addresses;
+    updateOperation.$set['locations.addresses'] = validatedRequest.locations.addresses;
   }
   if (validatedRequest.locations?.coordinates) {
-    finalUpdates['locations.coordinates'] = validatedRequest.locations.coordinates;
+    updateOperation.$set['locations.coordinates'] = validatedRequest.locations.coordinates;
   }
 
-  if (Object.keys(finalUpdates).length === 0) {
+  if (validatedRequest.openingHour && Array.isArray(validatedRequest.openingHour)) {
+    validatedRequest.openingHour.forEach((hourUpdate) => {
+      if (hourUpdate.isClosed === true) {
+        hourUpdate.hours = 'Tutup';
+      }
+    });
+
+    const existingDays = new Set(destinationToUpdate.openingHour.map((oh) => oh.day));
+    const updates = [];
+    const additions = [];
+    const deletions = [];
+
+    validatedRequest.openingHour.forEach((hourUpdate) => {
+      if (hourUpdate._deleted === true) {
+        deletions.push(hourUpdate.day);
+      } else if (existingDays.has(hourUpdate.day)) {
+        updates.push(hourUpdate);
+      } else {
+        additions.push(hourUpdate);
+      }
+    });
+
+    if (updates.length > 0) {
+      const arrayFilters = [];
+      updates.forEach((hourUpdate, index) => {
+        const filterIdentifier = `elem${index}`;
+        arrayFilters.push({ [`${filterIdentifier}.day`]: hourUpdate.day });
+        Object.keys(hourUpdate).forEach((prop) => {
+          updateOperation.$set[`openingHour.$[${filterIdentifier}].${prop}`] = hourUpdate[prop];
+        });
+      });
+      options.arrayFilters = arrayFilters;
+    }
+
+    if (additions.length > 0) {
+      updateOperation.$push = { openingHour: { $each: additions } };
+    }
+
+    if (deletions.length > 0) {
+      updateOperation.$pull = { openingHour: { day: { $in: deletions } } };
+    }
+  }
+
+  if (
+    Object.keys(updateOperation.$set).length === 0 &&
+    !updateOperation.$push &&
+    !updateOperation.$pull
+  ) {
     return destinationToUpdate;
   }
 
-  return Destination.findByIdAndUpdate(
-    destinationToUpdate._id,
-    { $set: finalUpdates },
-    { new: true, runValidators: true }
-  );
+  return Destination.findByIdAndUpdate(destinationToUpdate._id, updateOperation, options);
 };
 
 export const getDestination = (identifier) => {

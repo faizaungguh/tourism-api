@@ -3,7 +3,6 @@ import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/destinationHelper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { Category } from '#schemas/category.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
