@@ -4,6 +4,7 @@ import { Category } from '#schemas/category.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
+import { facility } from '#validations/fieldDestination.mjs';
 
 const _findRelatedDocs = async ({ categories, subdistrict }) => {
   const promises = [];
@@ -333,7 +334,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
   }
 
   for (const key of Object.keys(validatedRequest)) {
-    if (!['destinationTitle', 'categories', 'locations', 'openingHour'].includes(key)) {
+    if (!['destinationTitle', 'categories', 'locations', 'openingHour', 'facility'].includes(key)) {
       updateOperation.$set[key] = validatedRequest[key];
     }
   }
@@ -345,6 +346,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     updateOperation.$set['locations.coordinates'] = validatedRequest.locations.coordinates;
   }
 
+  /** update openingHour */
   if (validatedRequest.openingHour && Array.isArray(validatedRequest.openingHour)) {
     validatedRequest.openingHour.forEach((hourUpdate) => {
       if (hourUpdate.isClosed === true) {
@@ -367,8 +369,24 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
       }
     });
 
+    if (deletions.length > 0) {
+      await Destination.updateOne(
+        { _id: destinationToUpdate._id },
+        { $pull: { openingHour: { day: { $in: deletions } } } }
+      );
+    }
+
+    if (additions.length > 0) {
+      await Destination.updateOne(
+        { _id: destinationToUpdate._id },
+        { $push: { openingHour: { $each: additions } } }
+      );
+    }
+
     if (updates.length > 0) {
       const arrayFilters = [];
+      const updateOperation = { $set: {} };
+
       updates.forEach((hourUpdate, index) => {
         const filterIdentifier = `elem${index}`;
         arrayFilters.push({ [`${filterIdentifier}.day`]: hourUpdate.day });
@@ -376,15 +394,65 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
           updateOperation.$set[`openingHour.$[${filterIdentifier}].${prop}`] = hourUpdate[prop];
         });
       });
-      options.arrayFilters = arrayFilters;
+
+      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation, {
+        arrayFilters: arrayFilters,
+      });
+    }
+  }
+
+  /** update facilitys */
+  if (validatedRequest.facility && Array.isArray(validatedRequest.facility)) {
+    validatedRequest.facility.forEach((facilityUpdate) => {
+      if (facilityUpdate.availability === false) {
+        facilityUpdate.number = 0;
+      }
+    });
+
+    const existingFacilities = new Set(destinationToUpdate.facility.map((f) => f.name));
+    const updates = [];
+    const additions = [];
+    const deletions = [];
+
+    validatedRequest.facility.forEach((facilityUpdate) => {
+      if (facilityUpdate._deleted === true) {
+        deletions.push(facilityUpdate.name);
+      } else if (existingFacilities.has(facilityUpdate.name)) {
+        updates.push(facilityUpdate);
+      } else {
+        additions.push(facilityUpdate);
+      }
+    });
+
+    if (deletions.length > 0) {
+      await Destination.updateOne(
+        { _id: destinationToUpdate._id },
+        { $pull: { facility: { name: { $in: deletions } } } }
+      );
     }
 
     if (additions.length > 0) {
-      updateOperation.$push = { openingHour: { $each: additions } };
+      await Destination.updateOne(
+        { _id: destinationToUpdate._id },
+        { $push: { facility: { $each: additions } } }
+      );
     }
 
-    if (deletions.length > 0) {
-      updateOperation.$pull = { openingHour: { day: { $in: deletions } } };
+    if (updates.length > 0) {
+      const arrayFilters = [];
+      const updateOperation = { $set: {} };
+
+      updates.forEach((facilityUpdate, index) => {
+        const filterIdentifier = `fac${index}`;
+        arrayFilters.push({ [`${filterIdentifier}.name`]: facilityUpdate.name });
+        Object.keys(facilityUpdate).forEach((prop) => {
+          updateOperation.$set[`facility.$[${filterIdentifier}].${prop}`] = facilityUpdate[prop];
+        });
+      });
+
+      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation, {
+        arrayFilters: arrayFilters,
+      });
     }
   }
 
