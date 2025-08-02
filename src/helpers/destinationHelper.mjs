@@ -4,7 +4,6 @@ import { Category } from '#schemas/category.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import { facility } from '#validations/fieldDestination.mjs';
 
 const _findRelatedDocs = async ({ categories, subdistrict }) => {
   const promises = [];
@@ -354,7 +353,8 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
       }
     });
 
-    const existingDays = new Set(destinationToUpdate.openingHour.map((oh) => oh.day));
+    const existingDays = new Set((destinationToUpdate.openingHour || []).map((oh) => oh.day));
+
     const updates = [];
     const additions = [];
     const deletions = [];
@@ -364,7 +364,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
         deletions.push(hourUpdate.day);
       } else if (existingDays.has(hourUpdate.day)) {
         updates.push(hourUpdate);
-      } else {
+      } else if (hourUpdate.day) {
         additions.push(hourUpdate);
       }
     });
@@ -399,6 +399,8 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
         arrayFilters: arrayFilters,
       });
     }
+
+    delete validatedRequest.openingHour;
   }
 
   /** update facilitys */
@@ -409,7 +411,8 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
       }
     });
 
-    const existingFacilities = new Set(destinationToUpdate.facility.map((f) => f.name));
+    const existingFacilities = new Set((destinationToUpdate.facility || []).map((f) => f.name));
+
     const updates = [];
     const additions = [];
     const deletions = [];
@@ -419,7 +422,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
         deletions.push(facilityUpdate.name);
       } else if (existingFacilities.has(facilityUpdate.name)) {
         updates.push(facilityUpdate);
-      } else {
+      } else if (facilityUpdate.name) {
         additions.push(facilityUpdate);
       }
     });
@@ -454,6 +457,8 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
         arrayFilters: arrayFilters,
       });
     }
+
+    delete validatedRequest.facility;
   }
 
   if (
