@@ -53,7 +53,9 @@ export const adminService = {
 
     if (admin.photo) {
       const baseUrl = process.env.APP_URL || 'http://localhost:3000';
-      admin.photo = `${baseUrl}/${admin.photo.replace(/\\/g, '/')}`;
+      const photoPath = admin.photo.replace(/\\/g, '/');
+
+      admin.photo = new URL(photoPath, baseUrl).href;
     }
 
     /** kembalikan data admin */

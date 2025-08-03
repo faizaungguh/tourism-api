@@ -46,7 +46,9 @@ export const managerService = {
 
     if (manager.photo) {
       const baseUrl = process.env.APP_URL || 'http://localhost:3000';
-      manager.photo = `${baseUrl}/${manager.photo.replace(/\\/g, '/')}`;
+      const photoPath = manager.photo.replace(/\\/g, '/');
+
+      manager.photo = new URL(photoPath, baseUrl).href;
     }
 
     /** kembalikan data manager */
