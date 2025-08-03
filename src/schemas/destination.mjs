@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { customAlphabet } from 'nanoid';
+import { Attraction } from './attraction.mjs';
 import { Subdistrict } from './subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
@@ -102,14 +103,18 @@ const destinationSchema = new Schema(
   }
 );
 
-destinationSchema.pre('save', async function (next) {
-  if (this.isModified('openingHour') && this.openingHour) {
-    this.openingHour.forEach((day) => {
+export function processOpeningHours(openingHours) {
+  if (openingHours && Array.isArray(openingHours)) {
+    openingHours.forEach((day) => {
       if (day.isClosed) {
         day.hours = 'Tutup';
       }
     });
   }
+}
+
+destinationSchema.pre('save', async function (next) {
+  processOpeningHours(this.openingHour);
 
   if ((this.isModified('facility') || this.isNew) && this.facility && this.facility.length > 0) {
     const names = this.facility.map((f) => f.name);
@@ -170,14 +175,7 @@ destinationSchema.pre('save', async function (next) {
 
 destinationSchema.pre('findOneAndUpdate', async function (next) {
   const update = this.getUpdate();
-
-  if (update.$set && update.$set.openingHour && Array.isArray(update.$set.openingHour)) {
-    update.$set.openingHour.forEach((day) => {
-      if (day.isClosed) {
-        day.hours = 'Tutup';
-      }
-    });
-  }
+  processOpeningHours(update.$set?.openingHour);
 
   if (update.$set && update.$set.destinationTitle) {
     update.$set.slug = update.$set.destinationTitle
@@ -189,7 +187,7 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
 });
 destinationSchema.pre('deleteOne', { document: true }, async function (next) {
   if (this.attractions && this.attractions.length > 0) {
-    await mongoose.model('Attraction').deleteMany({ _id: { $in: this.attractions } });
+    await Attraction.deleteMany({ _id: { $in: this.attractions } });
   }
   next();
 });

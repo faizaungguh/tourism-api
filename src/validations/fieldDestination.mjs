@@ -126,6 +126,21 @@ export const ticket = validate.object({
   }),
 });
 
+export const patchTicket = validate.object({
+  adult: validate.number().min(0).messages({
+    'number.base': 'Harga tiket dewasa harus berupa angka.',
+    'number.min': 'Harga tiket dewasa tidak boleh kurang dari 0.',
+  }),
+  child: validate.number().min(0).messages({
+    'number.base': 'Harga tiket anak-anak harus berupa angka.',
+    'number.min': 'Harga tiket anak-anak tidak boleh kurang dari 0.',
+  }),
+  disability: validate.number().min(0).messages({
+    'number.base': 'Harga tiket disabilitas harus berupa angka.',
+    'number.min': 'Harga tiket disabilitas tidak boleh kurang dari 0.',
+  }),
+});
+
 export const parking = validate.object({
   motorcycle: validate.object({
     capacity: validate.number().integer().min(0),

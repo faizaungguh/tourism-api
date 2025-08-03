@@ -21,20 +21,13 @@ export const attractionService = {
 
     if (destination.createdBy.toString() !== admin._id.toString()) {
       throw new ResponseError(403, 'Akses ditolak.', {
-        message:
-          'Anda tidak memiliki izin untuk menambahkan wahana ke destinasi ini.',
+        message: 'Anda tidak memiliki izin untuk menambahkan wahana ke destinasi ini.',
       });
     }
 
-    const validatedRequest = validate.requestCheck(
-      checker.createAttractionValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.createAttractionValidation, request);
 
-    const newAttraction = await helper.createAttraction(
-      destination._id,
-      validatedRequest
-    );
+    const newAttraction = await helper.createAttraction(destination._id, validatedRequest);
 
     await Destination.findByIdAndUpdate(destination._id, {
       $push: { attractions: newAttraction._id },
@@ -51,15 +44,9 @@ export const attractionService = {
       attractionSlug
     );
 
-    const validatedRequest = validate.requestCheck(
-      checker.patchAttractionValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.patchAttractionValidation, request);
 
-    const updatedAttraction = await helper.patchAttraction(
-      attraction,
-      validatedRequest
-    );
+    const updatedAttraction = await helper.patchAttraction(attraction, validatedRequest);
 
     return updatedAttraction;
   },

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Destination } from '#schemas/destination.mjs';
+import { Destination, processOpeningHours } from '#schemas/destination.mjs';
 import { Category } from '#schemas/category.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
@@ -22,6 +22,64 @@ const _findRelatedDocs = async ({ categories, subdistrict }) => {
 
   const [categoryDoc, subdistrictDoc] = await Promise.all(promises);
   return { categoryDoc, subdistrictDoc };
+};
+
+const _updateArrayField = async ({
+  destinationId,
+  existingArray,
+  updateArray,
+  fieldName,
+  keyField,
+  preProcessingLogic = (item) => item,
+}) => {
+  if (!updateArray || !Array.isArray(updateArray)) {
+    return;
+  }
+
+  updateArray.forEach(preProcessingLogic);
+
+  const existingKeys = new Set((existingArray || []).map((item) => item[keyField]));
+
+  const updates = [];
+  const additions = [];
+  const deletions = [];
+
+  updateArray.forEach((itemUpdate) => {
+    if (itemUpdate._deleted === true) {
+      deletions.push(itemUpdate[keyField]);
+    } else if (existingKeys.has(itemUpdate[keyField])) {
+      updates.push(itemUpdate);
+    } else if (itemUpdate[keyField]) {
+      additions.push(itemUpdate);
+    }
+  });
+
+  if (deletions.length > 0) {
+    await Destination.updateOne(
+      { _id: destinationId },
+      { $pull: { [fieldName]: { [keyField]: { $in: deletions } } } }
+    );
+  }
+
+  if (additions.length > 0) {
+    await Destination.updateOne(
+      { _id: destinationId },
+      { $push: { [fieldName]: { $each: additions } } }
+    );
+  }
+
+  if (updates.length > 0) {
+    for (const itemUpdate of updates) {
+      const updateOp = { $set: {} };
+      Object.keys(itemUpdate).forEach((prop) => {
+        updateOp.$set[`${fieldName}.$.${prop}`] = itemUpdate[prop];
+      });
+      await Destination.updateOne(
+        { _id: destinationId, [`${fieldName}.${keyField}`]: itemUpdate[keyField] },
+        updateOp
+      );
+    }
+  }
 };
 
 const buildFilterStage = (validatedQuery) => {
@@ -275,6 +333,7 @@ export const createDestination = async (adminId, validatedRequest) => {
 };
 
 export const patchDestination = async (destinationSlug, adminId, validatedRequest) => {
+  console.log('DEBUG: validatedRequest yang diterima:', JSON.stringify(validatedRequest, null, 2));
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
     Destination.findOne({ slug: destinationSlug }).select(
@@ -287,20 +346,14 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
       message: `Data dengan ID ${adminId} tidak terdaftar`,
     });
 
-  if (!destinationToUpdate)
-    throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
-      message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
-    });
-
   if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
     throw new ResponseError(403, 'Akses anda ditolak', {
       message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
     });
   }
 
-  const errors = {};
   const updateOperation = { $set: {} };
-  const options = { new: true, runValidators: true };
+  const errors = {};
 
   const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
     categories: validatedRequest.categories,
@@ -311,44 +364,21 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
     else updateOperation.$set.category = categoryDoc._id;
   }
-
   if (validatedRequest.locations?.subdistrict) {
     if (!subdistrictDoc)
       errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
     else updateOperation.$set['locations.subdistrict'] = subdistrictDoc._id;
   }
-
-  if (
-    validatedRequest.destinationTitle &&
-    validatedRequest.destinationTitle !== destinationToUpdate.destinationTitle
-  ) {
-    const existingTitle = await Destination.findOne({
-      destinationTitle: validatedRequest.destinationTitle,
-      _id: { $ne: destinationToUpdate._id },
-    }).lean();
-    if (existingTitle) errors.destinationTitle = 'Judul destinasi wisata ini sudah digunakan.';
-    else updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
+  if (validatedRequest.destinationTitle) {
+    updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
   }
-
   if (Object.keys(errors).length > 0) {
     throw new ResponseError(400, 'Data gagal diubah.', errors);
   }
 
-  for (const key of Object.keys(validatedRequest)) {
-    if (
-      ![
-        'destinationTitle',
-        'categories',
-        'locations',
-        'openingHour',
-        'facility',
-        'contact',
-      ].includes(key)
-    ) {
-      updateOperation.$set[key] = validatedRequest[key];
-    }
+  if (validatedRequest.description) {
+    updateOperation.$set.description = validatedRequest.description;
   }
-
   if (validatedRequest.locations?.addresses) {
     updateOperation.$set['locations.addresses'] = validatedRequest.locations.addresses;
   }
@@ -356,186 +386,61 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     updateOperation.$set['locations.coordinates'] = validatedRequest.locations.coordinates;
   }
 
-  /** update openingHour */
-  if (validatedRequest.openingHour && Array.isArray(validatedRequest.openingHour)) {
-    validatedRequest.openingHour.forEach((hourUpdate) => {
-      if (hourUpdate.isClosed === true) {
-        hourUpdate.hours = 'Tutup';
+  if (validatedRequest.ticket && typeof validatedRequest.ticket === 'object') {
+    Object.keys(validatedRequest.ticket).forEach((key) => {
+      updateOperation.$set[`ticket.${key}`] = validatedRequest.ticket[key];
+    });
+  }
+  if (validatedRequest.parking && typeof validatedRequest.parking === 'object') {
+    Object.keys(validatedRequest.parking).forEach((vehicleType) => {
+      if (
+        validatedRequest.parking[vehicleType] &&
+        typeof validatedRequest.parking[vehicleType] === 'object'
+      ) {
+        for (const prop in validatedRequest.parking[vehicleType]) {
+          const path = `parking.${vehicleType}.${prop}`;
+          updateOperation.$set[path] = validatedRequest.parking[vehicleType][prop];
+        }
       }
     });
-
-    const existingDays = new Set((destinationToUpdate.openingHour || []).map((oh) => oh.day));
-
-    const updates = [];
-    const additions = [];
-    const deletions = [];
-
-    validatedRequest.openingHour.forEach((hourUpdate) => {
-      if (hourUpdate._deleted === true) {
-        deletions.push(hourUpdate.day);
-      } else if (existingDays.has(hourUpdate.day)) {
-        updates.push(hourUpdate);
-      } else if (hourUpdate.day) {
-        additions.push(hourUpdate);
-      }
-    });
-
-    if (deletions.length > 0) {
-      await Destination.updateOne(
-        { _id: destinationToUpdate._id },
-        { $pull: { openingHour: { day: { $in: deletions } } } }
-      );
-    }
-
-    if (additions.length > 0) {
-      await Destination.updateOne(
-        { _id: destinationToUpdate._id },
-        { $push: { openingHour: { $each: additions } } }
-      );
-    }
-
-    if (updates.length > 0) {
-      const arrayFilters = [];
-      const updateOperation = { $set: {} };
-
-      updates.forEach((hourUpdate, index) => {
-        const filterIdentifier = `elem${index}`;
-        arrayFilters.push({ [`${filterIdentifier}.day`]: hourUpdate.day });
-        Object.keys(hourUpdate).forEach((prop) => {
-          updateOperation.$set[`openingHour.$[${filterIdentifier}].${prop}`] = hourUpdate[prop];
-        });
-      });
-
-      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation, {
-        arrayFilters: arrayFilters,
-      });
-    }
-
-    delete validatedRequest.openingHour;
   }
 
-  /** update facility */
-  if (validatedRequest.facility && Array.isArray(validatedRequest.facility)) {
-    validatedRequest.facility.forEach((facilityUpdate) => {
+  if (Object.keys(updateOperation.$set).length > 0) {
+    await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation);
+  }
+
+  await _updateArrayField({
+    destinationId: destinationToUpdate._id,
+    existingArray: destinationToUpdate.openingHour,
+    updateArray: validatedRequest.openingHour,
+    fieldName: 'openingHour',
+    keyField: 'day',
+    preProcessingLogic: (item) => processOpeningHours([item]),
+  });
+
+  await _updateArrayField({
+    destinationId: destinationToUpdate._id,
+    existingArray: destinationToUpdate.facility,
+    updateArray: validatedRequest.facility,
+    fieldName: 'facility',
+    keyField: 'name',
+    preProcessingLogic: (facilityUpdate) => {
       if (facilityUpdate.availability === false) {
         facilityUpdate.number = 0;
       }
-    });
+    },
+  });
 
-    const existingFacilities = new Set((destinationToUpdate.facility || []).map((f) => f.name));
+  await _updateArrayField({
+    destinationId: destinationToUpdate._id,
+    existingArray: destinationToUpdate.contact,
+    updateArray: validatedRequest.contact,
+    fieldName: 'contact',
+    keyField: 'platform',
+  });
 
-    const updates = [];
-    const additions = [];
-    const deletions = [];
-
-    validatedRequest.facility.forEach((facilityUpdate) => {
-      if (facilityUpdate._deleted === true) {
-        deletions.push(facilityUpdate.name);
-      } else if (existingFacilities.has(facilityUpdate.name)) {
-        updates.push(facilityUpdate);
-      } else if (facilityUpdate.name) {
-        additions.push(facilityUpdate);
-      }
-    });
-
-    if (deletions.length > 0) {
-      await Destination.updateOne(
-        { _id: destinationToUpdate._id },
-        { $pull: { facility: { name: { $in: deletions } } } }
-      );
-    }
-
-    if (additions.length > 0) {
-      await Destination.updateOne(
-        { _id: destinationToUpdate._id },
-        { $push: { facility: { $each: additions } } }
-      );
-    }
-
-    if (updates.length > 0) {
-      const arrayFilters = [];
-      const updateOperation = { $set: {} };
-
-      updates.forEach((facilityUpdate, index) => {
-        const filterIdentifier = `fac${index}`;
-        arrayFilters.push({ [`${filterIdentifier}.name`]: facilityUpdate.name });
-        Object.keys(facilityUpdate).forEach((prop) => {
-          updateOperation.$set[`facility.$[${filterIdentifier}].${prop}`] = facilityUpdate[prop];
-        });
-      });
-
-      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation, {
-        arrayFilters: arrayFilters,
-      });
-    }
-
-    delete validatedRequest.facility;
-  }
-
-  /** update contact */
-  if (validatedRequest.contact && Array.isArray(validatedRequest.contact)) {
-    const existingContacts = new Set(
-      (destinationToUpdate.contact || []).map((con) => con.platform)
-    );
-
-    const updates = [];
-    const additions = [];
-    const deletions = [];
-
-    validatedRequest.contact.forEach((contactUpdate) => {
-      if (contactUpdate._deleted === true) {
-        deletions.push(contactUpdate.platform);
-      } else if (existingContacts.has(contactUpdate.platform)) {
-        updates.push(contactUpdate);
-      } else if (contactUpdate.platform) {
-        additions.push(contactUpdate);
-      }
-    });
-
-    if (deletions.length > 0) {
-      await Destination.updateOne(
-        { _id: destinationToUpdate._id },
-        { $pull: { contact: { platform: { $in: deletions } } } }
-      );
-    }
-
-    if (additions.length > 0) {
-      await Destination.updateOne(
-        { _id: destinationToUpdate._id },
-        { $push: { contact: { $each: additions } } }
-      );
-    }
-
-    if (updates.length > 0) {
-      const arrayFilters = [];
-      const updateOperation = { $set: {} };
-
-      updates.forEach((contactUpdate, index) => {
-        const filterIdentifier = `con${index}`;
-        arrayFilters.push({ [`${filterIdentifier}.platform`]: contactUpdate.platform });
-
-        Object.keys(contactUpdate).forEach((prop) => {
-          updateOperation.$set[`contact.$[${filterIdentifier}].${prop}`] = contactUpdate[prop];
-        });
-      });
-
-      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation, {
-        arrayFilters: arrayFilters,
-      });
-    }
-
-    delete validatedRequest.contact;
-  }
-
-  if (
-    Object.keys(updateOperation.$set).length === 0 &&
-    !updateOperation.$push &&
-    !updateOperation.$pull
-  ) {
-    return destinationToUpdate;
-  }
-
-  return Destination.findByIdAndUpdate(destinationToUpdate._id, updateOperation, options);
+  const updatedDocument = await Destination.findById(destinationToUpdate._id).lean();
+  return updatedDocument;
 };
 
 export const getDestination = (identifier) => {

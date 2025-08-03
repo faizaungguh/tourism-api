@@ -3,15 +3,9 @@ import { Attraction } from '#schemas/attraction.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
-export const validateAttractionAccess = async (
-  adminId,
-  destinationSlug,
-  attractionSlug
-) => {
+export const validateAttractionAccess = async (adminId, destinationSlug, attractionSlug) => {
   const [destination, admin, attraction] = await Promise.all([
-    Destination.findOne({ slug: destinationSlug })
-      .select('_id createdBy')
-      .lean(),
+    Destination.findOne({ slug: destinationSlug }).select('_id createdBy').lean(),
     Admin.findOne({ adminId: adminId }).select('_id').lean(),
     Attraction.findOne({ slug: attractionSlug }).select('_id name destination'),
   ]);
@@ -71,10 +65,7 @@ export const createAttraction = async (destinationId, validatedRequest) => {
 };
 
 export const patchAttraction = async (attractionToUpdate, validatedRequest) => {
-  if (
-    validatedRequest.name &&
-    validatedRequest.name !== attractionToUpdate.name
-  ) {
+  if (validatedRequest.name && validatedRequest.name !== attractionToUpdate.name) {
     const existingAttraction = await Attraction.findOne({
       name: validatedRequest.name,
       destination: attractionToUpdate.destination,
@@ -91,5 +82,7 @@ export const patchAttraction = async (attractionToUpdate, validatedRequest) => {
   Object.assign(attractionToUpdate, validatedRequest);
   const updatedAttraction = await attractionToUpdate.save();
 
-  return updatedAttraction;
+  const { id, ...dataToReturn } = updatedAttraction.toObject();
+
+  return dataToReturn;
 };

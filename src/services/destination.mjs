@@ -94,9 +94,9 @@ export const destinationService = {
 
     const [admin, destinationToDelete] = await Promise.all([
       Admin.findOne({ adminId }).select('_id').lean(),
-      Destination.findOne({ slug: destinationSlug })
-        .select('_id createdBy destinationTitle attractions')
-        .lean(),
+      Destination.findOne({ slug: destinationSlug }).select(
+        '_id createdBy destinationTitle attractions'
+      ),
     ]);
 
     if (!admin) {
@@ -117,13 +117,7 @@ export const destinationService = {
       });
     }
 
-    if (destinationToDelete.attractions && destinationToDelete.attractions.length > 0) {
-      await Attraction.deleteMany({
-        _id: { $in: destinationToDelete.attractions },
-      });
-    }
-
-    await Destination.findByIdAndDelete(destinationToDelete._id);
+    await destinationToDelete.deleteOne();
 
     return {
       message: `Destinasi '${destinationToDelete.destinationTitle}' dan semua wahananya berhasil dihapus.`,
