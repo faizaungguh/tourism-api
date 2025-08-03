@@ -65,7 +65,9 @@ export const destinationService = {
 
   update: async (destinationSlug, adminId, request) => {
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(400, 'Destination slug tidak valid.');
+      throw new ResponseError(400, 'Destination slug tidak valid.', {
+        slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
+      });
     }
     validate.isNotEmpty(request);
 
@@ -86,19 +88,7 @@ export const destinationService = {
   drop: async (destinationSlug, adminId) => {
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
       throw new ResponseError(400, 'Destination slug tidak valid.', {
-        message: 'Slug destinasi harus berupa string yang tidak kosong.',
-      });
-    }
-
-    if (!adminId) {
-      throw new ResponseError(401, 'Data tidak lengkap', {
-        message: 'Admin ID diperlukan untuk otorisasi.',
-      });
-    }
-
-    if (!adminId.startsWith('mng-')) {
-      throw new ResponseError(403, 'Akses ditolak.', {
-        message: 'Hanya manajer yang dapat menghapus destinasi.',
+        slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
       });
     }
 

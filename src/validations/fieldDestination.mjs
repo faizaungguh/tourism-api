@@ -104,6 +104,7 @@ export const contact = validate.array().items(
         'any.required': 'Nilai kontak wajib diisi.',
         'string.pattern.base': 'Nilai kontak tidak boleh mengandung skrip atau tag HTML.',
       }),
+    _deleted: validate.boolean().optional(),
   })
 );
 
