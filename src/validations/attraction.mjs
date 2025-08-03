@@ -9,8 +9,7 @@ export const createAttractionValidation = validate
     ticket: validate.when('ticketType', {
       is: 'berbayar',
       then: field.ticket.required().messages({
-        'any.required':
-          'Detail harga tiket wajib diisi jika tipe tiket adalah berbayar.',
+        'any.required': 'Detail harga tiket wajib diisi jika tipe tiket adalah berbayar.',
       }),
       otherwise: validate.forbidden(),
     }),
@@ -25,14 +24,7 @@ export const patchAttractionValidation = validate
     name: field.name,
     description: field.description,
     ticketType: field.ticketType,
-    ticket: validate.when('ticketType', {
-      is: 'berbayar',
-      then: field.ticket.required().messages({
-        'any.required':
-          'Detail harga tiket wajib diisi jika tipe tiket adalah berbayar.',
-      }),
-      otherwise: validate.forbidden(),
-    }),
+    ticket: field.patchTicket,
   })
   .min(1)
   .messages({

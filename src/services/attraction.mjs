@@ -48,7 +48,8 @@ export const attractionService = {
 
     const updatedAttraction = await helper.patchAttraction(attraction, validatedRequest);
 
-    return updatedAttraction;
+    const { name, description, ticketType, ticket, slug } = updatedAttraction;
+    return { name, description, ticketType, ticket, slug };
   },
 
   drop: async (adminId, destinationSlug, attractionSlug) => {
