@@ -278,7 +278,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
     Destination.findOne({ slug: destinationSlug }).select(
-      '_id createdBy destinationTitle facility openingHour'
+      '_id createdBy destinationTitle facility openingHour contact'
     ),
   ]);
 
@@ -286,10 +286,12 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     throw new ResponseError(404, 'Data tidak ditemukan.', {
       message: `Data dengan ID ${adminId} tidak terdaftar`,
     });
+
   if (!destinationToUpdate)
     throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
       message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
     });
+
   if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
     throw new ResponseError(403, 'Akses anda ditolak', {
       message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
@@ -333,7 +335,16 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
   }
 
   for (const key of Object.keys(validatedRequest)) {
-    if (!['destinationTitle', 'categories', 'locations', 'openingHour', 'facility'].includes(key)) {
+    if (
+      ![
+        'destinationTitle',
+        'categories',
+        'locations',
+        'openingHour',
+        'facility',
+        'contact',
+      ].includes(key)
+    ) {
       updateOperation.$set[key] = validatedRequest[key];
     }
   }
@@ -403,7 +414,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     delete validatedRequest.openingHour;
   }
 
-  /** update facilitys */
+  /** update facility */
   if (validatedRequest.facility && Array.isArray(validatedRequest.facility)) {
     validatedRequest.facility.forEach((facilityUpdate) => {
       if (facilityUpdate.availability === false) {
@@ -459,6 +470,61 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     }
 
     delete validatedRequest.facility;
+  }
+
+  /** update contact */
+  if (validatedRequest.contact && Array.isArray(validatedRequest.contact)) {
+    const existingContacts = new Set(
+      (destinationToUpdate.contact || []).map((con) => con.platform)
+    );
+
+    const updates = [];
+    const additions = [];
+    const deletions = [];
+
+    validatedRequest.contact.forEach((contactUpdate) => {
+      if (contactUpdate._deleted === true) {
+        deletions.push(contactUpdate.platform);
+      } else if (existingContacts.has(contactUpdate.platform)) {
+        updates.push(contactUpdate);
+      } else if (contactUpdate.platform) {
+        additions.push(contactUpdate);
+      }
+    });
+
+    if (deletions.length > 0) {
+      await Destination.updateOne(
+        { _id: destinationToUpdate._id },
+        { $pull: { contact: { platform: { $in: deletions } } } }
+      );
+    }
+
+    if (additions.length > 0) {
+      await Destination.updateOne(
+        { _id: destinationToUpdate._id },
+        { $push: { contact: { $each: additions } } }
+      );
+    }
+
+    if (updates.length > 0) {
+      const arrayFilters = [];
+      const updateOperation = { $set: {} };
+
+      updates.forEach((contactUpdate, index) => {
+        const filterIdentifier = `con${index}`;
+        arrayFilters.push({ [`${filterIdentifier}.platform`]: contactUpdate.platform });
+
+        Object.keys(contactUpdate).forEach((prop) => {
+          updateOperation.$set[`contact.$[${filterIdentifier}].${prop}`] = contactUpdate[prop];
+        });
+      });
+
+      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation, {
+        arrayFilters: arrayFilters,
+      });
+    }
+
+    delete validatedRequest.contact;
   }
 
   if (
