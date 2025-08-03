@@ -101,7 +101,19 @@ privateRouter
 
 /** Media Upload */
 privateRouter
-  .route('/media/:id/photo')
+  .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
   .put(uploadMedia.profileAdmin, media.adminPhoto)
   .all(handler.method(['PUT']));
+
+privateRouter
+  .route('/destinations/:destinations/attractions/:attractions/media')
+  .all(authMiddleware.authorize('manager'))
+  // .put(uploadMedia.attractionPhoto, media.addAttraction)
+  .all(handler.method(['PUT']));
+
+privateRouter
+  .route('/destinations/:destinations/attractions/:attractions/media/:id')
+  .all(authMiddleware.authorize('manager'))
+  // .delete(media.dropAttractionPhoto)
+  .all(handler.method(['DELETE']));

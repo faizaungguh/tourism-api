@@ -20,4 +20,6 @@ export const mediaService = {
 
     return newPhotoPath;
   },
+
+  updateAttractionPhoto: async () => {},
 };

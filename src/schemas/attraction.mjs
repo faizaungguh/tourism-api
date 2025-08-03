@@ -6,9 +6,10 @@ const attractionSchema = new Schema(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, required: true },
-    photo: [
+    photos: [
       {
         url: { type: String },
+        photoId: { type: String, trim: true },
         caption: { type: String, trim: true },
       },
     ],
@@ -42,19 +43,24 @@ attractionSchema.index({ destination: 1, slug: 1 }, { unique: true });
 
 attractionSchema.pre('save', async function (next) {
   if (this.isModified('ticketType') || this.isModified('ticket') || this.isNew) {
+    if (this.ticket.adult > 0 || this.ticket.child > 0 || this.ticket.disability > 0) {
+      this.ticketType = 'berbayar';
+    }
+
     if (this.ticketType === 'gratis') {
       this.ticket.adult = 0;
       this.ticket.child = 0;
       this.ticket.disability = 0;
-    } else if (this.ticketType === 'berbayar') {
-      if (this.ticket.adult == null || this.ticket.adult <= 0) {
-        return next(
-          new ResponseError(422, 'Tidak boleh kosong', {
-            message:
-              'Harga tiket dewasa wajib diisi dan harus lebih besar dari 0 untuk wahana berbayar.',
-          })
-        );
-      }
+    } else if (
+      this.ticketType === 'berbayar' &&
+      (this.ticket.adult == null || this.ticket.adult <= 0)
+    ) {
+      return next(
+        new ResponseError(422, 'Tidak boleh kosong', {
+          message:
+            'Harga tiket dewasa wajib diisi dan harus lebih besar dari 0 untuk wahana berbayar.',
+        })
+      );
     }
   }
 
@@ -64,12 +70,57 @@ attractionSchema.pre('save', async function (next) {
       .replace(/ /g, '-')
       .replace(/[^\w-]+/g, '');
 
-    const existing = await this.constructor.findOne({
-      slug: baseSlug,
-      destination: this.destination,
-    });
-    this.slug = existing ? `${baseSlug}-${nanoid(5)}` : baseSlug;
+    let slug = baseSlug;
+    let isUnique = false;
+    while (!isUnique) {
+      const query = { slug: slug, destination: this.destination };
+      if (!this.isNew) {
+        query._id = { $ne: this._id };
+      }
+      const existing = await this.constructor.findOne(query);
+      if (!existing) {
+        isUnique = true;
+      } else {
+        slug = `${baseSlug}-${nanoid(5)}`;
+      }
+    }
+    this.slug = slug;
   }
+  next();
+});
+
+attractionSchema.pre('findOneAndUpdate', async function (next) {
+  const update = this.getUpdate();
+
+  if (update.$set && update.$set.name) {
+    const docToUpdate = await this.model.findOne(this.getQuery());
+    if (!docToUpdate) {
+      return next();
+    }
+
+    const baseSlug = update.$set.name
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+
+    let slug = baseSlug;
+    let isUnique = false;
+    while (!isUnique) {
+      const query = {
+        slug: slug,
+        destination: docToUpdate.destination,
+        _id: { $ne: docToUpdate._id },
+      };
+      const existing = await this.model.findOne(query);
+      if (!existing) {
+        isUnique = true;
+      } else {
+        slug = `${baseSlug}-${nanoid(5)}`;
+      }
+    }
+    update.$set.slug = slug;
+  }
+
   next();
 });
 

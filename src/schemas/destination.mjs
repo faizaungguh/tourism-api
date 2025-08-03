@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { customAlphabet } from 'nanoid';
+import { customAlphabet, nanoid } from 'nanoid';
 import { Attraction } from './attraction.mjs';
 import { Subdistrict } from './subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -25,6 +25,7 @@ const destinationSchema = new Schema(
     galleryPhoto: [
       {
         url: { type: String },
+        photoId: { type: String, trim: true },
         caption: { type: String, trim: true },
       },
     ],
@@ -58,6 +59,7 @@ const destinationSchema = new Schema(
         photo: [
           {
             url: { type: String },
+            photoId: { type: String, trim: true },
             caption: { type: String, trim: true },
           },
         ],
@@ -128,13 +130,6 @@ destinationSchema.pre('save', async function (next) {
     }
   }
 
-  if (this.isModified('destinationTitle') || this.isNew) {
-    this.slug = this.destinationTitle
-      .toLowerCase()
-      .replace(/ /g, '-')
-      .replace(/[^\w-]+/g, '');
-  }
-
   if (this.isNew) {
     try {
       const subdistrictIdentifier = this.locations.subdistrict;
@@ -162,12 +157,37 @@ destinationSchema.pre('save', async function (next) {
         const randomPart = nanoid();
         generatedId = `${prefix}-${randomPart}`;
         const existingDestination = await this.constructor.findOne({ destinationsId: generatedId });
-        if (!existingDestination) break;
+        if (!existingDestination) {
+          break;
+        }
       }
       this.destinationsId = generatedId;
     } catch (error) {
       return next(error);
     }
+  }
+
+  if (this.isModified('destinationTitle') || this.isNew) {
+    const baseSlug = this.destinationTitle
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+
+    let slug = baseSlug;
+    let isUnique = false;
+    while (!isUnique) {
+      const query = { slug: slug };
+      if (!this.isNew) {
+        query._id = { $ne: this._id };
+      }
+      const existing = await this.constructor.findOne(query);
+      if (!existing) {
+        isUnique = true;
+      } else {
+        slug = `${baseSlug}-${nanoid(5)}`;
+      }
+    }
+    this.slug = slug;
   }
 
   next();
@@ -178,10 +198,26 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   processOpeningHours(update.$set?.openingHour);
 
   if (update.$set && update.$set.destinationTitle) {
-    update.$set.slug = update.$set.destinationTitle
+    const baseSlug = update.$set.destinationTitle
       .toLowerCase()
       .replace(/ /g, '-')
       .replace(/[^\w-]+/g, '');
+
+    let slug = baseSlug;
+    let isUnique = false;
+    while (!isUnique) {
+      const query = {
+        slug: slug,
+        _id: { $ne: this.getQuery()._id },
+      };
+      const existing = await this.model.findOne(query);
+      if (!existing) {
+        isUnique = true;
+      } else {
+        slug = `${baseSlug}-${nanoid(5)}`;
+      }
+    }
+    update.$set.slug = slug;
   }
   next();
 });
