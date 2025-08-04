@@ -36,4 +36,16 @@ export const media = {
       next(error);
     }
   },
+
+  /** Destinasi Media */
+  destinationMedia: async (req, res, next) => {},
+
+  addDestinationGallery: async (req, res, next) => {},
+
+  deleteDestinationGallery: async (req, res, next) => {},
+
+  /** Wahana Media */
+  addAttractionGallery: async (req, res, next) => {},
+
+  deleteAttractionGallery: async (req, res, next) => {},
 };

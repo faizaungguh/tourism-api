@@ -9,7 +9,7 @@ export const authService = {
 
     const savedAdmin = await authHelper.createManager(validatedRequest);
 
-    const { password, ...result } = savedAdmin.toObject();
+    const { password, _id, __v, ...result } = savedAdmin.toObject();
     return result;
   },
 

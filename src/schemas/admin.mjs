@@ -92,13 +92,9 @@ adminSchema.pre('save', async function (next) {
   next();
 });
 
-adminSchema.pre('findOneAndDelete', async function (next) {
+adminSchema.pre('deleteOne', async function (next) {
   try {
     const admin = await this.model.findOne(this.getFilter()).lean();
-
-    if (!admin) {
-      return next();
-    }
 
     if (admin.role === 'manager') {
       const Destination = mongoose.model('Destination');

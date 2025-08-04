@@ -100,20 +100,55 @@ privateRouter
   .all(handler.method(['PUT', 'DELETE']));
 
 /** Media Upload */
+
+/** Admin - photo */
 privateRouter
   .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
   .put(uploadMedia.profileAdmin, media.adminPhoto)
   .all(handler.method(['PUT']));
 
+/** Destinasi - profilePhoto, headlinePhoto */
+privateRouter
+  .route('/destinations/:slug/media')
+  .all(authMiddleware.authorize('manager'))
+  .put(media.destinationMedia)
+  .all(handler.method(['PUT']));
+
+/** Destinasi - galleryPhoto */
+privateRouter.route('/destinations/:slug/gallery').all(authMiddleware.authorize('manager'));
+// .post()
+// .all(handler.method(['POST']));
+
+privateRouter.route('/destinations/:slug/gallery/:id').all(authMiddleware.authorize('manager'));
+// .put()
+// .delete()
+// .all(handler(['PUT', 'DELETE']));
+
+/** Destinasi - facility - photo */
+privateRouter
+  .route('/destinations/:destinations/facility/:facility/media')
+  .all(authMiddleware.authorize('manager'));
+// .post()
+// .all(handler.method(['POST']));
+
+privateRouter
+  .route('/destinations/:destinations/facility/:facility/media/:id')
+  .all(authMiddleware.authorize('manager'));
+// .put()
+// .delete()
+// .all(handler(['PUT', 'DELETE']));
+
+/** Wahana - photo */
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media')
-  .all(authMiddleware.authorize('manager'))
-  // .put(uploadMedia.attractionPhoto, media.addAttraction)
-  .all(handler.method(['PUT']));
+  .all(authMiddleware.authorize('manager'));
+// .post(uploadMedia.attractionPhoto, media.addAttraction)
+// .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media/:id')
-  .all(authMiddleware.authorize('manager'))
-  // .delete(media.dropAttractionPhoto)
-  .all(handler.method(['DELETE']));
+  .all(authMiddleware.authorize('manager'));
+// .put()
+// .delete(media.dropAttractionPhoto)
+// .all(handler.method(['DELETE']));

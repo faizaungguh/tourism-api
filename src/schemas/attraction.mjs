@@ -124,4 +124,8 @@ attractionSchema.pre('findOneAndUpdate', async function (next) {
   next();
 });
 
+attractionSchema.pre('deleteOne', { document: true }, async function (next) {});
+
+attractionSchema.pre('deleteMany', { document: true }, async function (next) {});
+
 export const Attraction = mongoose.model('Attraction', attractionSchema);

@@ -221,11 +221,21 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   }
   next();
 });
+
 destinationSchema.pre('deleteOne', { document: true }, async function (next) {
-  if (this.attractions && this.attractions.length > 0) {
-    await Attraction.deleteMany({ _id: { $in: this.attractions } });
+  try {
+    const destination = await this.model.findOne(this.getFilter()).lean();
+
+    if (this.attractions && this.attractions.length > 0) {
+      await Attraction.deleteMany({ _id: { $in: this.attractions } });
+    }
+
+    /** hapus media */
+
+    next();
+  } catch (error) {
+    next(error);
   }
-  next();
 });
 
 export const Destination = mongoose.model('Destination', destinationSchema);

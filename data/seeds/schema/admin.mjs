@@ -76,7 +76,7 @@ adminSchema.pre('save', async function (next) {
       const formattedSequence = String(counter.seq).padStart(4, '0');
       this.adminId = `${prefix}-${formattedSequence}`;
     } catch (error) {
-      return next(new ResponseError(400, 'Gagal membuat adminId: ' + error.message));
+      return next(new ResponseError('Gagal membuat adminId: ' + error.message));
     }
   }
 
@@ -85,20 +85,16 @@ adminSchema.pre('save', async function (next) {
       const salt = await bcrypt.genSalt(10);
       this.password = await bcrypt.hash(this.password, salt);
     } catch (error) {
-      return next(new ResponseError(400, 'Gagal melakukan hashing password: ' + error.message));
+      return next(new ResponseError('Gagal melakukan hashing password: ' + error.message));
     }
   }
 
   next();
 });
 
-adminSchema.pre('findOneAndDelete', async function (next) {
+adminSchema.pre('deleteOne', async function (next) {
   try {
     const admin = await this.model.findOne(this.getFilter()).lean();
-
-    if (!admin) {
-      return next();
-    }
 
     if (admin.role === 'manager') {
       const Destination = mongoose.model('Destination');
