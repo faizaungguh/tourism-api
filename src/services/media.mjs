@@ -1,5 +1,5 @@
 import { admin } from '#services/media/admin.mjs';
-import { destination } from '#services/media/destination.mjs';
+import { destinationService as destination } from '#services/media/destination.mjs';
 import { facility } from '#services/media/facility.mjs';
 import { attraction } from '#services/media/attraction.mjs';
 

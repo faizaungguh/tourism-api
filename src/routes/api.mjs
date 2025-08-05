@@ -105,14 +105,14 @@ privateRouter
 privateRouter
   .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
-  .put(uploadMedia.profileAdmin, media.profileAdmin)
-  .all(handler.method(['PUT']));
+  .post(uploadMedia.profileAdmin, media.profileAdmin)
+  .all(handler.method(['POST']));
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
   .route('/destinations/:slug/media')
   .all(authMiddleware.authorize('manager'))
-  .post(media.destinationMedia)
+  .post(uploadMedia.destinationMedia, media.destinationMedia)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */

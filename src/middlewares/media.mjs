@@ -1,6 +1,7 @@
 import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
 import { admin as adminHelper } from '#helpers/media/admin.mjs';
+import { destination as destinationHelper } from '#helpers/media/destination.mjs';
 
 const baseMulter = {
   storage: multer.memoryStorage(),
@@ -56,6 +57,19 @@ const adminMedia = {
   },
 };
 
+const destinationMedia = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).fields([
+      { name: 'profilePhoto', maxCount: 1 },
+      { name: 'headlinePhoto', maxCount: 1 },
+    ]);
+  },
+};
+
 export const uploadMedia = {
   profileAdmin: [
     adminHelper.checkExist,
@@ -64,5 +78,11 @@ export const uploadMedia = {
       subfolder: 'profile',
       getDynamicPath: (req) => req.params.id,
     }),
+  ],
+
+  destinationMedia: [
+    destinationHelper.checkOwnership,
+    createMedia(destinationMedia.uploader, destinationMedia.limits),
+    destinationHelper.savePhotos,
   ],
 };
