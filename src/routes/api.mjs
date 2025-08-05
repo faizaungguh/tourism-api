@@ -105,50 +105,54 @@ privateRouter
 privateRouter
   .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
-  .put(uploadMedia.profileAdmin, media.adminPhoto)
+  .put(uploadMedia.profileAdmin, media.profileAdmin)
   .all(handler.method(['PUT']));
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
   .route('/destinations/:slug/media')
   .all(authMiddleware.authorize('manager'))
-  .put(media.destinationMedia)
-  .all(handler.method(['PUT']));
+  .post(media.destinationMedia)
+  .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
-privateRouter.route('/destinations/:slug/gallery').all(authMiddleware.authorize('manager'));
-// .post()
-// .all(handler.method(['POST']));
+privateRouter
+  .route('/destinations/:slug/gallery')
+  .all(authMiddleware.authorize('manager'))
+  .post(media.addDestinationGallery)
+  .all(handler.method(['POST']));
 
-privateRouter.route('/destinations/:slug/gallery/:id').all(authMiddleware.authorize('manager'));
-// .put()
-// .delete()
-// .all(handler(['PUT', 'DELETE']));
+privateRouter
+  .route('/destinations/:slug/gallery/:id')
+  .all(authMiddleware.authorize('manager'))
+  .put(media.updateDestinationGallery)
+  .delete(media.deleteDestinationGallery)
+  .all(handler.method(['PUT', 'DELETE']));
 
 /** Destinasi - facility - photo */
 privateRouter
   .route('/destinations/:destinations/facility/:facility/media')
-  .all(authMiddleware.authorize('manager'));
-// .post()
-// .all(handler.method(['POST']));
+  .all(authMiddleware.authorize('manager'))
+  .post(media.addDestinationFacility)
+  .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:destinations/facility/:facility/media/:id')
-  .all(authMiddleware.authorize('manager'));
-// .put()
-// .delete()
-// .all(handler(['PUT', 'DELETE']));
+  .all(authMiddleware.authorize('manager'))
+  .put(media.updateDestinationFacility)
+  .delete(media.deleteDestinationFacility)
+  .all(handler.method(['PUT', 'DELETE']));
 
 /** Wahana - photo */
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media')
-  .all(authMiddleware.authorize('manager'));
-// .post(uploadMedia.attractionPhoto, media.addAttraction)
-// .all(handler.method(['POST']));
+  .all(authMiddleware.authorize('manager'))
+  .post(media.addAttractionGallery)
+  .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media/:id')
-  .all(authMiddleware.authorize('manager'));
-// .put()
-// .delete(media.dropAttractionPhoto)
-// .all(handler.method(['DELETE']));
+  .all(authMiddleware.authorize('manager'))
+  .put(media.updateAttractionGallery)
+  .delete(media.deleteAttractionGallery)
+  .all(handler.method(['DELETE']));

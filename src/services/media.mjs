@@ -1,25 +1,22 @@
-import path from 'path';
-import fs from 'fs/promises';
+import { admin } from '#services/media/admin.mjs';
+import { destination } from '#services/media/destination.mjs';
+import { facility } from '#services/media/facility.mjs';
+import { attraction } from '#services/media/attraction.mjs';
 
 export const mediaService = {
-  updateAdminPhoto: async (admin, newPhotoPath) => {
-    const oldPhotoPath = admin.photo;
+  updateAdminPhoto: admin.profilePhoto,
 
-    admin.photo = newPhotoPath;
-    await admin.save();
+  updateDestinationMedia: destination.photoMedia,
+  addDestinationGallery: destination.addGallery,
+  updateDestinationGallery: destination.patchGallery,
+  deleteDestinationGallery: destination.dropGallery,
 
-    if (oldPhotoPath) {
-      try {
-        await fs.unlink(path.join('public', oldPhotoPath));
-      } catch (err) {
-        if (err.code !== 'ENOENT') {
-          console.error('Gagal menghapus foto profil lama:', err);
-        }
-      }
-    }
+  addDestinationFacility: facility.addGallery,
+  updateDestinationFacility: facility.patchGallery,
+  deleteDestinationFacility: facility.dropGallery,
 
-    return newPhotoPath;
-  },
-
-  updateAttractionPhoto: async () => {},
+  /** Wahana Media */
+  addAttractionGallery: attraction.addGallery,
+  addAttractionGallery: attraction.patchGallery,
+  deleteAttractionGallery: attraction.dropGallery,
 };

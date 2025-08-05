@@ -5,23 +5,27 @@ import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 async function _savePhoto({ file, adminId, dynamicPath, subfolder }) {
-  const dir = path.join('public', 'images', subfolder, dynamicPath);
-  await fs.mkdir(dir, { recursive: true });
+  const rootDir = process.cwd();
+  const fileSystemDir = path.join(rootDir, 'public', 'images', subfolder, dynamicPath);
+  await fs.mkdir(fileSystemDir, { recursive: true });
 
   const timestamp = Date.now();
   const filename = `${adminId}-profile-${timestamp}.webp`;
-  const outputPath = path.join(dir, filename);
+  const fileSystemPath = path.join(fileSystemDir, filename);
 
-  await sharp(file.buffer).webp({ quality: 80 }).toFile(outputPath);
+  await sharp(file.buffer).webp({ quality: 80 }).toFile(fileSystemPath);
+  const webPath = path.join('/images', subfolder, dynamicPath, filename).replace(/\\/g, '/');
 
-  return outputPath.replace('public', '');
+  return webPath;
 }
 
 async function _checkExist(adminId) {
   const admin = await Admin.findOne({ adminId });
+
   if (!admin) {
     throw new ResponseError(404, `Admin dengan ID ${adminId} tidak ditemukan.`);
   }
+
   return admin;
 }
 
