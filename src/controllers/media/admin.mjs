@@ -22,7 +22,7 @@ export const admin = {
         });
       }
 
-      await mediaService.updateAdminPhoto(req.foundAdmin, newPhotoPath);
+      await mediaService.admin.updatePhoto(req.foundAdmin, newPhotoPath);
 
       res.status(200).json({
         message: `Foto profil untuk ${id} berhasil diperbarui.`,

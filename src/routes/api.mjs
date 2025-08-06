@@ -105,54 +105,63 @@ privateRouter
 privateRouter
   .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
-  .post(uploadMedia.profileAdmin, media.profileAdmin)
+  .post(uploadMedia.profileAdmin, media.admin.addProfile)
   .all(handler.method(['POST']));
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
   .route('/destinations/:slug/media')
   .all(authMiddleware.authorize('manager'))
-  .post(uploadMedia.destinationMedia, media.destinationMedia)
+  .post(uploadMedia.destination.updateMedia, media.destination.updateMedia)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
 privateRouter
   .route('/destinations/:slug/gallery')
   .all(authMiddleware.authorize('manager'))
-  .post(media.addDestinationGallery)
-  .all(handler.method(['POST']));
+  // .post(media.destination.gallery.add)
+  // .get(media.destination.gallery.list)
+  // .delete(media.destination.gallery.deleteAll)
+  .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter
   .route('/destinations/:slug/gallery/:id')
   .all(authMiddleware.authorize('manager'))
-  .put(media.updateDestinationGallery)
-  .delete(media.deleteDestinationGallery)
-  .all(handler.method(['PUT', 'DELETE']));
+  // .get(media.destination.gallery.get)
+  // .put(media.destination.gallery.update)
+  // .delete(media.destination.gallery.delete)
+  .all(handler.method(['PUT', 'GET', 'DELETE']));
 
 /** Destinasi - facility - photo */
 privateRouter
   .route('/destinations/:destinations/facility/:facility/media')
   .all(authMiddleware.authorize('manager'))
-  .post(media.addDestinationFacility)
-  .all(handler.method(['POST']));
+  // .post(media.facility.add)
+  // .get(media.facility.list)
+  // .delete(media.facility.deleteAll)
+  .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter
   .route('/destinations/:destinations/facility/:facility/media/:id')
   .all(authMiddleware.authorize('manager'))
-  .put(media.updateDestinationFacility)
-  .delete(media.deleteDestinationFacility)
-  .all(handler.method(['PUT', 'DELETE']));
+  // .get(media.facility.get)
+  // .put(media.facility.update)
+  // .delete(media.facility.delete)
+  .all(handler.method(['PUT', 'GET', 'DELETE']));
 
 /** Wahana - photo */
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media')
   .all(authMiddleware.authorize('manager'))
-  .post(media.addAttractionGallery)
-  .all(handler.method(['POST']));
+  // .post(media.attraction.add)
+  // .get(media.attraction.list)
+  // .delete(media.attraction.deleteAll)
+  .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media/:id')
   .all(authMiddleware.authorize('manager'))
-  .put(media.updateAttractionGallery)
-  .delete(media.deleteAttractionGallery)
-  .all(handler.method(['DELETE']));
+  // .get(media.attraction.get)
+  // .put(media.attraction.update)
+  // .delete(media.attraction.delete)
+  .all(handler.method(['PUT', 'GET', 'DELETE']));

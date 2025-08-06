@@ -25,6 +25,35 @@ async function _saveDestinationPhoto({ file, destinationDoc, fieldName }) {
   return webPath;
 }
 
+async function _saveGalleryPhoto({ file, destinationDoc }) {
+  const rootDir = process.cwd();
+
+  const destinationSlug = destinationDoc.slug;
+  const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
+
+  // Requirement 4: Menyimpan di dalam subfolder /gallery
+  const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/gallery`;
+  const fileSystemDir = path.join(rootDir, 'public', 'images', dynamicDir);
+
+  await fs.mkdir(fileSystemDir, { recursive: true });
+
+  const timestamp = Date.now();
+  const photoId = nanoid(10);
+
+  const filename = `${photoId}-${timestamp}.webp`;
+  const fileSystemPath = path.join(fileSystemDir, filename);
+
+  await sharp(file.buffer).webp({ quality: 80 }).toFile(fileSystemPath);
+
+  const webPath = path.join('/images', dynamicDir, filename).replace(/\\/g, '/');
+
+  return {
+    url: webPath,
+    photoId,
+    caption: '',
+  };
+}
+
 export const destination = {
   checkOwnership: async (req, res, next) => {
     try {
@@ -42,7 +71,9 @@ export const destination = {
         });
 
       if (!destinationDoc) {
-        throw new ResponseError(404, `Destinasi dengan slug "${slug}" tidak ditemukan.`);
+        throw new ResponseError(404, 'Destinasi tidak ditemukan', {
+          message: `Destinasi dengan slug "${slug}" tidak ditemukan.`,
+        });
       }
 
       if (destinationDoc.createdBy.adminId !== adminId) {

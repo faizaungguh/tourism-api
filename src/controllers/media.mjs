@@ -4,21 +4,40 @@ import { facility } from '#controllers/media/facility.mjs';
 import { attraction } from '#controllers/media/attraction.mjs';
 
 export const media = {
-  profileAdmin: admin.profileMedia,
+  admin: {
+    addProfile: admin.profileMedia,
+  },
 
   /** Destinasi Media */
-  destinationMedia: destination.photoMedia,
+  destination: {
+    updateMedia: destination.photoMedia,
 
-  addDestinationGallery: destination.addGallery,
-  updateDestinationGallery: destination.patchGallery,
-  deleteDestinationGallery: destination.dropGallery,
+    gallery: {
+      add: destination,
+      list: destination,
+      get: destination,
+      update: destination,
+      deleteAll: destination,
+      delete: destination,
+    },
+  },
 
-  addDestinationFacility: facility.addGallery,
-  updateDestinationFacility: facility.patchGallery,
-  deleteDestinationFacility: facility.dropGallery,
+  facility: {
+    add: facility,
+    list: facility,
+    get: facility,
+    update: facility,
+    deleteAll: facility,
+    delete: facility,
+  },
 
   /** Wahana Media */
-  addAttractionGallery: attraction.addGallery,
-  updateAttractionGallery: attraction.patchGallery,
-  deleteAttractionGallery: attraction.dropGallery,
+  attraction: {
+    add: attraction,
+    list: attraction,
+    get: attraction,
+    update: attraction,
+    deleteAll: attraction,
+    delete: attraction,
+  },
 };

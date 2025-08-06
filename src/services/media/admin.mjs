@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 
-export const admin = {
+export const adminService = {
   profilePhoto: async (admin, newPhotoPath) => {
     const oldPhotoPath = admin.photo;
 

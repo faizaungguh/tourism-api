@@ -80,9 +80,11 @@ export const uploadMedia = {
     }),
   ],
 
-  destinationMedia: [
-    destinationHelper.checkOwnership,
-    createMedia(destinationMedia.uploader, destinationMedia.limits),
-    destinationHelper.savePhotos,
-  ],
+  destination: {
+    updateMedia: [
+      destinationHelper.checkOwnership,
+      createMedia(destinationMedia.uploader, destinationMedia.limits),
+      destinationHelper.savePhotos,
+    ],
+  },
 };

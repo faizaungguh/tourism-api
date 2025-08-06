@@ -41,7 +41,10 @@ export const destinationService = {
     return updatedDestination;
   },
 
-  addGallery: async () => {},
+  addGallery: async (destinationDoc, photosData) => {
+    destinationDoc.galleryPhoto.push(...photosData);
+    return destinationDoc.save();
+  },
 
   patchGallery: async () => {},
 

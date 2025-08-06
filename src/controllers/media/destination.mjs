@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
-import { destinationService } from '#services/media/destination.mjs';
+import { mediaService } from '#services/media.mjs';
 
 export const destination = {
   photoMedia: async (req, res, next) => {
@@ -13,7 +13,7 @@ export const destination = {
         });
       }
 
-      await destinationService.photoMedia(foundDestination, processedPhotos);
+      await mediaService.destination.updateMedia(foundDestination, processedPhotos);
 
       res.status(200).json({
         message: 'Foto destinasi berhasil diunggah dan diperbarui.',
@@ -34,7 +34,27 @@ export const destination = {
     }
   },
 
-  addGallery: async () => {},
+  addDestinationGallery: async (req, res, next) => {
+    try {
+      await mediaService.destination.gallery.add(req.foundDestination, req.processedGallery);
+
+      res.status(201).json({
+        message: `${req.processedGallery.length} foto berhasil ditambahkan ke galeri.`,
+        data: req.processedGallery,
+      });
+    } catch (error) {
+      if (req.processedGallery) {
+        for (const photo of req.processedGallery) {
+          const rootDir = process.cwd();
+          const correctedPath = photo.url.startsWith('/') ? photo.url.substring(1) : photo.url;
+          fs.unlink(path.join(rootDir, 'public', correctedPath)).catch((err) =>
+            console.error('Gagal membersihkan file galeri:', err)
+          );
+        }
+      }
+      next(error);
+    }
+  },
 
   patchGallery: async () => {},
 
