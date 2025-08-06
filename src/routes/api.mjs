@@ -120,7 +120,8 @@ privateRouter
   .route('/destinations/:slug/gallery')
   .all(authMiddleware.authorize('manager'))
   .post(uploadMedia.destination.gallery.add, media.destination.gallery.add)
-  .all(handler.method(['POST']));
+  .delete(uploadMedia.destination.gallery.delete, media.destination.gallery.deleteAll)
+  .all(handler.method(['POST', 'DELETE']));
 
 privateRouter
   .route('/destinations/:slug/gallery/:id')

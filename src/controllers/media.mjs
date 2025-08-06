@@ -14,11 +14,11 @@ export const media = {
     updateMedia: destination.photoMedia,
 
     gallery: {
-      add: destination.addDestinationGallery,
+      add: destination.addGallery,
       list: destination,
       get: destination,
-      update: destination,
-      deleteAll: destination,
+      deleteAll: destination.dropAllGallery,
+      update: destination.patchGallery,
       delete: destination,
     },
   },

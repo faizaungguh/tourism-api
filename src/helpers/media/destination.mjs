@@ -39,7 +39,7 @@ async function _saveGalleryPhoto({ file, destinationDoc }) {
   const timestamp = Date.now();
   const photoId = nanoid(10);
 
-  const filename = `${photoId}-${timestamp}.webp`;
+  const filename = `${destinationSlug}-${photoId}-${timestamp}.webp`;
   const fileSystemPath = path.join(fileSystemDir, filename);
 
   await sharp(file.buffer).webp({ quality: 80 }).toFile(fileSystemPath);

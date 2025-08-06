@@ -48,5 +48,31 @@ export const destinationService = {
 
   patchGallery: async () => {},
 
-  dropGallery: async () => {},
+  dropAllGallery: async (destinationDoc) => {
+    if (!destinationDoc) {
+      throw new Error('dropAllGallery dipanggil tanpa dokumen destinasi yang valid.');
+    }
+
+    if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
+      return;
+    }
+
+    const destinationSlug = destinationDoc.slug;
+    const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
+    const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/gallery`;
+    const galleryPath = path.join(process.cwd(), 'public', 'images', dynamicDir);
+
+    try {
+      await fs.rm(galleryPath, { recursive: true, force: true });
+    } catch (err) {
+      console.error(
+        `Gagal menghapus direktori galeri, namun proses akan tetap dilanjutkan: ${galleryPath}`,
+        err
+      );
+    }
+
+    destinationDoc.galleryPhoto = [];
+
+    await destinationDoc.save();
+  },
 };

@@ -5,7 +5,6 @@ import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
-// Pastikan Anda mengatur API_URL di file .env Anda. Contoh: API_URL=http://localhost:3000
 const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 const _findRelatedDocs = async ({ categories, subdistrict }) => {

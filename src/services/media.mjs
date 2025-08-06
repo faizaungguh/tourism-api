@@ -15,9 +15,8 @@ export const mediaService = {
     gallery: {
       add: destination.addGallery,
       list: destination,
-      get: destination,
+      deleteAll: destination.dropAllGallery,
       update: destination,
-      deleteAll: destination,
       delete: destination,
     },
   },

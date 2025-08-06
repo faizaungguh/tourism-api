@@ -103,6 +103,7 @@ export const uploadMedia = {
         createMedia(galleryMedia.uploader, galleryMedia.limits),
         destinationHelper.saveGalleryPhotos,
       ],
+      delete: [destinationHelper.checkOwnership],
       update: [],
     },
   },

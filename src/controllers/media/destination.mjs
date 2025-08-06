@@ -34,12 +34,11 @@ export const destination = {
     }
   },
 
-  addDestinationGallery: async (req, res, next) => {
+  addGallery: async (req, res, next) => {
     try {
       const destinationDoc = req.foundDestination;
       const newPhotos = req.processedGallery;
 
-      // Requirement 3: Cek kapasitas total galeri di sini, setelah file diproses
       const currentPhotoCount = destinationDoc.galleryPhoto.length;
       const newPhotoCount = newPhotos.length;
 
@@ -74,5 +73,17 @@ export const destination = {
 
   patchGallery: async () => {},
 
-  dropGallery: async () => {},
+  dropAllGallery: async (req, res, next) => {
+    try {
+      const destinationDoc = req.foundDestination;
+
+      await mediaService.destination.gallery.deleteAll(destinationDoc);
+
+      res.status(200).json({
+        message: `Semua foto di galeri untuk destinasi "${destinationDoc.destinationTitle}" telah berhasil dihapus.`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
