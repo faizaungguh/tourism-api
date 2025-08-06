@@ -6,6 +6,7 @@ import { attraction } from '#controllers/media/attraction.mjs';
 export const media = {
   admin: {
     addProfile: admin.profileMedia,
+    getProfile: admin.getProfileMedia,
   },
 
   /** Destinasi Media */

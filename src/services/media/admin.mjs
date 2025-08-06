@@ -1,5 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
+import { adminService as mainAdminService } from '#services/admin.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 export const adminService = {
   profilePhoto: async (admin, newPhotoPath) => {
@@ -27,5 +29,15 @@ export const adminService = {
     }
 
     return newPhotoPath;
+  },
+
+  getProfilePhoto: async (targetId) => {
+    const user = await mainAdminService.getDetail(targetId);
+
+    if (!user || !user.photo) {
+      throw new ResponseError(404, 'Foto profil untuk pengguna ini tidak ditemukan.');
+    }
+
+    return user.photo;
   },
 };

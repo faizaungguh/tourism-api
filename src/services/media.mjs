@@ -6,6 +6,7 @@ import { attraction } from '#services/media/attraction.mjs';
 export const mediaService = {
   admin: {
     updatePhoto: admin.profilePhoto,
+    getProfilePhoto: admin.getProfilePhoto,
   },
 
   destination: {

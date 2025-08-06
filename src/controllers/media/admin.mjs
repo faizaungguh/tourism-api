@@ -36,4 +36,15 @@ export const admin = {
       next(error);
     }
   },
+
+  getProfileMedia: async (req, res, next) => {
+    try {
+      const { id: targetId } = req.params;
+
+      const photoUrl = await mediaService.admin.getProfilePhoto(targetId);
+      res.redirect(photoUrl);
+    } catch (e) {
+      next(e);
+    }
+  },
 };

@@ -5,6 +5,9 @@ import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
+// Pastikan Anda mengatur API_URL di file .env Anda. Contoh: API_URL=http://localhost:3000
+const API_URL = process.env.API_URL || 'http://localhost:3000';
+
 const _findRelatedDocs = async ({ categories, subdistrict }) => {
   const promises = [];
 
@@ -177,6 +180,29 @@ const detailDestinationPipeline = [
       _id: 0,
       destinationsId: 1,
       destinationTitle: 1,
+      profilePhoto: {
+        $cond: {
+          if: '$profilePhoto',
+          then: { $concat: [API_URL, '$profilePhoto'] },
+          else: '$$REMOVE',
+        },
+      },
+      headlinePhoto: {
+        $cond: {
+          if: '$headlinePhoto',
+          then: { $concat: [API_URL, '$headlinePhoto'] },
+          else: '$$REMOVE',
+        },
+      },
+      galleryPhoto: {
+        $cond: {
+          if: { $and: [{ $isArray: '$galleryPhoto' }, { $gt: [{ $size: '$galleryPhoto' }, 0] }] },
+          then: {
+            $map: { input: '$galleryPhoto', as: 'photo', in: { $concat: [API_URL, '$$photo'] } },
+          },
+          else: '$$REMOVE',
+        },
+      },
       description: 1,
       category: '$categoryDetails.name',
       categorySlug: '$categoryDetails.slug',

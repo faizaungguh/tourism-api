@@ -5,6 +5,7 @@ import { subdistrict } from '#controllers/subdistrict.mjs';
 import { destination } from '#controllers/destination.mjs';
 import { shield } from '#configs/security.mjs';
 import { handler } from '#middlewares/error.mjs';
+import { media } from '#controllers/media.mjs';
 
 export const publicRouter = new express.Router();
 
@@ -33,7 +34,7 @@ publicRouter
 
 /** Destination */
 publicRouter
-  .route('/destinations/:destinationSlug')
+  .route('/destinations/:slug')
   .get(destination.detail)
   .all(handler.method(['GET']));
 
@@ -44,3 +45,6 @@ publicRouter
 
 /** Recommendation */
 // publicRouter.route('/destinations/recommendations')
+
+/** Media */
+publicRouter.route('/admins/:id/media').get(media.admin.getProfile);

@@ -113,6 +113,7 @@ privateRouter
   .route('/destinations/:slug/media')
   .all(authMiddleware.authorize('manager'))
   .post(uploadMedia.destination.updateMedia, media.destination.updateMedia)
+  // .get(media.destination)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */

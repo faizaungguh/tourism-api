@@ -26,8 +26,8 @@ export const destination = {
   },
 
   detail: async (req, res) => {
-    const { destinationSlug } = req.params;
-    const result = await destinationService.getDetailDestination(destinationSlug);
+    const { slug } = req.params;
+    const result = await destinationService.getDetailDestination(slug);
     res.status(200).json({
       message: `Menampilkan Detail ${result.destinationTitle}`,
       data: result,
