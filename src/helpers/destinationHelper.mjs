@@ -197,7 +197,15 @@ const detailDestinationPipeline = [
         $cond: {
           if: { $and: [{ $isArray: '$galleryPhoto' }, { $gt: [{ $size: '$galleryPhoto' }, 0] }] },
           then: {
-            $map: { input: '$galleryPhoto', as: 'photo', in: { $concat: [API_URL, '$$photo'] } },
+            $map: {
+              input: '$galleryPhoto',
+              as: 'photo',
+              in: {
+                url: { $concat: [API_URL, '$$photo.url'] },
+                photoId: '$$photo.photoId',
+                caption: '$$photo.caption',
+              },
+            },
           },
           else: '$$REMOVE',
         },
