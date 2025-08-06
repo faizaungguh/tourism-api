@@ -70,6 +70,16 @@ const destinationMedia = {
   },
 };
 
+const galleryMedia = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).array('galleryPhoto', 8);
+  },
+};
+
 export const uploadMedia = {
   profileAdmin: [
     adminHelper.checkExist,
@@ -86,5 +96,14 @@ export const uploadMedia = {
       createMedia(destinationMedia.uploader, destinationMedia.limits),
       destinationHelper.savePhotos,
     ],
+
+    gallery: {
+      add: [
+        destinationHelper.checkOwnership,
+        createMedia(galleryMedia.uploader, galleryMedia.limits),
+        destinationHelper.saveGalleryPhotos,
+      ],
+      update: [],
+    },
   },
 };

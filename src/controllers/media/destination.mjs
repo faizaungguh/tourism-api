@@ -36,11 +36,27 @@ export const destination = {
 
   addDestinationGallery: async (req, res, next) => {
     try {
-      await mediaService.destination.gallery.add(req.foundDestination, req.processedGallery);
+      const destinationDoc = req.foundDestination;
+      const newPhotos = req.processedGallery;
+
+      // Requirement 3: Cek kapasitas total galeri di sini, setelah file diproses
+      const currentPhotoCount = destinationDoc.galleryPhoto.length;
+      const newPhotoCount = newPhotos.length;
+
+      if (currentPhotoCount + newPhotoCount > 8) {
+        const remainingSlots = 8 - currentPhotoCount;
+        throw new ResponseError(413, 'Kapasitas galeri tidak mencukupi', {
+          message: `Galeri sudah berisi ${currentPhotoCount} foto. Anda hanya dapat mengunggah ${
+            remainingSlots > 0 ? remainingSlots : 0
+          } foto lagi.`,
+        });
+      }
+
+      await mediaService.destination.gallery.add(destinationDoc, newPhotos);
 
       res.status(201).json({
-        message: `${req.processedGallery.length} foto berhasil ditambahkan ke galeri.`,
-        data: req.processedGallery,
+        message: `${newPhotos.length} foto berhasil ditambahkan ke galeri.`,
+        data: newPhotos,
       });
     } catch (error) {
       if (req.processedGallery) {

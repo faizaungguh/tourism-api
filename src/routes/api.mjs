@@ -113,17 +113,14 @@ privateRouter
   .route('/destinations/:slug/media')
   .all(authMiddleware.authorize('manager'))
   .post(uploadMedia.destination.updateMedia, media.destination.updateMedia)
-  // .get(media.destination)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
 privateRouter
   .route('/destinations/:slug/gallery')
   .all(authMiddleware.authorize('manager'))
-  // .post(media.destination.gallery.add)
-  // .get(media.destination.gallery.list)
-  // .delete(media.destination.gallery.deleteAll)
-  .all(handler.method(['POST', 'GET', 'DELETE']));
+  .post(uploadMedia.destination.gallery.add, media.destination.gallery.add)
+  .all(handler.method(['POST']));
 
 privateRouter
   .route('/destinations/:slug/gallery/:id')

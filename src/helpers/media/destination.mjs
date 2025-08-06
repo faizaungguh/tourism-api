@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import sharp from 'sharp';
+import { nanoid } from 'nanoid';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
 
@@ -27,11 +28,9 @@ async function _saveDestinationPhoto({ file, destinationDoc, fieldName }) {
 
 async function _saveGalleryPhoto({ file, destinationDoc }) {
   const rootDir = process.cwd();
-
   const destinationSlug = destinationDoc.slug;
   const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
 
-  // Requirement 4: Menyimpan di dalam subfolder /gallery
   const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/gallery`;
   const fileSystemDir = path.join(rootDir, 'public', 'images', dynamicDir);
 
@@ -117,6 +116,43 @@ export const destination = {
       }
 
       req.processedPhotos = processedPhotos;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  saveGalleryPhotos: async (req, res, next) => {
+    try {
+      if (!req.files || req.files.length === 0) {
+        throw new ResponseError(400, 'Tidak ada file', {
+          photo: 'Anda harus menyertakan setidaknya satu file gambar untuk galeri.',
+        });
+      }
+
+      const destinationDoc = req.foundDestination;
+      const currentPhotoCount = destinationDoc.galleryPhoto.length;
+      const newPhotoCount = req.files.length;
+
+      if (currentPhotoCount + newPhotoCount > 8) {
+        const remainingSlots = 8 - currentPhotoCount;
+        throw new ResponseError(413, 'Kapasitas galeri tidak mencukupi', {
+          message: `Galeri sudah berisi ${currentPhotoCount} foto. Anda hanya dapat mengunggah ${
+            remainingSlots > 0 ? remainingSlots : 0
+          } foto lagi.`,
+        });
+      }
+
+      const processedGallery = [];
+      for (const file of req.files) {
+        const photoData = await _saveGalleryPhoto({
+          file,
+          destinationDoc,
+        });
+        processedGallery.push(photoData);
+      }
+
+      req.processedGallery = processedGallery;
       next();
     } catch (error) {
       next(error);

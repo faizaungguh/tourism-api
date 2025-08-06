@@ -14,7 +14,7 @@ export const media = {
     updateMedia: destination.photoMedia,
 
     gallery: {
-      add: destination,
+      add: destination.addDestinationGallery,
       list: destination,
       get: destination,
       update: destination,
