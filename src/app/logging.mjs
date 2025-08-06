@@ -1,4 +1,5 @@
 import winston from 'winston';
+import path from 'path';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -26,14 +27,16 @@ const transportConfigurations = [
 
 /** Untuk environment production, tambahkan logging ke file */
 if (!isDevelopment) {
+  const logDir = 'logs';
+
   transportConfigurations.push(
     new winston.transports.File({
-      filename: 'error.log',
+      filename: path.join(logDir, 'error.log'),
       level: 'error',
       format: winston.format.json(),
     }),
     new winston.transports.File({
-      filename: 'combined.log',
+      filename: path.join(logDir, 'combined.log'),
       format: winston.format.json(),
     })
   );
