@@ -90,6 +90,46 @@ const updateGalleryDestination = {
   },
 };
 
+const addFacilityPhotos = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).array('photo', 6);
+  },
+};
+
+const updateFacilityPhoto = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).single('photo');
+  },
+};
+
+const addAttractionPhotos = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).array('photo', 6);
+  },
+};
+
+const updateAttractionPhoto = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).single('photo');
+  },
+};
+
 export const handleMedia = {
   admin: {
     updateMedia: [
@@ -121,6 +161,32 @@ export const handleMedia = {
         destinationHelper.checkOwnershipAndPhotoExist,
         createMedia(updateGalleryDestination.uploader, updateGalleryDestination.limits),
         destinationHelper.replaceGalleryPhoto,
+      ],
+      delete: [destinationHelper.checkOwnership],
+    },
+
+    facility: {
+      add: [
+        destinationHelper.checkOwnership,
+        createMedia(addFacilityPhotos.uploader, addFacilityPhotos.limits),
+      ],
+      get: [destinationHelper.checkExist],
+      update: [
+        destinationHelper.checkOwnership,
+        createMedia(updateFacilityPhoto.uploader, updateFacilityPhoto.limits),
+      ],
+      delete: [destinationHelper.checkOwnership],
+    },
+
+    attraction: {
+      add: [
+        destinationHelper.checkOwnership,
+        createMedia(addAttractionPhotos.uploader, addAttractionPhotos.limits),
+      ],
+      get: [destinationHelper.checkExist],
+      update: [
+        destinationHelper.checkOwnership,
+        createMedia(updateAttractionPhoto.uploader, updateAttractionPhoto.limits),
       ],
       delete: [destinationHelper.checkOwnership],
     },

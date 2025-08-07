@@ -23,19 +23,19 @@ export const media = {
   },
 
   facility: {
-    add: facility,
-    get: facility,
-    update: facility,
-    deleteAll: facility,
-    delete: facility,
+    add: facility.add,
+    get: facility.get,
+    update: facility.update,
+    deleteAll: facility.dropAll,
+    delete: facility.dropOne,
   },
 
   /** Wahana Media */
   attraction: {
-    add: attraction,
-    get: attraction,
-    update: attraction,
-    deleteAll: attraction,
-    delete: attraction,
+    add: attraction.add,
+    get: attraction.get,
+    update: attraction.update,
+    deleteAll: attraction.dropAll,
+    delete: attraction.dropOne,
   },
 };

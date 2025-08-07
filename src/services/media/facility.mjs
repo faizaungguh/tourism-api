@@ -1,10 +1,14 @@
 import path from 'path';
 import fs from 'fs/promises';
 
-export const facility = {
-  addGallery: () => {},
+export const facilityService = {
+  add: async () => {},
 
-  patchGallery: () => {},
+  get: async () => {},
 
-  dropGallery: () => {},
+  update: async () => {},
+
+  dropAll: async () => {},
+
+  dropOne: async () => {},
 };

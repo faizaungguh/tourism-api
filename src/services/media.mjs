@@ -1,7 +1,7 @@
 import { adminService as admin } from '#services/media/admin.mjs';
 import { destinationService as destination } from '#services/media/destination.mjs';
-import { facility } from '#services/media/facility.mjs';
-import { attraction } from '#services/media/attraction.mjs';
+import { facilityService as facility } from '#services/media/facility.mjs';
+import { attractionService as attraction } from '#services/media/attraction.mjs';
 
 export const mediaService = {
   admin: {
@@ -22,21 +22,19 @@ export const mediaService = {
   },
 
   facility: {
-    add: facility,
-    list: facility,
-    get: facility,
-    update: facility,
-    deleteAll: facility,
-    delete: facility,
+    add: facility.add,
+    get: facility.get,
+    update: facility.update,
+    deleteAll: facility.dropAll,
+    delete: facility.dropOne,
   },
 
   /** Wahana Media */
   attraction: {
-    add: attraction,
-    list: attraction,
-    get: attraction,
-    update: attraction,
-    deleteAll: attraction,
-    delete: attraction,
+    add: attraction.add,
+    get: attraction.get,
+    update: attraction.update,
+    deleteAll: attraction.dropAll,
+    delete: attraction.dropOne,
   },
 };

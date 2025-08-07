@@ -1,10 +1,14 @@
 import path from 'path';
 import fs from 'fs/promises';
 
-export const attraction = {
-  addGallery: () => {},
+export const attractionService = {
+  add: async () => {},
 
-  patchGallery: () => {},
+  get: async () => {},
 
-  dropGallery: () => {},
+  update: async () => {},
+
+  dropAll: async () => {},
+
+  dropOne: async () => {},
 };

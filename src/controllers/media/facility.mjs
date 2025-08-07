@@ -2,9 +2,13 @@ import path from 'path';
 import fs from 'fs/promises';
 
 export const facility = {
-  addGallery: () => {},
+  add: async (req, res, next) => {},
 
-  patchGallery: () => {},
+  get: async (req, res, next) => {},
 
-  dropGallery: () => {},
+  update: async (req, res, next) => {},
+
+  dropAll: async (req, res, next) => {},
+
+  dropOne: async (req, res, next) => {},
 };
