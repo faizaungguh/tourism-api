@@ -1,4 +1,4 @@
-import { managerService } from '#services/manager.mjs';
+import { managerService } from '#services/data/manager.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 export const manager = {

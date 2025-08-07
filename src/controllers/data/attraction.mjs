@@ -1,11 +1,11 @@
-import { attractionService } from '#services/attraction.mjs';
+import { dataService } from '#services/data.mjs';
 
 export const attraction = {
   post: async (req, res) => {
     const adminId = req.admin.adminId;
     const request = req.body;
     const slug = req.params.slug;
-    const result = await attractionService.create(adminId, slug, request);
+    const result = await dataService.attraction.add(adminId, slug, request);
 
     res.status(201).json({
       message: `Wahana Wisata '${result.name}' berhasil ditambahkan ke destinasi`,
@@ -18,7 +18,7 @@ export const attraction = {
     const destinationSlug = req.params.destinations;
     const attractionSlug = req.params.attractions;
     const request = req.body;
-    const result = await attractionService.update(
+    const result = await dataService.attraction.update(
       adminId,
       destinationSlug,
       attractionSlug,
@@ -35,7 +35,7 @@ export const attraction = {
     const adminId = req.admin.adminId;
     const destinationSlug = req.params.destinations;
     const attractionSlug = req.params.attractions;
-    const result = await attractionService.drop(adminId, destinationSlug, attractionSlug);
+    const result = await dataService.attraction.delete(adminId, destinationSlug, attractionSlug);
 
     res.status(200).json({
       message: `Wahana Wisata '${result.name}' berhasil dihapus dari destinasi`,

@@ -5,7 +5,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const adminService = {
-  create: async (request) => {
+  post: async (request) => {
     validate.isNotEmpty(request);
 
     const validatedRequest = validate.requestCheck(checker.adminValidation, request);
@@ -15,7 +15,7 @@ export const adminService = {
     return Admin.create(validatedRequest);
   },
 
-  getAll: async (query) => {
+  list: async (query) => {
     /** validasi dan ambil nilai default dari query */
     const validatedQuery = validate.requestCheck(checker.listAdminValidation, query);
 
@@ -40,7 +40,7 @@ export const adminService = {
     };
   },
 
-  getDetail: async (id) => {
+  detail: async (id) => {
     /** cari admin berdasarkan adminId */
     const admin = await Admin.findOne({ adminId: id });
 

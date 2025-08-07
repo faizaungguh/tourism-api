@@ -4,14 +4,11 @@ import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 export const subdistrictService = {
-  createSubdistrict: async (request) => {
+  post: async (request) => {
     /** validasi request */
     validate.isNotEmpty(request);
 
-    const validatedRequest = validate.requestCheck(
-      checker.subdistrictValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.subdistrictValidation, request);
 
     /** ambil data yang telah valid */
     const data = new Subdistrict(validatedRequest);
@@ -23,12 +20,9 @@ export const subdistrictService = {
     return savedSubdistrict.toObject();
   },
 
-  getAllSubdistrict: async (query) => {
+  list: async (query) => {
     /** validasi */
-    const validatedQuery = validate.requestCheck(
-      checker.listSubdistrictValidation,
-      query
-    );
+    const validatedQuery = validate.requestCheck(checker.listSubdistrictValidation, query);
     const { page, size, sort, sortBy } = validatedQuery;
     const skip = (page - 1) * size;
 
@@ -62,13 +56,10 @@ export const subdistrictService = {
     };
   },
 
-  updateSubdistrict: async (slug, request) => {
+  update: async (slug, request) => {
     validate.isNotEmpty(request);
 
-    const validatedRequest = validate.requestCheck(
-      checker.subdistrictValidation,
-      request
-    );
+    const validatedRequest = validate.requestCheck(checker.subdistrictValidation, request);
 
     const originalSubdistrict = await Subdistrict.findOne({ slug });
     if (!originalSubdistrict) {
@@ -83,7 +74,7 @@ export const subdistrictService = {
     return result;
   },
 
-  deleteSubdistrict: async (slug) => {
+  drop: async (slug) => {
     const deletedSubdistrict = await Subdistrict.deleteOne({ slug });
 
     if (!deletedSubdistrict) {

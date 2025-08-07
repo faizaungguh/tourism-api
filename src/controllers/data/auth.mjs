@@ -1,8 +1,8 @@
-import { authService } from '#services/auth.mjs';
+import { dataService } from '#services/data.mjs';
 
 export const auth = {
   register: async (req, res) => {
-    const result = await authService.register(req.body);
+    const result = await dataService.auth.register(req.body);
     res.status(201).json({
       message: 'Manager berhasil dibuat',
       data: result,
@@ -10,7 +10,7 @@ export const auth = {
   },
 
   signin: async (req, res) => {
-    const result = await authService.signin(req.body);
+    const result = await dataService.auth.signIn(req.body);
     const { token, user } = result;
 
     res.cookie('accessToken', token, {

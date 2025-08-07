@@ -1,11 +1,11 @@
-import { destinationService } from '#services/destination.mjs';
+import { dataService } from '#services/data.mjs';
 
 export const destination = {
   post: async (req, res) => {
     const adminId = req.admin.adminId;
     const request = req.body;
 
-    const result = await destinationService.create(adminId, request);
+    const result = await dataService.destination.add(adminId, request);
     res.status(201).json({
       message: 'Tempat Wisata baru berhasil ditambahkan',
       data: result,
@@ -13,7 +13,7 @@ export const destination = {
   },
 
   list: async (req, res) => {
-    const { result, pagination } = await destinationService.getAll(req.query);
+    const { result, pagination } = await dataService.destination.list(req.query);
 
     const message =
       pagination.totalItems > 0 ? 'Menampilkan List Data Destinasi' : 'Data tidak ditemukan';
@@ -27,7 +27,7 @@ export const destination = {
 
   detail: async (req, res) => {
     const { slug } = req.params;
-    const result = await destinationService.getDetailDestination(slug);
+    const result = await dataService.destination.detail(slug);
     res.status(200).json({
       message: `Menampilkan Detail ${result.destinationTitle}`,
       data: result,
@@ -38,7 +38,7 @@ export const destination = {
     const adminId = req.admin.adminId;
     const request = req.body;
     const { slug: destinationSlug } = req.params;
-    const result = await destinationService.update(destinationSlug, adminId, request);
+    const result = await dataService.destination.update(destinationSlug, adminId, request);
     res.status(200).json({
       message: `Destinasi '${result.destinationTitle}' berhasil diubah`,
       data: result,
@@ -48,7 +48,7 @@ export const destination = {
   drop: async (req, res) => {
     const { slug: destinationSlug } = req.params;
     const adminId = req.admin.adminId;
-    const result = await destinationService.drop(destinationSlug, adminId);
+    const result = await dataService.destination.delete(destinationSlug, adminId);
     res.status(200).json(result);
   },
 };

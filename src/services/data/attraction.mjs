@@ -7,7 +7,7 @@ import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const attractionService = {
-  create: async (adminId, slug, request) => {
+  post: async (adminId, slug, request) => {
     const [destination, admin] = await Promise.all([
       Destination.findOne({ slug: slug }).select('_id createdBy').lean(),
       Admin.findOne({ adminId: adminId }).select('_id').lean(),

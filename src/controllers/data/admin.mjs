@@ -1,8 +1,8 @@
-import { adminService } from '#services/admin.mjs';
+import { dataService } from '#services/data.mjs';
 
 export const admin = {
   post: async (req, res) => {
-    const result = await adminService.create(req.body);
+    const result = await dataService.admin.add(req.body);
     res.status(201).json({
       message: 'Admin berhasil dibuat',
       data: result,
@@ -10,7 +10,7 @@ export const admin = {
   },
 
   list: async (req, res) => {
-    const { result, pagination } = await adminService.getAll(req.query);
+    const { result, pagination } = await dataService.admin.list(req.query);
     res.status(200).json({
       message: `'Menampilkan List Data Admin'`,
       result,
@@ -20,7 +20,7 @@ export const admin = {
 
   get: async (req, res) => {
     const { id } = req.params;
-    const result = await adminService.getDetail(id);
+    const result = await dataService.admin.detail(id);
     res.status(200).json({
       message: `Menampilkan detail admin '${result.name}'`,
       data: result,
@@ -29,7 +29,7 @@ export const admin = {
 
   update: async (req, res) => {
     const { id } = req.params;
-    const result = await adminService.update(id, req.body);
+    const result = await dataService.admin.update(id, req.body);
     res.status(200).json({
       message: `Data admin '${result.name}' berhasil diubah`,
       data: result,
@@ -39,7 +39,7 @@ export const admin = {
   drop: async (req, res) => {
     const { id } = req.params;
     const adminId = req.admin.adminId;
-    const result = await adminService.drop(id);
+    const result = await dataService.admin.delete(id);
     if (adminId === id) {
       res.clearCookie('accessToken', { path: '/' });
     }

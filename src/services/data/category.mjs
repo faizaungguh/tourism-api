@@ -1,11 +1,10 @@
 import * as validate from '#validations/validate.mjs';
 import * as checker from '#validations/category.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import { Destination } from '#schemas/destination.mjs';
 import { Category } from '#schemas/category.mjs';
 
 export const categoryService = {
-  createCategory: async (request) => {
+  post: async (request) => {
     /** validasi request */
     validate.isNotEmpty(request);
 
@@ -21,7 +20,7 @@ export const categoryService = {
     return savedCategory.toObject();
   },
 
-  getAllCategory: async (query) => {
+  list: async (query) => {
     /** validasi */
     const validatedQuery = validate.requestCheck(checker.listCategoryValidation, query);
     const { page, size, sort } = validatedQuery;
@@ -49,7 +48,7 @@ export const categoryService = {
     };
   },
 
-  updateCategory: async (slug, request) => {
+  update: async (slug, request) => {
     const validatedRequest = validate.requestCheck(checker.categoryValidation, request);
 
     const originalCategory = await Category.findOne({ slug });
@@ -70,7 +69,7 @@ export const categoryService = {
     return result;
   },
 
-  deleteCategory: async (slug) => {
+  drop: async (slug) => {
     /** Cek apakah kategori ada */
     const categoryToDelete = await Category.findOne({ slug });
 

@@ -3,11 +3,10 @@ import * as validate from '#validations/validate.mjs';
 import * as helper from '#helpers/destinationHelper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { Attraction } from '#schemas/attraction.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const destinationService = {
-  create: async (adminId, request) => {
+  post: async (adminId, request) => {
     const validatedRequest = validate.requestCheck(checker.destinationValidation, request);
 
     const savedDestination = await helper.createDestination(adminId, validatedRequest);
@@ -18,7 +17,7 @@ export const destinationService = {
     return result;
   },
 
-  getAll: async (query) => {
+  list: async (query) => {
     /** Validasi dan ambil nilai default dari query */
     const validatedQuery = validate.requestCheck(checker.listDestinationValidation, query);
 
@@ -43,7 +42,7 @@ export const destinationService = {
     };
   },
 
-  getDetailDestination: async (destinationSlug) => {
+  detail: async (destinationSlug) => {
     /** Validasi slug */
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
       throw new ResponseError(400, 'Destination slug tidak valid.', {

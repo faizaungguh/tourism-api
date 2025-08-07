@@ -5,7 +5,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const managerService = {
-  getAll: async (query) => {
+  list: async (query) => {
     const validatedQuery = validate.requestCheck(checker.listAdminValidation, query);
 
     const pipeline = helper.listAdmins(validatedQuery);
@@ -30,7 +30,7 @@ export const managerService = {
     };
   },
 
-  getDetail: async (id) => {
+  detail: async (id) => {
     /** Cari manager berdasarkan adminId dan pastikan role-nya adalah 'manager' */
     const manager = await Admin.findOne({
       adminId: id,
