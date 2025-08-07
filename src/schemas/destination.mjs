@@ -115,6 +115,27 @@ export function processOpeningHours(openingHours) {
   }
 }
 
+function generatePhotoCaptions(doc) {
+  const title = doc.destinationTitle;
+  if (!title) return;
+
+  if (doc.galleryPhoto && doc.galleryPhoto.length > 0) {
+    doc.galleryPhoto.forEach((photo) => {
+      photo.caption = `Foto Galeri ${title}`;
+    });
+  }
+
+  if (doc.facility && doc.facility.length > 0) {
+    doc.facility.forEach((facilityItem) => {
+      if (facilityItem.photo && facilityItem.photo.length > 0) {
+        facilityItem.photo.forEach((photo) => {
+          photo.caption = `Foto Fasilitas ${facilityItem.name} di ${title}`;
+        });
+      }
+    });
+  }
+}
+
 destinationSchema.pre('save', async function (next) {
   processOpeningHours(this.openingHour);
 
@@ -128,6 +149,15 @@ destinationSchema.pre('save', async function (next) {
         })
       );
     }
+  }
+
+  if (
+    this.isNew ||
+    this.isModified('galleryPhoto') ||
+    this.isModified('facility') ||
+    this.isModified('destinationTitle')
+  ) {
+    generatePhotoCaptions(this);
   }
 
   if (this.isNew) {
@@ -196,6 +226,25 @@ destinationSchema.pre('save', async function (next) {
 destinationSchema.pre('findOneAndUpdate', async function (next) {
   const update = this.getUpdate();
   processOpeningHours(update.$set?.openingHour);
+
+  if (
+    update.$set &&
+    (update.$set.galleryPhoto || update.$set.facility || update.$set.destinationTitle)
+  ) {
+    const docToUpdate = await this.model.findOne(this.getQuery()).lean();
+    const destinationTitle = update.$set.destinationTitle || docToUpdate.destinationTitle;
+
+    const tempDoc = {
+      destinationTitle,
+      galleryPhoto: update.$set.galleryPhoto || docToUpdate.galleryPhoto,
+      facility: update.$set.facility || docToUpdate.facility,
+    };
+
+    generatePhotoCaptions(tempDoc);
+
+    if (update.$set.galleryPhoto) update.$set.galleryPhoto = tempDoc.galleryPhoto;
+    if (update.$set.facility) update.$set.facility = tempDoc.facility;
+  }
 
   if (update.$set && update.$set.destinationTitle) {
     const baseSlug = update.$set.destinationTitle

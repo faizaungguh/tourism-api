@@ -2,22 +2,6 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 
-const API_URL = process.env.API_URL || 'http://localhost:3000';
-
-async function deleteOldFile(oldPath) {
-  if (!oldPath) return;
-  try {
-    const rootDir = process.cwd();
-    const correctedOldPath = oldPath.startsWith('/') ? oldPath.substring(1) : oldPath;
-    const absoluteOldPath = path.join(rootDir, 'public', correctedOldPath);
-    await fs.unlink(absoluteOldPath);
-  } catch (err) {
-    if (err.code !== 'ENOENT') {
-      console.error('Gagal menghapus file lama:', err);
-    }
-  }
-}
-
 export const destinationService = {
   photoMedia: async (destinationDoc, newPhotos) => {
     const { profilePhoto, headlinePhoto } = newPhotos;
@@ -65,11 +49,24 @@ export const destinationService = {
     }
     return photo.toObject();
   },
-  patchGallery: async () => {},
+
+  patchGallery: async (destinationDoc, oldPhotoId, newPhotoData) => {
+    const photoIndex = destinationDoc.galleryPhoto.findIndex((p) => p.photoId === oldPhotoId);
+
+    if (photoIndex === -1) {
+      throw new ResponseError(404, 'Foto lama tidak ditemukan di database untuk diperbarui.');
+    }
+
+    destinationDoc.galleryPhoto.set(photoIndex, newPhotoData);
+
+    return destinationDoc.save();
+  },
 
   dropAllGallery: async (destinationDoc) => {
     if (!destinationDoc) {
-      throw new Error('dropAllGallery dipanggil tanpa dokumen destinasi yang valid.');
+      throw new ResponseError(400, 'Dokumen tidak ada', {
+        message: 'Sertakan dokumen terbaru yang anda perlukan.',
+      });
     }
 
     if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {

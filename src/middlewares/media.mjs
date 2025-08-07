@@ -70,13 +70,23 @@ const destinationMedia = {
   },
 };
 
-const galleryMedia = {
+const addGalleryDestination = {
   limits: { fileSize: 1024 * 200 },
   get uploader() {
     return multer({
       ...baseMulter,
       limits: this.limits,
     }).array('galleryPhoto', 8);
+  },
+};
+
+const updateGalleryDestination = {
+  limits: { fileSize: 1024 * 200 },
+  get uploader() {
+    return multer({
+      ...baseMulter,
+      limits: this.limits,
+    }).single('galleryPhoto');
   },
 };
 
@@ -103,10 +113,15 @@ export const handleMedia = {
     gallery: {
       add: [
         destinationHelper.checkOwnership,
-        createMedia(galleryMedia.uploader, galleryMedia.limits),
+        createMedia(addGalleryDestination.uploader, addGalleryDestination.limits),
         destinationHelper.saveGalleryPhotos,
       ],
       get: [destinationHelper.checkExist],
+      update: [
+        destinationHelper.checkOwnershipAndPhotoExist,
+        createMedia(updateGalleryDestination.uploader, updateGalleryDestination.limits),
+        destinationHelper.replaceGalleryPhoto,
+      ],
       delete: [destinationHelper.checkOwnership],
     },
   },

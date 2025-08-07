@@ -2,6 +2,9 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 import { mediaService } from '#services/media.mjs';
+import { destination as destinationHelper } from '#helpers/media/destination.mjs';
+
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 export const destination = {
   photoMedia: async (req, res, next) => {
@@ -93,7 +96,32 @@ export const destination = {
     }
   },
 
-  patchGallery: async () => {},
+  patchGallery: async (req, res, next) => {
+    const { oldPhotoId, newPhotoData } = req.processedPhotoUpdate || {};
+
+    try {
+      if (!oldPhotoId || !newPhotoData) {
+        throw new ResponseError(400, 'Data foto yang diproses tidak ditemukan.');
+      }
+
+      await mediaService.destination.gallery.update(req.foundDestination, oldPhotoId, newPhotoData);
+
+      const responseData = {
+        ...newPhotoData,
+        url: `${API_URL}${newPhotoData.url}`,
+      };
+
+      res.status(200).json({
+        message: 'Foto galeri berhasil diperbarui.',
+        data: responseData,
+      });
+    } catch (error) {
+      if (newPhotoData && newPhotoData.url) {
+        await destinationHelper.cleanupFile(newPhotoData.url);
+      }
+      next(error);
+    }
+  },
 
   dropAllGallery: async (req, res, next) => {
     try {

@@ -5,6 +5,20 @@ import { nanoid } from 'nanoid';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
 
+async function _deleteFile(webPath) {
+  if (!webPath) return;
+  try {
+    const rootDir = process.cwd();
+    const correctedPath = webPath.startsWith('/') ? webPath.substring(1) : webPath;
+    const absolutePath = path.join(rootDir, 'public', correctedPath);
+    await fs.unlink(absolutePath);
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      console.error(`Failed to delete file at ${webPath}:`, err);
+    }
+  }
+}
+
 async function _saveDestinationPhoto({ file, destinationDoc, fieldName }) {
   const rootDir = process.cwd();
 
@@ -49,7 +63,6 @@ async function _saveGalleryPhoto({ file, destinationDoc }) {
   return {
     url: webPath,
     photoId,
-    caption: '',
   };
 }
 
@@ -182,4 +195,66 @@ export const destination = {
       next(error);
     }
   },
+
+  checkOwnershipAndPhotoExist: async (req, res, next) => {
+    try {
+      const { slug, id: photoId } = req.params;
+      const { adminId } = req.admin;
+
+      const destinationDoc = await Destination.findOne({ slug })
+        .populate({ path: 'createdBy', select: 'adminId' })
+        .populate({ path: 'locations.subdistrict', select: 'abbrevation' });
+
+      if (!destinationDoc) {
+        throw new ResponseError(404, 'Destinasi tidak ditemukan.');
+      }
+
+      if (destinationDoc.createdBy.adminId !== adminId) {
+        throw new ResponseError(403, 'Akses ditolak. Anda bukan pemilik destinasi ini.');
+      }
+
+      const photoToUpdate = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
+      if (!photoToUpdate) {
+        throw new ResponseError(404, `Foto dengan ID "${photoId}" tidak ditemukan di galeri ini.`);
+      }
+
+      req.foundDestination = destinationDoc;
+      req.photoToUpdate = photoToUpdate;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  replaceGalleryPhoto: async (req, res, next) => {
+    try {
+      if (!req.file) {
+        throw new ResponseError(400, 'File tidak ada', {
+          photo: 'Anda harus menyertakan satu file gambar untuk pembaruan.',
+        });
+      }
+
+      const { foundDestination, photoToUpdate, file } = req;
+
+      await _deleteFile(photoToUpdate.url);
+
+      const newPhotoData = await _saveGalleryPhoto({
+        file,
+        destinationDoc: foundDestination,
+      });
+
+      newPhotoData.caption = req.body.caption || photoToUpdate.caption;
+
+      req.processedPhotoUpdate = {
+        oldPhotoId: photoToUpdate.photoId,
+        newPhotoData: newPhotoData,
+      };
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  cleanupFile: _deleteFile,
 };
