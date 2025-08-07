@@ -34,7 +34,7 @@ export const destination = {
     });
   },
 
-  patch: async (req, res) => {
+  update: async (req, res) => {
     const adminId = req.admin.adminId;
     const request = req.body;
     const { slug: destinationSlug } = req.params;

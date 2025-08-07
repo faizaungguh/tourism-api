@@ -9,10 +9,8 @@ export const subdistrict = {
     });
   },
 
-  get: async (req, res) => {
-    const { result, pagination } = await subdistrictService.getAllSubdistrict(
-      req.query
-    );
+  list: async (req, res) => {
+    const { result, pagination } = await subdistrictService.getAllSubdistrict(req.query);
     res.status(200).json({
       message: 'Menampilkan List Kecamatan',
       result,
@@ -20,7 +18,7 @@ export const subdistrict = {
     });
   },
 
-  patch: async (req, res) => {
+  update: async (req, res) => {
     const { slug } = req.params;
     const result = await subdistrictService.updateSubdistrict(slug, req.body);
     res.status(200).json({

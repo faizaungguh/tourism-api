@@ -27,7 +27,7 @@ export const admin = {
     });
   },
 
-  patch: async (req, res) => {
+  update: async (req, res) => {
     const { id } = req.params;
     const result = await adminService.update(id, req.body);
     res.status(200).json({

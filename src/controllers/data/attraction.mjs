@@ -1,7 +1,7 @@
 import { attractionService } from '#services/attraction.mjs';
 
 export const attraction = {
-  create: async (req, res) => {
+  post: async (req, res) => {
     const adminId = req.admin.adminId;
     const request = req.body;
     const slug = req.params.slug;
@@ -13,7 +13,7 @@ export const attraction = {
     });
   },
 
-  patch: async (req, res) => {
+  update: async (req, res) => {
     const adminId = req.admin.adminId;
     const destinationSlug = req.params.destinations;
     const attractionSlug = req.params.attractions;

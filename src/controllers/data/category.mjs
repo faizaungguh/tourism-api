@@ -9,10 +9,8 @@ export const category = {
     });
   },
 
-  get: async (req, res) => {
-    const { result, pagination } = await categoryService.getAllCategory(
-      req.query
-    );
+  list: async (req, res) => {
+    const { result, pagination } = await categoryService.getAllCategory(req.query);
     res.status(200).json({
       message: 'Menampilkan List Kategori',
       result,
@@ -20,7 +18,7 @@ export const category = {
     });
   },
 
-  patch: async (req, res) => {
+  update: async (req, res) => {
     const { slug } = req.params;
     const result = await categoryService.updateCategory(slug, req.body);
     res.status(200).json({

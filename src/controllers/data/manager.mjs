@@ -28,7 +28,7 @@ export const manager = {
     });
   },
 
-  put: async (req, res) => {
+  update: async (req, res) => {
     const { id } = req.params;
     const admin = req.admin;
 
