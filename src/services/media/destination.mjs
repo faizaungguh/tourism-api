@@ -91,4 +91,34 @@ export const destinationService = {
 
     await destinationDoc.save();
   },
+
+  dropOneGallery: async (destinationDoc, photoId) => {
+    const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
+
+    if (!photo) {
+      throw new ResponseError(404, 'Foto dengan ID tersebut tidak ditemukan di galeri ini.');
+    }
+
+    const photoUrl = photo.url;
+
+    destinationDoc.galleryPhoto.pull(photo._id);
+
+    await destinationDoc.save();
+
+    if (photoUrl) {
+      const rootDir = process.cwd();
+      const correctedPath = photoUrl.startsWith('/') ? photoUrl.substring(1) : photoUrl;
+      const absolutePath = path.join(rootDir, 'public', correctedPath);
+      try {
+        await fs.unlink(absolutePath);
+      } catch (err) {
+        if (err.code !== 'ENOENT') {
+          console.error(
+            `Gagal menghapus file fisik setelah penghapusan dari DB: ${absolutePath}`,
+            err
+          );
+        }
+      }
+    }
+  },
 };

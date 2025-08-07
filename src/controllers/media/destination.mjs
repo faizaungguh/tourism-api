@@ -136,4 +136,19 @@ export const destination = {
       next(error);
     }
   },
+
+  dropOneGallery: async (req, res, next) => {
+    try {
+      const { id: photoId } = req.params;
+      const destinationDoc = req.foundDestination;
+
+      await mediaService.destination.gallery.delete(destinationDoc, photoId);
+
+      res.status(200).json({
+        message: 'Foto dari galeri berhasil dihapus.',
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };

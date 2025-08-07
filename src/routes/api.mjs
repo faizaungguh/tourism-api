@@ -124,8 +124,7 @@ privateRouter
   .route('/destinations/:slug/gallery/:id')
   .all(authMiddleware.authorize('manager'))
   .put(handleMedia.destination.gallery.update, media.destination.gallery.update)
-  // .put(handleMedia.destination.gallery.update, media.destination.gallery.update)
-  // .delete(handleMedia.destination.gallery.delete, media.destination.gallery.delete)
+  .delete(handleMedia.destination.gallery.delete, media.destination.gallery.delete)
   .all(handler.method(['PUT', 'DELETE']));
 
 /** Destinasi - facility - photo */

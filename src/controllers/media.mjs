@@ -18,7 +18,7 @@ export const media = {
       get: destination.getGallery,
       deleteAll: destination.dropAllGallery,
       update: destination.patchGallery,
-      delete: destination,
+      delete: destination.dropOneGallery,
     },
   },
 

@@ -17,7 +17,7 @@ export const mediaService = {
       get: destination.getGalleryPhotoById,
       deleteAll: destination.dropAllGallery,
       update: destination.patchGallery,
-      delete: destination,
+      delete: destination.dropOneGallery,
     },
   },
 
