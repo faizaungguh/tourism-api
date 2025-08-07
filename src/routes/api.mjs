@@ -9,7 +9,7 @@ import { auth } from '#controllers/auth.mjs';
 import { media } from '#controllers/media.mjs';
 import { authMiddleware } from '#middlewares/auth.mjs';
 import { handler } from '#middlewares/error.mjs';
-import { uploadMedia } from '#middlewares/media.mjs';
+import { handleMedia } from '#middlewares/media.mjs';
 
 export const privateRouter = new express.Router();
 
@@ -105,31 +105,30 @@ privateRouter
 privateRouter
   .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
-  .post(uploadMedia.profileAdmin, media.admin.addProfile)
+  .post(handleMedia.admin.updateMedia, media.admin.addProfile)
   .all(handler.method(['POST']));
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
   .route('/destinations/:slug/media')
   .all(authMiddleware.authorize('manager'))
-  .post(uploadMedia.destination.updateMedia, media.destination.updateMedia)
+  .post(handleMedia.destination.updateMedia, media.destination.updateMedia)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
 privateRouter
   .route('/destinations/:slug/gallery')
   .all(authMiddleware.authorize('manager'))
-  .post(uploadMedia.destination.gallery.add, media.destination.gallery.add)
-  .delete(uploadMedia.destination.gallery.delete, media.destination.gallery.deleteAll)
+  .post(handleMedia.destination.gallery.add, media.destination.gallery.add)
+  .delete(handleMedia.destination.gallery.delete, media.destination.gallery.deleteAll)
   .all(handler.method(['POST', 'DELETE']));
 
 privateRouter
   .route('/destinations/:slug/gallery/:id')
   .all(authMiddleware.authorize('manager'))
-  // .get(media.destination.gallery.get)
-  // .put(media.destination.gallery.update)
-  // .delete(media.destination.gallery.delete)
-  .all(handler.method(['PUT', 'GET', 'DELETE']));
+  // .put(handleMedia.destination.gallery.update, media.destination.gallery.update)
+  // .delete(handleMedia.destination.gallery.delete, media.destination.gallery.delete)
+  .all(handler.method(['PUT', 'DELETE']));
 
 /** Destinasi - facility - photo */
 privateRouter

@@ -1,5 +1,8 @@
 import path from 'path';
 import fs from 'fs/promises';
+import { ResponseError } from '#errors/responseError.mjs';
+
+const API_URL = process.env.API_URL || 'http://localhost:3000';
 
 async function deleteOldFile(oldPath) {
   if (!oldPath) return;
@@ -46,6 +49,22 @@ export const destinationService = {
     return destinationDoc.save();
   },
 
+  getGalleryPhotoById: async (destinationDoc, photoId) => {
+    if (!destinationDoc) {
+      throw new ResponseError(404, 'Destinasi tidak ditemukan.');
+    }
+
+    if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
+      throw new ResponseError(404, 'Galeri untuk destinasi ini kosong atau tidak ditemukan.');
+    }
+
+    const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
+
+    if (!photo) {
+      throw new ResponseError(404, 'Foto dengan ID tersebut tidak ditemukan di galeri ini.');
+    }
+    return photo.toObject();
+  },
   patchGallery: async () => {},
 
   dropAllGallery: async (destinationDoc) => {

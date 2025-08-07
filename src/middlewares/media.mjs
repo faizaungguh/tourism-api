@@ -80,15 +80,18 @@ const galleryMedia = {
   },
 };
 
-export const uploadMedia = {
-  profileAdmin: [
-    adminHelper.checkExist,
-    createMedia(adminMedia.uploader, adminMedia.limits),
-    adminHelper.savePhoto({
-      subfolder: 'profile',
-      getDynamicPath: (req) => req.params.id,
-    }),
-  ],
+export const handleMedia = {
+  admin: {
+    updateMedia: [
+      adminHelper.checkExist,
+      createMedia(adminMedia.uploader, adminMedia.limits),
+      adminHelper.savePhoto({
+        subfolder: 'profile',
+        getDynamicPath: (req) => req.params.id,
+      }),
+    ],
+    get: [adminHelper.checkExist],
+  },
 
   destination: {
     updateMedia: [
@@ -103,8 +106,8 @@ export const uploadMedia = {
         createMedia(galleryMedia.uploader, galleryMedia.limits),
         destinationHelper.saveGalleryPhotos,
       ],
+      get: [destinationHelper.checkExist],
       delete: [destinationHelper.checkOwnership],
-      update: [],
     },
   },
 };

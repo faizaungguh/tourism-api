@@ -39,12 +39,22 @@ export const admin = {
 
   getProfileMedia: async (req, res, next) => {
     try {
-      const { id: targetId } = req.params;
+      const adminDoc = req.foundAdmin;
 
-      const photoUrl = await mediaService.admin.getProfilePhoto(targetId);
-      res.redirect(photoUrl);
-    } catch (e) {
-      next(e);
+      const photoPath = await mediaService.admin.getProfilePhoto(adminDoc);
+
+      const rootDir = process.cwd();
+      const correctedPath = photoPath.startsWith('/') ? photoPath.substring(1) : photoPath;
+      const absolutePath = path.join(rootDir, 'public', correctedPath);
+
+      res.sendFile(absolutePath, (err) => {
+        if (err) {
+          console.error('Error sending admin profile photo:', err);
+          next(new ResponseError(404, 'File gambar fisik tidak ditemukan di server.'));
+        }
+      });
+    } catch (error) {
+      next(error);
     }
   },
 };

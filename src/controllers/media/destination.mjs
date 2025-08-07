@@ -71,6 +71,28 @@ export const destination = {
     }
   },
 
+  getGallery: async (req, res, next) => {
+    try {
+      const { photoId } = req.params;
+
+      const photoData = await mediaService.destination.gallery.get(req.foundDestination, photoId);
+
+      const rootDir = process.cwd();
+      const correctedPath = photoData.url.startsWith('/')
+        ? photoData.url.substring(1)
+        : photoData.url;
+      const absolutePath = path.join(rootDir, 'public', correctedPath);
+
+      res.sendFile(absolutePath, (err) => {
+        if (err) {
+          next(new ResponseError(404, 'File gambar fisik tidak ditemukan di server.'));
+        }
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   patchGallery: async () => {},
 
   dropAllGallery: async (req, res, next) => {

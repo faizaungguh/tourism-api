@@ -6,6 +6,8 @@ import { destination } from '#controllers/destination.mjs';
 import { shield } from '#configs/security.mjs';
 import { handler } from '#middlewares/error.mjs';
 import { media } from '#controllers/media.mjs';
+import { handleMedia } from '#middlewares/media.mjs';
+import { mediaService } from '#services/media.mjs';
 
 export const publicRouter = new express.Router();
 
@@ -47,4 +49,12 @@ publicRouter
 // publicRouter.route('/destinations/recommendations')
 
 /** Media */
-publicRouter.route('/admins/:id/media').get(media.admin.getProfile);
+publicRouter
+  .route('/admins/:id/media')
+  .get(handleMedia.admin.get, media.admin.getProfile)
+  .all(handler.method(['GET']));
+
+publicRouter
+  .route('/destinations/:slug/gallery/:photoId')
+  .get(handleMedia.destination.gallery.get, media.destination.gallery.get)
+  .all(handler.method(['GET']));

@@ -15,8 +15,7 @@ export const media = {
 
     gallery: {
       add: destination.addGallery,
-      list: destination,
-      get: destination,
+      get: destination.getGallery,
       deleteAll: destination.dropAllGallery,
       update: destination.patchGallery,
       delete: destination,
@@ -25,7 +24,6 @@ export const media = {
 
   facility: {
     add: facility,
-    list: facility,
     get: facility,
     update: facility,
     deleteAll: facility,
@@ -35,7 +33,6 @@ export const media = {
   /** Wahana Media */
   attraction: {
     add: attraction,
-    list: attraction,
     get: attraction,
     update: attraction,
     deleteAll: attraction,

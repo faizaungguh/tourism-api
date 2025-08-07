@@ -54,6 +54,30 @@ async function _saveGalleryPhoto({ file, destinationDoc }) {
 }
 
 export const destination = {
+  checkExist: async (req, res, next) => {
+    try {
+      const { slug } = req.params;
+
+      const destinationDoc = await Destination.findOne({ slug })
+        .select('slug galleryPhoto locations')
+        .populate({
+          path: 'locations.subdistrict',
+          select: 'abbrevation',
+        });
+
+      if (!destinationDoc) {
+        throw new ResponseError(404, 'Destinasi tidak ditemukan', {
+          message: `Middleware tidak berhasil menemukan destinasi sebelum mencapai controller.`,
+        });
+      }
+
+      req.foundDestination = destinationDoc;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  },
+
   checkOwnership: async (req, res, next) => {
     try {
       const { slug } = req.params;
