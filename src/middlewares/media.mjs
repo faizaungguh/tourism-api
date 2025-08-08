@@ -167,20 +167,14 @@ export const handleMedia = {
         createMedia(destination.gallery.add.uploader, destination.gallery.add.limits),
         destinationHelper.gallery.save,
       ],
-
-      get: [destinationHelper.check.isExist],
-
       list: [destinationHelper.check.isExist],
-
       update: [
         destinationHelper.check.isAdminOwned,
         destinationHelper.check.isGalleryExist,
         createMedia(destination.gallery.replace.uploader, destination.gallery.replace.limits),
         destinationHelper.gallery.replace,
       ],
-
       deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.gallery.deleteAll],
-
       deleteOne: [destinationHelper.check.isAdminOwned, destinationHelper.check.isGalleryExist],
     },
 
@@ -198,7 +192,8 @@ export const handleMedia = {
         createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
         facilityHelper.photo.replace,
       ],
-      delete: [],
+      deleteAll: [destinationHelper.check.isAdminOwned],
+      deleteOne: [destinationHelper.check.isAdminOwned],
     },
 
     attraction: {
@@ -206,12 +201,13 @@ export const handleMedia = {
         destinationHelper.check.isAdminOwned,
         createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
       ],
-      get: [destinationHelper.check.isExist],
+      list: [destinationHelper.check.isExist],
       update: [
         destinationHelper.check.isAdminOwned,
         createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
       ],
-      delete: [destinationHelper.check.isAdminOwned],
+      deleteAll: [destinationHelper.check.isAdminOwned],
+      deleteOne: [destinationHelper.check.isAdminOwned],
     },
   },
 };

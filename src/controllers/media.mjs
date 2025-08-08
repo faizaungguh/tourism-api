@@ -32,7 +32,7 @@ export const media = {
     /** Wahana Media */
     attraction: {
       add: attraction.add,
-      get: attraction.get,
+      list: attraction.list,
       update: attraction.update,
       deleteAll: attraction.dropAll,
       delete: attraction.dropOne,

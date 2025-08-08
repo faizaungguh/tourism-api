@@ -54,13 +54,12 @@ export const facility = {
         }
 
         const { foundDestination, foundFacility } = req;
-
         const currentPhotoCount = foundFacility.photo.length;
         const newPhotoCount = req.files.length;
-        const max_photo = 6;
+        const MAX_PHOTOS = 6;
 
-        if (currentPhotoCount + newPhotoCount > max_photo) {
-          const remainingSlots = max_photo - currentPhotoCount;
+        if (currentPhotoCount + newPhotoCount > MAX_PHOTOS) {
+          const remainingSlots = MAX_PHOTOS - currentPhotoCount;
           throw new ResponseError(
             413,
             `Kapasitas galeri fasilitas tidak mencukupi. Anda hanya dapat mengunggah ${
@@ -88,11 +87,6 @@ export const facility = {
 
     replace: async (req, res, next) => {
       try {
-        if (!req.file) {
-          throw new ResponseError(422, 'File tidak ada', {
-            photo: 'Anda harus menyertakan satu file gambar untuk pembaruan',
-          });
-        }
       } catch (error) {}
     },
   },

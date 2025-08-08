@@ -83,7 +83,6 @@ export const destination = {
         }
 
         res.status(200).json({
-          status: 'success',
           message,
           data: formattedPhotos,
         });

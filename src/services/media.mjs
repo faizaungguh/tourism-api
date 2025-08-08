@@ -22,7 +22,7 @@ export const mediaService = {
 
     facility: {
       add: facility.add,
-      get: facility.get,
+      list: facility.list,
       update: facility.update,
       deleteAll: facility.dropAll,
       delete: facility.dropOne,
@@ -31,7 +31,7 @@ export const mediaService = {
     /** Wahana Media */
     attraction: {
       add: attraction.add,
-      get: attraction.get,
+      list: attraction.list,
       update: attraction.update,
       deleteAll: attraction.dropAll,
       delete: attraction.dropOne,

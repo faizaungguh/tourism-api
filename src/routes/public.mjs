@@ -47,10 +47,15 @@ publicRouter
 /** Media */
 publicRouter
   .route('/admins/:id/media')
-  .get(handleMedia.admin.get, media.admin.getProfile)
+  .get(...handleMedia.admin.get, media.admin.getProfile)
   .all(handler.method(['GET']));
 
 publicRouter
   .route('/destinations/:destinations/gallery')
-  .get(handleMedia.destination.gallery.list, media.destination.gallery.list)
+  .get(...handleMedia.destination.gallery.list, media.destination.gallery.list)
+  .all(handler.method(['GET']));
+
+publicRouter
+  .route('/destinations/:destinations/facility/:facility/media')
+  .get(...handleMedia.destination.facility.list, media.destination.facility.list)
   .all(handler.method(['GET']));

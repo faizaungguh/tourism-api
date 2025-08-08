@@ -72,13 +72,12 @@ export const destination = {
     isExist: async (req, res, next) => {
       try {
         const { destinations } = req.params;
-        const destinationDoc = await Destination.findOne({ slug: destinations }).select(
-          'slug galleryPhoto locations'
-        );
+        const destinationDoc = await Destination.findOne({ slug: destinations });
 
         if (!destinationDoc) {
           throw new ResponseError(404, 'Destinasi tidak ditemukan');
         }
+
         req.foundDestination = destinationDoc;
         next();
       } catch (error) {
