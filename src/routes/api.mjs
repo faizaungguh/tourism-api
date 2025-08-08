@@ -138,15 +138,13 @@ privateRouter
   .all(authMiddleware.authorize('manager'))
   .put(...handleMedia.destination.facility.update, media.destination.facility.update)
   .delete(handleMedia.destination.facility.deleteOne, media.destination.facility.delete)
-  .all(handler.method(['PUT', 'GET', 'DELETE']));
+  .all(handler.method(['PUT', 'DELETE']));
 
 /** Wahana - photo */
 privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media')
   .all(authMiddleware.authorize('manager'))
-  // .post(media.attraction.add)
-  // .get(media.attraction.list)
-  // .delete(media.attraction.deleteAll)
+  .post(...handleMedia.destination.attraction.add, media.destination.attraction.add)
   .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter

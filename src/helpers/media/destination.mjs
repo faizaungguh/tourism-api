@@ -72,7 +72,9 @@ export const destination = {
     isExist: async (req, res, next) => {
       try {
         const { destinations } = req.params;
-        const destinationDoc = await Destination.findOne({ slug: destinations });
+        const destinationDoc = await Destination.findOne({ slug: destinations }).populate(
+          'attractions'
+        );
 
         if (!destinationDoc) {
           throw new ResponseError(404, 'Destinasi tidak ditemukan');
@@ -91,6 +93,7 @@ export const destination = {
         const { adminId } = req.admin;
 
         const destinationDoc = await Destination.findOne({ slug: destinations })
+          .populate('attractions')
           .populate({ path: 'createdBy', select: 'adminId' })
           .populate({ path: 'locations.subdistrict', select: 'abbrevation' });
 
@@ -174,6 +177,27 @@ export const destination = {
         }
 
         req.photoToDelete = photo;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    isAttractionExist: async (req, res, next) => {
+      try {
+        const { attractions: attractionSlug } = req.params;
+        const { foundDestination } = req;
+
+        const attractionDoc = foundDestination.attractions.find((a) => a.slug === attractionSlug);
+
+        if (!attractionDoc) {
+          throw new ResponseError(
+            404,
+            `Wahana dengan slug "${attractionSlug}" tidak ditemukan pada destinasi ini.`
+          );
+        }
+
+        req.foundAttraction = attractionDoc;
         next();
       } catch (error) {
         next(error);

@@ -3,6 +3,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { admin as adminHelper } from '#helpers/media/admin.mjs';
 import { destination as destinationHelper } from '#helpers/media/destination.mjs';
 import { facility as facilityHelper } from '#helpers/media/facility.mjs';
+import { attraction as attractionHelper } from '#helpers/media/attraction.mjs';
 
 const baseMulter = {
   storage: multer.memoryStorage(),
@@ -204,7 +205,9 @@ export const handleMedia = {
     attraction: {
       add: [
         destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isAttractionExist,
         createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
+        attractionHelper.photo.save,
       ],
       list: [destinationHelper.check.isExist],
       update: [

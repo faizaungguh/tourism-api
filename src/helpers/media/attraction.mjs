@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import sharp from 'sharp';
 import { nanoid } from 'nanoid';
-import { Attraction } from '#schemas/attraction.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 async function _deleteFile(webPath) {
   if (!webPath) return;
@@ -18,16 +18,16 @@ async function _deleteFile(webPath) {
   }
 }
 
-async function _saveAttractionPhoto({ file, destinationDoc }) {
+async function _saveAttractionPhoto({ file, destinationDoc, attractionDoc }) {
   const rootDir = process.cwd();
   const destinationSlug = destinationDoc.slug;
-  const attractionSlug = destinationDoc.attraction;
   const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
+  const attractionSlug = attractionDoc.slug;
 
-  const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/attraction`;
+  const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/attractions/${attractionSlug}`;
   const fileSystemDir = path.join(rootDir, 'public', 'images', dynamicDir);
-
   await fs.mkdir(fileSystemDir, { recursive: true });
+
   const timestamp = Date.now();
   const photoId = nanoid(10);
 
@@ -35,34 +35,52 @@ async function _saveAttractionPhoto({ file, destinationDoc }) {
   const fileSystemPath = path.join(fileSystemDir, filename);
 
   await sharp(file.buffer).webp({ quality: 80 }).toFile(fileSystemPath);
-
   const webPath = path.join('/images', dynamicDir, filename).replace(/\\/g, '/');
 
-  return {
-    url: webPath,
-    photoId,
-  };
+  return { url: webPath, photoId };
 }
 
 export const attraction = {
-  checkExist: async (req, res, next) => {
-    try {
-    } catch (error) {}
-  },
+  photo: {
+    save: async (req, res, next) => {
+      try {
+        if (!req.files || req.files.length === 0) {
+          throw new ResponseError(400, 'Anda harus menyertakan setidaknya satu file gambar.');
+        }
 
-  saveAttractionPhotos: async (req, res, next) => {
-    try {
-    } catch (error) {}
-  },
+        const { foundDestination, foundAttraction } = req;
 
-  checkOwnershipAndPhotoExist: async (req, res, next) => {
-    try {
-    } catch (error) {}
-  },
+        const currentPhotoCount = foundAttraction.photos ? foundAttraction.photos.length : 0;
+        const newPhotoCount = req.files.length;
+        const MAX_PHOTOS = 10;
 
-  replaceAttractionPhoto: async (req, res, next) => {
-    try {
-    } catch (error) {}
+        if (currentPhotoCount + newPhotoCount > MAX_PHOTOS) {
+          throw new ResponseError(413, 'Penyimpanan melebihi batas', {
+            photo: `Kapasitas galeri wahana melebihi batas ${MAX_PHOTOS} foto.`,
+          });
+        }
+
+        const processedPhotos = [];
+        for (const file of req.files) {
+          const photoData = await _saveAttractionPhoto({
+            file,
+            destinationDoc: foundDestination,
+            attractionDoc: foundAttraction,
+          });
+          processedPhotos.push(photoData);
+        }
+
+        req.processedPhotos = processedPhotos;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    replace: async (req, res, next) => {
+      try {
+      } catch (error) {}
+    },
   },
 
   cleanupFile: _deleteFile,
