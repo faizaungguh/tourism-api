@@ -102,14 +102,14 @@ privateRouter
 privateRouter
   .route('/admins/:id/media')
   .all(authMiddleware.authorize('admin', 'manager'))
-  .post(handleMedia.admin.updateMedia, media.admin.addProfile)
+  .post(...handleMedia.admin.updateMedia, media.admin.addProfile)
   .all(handler.method(['POST']));
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
   .route('/destinations/:destinations/media')
   .all(authMiddleware.authorize('manager'))
-  .post(handleMedia.destination.updateMedia, media.destination.updateMedia)
+  .post(...handleMedia.destination.updateMedia, media.destination.updateMedia)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
@@ -129,8 +129,7 @@ privateRouter
 privateRouter
   .route('/destinations/:destinations/facility/:facility/media')
   .all(authMiddleware.authorize('manager'))
-  .post(handleMedia.destination.facility.add, media.destination.facility.add)
-  // .delete(media.facility.deleteAll)
+  .post(...handleMedia.destination.facility.add, media.facility.add)
   .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter

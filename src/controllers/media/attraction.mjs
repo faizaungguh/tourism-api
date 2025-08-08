@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 export const attraction = {
   add: async (req, res, next) => {},
 
-  get: async (req, res, next) => {},
+  list: async (req, res, next) => {},
 
   update: async (req, res, next) => {},
 

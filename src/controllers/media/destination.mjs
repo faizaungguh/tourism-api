@@ -46,9 +46,14 @@ export const destination = {
           processedPhotos
         );
 
+        const formattedResult = result.map((photo) => ({
+          ...photo,
+          url: `${API_URL}${photo.url}`,
+        }));
+
         res.status(201).json({
           message: `${result.length} foto berhasil ditambahkan ke galeri.`,
-          data: result,
+          data: formattedResult,
         });
       } catch (error) {
         if (req.processedPhotos && req.processedPhotos.length > 0) {

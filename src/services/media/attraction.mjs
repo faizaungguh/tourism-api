@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 export const attractionService = {
   add: async () => {},
 
-  get: async () => {},
+  list: async () => {},
 
   update: async () => {},
 
