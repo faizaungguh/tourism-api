@@ -24,7 +24,7 @@ async function _saveAttractionPhoto({ file, destinationDoc, attractionDoc }) {
   const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
   const attractionSlug = attractionDoc.slug;
 
-  const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/attractions/${attractionSlug}`;
+  const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/attraction/${attractionSlug}`;
   const fileSystemDir = path.join(rootDir, 'public', 'images', dynamicDir);
   await fs.mkdir(fileSystemDir, { recursive: true });
 

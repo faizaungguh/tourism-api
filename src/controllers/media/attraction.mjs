@@ -35,7 +35,19 @@ export const attraction = {
 
   update: async (req, res, next) => {},
 
-  dropAll: async (req, res, next) => {},
+  dropAll: async (req, res, next) => {
+    try {
+      const { foundDestination, foundAttraction } = req;
+
+      await mediaService.destination.attraction.deleteAll(foundDestination, foundAttraction);
+
+      res.status(200).json({
+        message: `Semua foto untuk wahana "${foundAttraction.name}" telah berhasil dihapus.`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 
   dropOne: async (req, res, next) => {},
 };

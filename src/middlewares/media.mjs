@@ -214,7 +214,7 @@ export const handleMedia = {
         destinationHelper.check.isAdminOwned,
         createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
       ],
-      deleteAll: [destinationHelper.check.isAdminOwned],
+      deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isAttractionExist],
       deleteOne: [destinationHelper.check.isAdminOwned],
     },
   },
