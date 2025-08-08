@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
+import { mediaService } from '#services/media.mjs';
 
 async function deleteOldFile(webPath) {
   if (!webPath) return;
@@ -42,83 +43,96 @@ export const destinationService = {
     return updatedDestination;
   },
 
-  addGallery: async (destinationDoc, photosData) => {
-    destinationDoc.galleryPhoto.push(...photosData);
-    return destinationDoc.save();
-  },
+  gallery: {
+    add: async (destinationDoc, newPhotos) => {
+      if (!destinationDoc || !newPhotos) {
+        throw new ResponseError(422, 'File tidak terkirim', {
+          message: 'Data destinasi atau foto tidak valid saat dikirim ke service.',
+        });
+      }
 
-  getGalleryPhotoById: async (destinationDoc, photoId) => {
-    if (!destinationDoc) {
-      throw new ResponseError(404, 'Destinasi tidak ditemukan.');
-    }
+      destinationDoc.galleryPhoto.push(...newPhotos);
 
-    if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
-      throw new ResponseError(404, 'Galeri untuk destinasi ini kosong atau tidak ditemukan.');
-    }
+      await destinationDoc.save();
 
-    const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
+      return newPhotos;
+    },
 
-    if (!photo) {
-      throw new ResponseError(404, 'Foto dengan ID tersebut tidak ditemukan di galeri ini.');
-    }
-    return photo.toObject();
-  },
+    get: async (destinationDoc, photoId) => {
+      if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
+        throw new ResponseError(404, 'Data tidak ditemukan', {
+          galleryPhoto: 'Galeri untuk destinasi ini kosong atau tidak ditemukan.',
+        });
+      }
 
-  patchGallery: async (destinationDoc, oldPhotoId, newPhotoData) => {
-    const photoIndex = destinationDoc.galleryPhoto.findIndex((p) => p.photoId === oldPhotoId);
+      const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
 
-    if (photoIndex === -1) {
-      throw new ResponseError(404, 'Foto lama tidak ditemukan di database untuk diperbarui.');
-    }
+      if (!photo) {
+        throw new ResponseError(404, 'Foto dengan ID tersebut tidak ditemukan di galeri ini.');
+      }
+      return photo.toObject();
+    },
 
-    destinationDoc.galleryPhoto.set(photoIndex, newPhotoData);
+    update: async (destinationDoc, oldPhotoId, newPhotoData) => {
+      const photoIndex = destinationDoc.galleryPhoto.findIndex((p) => p.photoId === oldPhotoId);
 
-    return destinationDoc.save();
-  },
+      if (photoIndex === -1) {
+        throw new ResponseError(404, 'File tidak ditemukan', {
+          message: 'Foto lama tidak ditemukan di database untuk diperbarui.',
+        });
+      }
 
-  dropAllGallery: async (destinationDoc) => {
-    if (!destinationDoc) {
-      throw new ResponseError(422, 'Dokumen tidak ada', {
-        message: 'Sertakan dokumen terbaru yang anda perlukan.',
-      });
-    }
+      destinationDoc.galleryPhoto.set(photoIndex, newPhotoData);
 
-    if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
-      return;
-    }
+      return destinationDoc.save();
+    },
 
-    const destinationSlug = destinationDoc.slug;
-    const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
-    const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/gallery`;
-    const galleryPath = path.join(process.cwd(), 'public', 'images', dynamicDir);
+    dropAll: async (destinationDoc) => {
+      if (!destinationDoc) {
+        throw new ResponseError(422, 'Dokumen tidak ada', {
+          message: 'Sertakan dokumen terbaru yang anda perlukan.',
+        });
+      }
 
-    try {
-      await fs.rm(galleryPath, { recursive: true, force: true });
-    } catch (err) {
-      console.error(
-        `Gagal menghapus direktori galeri, namun proses akan tetap dilanjutkan: ${galleryPath}`,
-        err
-      );
-    }
+      if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
+        return;
+      }
 
-    destinationDoc.galleryPhoto = [];
+      const destinationSlug = destinationDoc.slug;
+      const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
+      const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/gallery`;
+      const galleryPath = path.join(process.cwd(), 'public', 'images', dynamicDir);
 
-    await destinationDoc.save();
-  },
+      try {
+        await fs.rm(galleryPath, { recursive: true, force: true });
+      } catch (err) {
+        console.error(
+          `Gagal menghapus direktori galeri, namun proses akan tetap dilanjutkan: ${galleryPath}`,
+          err
+        );
+      }
 
-  dropOneGallery: async (destinationDoc, photoId) => {
-    const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
+      destinationDoc.galleryPhoto = [];
 
-    if (!photo) {
-      throw new ResponseError(404, 'Foto dengan ID tersebut tidak ditemukan di galeri ini.');
-    }
+      await destinationDoc.save();
+    },
 
-    const photoUrl = photo.url;
+    dropOne: async (destinationDoc, photoId) => {
+      const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
 
-    destinationDoc.galleryPhoto.pull(photo._id);
+      if (!photo) {
+        throw new ResponseError(404, 'Data tidak ditemukan', {
+          message: 'Foto dengan ID tersebut tidak ditemukan di galeri ini.',
+        });
+      }
 
-    await destinationDoc.save();
+      const photoUrl = photo.url;
 
-    await deleteOldFile(photoUrl);
+      destinationDoc.galleryPhoto.pull(photo._id);
+
+      await destinationDoc.save();
+
+      await deleteOldFile(photoUrl);
+    },
   },
 };

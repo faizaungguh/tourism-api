@@ -15,7 +15,7 @@ async function _deleteFile(webPath) {
     await fs.unlink(absolutePath);
   } catch (err) {
     if (err.code !== 'ENOENT') {
-      console.error(`Failed to delete file at ${webPath}:`, err);
+      console.error(`Gagal menghapus file di ${webPath}:`, err);
     }
   }
 }
@@ -139,15 +139,18 @@ export const destination = {
     isFacilityExist: async (req, res, next) => {
       try {
         const { facility: facilitySlug } = req.params;
-        const { destinationDoc } = req.foundDestination;
-        console.log(facilitySlug);
-        console.log(destinationDoc);
-        const facility = destinationDoc.facility.find((f) => f.slug === facilitySlug);
-        if (!facility) {
-          throw new ResponseError(404, 'Fasilitas tidak ditemukan pada destinasi ini');
+        const { foundDestination } = req;
+
+        const facilityDoc = foundDestination.facility.find((f) => f.slug === facilitySlug);
+
+        if (!facilityDoc) {
+          throw new ResponseError(
+            404,
+            `Fasilitas dengan slug "${facilitySlug}" tidak ditemukan pada destinasi ini.`
+          );
         }
 
-        req.facilityDoc = facility;
+        req.foundFacility = facilityDoc;
         next();
       } catch (error) {
         next(error);
@@ -195,40 +198,40 @@ export const destination = {
     save: async (req, res, next) => {
       try {
         if (!req.files || req.files.length === 0) {
-          throw new ResponseError(422, 'Tidak ada file', {
-            photo: 'Anda harus menyertakan setidaknya satu file gambar untuk galeri.',
-          });
+          throw new ResponseError(400, 'Anda harus menyertakan setidaknya satu file gambar.');
         }
 
-        const destinationDoc = req.foundDestination;
-        const currentPhotoCount = destinationDoc.galleryPhoto.length;
+        const { foundDestination } = req;
+
+        const currentPhotoCount = foundDestination.galleryPhoto.length;
         const newPhotoCount = req.files.length;
+        const MAX_PHOTOS = 8;
 
-        if (currentPhotoCount + newPhotoCount > 8) {
-          const remainingSlots = 8 - currentPhotoCount;
-          throw new ResponseError(413, 'Kapasitas galeri tidak mencukupi', {
-            message: `Galeri sudah berisi ${currentPhotoCount} foto. Anda hanya dapat mengunggah ${
+        if (currentPhotoCount + newPhotoCount > MAX_PHOTOS) {
+          const remainingSlots = MAX_PHOTOS - currentPhotoCount;
+          throw new ResponseError(
+            413,
+            `Kapasitas galeri tidak mencukupi. Anda hanya dapat mengunggah ${
               remainingSlots > 0 ? remainingSlots : 0
-            } foto lagi.`,
-          });
+            } foto lagi.`
+          );
         }
 
-        const processedGallery = [];
+        const processedPhotos = [];
         for (const file of req.files) {
           const photoData = await _saveGalleryPhoto({
             file,
-            destinationDoc,
+            destinationDoc: foundDestination,
           });
-          processedGallery.push(photoData);
+          processedPhotos.push(photoData);
         }
 
-        req.processedGallery = processedGallery;
+        req.processedPhotos = processedPhotos;
         next();
       } catch (error) {
         next(error);
       }
     },
-
     replace: async (req, res, next) => {
       try {
         if (!req.file) {

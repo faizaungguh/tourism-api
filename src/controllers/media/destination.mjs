@@ -37,119 +37,110 @@ export const destination = {
     }
   },
 
-  addGallery: async (req, res, next) => {
-    try {
-      const destinationDoc = req.foundDestination;
-      const newPhotos = req.processedGallery;
+  gallery: {
+    add: async (req, res, next) => {
+      try {
+        const { foundDestination, processedPhotos } = req;
+        const result = await mediaService.destination.gallery.add(
+          foundDestination,
+          processedPhotos
+        );
 
-      const currentPhotoCount = destinationDoc.galleryPhoto.length;
-      const newPhotoCount = newPhotos.length;
-
-      if (currentPhotoCount + newPhotoCount > 8) {
-        const remainingSlots = 8 - currentPhotoCount;
-        throw new ResponseError(413, 'Kapasitas galeri tidak mencukupi', {
-          message: `Galeri sudah berisi ${currentPhotoCount} foto. Anda hanya dapat mengunggah ${
-            remainingSlots > 0 ? remainingSlots : 0
-          } foto lagi.`,
+        res.status(201).json({
+          message: `${result.length} foto berhasil ditambahkan ke galeri.`,
+          data: result,
         });
-      }
-
-      await mediaService.destination.gallery.add(destinationDoc, newPhotos);
-
-      res.status(201).json({
-        message: `${newPhotos.length} foto berhasil ditambahkan ke galeri.`,
-        data: newPhotos,
-      });
-    } catch (error) {
-      if (req.processedGallery) {
-        for (const photo of req.processedGallery) {
-          const rootDir = process.cwd();
-          const correctedPath = photo.url.startsWith('/') ? photo.url.substring(1) : photo.url;
-          fs.unlink(path.join(rootDir, 'public', correctedPath)).catch((err) =>
-            console.error('Gagal membersihkan file galeri:', err)
-          );
+      } catch (error) {
+        if (req.processedPhotos && req.processedPhotos.length > 0) {
+          for (const photo of req.processedPhotos) {
+            await destinationHelper.cleanupFile(photo.url);
+          }
         }
+        next(error);
       }
-      next(error);
-    }
-  },
+    },
 
-  getGallery: async (req, res, next) => {
-    try {
-      const { photoId } = req.params;
+    get: async (req, res, next) => {
+      try {
+        const { photoId } = req.params;
 
-      const photoData = await mediaService.destination.gallery.get(req.foundDestination, photoId);
+        const photoData = await mediaService.destination.gallery.get(req.foundDestination, photoId);
 
-      const rootDir = process.cwd();
-      const correctedPath = photoData.url.startsWith('/')
-        ? photoData.url.substring(1)
-        : photoData.url;
-      const absolutePath = path.join(rootDir, 'public', correctedPath);
+        const rootDir = process.cwd();
+        const correctedPath = photoData.url.startsWith('/')
+          ? photoData.url.substring(1)
+          : photoData.url;
+        const absolutePath = path.join(rootDir, 'public', correctedPath);
 
-      res.sendFile(absolutePath, (err) => {
-        if (err) {
-          next(new ResponseError(404, 'File gambar fisik tidak ditemukan di server.'));
-        }
-      });
-    } catch (error) {
-      next(error);
-    }
-  },
-
-  patchGallery: async (req, res, next) => {
-    const { oldPhotoId, newPhotoData } = req.processedPhotoUpdate || {};
-
-    try {
-      if (!oldPhotoId || !newPhotoData) {
-        throw new ResponseError(422, 'File tidak ada', {
-          photoGallery: 'Data foto yang diproses tidak ditemukan.',
+        res.sendFile(absolutePath, (err) => {
+          if (err) {
+            next(new ResponseError(404, 'File gambar fisik tidak ditemukan di server.'));
+          }
         });
+      } catch (error) {
+        next(error);
       }
+    },
 
-      await mediaService.destination.gallery.update(req.foundDestination, oldPhotoId, newPhotoData);
+    update: async (req, res, next) => {
+      const { oldPhotoId, newPhotoData } = req.processedPhotoUpdate || {};
 
-      const responseData = {
-        ...newPhotoData,
-        url: `${API_URL}${newPhotoData.url}`,
-      };
+      try {
+        if (!oldPhotoId || !newPhotoData) {
+          throw new ResponseError(422, 'File tidak ada', {
+            photoGallery: 'Data foto yang diproses tidak ditemukan.',
+          });
+        }
 
-      res.status(200).json({
-        message: 'Foto galeri berhasil diperbarui.',
-        data: responseData,
-      });
-    } catch (error) {
-      if (newPhotoData && newPhotoData.url) {
-        await destinationHelper.cleanupFile(newPhotoData.url);
+        await mediaService.destination.gallery.update(
+          req.foundDestination,
+          oldPhotoId,
+          newPhotoData
+        );
+
+        const responseData = {
+          ...newPhotoData,
+          url: `${API_URL}${newPhotoData.url}`,
+        };
+
+        res.status(200).json({
+          message: 'Foto galeri berhasil diperbarui.',
+          data: responseData,
+        });
+      } catch (error) {
+        if (newPhotoData && newPhotoData.url) {
+          await destinationHelper.cleanupFile(newPhotoData.url);
+        }
+        next(error);
       }
-      next(error);
-    }
-  },
+    },
 
-  dropAllGallery: async (req, res, next) => {
-    try {
-      const destinationDoc = req.foundDestination;
+    dropAll: async (req, res, next) => {
+      try {
+        const destinationDoc = req.foundDestination;
 
-      await mediaService.destination.gallery.deleteAll(destinationDoc);
-      res.status(200).json({
-        message: `Semua foto di galeri untuk destinasi "${destinationDoc.destinationTitle}" telah berhasil dihapus.`,
-      });
-    } catch (error) {
-      next(error);
-    }
-  },
+        await mediaService.destination.gallery.deleteAll(destinationDoc);
+        res.status(200).json({
+          message: `Semua foto di galeri untuk destinasi "${destinationDoc.destinationTitle}" telah berhasil dihapus.`,
+        });
+      } catch (error) {
+        next(error);
+      }
+    },
 
-  dropOneGallery: async (req, res, next) => {
-    try {
-      const { id: photoId } = req.params;
-      const destinationDoc = req.foundDestination;
+    dropOne: async (req, res, next) => {
+      try {
+        const { id: photoId } = req.params;
+        const destinationDoc = req.foundDestination;
 
-      await mediaService.destination.gallery.delete(destinationDoc, photoId);
+        await mediaService.destination.gallery.delete(destinationDoc, photoId);
 
-      res.status(200).json({
-        message: 'Foto dari galeri berhasil dihapus.',
-      });
-    } catch (error) {
-      next(error);
-    }
+        res.status(200).json({
+          message: `1 Foto dari galeri ${destinationDoc.destinationTitle} berhasil dihapus.`,
+        });
+      } catch (error) {
+        next(error);
+      }
+    },
   },
 };

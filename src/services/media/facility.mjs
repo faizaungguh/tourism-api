@@ -3,18 +3,12 @@ import { Destination } from '#schemas/destination.mjs';
 
 export const facilityService = {
   add: async (req) => {
-    const { destinationDoc, facilityDoc, processedFacilityPhotos } = req;
-
-    if (!processedFacilityPhotos || processedFacilityPhotos.length === 0) {
-      throw new ResponseError(422, 'File tidak ada', {
-        photo: 'Tidak ada foto untuk ditambahkan.',
-      });
-    }
+    const { foundDestination, foundFacility, processedFacilityPhotos } = req;
 
     const result = await Destination.updateOne(
       {
-        _id: destinationDoc._id,
-        'facility.slug': facilityDoc.slug,
+        _id: foundDestination._id,
+        'facility.slug': foundFacility.slug,
       },
       {
         $push: {
@@ -24,10 +18,7 @@ export const facilityService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(
-        500,
-        'Gagal memperbarui database. Dokumen tidak ditemukan saat proses update.'
-      );
+      throw new ResponseError(500, 'Gagal menyimpan foto fasilitas ke database.');
     }
 
     return processedFacilityPhotos;

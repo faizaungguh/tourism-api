@@ -5,8 +5,7 @@ export const facility = {
     try {
       const result = await mediaService.facility.add(req);
       res.status(201).json({
-        status: 'success',
-        message: 'Foto fasilitas berhasil ditambahkan',
+        message: `${result.length} foto berhasil ditambahkan.`,
         data: result,
       });
     } catch (error) {

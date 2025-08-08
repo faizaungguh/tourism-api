@@ -50,32 +50,31 @@ export const facility = {
     save: async (req, res, next) => {
       try {
         if (!req.files || req.files.length === 0) {
-          throw new ResponseError(422, 'Tidak ada file', {
-            photo: 'Anda harus menyertakan setidaknya satu file gambar untuk galeri.',
-          });
+          throw new ResponseError(400, 'Anda harus menyertakan setidaknya satu file gambar.');
         }
 
-        const { destinationDoc, facilityDoc } = req;
-        const currentPhotoCount = facilityDoc.photo.length;
-        const newPhotoCount = req.files.length;
-        const MAX_PHOTOS = 6;
+        const { foundDestination, foundFacility } = req;
 
-        if (currentPhotoCount + newPhotoCount > MAX_PHOTOS) {
-          const remainingSlots = MAX_PHOTOS - currentPhotoCount;
-          throw new ResponseError(413, 'Kapasitas galeri fasilitas tidak mencukupi', {
-            message: `Galeri sudah berisi ${currentPhotoCount} foto. Anda hanya dapat mengunggah ${
+        const currentPhotoCount = foundFacility.photo.length;
+        const newPhotoCount = req.files.length;
+        const max_photo = 6;
+
+        if (currentPhotoCount + newPhotoCount > max_photo) {
+          const remainingSlots = max_photo - currentPhotoCount;
+          throw new ResponseError(
+            413,
+            `Kapasitas galeri fasilitas tidak mencukupi. Anda hanya dapat mengunggah ${
               remainingSlots > 0 ? remainingSlots : 0
-            } foto lagi.`,
-          });
+            } foto lagi.`
+          );
         }
 
         const processedPhotos = [];
-
         for (const file of req.files) {
           const photoData = await _saveFacilityPhoto({
             file,
-            destinationDoc,
-            facilityDoc,
+            destinationDoc: foundDestination,
+            facilityDoc: foundFacility,
           });
           processedPhotos.push(photoData);
         }
