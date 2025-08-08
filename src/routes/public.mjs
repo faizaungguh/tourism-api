@@ -51,6 +51,6 @@ publicRouter
   .all(handler.method(['GET']));
 
 publicRouter
-  .route('/destinations/:slug/gallery/:photoId')
+  .route('/destinations/:destinations/gallery/:photoId')
   .get(handleMedia.destination.gallery.get, media.destination.gallery.get)
   .all(handler.method(['GET']));

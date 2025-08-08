@@ -4,6 +4,7 @@ import sharp from 'sharp';
 import { nanoid } from 'nanoid';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
+import { mediaService } from '#services/media.mjs';
 
 async function _deleteFile(webPath) {
   if (!webPath) return;
@@ -67,28 +68,91 @@ async function _saveGalleryPhoto({ file, destinationDoc }) {
 }
 
 export const destination = {
-  checkIsExist: async (req, res, next) => {
-    try {
-      const { slug } = req.params;
+  check: {
+    isExist: async (req, res, next) => {
+      try {
+        const { destinations } = req.params;
+        const destinationDoc = await Destination.findOne({ slug: destinations }).select(
+          'slug galleryPhoto locations'
+        );
 
-      const destinationDoc = await Destination.findOne({ slug })
-        .select('slug galleryPhoto locations')
-        .populate({
-          path: 'locations.subdistrict',
-          select: 'abbrevation',
-        });
-
-      if (!destinationDoc) {
-        throw new ResponseError(404, 'Destinasi tidak ditemukan', {
-          message: `Middleware tidak berhasil menemukan destinasi sebelum mencapai controller.`,
-        });
+        if (!destinationDoc) {
+          throw new ResponseError(404, 'Destinasi tidak ditemukan');
+        }
+        req.foundDestination = destinationDoc;
+        next();
+      } catch (error) {
+        next(error);
       }
+    },
 
-      req.foundDestination = destinationDoc;
-      next();
-    } catch (error) {
-      next(error);
-    }
+    isAdminOwned: async (req, res, next) => {
+      try {
+        const { destinations } = req.params;
+        const { adminId } = req.admin;
+
+        const destinationDoc = await Destination.findOne({ slug: destinations })
+          .populate({ path: 'createdBy', select: 'adminId' })
+          .populate({ path: 'locations.subdistrict', select: 'abbrevation' });
+
+        if (!destinationDoc) {
+          throw new ResponseError(404, 'Destinasi tidak ditemukan');
+        }
+
+        if (!destinationDoc.createdBy) {
+          throw new ResponseError(
+            500,
+            `Data admin untuk destinasi '${destinations}' rusak atau tidak ditemukan.`
+          );
+        }
+        if (destinationDoc.createdBy.adminId !== adminId) {
+          throw new ResponseError(403, 'Akses ditolak. Anda bukan pemilik destinasi ini.');
+        }
+
+        req.foundDestination = destinationDoc;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    isGalleryExist: async (req, res, next) => {
+      try {
+        const { id: photoId } = req.params;
+        const { foundDestination } = req;
+
+        const photoToUpdate = foundDestination.galleryPhoto.find((p) => p.photoId === photoId);
+        if (!photoToUpdate) {
+          throw new ResponseError(
+            404,
+            `Foto dengan ID "${photoId}" tidak ditemukan di galeri ini.`
+          );
+        }
+
+        req.photoToUpdate = photoToUpdate;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    isFacilityExist: async (req, res, next) => {
+      try {
+        const { facility: facilitySlug } = req.params;
+        const { destinationDoc } = req.foundDestination;
+        console.log(facilitySlug);
+        console.log(destinationDoc);
+        const facility = destinationDoc.facility.find((f) => f.slug === facilitySlug);
+        if (!facility) {
+          throw new ResponseError(404, 'Fasilitas tidak ditemukan pada destinasi ini');
+        }
+
+        req.facilityDoc = facility;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
   },
 
   photos: {
@@ -165,30 +229,6 @@ export const destination = {
       }
     },
 
-    checkIsExist: async (req, res, next) => {
-      try {
-        const { destinations: slug, id: photoId } = req.params;
-
-        const destinationDoc = await Destination.findOne({ slug })
-          .populate({ path: 'createdBy', select: 'adminId' })
-          .populate({ path: 'locations.subdistrict', select: 'abbrevation' });
-
-        const photoToUpdate = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
-        if (!photoToUpdate) {
-          throw new ResponseError(
-            404,
-            `Foto dengan ID "${photoId}" tidak ditemukan di galeri ini.`
-          );
-        }
-
-        req.foundDestination = destinationDoc;
-        req.photoToUpdate = photoToUpdate;
-        next();
-      } catch (error) {
-        next(error);
-      }
-    },
-
     replace: async (req, res, next) => {
       try {
         if (!req.file) {
@@ -213,6 +253,25 @@ export const destination = {
           newPhotoData: newPhotoData,
         };
 
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    deleteAll: async (req, res, next) => {
+      try {
+        await mediaService.destination.gallery.deleteAll(req.foundDestination);
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
+
+    deleteOne: async (req, res, next) => {
+      try {
+        const { id: photoId } = req.params;
+        await mediaService.destination.gallery.delete(req.foundDestination, photoId);
         next();
       } catch (error) {
         next(error);

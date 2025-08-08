@@ -3,7 +3,6 @@ import fs from 'fs/promises';
 import sharp from 'sharp';
 import { nanoid } from 'nanoid';
 import { ResponseError } from '#errors/responseError.mjs';
-import { Destination } from '#schemas/destination.mjs';
 
 async function _deleteFile(webPath) {
   if (!webPath) return;
@@ -47,23 +46,6 @@ async function _saveFacilityPhoto({ file, destinationDoc, facilityDoc }) {
 }
 
 export const facility = {
-  isExist: async (req, res, next) => {
-    try {
-      const { facility: facilitySlug } = req.params;
-      const { destinationDoc } = req;
-
-      const facility = destinationDoc.facility.find((f) => f.slug === facilitySlug);
-      if (!facility) {
-        throw new ResponseError(404, 'Fasilitas tidak ditemukan pada destinasi ini');
-      }
-
-      req.facilityDoc = facility;
-      next();
-    } catch (error) {
-      next(error);
-    }
-  },
-
   photo: {
     save: async (req, res, next) => {
       try {

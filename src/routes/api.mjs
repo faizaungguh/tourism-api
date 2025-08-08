@@ -116,16 +116,14 @@ privateRouter
 privateRouter
   .route('/destinations/:destinations/gallery')
   .all(authMiddleware.authorize('manager'))
-  .post(handleMedia.destination.gallery.add, media.destination.gallery.add)
-  .delete(handleMedia.destination.gallery.delete, media.destination.gallery.deleteAll)
-  .all(handler.method(['POST', 'DELETE']));
+  .post(...handleMedia.destination.gallery.add, media.destination.gallery.add)
+  .delete(...handleMedia.destination.gallery.deleteAll, media.destination.gallery.deleteAll);
 
 privateRouter
   .route('/destinations/:destinations/gallery/:id')
   .all(authMiddleware.authorize('manager'))
-  .put(handleMedia.destination.gallery.update, media.destination.gallery.update)
-  .delete(handleMedia.destination.gallery.delete, media.destination.gallery.delete)
-  .all(handler.method(['PUT', 'DELETE']));
+  .put(...handleMedia.destination.gallery.update, media.destination.gallery.update)
+  .delete(...handleMedia.destination.gallery.deleteOne, media.destination.gallery.delete);
 
 /** Destinasi - facility - photo */
 privateRouter

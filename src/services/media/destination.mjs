@@ -11,7 +11,6 @@ async function deleteOldFile(webPath) {
     await fs.unlink(absolutePath);
   } catch (err) {
     if (err.code !== 'ENOENT') {
-      // Log error tapi jangan hentikan proses, karena operasi utama (update DB) sudah berhasil.
       console.error(`Gagal menghapus file lama di ${webPath}:`, err);
     }
   }
@@ -120,7 +119,6 @@ export const destinationService = {
 
     await destinationDoc.save();
 
-    // Hapus file fisik setelah berhasil dihapus dari DB
     await deleteOldFile(photoUrl);
   },
 };

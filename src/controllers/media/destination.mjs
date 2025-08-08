@@ -128,7 +128,6 @@ export const destination = {
       const destinationDoc = req.foundDestination;
 
       await mediaService.destination.gallery.deleteAll(destinationDoc);
-
       res.status(200).json({
         message: `Semua foto di galeri untuk destinasi "${destinationDoc.destinationTitle}" telah berhasil dihapus.`,
       });

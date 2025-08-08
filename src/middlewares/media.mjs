@@ -1,6 +1,5 @@
 import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
-import { general as generalHelper } from '#helpers/media/general.mjs';
 import { admin as adminHelper } from '#helpers/media/admin.mjs';
 import { destination as destinationHelper } from '#helpers/media/destination.mjs';
 import { facility as facilityHelper } from '#helpers/media/facility.mjs';
@@ -157,39 +156,43 @@ export const handleMedia = {
 
   destination: {
     updateMedia: [
-      destinationHelper.checkIsExist,
-      generalHelper.checkIsOwner.destination,
+      destinationHelper.check.isAdminOwned,
       createMedia(destination.Media.uploader, destination.Media.limits),
       destinationHelper.photos.save,
     ],
 
     gallery: {
       add: [
-        generalHelper.checkIsOwner.destination,
+        destinationHelper.check.isAdminOwned,
         createMedia(destination.gallery.add.uploader, destination.gallery.add.limits),
         destinationHelper.gallery.save,
       ],
-      get: [destinationHelper.checkIsExist],
+
+      get: [destinationHelper.check.isExist],
+
       update: [
-        destinationHelper.checkIsExist,
-        generalHelper.checkIsOwner.destination,
-        destinationHelper.gallery.checkIsExist,
+        destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isGalleryExist,
         createMedia(destination.gallery.replace.uploader, destination.gallery.replace.limits),
         destinationHelper.gallery.replace,
       ],
-      delete: [destinationHelper.checkIsExist, generalHelper.checkIsOwner.destination],
+
+      deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.gallery.deleteAll],
+
+      deleteOne: [destinationHelper.check.isAdminOwned, destinationHelper.check.isGalleryExist],
     },
 
     facility: {
       add: [
-        generalHelper.checkIsOwner.destination,
-        facilityHelper.isExist,
+        destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isFacilityExist,
         createMedia(destination.facility.add.uploader, destination.facility.add.limits),
         facilityHelper.photo.replace,
       ],
-      get: [generalHelper.checkIsOwner],
+      get: [destinationHelper.check.isExist],
       update: [
-        generalHelper.checkIsOwner.destination,
+        destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isFacilityExist,
         createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
       ],
       delete: [],
@@ -197,15 +200,15 @@ export const handleMedia = {
 
     attraction: {
       add: [
-        generalHelper.checkIsOwner.destination,
+        destinationHelper.check.isAdminOwned,
         createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
       ],
-      get: [destinationHelper.checkIsExist],
+      get: [destinationHelper.check.isExist],
       update: [
-        generalHelper.checkIsOwner.destination,
+        destinationHelper.check.isAdminOwned,
         createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
       ],
-      delete: [generalHelper.checkIsOwner.destination],
+      delete: [destinationHelper.check.isAdminOwned],
     },
   },
 };
