@@ -1,6 +1,6 @@
 import * as validate from '#validations/validate.mjs';
 import { checker } from '#validations/auth.mjs';
-import * as authHelper from '#helpers/authHelper.mjs';
+import * as authHelper from '#helpers/data/authHelper.mjs';
 
 export const authService = {
   register: async (request) => {

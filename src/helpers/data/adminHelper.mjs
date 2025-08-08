@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import * as verify from '#helpers/duplication.mjs';
+import * as verify from '#helpers/data/duplication.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
