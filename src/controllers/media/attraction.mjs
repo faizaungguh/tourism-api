@@ -53,7 +53,28 @@ export const attraction = {
     }
   },
 
-  update: async (req, res, next) => {},
+  update: async (req, res, next) => {
+    try {
+      const { foundAttraction, photoToUpdate, newPhotoData } = req;
+
+      const result = await mediaService.destination.attraction.update(
+        foundAttraction._id,
+        photoToUpdate.photoId,
+        newPhotoData
+      );
+
+      res.status(200).json({
+        status: 'success',
+        message: 'Foto wahana berhasil diperbarui.',
+        data: {
+          url: `${API_URL}${result.url}`,
+          photoId: result.photoId,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 
   dropAll: async (req, res, next) => {
     try {

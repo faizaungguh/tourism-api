@@ -202,6 +202,26 @@ export const destination = {
         next(error);
       }
     },
+
+    isAttractionPhotoExist: async (req, res, next) => {
+      try {
+        const { id: photoId } = req.params;
+        const { foundAttraction } = req;
+
+        const photoToUpdate = foundAttraction.photos.find((p) => p.photoId === photoId);
+        if (!photoToUpdate) {
+          throw new ResponseError(
+            404,
+            `Foto dengan ID "${photoId}" tidak ditemukan pada wahana ini.`
+          );
+        }
+
+        req.photoToUpdate = photoToUpdate;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
   },
 
   photos: {

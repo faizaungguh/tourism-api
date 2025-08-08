@@ -212,7 +212,10 @@ export const handleMedia = {
       list: [destinationHelper.check.isExist, destinationHelper.check.isAttractionExist],
       update: [
         destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isAttractionExist,
+        destinationHelper.check.isAttractionPhotoExist,
         createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
+        attractionHelper.photo.replace,
       ],
       deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isAttractionExist],
       deleteOne: [destinationHelper.check.isAdminOwned],

@@ -79,7 +79,28 @@ export const attraction = {
 
     replace: async (req, res, next) => {
       try {
-      } catch (error) {}
+        if (!req.file) {
+          throw new ResponseError(400, 'Anda harus menyertakan satu file gambar pengganti.');
+        }
+
+        const { foundDestination, foundAttraction, photoToUpdate } = req;
+
+        const newPhotoData = await _saveAttractionPhoto({
+          file: req.file,
+          destinationDoc: foundDestination,
+          attractionDoc: foundAttraction,
+        });
+
+        await _deleteFile(photoToUpdate.url);
+
+        req.newPhotoData = newPhotoData;
+        next();
+      } catch (error) {
+        if (req.newPhotoData) {
+          await _deleteFile(req.newPhotoData.url);
+        }
+        next(error);
+      }
     },
   },
 

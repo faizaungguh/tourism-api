@@ -30,6 +30,7 @@ export const attractionService = {
 
     return photosWithCaption;
   },
+
   list: async (attractionDoc) => {
     if (!attractionDoc) {
       throw new ResponseError(500, 'Dokumen wahana tidak diterima oleh service.');
@@ -37,7 +38,26 @@ export const attractionService = {
     return attractionDoc.photos || [];
   },
 
-  update: async () => {},
+  update: async (attractionId, oldPhotoId, newPhotoData) => {
+    const result = await Attraction.updateOne(
+      { _id: attractionId, 'photos.photoId': oldPhotoId },
+      {
+        $set: {
+          'photos.$.url': newPhotoData.url,
+          'photos.$.photoId': newPhotoData.photoId,
+        },
+      }
+    );
+
+    if (result.modifiedCount === 0) {
+      throw new ResponseError(
+        404,
+        'Gagal memperbarui foto wahana di database. Data tidak ditemukan.'
+      );
+    }
+
+    return newPhotoData;
+  },
 
   dropAll: async (destinationDoc, attractionDoc) => {
     if (!destinationDoc || !attractionDoc) {
