@@ -208,15 +208,12 @@ export const destination = {
         const { id: photoId } = req.params;
         const { foundAttraction } = req;
 
-        const photoToUpdate = foundAttraction.photos.find((p) => p.photoId === photoId);
-        if (!photoToUpdate) {
-          throw new ResponseError(
-            404,
-            `Foto dengan ID "${photoId}" tidak ditemukan pada wahana ini.`
-          );
+        const photo = foundAttraction.photos.find((p) => p.photoId === photoId);
+        if (!photo) {
+          throw new ResponseError(404, `Foto dengan ID "${photoId}" tidak ditemukan.`);
         }
 
-        req.photoToUpdate = photoToUpdate;
+        req.photoToDelete = photo;
         next();
       } catch (error) {
         next(error);

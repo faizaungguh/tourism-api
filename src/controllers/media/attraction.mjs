@@ -90,5 +90,17 @@ export const attraction = {
     }
   },
 
-  dropOne: async (req, res, next) => {},
+  dropOne: async (req, res, next) => {
+    try {
+      const { foundAttraction, photoToDelete } = req;
+
+      await mediaService.destination.attraction.delete(foundAttraction, photoToDelete);
+
+      res.status(200).json({
+        message: `Foto dengan ID "${photoToDelete.photoId}" dari wahana "${foundAttraction.name}" telah berhasil dihapus.`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };

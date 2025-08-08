@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
+import { attraction as attractionHelper } from '#helpers/media/attraction.mjs';
 
 export const attractionService = {
   add: async (destinationDoc, attractionDoc, photosToAdd) => {
@@ -94,5 +95,18 @@ export const attractionService = {
     }
   },
 
-  dropOne: async () => {},
+  dropOne: async (attractionDoc, photoToDelete) => {
+    const result = await Attraction.updateOne(
+      { _id: attractionDoc._id },
+      {
+        $pull: { photo: { photoId: photoToDelete.photoId } },
+      }
+    );
+
+    if (result.modifiedCount === 0) {
+      throw new ResponseError(404, 'Gagal menghapus foto dari database. Data tidak ditemukan.');
+    }
+
+    await attractionHelper.cleanupFile(photoToDelete.url);
+  },
 };

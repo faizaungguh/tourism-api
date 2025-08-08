@@ -218,7 +218,11 @@ export const handleMedia = {
         attractionHelper.photo.replace,
       ],
       deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isAttractionExist],
-      deleteOne: [destinationHelper.check.isAdminOwned],
+      deleteOne: [
+        destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isAttractionExist,
+        destinationHelper.check.isAttractionPhotoExist,
+      ],
     },
   },
 };

@@ -152,5 +152,5 @@ privateRouter
   .route('/destinations/:destinations/attractions/:attractions/media/:id')
   .all(authMiddleware.authorize('manager'))
   .put(...handleMedia.destination.attraction.update, media.destination.attraction.update)
-  // .delete(media.attraction.delete)
+  .delete(...handleMedia.destination.attraction.deleteOne, media.destination.attraction.delete)
   .all(handler.method(['PUT', 'GET', 'DELETE']));
