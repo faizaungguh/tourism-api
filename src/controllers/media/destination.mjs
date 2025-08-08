@@ -4,7 +4,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { mediaService } from '#services/media.mjs';
 import { destination as destinationHelper } from '#helpers/media/destination.mjs';
 
-const API_URL = process.env.API_URL || 'http://localhost:3000';
+const API_URL = process.env.APP_URL || 'http://localhost:3000';
 
 export const destination = {
   photoMedia: async (req, res, next) => {
@@ -60,22 +60,27 @@ export const destination = {
       }
     },
 
-    get: async (req, res, next) => {
+    list: async (req, res, next) => {
       try {
-        const { photoId } = req.params;
+        const rawPhotos = await mediaService.destination.gallery.list(req.foundDestination);
 
-        const photoData = await mediaService.destination.gallery.get(req.foundDestination, photoId);
+        const formattedPhotos = rawPhotos.map((photo) => {
+          return {
+            url: `${API_URL}${photo.url}`,
+            photoId: photo.photoId,
+            caption: photo.caption,
+          };
+        });
 
-        const rootDir = process.cwd();
-        const correctedPath = photoData.url.startsWith('/')
-          ? photoData.url.substring(1)
-          : photoData.url;
-        const absolutePath = path.join(rootDir, 'public', correctedPath);
+        let message = `Berhasil mengambil ${formattedPhotos.length} foto dari galeri.`;
+        if (formattedPhotos.length === 0) {
+          message = 'Tidak ada foto yang tersedia di galeri destinasi ini.';
+        }
 
-        res.sendFile(absolutePath, (err) => {
-          if (err) {
-            next(new ResponseError(404, 'File gambar fisik tidak ditemukan di server.'));
-          }
+        res.status(200).json({
+          status: 'success',
+          message,
+          data: formattedPhotos,
         });
       } catch (error) {
         next(error);

@@ -141,6 +141,13 @@ export const destination = {
         const { facility: facilitySlug } = req.params;
         const { foundDestination } = req;
 
+        if (!foundDestination) {
+          throw new ResponseError(
+            500,
+            'Middleware check.isExist untuk destinasi harus dijalankan terlebih dahulu.'
+          );
+        }
+
         const facilityDoc = foundDestination.facility.find((f) => f.slug === facilitySlug);
 
         if (!facilityDoc) {

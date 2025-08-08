@@ -14,27 +14,27 @@ export const mediaService = {
 
     gallery: {
       add: destination.gallery.add,
-      get: destination.gallery.get,
+      list: destination.gallery.list,
       deleteAll: destination.gallery.dropAll,
       update: destination.gallery.update,
       delete: destination.gallery.dropOne,
     },
-  },
 
-  facility: {
-    add: facility.add,
-    get: facility.get,
-    update: facility.update,
-    deleteAll: facility.dropAll,
-    delete: facility.dropOne,
-  },
+    facility: {
+      add: facility.add,
+      get: facility.get,
+      update: facility.update,
+      deleteAll: facility.dropAll,
+      delete: facility.dropOne,
+    },
 
-  /** Wahana Media */
-  attraction: {
-    add: attraction.add,
-    get: attraction.get,
-    update: attraction.update,
-    deleteAll: attraction.dropAll,
-    delete: attraction.dropOne,
+    /** Wahana Media */
+    attraction: {
+      add: attraction.add,
+      get: attraction.get,
+      update: attraction.update,
+      deleteAll: attraction.dropAll,
+      delete: attraction.dropOne,
+    },
   },
 };

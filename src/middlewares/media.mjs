@@ -170,6 +170,8 @@ export const handleMedia = {
 
       get: [destinationHelper.check.isExist],
 
+      list: [destinationHelper.check.isExist],
+
       update: [
         destinationHelper.check.isAdminOwned,
         destinationHelper.check.isGalleryExist,
@@ -189,7 +191,7 @@ export const handleMedia = {
         createMedia(destination.facility.add.uploader, destination.facility.add.limits),
         facilityHelper.photo.save,
       ],
-      get: [destinationHelper.check.isExist],
+      list: [destinationHelper.check.isExist, destinationHelper.check.isFacilityExist],
       update: [
         destinationHelper.check.isAdminOwned,
         destinationHelper.check.isFacilityExist,

@@ -24,7 +24,9 @@ export const facilityService = {
     return processedFacilityPhotos;
   },
 
-  get: async () => {},
+  list: async (foundFacility) => {
+    return foundFacility.photo || [];
+  },
 
   update: async () => {},
 

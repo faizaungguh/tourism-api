@@ -1,7 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
-import { mediaService } from '#services/media.mjs';
 
 async function deleteOldFile(webPath) {
   if (!webPath) return;
@@ -58,19 +57,8 @@ export const destinationService = {
       return newPhotos;
     },
 
-    get: async (destinationDoc, photoId) => {
-      if (!destinationDoc.galleryPhoto || destinationDoc.galleryPhoto.length === 0) {
-        throw new ResponseError(404, 'Data tidak ditemukan', {
-          galleryPhoto: 'Galeri untuk destinasi ini kosong atau tidak ditemukan.',
-        });
-      }
-
-      const photo = destinationDoc.galleryPhoto.find((p) => p.photoId === photoId);
-
-      if (!photo) {
-        throw new ResponseError(404, 'Foto dengan ID tersebut tidak ditemukan di galeri ini.');
-      }
-      return photo.toObject();
+    list: async (destinationDoc) => {
+      return destinationDoc.galleryPhoto || [];
     },
 
     update: async (destinationDoc, oldPhotoId, newPhotoData) => {
