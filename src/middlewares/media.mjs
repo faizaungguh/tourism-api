@@ -194,7 +194,11 @@ export const handleMedia = {
         facilityHelper.photo.replace,
       ],
       deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isFacilityExist],
-      deleteOne: [destinationHelper.check.isAdminOwned],
+      deleteOne: [
+        destinationHelper.check.isAdminOwned,
+        destinationHelper.check.isFacilityExist,
+        destinationHelper.check.isFacilityPhotoExist,
+      ],
     },
 
     attraction: {

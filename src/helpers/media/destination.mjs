@@ -168,16 +168,12 @@ export const destination = {
         const { id: photoId } = req.params;
         const { foundFacility } = req;
 
-        const photoToUpdate = foundFacility.photo.find((p) => p.photoId === photoId);
-
-        if (!photoToUpdate) {
-          throw new ResponseError(
-            404,
-            `Foto dengan ID "${photoId}" tidak ditemukan pada fasilitas ini.`
-          );
+        const photo = foundFacility.photo.find((p) => p.photoId === photoId);
+        if (!photo) {
+          throw new ResponseError(404, `Foto dengan ID "${photoId}" tidak ditemukan.`);
         }
 
-        req.photoToUpdate = photoToUpdate;
+        req.photoToDelete = photo;
         next();
       } catch (error) {
         next(error);

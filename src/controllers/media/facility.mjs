@@ -84,5 +84,21 @@ export const facility = {
     }
   },
 
-  dropOne: async (req, res, next) => {},
+  dropOne: async (req, res, next) => {
+    try {
+      const { foundDestination, foundFacility, photoToDelete } = req;
+
+      await mediaService.destination.facility.delete(
+        foundDestination,
+        foundFacility,
+        photoToDelete
+      );
+
+      res.status(200).json({
+        message: `Foto dengan ID "${photoToDelete.photoId}" telah berhasil dihapus.`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };

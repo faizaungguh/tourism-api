@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
+import { facility as facilityHelper } from '#helpers/media/facility.mjs';
 
 export const facilityService = {
   add: async (req) => {
@@ -100,5 +101,23 @@ export const facilityService = {
     }
   },
 
-  dropOne: async () => {},
+  dropOne: async (destinationDoc, facilityDoc, photoToDelete) => {
+    const result = await Destination.updateOne(
+      {
+        _id: destinationDoc._id,
+        'facility.slug': facilityDoc.slug,
+      },
+      {
+        $pull: { 'facility.$.photo': { photoId: photoToDelete.photoId } },
+      }
+    );
+
+    if (result.modifiedCount === 0) {
+      throw new ResponseError(404, 'File tidak terhapus', {
+        message: 'Gagal menghapus foto dari database. Data tidak ditemukan.',
+      });
+    }
+
+    await facilityHelper.cleanupFile(photoToDelete.url);
+  },
 };

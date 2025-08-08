@@ -137,8 +137,7 @@ privateRouter
   .route('/destinations/:destinations/facility/:facility/media/:id')
   .all(authMiddleware.authorize('manager'))
   .put(...handleMedia.destination.facility.update, media.destination.facility.update)
-  // .put(media.facility.update)
-  // .delete(media.facility.delete)
+  .delete(handleMedia.destination.facility.deleteOne, media.destination.facility.delete)
   .all(handler.method(['PUT', 'GET', 'DELETE']));
 
 /** Wahana - photo */
