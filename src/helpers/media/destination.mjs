@@ -189,7 +189,6 @@ export const destination = {
         const { foundDestination } = req;
 
         const attractionDoc = foundDestination.attractions.find((a) => a.slug === attractionSlug);
-
         if (!attractionDoc) {
           throw new ResponseError(
             404,

@@ -6,15 +6,18 @@ const API_URL = process.env.APP_URL || 'http://localhost:3000';
 export const attraction = {
   add: async (req, res, next) => {
     try {
-      const { foundAttraction, processedPhotos } = req;
+      const { foundDestination, foundAttraction, processedPhotos } = req;
+
       const result = await mediaService.destination.attraction.add(
+        foundDestination,
         foundAttraction,
         processedPhotos
       );
 
       const formattedResult = result.map((photo) => ({
-        ...photo,
         url: `${API_URL}${photo.url}`,
+        photoId: photo.photoId,
+        caption: photo.caption,
       }));
 
       res.status(201).json({
@@ -22,16 +25,33 @@ export const attraction = {
         data: formattedResult,
       });
     } catch (error) {
-      if (req.processedPhotos) {
-        for (const photo of req.processedPhotos) {
-          await attractionHelper.cleanupFile(photo.url);
-        }
-      }
       next(error);
     }
   },
 
-  list: async (req, res, next) => {},
+  list: async (req, res, next) => {
+    try {
+      const rawPhotos = await mediaService.destination.attraction.list(req.foundAttraction);
+
+      const formattedPhotos = rawPhotos.map((photo) => ({
+        url: `${API_URL}${photo.url}`,
+        photoId: photo.photoId,
+        caption: photo.caption,
+      }));
+
+      let message = `Berhasil mengambil ${formattedPhotos.length} foto.`;
+      if (formattedPhotos.length === 0) {
+        message = 'Tidak ada foto yang tersedia untuk wahana ini.';
+      }
+
+      res.status(200).json({
+        message,
+        data: formattedPhotos,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 
   update: async (req, res, next) => {},
 

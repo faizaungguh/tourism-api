@@ -59,3 +59,8 @@ publicRouter
   .route('/destinations/:destinations/facility/:facility/media')
   .get(...handleMedia.destination.facility.list, media.destination.facility.list)
   .all(handler.method(['GET']));
+
+publicRouter
+  .route('/destinations/:destinations/attractions/:attractions/media')
+  .get(...handleMedia.destination.attraction.list, media.destination.attraction.list)
+  .all(handler.method(['GET']));

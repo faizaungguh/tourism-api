@@ -4,15 +4,23 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 
 export const attractionService = {
-  add: async (attractionDoc, photosToAdd) => {
-    if (!attractionDoc || !photosToAdd) {
+  add: async (destinationDoc, attractionDoc, photosToAdd) => {
+    if (!destinationDoc || !attractionDoc || !photosToAdd) {
       throw new ResponseError(500, 'Data tidak lengkap saat dikirim ke service.');
     }
+
+    const destinationTitle = destinationDoc.destinationTitle;
+    const attractionTitle = attractionDoc.name;
+
+    const photosWithCaption = photosToAdd.map((photo) => ({
+      ...photo,
+      caption: `Foto Wahana ${attractionTitle} di ${destinationTitle}`,
+    }));
 
     const result = await Attraction.updateOne(
       { _id: attractionDoc._id },
       {
-        $push: { photos: { $each: photosToAdd } },
+        $push: { photos: { $each: photosWithCaption } },
       }
     );
 
@@ -20,10 +28,14 @@ export const attractionService = {
       throw new ResponseError(500, 'Gagal menyimpan foto wahana ke database.');
     }
 
-    return photosToAdd;
+    return photosWithCaption;
   },
-
-  list: async () => {},
+  list: async (attractionDoc) => {
+    if (!attractionDoc) {
+      throw new ResponseError(500, 'Dokumen wahana tidak diterima oleh service.');
+    }
+    return attractionDoc.photos || [];
+  },
 
   update: async () => {},
 

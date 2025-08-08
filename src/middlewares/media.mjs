@@ -209,7 +209,7 @@ export const handleMedia = {
         createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
         attractionHelper.photo.save,
       ],
-      list: [destinationHelper.check.isExist],
+      list: [destinationHelper.check.isExist, destinationHelper.check.isAttractionExist],
       update: [
         destinationHelper.check.isAdminOwned,
         createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
