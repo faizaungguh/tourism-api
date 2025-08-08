@@ -1,4 +1,6 @@
 import { ResponseError } from '#errors/responseError.mjs';
+import path from 'path';
+import fs from 'fs/promises';
 import mongoose, { Schema } from 'mongoose';
 import { nanoid } from 'nanoid';
 import { Destination } from '#schemas/destination.mjs';
@@ -147,7 +149,34 @@ attractionSchema.pre('findOneAndUpdate', async function (next) {
   next();
 });
 
-attractionSchema.pre('deleteOne', { document: true }, async function (next) {});
+attractionSchema.pre('findOneAndDelete', async function (next) {
+  try {
+    const docToDelete = await this.model.findOne(this.getQuery());
+
+    if (docToDelete) {
+      const destinationDoc = await Destination.findById(docToDelete.destination)
+        .populate({
+          path: 'locations.subdistrict',
+          select: 'abbrevation',
+        })
+        .select('slug locations')
+        .lean();
+
+      if (destinationDoc && docToDelete.photos && docToDelete.photos.length > 0) {
+        const attractionDir = path.join(
+          process.cwd(),
+          'public',
+          'images',
+          `destinations/${destinationDoc.locations.subdistrict.abbrevation}_${destinationDoc.slug}/attraction/${docToDelete.slug}`
+        );
+        await fs.rm(attractionDir, { recursive: true, force: true });
+      }
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 attractionSchema.pre('deleteMany', { document: true }, async function (next) {});
 

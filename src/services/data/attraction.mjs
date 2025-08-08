@@ -59,7 +59,7 @@ export const attractionService = {
       attractionSlug
     );
 
-    await Attraction.findByIdAndDelete(attraction._id);
+    await Attraction.findOneAndDelete({ slug: attractionSlug });
 
     await Destination.findByIdAndUpdate(destination._id, {
       $pull: { attractions: attraction._id },
