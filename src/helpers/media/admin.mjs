@@ -30,7 +30,7 @@ async function _checkExist(adminId) {
 }
 
 export const admin = {
-  async checkExist(req, res, next) {
+  checkIsExist: async (req, res, next) => {
     try {
       const { id } = req.params;
       const admin = await _checkExist(id);
@@ -41,31 +41,33 @@ export const admin = {
     }
   },
 
-  savePhoto: (options) => async (req, res, next) => {
-    try {
-      if (!req.file) return next();
+  photo: {
+    save: (options) => async (req, res, next) => {
+      try {
+        if (!req.file) return next();
 
-      const dynamicPath = options.getDynamicPath(req);
-      if (!dynamicPath) {
-        throw new ResponseError(404, 'Path tidak ditemukan', {
-          message: 'ID untuk path file tidak ditemukan di URL.',
+        const dynamicPath = options.getDynamicPath(req);
+        if (!dynamicPath) {
+          throw new ResponseError(404, 'Path tidak ditemukan', {
+            message: 'ID untuk path file tidak ditemukan di URL.',
+          });
+        }
+
+        const photoPath = await _savePhoto({
+          file: req.file,
+          adminId: req.params.id,
+          dynamicPath,
+          subfolder: options.subfolder,
         });
+
+        req.processedFiles = {
+          photo: photoPath,
+        };
+
+        next();
+      } catch (error) {
+        next(error);
       }
-
-      const photoPath = await _savePhoto({
-        file: req.file,
-        adminId: req.params.id,
-        dynamicPath,
-        subfolder: options.subfolder,
-      });
-
-      req.processedFiles = {
-        photo: photoPath,
-      };
-
-      next();
-    } catch (error) {
-      next(error);
-    }
+    },
   },
 };

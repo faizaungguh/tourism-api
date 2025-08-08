@@ -21,6 +21,35 @@ const buildSortStage = (validatedQuery) => {
   };
 };
 
+const _handlePasswordUpdate = async (validatedRequest, originalPasswordHash) => {
+  if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
+    throw new ResponseError(422, 'Data kosong.', {
+      message: 'Anda harus memasukkan password lama dan password baru anda',
+    });
+  }
+
+  const isPasswordMatch = await bcrypt.compare(validatedRequest.oldPassword, originalPasswordHash);
+
+  if (!isPasswordMatch) {
+    throw new ResponseError(401, 'Data ubahan ditolak.', {
+      oldPassword: 'Password lama yang Anda masukkan salah.',
+    });
+  }
+
+  if (validatedRequest.newPassword === validatedRequest.oldPassword) {
+    throw new ResponseError(401, 'Data ubahan ditolak', {
+      newPassword: 'Password Baru yang anda masukkan sama dengan Password Lama.',
+    });
+  }
+
+  /** Jika cocok, hash password baru */
+  validatedRequest.password = await bcrypt.hash(validatedRequest.newPassword, 10);
+
+  /** Hapus field sementara agar tidak tersimpan di database */
+  delete validatedRequest.oldPassword;
+  delete validatedRequest.newPassword;
+};
+
 export const listAdmins = (validatedQuery) => {
   const { page, size } = validatedQuery;
   const skip = (page - 1) * size;
@@ -52,35 +81,6 @@ export const listAdmins = (validatedQuery) => {
       },
     },
   ];
-};
-
-const _handlePasswordUpdate = async (validatedRequest, originalPasswordHash) => {
-  if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
-    throw new ResponseError(422, 'Data kosong.', {
-      message: 'Anda harus memasukkan password lama dan password baru anda',
-    });
-  }
-
-  const isPasswordMatch = await bcrypt.compare(validatedRequest.oldPassword, originalPasswordHash);
-
-  if (!isPasswordMatch) {
-    throw new ResponseError(401, 'Data ubahan ditolak.', {
-      oldPassword: 'Password lama yang Anda masukkan salah.',
-    });
-  }
-
-  if (validatedRequest.newPassword === validatedRequest.oldPassword) {
-    throw new ResponseError(401, 'Data ubahan ditolak', {
-      newPassword: 'Password Baru yang anda masukkan sama dengan Password Lama.',
-    });
-  }
-
-  /** Jika cocok, hash password baru */
-  validatedRequest.password = await bcrypt.hash(validatedRequest.newPassword, 10);
-
-  /** Hapus field sementara agar tidak tersimpan di database */
-  delete validatedRequest.oldPassword;
-  delete validatedRequest.newPassword;
 };
 
 export const updateAdmin = async (id, validatedRequest) => {

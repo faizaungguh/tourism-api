@@ -2,6 +2,21 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 
+async function deleteOldFile(webPath) {
+  if (!webPath) return;
+  try {
+    const rootDir = process.cwd();
+    const correctedPath = webPath.startsWith('/') ? webPath.substring(1) : webPath;
+    const absolutePath = path.join(rootDir, 'public', correctedPath);
+    await fs.unlink(absolutePath);
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      // Log error tapi jangan hentikan proses, karena operasi utama (update DB) sudah berhasil.
+      console.error(`Gagal menghapus file lama di ${webPath}:`, err);
+    }
+  }
+}
+
 export const destinationService = {
   photoMedia: async (destinationDoc, newPhotos) => {
     const { profilePhoto, headlinePhoto } = newPhotos;
@@ -105,20 +120,7 @@ export const destinationService = {
 
     await destinationDoc.save();
 
-    if (photoUrl) {
-      const rootDir = process.cwd();
-      const correctedPath = photoUrl.startsWith('/') ? photoUrl.substring(1) : photoUrl;
-      const absolutePath = path.join(rootDir, 'public', correctedPath);
-      try {
-        await fs.unlink(absolutePath);
-      } catch (err) {
-        if (err.code !== 'ENOENT') {
-          console.error(
-            `Gagal menghapus file fisik setelah penghapusan dari DB: ${absolutePath}`,
-            err
-          );
-        }
-      }
-    }
+    // Hapus file fisik setelah berhasil dihapus dari DB
+    await deleteOldFile(photoUrl);
   },
 };

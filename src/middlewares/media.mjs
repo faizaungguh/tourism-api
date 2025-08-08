@@ -1,5 +1,6 @@
 import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
+import { general as generalHelper } from '#helpers/media/general.mjs';
 import { admin as adminHelper } from '#helpers/media/admin.mjs';
 import { destination as destinationHelper } from '#helpers/media/destination.mjs';
 import { facility as facilityHelper } from '#helpers/media/facility.mjs';
@@ -48,150 +49,163 @@ const createMedia = (uploader, limits) => (req, res, next) => {
   });
 };
 
-const adminMedia = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).single('photo');
+const admin = {
+  Media: {
+    limits: { fileSize: 1024 * 200 },
+    get uploader() {
+      return multer({
+        ...baseMulter,
+        limits: this.limits,
+      }).single('photo');
+    },
   },
 };
 
-const destinationMedia = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).fields([
-      { name: 'profilePhoto', maxCount: 1 },
-      { name: 'headlinePhoto', maxCount: 1 },
-    ]);
+const destination = {
+  Media: {
+    limits: { fileSize: 1024 * 200 },
+    get uploader() {
+      return multer({
+        ...baseMulter,
+        limits: this.limits,
+      }).fields([
+        { name: 'profilePhoto', maxCount: 1 },
+        { name: 'headlinePhoto', maxCount: 1 },
+      ]);
+    },
   },
-};
 
-const addGalleryDestination = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).array('galleryPhoto', 8);
+  gallery: {
+    add: {
+      limits: { fileSize: 1024 * 200 },
+      get uploader() {
+        return multer({
+          ...baseMulter,
+          limits: this.limits,
+        }).array('galleryPhoto', 8);
+      },
+    },
+
+    replace: {
+      limits: { fileSize: 1024 * 200 },
+      get uploader() {
+        return multer({
+          ...baseMulter,
+          limits: this.limits,
+        }).single('galleryPhoto');
+      },
+    },
   },
-};
 
-const updateGalleryDestination = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).single('galleryPhoto');
+  facility: {
+    add: {
+      limits: { fileSize: 1024 * 200 },
+      get uploader() {
+        return multer({
+          ...baseMulter,
+          limits: this.limits,
+        }).array('photo', 6);
+      },
+    },
+
+    replace: {
+      limits: { fileSize: 1024 * 200 },
+      get uploader() {
+        return multer({
+          ...baseMulter,
+          limits: this.limits,
+        }).single('photo');
+      },
+    },
   },
-};
 
-const addFacilityPhotos = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).array('photo', 6);
-  },
-};
+  attraction: {
+    add: {
+      limits: { fileSize: 1024 * 200 },
+      get uploader() {
+        return multer({
+          ...baseMulter,
+          limits: this.limits,
+        }).array('photo', 6);
+      },
+    },
 
-const updateFacilityPhoto = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).single('photo');
-  },
-};
-
-const addAttractionPhotos = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).array('photo', 6);
-  },
-};
-
-const updateAttractionPhoto = {
-  limits: { fileSize: 1024 * 200 },
-  get uploader() {
-    return multer({
-      ...baseMulter,
-      limits: this.limits,
-    }).single('photo');
+    replace: {
+      limits: { fileSize: 1024 * 200 },
+      get uploader() {
+        return multer({
+          ...baseMulter,
+          limits: this.limits,
+        }).single('photo');
+      },
+    },
   },
 };
 
 export const handleMedia = {
   admin: {
     updateMedia: [
-      adminHelper.checkExist,
-      createMedia(adminMedia.uploader, adminMedia.limits),
-      adminHelper.savePhoto({
+      adminHelper.checkIsExist,
+      createMedia(admin.Media.uploader, admin.Media.limits),
+      adminHelper.photo.save({
         subfolder: 'profile',
         getDynamicPath: (req) => req.params.id,
       }),
     ],
-    get: [adminHelper.checkExist],
+    get: [adminHelper.checkIsExist],
   },
 
   destination: {
     updateMedia: [
-      destinationHelper.checkOwnership,
-      createMedia(destinationMedia.uploader, destinationMedia.limits),
-      destinationHelper.savePhotos,
+      destinationHelper.checkIsExist,
+      generalHelper.checkIsOwner.destination,
+      createMedia(destination.Media.uploader, destination.Media.limits),
+      destinationHelper.photos.save,
     ],
 
     gallery: {
       add: [
-        destinationHelper.checkOwnership,
-        createMedia(addGalleryDestination.uploader, addGalleryDestination.limits),
-        destinationHelper.saveGalleryPhotos,
+        generalHelper.checkIsOwner.destination,
+        createMedia(destination.gallery.add.uploader, destination.gallery.add.limits),
+        destinationHelper.gallery.save,
       ],
-      get: [destinationHelper.checkExist],
+      get: [destinationHelper.checkIsExist],
       update: [
-        destinationHelper.checkOwnershipAndPhotoExist,
-        createMedia(updateGalleryDestination.uploader, updateGalleryDestination.limits),
-        destinationHelper.replaceGalleryPhoto,
+        destinationHelper.checkIsExist,
+        generalHelper.checkIsOwner.destination,
+        destinationHelper.gallery.checkIsExist,
+        createMedia(destination.gallery.replace.uploader, destination.gallery.replace.limits),
+        destinationHelper.gallery.replace,
       ],
-      delete: [destinationHelper.checkOwnership],
+      delete: [destinationHelper.checkIsExist, generalHelper.checkIsOwner.destination],
     },
 
     facility: {
       add: [
-        facilityHelper.checkOwnership,
+        generalHelper.checkIsOwner.destination,
         facilityHelper.isExist,
-        createMedia(addFacilityPhotos.uploader, addFacilityPhotos.limits),
-        facilityHelper.saveFacilityPhotos,
+        createMedia(destination.facility.add.uploader, destination.facility.add.limits),
+        facilityHelper.photo.replace,
       ],
-      get: [destinationHelper.checkExist],
+      get: [generalHelper.checkIsOwner],
       update: [
-        destinationHelper.checkOwnership,
-        createMedia(updateFacilityPhoto.uploader, updateFacilityPhoto.limits),
+        generalHelper.checkIsOwner.destination,
+        createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
       ],
-      delete: [destinationHelper.checkOwnership],
+      delete: [],
     },
 
     attraction: {
       add: [
-        destinationHelper.checkOwnership,
-        createMedia(addAttractionPhotos.uploader, addAttractionPhotos.limits),
+        generalHelper.checkIsOwner.destination,
+        createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
       ],
-      get: [destinationHelper.checkExist],
+      get: [destinationHelper.checkIsExist],
       update: [
-        destinationHelper.checkOwnership,
-        createMedia(updateAttractionPhoto.uploader, updateAttractionPhoto.limits),
+        generalHelper.checkIsOwner.destination,
+        createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
       ],
-      delete: [destinationHelper.checkOwnership],
+      delete: [generalHelper.checkIsOwner.destination],
     },
   },
 };

@@ -107,21 +107,21 @@ privateRouter
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
-  .route('/destinations/:slug/media')
+  .route('/destinations/:destinations/media')
   .all(authMiddleware.authorize('manager'))
   .post(handleMedia.destination.updateMedia, media.destination.updateMedia)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
 privateRouter
-  .route('/destinations/:slug/gallery')
+  .route('/destinations/:destinations/gallery')
   .all(authMiddleware.authorize('manager'))
   .post(handleMedia.destination.gallery.add, media.destination.gallery.add)
   .delete(handleMedia.destination.gallery.delete, media.destination.gallery.deleteAll)
   .all(handler.method(['POST', 'DELETE']));
 
 privateRouter
-  .route('/destinations/:slug/gallery/:id')
+  .route('/destinations/:destinations/gallery/:id')
   .all(authMiddleware.authorize('manager'))
   .put(handleMedia.destination.gallery.update, media.destination.gallery.update)
   .delete(handleMedia.destination.gallery.delete, media.destination.gallery.delete)
