@@ -67,28 +67,6 @@ attractionSchema.pre('save', async function (next) {
     }
   }
 
-  if (
-    (this.isModified('photos') || this.isModified('name') || this.isNew) &&
-    this.photos &&
-    this.photos.length > 0
-  ) {
-    try {
-      const destinationDoc = await Destination.findById(this.destination)
-        .select('destinationTitle')
-        .lean();
-
-      if (destinationDoc) {
-        const destinationTitle = destinationDoc.destinationTitle;
-        const attractionName = this.name;
-        this.photos.forEach((photo) => {
-          photo.caption = `Foto Wahana ${attractionName} di ${destinationTitle}`;
-        });
-      }
-    } catch (error) {
-      return next(error);
-    }
-  }
-
   if (this.isModified('name') || this.isNew) {
     const baseSlug = this.name
       .toLowerCase()
@@ -177,7 +155,33 @@ attractionSchema.pre('findOneAndDelete', async function (next) {
     next(error);
   }
 });
+attractionSchema.pre('deleteMany', { document: true }, async function (next) {
+  try {
+    const docToDelete = await this.model.findOne(this.getQuery());
 
-attractionSchema.pre('deleteMany', { document: true }, async function (next) {});
+    if (docToDelete) {
+      const destinationDoc = await Destination.findById(docToDelete.destination)
+        .populate({
+          path: 'locations.subdistrict',
+          select: 'abbrevation',
+        })
+        .select('slug locations')
+        .lean();
+
+      if (destinationDoc && docToDelete.photos && docToDelete.photos.length > 0) {
+        const attractionDir = path.join(
+          process.cwd(),
+          'public',
+          'images',
+          `destinations/${destinationDoc.locations.subdistrict.abbrevation}_${destinationDoc.slug}/attraction/`
+        );
+        await fs.rm(attractionDir, { recursive: true, force: true });
+      }
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 export const Attraction = mongoose.model('Attraction', attractionSchema);

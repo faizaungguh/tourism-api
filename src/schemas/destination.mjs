@@ -281,15 +281,13 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   next();
 });
 
-destinationSchema.pre('deleteOne', { document: true }, async function (next) {
+destinationSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
   try {
-    const destination = await this.model.findOne(this.getFilter()).lean();
+    const destinationToDelete = this;
 
-    if (this.attractions && this.attractions.length > 0) {
-      await Attraction.deleteMany({ _id: { $in: this.attractions } });
+    if (destinationToDelete.attractions && destinationToDelete.attractions.length > 0) {
+      await Attraction.deleteMany({ _id: { $in: destinationToDelete.attractions } });
     }
-
-    /** hapus media */
 
     next();
   } catch (error) {
