@@ -273,6 +273,14 @@ const detailDestinationPipeline = [
   },
 ];
 
+const createSlug = (name) => {
+  if (!name) return '';
+  return name
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+};
+
 export const listDestination = (validatedQuery) => {
   const { page, size } = validatedQuery;
   const skip = (page - 1) * size;
@@ -366,7 +374,6 @@ export const createDestination = async (adminId, validatedRequest) => {
 };
 
 export const patchDestination = async (destinationSlug, adminId, validatedRequest) => {
-  console.log('DEBUG: validatedRequest yang diterima:', JSON.stringify(validatedRequest, null, 2));
   const [admin, destinationToUpdate] = await Promise.all([
     Admin.findOne({ adminId }).select('_id').lean(),
     Destination.findOne({ slug: destinationSlug }).select(
@@ -460,6 +467,10 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     preProcessingLogic: (facilityUpdate) => {
       if (facilityUpdate.availability === false) {
         facilityUpdate.number = 0;
+      }
+
+      if (facilityUpdate.name && !facilityUpdate._id) {
+        facilityUpdate.slug = createSlug(facilityUpdate.name);
       }
     },
   });

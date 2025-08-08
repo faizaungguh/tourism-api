@@ -1,6 +1,7 @@
 import { ResponseError } from '#errors/responseError.mjs';
 import mongoose, { Schema } from 'mongoose';
 import { nanoid } from 'nanoid';
+import { Destination } from '#schemas/destination.mjs';
 
 const attractionSchema = new Schema(
   {
@@ -61,6 +62,28 @@ attractionSchema.pre('save', async function (next) {
             'Harga tiket dewasa wajib diisi dan harus lebih besar dari 0 untuk wahana berbayar.',
         })
       );
+    }
+  }
+
+  if (
+    (this.isModified('photos') || this.isModified('name') || this.isNew) &&
+    this.photos &&
+    this.photos.length > 0
+  ) {
+    try {
+      const destinationDoc = await Destination.findById(this.destination)
+        .select('destinationTitle')
+        .lean();
+
+      if (destinationDoc) {
+        const destinationTitle = destinationDoc.destinationTitle;
+        const attractionName = this.name;
+        this.photos.forEach((photo) => {
+          photo.caption = `Foto Wahana ${attractionName} di ${destinationTitle}`;
+        });
+      }
+    } catch (error) {
+      return next(error);
     }
   }
 

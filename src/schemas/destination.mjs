@@ -53,6 +53,7 @@ const destinationSchema = new Schema(
     facility: [
       {
         name: { type: String, trim: true, required: true },
+        slug: { type: String, lowercase: true, trim: true },
         availability: { type: Boolean, default: false },
         number: { type: Number, default: 0 },
         disabilityAccess: { type: Boolean, default: false },
@@ -115,6 +116,14 @@ export function processOpeningHours(openingHours) {
   }
 }
 
+function createSlug(name) {
+  if (!name) return '';
+  return name
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
+}
+
 function generatePhotoCaptions(doc) {
   const title = doc.destinationTitle;
   if (!title) return;
@@ -141,14 +150,15 @@ destinationSchema.pre('save', async function (next) {
 
   if ((this.isModified('facility') || this.isNew) && this.facility && this.facility.length > 0) {
     const names = this.facility.map((f) => f.name);
-    const isUnique = new Set(names).size === names.length;
-    if (!isUnique) {
-      return next(
-        new ResponseError(409, 'Konflik data fasilitas', {
-          message: 'Nama fasilitas tidak boleh duplikat dalam satu destinasi.',
-        })
-      );
+    if (new Set(names).size !== names.length) {
+      return next(new ResponseError(409, 'Nama fasilitas tidak boleh duplikat.'));
     }
+
+    this.facility.forEach((facility) => {
+      if (facility.isModified('name') || !facility.slug) {
+        facility.slug = createSlug(facility.name);
+      }
+    });
   }
 
   if (

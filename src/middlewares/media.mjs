@@ -2,6 +2,7 @@ import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
 import { admin as adminHelper } from '#helpers/media/admin.mjs';
 import { destination as destinationHelper } from '#helpers/media/destination.mjs';
+import { facility as facilityHelper } from '#helpers/media/facility.mjs';
 
 const baseMulter = {
   storage: multer.memoryStorage(),
@@ -167,8 +168,10 @@ export const handleMedia = {
 
     facility: {
       add: [
-        destinationHelper.checkOwnership,
+        facilityHelper.checkOwnership,
+        facilityHelper.isExist,
         createMedia(addFacilityPhotos.uploader, addFacilityPhotos.limits),
+        facilityHelper.saveFacilityPhotos,
       ],
       get: [destinationHelper.checkExist],
       update: [

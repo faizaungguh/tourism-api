@@ -131,7 +131,7 @@ privateRouter
 privateRouter
   .route('/destinations/:destinations/facility/:facility/media')
   .all(authMiddleware.authorize('manager'))
-  // .post(media.facility.add)
+  .post(handleMedia.destination.facility.add, media.facility.add)
   // .get(media.facility.list)
   // .delete(media.facility.deleteAll)
   .all(handler.method(['POST', 'GET', 'DELETE']));

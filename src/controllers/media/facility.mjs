@@ -1,8 +1,18 @@
-import path from 'path';
-import fs from 'fs/promises';
+import { mediaService } from '#services/media.mjs';
 
 export const facility = {
-  add: async (req, res, next) => {},
+  add: async (req, res, next) => {
+    try {
+      const result = await mediaService.facility.add(req);
+      res.status(201).json({
+        status: 'success',
+        message: 'Foto fasilitas berhasil ditambahkan',
+        data: result,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 
   get: async (req, res, next) => {},
 
