@@ -189,6 +189,7 @@ export const handleMedia = {
       update: [
         destinationHelper.check.isAdminOwned,
         destinationHelper.check.isFacilityExist,
+        destinationHelper.check.isFacilityPhotoExist,
         createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
         facilityHelper.photo.replace,
       ],

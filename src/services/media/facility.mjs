@@ -30,7 +30,32 @@ export const facilityService = {
     return foundFacility.photo || [];
   },
 
-  update: async () => {},
+  update: async (destinationId, facilitySlug, oldPhotoId, newPhotoData) => {
+    const result = await Destination.updateOne(
+      {
+        _id: destinationId,
+        'facility.slug': facilitySlug,
+      },
+      {
+        $set: {
+          'facility.$[fac].photo.$[foto].url': newPhotoData.url,
+          'facility.$[fac].photo.$[foto].photoId': newPhotoData.photoId,
+        },
+      },
+      {
+        arrayFilters: [{ 'fac.slug': facilitySlug }, { 'foto.photoId': oldPhotoId }],
+      }
+    );
+
+    if (result.modifiedCount === 0) {
+      throw new ResponseError(
+        404,
+        'Gagal memperbarui foto di database. Data foto tidak ditemukan.'
+      );
+    }
+
+    return newPhotoData;
+  },
 
   dropAll: async (destinationDoc, facilityDoc) => {
     if (!destinationDoc || !facilityDoc) {

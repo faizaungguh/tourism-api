@@ -87,7 +87,28 @@ export const facility = {
 
     replace: async (req, res, next) => {
       try {
-      } catch (error) {}
+        if (!req.file) {
+          throw new ResponseError(400, 'Anda harus menyertakan satu file gambar pengganti.');
+        }
+
+        const { foundDestination, foundFacility, photoToUpdate } = req;
+
+        const newPhotoData = await _saveFacilityPhoto({
+          file: req.file,
+          destinationDoc: foundDestination,
+          facilityDoc: foundFacility,
+        });
+
+        await _deleteFile(photoToUpdate.url);
+
+        req.newPhotoData = newPhotoData;
+        next();
+      } catch (error) {
+        if (req.newPhotoData) {
+          await _deleteFile(req.newPhotoData.url);
+        }
+        next(error);
+      }
     },
   },
 

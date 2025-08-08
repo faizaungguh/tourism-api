@@ -162,6 +162,27 @@ export const destination = {
         next(error);
       }
     },
+
+    isFacilityPhotoExist: async (req, res, next) => {
+      try {
+        const { id: photoId } = req.params;
+        const { foundFacility } = req;
+
+        const photoToUpdate = foundFacility.photo.find((p) => p.photoId === photoId);
+
+        if (!photoToUpdate) {
+          throw new ResponseError(
+            404,
+            `Foto dengan ID "${photoId}" tidak ditemukan pada fasilitas ini.`
+          );
+        }
+
+        req.photoToUpdate = photoToUpdate;
+        next();
+      } catch (error) {
+        next(error);
+      }
+    },
   },
 
   photos: {
