@@ -43,12 +43,12 @@ export const facility = {
 
   dropAll: async (req, res, next) => {
     try {
-      const destinationDoc = req.foundDestination;
-
-      await mediaService.destination.facility.deleteAll(destinationDoc);
+      const { foundDestination, foundFacility } = req;
+      await mediaService.destination.facility.deleteAll(foundDestination, foundFacility);
 
       res.status(200).json({
-        message: `Semua foto dari galeri destinasi "${destinationDoc.destinationTitle}" telah berhasil dihapus.`,
+        status: 'success',
+        message: `Semua foto untuk fasilitas "${foundFacility.name}" telah berhasil dihapus.`,
       });
     } catch (error) {
       next(error);

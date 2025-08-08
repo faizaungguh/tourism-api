@@ -34,7 +34,7 @@ export const facilityService = {
 
   dropAll: async (destinationDoc, facilityDoc) => {
     if (!destinationDoc || !facilityDoc) {
-      throw new ResponseError(422, 'Dokumen destinasi atau fasilitas tidak ditemukan.');
+      throw new ResponseError(500, 'Dokumen destinasi atau fasilitas tidak diterima oleh service.');
     }
 
     if (!facilityDoc.photo || facilityDoc.photo.length === 0) {
@@ -45,17 +45,18 @@ export const facilityService = {
     const subdistrictSlug = destinationDoc.locations.subdistrict.abbrevation;
     const facilitySlug = facilityDoc.slug;
 
-    const dynamicDir = `destinations/${subdistrictSlug}_${destinationSlug}/facility/${facilitySlug}`;
-    const facilitySpecificPath = path.join(process.cwd(), 'public', 'images', dynamicDir);
+    const facilityDir = path.join(
+      process.cwd(),
+      'public',
+      'images',
+      `destinations/${subdistrictSlug}_${destinationSlug}/facility/${facilitySlug}`
+    );
 
     try {
-      toilet - umum / (await fs.rm(facilitySpecificPath, { recursive: true, force: true }));
+      await fs.rm(facilityDir, { recursive: true, force: true });
     } catch (err) {
       if (err.code !== 'ENOENT') {
-        console.error(
-          `Gagal menghapus direktori fasilitas, namun proses DB tetap dilanjutkan: ${facilitySpecificPath}`,
-          err
-        );
+        console.error(`Gagal menghapus folder ${facilityDir}:`, err);
       }
     }
 
@@ -70,7 +71,7 @@ export const facilityService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(500, 'Gagal mengosongkan data foto fasilitas di database.');
+      throw new ResponseError(500, 'Gagal menghapus data foto fasilitas dari database.');
     }
   },
 

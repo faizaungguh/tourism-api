@@ -192,7 +192,7 @@ export const handleMedia = {
         createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
         facilityHelper.photo.replace,
       ],
-      deleteAll: [destinationHelper.check.isAdminOwned],
+      deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isFacilityExist],
       deleteOne: [destinationHelper.check.isAdminOwned],
     },
 
