@@ -11,7 +11,7 @@ export const destination = {
     const { processedPhotos, foundDestination } = req;
     try {
       if (!processedPhotos || Object.keys(processedPhotos).length === 0) {
-        throw new ResponseError(400, 'File tidak ada', {
+        throw new ResponseError(422, 'File tidak ada', {
           photo: 'Anda harus menyertakan setidaknya 1 dokumen gambar',
         });
       }
@@ -101,7 +101,9 @@ export const destination = {
 
     try {
       if (!oldPhotoId || !newPhotoData) {
-        throw new ResponseError(400, 'Data foto yang diproses tidak ditemukan.');
+        throw new ResponseError(422, 'File tidak ada', {
+          photoGallery: 'Data foto yang diproses tidak ditemukan.',
+        });
       }
 
       await mediaService.destination.gallery.update(req.foundDestination, oldPhotoId, newPhotoData);

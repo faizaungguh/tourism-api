@@ -45,7 +45,7 @@ export const destinationService = {
   detail: async (destinationSlug) => {
     /** Validasi slug */
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(400, 'Destination slug tidak valid.', {
+      throw new ResponseError(422, 'Destination tidak valid.', {
         message: 'Slug destinasi harus berupa string yang tidak kosong.',
       });
     }
@@ -64,7 +64,7 @@ export const destinationService = {
 
   update: async (destinationSlug, adminId, request) => {
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(400, 'Destination slug tidak valid.', {
+      throw new ResponseError(422, 'Destination tidak valid.', {
         slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
       });
     }
@@ -86,7 +86,7 @@ export const destinationService = {
 
   drop: async (destinationSlug, adminId) => {
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(400, 'Destination slug tidak valid.', {
+      throw new ResponseError(422, 'Destination tidak valid.', {
         slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
       });
     }

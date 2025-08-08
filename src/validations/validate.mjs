@@ -14,11 +14,7 @@ export const requestCheck = (schema, request) => {
       const key = detail.path[0];
       validationErrors[key] = detail.message;
     });
-    throw new ResponseError(
-      422,
-      'Data yang diberikan tidak valid',
-      validationErrors
-    );
+    throw new ResponseError(422, 'Data yang diberikan tidak valid', validationErrors);
   } else {
     return value;
   }
@@ -26,7 +22,7 @@ export const requestCheck = (schema, request) => {
 
 export const isNotEmpty = (request) => {
   if (!request || Object.keys(request).length === 0) {
-    throw new ResponseError(400, 'Data tidak lengkap', {
+    throw new ResponseError(422, 'Data tidak lengkap', {
       message: 'Request body tidak boleh kosong.',
     });
   }
@@ -34,13 +30,13 @@ export const isNotEmpty = (request) => {
 
 export const isValidId = (id) => {
   if (!id) {
-    throw new ResponseError(400, 'Data tidak lengkap', {
+    throw new ResponseError(422, 'Data tidak lengkap', {
       message: 'Anda harus menyertakan Id',
     });
   }
   /** validasi apakah id yang dikirimkan adalah object id yang valid */
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    throw new ResponseError(400, 'Data tidak lengkap', {
+    throw new ResponseError(422, 'Data tidak lengkap', {
       message: 'Anda harus menyertakan Id yang valid',
     });
   }

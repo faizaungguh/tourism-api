@@ -110,7 +110,7 @@ export const updateManager = async (id, adminId, validatedRequest) => {
   }
 
   if (validatedRequest.role && validatedRequest.role !== 'manager') {
-    throw new ResponseError(400, 'Data ubahan ditolak.', {
+    throw new ResponseError(403, 'Data ubahan ditolak.', {
       message: 'Role yang anda miliki tidak dapat diubah.',
     });
   }

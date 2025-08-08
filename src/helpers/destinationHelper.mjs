@@ -355,7 +355,7 @@ export const createDestination = async (adminId, validatedRequest) => {
     errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
 
   if (Object.keys(errors).length > 0) {
-    throw new ResponseError(400, 'Data gagal ditambahkan.', errors);
+    throw new ResponseError(422, 'Data gagal ditambahkan.', errors);
   }
 
   const { categories, ...rest } = validatedRequest;
@@ -413,7 +413,7 @@ export const patchDestination = async (destinationSlug, adminId, validatedReques
     updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
   }
   if (Object.keys(errors).length > 0) {
-    throw new ResponseError(400, 'Data gagal diubah.', errors);
+    throw new ResponseError(422, 'Data gagal diubah.', errors);
   }
 
   if (validatedRequest.description) {

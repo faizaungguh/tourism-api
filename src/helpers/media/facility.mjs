@@ -50,7 +50,7 @@ export const facility = {
     save: async (req, res, next) => {
       try {
         if (!req.files || req.files.length === 0) {
-          throw new ResponseError(400, 'Tidak ada file', {
+          throw new ResponseError(422, 'Tidak ada file', {
             photo: 'Anda harus menyertakan setidaknya satu file gambar untuk galeri.',
           });
         }
@@ -89,6 +89,11 @@ export const facility = {
 
     replace: async (req, res, next) => {
       try {
+        if (!req.file) {
+          throw new ResponseError(422, 'File tidak ada', {
+            photo: 'Anda harus menyertakan satu file gambar untuk pembaruan',
+          });
+        }
       } catch (error) {}
     },
   },

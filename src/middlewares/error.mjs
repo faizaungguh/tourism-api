@@ -4,9 +4,7 @@ import { logger } from '#app/logging.mjs';
 export const handler = {
   method: (allowed = []) => {
     return (req, res, next) => {
-      const allowedMethodsString = allowed
-        .map((m) => m.toUpperCase())
-        .join(', ');
+      const allowedMethodsString = allowed.map((m) => m.toUpperCase()).join(', ');
 
       res.set('Allow', allowedMethodsString);
 
@@ -33,14 +31,11 @@ export const handler = {
     }
 
     if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
-      logger.warn(
-        `Error pada Klien 400: Gagal mem-parsing JSON body - ${err.message}`
-      );
+      logger.warn(`Error pada Klien 422: Gagal mem-parsing JSON body - ${err.message}`);
       return res.status(422).json({
         message: 'Data anda tidak valid',
         errors: {
-          message:
-            'Format JSON tidak valid. Mohon periksa kembali body request Anda.',
+          message: 'Format JSON tidak valid. Mohon periksa kembali body request Anda.',
         },
       });
     }

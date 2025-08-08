@@ -78,7 +78,7 @@ export const destinationService = {
 
   dropAllGallery: async (destinationDoc) => {
     if (!destinationDoc) {
-      throw new ResponseError(400, 'Dokumen tidak ada', {
+      throw new ResponseError(422, 'Dokumen tidak ada', {
         message: 'Sertakan dokumen terbaru yang anda perlukan.',
       });
     }

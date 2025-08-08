@@ -6,7 +6,9 @@ export const facilityService = {
     const { destinationDoc, facilityDoc, processedFacilityPhotos } = req;
 
     if (!processedFacilityPhotos || processedFacilityPhotos.length === 0) {
-      throw new ResponseError(400, 'Tidak ada foto untuk ditambahkan.');
+      throw new ResponseError(422, 'File tidak ada', {
+        photo: 'Tidak ada foto untuk ditambahkan.',
+      });
     }
 
     const result = await Destination.updateOne(
