@@ -17,6 +17,21 @@ Projek ini merupakan pemenuhan syarat kelulusan untuk mendapatkan gelar Sarjana
 | Node Js  | Jod/v22   |
 | Database  | MongoDB   |
 
+## Konfigurasi awal
+
+copy dan ubah nama file example.env menjadi -> .env, kemudian sesuaikan dengan konfigurasi pengembanganmu
+
+```env
+PORT=<port konfigurasi>
+MONGO_IP=<IP Mongo>
+MONGO_USER= <Username Mongo>
+MONGO_PASSWORD= <Password Mongo>
+MONGO_DB= <Nama DB>
+JWT_SECRET=<Kata random>
+JWT_EXPIRES_IN=<kadaluarsa JWT>
+APP_URL=<BaseUrl>
+```
+
 ## Install MongoDB
 
 ### Menggunakan Docker
