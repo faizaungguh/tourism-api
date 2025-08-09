@@ -1,82 +1,258 @@
 [
     {
-        "username": "admin01",
-        "password": "rahasiaAdmin01",
-        "name": "Admin 01",
-        "email": "admin01@example.com",
-        "contactNumber": "081234567890",
+        "username": "superadmin",
+        "password": "supersecretpassword",
+        "name": "Super Administrator",
+        "email": "superadmin@example.com",
+        "contactNumber": "080000000000",
         "role": "admin"
     },
     {
-        "username": "admin02",
-        "password": "rahasiaAdmin02",
-        "name": "Admin 02",
-        "email": "admin02@example.com",
-        "contactNumber": "081234567890",
+        "username": "admin_operasional",
+        "password": "password123",
+        "name": "Admin Operasional",
+        "email": "admin.ops@example.com",
+        "contactNumber": "080000000001",
         "role": "admin"
     },
     {
-        "username": "admin03",
-        "password": "rahasiaAdmin03",
-        "name": "Admin 03",
-        "email": "admin03@example.com",
-        "contactNumber": "081234567890",
+        "username": "admin_konten",
+        "password": "password123",
+        "name": "Admin Konten",
+        "email": "admin.content@example.com",
+        "contactNumber": "080000000002",
         "role": "admin"
     },
     {
-        "username": "admin04",
-        "password": "rahasiaAdmin04",
-        "name": "Admin 04",
-        "email": "admin04@example.com",
-        "contactNumber": "081234567890",
+        "username": "admin_keuangan",
+        "password": "password123",
+        "name": "Admin Keuangan",
+        "email": "admin.finance@example.com",
+        "contactNumber": "080000000003",
         "role": "admin"
     },
     {
-        "username": "admin05",
-        "password": "rahasiaAdmin05",
-        "name": "Admin 05",
-        "email": "admin05@example.com",
-        "contactNumber": "081234567890",
+        "username": "admin_dukungan",
+        "password": "password123",
+        "name": "Admin Dukungan Teknis",
+        "email": "admin.support@example.com",
+        "contactNumber": "080000000004",
         "role": "admin"
     },
     {
-        "username": "manager01",
-        "password": "rahasiaManager01",
-        "name": "Manager Wisata 01",
-        "email": "manager01@example.com",
-        "contactNumber": "08518202025",
+        "username": "mng_baturaden",
+        "password": "password123",
+        "name": "Manajer Kecamatan Baturaden",
+        "email": "manager.baturaden@example.com",
+        "contactNumber": "081227000001",
         "role": "manager"
     },
     {
-        "username": "manager02",
-        "password": "rahasiaManager02",
-        "name": "Manager Wisata 02",
-        "email": "manager02@example.com",
-        "contactNumber": "08518202025",
+        "username": "mng_sokaraja",
+        "password": "password123",
+        "name": "Manajer Kecamatan Sokaraja",
+        "email": "manager.sokaraja@example.com",
+        "contactNumber": "081227000002",
         "role": "manager"
     },
     {
-        "username": "manager03",
-        "password": "rahasiaManager03",
-        "name": "Manager Wisata 03",
-        "email": "manager03@example.com",
-        "contactNumber": "08518202025",
+        "username": "mng_purwokerto_utara",
+        "password": "password123",
+        "name": "Manajer Kecamatan Purwokerto Utara",
+        "email": "manager.pwtutara@example.com",
+        "contactNumber": "081227000003",
         "role": "manager"
     },
     {
-        "username": "manager04",
-        "password": "rahasiaManager04",
-        "name": "Manager Wisata 04",
-        "email": "manager04@example.com",
-        "contactNumber": "08518202025",
+        "username": "mng_purwokerto_timur",
+        "password": "password123",
+        "name": "Manajer Kecamatan Purwokerto Timur",
+        "email": "manager.pwttimur@example.com",
+        "contactNumber": "081227000004",
         "role": "manager"
     },
     {
-        "username": "manager05",
-        "password": "rahasiaManager05",
-        "name": "Manager Wisata 05",
-        "email": "manager05@example.com",
-        "contactNumber": "08518202025",
+        "username": "mng_purwokerto_selatan",
+        "password": "password123",
+        "name": "Manajer Kecamatan Purwokerto Selatan",
+        "email": "manager.pwtselatan@example.com",
+        "contactNumber": "081227000005",
+        "role": "manager"
+    },
+    {
+        "username": "mng_purwokerto_barat",
+        "password": "password123",
+        "name": "Manajer Kecamatan Purwokerto Barat",
+        "email": "manager.pwtbarat@example.com",
+        "contactNumber": "081227000006",
+        "role": "manager"
+    },
+    {
+        "username": "mng_kedungbanteng",
+        "password": "password123",
+        "name": "Manajer Kecamatan Kedungbanteng",
+        "email": "manager.kedungbanteng@example.com",
+        "contactNumber": "081227000007",
+        "role": "manager"
+    },
+    {
+        "username": "mng_karanglewas",
+        "password": "password123",
+        "name": "Manajer Kecamatan Karanglewas",
+        "email": "manager.karanglewas@example.com",
+        "contactNumber": "081227000008",
+        "role": "manager"
+    },
+    {
+        "username": "mng_cilongok",
+        "password": "password123",
+        "name": "Manajer Kecamatan Cilongok",
+        "email": "manager.cilongok@example.com",
+        "contactNumber": "081227000009",
+        "role": "manager"
+    },
+    {
+        "username": "mng_ajibarang",
+        "password": "password123",
+        "name": "Manajer Kecamatan Ajibarang",
+        "email": "manager.ajibarang@example.com",
+        "contactNumber": "081227000010",
+        "role": "manager"
+    },
+    {
+        "username": "mng_pekuncen",
+        "password": "password123",
+        "name": "Manajer Kecamatan Pekuncen",
+        "email": "manager.pekuncen@example.com",
+        "contactNumber": "081227000011",
+        "role": "manager"
+    },
+    {
+        "username": "mng_gumelar",
+        "password": "password123",
+        "name": "Manajer Kecamatan Gumelar",
+        "email": "manager.gumelar@example.com",
+        "contactNumber": "081227000012",
+        "role": "manager"
+    },
+    {
+        "username": "mng_sumbang",
+        "password": "password123",
+        "name": "Manajer Kecamatan Sumbang",
+        "email": "manager.sumbang@example.com",
+        "contactNumber": "081227000013",
+        "role": "manager"
+    },
+    {
+        "username": "mng_kembaran",
+        "password": "password123",
+        "name": "Manajer Kecamatan Kembaran",
+        "email": "manager.kembaran@example.com",
+        "contactNumber": "081227000014",
+        "role": "manager"
+    },
+    {
+        "username": "mng_banyumas",
+        "password": "password123",
+        "name": "Manajer Kecamatan Banyumas",
+        "email": "manager.banyumas@example.com",
+        "contactNumber": "081227000015",
+        "role": "manager"
+    },
+    {
+        "username": "mng_kalibagor",
+        "password": "password123",
+        "name": "Manajer Kecamatan Kalibagor",
+        "email": "manager.kalibagor@example.com",
+        "contactNumber": "081227000016",
+        "role": "manager"
+    },
+    {
+        "username": "mng_patikraja",
+        "password": "password123",
+        "name": "Manajer Kecamatan Patikraja",
+        "email": "manager.patikraja@example.com",
+        "contactNumber": "081227000017",
+        "role": "manager"
+    },
+    {
+        "username": "mng_rawalo",
+        "password": "password123",
+        "name": "Manajer Kecamatan Rawalo",
+        "email": "manager.rawalo@example.com",
+        "contactNumber": "081227000018",
+        "role": "manager"
+    },
+    {
+        "username": "mng_kebasen",
+        "password": "password123",
+        "name": "Manajer Kecamatan Kebasen",
+        "email": "manager.kebasen@example.com",
+        "contactNumber": "081227000019",
+        "role": "manager"
+    },
+    {
+        "username": "mng_jatilawang",
+        "password": "password123",
+        "name": "Manajer Kecamatan Jatilawang",
+        "email": "manager.jatilawang@example.com",
+        "contactNumber": "081227000020",
+        "role": "manager"
+    },
+    {
+        "username": "mng_wangon",
+        "password": "password123",
+        "name": "Manajer Kecamatan Wangon",
+        "email": "manager.wangon@example.com",
+        "contactNumber": "081227000021",
+        "role": "manager"
+    },
+    {
+        "username": "mng_lumbir",
+        "password": "password123",
+        "name": "Manajer Kecamatan Lumbir",
+        "email": "manager.lumbir@example.com",
+        "contactNumber": "081227000022",
+        "role": "manager"
+    },
+    {
+        "username": "mng_purwojati",
+        "password": "password123",
+        "name": "Manajer Kecamatan Purwojati",
+        "email": "manager.purwojati@example.com",
+        "contactNumber": "081227000023",
+        "role": "manager"
+    },
+    {
+        "username": "mng_somagede",
+        "password": "password123",
+        "name": "Manajer Kecamatan Somagede",
+        "email": "manager.somagede@example.com",
+        "contactNumber": "081227000024",
+        "role": "manager"
+    },
+    {
+        "username": "mng_kemranjen",
+        "password": "password123",
+        "name": "Manajer Kecamatan Kemranjen",
+        "email": "manager.kemranjen@example.com",
+        "contactNumber": "081227000025",
+        "role": "manager"
+    },
+    {
+        "username": "mng_sumpiuh",
+        "password": "password123",
+        "name": "Manajer Kecamatan Sumpiuh",
+        "email": "manager.sumpiuh@example.com",
+        "contactNumber": "081227000026",
+        "role": "manager"
+    },
+    {
+        "username": "mng_tambak",
+        "password": "password123",
+        "name": "Manajer Kecamatan Tambak",
+        "email": "manager.tambak@example.com",
+        "contactNumber": "081227000027",
         "role": "manager"
     }
 ]

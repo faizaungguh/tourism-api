@@ -1,0 +1,563 @@
+[
+  {
+    "destinationTitle": "Bukit Karang Kitri",
+    "category": "Alam",
+    "createdBy": "mng_purwojati",
+    "description": "Bukit Karang Kitri adalah destinasi wisata alam perbukitan yang menawarkan pemandangan panorama dari ketinggian. Tempat ini menjadi spot favorit bagi para pemuda dan fotografer untuk mengabadikan momen matahari terbit maupun terbenam dengan latar belakang hamparan hijau.",
+    "locations": {
+      "addresses": "Gerduren, Kaliurip, Kec. Purwojati, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/xaKSDqbhdhnSwXLE6",
+      "subdistrict": "Purwojati",
+      "coordinates": {
+        "lat": -7.4993954504683495,
+        "long": 109.13188861880653
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Gardu Pandang",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Sederhana",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@bukitkarangkitri"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 20,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Cikakak",
+    "category": "Alam",
+    "createdBy": "mng_wangon",
+    "description": "Curug Cikakak adalah air terjun yang berada di dekat kawasan Masjid Saka Tunggal. Pengunjung dapat menikmati suasana sejuk dan rindang di bawah pepohonan sambil melihat aliran air terjun. Terdapat jembatan gantung yang menjadi spot foto menarik dan gazebo untuk bersantai.",
+    "locations": {
+      "addresses": "Desa Cikakak, Kecamatan Wangon, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/JxpYiPw611yBMzEdA",
+      "subdistrict": "Wangon",
+      "coordinates": {
+        "lat": -7.468310546197612,
+        "long": 109.05708681817399
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Jembatan Gantung",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Gazebo",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700021"
+      }
+    ],
+    "ticket": {
+      "adult": 5000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 40,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 10,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Wisata Gunung Batur",
+    "category": "Alam",
+    "createdBy": "mng_lumbir",
+    "description": "Berbeda dari Gunung Batur di Bali, Wisata Gunung Batur di Lumbir ini merupakan sebuah bukit yang menawarkan jalur pendakian santai bagi pemula. Dari Puncak Pandang, pengunjung bisa menikmati pemandangan 360 derajat kawasan Lumbir dan sekitarnya, terutama saat cuaca cerah.",
+    "locations": {
+      "addresses": "Desa Canduk, Kecamatan Lumbir, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/mjVPL62CmK8MHwFf7",
+      "subdistrict": "Lumbir",
+      "coordinates": {
+        "lat": -7.464141679397643,
+        "long": 109.0236383399982
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Jalur Pendakian",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Area Parkir Warga",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@gunungbaturlumbir"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 15,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Bukit Pengaritan",
+    "category": "Alam",
+    "createdBy": "mng_sumpiuh",
+    "description": "Bukit Pengaritan adalah sebuah bukit yang menjadi spot populer untuk menikmati pemandangan Waduk Sempor dari kejauhan. Selain itu, bukit ini juga dikenal sebagai area lepas landas paralayang, sehingga pengunjung bisa menyaksikan aktivitas olahraga ekstrem ini saat ada jadwal latihan atau event.",
+    "locations": {
+      "addresses": "Area Hutan, Bogangin, Kec. Sumpiuh, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/VLRTUjVsLgn5r5wj9",
+      "subdistrict": "Sumpiuh",
+      "coordinates": {
+        "lat": -7.575836749787253,
+        "long": 109.37736035638561
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:30 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:30 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Lepas Landas Paralayang",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Kecil",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Tempat Parkir",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700026"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 25,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Taman Wisata Sentana",
+    "category": "Buatan",
+    "createdBy": "mng_sumpiuh",
+    "description": "Taman Wisata Sentana adalah tempat rekreasi keluarga yang mengandalkan kolam renang sebagai daya tarik utamanya. Dilengkapi dengan beberapa wahana air sederhana seperti seluncuran, serta taman dan gazebo, tempat ini cocok untuk bersantai dan berekreasi di akhir pekan.",
+    "locations": {
+      "addresses": "Jl. Kradenan, Dusun II, Kradenan, Kec. Sumpiuh, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/XgVNsuLbwzUsPUkn8",
+      "subdistrict": "Sumpiuh",
+      "coordinates": {
+        "lat": -7.5829835356755595,
+        "long": 109.37504292778245
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Kolam Renang Anak & Dewasa",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Taman dan Gazebo",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Kantin",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@sentana.waterpark"
+      }
+    ],
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 100,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 30,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Taman Sumpiuh",
+    "category": "Buatan",
+    "createdBy": "mng_sumpiuh",
+    "description": "Taman Sumpiuh adalah ruang terbuka publik di pusat kota yang berfungsi sebagai tempat rekreasi dan interaksi warga. Dilengkapi dengan playground anak, air mancur, dan bangku-bangku taman, tempat ini menjadi titik kumpul yang nyaman terutama pada sore hari.",
+    "locations": {
+      "addresses": "Jl. Raya Sumpiuh, Sumpiuh, Kec. Sumpiuh, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/dGSM5vQuLyMtohGp8",
+      "subdistrict": "Sumpiuh",
+      "coordinates": {
+        "lat": -7.612344735464433,
+        "long": 109.35715107469221
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Playground",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Air Mancur",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet Umum",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@taman.sumpiuh"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 1000
+      },
+      "car": {
+        "capacity": 10,
+        "price": 2000
+      }
+    }
+  }
+]

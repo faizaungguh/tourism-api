@@ -1,0 +1,83 @@
+[
+  {
+    "destinationTitle": "Curug Nangga",
+    "subdistrict": "Pekuncen",
+    "coordinates": {
+      "lat": "-7.3614390232738005",
+      "long": "109.04860589519578"
+    },
+    "link": "https://maps.app.goo.gl/13eG2QjnPuJ1akYM6"
+  },
+  {
+    "destinationTitle": "Wisata Alam Bunton",
+    "subdistrict": "Pekuncen",
+    "coordinates": {
+      "lat": "-7.338817455178473",
+      "long": "109.09946647677806"
+    },
+    "link": "https://maps.app.goo.gl/S1wWsj2hd7d95eAp9"
+  },
+  {
+    "destinationTitle": "Peternakan Menggala",
+    "subdistrict": "Pekuncen",
+    "coordinates": {
+      "lat": "-7.34617946179656",
+      "long": "109.11938767579069"
+    },
+    "link": "https://maps.app.goo.gl/QFWTSfH2o36KFHa17"
+  },
+  {
+    "destinationTitle": "Wisata Watu Kumpul",
+    "subdistrict": "Pekuncen",
+    "coordinates": {
+      "lat": "-7.382271542373523",
+      "long": "109.04589515303466"
+    },
+    "link": "https://maps.app.goo.gl/dE1HSxjXyDYMPquK6"
+  },
+  {
+    "destinationTitle": "Curug Kedung Lesung",
+    "subdistrict": "Pekuncen",
+    "coordinates": {
+      "lat": "-7.332984131337706",
+      "long": "109.10899662007164"
+    },
+    "link": "https://maps.app.goo.gl/SW6V7o7VyWDg8gjx5"
+  },
+  {
+    "destinationTitle": "Curug Senthong",
+    "subdistrict": "Gumelar",
+    "coordinates": {
+      "lat": "-7.341664423204088",
+      "long": "109.03177124491349"
+    },
+    "link": "https://maps.app.goo.gl/4fUfpMTYUws3VRsS7"
+  },
+  {
+    "destinationTitle": "Wisata Alam Curug Mbulu Kuning",
+    "subdistrict": "Gumelar",
+    "coordinates": {
+      "lat": "-7.3642225375270645",
+      "long": "109.00722371567778"
+    },
+    "link": "https://maps.app.goo.gl/pduuxAW3nRoXiYfFA"
+  },
+  {
+    "destinationTitle": "Curug Patraguna",
+    "subdistrict": "Gumelar",
+    "coordinates": {
+      "lat": "-7.332731711837984",
+      "long": "109.02706461354717"
+    },
+    "link": "https://maps.app.goo.gl/64EUr7a6n6wJfYjD6"
+  },
+  {
+    "destinationTitle": "Puncak Sujen",
+    "subdistrict": "Gumelar",
+    "coordinates": {
+      "lat": "-7.3349579791471005",
+      "long": "109.02379135373353"
+    },
+    "link": "https://maps.app.goo.gl/V1HHYF4kmtn8XxTj8"
+  }
+]

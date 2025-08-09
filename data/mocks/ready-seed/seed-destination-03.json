@@ -1,0 +1,617 @@
+[
+  {
+    "destinationTitle": "Taman Impean",
+    "category": "Buatan",
+    "createdBy": "mng_kembaran",
+    "description": "Taman Impean adalah sebuah taman rekreasi air keluarga yang terletak di Kembaran. Dilengkapi dengan kolam renang untuk anak-anak dan dewasa, tempat ini menjadi pilihan favorit untuk menghabiskan liburan sambil menikmati kesegaran air di tengah suasana pedesaan.",
+    "locations": {
+      "addresses": "Jl. Raya Dukuhwaluh, Dusun I, Dukuhwaluh, Kec. Kembaran, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/K7QJCNheX1CeonsQ7",
+      "subdistrict": "Kembaran",
+      "coordinates": {
+        "lat": -7.40263302043985,
+        "long": 109.28318734484634
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Kolam Renang",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Kantin",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet dan Kamar Ganti",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@tamanimpean_official"
+      }
+    ],
+    "ticket": {
+      "adult": 15000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 50,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 20,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Langit Senja Cafe",
+    "category": "Kuliner",
+    "createdBy": "mng_kembaran",
+    "description": "Langit Senja Cafe menawarkan pengalaman nongkrong yang nyaman dengan pemandangan persawahan dan langit sore yang indah. Kafe ini menjadi tempat favorit anak muda untuk bersantai sambil menikmati berbagai pilihan kopi, minuman kekinian, dan makanan ringan.",
+    "locations": {
+      "addresses": "Jl. Kertawibawa, Dusun I, Karangsari, Kec. Kembaran, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/ge9MN9LoJitfsjWy6",
+      "subdistrict": "Kembaran",
+      "coordinates": {
+        "lat": -7.407998314277065,
+        "long": 109.27872375135918
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "14:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "14:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "14:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "14:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "14:00 - 23:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "14:00 - 23:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "14:00 - 22:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Indoor & Outdoor",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "WiFi",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@langitsenja.cafe"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 40,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 15,
+        "price": 3000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Bumi Perkemahan Kendalisada",
+    "category": "Alam",
+    "createdBy": "mng_kalibagor",
+    "description": "Bumi Perkemahan Kendalisada adalah area perkemahan yang luas dan populer di Kalibagor, sering digunakan untuk kegiatan pramuka, LDK, dan acara luar ruang lainnya. Dengan latar belakang perbukitan dan udara yang sejuk, tempat ini ideal untuk melatih kemandirian dan menikmati alam.",
+    "locations": {
+      "addresses": "Desa Kaliori, Kecamatan Kalibagor, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/5jndJ5xTZNG1hkGb8",
+      "subdistrict": "Kalibagor",
+      "coordinates": {
+        "lat": -7.4888443336296024,
+        "long": 109.29686055141474
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Berkemah",
+        "availability": true,
+        "number": 5,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Aula Terbuka",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "MCK",
+        "availability": true,
+        "number": 10,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700016"
+      }
+    ],
+    "ticket": {
+      "adult": 10000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 100,
+        "price": 3000
+      },
+      "car": {
+        "capacity": 40,
+        "price": 10000
+      },
+      "bus": {
+        "capacity": 10,
+        "price": 25000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Goa Maria Kaliori",
+    "category": "Religi",
+    "createdBy": "mng_kalibagor",
+    "description": "Goa Maria Kaliori adalah sebuah tempat ziarah dan doa bagi umat Katolik yang terletak di lingkungan yang tenang dan asri. Dengan patung Bunda Maria di dalam goa alami, tempat ini menjadi tujuan untuk refleksi, ibadah, dan mencari ketenangan spiritual.",
+    "locations": {
+      "addresses": "Jalan, Dusun II, Kaliori, Kec. Kalibagor, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/UMnEvHsogtponPwC7",
+      "subdistrict": "Kalibagor",
+      "coordinates": {
+        "lat": -7.494979402633577,
+        "long": 109.30698216143355
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Doa",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toko Perlengkapan Rohani",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Tempat Ibadah",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "62281682110"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 60,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 30,
+        "price": 5000
+      },
+      "bus": {
+        "capacity": 5,
+        "price": 10000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Alun-alun Banyumas",
+    "category": "Sejarah",
+    "createdBy": "mng_banyumas",
+    "description": "Alun-alun Banyumas adalah jantung kota lama Banyumas yang sarat akan nilai sejarah. Dikelilingi oleh bangunan-bangunan kuno seperti Duplikat Pendopo Si Panji dan Masjid Agung Nur Sulaiman, tempat ini menjadi pusat kegiatan masyarakat, tempat bersantai, dan menikmati kuliner di malam hari.",
+    "locations": {
+      "addresses": "Jl. Mruyung, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/pbmRfQCK2nTQTxTx5",
+      "subdistrict": "Banyumas",
+      "coordinates": {
+        "lat": -7.51689920604775,
+        "long": 109.29393336945525
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Taman Publik",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Pusat Jajanan Malam",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Masjid Agung",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet Umum",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@banyumas.kotatua"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 200,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 50,
+        "price": 3000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Museum Wayang Sendang Mas",
+    "category": "Edukasi",
+    "createdBy": "mng_banyumas",
+    "description": "Museum Wayang Sendang Mas adalah sebuah museum yang didedikasikan untuk melestarikan seni pewayangan, khususnya Gagrag Banyumasan. Pengunjung dapat melihat berbagai koleksi wayang kulit, serta belajar tentang sejarah dan filosofi di balik setiap tokohnya. Lokasinya berada di kompleks Pendopo Sipanji.",
+    "locations": {
+      "addresses": "Jl. Gatot Subroto, Kauman, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/hzPMrAKbhxGu3Gqv5",
+      "subdistrict": "Banyumas",
+      "coordinates": {
+        "lat": -7.514671731332787,
+        "long": 109.29446410755575
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 14:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Ruang Pamer Koleksi",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Pemandu Museum",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Tempat Ibadah (Masjid Agung terdekat)",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "62281795171"
+      }
+    ],
+    "ticket": {
+      "adult": 5000,
+      "child": 3000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 15,
+        "price": 5000
+      }
+    }
+  }
+]

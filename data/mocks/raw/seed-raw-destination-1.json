@@ -1,0 +1,173 @@
+[
+  {
+    "destinationTitle": "Museum Jendral Sudirman",
+    "subdistrict": "Purwokerto Barat",
+    "coordinates": {
+      "lat": "-7.419747236128376",
+      "long": "109.19624539325419"
+    },
+    "link": "https://maps.app.goo.gl/6F9FMmkuwsWUVoTv8"
+  },
+  {
+    "destinationTitle": "Museum BRI",
+    "subdistrict": "Purwokerto Barat",
+    "coordinates": {
+      "lat": "-7.423705388571167",
+      "long": "109.22563684787822"
+    },
+    "link": "https://maps.app.goo.gl/P99zyrDaudNE3LK56"
+  },
+  {
+    "destinationTitle": "Taman Kober",
+    "subdistrict": "Purwokerto Barat",
+    "coordinates": {
+      "lat": "-7.412261069022674",
+      "long": "109.22193289021413"
+    },
+    "link": "https://maps.app.goo.gl/b9MXnqi9SiGXB5228"
+  },
+  {
+    "destinationTitle": "Rasam Park",
+    "subdistrict": "Purwokerto Barat",
+    "coordinates": {
+      "lat": "-7.415126691566616",
+      "long": "109.22105546907804"
+    },
+    "link": "https://maps.app.goo.gl/wpx8qgxDYiDfqGdA8"
+  },
+  {
+    "destinationTitle": "Alun-alun Purwokerto",
+    "subdistrict": "Purwokerto Timur",
+    "coordinates": {
+      "lat": "-7.424281449995401",
+      "long": "109.23020451534448"
+    },
+    "link": "https://maps.app.goo.gl/8QrUPnFG1jQB47Rv7"
+  },
+  {
+    "destinationTitle": "Jembatan Gerilya Sudirman",
+    "subdistrict": "Purwokerto Timur",
+    "coordinates": {
+      "lat": "-7.426220462017397",
+      "long": "109.23346470741153"
+    },
+    "link": "https://maps.app.goo.gl/q4Hf3ZvmgatrsaZW9"
+  },
+  {
+    "destinationTitle": "Taman Pangripta",
+    "subdistrict": "Purwokerto Timur",
+    "coordinates": {
+      "lat": "-7.423760455463094",
+      "long": "109.23861465199174"
+    },
+    "link": "https://maps.app.goo.gl/XvGtpC5KnJsFHyww6"
+  },
+  {
+    "destinationTitle": "Tugu Pembangunan",
+    "subdistrict": "Purwokerto Timur",
+    "coordinates": {
+      "lat": "-7.421476820883332",
+      "long": "109.23768482883611"
+    },
+    "link": "https://maps.app.goo.gl/JwnRRXB5buUn6XZ19"
+  },
+  {
+    "destinationTitle": "Menara Teratai",
+    "subdistrict": "Purwokerto Timur",
+    "coordinates": {
+      "lat": "-7.431291448203357",
+      "long": "109.23268757486963"
+    },
+    "link": "https://maps.app.goo.gl/7PMg6nz5o6Xx1bFQA"
+  },
+  {
+    "destinationTitle": "Pool Villa",
+    "subdistrict": "Karanglewas",
+    "coordinates": {
+      "lat": "-7.451431942232573",
+      "long": "109.20936691482302"
+    },
+    "link": "https://maps.app.goo.gl/2NS7fFM3SXHDsc6o7"
+  },
+  {
+    "destinationTitle": "Bukit Gadog",
+    "subdistrict": "Karanglewas",
+    "coordinates": {
+      "lat": "-7.3521297888777335",
+      "long": "109.17711132176865"
+    },
+    "link": "https://maps.app.goo.gl/tDecbpRBuxsFAW5q6"
+  },
+  {
+    "destinationTitle": "Wisata Alam Kedung Jayub",
+    "subdistrict": "Karanglewas",
+    "coordinates": {
+      "lat": "-7.42843742634123",
+      "long": "109.19967601984946"
+    },
+    "link": "https://maps.app.goo.gl/KHyCQjiTNmCQ93dAA"
+  },
+  {
+    "destinationTitle": "Desa Wisata Tamansari",
+    "subdistrict": "Karanglewas",
+    "coordinates": {
+      "lat": "-7.433562390884683",
+      "long": "109.18937082130273"
+    },
+    "link": "https://maps.app.goo.gl/o4kXXyzs6PjE8rVF8"
+  },
+  {
+    "destinationTitle": "Curug Cidadap",
+    "subdistrict": "Karanglewas",
+    "coordinates": {
+      "lat": "-7.316115321725495",
+      "long": "109.18205109406671"
+    },
+    "link": "https://maps.app.goo.gl/ZCy2KopPR1psjWqf9"
+  },
+  {
+    "destinationTitle": "Wisata Alam Baturaden",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": "-7.297714992203012",
+      "long": "109.22136054387057"
+    },
+    "link": "https://maps.app.goo.gl/eFqfhjNJLJyBDRcp9"
+  },
+  {
+    "destinationTitle": "Taman Langit",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": "-7.352709082417867",
+      "long": "109.22754035347903"
+    },
+    "link": "https://maps.app.goo.gl/ALT2tKY5gjBTFkhGA"
+  },
+  {
+    "destinationTitle": "Baturaden Adventure Forest",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": "-7.305887917473235",
+      "long": "109.24264655474414"
+    },
+    "link": "https://maps.app.goo.gl/7i2EuaWJ9jH23EPa9"
+  },
+  {
+    "destinationTitle": "Kebun Raya Baturaden",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": "-7.303674431630686",
+      "long": "109.23509345411159"
+    },
+    "link": "https://maps.app.goo.gl/F4v7XRJbGhJap1L9A"
+  },
+  {
+    "destinationTitle": "Telaga Sunyi",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": "-7.3033338943743455",
+      "long": "109.24384818439022"
+    },
+    "link": "https://maps.app.goo.gl/B3mJrpog6xWyngFk8"
+  }
+]

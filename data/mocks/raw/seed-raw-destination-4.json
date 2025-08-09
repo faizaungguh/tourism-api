@@ -1,0 +1,110 @@
+[
+  {
+    "destinationTitle": "Curug Dawa",
+    "subdistrict": "Somagede",
+    "coordinates": {
+      "lat": "-7.5435425170513755",
+      "long": "109.30940073398439"
+    },
+    "link": "https://maps.app.goo.gl/cGohhkBzHhVEGdNY7"
+  },
+  {
+    "destinationTitle": "Embung Somagede",
+    "subdistrict": "Somagede",
+    "coordinates": {
+      "lat": "-7.5230876596943",
+      "long": "109.3287059525132"
+    },
+    "link": "https://maps.app.goo.gl/kSN1onkV3ccouobe7"
+  },
+  {
+    "destinationTitle": "Objek Wisata Watu Lintang",
+    "subdistrict": "Somagede",
+    "coordinates": {
+      "lat": "-7.539177440171865",
+      "long": "109.33351749536757"
+    },
+    "link": "https://maps.app.goo.gl/R64NQGCdhq3rxWJF8"
+  },
+  {
+    "destinationTitle": "Wisata Banyu Tetes",
+    "subdistrict": "Somagede",
+    "coordinates": {
+      "lat": "-7.541057098179457",
+      "long": "109.3214042218242"
+    },
+    "link": "https://maps.app.goo.gl/LBn5Uh6fBY8sf5DB9"
+  },
+  {
+    "destinationTitle": "Curug Song",
+    "subdistrict": "Kebasen",
+    "coordinates": {
+      "lat": "-7.539036646308005",
+      "long": "109.23836353340741"
+    },
+    "link": "https://maps.app.goo.gl/bkW4Kij7Xzj3oZVTA"
+  },
+  {
+    "destinationTitle": "Telaga Anteng",
+    "subdistrict": "Kebasen",
+    "coordinates": {
+      "lat": "-7.542591525151846",
+      "long": "109.22048369374248"
+    },
+    "link": "https://maps.app.goo.gl/UNeZSYsybgNskYWA6"
+  },
+  {
+    "destinationTitle": "Watu Meja",
+    "subdistrict": "Kebasen",
+    "coordinates": {
+      "lat": "-7.518122175965632",
+      "long": "109.21440811962728"
+    },
+    "link": "https://maps.app.goo.gl/fQxSZzDFwdnGM8TK6"
+  },
+  {
+    "destinationTitle": "Taman Patikraja",
+    "subdistrict": "Patikraja",
+    "coordinates": {
+      "lat": "-7.484419901764792",
+      "long": "109.2233768779818"
+    },
+    "link": "https://maps.app.goo.gl/Ke2ARW61kiGMiHwP9"
+  },
+  {
+    "destinationTitle": "Terowongan Notog",
+    "subdistrict": "Patikraja",
+    "coordinates": {
+      "lat": "-7.495522145325008",
+      "long": "109.2155769799068"
+    },
+    "link": "https://maps.app.goo.gl/z7RRjHcTDik6THxm6"
+  },
+  {
+    "destinationTitle": "Wisata Gunung Pencit",
+    "subdistrict": "Patikraja",
+    "coordinates": {
+      "lat": "-7.478674790750145",
+      "long": "109.16985645664181"
+    },
+    "link": "https://maps.app.goo.gl/Lg77CyRGBdQsXT6E7"
+  },
+  {
+    "destinationTitle": "Curug Macan",
+    "subdistrict": "Patikraja",
+    "coordinates": {
+      "lat": "-7.48209681202436",
+      "long": "109.24333180632553"
+    },
+    "link": "https://maps.app.goo.gl/2sWvj6DTowPUjMeL9"
+  },
+  {
+    "destinationTitle": "Bukit Cikawak",
+    "subdistrict": "Patikraja",
+    "coordinates": {
+      "lat": "-7.470560533755986",
+      "long": "109.1904638745936"
+    },
+    "link": "https://maps.app.goo.gl/GVtiZaJmsFbPMStc9"
+  }
+]

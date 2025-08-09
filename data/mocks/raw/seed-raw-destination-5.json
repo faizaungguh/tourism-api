@@ -1,0 +1,74 @@
+[
+  {
+    "destinationTitle": "Puncak Wadas Tumpang",
+    "subdistrict": "Jatilawang",
+    "coordinates": {
+      "lat": "-7.570001371714343",
+      "long": "109.08547651530141"
+    },
+    "link": "https://maps.app.goo.gl/VW3441HA43vYW97q8"
+  },
+  {
+    "destinationTitle": "Bukit Gajah Selo",
+    "subdistrict": "Jatilawang",
+    "coordinates": {
+      "lat": "-7.505744046154804",
+      "long": "109.1055224106854"
+    },
+    "link": "https://maps.app.goo.gl/43Eo4ApzfKLuugUe9"
+  },
+  {
+    "destinationTitle": "Alun-alun Jatilawang",
+    "subdistrict": "Jatilawang",
+    "coordinates": {
+      "lat": "-7.529304461588213",
+      "long": "109.13255987584928"
+    },
+    "link": "https://maps.app.goo.gl/24tMv3Mz5P9ojqhA9"
+  },
+  {
+    "destinationTitle": "Dermaga Perahu Apung Tambaknegara",
+    "subdistrict": "Rawalo",
+    "coordinates": {
+      "lat": "-7.514225699226784",
+      "long": "109.21074121321558"
+    },
+    "link": "https://maps.app.goo.gl/zRuTfJ8XUxMjshto8"
+  },
+  {
+    "destinationTitle": "Pemandian Tirta Husada Kalibacin",
+    "subdistrict": "Rawalo",
+    "coordinates": {
+      "lat": "-7.519501470949276",
+      "long": "109.20044153053485"
+    },
+    "link": "https://maps.app.goo.gl/RkkqGAix8vpAqHNC8"
+  },
+  {
+    "destinationTitle": "Newa Fun Education",
+    "subdistrict": "Rawalo",
+    "coordinates": {
+      "lat": "-7.522394608866295",
+      "long": "109.21194284286167"
+    },
+    "link": "https://maps.app.goo.gl/xpD4HLDysdYhcrmd6"
+  },
+  {
+    "destinationTitle": "Curug Pasekan",
+    "subdistrict": "Rawalo",
+    "coordinates": {
+      "lat": "-7.500440315927474",
+      "long": "109.18379037686762"
+    },
+    "link": "https://maps.app.goo.gl/EHhs3t3MEZt5tVfE9"
+  },
+  {
+    "destinationTitle": "Puncak Cikendang",
+    "subdistrict": "Rawalo",
+    "coordinates": {
+      "lat": "-7.510991867183416",
+      "long": "109.12437555211605"
+    },
+    "link": "https://maps.app.goo.gl/wywXgTpWzJ1ZNgjMA"
+  }
+]

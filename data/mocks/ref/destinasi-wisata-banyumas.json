@@ -1,0 +1,1001 @@
+{
+    "data":
+    [
+        {
+            "node": 1,
+            "Kecamatan": "Purwokerto Barat",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Museum Jendral Sudirman",
+                    "coordinates": "-7.419747236128376, 109.19624539325419",
+                    "latitude": "-7.419747236128376",
+                    "longitude": "109.19624539325419",
+                    "link": "https://maps.app.goo.gl/6F9FMmkuwsWUVoTv8"
+                },
+                {
+                    "id": 2,
+                    "name": "Museum BRI",
+                    "coordinates": "-7.423705388571167, 109.22563684787822",
+                    "latitude": "-7.423705388571167",
+                    "longitude": "109.22563684787822",
+                    "link": "https://maps.app.goo.gl/P99zyrDaudNE3LK56"
+                },
+                {
+                    "id": 3,
+                    "name": "Taman Kober",
+                    "coordinates": "-7.412261069022674, 109.22193289021413",
+                    "latitude": "-7.412261069022674",
+                    "longitude": "109.22193289021413",
+                    "link": "https://maps.app.goo.gl/b9MXnqi9SiGXB5228"
+                },
+                {
+                    "id": 4,
+                    "name": "Rasam Park",
+                    "coordinates": "-7.415126691566616, 109.22105546907804",
+                    "latitude": "-7.415126691566616",
+                    "longitude": "109.22105546907804",
+                    "link": "https://maps.app.goo.gl/wpx8qgxDYiDfqGdA8"
+                }
+            ]
+        },
+        {
+            "node": 2,
+            "Kecamatan": "Purwokerto Timur",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Alun-alun Purwokerto",
+                    "coordinates": "-7.424281449995401, 109.23020451534448",
+                    "latitude": "-7.424281449995401",
+                    "longitude": "109.23020451534448",
+                    "link": "https://maps.app.goo.gl/8QrUPnFG1jQB47Rv7"
+                },
+                {
+                    "id": 2,
+                    "name": "Jembatan Gerilya Sudirman",
+                    "coordinates": "-7.426220462017397, 109.23346470741153",
+                    "latitude": "-7.426220462017397",
+                    "longitude": "109.23346470741153",
+                    "link": "https://maps.app.goo.gl/q4Hf3ZvmgatrsaZW9"
+                },
+                {
+                    "id": 3,
+                    "name": "Taman Pangripta",
+                    "coordinates": "-7.423760455463094, 109.23861465199174",
+                    "latitude": "-7.423760455463094",
+                    "longitude": "109.23861465199174",
+                    "link": "https://maps.app.goo.gl/XvGtpC5KnJsFHyww6"
+                },
+                {
+                    "id": 4,
+                    "name": "Tugu Pembangunan",
+                    "coordinates": "-7.421476820883332, 109.23768482883611",
+                    "latitude": "-7.421476820883332",
+                    "longitude": "109.23768482883611",
+                    "link": "https://maps.app.goo.gl/JwnRRXB5buUn6XZ19"
+                },
+                {
+                    "id": 5,
+                    "name": "Menara Teratai",
+                    "coordinates": "-7.431291448203357, 109.23268757486963",
+                    "latitude": "-7.431291448203357",
+                    "longitude": "109.23268757486963",
+                    "link": "https://maps.app.goo.gl/7PMg6nz5o6Xx1bFQA"
+                }
+            ]
+        },
+        {
+            "node": 3,
+            "Kecamatan": "Karanglewas",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Pool Villa",
+                    "coordinates": "-7.451431942232573, 109.20936691482302",
+                    "latitude": "-7.451431942232573",
+                    "longitude": "109.20936691482302",
+                    "link": "https://maps.app.goo.gl/2NS7fFM3SXHDsc6o7"
+                },
+                {
+                    "id": 2,
+                    "name": "Bukit Gadog",
+                    "coordinates": "-7.3521297888777335, 109.17711132176865",
+                    "latitude": "-7.3521297888777335",
+                    "longitude": "109.17711132176865",
+                    "link": "https://maps.app.goo.gl/tDecbpRBuxsFAW5q6"
+                },
+                {
+                    "id": 3,
+                    "name": "Wisata Alam Kedung Jayub",
+                    "coordinates": "-7.42843742634123, 109.19967601984946",
+                    "latitude": "-7.42843742634123",
+                    "longitude": "109.19967601984946",
+                    "link": "https://maps.app.goo.gl/KHyCQjiTNmCQ93dAA"
+                },
+                {
+                    "id": 4,
+                    "name": "Desa Wisata Tamansari",
+                    "coordinates": "-7.433562390884683, 109.18937082130273",
+                    "latitude": "-7.433562390884683",
+                    "longitude": "109.18937082130273",
+                    "link": "https://maps.app.goo.gl/o4kXXyzs6PjE8rVF8"
+                },
+                {
+                    "id": 5,
+                    "name": "Curug Cidadap",
+                    "coordinates": "-7.316115321725495, 109.18205109406671",
+                    "latitude": "-7.316115321725495",
+                    "longitude": "109.18205109406671",
+                    "link": "https://maps.app.goo.gl/ZCy2KopPR1psjWqf9"
+                }
+            ]
+        },
+        {
+            "node": 4,
+            "Kecamatan": "Baturaden",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Wisata Alam Baturaden",
+                    "coordinates": "-7.297714992203012, 109.22136054387057",
+                    "latitude": "-7.297714992203012",
+                    "longitude": "109.22136054387057",
+                    "link": "https://maps.app.goo.gl/eFqfhjNJLJyBDRcp9"
+                },
+                {
+                    "id": 2,
+                    "name": "Taman Langit",
+                    "coordinates": "-7.352709082417867, 109.22754035347903",
+                    "latitude": "-7.352709082417867",
+                    "longitude": "109.22754035347903",
+                    "link": "https://maps.app.goo.gl/ALT2tKY5gjBTFkhGA"
+                },
+                {
+                    "id": 3,
+                    "name": "Baturaden Adventure Forest",
+                    "coordinates": "-7.305887917473235, 109.24264655474414",
+                    "latitude": "-7.305887917473235",
+                    "longitude": "109.24264655474414",
+                    "link": "https://maps.app.goo.gl/7i2EuaWJ9jH23EPa9"
+                },
+                {
+                    "id": 4,
+                    "name": "Kebun Raya Baturaden",
+                    "coordinates": "-7.303674431630686, 109.23509345411159",
+                    "latitude": "-7.303674431630686",
+                    "longitude": "109.23509345411159",
+                    "link": "https://maps.app.goo.gl/F4v7XRJbGhJap1L9A"
+                },
+                {
+                    "id": 5,
+                    "name": "Telaga Sunyi",
+                    "coordinates": "-7.3033338943743455, 109.24384818439022",
+                    "latitude": "-7.3033338943743455",
+                    "longitude": "109.24384818439022",
+                    "link": "https://maps.app.goo.gl/B3mJrpog6xWyngFk8"
+                }
+            ]
+        },
+        {
+            "node": 5,
+            "Kecamatan": "Kedungbanteng",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Kidung Kampoengku",
+                    "coordinates": "-7.375662764963497, 109.22147624608907",
+                    "latitude": "-7.375662764963497",
+                    "longitude": "109.22147624608907",
+                    "link": "https://maps.app.goo.gl/3uzJeWGUfMatKbNu7"
+                },
+                {
+                    "id": 2, 
+                    "name": "Curug Panganten Kedungbanteng",
+                    "coordinates": "-7.303006980541326, 109.20355068331331",
+                    "latitude": "-7.303006980541326",
+                    "longitude": "109.20355068331331",
+                    "link": "https://maps.app.goo.gl/7iKuDnsMK4vo7Cn9A"
+                },
+                {
+                    "id": 3,
+                    "name": "Curug Pondok Lengki",
+                    "coordinates": "-7.300497578235894, 109.18320014290475",
+                    "latitude": "-7.300497578235894",
+                    "longitude": "109.18320014290475",
+                    "link": "https://maps.app.goo.gl/w1vjhdKkdtAqmajF6"
+                },
+                {
+                    "id": 4,
+                    "name": "Curug Lima",
+                    "coordinates": "-7.313442209312864, 109.18402225877071",
+                    "latitude": "-7.313442209312864",
+                    "longitude": "109.18402225877071",
+                    "link": "https://maps.app.goo.gl/pz5W1eusc6RwWQuK9"
+                }
+            ]
+        },
+        {
+            "node": 6,
+            "Kecamatan": "Sokaraja",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Wisata Siton Banjaranyar",
+                    "coordinates": "-7.416835882285958, 109.32548198673227",
+                    "latitude": "-7.416835882285958",
+                    "longitude": "109.32548198673227",
+                    "link": "https://maps.app.goo.gl/fUarvovVYkx3TFzh8"
+                },
+                {
+                    "id": 2,
+                    "name": "Rumah Batik Anto Jamil",
+                    "coordinates": "-7.303006980541326, 109.20355068331331",
+                    "latitude": "-7.303006980541326",
+                    "longitude": "109.20355068331331",
+                    "link": "https://maps.app.goo.gl/dcea9rieHftFbE5S9"
+                },
+                {
+                    "id": 3,
+                    "name": "Soto Sutri",
+                    "coordinates": "-7.456260437608666, 109.2874091596694",
+                    "latitude": "-7.456260437608666",
+                    "longitude": "109.2874091596694",
+                    "link": "https://maps.app.goo.gl/S2sFaPFEzEtBYbrf7"
+                },
+                {
+                    "id": 4,
+                    "name": "Pusat Oleh-oleh Getuk Goreng Eka",
+                    "coordinates": "-7.4574151155007256, 109.28886899762566",
+                    "latitude": "-7.4574151155007256",
+                    "longitude": "109.28886899762566",
+                    "link": "https://maps.app.goo.gl/cMA4debDxAg4zhEV9"
+                }
+            ]
+        },
+        {
+            "node": 7,
+            "Kecamatan": "Sumbang",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Taman Panemon",
+                    "coordinates": "-7.377583183667042, 109.26552210752263",
+                    "latitude": "-7.377583183667042",
+                    "longitude": "109.26552210752263",
+                    "link": "https://maps.app.goo.gl/xBW5pY93a6vzAhV96"
+                },
+                {
+                    "id": 2,
+                    "name": "Curug Ceheng",
+                    "coordinates": "-7.320825711705502, 109.27354306536152",
+                    "latitude": "-7.320825711705502",
+                    "longitude": "109.27354306536152",
+                    "link": "https://maps.app.goo.gl/avKhSJMzGjsVRseM7"
+                },
+                {
+                    "id": 3,
+                    "name": "Embung Banteran",
+                    "coordinates": "-7.351961390578203, 109.26361587746615",
+                    "latitude": "-7.351961390578203",
+                    "longitude": "109.26361587746615",
+                    "link": "https://maps.app.goo.gl/bQDgcmZ3Fj1Ai42u5"
+                },
+                {
+                    "id": 4,
+                    "name": "Taman Hias Rembangmas",
+                    "coordinates": "-7.365096943566809, 109.28044728227039",
+                    "latitude": "-7.365096943566809",
+                    "longitude": "109.28044728227039",
+                    "link": "https://maps.app.goo.gl/ZbrjCViuRWv6DKUK6"  
+                }
+            ]
+        },
+        {
+            "node": 8,
+            "Kecamatan": "Kembaran",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Taman Impean",
+                    "coordinates": "-7.40263302043985, 109.28318734484634",
+                    "latitude": "-7.40263302043985",
+                    "longitude": "109.28318734484634",
+                    "link": "https://maps.app.goo.gl/K7QJCNheX1CeonsQ7"
+                },
+                {
+                    "id": 2,
+                    "name": "Langit Senja Cafe",
+                    "coordinates": "-7.407998314277065, 109.27872375135918",
+                    "latitude": "-7.407998314277065",
+                    "longitude": "109.27872375135918",
+                    "link": "https://maps.app.goo.gl/ge9MN9LoJitfsjWy6"
+                },
+                {
+                    "id": 3,
+                    "name": "Gelora Purba Wasesa",
+                    "coordinates": "-7.4060441262842955, 109.29244414348176",
+                    "latitude": "-7.4060441262842955",
+                    "longitude": "109.29244414348176",
+                    "link": "https://maps.app.goo.gl/V5PTY3zAvmrQPt6Q6"
+                }
+            ]
+        },
+        {
+            "node": 9,
+            "Kecamatan": "Kalibagor",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Embung Songgom",
+                    "coordinates": "-7.487917147805783, 109.30641234061912",
+                    "latitude": "-7.487917147805783",
+                    "longitude": "109.30641234061912",
+                    "link": "https://maps.app.goo.gl/aFRJS1qAXqpRLJw3A"
+                },
+                {
+                    "id": 2,
+                    "name": "Goa Maria",
+                    "coordinates": "-7.494979402633577, 109.30698216143355",
+                    "latitude": "-7.494979402633577",
+                    "longitude": "109.30698216143355",
+                    "link": "https://maps.app.goo.gl/UMnEvHsogtponPwC7"
+                },
+                {
+                    "id": 3,
+                    "name": "Bumi Perkemahan Kendalisada",
+                    "coordinates": "-7.4888443336296024, 109.29686055141474",
+                    "latitude": "-7.4888443336296024",
+                    "longitude": "109.29686055141474",
+                    "link": "https://maps.app.goo.gl/5jndJ5xTZNG1hkGb8"
+                }
+            ]
+        },
+        {
+            "node": 10,
+            "Kecamatan": "Banyumas",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Galeri Batik Pringmas",
+                    "coordinates": "-7.513033581822938, 109.26316429577278",
+                    "latitude": "-7.513033581822938",
+                    "longitude": "109.26316429577278",
+                    "link": "https://maps.app.goo.gl/TvJuSr7GFt3QozmF9"
+                },
+                {
+                    "id": 2,
+                    "name": "Alun-alun Banyumas",
+                    "coordinates": "-7.51689920604775, 109.29393336945525",
+                    "latitude": "-7.51689920604775",
+                    "longitude": "109.29393336945525",
+                    "link": "https://maps.app.goo.gl/pbmRfQCK2nTQTxTx5"
+                },
+                {
+                    "id": 3,
+                    "name": "Museum Wayang ",
+                    "coordinates": "-7.514671731332787, 109.29446410755575",
+                    "latitude": "-7.514671731332787",
+                    "longitude": "109.29446410755575",
+                    "link": "https://maps.app.goo.gl/hzPMrAKbhxGu3Gqv5"
+                },
+                {
+                    "id": 4,
+                    "name": "Banyumas Kota Lama",
+                    "coordinates": "-7.513828220562066, 109.2940075147509",
+                    "latitude": "-7.513828220562066",
+                    "longitude": "109.2940075147509",
+                    "link": "https://maps.app.goo.gl/xrzBkr9h9JfHjzha7"
+                }
+            ]
+        },
+        {
+            "node": 11,
+            "Kecamatan": "Somagede",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Curug Dawa",
+                    "coordinates": "-7.5435425170513755, 109.30940073398439",
+                    "latitude": "-7.5435425170513755",
+                    "longitude": "109.30940073398439",
+                    "link": "https://maps.app.goo.gl/cGohhkBzHhVEGdNY7"
+                },
+                {
+                    "id": 2,
+                    "name": "Embung Somagede",
+                    "coordinates": "-7.5230876596943, 109.3287059525132",
+                    "latitude": "-7.5230876596943",
+                    "longitude": "109.3287059525132",
+                    "link": "https://maps.app.goo.gl/kSN1onkV3ccouobe7"
+                },
+                {
+                    "id": 3,
+                    "name": "Objek Wisata Watu Lintang",
+                    "coordinates": "-7.539177440171865, 109.33351749536757",
+                    "latitude": "-7.539177440171865",
+                    "longitude": "109.33351749536757",
+                    "link": "https://maps.app.goo.gl/R64NQGCdhq3rxWJF8"
+                },
+                {
+                    "id": 4,
+                    "name": "Wisata Banyu Tetes",
+                    "coordinates": "-7.541057098179457, 109.3214042218242",
+                    "latitude": "-7.541057098179457",
+                    "longitude": "109.3214042218242",
+                    "link": "https://maps.app.goo.gl/LBn5Uh6fBY8sf5DB9"
+                }
+            ]
+        },
+        {
+            "node": 12,
+            "Kecamatan": "Kebasen",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Curug Song",
+                    "coordinates": "-7.539036646308005, 109.23836353340741",
+                    "latitude": "-7.539036646308005",
+                    "longitude": "109.23836353340741",
+                    "link": "https://maps.app.goo.gl/bkW4Kij7Xzj3oZVTA"
+                },
+                {
+                    "id": 2,
+                    "name": "Telaga Anteng",
+                    "coordinates": "-7.542591525151846, 109.22048369374248",
+                    "latitude": "-7.542591525151846",
+                    "longitude": "109.22048369374248",
+                    "link": "https://maps.app.goo.gl/UNeZSYsybgNskYWA6"
+                },
+                {
+                    "id": 3,
+                    "name": "Watu Meja",
+                    "coordinates": "-7.518122175965632, 109.21440811962728",
+                    "latitude": "-7.518122175965632",
+                    "longitude": "109.21440811962728",
+                    "link": "https://maps.app.goo.gl/fQxSZzDFwdnGM8TK6"
+                }
+            ]
+        },
+        {
+            "node": 13,
+            "Kecamatan": "Patikraja",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Taman Patikraja",
+                    "coordinates": "-7.484419901764792, 109.2233768779818",
+                    "latitude": "-7.484419901764792",
+                    "longitude": "109.2233768779818",
+                    "link": "https://maps.app.goo.gl/Ke2ARW61kiGMiHwP9"
+
+                },
+                {
+                    "id": 2,
+                    "name": "Terowongan Notog",
+                    "coordinates": "-7.495522145325008, 109.2155769799068",
+                    "latitude": "-7.495522145325008",
+                    "longitude": "109.2155769799068",
+                    "link": "https://maps.app.goo.gl/z7RRjHcTDik6THxm6"
+                },
+                {
+                    "id": 3,
+                    "name": "Wisata Gunung Pencit",
+                    "coordinates": "-7.478674790750145, 109.16985645664181",
+                    "latitude": "-7.478674790750145",
+                    "longitude": "109.16985645664181",
+                    "link": "https://maps.app.goo.gl/Lg77CyRGBdQsXT6E7"
+                },
+                {
+                    "id": 4,
+                    "name": "Curug Macan",
+                    "coordinates": "-7.48209681202436, 109.24333180632553",
+                    "latitude": "-7.48209681202436",
+                    "longitude": "109.24333180632553",
+                    "link": "https://maps.app.goo.gl/2sWvj6DTowPUjMeL9"
+                },
+                {
+                    "id": 5,
+                    "name": "Bukit Cikawak",
+                    "coordinates": "-7.470560533755986, 109.1904638745936",
+                    "latitude": "-7.470560533755986",
+                    "longitude": "109.1904638745936",
+                    "link": "https://maps.app.goo.gl/GVtiZaJmsFbPMStc9"
+                }
+            ]
+        },
+        {
+            "node": 14,
+            "Kecamatan": "Jatilawang",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Puncak Wadas Tumpang",
+                    "coordinates": "-7.570001371714343, 109.08547651530141",
+                    "latitude": "-7.570001371714343",
+                    "longitude": "109.08547651530141",
+                    "link": "https://maps.app.goo.gl/VW3441HA43vYW97q8"
+                },
+                {
+                    "id": 2,
+                    "name": "Bukit Gajah Selo",
+                    "coordinates": "-7.505744046154804, 109.1055224106854",
+                    "latitude": "-7.505744046154804",
+                    "longitude": "109.1055224106854",
+                    "link": "https://maps.app.goo.gl/43Eo4ApzfKLuugUe9"
+                },
+                {
+                    "id": 3,
+                    "name": "Alun-alun Jatilawang",
+                    "coordinates": "-7.529304461588213, 109.13255987584928",
+                    "latitude": "-7.529304461588213",
+                    "longitude": "109.13255987584928",
+                    "link": "https://maps.app.goo.gl/24tMv3Mz5P9ojqhA9"
+                }
+            ]
+        },
+        {
+            "node": 15,
+            "Kecamatan": "Rawalo",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Dermaga Perahu Apung Tambaknegara",
+                    "coordinates": "-7.514225699226784, 109.21074121321558",
+                    "latitude": "-7.514225699226784",
+                    "longitude": "109.21074121321558",
+                    "link": "https://maps.app.goo.gl/zRuTfJ8XUxMjshto8"
+                },
+                {
+                    "id": 2,
+                    "name": "Pemandian Tirta Husada Kalibacin",
+                    "coordinates": "-7.519501470949276, 109.20044153053485",
+                    "latitude": "-7.519501470949276",
+                    "longitude": "109.20044153053485",
+                    "link": "https://maps.app.goo.gl/RkkqGAix8vpAqHNC8"
+                },
+                {
+                    "id": 3,
+                    "name": "Newa Fun Education",
+                    "coordinates": "-7.522394608866295, 109.21194284286167",
+                    "latitude": "-7.522394608866295",
+                    "longitude": "109.21194284286167",
+                    "link": "https://maps.app.goo.gl/xpD4HLDysdYhcrmd6"
+                },
+                {
+                    "id": 4,
+                    "name": "Curug Pasekan",
+                    "coordinates": "-7.500440315927474, 109.18379037686762",
+                    "latitude": "-7.500440315927474",
+                    "longitude": "109.18379037686762",
+                    "link": "https://maps.app.goo.gl/EHhs3t3MEZt5tVfE9"
+                },
+                {
+                    "id": 5,
+                    "name": "Puncak Cikendang",
+                    "coordinates": "-7.510991867183416, 109.12437555211605",
+                    "latitude": "-7.510991867183416",
+                    "longitude": "109.12437555211605",
+                    "link": "https://maps.app.goo.gl/wywXgTpWzJ1ZNgjMA"
+                }
+            ]
+        },
+        {
+            "node": 16,
+            "Kecamatan": "Purwojati",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Bukit Karang Kitri",
+                    "coordinates": "-7.4993954504683495, 109.13188861880653",
+                    "latitude": "-7.4993954504683495",
+                    "longitude": "109.13188861880653",
+                    "link": "https://maps.app.goo.gl/xaKSDqbhdhnSwXLE6"
+                },
+                {
+                    "id": 2,
+                    "name": "Wisata Alam BINKER",
+                    "coordinates": "-7.473485136907353, 109.08479149478539",
+                    "latitude": "-7.473485136907353",
+                    "longitude": "109.08479149478539",
+                    "link": "https://maps.app.goo.gl/QYYLvvs8xKuUjN928"
+                },
+                {
+                    "id": 3,
+                    "name": "Taman Desa Purwojati",
+                    "coordinates": "-7.489039632624727, 109.12209784718753",
+                    "latitude": "-7.489039632624727",
+                    "longitude": "109.12209784718753",
+                    "link": "https://maps.app.goo.gl/CX7tB1Y9dkgZmmhZ9"
+                }
+            ]
+        },
+        {
+            "node": 17,
+            "Kecamatan": "Wangon",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Alun-alun Wangon",
+                    "coordinates": "-7.515013586496068, 109.05180150752261",
+                    "latitude": "-7.515013586496068",
+                    "longitude": "109.05180150752261",
+                    "link": "https://maps.app.goo.gl/sT2khdVHrvvHk3Vf9"
+                },
+                {
+                    "id": 2,
+                    "name": "Masjid Saka Tunggal",
+                    "coordinates": "-7.471110058420536, 109.05735663634796",
+                    "latitude": "-7.471110058420536",
+                    "longitude": "109.05735663634796",
+                    "link": "https://maps.app.goo.gl/Mcabqi9wijWoQUSu7"
+                },
+                {
+                    "id": 3,
+                    "name": "Curug Cikakak",
+                    "coordinates": "-7.468310546197612, 109.05708681817399",
+                    "latitude": "-7.468310546197612",
+                    "longitude": "109.05708681817399",
+                    "link": "https://maps.app.goo.gl/JxpYiPw611yBMzEdA"
+                }
+            ]
+        },
+        {
+            "node": 18,
+            "Kecamatan": "Lumbir",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Bukit Kejabing",
+                    "coordinates": "-7.4623609848208705, 108.91352996368603",
+                    "latitude": "-7.4623609848208705",
+                    "longitude": "108.91352996368603",
+                    "link": "https://maps.app.goo.gl/KnC7buyDErEENwqE9"
+                },
+                {
+                    "id": 2,
+                    "name": "Curug Wanasuta",
+                    "coordinates": "-7.4199231735631725, 108.96447011526742",
+                    "latitude": "-7.4199231735631725",
+                    "longitude": "108.96447011526742",
+                    "link": "https://maps.app.goo.gl/8K15jjoXRA93QiZR6"
+                },
+                {
+                    "id": 3,
+                    "name": "Lembu Benggolo Farm & Resort",
+                    "coordinates": "-7.441528751027628, 108.93814695094882",
+                    "latitude": "-7.441528751027628",
+                    "longitude": "108.93814695094882",
+                    "link": "https://maps.app.goo.gl/WGvEDKYerbYqpZ3i8"
+                },
+                {
+                    "id": 4,
+                    "name": "Wisata Gunung Batur",
+                    "coordinates": "-7.464141679397643, 109.0236383399982",
+                    "latitude": "-7.464141679397643",
+                    "longitude": "109.0236383399982",
+                    "link": "https://maps.app.goo.gl/mjVPL62CmK8MHwFf7"
+                }
+            ]
+        },
+        {
+            "node": 19,
+            "Kecamatan": "Sumpiuh",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Bukit Pengaritan",
+                    "coordinates": "-7.575836749787253, 109.37736035638561",
+                    "latitude": "-7.575836749787253",
+                    "longitude": "109.37736035638561",
+                    "link": "https://maps.app.goo.gl/VLRTUjVsLgn5r5wj9"
+                },
+                {
+                    "id": 2,
+                    "name": "Taman Wisata Sentana",
+                    "coordinates": "-7.5829835356755595, 109.37504292778245",
+                    "latitude": "-7.5829835356755595",
+                    "longitude": "109.37504292778245",
+                    "link": "https://maps.app.goo.gl/XgVNsuLbwzUsPUkn8"
+                },
+                {
+                    "id": 3,
+                    "name": "Taman Sumpiuh",
+                    "coordinates": "-7.612344735464433, 109.35715107469221",
+                    "latitude": "-7.612344735464433",
+                    "longitude": "109.35715107469221",
+                    "link": "https://maps.app.goo.gl/dGSM5vQuLyMtohGp8"
+                },
+                {
+                    "id": 4,
+                    "name": "Agrowisata Candimas",
+                    "coordinates": "-7.562813417788647, 109.35848185350056",
+                    "latitude": "-7.562813417788647",
+                    "longitude": "109.35848185350056",
+                    "link": "https://maps.app.goo.gl/1pSgw2ZX1Bvof4Eb7"
+                }
+            ]
+        },
+        {
+            "node": 20,
+            "Kecamatan": "Tambak",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Curug Mawur",
+                    "coordinates": "-7.553136594927482, 109.40815899113521",
+                    "latitude": "-7.553136594927482",
+                    "longitude": "109.40815899113521",
+                    "link": "https://maps.app.goo.gl/xuq62JVTqqBbUqKd7"
+                },
+                {
+                    "id": 2,
+                    "name": "Situs Watuagung",
+                    "coordinates": "-7.587646423246708, 109.41179857046502",
+                    "latitude": "-7.587646423246708",
+                    "longitude": "109.41179857046502",
+                    "link": "https://maps.app.goo.gl/eMbB1edtEWuyBoHW9"
+                },
+                {
+                    "id": 3,
+                    "name": "Sate Bebek Pak Encus",
+                    "coordinates": "-7.612178537230465, 109.4124894931655",
+                    "latitude": "-7.612178537230465",
+                    "longitude": "109.4124894931655",
+                    "link": "https://maps.app.goo.gl/12GZzmfwT93YSpeZ8"                    
+                }
+            ]
+        },
+        {
+            "node": 21,
+            "Kecamatan": "Kemranjen",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Durian Bawor",
+                    "coordinates": "-7.582084025198703, 109.31314032089239",
+                    "latitude": "-7.582084025198703",
+                    "longitude": "109.31314032089239",
+                    "link": "https://maps.app.goo.gl/9ygm9bzsoG3Wyc4JA"
+                },
+                {
+                    "id": 2,
+                    "name": "Agro Tunggul Mas",
+                    "coordinates": "-7.553720257328034, 109.35144365720635",
+                    "latitude": "-7.553720257328034",
+                    "longitude": "109.35144365720635",
+                    "link": "https://maps.app.goo.gl/8BbvHrjwnfDgUVVU6"
+                },
+                {
+                    "id": 4,
+                    
+                    "name": "Curug Minem",
+                    "coordinates": "-7.553741528790494, 109.35161531858435",
+                    "latitude": "-7.553741528790494",
+                    "longitude": "109.35161531858435",
+                    "link": "https://maps.app.goo.gl/8BbvHrjwnfDgUVVU6"
+                }
+            ]
+        },
+        {
+            "node": 22,
+            "Kecamatan": "Ajibarang",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Dreamland Water Park",
+                    "coordinates": "-7.421187349819421, 109.07444482841498",
+                    "latitude": "-7.421187349819421",
+                    "longitude": "109.07444482841498",
+                    "link": "https://maps.app.goo.gl/gUFVMJP59Y5mSL3W7"
+                },
+                {
+                    "id": 2,
+                    "name": "Prawita Garden - Kebun Lebah",
+                    "coordinates": "-7.418708890842148, 109.04335820428278",
+                    "latitude": "-7.418708890842148",
+                    "longitude": "109.04335820428278",
+                    "link": "https://maps.app.goo.gl/aoXe89dW5DD7LBLj6"
+                },
+                {
+                    "id": 3,
+                    "name": "Kolam Renang Fatmaba",
+                    "coordinates": "-7.398218199714573, 109.07964728228114",
+                    "latitude": "-7.398218199714573",
+                    "longitude": "109.07964728228114",
+                    "link": "https://maps.app.goo.gl/jkqfB3jEnteFfhs87"
+                }
+            ]
+        },
+        {
+            "node": 23,
+            "Kecamatan": "Pekuncen",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Curug Nangga",
+                    "coordinates": "-7.3614390232738005, 109.04860589519578",
+                    "latitude": "-7.3614390232738005",
+                    "longitude": "109.04860589519578",
+                    "link": "https://maps.app.goo.gl/13eG2QjnPuJ1akYM6"
+                },
+                {
+                    "id": 2,
+                    "name": "Wisata Alam Bunton",
+                    "coordinates": "-7.338817455178473, 109.09946647677806",
+                    "latitude": "-7.338817455178473",
+                    "longitude": "109.09946647677806",
+                    "link": "https://maps.app.goo.gl/S1wWsj2hd7d95eAp9"
+                },
+                {
+                    "id": 3,
+                    "name": "Peternakan Menggala",
+                    "coordinates": "-7.34617946179656, 109.11938767579069",
+                    "latitude": "-7.34617946179656",
+                    "longitude": "109.11938767579069",
+                    "link": "https://maps.app.goo.gl/QFWTSfH2o36KFHa17"
+                },
+                {
+                    "id": 4,
+                    "name": "Wisata Watu Kumpul",
+                    "coordinates": "-7.382271542373523, 109.04589515303466",
+                    "latitude": "-7.382271542373523",
+                    "longitude": "109.04589515303466",
+                    "link": "https://maps.app.goo.gl/dE1HSxjXyDYMPquK6"
+                },
+                {
+                    "id": 5,
+                    "name": "Curug Kedung Lesung",
+                    "coordinates": "-7.332984131337706, 109.10899662007164",
+                    "latitude": "-7.332984131337706",
+                    "longitude": "109.10899662007164",
+                    "link": "https://maps.app.goo.gl/SW6V7o7VyWDg8gjx5"
+                }
+            ]
+        },
+        {
+            "node": 24,
+            "Kecamatan": "Gumelar",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Curug Senthong",
+                    "coordinates": "-7.341664423204088, 109.03177124491349",
+                    "latitude": "-7.341664423204088",
+                    "longitude": "109.03177124491349",
+                    "link": "https://maps.app.goo.gl/4fUfpMTYUws3VRsS7"
+                },
+                {
+                    "id": 2,
+                    "name": "Wisata Alam Curug Mbulu Kuning",
+                    "coordinates": "-7.3642225375270645, 109.00722371567778",
+                    "latitude": "-7.3642225375270645",
+                    "longitude": "109.00722371567778",
+                    "link": "https://maps.app.goo.gl/pduuxAW3nRoXiYfFA"
+                },
+                {
+                    "id": 3,
+                    "name": "Curug Patraguna",
+                    "coordinates": "-7.332731711837984, 109.02706461354717",
+                    "latitude": "-7.332731711837984",
+                    "longitude": "109.02706461354717",
+                    "link": "https://maps.app.goo.gl/64EUr7a6n6wJfYjD6"
+                },
+                {
+                    "id": 4,
+                    "name": "Puncak Sujen",
+                    "coordinates": "-7.3349579791471005, 109.02379135373353",
+                    "latitude": "-7.3349579791471005",
+                    "longitude": "109.02379135373353",
+                    "link": "https://maps.app.goo.gl/V1HHYF4kmtn8XxTj8"
+                }
+            ]
+        },
+        {
+            "node": 25,
+            "Kecamatan": "Cilongok",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Curug Cipendok",
+                    "coordinates": "-7.336749688256, 109.13733745355614",
+                    "latitude": "-7.336749688256",
+                    "longitude": "109.13733745355614",
+                    "link": "https://maps.app.goo.gl/r2ikhDJbGnBqD3qc6"
+                },
+                {
+                    "id": 2,
+                    "name": "Telaga Kumpe",
+                    "coordinates": "-7.350069017119609, 109.14731856733626",
+                    "latitude": "-7.350069017119609",
+                    "longitude": "109.14731856733626",
+                    "link": "https://maps.app.goo.gl/uAm83Lz1avpa2Nub8"
+                },
+                {
+                    "id": 3,
+                    "name": "Wisata Pereng",
+                    "coordinates": "-7.401822992808186, 109.14288601545559",
+                    "latitude": "-7.401822992808186",
+                    "longitude": "109.14288601545559",
+                    "link": "https://maps.app.goo.gl/jmf7BgTzhdVyj5XV7"
+                },
+                {
+                    "id": 4,
+                    "name": "Wisata Mina Padi",
+                    "coordinates": "-7.382937249752824, 109.12774165031628",
+                    "latitude": "-7.382937249752824",
+                    "longitude": "109.12774165031628",
+                    "link": "https://maps.app.goo.gl/Dg7gUHxxJZebZ8n56"
+                }
+            ]
+        },
+        {
+            "node": 26,
+            "Kecamatan": "Purwokerto Utara",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Mas Kemambang",
+                    "coordinates": "-7.411831472968135, 109.23811999021414",
+                    "latitude": "-7.411831472968135",
+                    "longitude": "109.23811999021414",
+                    "link": "https://maps.app.goo.gl/GasoxtFLfJarsoRj9"
+                },
+                {
+                    "id": 2,
+                    "name": "Padang Golf Wijayakusuma",
+                    "coordinates": "-7.413491947198607, 109.24789203607024",
+                    "latitude": "-7.413491947198607",
+                    "longitude": "109.24789203607024",
+                    "link": "https://maps.app.goo.gl/rYVKJ97CEbrTZNky5"
+                },
+                {
+                    "id": 3,
+                    "name": "Kampung Pelangi",
+                    "coordinates": "-7.426366756263912, 109.23386368413404",
+                    "latitude": "-7.426366756263912",
+                    "longitude": "109.23386368413404",
+                    "link": "https://maps.app.goo.gl/vdY6gxdK81MQAp9CA"
+                },
+                {
+                    "id": 4,
+                    "name": "Taman Tesda",
+                    "coordinates": "-7.426366756263912, 109.23391732831466",
+                    "latitude": "-7.426366756263912",
+                    "longitude": "109.23391732831466",
+                    "link": "https://maps.app.goo.gl/EjBPxUY7MTV9TXwGA"
+                }
+            ]
+        },
+        {
+            "node": 27,
+            "Kecamatan": "Purwokerto Selatan",
+            "location":[
+                {
+                    "id": 1,
+                    "name": "Taman Andhang Pangrenan",
+                    "coordinates": "-7.43877863771415, 109.24429202673952",
+                    "latitude": "-7.43877863771415",
+                    "longitude": "109.24429202673952",
+                    "link": "https://maps.app.goo.gl/EtUBz1V3hpnZEZtaA"
+                },
+                {
+                    "id": 2,
+                    "name": "Satria Park Purwokerto",
+                    "coordinates": "-7.438804128359247, 109.26831952437597",
+                    "latitude": "-7.438804128359247",
+                    "longitude": "109.26831952437597",
+                    "link": "https://maps.app.goo.gl/FT2qpKS55tu2bmug9"
+                },
+                {
+                    "id": 3,
+                    "name": "Rajawali Sinema",
+                    "coordinates": "-7.432378457561921, 109.24525643810054",
+                    "latitude": "-7.432378457561921",
+                    "longitude": "109.24525643810054",
+                    "link": "https://maps.app.goo.gl/SodSPYh5Mt3TgTkz8"
+                }
+            ]
+        }
+    ]  
+}

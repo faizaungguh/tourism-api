@@ -1,0 +1,710 @@
+[
+  {
+    "destinationTitle": "Bukit Kejabing",
+    "category": "Alam",
+    "createdBy": "mng_lumbir",
+    "description": "Bukit Kejabing adalah destinasi alam di Lumbir yang menawarkan pemandangan perbukitan hijau dan hamparan sawah yang memukau dari puncaknya. Sangat ideal untuk mengabadikan momen matahari terbit, tempat ini juga menyediakan gazebo untuk bersantai sambil menikmati jajanan dari warung lokal.",
+    "locations": {
+      "addresses": "Desa Kejabing, Kecamatan Lumbir, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.5012,109.0515",
+      "subdistrict": "Lumbir",
+      "coordinates": {
+        "lat": -7.5012,
+        "long": 109.0515
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "05:30 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "05:30 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet Umum",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Warung Lokal",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Gazebo",
+        "availability": true,
+        "number": 5,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@bukitkejabing_official"
+      },
+      {
+        "platform": "phone",
+        "value": "628123456001"
+      }
+    ],
+    "ticket": {
+      "adult": 0,
+      "child": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 50,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 15,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Wanasuta",
+    "category": "Alam",
+    "createdBy": "mng_lumbir",
+    "description": "Curug Wanasuta adalah sebuah air terjun alami yang dapat diakses melalui trekking ringan menyusuri hutan pinus. Destinasi ini menawarkan kesegaran air terjun dengan kolam alami yang tidak terlalu dalam, sehingga aman untuk bermain air bersama keluarga.",
+    "locations": {
+      "addresses": "Desa Wanasuta, Kecamatan Lumbir, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.4690,109.0530",
+      "subdistrict": "Lumbir",
+      "coordinates": {
+        "lat": -7.469,
+        "long": 109.053
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet Ganti",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Minuman",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Tempat Istirahat",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@curugwanasuta.official"
+      }
+    ],
+    "ticket": {
+      "adult": 5000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 40,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 10,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Lembu Benggolo Farm & Resort",
+    "category": "Edukasi",
+    "createdBy": "mng_lumbir",
+    "description": "Lembu Benggolo Farm & Resort adalah destinasi agrowisata yang menggabungkan edukasi peternakan sapi modern dengan rekreasi alam. Pengunjung dapat belajar memelihara sapi, memberi makan ternak, serta menikmati fasilitas outbound dan area berkemah dengan pemandangan perbukitan yang indah.",
+    "locations": {
+      "addresses": "Jalan Raya Lumbir, Kedunggede, Kecamatan Lumbir, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.4855,109.0432",
+      "subdistrict": "Lumbir",
+      "coordinates": {
+        "lat": -7.4855,
+        "long": 109.0432
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:30 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:30 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Restoran",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "website",
+        "value": "www.lembubenggolo.com"
+      },
+      {
+        "platform": "whatsapp",
+        "value": "628123456003"
+      }
+    ],
+    "ticket": {
+      "adult": 25000,
+      "child": 20000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 100,
+        "price": 3000
+      },
+      "car": {
+        "capacity": 50,
+        "price": 10000
+      },
+      "bus": {
+        "capacity": 5,
+        "price": 25000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Alun-Alun Wangon",
+    "category": "Buatan",
+    "createdBy": "mng_wangon",
+    "description": "Alun-Alun Wangon adalah ruang publik dan jantung aktivitas warga di pusat kota Wangon. Tempat ini menjadi area favorit untuk bersantai, berolahraga, dan dilengkapi taman bermain sederhana untuk anak-anak. Saat sore hingga malam, area ini berubah menjadi pusat kuliner malam yang ramai dengan aneka jajanan kaki lima.",
+    "locations": {
+      "addresses": "Jl. Raya Wangon, Wangon, Kecamatan Wangon, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.5145,109.1550",
+      "subdistrict": "Wangon",
+      "coordinates": {
+        "lat": -7.5145,
+        "long": 109.155
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet Umum",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Area Olahraga",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@explorewangon"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 100,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 30,
+        "price": 3000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Masjid Saka Tunggal",
+    "category": "Religi",
+    "createdBy": "mng_wangon",
+    "description": "Masjid Saka Tunggal di Cikakak adalah salah satu masjid tertua di Indonesia dengan arsitektur yang sangat unik. Ciri khasnya adalah bangunan yang hanya ditopang oleh satu tiang utama (saka tunggal) dan dinding dari anyaman bambu. Selain wisata religi, pengunjung juga bisa berinteraksi dengan kawanan kera ekor panjang jinak yang menghuni area sekitar masjid.",
+    "locations": {
+      "addresses": "Desa Cikakak, Kecamatan Wangon, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.4648,109.1301",
+      "subdistrict": "Wangon",
+      "coordinates": {
+        "lat": -7.4648,
+        "long": 109.1301
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Wudhu",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toko Cinderamata",
+        "availability": true,
+        "number": 5,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628123456005"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 80,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 25,
+        "price": 5000
+      },
+      "bus": {
+        "capacity": 3,
+        "price": 10000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Watu Meja",
+    "category": "Alam",
+    "createdBy": "mng_kebasen",
+    "description": "Watu Meja adalah destinasi bukit yang terkenal dengan pemandangan ikonik kelokan Sungai Serayu, menjadikannya salah satu spot foto terbaik di Banyumas. Selain menikmati panorama dari puncak pandang, pengunjung juga dapat mencoba wahana ayunan langit (swing) yang memacu adrenalin dengan latar belakang pemandangan yang menakjubkan.",
+    "locations": {
+      "addresses": "Desa Tumiyang, Kecamatan Kebasen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.5028,109.2811",
+      "subdistrict": "Kebasen",
+      "coordinates": {
+        "lat": -7.5028,
+        "long": 109.2811
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:30 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:30 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Gardu Pandang",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Ayunan Langit",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@watumeja_official"
+      },
+      {
+        "platform": "whatsapp",
+        "value": "628123456018"
+      }
+    ],
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 60,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 15,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Agro Tunggul Mas",
+    "category": "Edukasi",
+    "createdBy": "mng_baturaden",
+    "description": "Agro Tunggul Mas di Baturaden adalah destinasi agrowisata yang mengajak pengunjung untuk berjalan-jalan di kebun buah naga dan jambu kristal. Selain melihat proses budidaya, pengunjung juga bisa ikut memetik buah langsung dari pohonnya. Terdapat pula kafe dan resto di tengah kebun untuk menikmati jus buah segar dan hidangan lezat dalam suasana yang asri.",
+    "locations": {
+      "addresses": "Desa Rempoah, Kecamatan Baturaden, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.google.com/?q=-7.3305,109.2310",
+      "subdistrict": "Baturaden",
+      "coordinates": {
+        "lat": -7.3305,
+        "long": 109.2310
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Kafe dan Resto",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toko Buah",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628123456020"
+      },
+      {
+        "platform": "instagram",
+        "value": "@agrotunggulmas"
+      }
+    ],
+    "ticket": {
+      "adult": 10000,
+      "child": 10000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 50,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 30,
+        "price": 5000
+      }
+    }
+  }
+]

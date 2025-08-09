@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Dek Observasi Puncak Menara",
+    "description": "Nikmati pemandangan 360 derajat kota Purwokerto dan kemegahan Gunung Slamet dari dek observasi utama di puncak menara. Spot terbaik untuk fotografi dan menikmati suasana kota dari ketinggian.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000,
+      "child": 15000,
+      "disability": 10000
+    },
+    "destination": "menara-teratai"
+  },
+  {
+    "name": "Jembatan Kaca",
+    "description": "Uji adrenalin Anda dengan berjalan di atas jembatan kaca transparan yang menantang. Rasakan sensasi melayang sambil melihat pemandangan langsung ke area bawah menara.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "destination": "menara-teratai"
+  },
+  {
+    "name": "Taman dan Area Santai",
+    "description": "Kawasan taman yang hijau dan asri di kaki Menara Teratai. Tempat yang cocok untuk bersantai bersama keluarga, duduk-duduk, dan menikmati suasana tanpa harus naik ke atas menara.",
+    "ticketType": "gratis",
+    "destination": "menara-teratai"
+  },
+  {
+    "name": "Galeri Diorama Perjuangan",
+    "description": "Menampilkan rangkaian diorama yang mengisahkan perjalanan dan taktik perang gerilya yang dipimpin oleh Jenderal Besar Sudirman selama masa revolusi.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000,
+      "child": 3000
+    },
+    "destination": "museum-jendral-sudirman"
+  },
+  {
+    "name": "Ruang Koleksi Peninggalan",
+    "description": "Lihat dari dekat berbagai koleksi benda asli peninggalan Jenderal Sudirman, termasuk tandu bersejarah, pakaian, senjata, dan barang pribadi lainnya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000,
+      "child": 3000
+    },
+    "destination": "museum-jendral-sudirman"
+  },
+  {
+    "name": "Koleksi Uang Kuno Numismatik",
+    "description": "Jelajahi sejarah keuangan Indonesia melalui koleksi lengkap mata uang dari era kerajaan Nusantara, Hindia Belanda, hingga Oeang Republik Indonesia (ORI).",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 4000
+    },
+    "destination": "museum-bri"
+  },
+  {
+    "name": "Peralatan Perbankan Tempo Dulu",
+    "description": "Saksikan evolusi teknologi perbankan melalui pameran mesin hitung, mesin ketik, brankas kuno, dan peralatan operasional bank lainnya dari masa ke masa.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 4000
+    },
+    "destination": "museum-bri"
+  },
+  {
+    "name": "Area Air Mancur",
+    "description": "Titik pusat alun-alun yang menjadi tempat favorit untuk bersantai. Pada malam hari, terutama akhir pekan, seringkali ada pertunjukan air mancur menari.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-purwokerto"
+  },
+  {
+    "name": "Taman Bermain Anak",
+    "description": "Area khusus yang dilengkapi dengan berbagai fasilitas permainan anak seperti ayunan, perosotan, dan jungkat-jungkit di atas permukaan yang aman.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-purwokerto"
+  },
+  {
+    "name": "Spot Foto Jembatan",
+    "description": "Area di sekitar jembatan yang menjadi lokasi favorit untuk berfoto dengan latar belakang struktur jembatan yang ikonik dan pemandangan Sungai Serayu.",
+    "ticketType": "gratis",
+    "destination": "jembatan-gerilya-sudirman"
+  },
+  {
+    "name": "Area Pancingan Warga",
+    "description": "Tempat di bawah jembatan atau di tepian sungai yang biasa digunakan oleh warga sekitar untuk memancing sambil menikmati suasana sore hari.",
+    "ticketType": "gratis",
+    "destination": "jembatan-gerilya-sudirman"
+  }
+]

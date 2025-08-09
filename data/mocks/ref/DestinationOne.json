@@ -1,0 +1,106 @@
+{
+  "destinationTitle": "Lokawisata Baturaden",
+  "description": "Rasakan kenyamanan alam asri dari Baturaden.",
+  "locations": {
+    "address": "Jl. Raya Baturaden, Karangmangu, Kec. Baturaden, Kabupaten Banyumas, Jawa Tengah",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": -7.3155,
+      "long": 109.2298
+    }
+  },
+  "parking": {
+    "motorcycle": {
+      "capacity": 500,
+      "price": 3000
+    },
+    "car": {
+      "capacity": 150,
+      "price": 5000
+    }
+  },
+  "destinationsId": "batu-mvt00qtd",
+  "slug": "lokawisata-baturaden",
+  "profilePhoto": "http://localhost:3000/images/destinations/batu_lokawisata-baturaden/profilePhoto-lokawisata-baturaden-1754703579941.webp",
+  "headlinePhoto": "http://localhost:3000/images/destinations/batu_lokawisata-baturaden/headlinePhoto-lokawisata-baturaden-1754703579971.webp",
+  "galleryPhoto": [
+    {
+      "url": "http://localhost:3000/images/destinations/batu_lokawisata-baturaden/gallery/lokawisata-baturaden-PJvRcREcl2-1754703574395.webp",
+      "photoId": "PJvRcREcl2",
+      "caption": "Foto Galeri Lokawisata Baturaden"
+    },
+    {
+      "url": "http://localhost:3000/images/destinations/batu_lokawisata-baturaden/gallery/lokawisata-baturaden-JhTSKCh8OZ-1754703574521.webp",
+      "photoId": "JhTSKCh8OZ",
+      "caption": "Foto Galeri Lokawisata Baturaden"
+    },
+    {
+      "url": "http://localhost:3000/images/destinations/batu_lokawisata-baturaden/gallery/lokawisata-baturaden-OBxZr3vPHW-1754703574553.webp",
+      "photoId": "OBxZr3vPHW",
+      "caption": "Foto Galeri Lokawisata Baturaden"
+    },
+    {
+      "url": "http://localhost:3000/images/destinations/batu_lokawisata-baturaden/gallery/lokawisata-baturaden-ojapg5jMap-1754703574585.webp",
+      "photoId": "ojapg5jMap",
+      "caption": "Foto Galeri Lokawisata Baturaden"
+    }
+  ],
+  "category": "Wisata Alam",
+  "categorySlug": "wisata-alam",
+  "createdBy": "Test managerbaru",
+  "attractions": [
+    {
+      "name": "Pancuran telu",
+      "slug": "pancuran-telu",
+      "description": "Pemandian air panas alami yang mengandung belerang, baik untuk kesehatan kulit.",
+      "ticketType": "berbayar",
+      "ticket": {
+        "adult": 15000,
+        "child": 10000,
+        "disability": 0
+      }
+    },
+    {
+      "name": "Pancuran loro",
+      "slug": "pancuran-loro",
+      "description": "Pemandian air panas alami yang mengandung belerang, baik untuk kesehatan kulit.",
+      "ticketType": "berbayar",
+      "ticket": {
+        "adult": 15000,
+        "child": 10000,
+        "disability": 0
+      }
+    }
+  ],
+  "openingHour": [
+    {
+      "day": "monday",
+      "hours": "08:00 - 16:00",
+      "isClosed": false
+    },
+    {
+      "day": "tuesday",
+      "hours": "08:00 - 16:00",
+      "isClosed": false
+    }
+  ],
+  "facility": [
+    {
+      "name": "Toilet Umum",
+      "availability": true,
+      "number": 10,
+      "disabilityAccess": true
+    }
+  ],
+  "contact": [
+    {
+      "platform": "instagram",
+      "value": "@lokawisatabaturraden_"
+    }
+  ],
+  "ticketPrice": {
+    "adult": 25000,
+    "child": 15000,
+    "disability": 0
+  }
+}

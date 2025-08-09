@@ -1,0 +1,595 @@
+[
+  {
+    "destinationTitle": "Kidung Kampoengku",
+    "category": "Buatan",
+    "createdBy": "mng_kedungbanteng",
+    "description": "Kidung Kampoengku adalah sebuah destinasi wisata bertema pedesaan yang menawarkan suasana tempo dulu. Pengunjung dapat menikmati permainan tradisional, suasana alam yang asri, serta berbagai spot foto unik yang mengingatkan pada kehidupan di kampung.",
+    "locations": {
+      "addresses": "Jl. Raya Baturraden Barat, Dusun I, Keniten, Kec. Kedungbanteng, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/3uzJeWGUfMatKbNu7",
+      "subdistrict": "Kedungbanteng",
+      "coordinates": {
+        "lat": -7.375662764963497,
+        "long": 109.22147624608907
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Warung Makan",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Gazebo",
+        "availability": true,
+        "number": 8,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@kidung_kampoengku"
+      },
+      {
+        "platform": "phone",
+        "value": "628122700007"
+      }
+    ],
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 100,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 40,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Panganten",
+    "category": "Alam",
+    "createdBy": "mng_kedungbanteng",
+    "description": "Curug Panganten adalah air terjun yang menawarkan keindahan alam yang masih alami dan asri. Dinamakan 'Panganten' (pengantin) karena terdapat dua aliran air terjun yang berdampingan, layaknya sepasang pengantin. Lokasinya yang tersembunyi memerlukan sedikit trekking, memberikan pengalaman petualangan tersendiri.",
+    "locations": {
+      "addresses": "Dusun III, Kalikesur, Kec. Kedungbanteng, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/7iKuDnsMK4vo7Cn9A",
+      "subdistrict": "Kedungbanteng",
+      "coordinates": {
+        "lat": -7.303006980541326,
+        "long": 109.20355068331331
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet Ganti",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Kecil",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Area Parkir Terbatas",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "6285712345678"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Soto Sutri",
+    "category": "Kuliner",
+    "createdBy": "mng_sokaraja",
+    "description": "Soto Sutri adalah salah satu warung soto legendaris di Sokaraja, terkenal dengan cita rasa khas soto Sokaraja yang menggunakan kuah kaldu bening, kerupuk, dan sambal kacang. Tempat ini selalu ramai dikunjungi oleh pecinta kuliner yang ingin menikmati keaslian soto Banyumas.",
+    "locations": {
+      "addresses": "Jl. Pramuka, Dusun II, Sokaraja Tengah, Kec. Sokaraja, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/S2sFaPFEzEtBYbrf7",
+      "subdistrict": "Sokaraja",
+      "coordinates": {
+        "lat": -7.456260437608666,
+        "long": 109.2874091596694
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 20:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 20:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 20:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 20:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 20:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Makan",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700002"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 20,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 10,
+        "price": 3000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Pusat Oleh-oleh Getuk Goreng Eka",
+    "category": "Kuliner",
+    "createdBy": "mng_sokaraja",
+    "description": "Sebagai salah satu ikon kuliner Banyumas, Pusat Oleh-oleh Getuk Goreng Eka adalah tempat yang wajib dikunjungi untuk membeli buah tangan khas Sokaraja. Selain getuk goreng, tersedia juga berbagai macam oleh-oleh lain seperti nopia, mino, dan aneka keripik.",
+    "locations": {
+      "addresses": "Jl. Jend. Soedirman No.144, Dusun II, Sokaraja Tengah, Kec. Sokaraja, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/cMA4debDxAg4zhEV9",
+      "subdistrict": "Sokaraja",
+      "coordinates": {
+        "lat": -7.4574151155007256,
+        "long": 109.28886899762566
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 21:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toko Oleh-oleh",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Area Parkir Luas",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "website",
+        "value": "www.getukgorengaslieka.com"
+      },
+      {
+        "platform": "instagram",
+        "value": "@getukgorengsokaraja_eka"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 0
+      },
+      "car": {
+        "capacity": 20,
+        "price": 0
+      },
+      "bus": {
+        "capacity": 5,
+        "price": 0
+      }
+    }
+  },
+  {
+    "destinationTitle": "Taman Panemon",
+    "category": "Buatan",
+    "createdBy": "mng_sumbang",
+    "description": "Taman Panemon adalah destinasi rekreasi keluarga yang menawarkan berbagai wahana air, seperti kolam renang anak dan dewasa, serta seluncuran. Dikelilingi pemandangan sawah yang hijau, tempat ini cocok untuk bersantai dan menghabiskan waktu di akhir pekan.",
+    "locations": {
+      "addresses": "Kebanggan, Kotayasa, Kec. Sumbang, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/xBW5pY93a6vzAhV96",
+      "subdistrict": "Sumbang",
+      "coordinates": {
+        "lat": -7.377583183667042,
+        "long": 109.26552210752263
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Kolam Renang",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Food Court",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet dan Kamar Bilas",
+        "availability": true,
+        "number": 10,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@tamanpanemon"
+      }
+    ],
+    "ticket": {
+      "adult": 20000,
+      "child": 15000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 200,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 80,
+        "price": 5000
+      },
+      "bus": {
+        "capacity": 4,
+        "price": 15000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Ceheng",
+    "category": "Alam",
+    "createdBy": "mng_sumbang",
+    "description": "Curug Ceheng adalah salah satu air terjun populer di lereng Gunung Slamet yang mudah diakses. Tempat ini memiliki kolam alami yang luas dan aman untuk berenang, serta dilengkapi dengan fasilitas pendukung yang memadai seperti warung dan tempat istirahat, menjadikannya destinasi favorit keluarga.",
+    "locations": {
+      "addresses": "Gandatapa, Kec. Sumbang, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/avKhSJMzGjsVRseM7",
+      "subdistrict": "Sumbang",
+      "coordinates": {
+        "lat": -7.320825711705502,
+        "long": 109.27354306536152
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Kamar Bilas",
+        "availability": true,
+        "number": 6,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Makan",
+        "availability": true,
+        "number": 5,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "6281234567890"
+      }
+    ],
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 150,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 50,
+        "price": 5000
+      }
+    }
+  }
+]

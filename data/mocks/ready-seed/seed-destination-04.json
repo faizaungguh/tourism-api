@@ -1,0 +1,566 @@
+[
+  {
+    "destinationTitle": "Curug Dawa",
+    "category": "Alam",
+    "createdBy": "mng_somagede",
+    "description": "Curug Dawa adalah air terjun tersembunyi yang menawarkan keindahan alam yang masih sangat alami. Nama 'Dawa' yang berarti panjang menggambarkan aliran air terjun yang tinggi dan memanjang. Tempat ini cocok bagi para petualang yang mencari ketenangan dan suasana asri.",
+    "locations": {
+      "addresses": "Desa Kanding, Kecamatan Somagede, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/cGohhkBzHhVEGdNY7",
+      "subdistrict": "Somagede",
+      "coordinates": {
+        "lat": -7.5435425170513755,
+        "long": 109.30940073398439
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Parkir",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet Sederhana",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Kecil",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@curugdawa.somagede"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 25,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Embung Somagede",
+    "category": "Buatan",
+    "createdBy": "mng_somagede",
+    "description": "Embung Somagede adalah sebuah waduk buatan yang berfungsi sebagai penampungan air sekaligus menjadi tempat rekreasi warga. Pengunjung bisa menikmati pemandangan air yang tenang, memancing, atau sekadar bersantai di gazebo yang telah disediakan.",
+    "locations": {
+      "addresses": "Desa Somagede, Kecamatan Somagede, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/kSN1onkV3ccouobe7",
+      "subdistrict": "Somagede",
+      "coordinates": {
+        "lat": -7.5230876596943,
+        "long": 109.3287059525132
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Pemancingan",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Gazebo",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700024"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 10,
+        "price": 3000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Song",
+    "category": "Alam",
+    "createdBy": "mng_kebasen",
+    "description": "Curug Song adalah air terjun yang eksotis dengan debit air yang deras dan dikelilingi tebing-tebing hijau. Ikon utama dari tempat ini adalah jembatan bambu yang melintang di depan air terjun, menjadi spot foto favorit para pengunjung untuk mengabadikan keindahan alamnya.",
+    "locations": {
+      "addresses": "Kaligua, Slawe, Karangjengkol, Kec. Kebasen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/bkW4Kij7Xzj3oZVTA",
+      "subdistrict": "Kebasen",
+      "coordinates": {
+        "lat": -7.539036646308005,
+        "long": 109.23836353340741
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet dan Kamar Ganti",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Makan dan Minum",
+        "availability": true,
+        "number": 3,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Jembatan Bambu",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@curugsong.kebasen"
+      }
+    ],
+    "ticket": {
+      "adult": 5000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 80,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 20,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Telaga Anteng",
+    "category": "Alam",
+    "createdBy": "mng_kebasen",
+    "description": "Telaga Anteng menawarkan suasana danau kecil yang tenang dan damai, sesuai dengan namanya. Destinasi ini sangat cocok untuk rekreasi keluarga, di mana pengunjung dapat menyewa perahu bebek untuk mengelilingi telaga atau bersantai dan piknik di gazebo yang tersedia di tepiannya.",
+    "locations": {
+      "addresses": "Sawangan, Kalisalak, Kec. Kebasen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/UNeZSYsybgNskYWA6",
+      "subdistrict": "Kebasen",
+      "coordinates": {
+        "lat": -7.542591525151846,
+        "long": 109.22048369374248
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Sewa Perahu Bebek",
+        "availability": true,
+        "number": 10,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Gazebo",
+        "availability": true,
+        "number": 6,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700019"
+      }
+    ],
+    "ticket": {
+      "adult": 10000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 50,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 25,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Taman Patikraja",
+    "category": "Buatan",
+    "createdBy": "mng_patikraja",
+    "description": "Taman Patikraja merupakan ruang terbuka hijau di pusat kecamatan yang menjadi tempat berkumpul dan beraktivitas bagi warga sekitar. Dilengkapi dengan area bermain anak dan bangku-bangku taman, tempat ini ramai dikunjungi pada sore hari untuk bersantai atau berolahraga ringan.",
+    "locations": {
+      "addresses": "Jl. Raya Notog, Patikraja, Kec. Patikraja, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/Ke2ARW61kiGMiHwP9",
+      "subdistrict": "Patikraja",
+      "coordinates": {
+        "lat": -7.484419901764792,
+        "long": 109.2233768779818
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Bermain Anak",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Bangku Taman",
+        "availability": true,
+        "number": 10,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Area Pedagang Kaki Lima",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700017"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 40,
+        "price": 1000
+      },
+      "car": {
+        "capacity": 15,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Terowongan Notog",
+    "category": "Sejarah",
+    "createdBy": "mng_patikraja",
+    "description": "Terowongan Notog adalah sebuah terowongan kereta api aktif peninggalan zaman kolonial yang kini memiliki jalur ganda. Tempat ini menjadi spot yang menarik bagi para penggemar fotografi dan pecinta kereta api (railfans) untuk mengabadikan momen saat kereta melintas masuk atau keluar dari mulut terowongan yang megah.",
+    "locations": {
+      "addresses": "Desa Notog, Kecamatan Patikraja, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/z7RRjHcTDik6THxm6",
+      "subdistrict": "Patikraja",
+      "coordinates": {
+        "lat": -7.495522145325008,
+        "long": 109.2155769799068
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Spot Foto",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Terdekat",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@railfans.purwokerto"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 10,
+        "price": 0
+      }
+    }
+  }
+]
