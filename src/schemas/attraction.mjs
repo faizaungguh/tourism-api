@@ -59,7 +59,7 @@ attractionSchema.pre('save', async function (next) {
       (this.ticket.adult == null || this.ticket.adult <= 0)
     ) {
       return next(
-        new ResponseError(422, 'Tidak boleh kosong', {
+        new ResponseError(422, 'Proses dihentikan', {
           message:
             'Harga tiket dewasa wajib diisi dan harus lebih besar dari 0 untuk wahana berbayar.',
         })

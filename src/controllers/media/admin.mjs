@@ -17,7 +17,7 @@ export const admin = {
 
       const newPhotoPath = req.processedFiles?.photo;
       if (!newPhotoPath) {
-        throw new ResponseError(422, 'Dokumen tidak ditemukan', {
+        throw new ResponseError(422, 'Proses dihentikan', {
           photo: 'Anda harus menyertakan dokumen gambar',
         });
       }
@@ -50,7 +50,11 @@ export const admin = {
       res.sendFile(absolutePath, (err) => {
         if (err) {
           console.error('Error sending admin profile photo:', err);
-          next(new ResponseError(404, 'File gambar fisik tidak ditemukan di server.'));
+          next(
+            new ResponseError(404, 'Data tidak ditemukan', {
+              message: 'File gambar fisik tidak ditemukan di server.',
+            })
+          );
         }
       });
     } catch (error) {

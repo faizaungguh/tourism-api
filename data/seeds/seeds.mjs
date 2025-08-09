@@ -11,16 +11,15 @@ import multiAdmin from '../mocks/Admin.json' with { type: 'json' };
 import adminDefault from '../mocks/Default.json' with { type: 'json' };
 
 /** Impor Mock Destination */
-import destData1 from '../mocks/seed-destinasion-01.json' with { type: 'json' };
-import destData2 from '../mocks/seed-destination-02.json' with { type: 'json' };
-import destData3 from '../mocks/seed-destination-03.json' with { type: 'json' };
-import destData4 from '../mocks/seed-destination-04.json' with { type: 'json' };
-import destData5 from '../mocks/seed-destination-05.json' with { type: 'json' };
-import attrData1 from '../mocks/seed-attraction-01.json' with { type: 'json' };
-import attrData2 from '../mocks/seed-attraction-02.json' with { type: 'json' };
-import attrData3 from '../mocks/seed-attraction-03.json' with { type: 'json' };
-import attrData4 from '../mocks/seed-attraction-04.json' with { type: 'json' };
-import attrData5 from '../mocks/seed-attraction-05.json' with { type: 'json' };
+import destData1 from '../mocks/ready-seed/seed-destination-01.json' with { type: 'json' };
+import destData2 from '../mocks/ready-seed/seed-destination-02.json' with { type: 'json' };
+import destData3 from '../mocks/ready-seed/seed-destination-03.json' with { type: 'json' };
+import destData4 from '../mocks/ready-seed/seed-destination-04.json' with { type: 'json' };
+import destData5 from '../mocks/ready-seed/seed-destination-05.json' with { type: 'json' };
+import destData6 from '../mocks/ready-seed/seed-destination-06.json' with { type: 'json' };
+import destData7 from '../mocks/ready-seed/seed-destination-07.json' with { type: 'json' };
+import attrData1 from '../mocks/ready-seed/seed-attraction-01.json' with { type: 'json' };
+import attrData2 from '../mocks/ready-seed/seed-attraction-02.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -158,20 +157,20 @@ const importTourData = async () => {
       ...destData3,
       ...destData4,
       ...destData5,
+      ...destData6,
+      ...destData7,
     ];
+    
     const allAttractionsData = [
       ...attrData1, 
       ...attrData2,
-      ...attrData3,
-      ...attrData4,
-      ...attrData5
     ];
 
     const destinationsToCreate = await Promise.all(
       allDestinationsData.map(async (dest) => {
-        const manager = await Admin.findOne({ username: dest.managerUsername });
-        const category = await Category.findOne({ name: dest.categoryName });
-        const subdistrict = await Subdistrict.findOne({ name: dest.locations.subdistrictName });
+        const manager = await Admin.findOne({ username: dest.createdBy });
+        const category = await Category.findOne({ name: dest.category });
+        const subdistrict = await Subdistrict.findOne({ name: dest.locations.subdistrict });
 
         if (!manager || !category || !subdistrict) {
           console.warn(
@@ -189,7 +188,9 @@ const importTourData = async () => {
             addresses: dest.locations.addresses,
             subdistrict: subdistrict._id,
             coordinates: dest.locations.coordinates,
+            mapLink: dest.locations.link,
           },
+          openingHour: dest.openingHour,
           ticket: dest.ticket,
           parking: dest.parking,
           facility: dest.facility,
@@ -203,12 +204,11 @@ const importTourData = async () => {
     console.log(`✅ ${createdDestinations.length} Destinasi berhasil diimpor.`);
 
     const attractionsByDestSlug = new Map();
-
     for (const attr of allAttractionsData) {
-      if (!attractionsByDestSlug.has(attr.destinationSlug)) {
-        attractionsByDestSlug.set(attr.destinationSlug, []);
+      if (!attractionsByDestSlug.has(attr.destination)) {
+        attractionsByDestSlug.set(attr.destination, []);
       }
-      attractionsByDestSlug.get(attr.destinationSlug).push(attr);
+      attractionsByDestSlug.get(attr.destination).push(attr);
     }
 
     let createdAttractionsCount = 0;
@@ -219,8 +219,7 @@ const importTourData = async () => {
           name: attr.name,
           description: attr.description,
           destination: destination._id,
-
-          ticketType: attr.ticketType === 'gratis' ? 'gratis' : attr.ticketType,
+          ticketType: attr.ticketType,
           ticket: attr.ticket,
         }));
 

@@ -59,7 +59,7 @@ adminSchema.pre('save', async function (next) {
       });
 
       if (Object.keys(errors).length > 0) {
-        return next(new ResponseError(409, 'Duplikasi data masukan.', errors));
+        return next(new ResponseError(409, 'Duplikasi data.', errors));
       }
     }
   }
@@ -103,7 +103,7 @@ adminSchema.pre('deleteOne', async function (next) {
       });
 
       if (destinationCount > 0) {
-        const error = new ResponseError(409, 'Penghapusan Manager gagal', {
+        const error = new ResponseError(422, 'Proses dihentikan', {
           message: `Manajer tidak dapat dihapus karena masih memiliki ${destinationCount} destinasi. Hapus destinasi terlebih dahulu.`,
         });
         return next(error);

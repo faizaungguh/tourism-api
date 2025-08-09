@@ -45,7 +45,7 @@ export const destinationService = {
   gallery: {
     add: async (destinationDoc, newPhotos) => {
       if (!destinationDoc || !newPhotos) {
-        throw new ResponseError(422, 'File tidak terkirim', {
+        throw new ResponseError(422, 'Proses dihentikan', {
           message: 'Data destinasi atau foto tidak valid saat dikirim ke service.',
         });
       }
@@ -77,7 +77,7 @@ export const destinationService = {
 
     dropAll: async (destinationDoc) => {
       if (!destinationDoc) {
-        throw new ResponseError(422, 'Dokumen tidak ada', {
+        throw new ResponseError(422, 'Proses dihentikan', {
           message: 'Sertakan dokumen terbaru yang anda perlukan.',
         });
       }

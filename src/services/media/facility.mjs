@@ -113,7 +113,7 @@ export const facilityService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(404, 'File tidak terhapus', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: 'Gagal menghapus foto dari database. Data tidak ditemukan.',
       });
     }

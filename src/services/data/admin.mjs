@@ -46,7 +46,7 @@ export const adminService = {
 
     /** jika admin tidak ditemukan, tampilkan pesan error */
     if (!admin) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Admin dengan Id ${id} tidak ditemukan`,
       });
     }
@@ -78,7 +78,7 @@ export const adminService = {
     const deletedAdmin = await Admin.findOneAndDelete({ adminId: id });
 
     if (!deletedAdmin) {
-      throw new ResponseError(404, 'Id tidak ditemukan', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Admin dengan Id ${id} tidak ditemukan`,
       });
     }

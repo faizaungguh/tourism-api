@@ -32,6 +32,14 @@ export const locations = validate.object({
     .string()
     .pattern(/^[^<>]*$/)
     .messages({
+      'string.empty': 'Tautan tidak boleh kosong.',
+      'any.required': 'Tautan wajib diisi.',
+      'string.pattern.base': 'Tautan tidak boleh mengandung skrip atau tag HTML.',
+    }),
+  link: validate
+    .string()
+    .pattern(/^[^<>]*$/)
+    .messages({
       'string.empty': 'Alamat tidak boleh kosong.',
       'any.required': 'Alamat wajib diisi.',
       'string.pattern.base': 'Alamat tidak boleh mengandung skrip atau tag HTML.',

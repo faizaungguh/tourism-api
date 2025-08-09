@@ -20,7 +20,8 @@ const generateSlug = (name) => {
   return name
     .toLowerCase()
     .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '');
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-');
 };
 
 categorySchema.pre('save', async function (next) {
@@ -30,7 +31,7 @@ categorySchema.pre('save', async function (next) {
     });
     if (existingCategory && existingCategory._id.toString() !== this._id.toString()) {
       return next(
-        new ResponseError(409, 'Duplikasi nama Kategori', {
+        new ResponseError(409, 'Duplikasi data.', {
           message: `Kategori dengan nama '${this.name}' sudah ada.`,
         })
       );
@@ -54,7 +55,11 @@ categorySchema.pre('findOneAndUpdate', async function (next) {
       _id: { $ne: filter._id },
     });
     if (existingCategory) {
-      return next(new ResponseError(409, `Kategori dengan nama '${newName}' sudah ada.`));
+      return next(
+        new ResponseError(409, 'Duplikasi data.', {
+          message: `Kategori dengan nama '${newName}' sudah ada.`,
+        })
+      );
     }
     update.$set.slug = generateSlug(newName);
   }

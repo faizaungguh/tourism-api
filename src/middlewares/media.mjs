@@ -12,7 +12,7 @@ const baseMulter = {
       callback(null, true);
     } else {
       callback(
-        new ResponseError(415, 'Ekstensi tidak didukung', {
+        new ResponseError(415, 'Data tidak diproses', {
           photo:
             'Dokumen yang didukung adalah berupa gambar dengan ekstensi seperti .jpg, .png, dan sebagainya.',
         })
@@ -27,7 +27,7 @@ const createMedia = (uploader, limits) => (req, res, next) => {
       switch (err.code) {
         case 'LIMIT_FILE_SIZE':
           return next(
-            new ResponseError(413, 'Dokumen terlalu besar', {
+            new ResponseError(413, 'Data tidak diproses', {
               photo: `Ukuran dokumen yang Anda kirim terlalu besar, ukuran maksimal ${
                 limits.fileSize / 1024
               }KB.`,
@@ -35,12 +35,12 @@ const createMedia = (uploader, limits) => (req, res, next) => {
           );
         case 'LIMIT_UNEXPECTED_FILE':
           return next(
-            new ResponseError(422, 'Dokumen tidak diterima', {
+            new ResponseError(422, 'Proses dihentikan', {
               photo: `Hanya satu file dengan nama field 'photo' yang diizinkan.`,
             })
           );
         default:
-          return next(new ResponseError(422, `Gagal mengunggah file: ${err.code}`, err.message));
+          return next(new ResponseError(422, `Proses dihentikan`, err.message));
       }
     } else if (err) {
       return next(err);

@@ -104,7 +104,9 @@ export const attractionService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(404, 'Gagal menghapus foto dari database. Data tidak ditemukan.');
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: 'Gagal menghapus foto dari database. Data tidak ditemukan.',
+      });
     }
 
     await attractionHelper.cleanupFile(photoToDelete.url);

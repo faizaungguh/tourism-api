@@ -77,7 +77,9 @@ export const destination = {
         );
 
         if (!destinationDoc) {
-          throw new ResponseError(404, 'Destinasi tidak ditemukan');
+          throw new ResponseError(404, 'Data tidak ditemukan', {
+            message: 'Destinasi tidak ditemukan',
+          });
         }
 
         req.foundDestination = destinationDoc;
@@ -98,7 +100,9 @@ export const destination = {
           .populate({ path: 'locations.subdistrict', select: 'abbrevation' });
 
         if (!destinationDoc) {
-          throw new ResponseError(404, 'Destinasi tidak ditemukan');
+          throw new ResponseError(404, 'Data tidak ditemukan', {
+            message: 'Destinasi tidak ditemukan',
+          });
         }
 
         if (!destinationDoc.createdBy) {
@@ -108,7 +112,9 @@ export const destination = {
           );
         }
         if (destinationDoc.createdBy.adminId !== adminId) {
-          throw new ResponseError(403, 'Akses ditolak. Anda bukan pemilik destinasi ini.');
+          throw new ResponseError(403, 'Akses ditolak', {
+            message: ' Anda bukan pemilik destinasi ini.',
+          });
         }
 
         req.foundDestination = destinationDoc;
@@ -173,7 +179,9 @@ export const destination = {
 
         const photo = foundFacility.photo.find((p) => p.photoId === photoId);
         if (!photo) {
-          throw new ResponseError(404, `Foto dengan ID "${photoId}" tidak ditemukan.`);
+          throw new ResponseError(404, 'Data tidak ditemukan', {
+            message: `Foto dengan ID "${photoId}" tidak ditemukan.`,
+          });
         }
 
         req.photoToDelete = photo;
@@ -210,7 +218,9 @@ export const destination = {
 
         const photo = foundAttraction.photos.find((p) => p.photoId === photoId);
         if (!photo) {
-          throw new ResponseError(404, `Foto dengan ID "${photoId}" tidak ditemukan.`);
+          throw new ResponseError(404, 'Data tidak ditemukan', {
+            message: `Foto dengan ID "${photoId}" tidak ditemukan.`,
+          });
         }
 
         req.photoToDelete = photo;
@@ -261,7 +271,9 @@ export const destination = {
     save: async (req, res, next) => {
       try {
         if (!req.files || req.files.length === 0) {
-          throw new ResponseError(400, 'Anda harus menyertakan setidaknya satu file gambar.');
+          throw new ResponseError(422, 'Proses dihentikan', {
+            message: 'Anda harus menyertakan setidaknya satu file gambar.',
+          });
         }
 
         const { foundDestination } = req;
@@ -299,7 +311,7 @@ export const destination = {
     replace: async (req, res, next) => {
       try {
         if (!req.file) {
-          throw new ResponseError(422, 'File tidak ada', {
+          throw new ResponseError(422, 'Proses dihentikan', {
             photo: 'Anda harus menyertakan satu file gambar untuk pembaruan.',
           });
         }

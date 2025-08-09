@@ -362,7 +362,7 @@ export const destinationHelper = {
       errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
 
     if (Object.keys(errors).length > 0) {
-      throw new ResponseError(422, 'Data gagal ditambahkan.', errors);
+      throw new ResponseError(422, 'Proses dihentikan', errors);
     }
 
     const { categories, ...rest } = validatedRequest;
@@ -394,7 +394,7 @@ export const destinationHelper = {
       });
 
     if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Akses anda ditolak', {
+      throw new ResponseError(403, 'Akse ditolak', {
         message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
       });
     }
@@ -420,7 +420,7 @@ export const destinationHelper = {
       updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
     }
     if (Object.keys(errors).length > 0) {
-      throw new ResponseError(422, 'Data gagal diubah.', errors);
+      throw new ResponseError(422, 'Proses dihentikan', errors);
     }
 
     if (validatedRequest.description) {

@@ -28,7 +28,7 @@ export const attractionHelper = {
     }
 
     if (destination.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Akses anda ditolak', {
+      throw new ResponseError(403, 'Akses ditolak', {
         message: 'Anda tidak memiliki hak mengelola wahana di destinasi ini.',
       });
     }

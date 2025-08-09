@@ -23,7 +23,7 @@ const buildSortStage = (validatedQuery) => {
 
 const _handlePasswordUpdate = async (validatedRequest, originalPasswordHash) => {
   if (!validatedRequest.oldPassword || !validatedRequest.newPassword) {
-    throw new ResponseError(422, 'Data kosong.', {
+    throw new ResponseError(422, 'Proses dihentikan', {
       message: 'Anda harus memasukkan password lama dan password baru anda',
     });
   }
@@ -105,7 +105,7 @@ export const adminHelper = {
 
   updateManager: async (id, adminId, validatedRequest) => {
     if (id !== adminId) {
-      throw new ResponseError(403, 'Akses anda ditolak.', {
+      throw new ResponseError(403, 'Akses ditolak.', {
         message: 'Anda tidak diizinkan mengubah data manajer lain.',
       });
     }

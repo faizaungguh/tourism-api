@@ -32,7 +32,9 @@ export const adminService = {
 
   getProfilePhoto: async (adminDoc) => {
     if (!adminDoc || !adminDoc.photo) {
-      throw new ResponseError(404, 'Foto profil untuk pengguna ini tidak ditemukan.');
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: 'Foto profil untuk pengguna ini tidak ditemukan.',
+      });
     }
 
     return adminDoc.photo;

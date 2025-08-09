@@ -87,5 +87,1380 @@
     "description": "Tempat di bawah jembatan atau di tepian sungai yang biasa digunakan oleh warga sekitar untuk memancing sambil menikmati suasana sore hari.",
     "ticketType": "gratis",
     "destination": "jembatan-gerilya-sudirman"
+  },
+  {
+    "name": "Area Berenang Alami Kedung Jayub",
+    "description": "Nikmati kesegaran air alami di kolam utama Kedung Jayub yang jernih dan dikelilingi bebatuan eksotis. Area yang aman untuk berenang dan bermain air.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "destination": "wisata-alam-kedung-jayub"
+  },
+  {
+    "name": "Homestay Tradisional Warga",
+    "description": "Rasakan pengalaman menginap di rumah-rumah warga dengan arsitektur tradisional. Menikmati kearifan lokal dan keramahan penduduk Desa Tamansari.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 150000
+    },
+    "destination": "desa-wisata-tamansari"
+  },
+  {
+    "name": "Area Utama Air Terjun Cidadap",
+    "description": "Pemandangan utama air terjun Cidadap yang megah dengan kolam alami di bawahnya. Tempat yang sempurna untuk bersantai dan menikmati gemuruh air.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 8000
+    },
+    "destination": "curug-cidadap"
+  },
+  {
+    "name": "Wahana Sepeda Air",
+    "description": "Nikmati suasana danau buatan yang sejuk dengan menyewa sepeda air berbentuk angsa. Aktivitas rekreasi yang menyenangkan untuk keluarga.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "wisata-alam-baturaden"
+  },
+  {
+    "name": "Flying Fox Lintas Lembah",
+    "description": "Rasakan sensasi terbang melintasi lembah hutan pinus Baturaden dengan wahana flying fox yang menantang dan memacu adrenalin.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 30000
+    },
+    "destination": "baturaden-adventure-forest"
+  },
+  {
+    "name": "River Boarding Adventure",
+    "description": "Menyusuri aliran sungai berbatu dengan menggunakan papan seluncur. Petualangan air yang seru dan dipandu oleh instruktur profesional.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 50000
+    },
+    "destination": "baturaden-adventure-forest"
+  },
+  {
+    "name": "Taman Koleksi Tanaman Obat",
+    "description": "Jelajahi area khusus yang didedikasikan untuk koleksi berbagai jenis tanaman herbal dan obat tradisional Indonesia, lengkap dengan papan informasi edukatif.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 10000
+    },
+    "destination": "kebun-raya-baturaden"
+  },
+  {
+    "name": "Rumah Kaca Anggrek",
+    "description": "Kunjungi rumah kaca yang menjadi rumah bagi ratusan spesies anggrek langka dari berbagai daerah, termasuk anggrek endemik lereng Gunung Slamet.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 10000
+    },
+    "destination": "kebun-raya-baturaden"
+  },
+  {
+    "name": "Area Berenang Telaga Sunyi",
+    "description": "Berenang di air telaga yang sangat jernih dan sejuk, bersumber langsung dari mata air Gunung Slamet. Suasananya yang tenang memberikan pengalaman menyegarkan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "telaga-sunyi"
+  },
+  {
+    "name": "Wahana Permainan Tradisional",
+    "description": "Area bermain yang menyediakan aneka permainan tradisional Jawa seperti egrang, bakiak, dan gasing untuk dicoba oleh pengunjung segala usia.",
+    "ticketType": "gratis",
+    "destination": "kidung-kampoengku"
+  },
+  {
+    "name": "Resto Saung Tepi Sawah",
+    "description": "Menikmati hidangan khas pedesaan di saung-saung bambu yang berdiri di tepi sawah, menawarkan suasana makan yang tenang dan otentik.",
+    "ticketType": "gratis",
+    "destination": "kidung-kampoengku"
+  },
+  {
+    "name": "Air Terjun Kembar Panganten",
+    "description": "Daya tarik utama berupa dua aliran air terjun yang berdampingan, menyerupai sepasang pengantin. Pemandangan yang unik dan romantis.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "destination": "curug-panganten-kedungbanteng"
+  },
+  {
+    "name": "Kolam Alami Bawah Curug",
+    "description": "Kolam penampungan air terjun yang dangkal dan aman untuk bermain air atau sekadar merendam kaki sambil menikmati pemandangan.",
+    "ticketType": "gratis",
+    "destination": "curug-panganten-kedungbanteng"
+  },
+  {
+    "name": "Pemandangan Curug Lengki",
+    "description": "Menikmati keindahan Curug Pondok Lengki dari area pandang utama. Air terjun ini memiliki debit air yang deras dan dikelilingi tebing hijau.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-pondok-lengki"
+  },
+  {
+    "name": "Gazebo Istirahat Pengunjung",
+    "description": "Fasilitas gazebo atau saung yang disediakan bagi pengunjung untuk beristirahat, makan bekal, dan berteduh sambil menikmati suasana alam sekitar.",
+    "ticketType": "gratis",
+    "destination": "curug-pondok-lengki"
+  },
+  {
+    "name": "Trek Menuju Lima Curug",
+    "description": "Petualangan menyusuri jalur setapak untuk menemukan lima titik air terjun yang berbeda dalam satu kawasan. Setiap curug memiliki keunikannya sendiri.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "curug-lima"
+  },
+  {
+    "name": "Area Berkemah Curug Lima",
+    "description": "Kawasan datar dekat aliran sungai yang disediakan khusus untuk pengunjung yang ingin berkemah dan bermalam di alam terbuka.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000
+    },
+    "destination": "curug-lima"
+  },
+  {
+    "name": "Wahana River Tubing",
+    "description": "Menyusuri aliran sungai Siton yang jernih dengan menggunakan ban. Aktivitas yang aman dan menyenangkan untuk semua anggota keluarga.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 15000
+    },
+    "destination": "wisata-siton-banjaranyar"
+  },
+  {
+    "name": "Warung Makan Tepi Sungai",
+    "description": "Cicipi berbagai hidangan lokal, terutama ikan bakar, di warung-warung sederhana yang berlokasi persis di tepi sungai Siton.",
+    "ticketType": "gratis",
+    "destination": "wisata-siton-banjaranyar"
+  },
+  {
+    "name": "Workshop Membatik Tulis",
+    "description": "Pengalaman belajar membatik secara langsung dari para pengrajin. Peserta dapat mencoba proses mencanting dan membawa pulang hasil karyanya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 50000
+    },
+    "destination": "rumah-batik-anto-jamil"
+  },
+  {
+    "name": "Galeri Batik Banyumasan",
+    "description": "Melihat dan membeli berbagai koleksi batik tulis dan cap khas Banyumasan dengan motif-motif klasik dan kontemporer karya Anto Jamil.",
+    "ticketType": "gratis",
+    "destination": "rumah-batik-anto-jamil"
+  },
+  {
+    "name": "Menu Utama Soto Sutri",
+    "description": "Menyajikan soto legendaris khas Sokaraja dengan kuah bening yang kaya rempah, suwiran ayam kampung, dan kerupuk cantir yang khas.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 18000
+    },
+    "destination": "soto-sutri"
+  },
+  {
+    "name": "Pusat Jajanan Pelengkap",
+    "description": "Menyediakan berbagai lauk pendamping soto seperti mendoan, sate telur puyuh, perkedel, dan aneka kerupuk untuk melengkapi santapan.",
+    "ticketType": "gratis",
+    "destination": "soto-sutri"
+  },
+  {
+    "name": "Area Belanja Getuk Goreng",
+    "description": "Pusat penjualan utama Getuk Goreng Eka yang selalu hangat dan baru dibuat. Pengunjung bisa memilih berbagai varian rasa dan kemasan.",
+    "ticketType": "gratis",
+    "destination": "pusat-oleh-oleh-getuk-goreng-eka"
+  },
+  {
+    "name": "Pusat Oleh Oleh Khas Sokaraja",
+    "description": "Selain getuk, area ini juga menjual berbagai makanan dan oleh-oleh khas daerah Banyumas lainnya seperti nopia, mino, dan aneka keripik.",
+    "ticketType": "gratis",
+    "destination": "pusat-oleh-oleh-getuk-goreng-eka"
+  },
+  {
+    "name": "Kolam Renang Panemon",
+    "description": "Kolam renang dengan berbagai tingkat kedalaman untuk anak-anak dan dewasa, dilengkapi dengan seluncuran air dan pemandangan persawahan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "destination": "taman-panemon"
+  },
+  {
+    "name": "Wahana Taman Kelinci",
+    "description": "Area taman di mana anak-anak dapat berinteraksi langsung, memberi makan, dan bermain bersama kelinci-kelinci yang dilepas bebas.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "destination": "taman-panemon"
+  },
+  {
+    "name": "Area Utama Curug Ceheng",
+    "description": "Nikmati keindahan air terjun Curug Ceheng yang memiliki ketinggian sedang dengan debit air yang stabil, dikelilingi oleh pepohonan rindang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "curug-ceheng"
+  },
+  {
+    "name": "Jembatan Bambu Ikonik",
+    "description": "Jembatan bambu yang melintasi sungai di bawah air terjun. Merupakan spot foto favorit pengunjung dengan latar belakang Curug Ceheng.",
+    "ticketType": "gratis",
+    "destination": "curug-ceheng"
+  },
+  {
+    "name": "Area Pemancingan Embung Banteran",
+    "description": "Spot populer di tepi embung yang nyaman untuk kegiatan memancing ikan air tawar sambil menikmati suasana pedesaan yang asri.",
+    "ticketType": "gratis",
+    "destination": "embung-banteran"
+  },
+  {
+    "name": "Wahana Perahu Bebek Keliling Embung",
+    "description": "Menyewa perahu bebek untuk berkeliling di perairan embung. Aktivitas rekreasi air yang cocok untuk keluarga dan pasangan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "embung-banteran"
+  },
+  {
+    "name": "Spot Foto Taman Bunga",
+    "description": "Kawasan taman yang ditata dengan berbagai jenis bunga berwarna-warni, menciptakan latar belakang yang indah untuk berfoto.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "taman-hias-rembangmas"
+  },
+  {
+    "name": "Gazebo Santai Keluarga",
+    "description": "Fasilitas gazebo atau saung yang tersebar di area taman, tempat yang nyaman untuk pengunjung beristirahat dan menikmati bekal.",
+    "ticketType": "gratis",
+    "destination": "taman-hias-rembangmas"
+  },
+  {
+    "name": "Instalasi Seni Unik",
+    "description": "Berbagai instalasi seni dan spot foto kreatif yang dirancang untuk pengunjung yang gemar berburu foto instagramable.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "taman-impean"
+  },
+  {
+    "name": "Kolam Terapi Ikan",
+    "description": "Rasakan sensasi relaksasi dengan merendamkan kaki di kolam yang berisi ribuan ikan kecil Garra rufa.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "taman-impean"
+  },
+  {
+    "name": "Area Rooftop Pemandangan Senja",
+    "description": "Spot terbaik di kafe untuk menikmati minuman sambil menyaksikan matahari terbenam dengan pemandangan kota yang luas.",
+    "ticketType": "gratis",
+    "destination": "langit-senja-cafe"
+  },
+  {
+    "name": "Panggung Musik Akustik",
+    "description": "Area panggung kecil tempat pertunjukan musik akustik diadakan pada malam-malam tertentu, menambah suasana santai di kafe.",
+    "ticketType": "gratis",
+    "destination": "langit-senja-cafe"
+  },
+  {
+    "name": "Lapangan Sepak Bola Utama",
+    "description": "Lapangan rumput hijau yang menjadi pusat dari Gelora Purba Wasesa, sering digunakan untuk pertandingan sepak bola lokal.",
+    "ticketType": "gratis",
+    "destination": "gelora-purba-wasesa"
+  },
+  {
+    "name": "Area Piknik Tepi Embung",
+    "description": "Kawasan berumput di sekitar Embung Songgom yang cocok untuk menggelar tikar dan piknik bersama keluarga.",
+    "ticketType": "gratis",
+    "destination": "embung-songgom"
+  },
+  {
+    "name": "Spot Foto Dermaga Kayu",
+    "description": "Dermaga kayu sederhana yang menjorok ke embung, menjadi lokasi favorit untuk mengambil foto dengan latar belakang perairan.",
+    "ticketType": "gratis",
+    "destination": "embung-songgom"
+  },
+  {
+    "name": "Area Doa Utama Goa Maria",
+    "description": "Pusat dari tempat ziarah, di mana terdapat patung Bunda Maria di dalam sebuah goa. Tempat yang hening untuk berdoa dan berefleksi.",
+    "ticketType": "gratis",
+    "destination": "goa-maria"
+  },
+  {
+    "name": "Jalur Jalan Salib",
+    "description": "Jalur setapak yang dilengkapi dengan 14 perhentian yang menggambarkan kisah sengsara Yesus, digunakan untuk devosi jalan salib.",
+    "ticketType": "gratis",
+    "destination": "goa-maria"
+  },
+  {
+    "name": "Lapangan Utama Perkemahan",
+    "description": "Area terbuka yang luas dan datar, menjadi lokasi utama untuk mendirikan tenda bagi para peserta kemah.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "bumi-perkemahan-kendalisada"
+  },
+  {
+    "name": "Arena Outbound dan Halang Rintang",
+    "description": "Kawasan yang dilengkapi dengan berbagai fasilitas outbound seperti jembatan tali dan flying fox untuk kegiatan petualangan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000
+    },
+    "destination": "bumi-perkemahan-kendalisada"
+  },
+  {
+    "name": "Ruang Pamer Koleksi Batik",
+    "description": "Galeri yang menampilkan aneka ragam motif batik Pringmas yang khas, baik dalam bentuk kain maupun produk jadi.",
+    "ticketType": "gratis",
+    "destination": "galeri-batik-pringmas"
+  },
+  {
+    "name": "Kelas Singkat Membatik Cap",
+    "description": "Workshop singkat bagi pengunjung yang ingin mencoba sensasi membuat selembar kain batik menggunakan teknik cap.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 35000
+    },
+    "destination": "galeri-batik-pringmas"
+  },
+  {
+    "name": "Monumen Duplikat Proklamasi",
+    "description": "Tugu peringatan yang menjadi ikon Alun-Alun Banyumas, tempat yang sering dijadikan titik kumpul dan latar berfoto.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-banyumas"
+  },
+  {
+    "name": "Pusat Kuliner Malam Hari",
+    "description": "Area di sekitar alun-alun yang berubah menjadi pusat jajanan dan kuliner pada sore hingga malam hari, menawarkan berbagai makanan khas.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-banyumas"
+  },
+  {
+    "name": "Panggung Pertunjukan Gamelan",
+    "description": "Area di dalam museum tempat satu set gamelan dipamerkan, dan terkadang digunakan untuk pertunjukan atau demonstrasi musik gamelan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000,
+      "child": 3000
+    },
+    "destination": "museum-wayang"
+  },
+  {
+    "name": "Jelajah Bangunan Kuno",
+    "description": "Menyusuri jalan-jalan di area kota lama untuk melihat dan berfoto dengan latar arsitektur bangunan peninggalan Belanda yang masih terawat.",
+    "ticketType": "gratis",
+    "destination": "banyumas-kota-lama"
+  },
+  {
+    "name": "Wisata Sejarah Pendopo Sipanji",
+    "description": "Mengunjungi pendopo Kabupaten Banyumas yang bersejarah, pusat pemerintahan masa lalu dengan arsitektur joglo yang khas.",
+    "ticketType": "gratis",
+    "destination": "banyumas-kota-lama"
+  },
+  {
+    "name": "Air Terjun Utama Curug Dawa",
+    "description": "Menikmati pemandangan air terjun yang tinggi dan memanjang, mengalir di antara tebing bebatuan yang eksotis.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 8000
+    },
+    "destination": "curug-dawa"
+  },
+  {
+    "name": "Kolam Pemandian Alami",
+    "description": "Area di dasar air terjun dengan kolam alami yang jernih dan tidak terlalu dalam, aman untuk berenang dan bermain air.",
+    "ticketType": "gratis",
+    "destination": "curug-dawa"
+  },
+  {
+    "name": "Gardu Pandang Embung Somagede",
+    "description": "Bangunan gardu pandang yang menjadi spot terbaik untuk melihat keseluruhan pemandangan embung dan perbukitan di sekitarnya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "embung-somagede"
+  },
+  {
+    "name": "Sewa Perahu Dayung",
+    "description": "Menyediakan perahu-perahu kecil yang bisa disewa oleh pengunjung untuk mendayung dan menjelajahi area perairan embung.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "embung-somagede"
+  },
+  {
+    "name": "Puncak Batu Lintang",
+    "description": "Titik tertinggi di Watu Lintang, berupa sebongkah batu besar tempat pengunjung bisa naik untuk mendapatkan pemandangan 360 derajat.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "objek-wisata-watu-lintang"
+  },
+  {
+    "name": "Spot Sunrise Pagi Hari",
+    "description": "Area khusus yang menghadap ke timur, menjadi tempat favorit para pemburu foto untuk mengabadikan momen matahari terbit.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "objek-wisata-watu-lintang"
+  },
+  {
+    "name": "Kolam Renang Banyu Tetes",
+    "description": "Kolam renang yang airnya berasal dari sumber mata air alami, memberikan kesegaran yang berbeda dari kolam renang biasa.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "destination": "wisata-banyu-tetes"
+  },
+  {
+    "name": "Taman Bermain Anak",
+    "description": "Area bermain yang dilengkapi ayunan, perosotan, dan jungkat-jungkit untuk menghibur pengunjung anak-anak.",
+    "ticketType": "gratis",
+    "destination": "wisata-banyu-tetes"
+  },
+  {
+    "name": "Area Berenang Curug Song",
+    "description": "Kolam alami di bawah air terjun Curug Song yang luas dan jernih, menjadi tempat utama bagi pengunjung untuk berenang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 7000
+    },
+    "destination": "curug-song"
+  },
+  {
+    "name": "Spot Camping Ground",
+    "description": "Lahan datar di dekat area curug yang disediakan bagi pengunjung yang ingin mendirikan tenda dan berkemah.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "curug-song"
+  },
+  {
+    "name": "Wahana Rakit Bambu",
+    "description": "Menyusuri Telaga Anteng yang tenang dengan menggunakan rakit bambu tradisional, memberikan pengalaman yang otentik dan menenangkan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "telaga-anteng"
+  },
+  {
+    "name": "Saung Tepi Telaga",
+    "description": "Saung atau gazebo yang dibangun di tepi telaga, tempat yang ideal untuk bersantai, makan bekal, dan menikmati ketenangan alam.",
+    "ticketType": "gratis",
+    "destination": "telaga-anteng"
+  },
+  {
+    "name": "Spot Foto Puncak Watu Meja",
+    "description": "Area di atas batu datar raksasa yang menyerupai meja, menawarkan latar belakang pemandangan lekukan Sungai Serayu yang dramatis.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "watu-meja"
+  },
+  {
+    "name": "Ayunan Tepi Jurang",
+    "description": "Wahana ayunan yang dipasang di tepi tebing, memberikan sensasi berayun di ketinggian dengan pemandangan langsung ke lembah sungai.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "watu-meja"
+  },
+  {
+    "name": "Area Bermain Anak Patikraja",
+    "description": "Fasilitas taman bermain umum yang dilengkapi dengan ayunan, perosotan, dan area bermain pasir untuk anak-anak.",
+    "ticketType": "gratis",
+    "destination": "taman-patikraja"
+  },
+  {
+    "name": "Jalur Refleksi Kaki",
+    "description": "Lintasan khusus yang disusun dari bebatuan alami untuk terapi dan refleksi telapak kaki bagi para pengunjung.",
+    "ticketType": "gratis",
+    "destination": "taman-patikraja"
+  },
+  {
+    "name": "Spot Foto Mulut Terowongan",
+    "description": "Area di depan pintu masuk Terowongan Notog yang menjadi lokasi favorit untuk berfoto dengan latar belakang arsitektur terowongan yang megah.",
+    "ticketType": "gratis",
+    "destination": "terowongan-notog"
+  },
+  {
+    "name": "Area Menunggu Kereta Melintas",
+    "description": "Tempat aman di sekitar rel untuk menyaksikan sensasi saat kereta api melintas masuk atau keluar dari terowongan.",
+    "ticketType": "gratis",
+    "destination": "terowongan-notog"
+  },
+  {
+    "name": "Gardu Pandang Puncak Pencit",
+    "description": "Menawarkan pemandangan luas dari puncak Gunung Pencit. Spot terbaik untuk menikmati panorama alam dan perbukitan sekitar.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "wisata-gunung-pencit"
+  },
+  {
+    "name": "Area Warung Kopi Ketinggian",
+    "description": "Warung-warung sederhana di area puncak yang menyajikan kopi, teh hangat, dan makanan ringan untuk menemani pengunjung menikmati suasana.",
+    "ticketType": "gratis",
+    "destination": "wisata-gunung-pencit"
+  },
+  {
+    "name": "Pemandangan Air Terjun Macan",
+    "description": "Menikmati keindahan utama Curug Macan dengan aliran airnya yang deras jatuh di antara tebing-tebing batu yang artistik.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 8000
+    },
+    "destination": "curug-macan"
+  },
+  {
+    "name": "Kolam Alami Bawah Curug",
+    "description": "Kolam penampungan air terjun yang sejuk dan jernih, tempat pengunjung bisa bermain air dan berenang dengan aman.",
+    "ticketType": "gratis",
+    "destination": "curug-macan"
+  },
+  {
+    "name": "Puncak Bukit Cikawak",
+    "description": "Area puncak bukit yang menjadi spot utama untuk menikmati pemandangan alam perbukitan dan lembah di sekitarnya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "bukit-cikawak"
+  },
+  {
+    "name": "Ayunan Langit Cikawak",
+    "description": "Wahana ayunan yang dipasang di tepi bukit, menawarkan sensasi berayun di ketinggian dengan pemandangan yang memukau.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "bukit-cikawak"
+  },
+  {
+    "name": "Spot Foto Puncak Wadas Tumpang",
+    "description": "Area di puncak dengan formasi bebatuan unik yang bertumpuk secara alami, menjadi latar yang eksotis untuk berfoto.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "puncak-wadas-tumpang"
+  },
+  {
+    "name": "Area Berkemah Wadas Tumpang",
+    "description": "Kawasan datar di dekat puncak yang disediakan bagi para petualang yang ingin berkemah dan menikmati suasana malam di ketinggian.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000
+    },
+    "destination": "puncak-wadas-tumpang"
+  },
+  {
+    "name": "Gardu Pandang Bukit Gajah",
+    "description": "Gardu pandang kayu yang dibangun di titik terbaik untuk melihat formasi bukit yang menyerupai gajah dan pemandangan sekitarnya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "bukit-gajah-selo"
+  },
+  {
+    "name": "Jalur Trekking Gajah Selo",
+    "description": "Jalur setapak yang menantang namun aman untuk dijelajahi menuju puncak, melewati area perbukitan yang hijau.",
+    "ticketType": "gratis",
+    "destination": "bukit-gajah-selo"
+  },
+  {
+    "name": "Taman Kota Jatilawang",
+    "description": "Area hijau di pusat alun-alun yang menjadi tempat bersantai warga, dilengkapi dengan bangku-bangku taman dan area bermain.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-jatilawang"
+  },
+  {
+    "name": "Pusat Jajanan Malam Hari",
+    "description": "Kawasan kuliner yang hidup pada malam hari, menawarkan berbagai macam makanan dan minuman khas lokal.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-jatilawang"
+  },
+  {
+    "name": "Wisata Perahu mengelilingi Waduk",
+    "description": "Menyewa perahu untuk berkeliling menikmati pemandangan di sekitar waduk Tambaknegara dari atas perairan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "destination": "dermaga-perahu-apung-tambaknegara"
+  },
+  {
+    "name": "Rumah Makan Apung",
+    "description": "Menikmati sajian kuliner, terutama ikan bakar, di atas rumah makan yang mengapung di atas air waduk.",
+    "ticketType": "gratis",
+    "destination": "dermaga-perahu-apung-tambaknegara"
+  },
+  {
+    "name": "Kolam Pemandian Air Panas Belerang",
+    "description": "Kolam utama dengan air panas alami yang mengandung belerang, dipercaya baik untuk kesehatan kulit dan relaksasi.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 7000
+    },
+    "destination": "pemandian-tirta-husada-kalibacin"
+  },
+  {
+    "name": "Pemandian Air Dingin Alami",
+    "description": "Kolam terpisah dengan air dingin yang bersumber dari mata air pegunungan, memberikan sensasi segar setelah berendam air panas.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 7000
+    },
+    "destination": "pemandian-tirta-husada-kalibacin"
+  },
+  {
+    "name": "Wahana Kolam Renang Anak",
+    "description": "Kolam renang dangkal yang dilengkapi dengan waterboom mini dan aneka permainan air yang aman untuk anak-anak.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 15000
+    },
+    "destination": "newa-fun-education"
+  },
+  {
+    "name": "Taman Edukasi Satwa Mini",
+    "description": "Area di mana anak-anak dapat melihat dan berinteraksi dengan berbagai jenis satwa jinak seperti kelinci, burung, dan hamster.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 15000
+    },
+    "destination": "newa-fun-education"
+  },
+  {
+    "name": "Area Utama Air Terjun Pasekan",
+    "description": "Nikmati keindahan Curug Pasekan yang memiliki aliran air jernih dan suasana alam yang masih sangat asri.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-pasekan"
+  },
+  {
+    "name": "Spot Berenang Alami",
+    "description": "Kolam alami di dasar air terjun yang aman untuk berenang dan merasakan langsung kesegaran air pegunungan.",
+    "ticketType": "gratis",
+    "destination": "curug-pasekan"
+  },
+  {
+    "name": "Gardu Pandang Puncak Cikendang",
+    "description": "Spot utama untuk menikmati pemandangan dari ketinggian, melihat hamparan perbukitan dan lembah yang hijau.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "puncak-cikendang"
+  },
+  {
+    "name": "Warung Kopi Puncak",
+    "description": "Tempat bersantai sambil menikmati secangkir kopi atau teh hangat dan jajanan lokal setelah mencapai puncak.",
+    "ticketType": "gratis",
+    "destination": "puncak-cikendang"
+  },
+  {
+    "name": "Area Camping Ground Karang Kitri",
+    "description": "Lahan datar yang luas dan nyaman, disediakan khusus bagi para pengunjung yang ingin berkemah dan bermalam.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "bukit-karang-kitri"
+  },
+  {
+    "name": "Spot Foto Pemandangan Matahari Terbit",
+    "description": "Titik di puncak bukit yang menghadap ke timur, menjadi lokasi favorit untuk menyaksikan dan mengabadikan momen matahari terbit.",
+    "ticketType": "gratis",
+    "destination": "bukit-karang-kitri"
+  },
+  {
+    "name": "Jelajah Hutan Pinus Binker",
+    "description": "Menyusuri jalur trekking di bawah rerimbunan pohon pinus yang sejuk dan menenangkan, cocok untuk kegiatan jalan santai.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "wisata-alam-binker"
+  },
+  {
+    "name": "Area Piknik dan Bersantai",
+    "description": "Kawasan terbuka di tengah hutan pinus yang cocok untuk menggelar tikar, piknik, dan bersantai bersama keluarga atau teman.",
+    "ticketType": "gratis",
+    "destination": "wisata-alam-binker"
+  },
+  {
+    "name": "Taman Bunga Desa",
+    "description": "Kawasan yang ditanami berbagai jenis bunga hias yang terawat, menciptakan suasana yang indah dan spot foto menarik.",
+    "ticketType": "gratis",
+    "destination": "taman-desa-purwojati"
+  },
+  {
+    "name": "Area Bermain Tradisional",
+    "description": "Menyediakan beberapa permainan tradisional seperti egrang dan bakiak untuk dicoba oleh pengunjung.",
+    "ticketType": "gratis",
+    "destination": "taman-desa-purwojati"
+  },
+  {
+    "name": "Monumen Perjuangan Wangon",
+    "description": "Tugu peringatan yang menjadi ikon alun-alun, sering dijadikan titik bertemu dan lokasi berfoto.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-wangon"
+  },
+  {
+    "name": "Area Olahraga Publik",
+    "description": "Lapangan terbuka yang dimanfaatkan oleh masyarakat untuk berbagai kegiatan olahraga seperti jogging, senam, dan sepak bola.",
+    "ticketType": "gratis",
+    "destination": "alun-alun-wangon"
+  },
+  {
+    "name": "Bangunan Utama Masjid Bersejarah",
+    "description": "Melihat dari dekat arsitektur unik Masjid Saka Tunggal yang hanya ditopang oleh satu tiang utama. Sebuah peninggalan bersejarah yang penuh nilai filosofis.",
+    "ticketType": "gratis",
+    "destination": "masjid-saka-tunggal"
+  },
+  {
+    "name": "Interaksi Kera Jinak",
+    "description": "Berinteraksi dengan ratusan kera jinak yang berkeliaran bebas di area kompleks masjid. Pengalaman unik di tempat ziarah yang sakral.",
+    "ticketType": "gratis",
+    "destination": "masjid-saka-tunggal"
+  },
+  {
+    "name": "Area Utama Air Terjun Cikakak",
+    "description": "Menikmati keindahan dan kesegaran percikan air dari Curug Cikakak yang mengalir deras di antara bebatuan dan pepohonan rindang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000,
+      "child": 3000
+    },
+    "destination": "curug-cikakak"
+  },
+  {
+    "name": "Kolam Pemandian Alami",
+    "description": "Berenang dan bermain air di kolam alami yang terbentuk di bawah air terjun. Airnya jernih dan sangat menyegarkan.",
+    "ticketType": "gratis",
+    "destination": "curug-cikakak"
+  },
+  {
+    "name": "Gardu Pandang Puncak Kejabing",
+    "description": "Spot foto utama di puncak bukit yang menawarkan pemandangan hamparan sawah dan perbukitan hijau yang memanjakan mata.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "bukit-kejabing"
+  },
+  {
+    "name": "Area Berkemah Bukit Kejabing",
+    "description": "Kawasan datar di puncak yang ideal untuk mendirikan tenda, menikmati suasana malam, dan berburu pemandangan matahari terbit.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "bukit-kejabing"
+  },
+  {
+    "name": "Air Terjun Bertingkat Wanasuta",
+    "description": "Menyaksikan keunikan Curug Wanasuta yang memiliki beberapa tingkatan aliran air yang landai, menciptakan pemandangan yang menenangkan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-wanasuta"
+  },
+  {
+    "name": "Jalur Trekking Persawahan",
+    "description": "Perjalanan ringan menyusuri pematang sawah dan kebun warga untuk mencapai lokasi air terjun yang tersembunyi.",
+    "ticketType": "gratis",
+    "destination": "curug-wanasuta"
+  },
+  {
+    "name": "Tur Edukasi Peternakan Sapi",
+    "description": "Mengikuti tur untuk belajar tentang proses peternakan sapi Lembu Benggolo, mulai dari pembibitan, pemberian pakan, hingga pemerahan susu.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000,
+      "child": 20000
+    },
+    "destination": "lembu-benggolo-farm-resort"
+  },
+  {
+    "name": "Wahana Berkuda dan ATV",
+    "description": "Menjelajahi area resort yang luas dengan menunggang kuda atau mengendarai ATV, memberikan pengalaman petualangan yang seru.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 50000
+    },
+    "destination": "lembu-benggolo-farm-resort"
+  },
+  {
+    "name": "Pendakian Puncak Gunung Batur",
+    "description": "Jalur pendakian ringan menuju puncak Gunung Batur yang menawarkan pemandangan alam pedesaan dari ketinggian.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "wisata-gunung-batur"
+  },
+  {
+    "name": "Spot Foto Puncak Batu",
+    "description": "Area bebatuan di puncak yang menjadi lokasi favorit untuk berfoto dengan latar belakang pemandangan yang luas.",
+    "ticketType": "gratis",
+    "destination": "wisata-gunung-batur"
+  },
+  {
+    "name": "Spot Sunrise Bukit Pengaritan",
+    "description": "Menjadi lokasi favorit untuk menyaksikan momen matahari terbit yang spektakuler dari atas Bukit Pengaritan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "bukit-pengaritan"
+  },
+  {
+    "name": "Gardu Pandang Instagramable",
+    "description": "Berbagai gardu pandang dan spot foto kreatif yang sengaja dibangun untuk memenuhi kebutuhan foto para pengunjung.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "bukit-pengaritan"
+  },
+  {
+    "name": "Kolam Renang dan Waterboom",
+    "description": "Wahana air utama dengan beberapa kolam renang untuk berbagai usia dan seluncuran air yang menyenangkan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "destination": "taman-wisata-sentana"
+  },
+  {
+    "name": "Taman Bunga dan Gazebo",
+    "description": "Area taman yang ditata indah dengan aneka bunga dan dilengkapi gazebo untuk bersantai bersama keluarga.",
+    "ticketType": "gratis",
+    "destination": "taman-wisata-sentana"
+  },
+  {
+    "name": "Area Bermain Anak Gratis",
+    "description": "Fasilitas bermain publik seperti ayunan dan perosotan yang tersedia gratis untuk anak-anak di area taman.",
+    "ticketType": "gratis",
+    "destination": "taman-sumpiuh"
+  },
+  {
+    "name": "Pusat Kuliner Kaki Lima",
+    "description": "Kawasan di sekitar taman yang ramai dengan pedagang makanan dan minuman pada sore hingga malam hari.",
+    "ticketType": "gratis",
+    "destination": "taman-sumpiuh"
+  },
+  {
+    "name": "Kolam Renang Dewasa",
+    "description": "Kolam renang utama dengan ukuran standar yang cocok untuk berolahraga atau sekadar berendam dan bersantai.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "kolam-renang-fatmaba"
+  },
+  {
+    "name": "Kolam Anak dan Ember Tumpah",
+    "description": "Kolam dangkal yang aman untuk anak-anak, dilengkapi dengan seluncuran mini dan wahana ember tumpah yang seru.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000,
+      "child": 10000
+    },
+    "destination": "kolam-renang-fatmaba"
+  },
+  {
+    "name": "Pemandangan Tujuh Tingkat Curug Nangga",
+    "description": "Menyaksikan fenomena alam langka berupa air terjun dengan tujuh tingkatan yang mengalir secara berurutan di tebing yang megah.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "destination": "curug-nangga"
+  },
+  {
+    "name": "Jembatan Selfie Latar Curug",
+    "description": "Jembatan yang dibangun khusus sebagai spot untuk mengambil foto dengan latar belakang tujuh tingkatan air terjun secara keseluruhan.",
+    "ticketType": "gratis",
+    "destination": "curug-nangga"
+  },
+  {
+    "name": "Jelajah Hutan Mangrove",
+    "description": "Berjalan di atas jembatan kayu yang membelah kawasan hutan bakau, sambil belajar tentang ekosistem pesisir.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "wisata-alam-bunton"
+  },
+  {
+    "name": "Area Pantai Bunton",
+    "description": "Area pantai berpasir di ujung jalur mangrove, tempat pengunjung bisa bersantai dan menikmati pemandangan laut.",
+    "ticketType": "gratis",
+    "destination": "wisata-alam-bunton"
+  },
+  {
+    "name": "Edukasi Peternakan Domba",
+    "description": "Melihat dan belajar cara beternak domba, mulai dari memberi makan hingga proses pemerahan susu kambing peranakan etawa.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "peternakan-menggala"
+  },
+  {
+    "name": "Wahana Berkuda",
+    "description": "Menikmati sensasi menunggang kuda poni berkeliling area peternakan yang asri, cocok untuk anak-anak dan pemula.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000
+    },
+    "destination": "peternakan-menggala"
+  },
+  {
+    "name": "Formasi Batuan Watu Kumpul",
+    "description": "Spot utama berupa gugusan batu-batu alam raksasa yang berkumpul secara unik, menjadi latar foto yang eksotis.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "wisata-watu-kumpul"
+  },
+  {
+    "name": "Gardu Pandang Alam",
+    "description": "Menikmati pemandangan perbukitan dan lembah dari gardu pandang kayu yang telah disediakan untuk pengunjung.",
+    "ticketType": "gratis",
+    "destination": "wisata-watu-kumpul"
+  },
+  {
+    "name": "Air Terjun Kedung Lesung",
+    "description": "Menikmati keindahan air terjun tersembunyi dengan kolam alami yang berbentuk seperti lesung atau lumpang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-kedung-lesung"
+  },
+  {
+    "name": "Trekking Susur Sungai",
+    "description": "Petualangan menyusuri aliran sungai kecil untuk mencapai lokasi Curug Kedung Lesung yang masih sangat alami.",
+    "ticketType": "gratis",
+    "destination": "curug-kedung-lesung"
+  },
+  {
+    "name": "Pemandangan Curug Senthong",
+    "description": "Air terjun yang berada di sebuah lembah tersembunyi, menawarkan suasana yang tenang dan pemandangan yang asri.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-senthong"
+  },
+  {
+    "name": "Kolam Alami Bawah Air Terjun",
+    "description": "Area kolam di dasar curug yang jernih dan menyegarkan, menjadi tempat favorit pengunjung untuk berenang dan bermain air.",
+    "ticketType": "gratis",
+    "destination": "curug-senthong"
+  },
+  {
+    "name": "Petik Buah Naga Langsung",
+    "description": "Rasakan pengalaman memetik buah naga yang segar langsung dari pohonnya di area perkebunan yang luas dan asri.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "agrowisata-candimas"
+  },
+  {
+    "name": "Taman Satwa dan Interaksi Kelinci",
+    "description": "Area edukasi di mana anak-anak dapat bermain dan memberi makan kelinci serta melihat koleksi satwa jinak lainnya.",
+    "ticketType": "gratis",
+    "destination": "agrowisata-candimas"
+  },
+  {
+    "name": "Pemandangan Utama Curug Mawur",
+    "description": "Menikmati keindahan air terjun Mawur yang mengalir deras di tengah suasana hutan yang lebat dan alami.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-mawur"
+  },
+  {
+    "name": "Area Berkemah Tepi Sungai",
+    "description": "Kawasan datar di dekat aliran sungai yang cocok untuk mendirikan tenda dan merasakan suasana alam di malam hari.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "curug-mawur"
+  },
+  {
+    "name": "Situs Purbakala Watuagung",
+    "description": "Melihat dari dekat peninggalan bersejarah berupa batu-batu kuno yang memiliki nilai arkeologi tinggi.",
+    "ticketType": "gratis",
+    "destination": "situs-watuagung"
+  },
+  {
+    "name": "Gardu Pandang Perbukitan",
+    "description": "Menikmati pemandangan alam dari gardu pandang sederhana yang menghadap ke lembah dan perbukitan sekitar situs.",
+    "ticketType": "gratis",
+    "destination": "situs-watuagung"
+  },
+  {
+    "name": "Sate Bebek Khas Tambak",
+    "description": "Mencicipi hidangan legendaris sate bebek dengan bumbu rempah yang khas dan daging yang empuk, dibakar dengan sempurna.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 30000
+    },
+    "destination": "sate-bebek-pak-encus"
+  },
+  {
+    "name": "Menu Pelengkap Thepleng",
+    "description": "Menikmati thepleng, makanan pendamping khas berupa nasi yang dibungkus daun jati, memberikan aroma dan rasa yang unik.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 3000
+    },
+    "destination": "sate-bebek-pak-encus"
+  },
+  {
+    "name": "Wisata Kuliner Durian Bawor",
+    "description": "Menikmati langsung kelezatan durian Bawor yang terkenal dengan daging tebal dan rasa manis legit di lapak-lapak petani.",
+    "ticketType": "gratis",
+    "destination": "durian-bawor"
+  },
+  {
+    "name": "Pusat Penjualan Bibit Durian",
+    "description": "Membeli bibit pohon durian Bawor dan varietas unggul lainnya langsung dari penangkar untuk ditanam di rumah.",
+    "ticketType": "gratis",
+    "destination": "durian-bawor"
+  },
+  {
+    "name": "Kolam Renang Tunggul Mas",
+    "description": "Wahana kolam renang keluarga yang dilengkapi dengan seluncuran dan permainan air di tengah suasana agrowisata.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 15000
+    },
+    "destination": "agro-tunggul-mas"
+  },
+  {
+    "name": "Kebun Buah dan Sayur Organik",
+    "description": "Menjelajahi kebun yang ditanami berbagai macam buah dan sayuran organik, dengan pilihan untuk ikut memanen.",
+    "ticketType": "gratis",
+    "destination": "agro-tunggul-mas"
+  },
+  {
+    "name": "Kolam Alami Curug Minem",
+    "description": "Berenang di kolam alami yang terbentuk di bawah air terjun, dengan air yang jernih dan menyegarkan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 7000
+    },
+    "destination": "curug-minem"
+  },
+  {
+    "name": "Saung Bambu Tepi Curug",
+    "description": "Area istirahat berupa saung-saung bambu yang nyaman untuk bersantai sambil menikmati pemandangan dan suara air terjun.",
+    "ticketType": "gratis",
+    "destination": "curug-minem"
+  },
+  {
+    "name": "Wahana Kolam Ombak",
+    "description": "Rasakan sensasi terombang-ambing seperti di pantai di wahana kolam ombak buatan yang seru dan menantang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000,
+      "child": 20000
+    },
+    "destination": "dreamland-water-park"
+  },
+  {
+    "name": "Menara Seluncuran Adrenalin",
+    "description": "Menara dengan berbagai jenis seluncuran air, mulai dari yang berkelok-kelok hingga seluncuran lurus berkecepatan tinggi.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000,
+      "child": 20000
+    },
+    "destination": "dreamland-water-park"
+  },
+  {
+    "name": "Tur Edukasi Lebah Madu",
+    "description": "Mengikuti tur berpemandu untuk belajar tentang kehidupan lebah madu, proses produksi madu, dan melihat sarang lebah dari dekat.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "prawita-garden-kebun-lebah"
+  },
+  {
+    "name": "Kafe Madu dan Produk Olahan",
+    "description": "Mencicipi berbagai jenis madu murni serta produk olahannya seperti minuman dan makanan ringan di kafe taman.",
+    "ticketType": "gratis",
+    "destination": "prawita-garden-kebun-lebah"
+  },
+  {
+    "name": "Pemandangan Curug Mbulu Kuning",
+    "description": "Menikmati keindahan air terjun Mbulu Kuning yang unik dengan aliran airnya yang jatuh di atas bebatuan berwarna kekuningan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "wisata-alam-curug-mbulu-kuning"
+  },
+  {
+    "name": "Jalur Trekking Hutan Asri",
+    "description": "Perjalanan menyusuri jalur setapak di tengah hutan yang alami untuk mencapai lokasi air terjun yang tersembunyi.",
+    "ticketType": "gratis",
+    "destination": "wisata-alam-curug-mbulu-kuning"
+  },
+  {
+    "name": "Air Terjun Patraguna",
+    "description": "Menyaksikan pesona Curug Patraguna, air terjun tersembunyi dengan suasana yang masih sangat alami dan tenang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000
+    },
+    "destination": "curug-patraguna"
+  },
+  {
+    "name": "Kolam Alami Patraguna",
+    "description": "Berendam di kolam alami yang dangkal di bawah air terjun, merasakan kesegaran air pegunungan secara langsung.",
+    "ticketType": "gratis",
+    "destination": "curug-patraguna"
+  },
+  {
+    "name": "Gardu Pandang Puncak Sujen",
+    "description": "Spot utama di puncak untuk menikmati pemandangan 360 derajat perbukitan dan lembah yang menakjubkan.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 8000
+    },
+    "destination": "puncak-sujen"
+  },
+  {
+    "name": "Area Berkemah Puncak Sujen",
+    "description": "Lahan datar di puncak yang menjadi lokasi favorit untuk berkemah, menikmati langit malam, dan menunggu matahari terbit.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "puncak-sujen"
+  },
+  {
+    "name": "Pemandangan Air Terjun Cipendok",
+    "description": "Menyaksikan kemegahan Curug Cipendok, salah satu air terjun tertinggi di Banyumas dengan debit air yang deras.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "destination": "curug-cipendok"
+  },
+  {
+    "name": "Area Interaksi Kera Liar",
+    "description": "Kawasan hutan di sekitar curug yang dihuni oleh kawanan kera liar yang sering menampakkan diri kepada pengunjung.",
+    "ticketType": "gratis",
+    "destination": "curug-cipendok"
+  },
+  {
+    "name": "Wisata Perahu Dayung Kumpe",
+    "description": "Menyewa perahu dayung untuk menjelajahi keindahan Telaga Kumpe yang dikelilingi perbukitan hijau.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "destination": "telaga-kumpe"
+  },
+  {
+    "name": "Spot Foto Dermaga Cinta",
+    "description": "Dermaga kayu yang menjorok ke telaga, menjadi spot foto romantis favorit bagi para pengunjung.",
+    "ticketType": "gratis",
+    "destination": "telaga-kumpe"
+  },
+  {
+    "name": "Wahana River Tubing Pereng",
+    "description": "Petualangan seru menyusuri aliran sungai yang jernih dengan menggunakan ban, dipandu oleh pemandu lokal.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000
+    },
+    "destination": "wisata-pereng"
+  },
+  {
+    "name": "Warung Kuliner Khas Pedesaan",
+    "description": "Mencicipi hidangan tradisional seperti nasi liwet dan ikan bakar di warung-warung sederhana dengan suasana pedesaan.",
+    "ticketType": "gratis",
+    "destination": "wisata-pereng"
+  },
+  {
+    "name": "Edukasi Sistem Tanam Mina Padi",
+    "description": "Belajar tentang sistem pertanian inovatif yang menggabungkan budidaya ikan dan padi dalam satu lahan sawah.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "destination": "wisata-mina-padi"
+  },
+  {
+    "name": "Kolam Pemancingan Ikan Sawah",
+    "description": "Aktivitas memancing ikan nila atau mas langsung dari sawah mina padi, dengan hasil pancingan bisa dibawa pulang.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000
+    },
+    "destination": "wisata-mina-padi"
+  },
+  {
+    "name": "Wahana Taman Air Mas Kemambang",
+    "description": "Area kolam renang dan seluncuran air yang menjadi favorit keluarga untuk rekreasi air di tengah kota.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "destination": "mas-kemambang"
+  },
+  {
+    "name": "Taman Satwa dan Unggas",
+    "description": "Koleksi berbagai jenis unggas hias dan satwa kecil lainnya yang menjadi sarana edukasi bagi anak-anak.",
+    "ticketType": "gratis",
+    "destination": "mas-kemambang"
+  },
+  {
+    "name": "Lapangan Golf Sembilan Lubang",
+    "description": "Bermain golf di lapangan sembilan lubang dengan kontur menantang dan pemandangan alam yang indah.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 250000
+    },
+    "destination": "padang-golf-wijayakusuma"
+  },
+  {
+    "name": "Restoran Clubhouse Pemandangan Lapangan",
+    "description": "Bersantai dan menikmati hidangan di restoran clubhouse yang memiliki pemandangan langsung ke lapangan golf.",
+    "ticketType": "gratis",
+    "destination": "padang-golf-wijayakusuma"
+  },
+  {
+    "name": "Spot Foto Rumah Warna Warni",
+    "description": "Jelajahi gang-gang sempit dan berfoto dengan latar belakang rumah-rumah warga yang dicat dengan warna-warni cerah.",
+    "ticketType": "gratis",
+    "destination": "kampung-pelangi"
+  },
+  {
+    "name": "Kios Kerajinan Tangan Warga",
+    "description": "Membeli aneka suvenir dan kerajinan tangan hasil karya warga lokal sebagai oleh-oleh khas Kampung Pelangi.",
+    "ticketType": "gratis",
+    "destination": "kampung-pelangi"
+  },
+  {
+    "name": "Taman Bunga Hias Tesda",
+    "description": "Area taman yang ditanami berbagai jenis bunga hias yang terawat rapi, cocok untuk bersantai dan berfoto.",
+    "ticketType": "gratis",
+    "destination": "taman-tesda"
+  },
+  {
+    "name": "Arena Bermain Anak Gratis",
+    "description": "Fasilitas permainan seperti ayunan, jungkat-jungkit, dan perosotan yang tersedia untuk pengunjung anak-anak.",
+    "ticketType": "gratis",
+    "destination": "taman-tesda"
+  },
+  {
+    "name": "Arena Skateboard dan Sepatu Roda",
+    "description": "Fasilitas skatepark yang luas dan menjadi tempat berkumpulnya komunitas skateboard dan sepatu roda di Purwokerto.",
+    "ticketType": "gratis",
+    "destination": "taman-andhang-pangrenan"
+  },
+  {
+    "name": "Panggung Hiburan Terbuka",
+    "description": "Panggung besar yang sering digunakan untuk berbagai acara, mulai dari konser musik, festival budaya, hingga senam bersama.",
+    "ticketType": "gratis",
+    "destination": "taman-andhang-pangrenan"
+  },
+  {
+    "name": "Kolam Renang Olahraga Satria",
+    "description": "Kompleks kolam renang dengan beberapa pilihan kedalaman, termasuk kolam standar untuk olahraga dan kolam rekreasi.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 12000,
+      "child": 10000
+    },
+    "destination": "satria-park-purwokerto"
+  },
+  {
+    "name": "Area Gazebo dan Kantin",
+    "description": "Fasilitas gazebo untuk beristirahat dan kantin yang menyediakan berbagai makanan dan minuman bagi pengunjung.",
+    "ticketType": "gratis",
+    "destination": "satria-park-purwokerto"
+  },
+  {
+    "name": "Studio Pemutaran Film",
+    "description": "Menonton film-film terbaru nasional dan internasional dengan kualitas gambar dan suara yang modern.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 35000
+    },
+    "destination": "rajawali-sinema"
+  },
+  {
+    "name": "Konter Makanan dan Minuman",
+    "description": "Menyediakan berbagai pilihan popcorn, minuman soda, dan aneka makanan ringan lainnya untuk menemani pengalaman menonton.",
+    "ticketType": "gratis",
+    "destination": "rajawali-sinema"
   }
 ]

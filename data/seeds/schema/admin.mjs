@@ -59,7 +59,7 @@ adminSchema.pre('save', async function (next) {
       });
 
       if (Object.keys(errors).length > 0) {
-        return next(new ResponseError(409, 'Duplikasi data masukan.', errors));
+        return next(new ResponseError(409, 'Duplikasi data.', errors));
       }
     }
   }
@@ -76,7 +76,7 @@ adminSchema.pre('save', async function (next) {
       const formattedSequence = String(counter.seq).padStart(4, '0');
       this.adminId = `${prefix}-${formattedSequence}`;
     } catch (error) {
-      return next(new ResponseError('Gagal membuat adminId: ' + error.message));
+      return next(new ResponseError(413, 'Data tidak diproses', error.message));
     }
   }
 
@@ -85,7 +85,7 @@ adminSchema.pre('save', async function (next) {
       const salt = await bcrypt.genSalt(10);
       this.password = await bcrypt.hash(this.password, salt);
     } catch (error) {
-      return next(new ResponseError('Gagal melakukan hashing password: ' + error.message));
+      return next(new ResponseError(413, 'Data tidak diproses', error.message));
     }
   }
 
@@ -103,7 +103,7 @@ adminSchema.pre('deleteOne', async function (next) {
       });
 
       if (destinationCount > 0) {
-        const error = new ResponseError(409, 'Penghapusan Manager gagal', {
+        const error = new ResponseError(409, 'Duplikasi data.', {
           message: `Manajer tidak dapat dihapus karena masih memiliki ${destinationCount} destinasi. Hapus destinasi terlebih dahulu.`,
         });
         return next(error);

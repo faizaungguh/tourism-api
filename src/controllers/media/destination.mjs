@@ -11,7 +11,7 @@ export const destination = {
     const { processedPhotos, foundDestination } = req;
     try {
       if (!processedPhotos || Object.keys(processedPhotos).length === 0) {
-        throw new ResponseError(422, 'File tidak ada', {
+        throw new ResponseError(422, 'Proses dihentikan', {
           photo: 'Anda harus menyertakan setidaknya 1 dokumen gambar',
         });
       }
@@ -96,7 +96,7 @@ export const destination = {
 
       try {
         if (!oldPhotoId || !newPhotoData) {
-          throw new ResponseError(422, 'File tidak ada', {
+          throw new ResponseError(422, 'Proses dihentikan', {
             photoGallery: 'Data foto yang diproses tidak ditemukan.',
           });
         }

@@ -14,7 +14,7 @@ export const requestCheck = (schema, request) => {
       const key = detail.path[0];
       validationErrors[key] = detail.message;
     });
-    throw new ResponseError(422, 'Data yang diberikan tidak valid', validationErrors);
+    throw new ResponseError(422, 'Proses dihentikan', validationErrors);
   } else {
     return value;
   }

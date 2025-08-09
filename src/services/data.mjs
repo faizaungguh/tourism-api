@@ -48,7 +48,7 @@ export const dataService = {
     detail: destinationService.detail,
     update: destinationService.update,
     delete: destinationService.drop,
-    recomendation: recommendationService,
+    showRecomendation: recommendationService.show,
   },
 
   attraction: {

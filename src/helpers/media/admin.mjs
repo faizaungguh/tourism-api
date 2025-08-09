@@ -23,7 +23,9 @@ async function _checkExist(adminId) {
   const admin = await Admin.findOne({ adminId });
 
   if (!admin) {
-    throw new ResponseError(404, `Admin dengan ID ${adminId} tidak ditemukan.`);
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Admin dengan ID ${adminId} tidak ditemukan.`,
+    });
   }
 
   return admin;
@@ -48,7 +50,7 @@ export const admin = {
 
         const dynamicPath = options.getDynamicPath(req);
         if (!dynamicPath) {
-          throw new ResponseError(404, 'Path tidak ditemukan', {
+          throw new ResponseError(404, 'Data tidak ditemukan', {
             message: 'ID untuk path file tidak ditemukan di URL.',
           });
         }

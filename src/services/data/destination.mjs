@@ -47,7 +47,7 @@ export const destinationService = {
   detail: async (destinationSlug) => {
     /** Validasi slug */
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(422, 'Destination tidak valid.', {
+      throw new ResponseError(422, 'Proses dihentikan', {
         message: 'Slug destinasi harus berupa string yang tidak kosong.',
       });
     }
@@ -56,7 +56,7 @@ export const destinationService = {
     const result = await Destination.aggregate(pipeline);
 
     if (!result || result.length === 0) {
-      throw new ResponseError(404, 'Destinasi tidak ditemukan.', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan`,
       });
     }
@@ -66,7 +66,7 @@ export const destinationService = {
 
   update: async (destinationSlug, adminId, request) => {
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(422, 'Destination tidak valid.', {
+      throw new ResponseError(422, 'Proses dihentikan', {
         slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
       });
     }
@@ -88,7 +88,7 @@ export const destinationService = {
 
   drop: async (destinationSlug, adminId) => {
     if (!destinationSlug || typeof destinationSlug !== 'string' || destinationSlug.trim() === '') {
-      throw new ResponseError(422, 'Destination tidak valid.');
+      throw new ResponseError(422, 'Proses dihentikan', { message: 'Destination tidak valid.' });
     }
 
     const [admin, destinationToDelete] = await Promise.all([
@@ -100,13 +100,19 @@ export const destinationService = {
     ]);
 
     if (!admin) {
-      throw new ResponseError(404, `Admin dengan ID "${adminId}" tidak ditemukan.`);
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Admin dengan ID "${adminId}" tidak ditemukan.`,
+      });
     }
     if (!destinationToDelete) {
-      throw new ResponseError(404, `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`);
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan.`,
+      });
     }
     if (destinationToDelete.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Anda tidak memiliki izin untuk menghapus destinasi ini.');
+      throw new ResponseError(403, 'Akses ditolak', {
+        message: 'Anda tidak memiliki izin untuk menghapus destinasi ini.',
+      });
     }
 
     const subdistrictSlug = destinationToDelete.locations.subdistrict.abbrevation;

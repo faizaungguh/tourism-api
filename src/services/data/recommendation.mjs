@@ -1,1 +1,3 @@
-export const recommendationService = {};
+export const recommendationService = {
+  show: {},
+};

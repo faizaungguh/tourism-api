@@ -45,7 +45,9 @@ export const attraction = {
     save: async (req, res, next) => {
       try {
         if (!req.files || req.files.length === 0) {
-          throw new ResponseError(400, 'Anda harus menyertakan setidaknya satu file gambar.');
+          throw new ResponseError(422, 'Proses dihentikan', {
+            message: 'Anda harus menyertakan setidaknya satu file gambar.',
+          });
         }
 
         const { foundDestination, foundAttraction } = req;
@@ -55,7 +57,7 @@ export const attraction = {
         const MAX_PHOTOS = 10;
 
         if (currentPhotoCount + newPhotoCount > MAX_PHOTOS) {
-          throw new ResponseError(413, 'Penyimpanan melebihi batas', {
+          throw new ResponseError(413, 'Data tidak diproses', {
             photo: `Kapasitas galeri wahana melebihi batas ${MAX_PHOTOS} foto.`,
           });
         }
@@ -80,7 +82,9 @@ export const attraction = {
     replace: async (req, res, next) => {
       try {
         if (!req.file) {
-          throw new ResponseError(400, 'Anda harus menyertakan satu file gambar pengganti.');
+          throw new ResponseError(422, 'Proses dihentikan', {
+            message: 'Anda harus menyertakan satu file gambar pengganti.',
+          });
         }
 
         const { foundDestination, foundAttraction, photoToUpdate } = req;

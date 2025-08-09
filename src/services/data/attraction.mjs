@@ -14,7 +14,7 @@ export const attractionService = {
     ]);
 
     if (!destination) {
-      throw new ResponseError(404, 'Destinasi tidak ditemukan', {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Destinasi dengan slug '${slug}' tidak ditemukan.`,
       });
     }

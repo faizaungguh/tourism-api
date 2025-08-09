@@ -31,6 +31,7 @@ const destinationSchema = new Schema(
     ],
     locations: {
       addresses: { type: String },
+      link: { type: String },
       subdistrict: {
         type: Schema.Types.ObjectId,
         ref: 'Subdistrict',
@@ -151,7 +152,11 @@ destinationSchema.pre('save', async function (next) {
   if ((this.isModified('facility') || this.isNew) && this.facility && this.facility.length > 0) {
     const names = this.facility.map((f) => f.name);
     if (new Set(names).size !== names.length) {
-      return next(new ResponseError(409, 'Nama fasilitas tidak boleh duplikat.'));
+      return next(
+        new ResponseError(409, 'Duplikasi data', {
+          message: 'Nama fasilitas tidak boleh duplikat.',
+        })
+      );
     }
 
     this.facility.forEach((facility) => {

@@ -1,74 +1,150 @@
 [
   {
-    "destinationTitle": "Taman Impean",
-    "category": "Buatan",
-    "createdBy": "mng_kembaran",
-    "description": "Taman Impean adalah sebuah taman rekreasi air keluarga yang terletak di Kembaran. Dilengkapi dengan kolam renang untuk anak-anak dan dewasa, tempat ini menjadi pilihan favorit untuk menghabiskan liburan sambil menikmati kesegaran air di tengah suasana pedesaan.",
+    "destinationTitle": "Curug Mawur",
+    "category": "Wisata Alam",
+    "createdBy": "mng_tambak",
+    "description": "Curug Mawur adalah sebuah air terjun yang menawarkan keasrian alam di wilayah Tambak. Dikelilingi oleh pepohonan rindang dan suasana yang tenang, tempat ini menjadi tujuan bagi mereka yang ingin menikmati keindahan alam yang belum banyak terjamah.",
     "locations": {
-      "addresses": "Jl. Raya Dukuhwaluh, Dusun I, Dukuhwaluh, Kec. Kembaran, Kabupaten Banyumas, Jawa Tengah",
-      "link": "https://maps.app.goo.gl/K7QJCNheX1CeonsQ7",
-      "subdistrict": "Kembaran",
+      "addresses": "Desa Watuagung, Kecamatan Tambak, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/xuq62JVTqqBbUqKd7",
+      "subdistrict": "Tambak",
       "coordinates": {
-        "lat": -7.40263302043985,
-        "long": 109.28318734484634
+        "lat": -7.553136594927482,
+        "long": 109.40815899113521
       }
     },
     "openingHour": [
       {
         "day": "monday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "tuesday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "wednesday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "thursday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "friday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "saturday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:30",
         "isClosed": false
       },
       {
         "day": "sunday",
-        "hours": "08:00 - 17:00",
+        "hours": "08:00 - 16:30",
         "isClosed": false
       }
     ],
     "facility": [
       {
-        "name": "Kolam Renang",
+        "name": "Area Parkir Sederhana",
         "availability": true,
-        "number": 2,
+        "number": 1,
         "disabilityAccess": false,
         "photo": []
       },
       {
-        "name": "Kantin",
+        "name": "Toilet",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700027"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 20,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Sate Bebek Pak Encus",
+    "category": "Wisata Kuliner",
+    "createdBy": "mng_tambak",
+    "description": "Sate Bebek Pak Encus adalah salah satu destinasi kuliner legendaris di Tambak yang wajib dicoba. Terkenal dengan sate bebeknya yang empuk, bumbu yang meresap, dan sambal khas, tempat ini selalu ramai dikunjungi oleh para pelancong dan pecinta kuliner.",
+    "locations": {
+      "addresses": "Jl. Raya Tambak No.52, Dusun II, Karangpetir, Kec. Tambak, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/12GZzmfwT93YSpeZ8",
+      "subdistrict": "Tambak",
+      "coordinates": {
+        "lat": -7.612178537230465,
+        "long": 109.4124894931655
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "10:00 - 21:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Rumah Makan",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
         "photo": []
       },
       {
-        "name": "Toilet dan Kamar Ganti",
+        "name": "Toilet",
         "availability": true,
-        "number": 4,
+        "number": 2,
         "disabilityAccess": false,
         "photo": []
       },
@@ -82,8 +158,408 @@
     ],
     "contact": [
       {
+        "platform": "phone",
+        "value": "6281327001122"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 15,
+        "price": 3000
+      },
+      "bus": {
+        "capacity": 1,
+        "price": 10000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Wisata Durian Bawor",
+    "category": "Agrowisata",
+    "createdBy": "mng_kemranjen",
+    "description": "Kecamatan Kemranjen terkenal sebagai sentra Durian Bawor, varietas durian unggulan Banyumas. Di sini, pengunjung dapat menikmati wisata agro dengan mengunjungi kebun durian, belajar tentang budidayanya, dan mencicipi langsung buahnya saat musim panen, serta membeli oleh-oleh durian asli.",
+    "locations": {
+      "addresses": "Alasmalang, Kec. Kemranjen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/9ygm9bzsoG3Wyc4JA",
+      "subdistrict": "Kemranjen",
+      "coordinates": {
+        "lat": -7.582084025198703,
+        "long": 109.31314032089239
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00 (Musiman)",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00 (Musiman)",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00 (Musiman)",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00 (Musiman)",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00 (Musiman)",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 18:00 (Musiman)",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 18:00 (Musiman)",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Sentra Penjualan Durian",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Area Makan Terbuka",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
         "platform": "instagram",
-        "value": "@tamanimpean_official"
+        "value": "@bawor.kemranjen"
+      }
+    ],
+    "ticket": {
+      "adult": 0
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 50,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 20,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Minem",
+    "category": "Wisata Alam",
+    "createdBy": "mng_kemranjen",
+    "description": "Curug Minem adalah air terjun alami yang tersembunyi dengan suasana yang masih sangat asri dan tenang. Pengunjung dapat berenang dan bermain air di kolam alami yang jernih dan segar, yang terbentuk tepat di bawah air terjun, menjadikannya tempat yang sempurna untuk melarikan diri dari keramaian.",
+    "locations": {
+      "addresses": "Karanggintung, Kec. Kemranjen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/8BbvHrjwnfDgUVVU6",
+      "subdistrict": "Kemranjen",
+      "coordinates": {
+        "lat": -7.553741528790494,
+        "long": 109.35161531858435
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Kolam Pemandian Alami",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Kecil",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet Ganti",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700025"
+      }
+    ],
+    "ticket": {
+      "adult": 5000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 25,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Dreamland Water Park Ajibarang",
+    "category": "Wisata Rekreasi dan Keluarga",
+    "createdBy": "mng_ajibarang",
+    "description": "Dreamland Water Park adalah salah satu taman rekreasi air terbesar di wilayah Ajibarang. Menawarkan berbagai macam wahana seperti seluncuran tinggi, kolam arus, dan water playground, tempat ini menjadi destinasi unggulan untuk liburan keluarga yang seru dan menyegarkan.",
+    "locations": {
+      "addresses": "Jl. Raya Pancasan, Ajibarang Wetan, Kec. Ajibarang, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/gUFVMJP59Y5mSL3W7",
+      "subdistrict": "Ajibarang",
+      "coordinates": {
+        "lat": -7.421187349819421,
+        "long": 109.07444482841498
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:30 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:30 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Wahana Air",
+        "availability": true,
+        "number": 5,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Food Court",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Loker dan Gazebo",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "website",
+        "value": "www.dreamlandpark.com"
+      },
+      {
+        "platform": "instagram",
+        "value": "@dreamland.ajibarang"
+      }
+    ],
+    "ticket": {
+      "adult": 30000,
+      "child": 25000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 300,
+        "price": 3000
+      },
+      "car": {
+        "capacity": 100,
+        "price": 5000
+      },
+      "bus": {
+        "capacity": 10,
+        "price": 15000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Prawita Garden - Kebun Lebah",
+    "category": "Agrowisata",
+    "createdBy": "mng_ajibarang",
+    "description": "Prawita Garden adalah destinasi agrowisata edukatif yang berfokus pada budidaya lebah madu. Pengunjung dapat belajar tentang ekosistem lebah, proses produksi madu, dan bahkan mencicipi madu segar langsung dari sarangnya. Tempat ini sangat cocok untuk wisata edukasi anak-anak dan keluarga.",
+    "locations": {
+      "addresses": "Jalan Raya Ajibarang-Pancurendang, Lesmana, Pandansari, Kec. Ajibarang, Kabupaten Banyumas",
+      "link": "https://maps.app.goo.gl/aoXe89dW5DD7LBLj6",
+      "subdistrict": "Ajibarang",
+      "coordinates": {
+        "lat": -7.418708890842148,
+        "long": 109.04335820428278
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Pusat Edukasi Lebah",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toko Madu & Produk Olahan",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Kafe",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@prawitagarden"
       }
     ],
     "ticket": {
@@ -101,69 +577,637 @@
     }
   },
   {
-    "destinationTitle": "Langit Senja Cafe",
-    "category": "Kuliner",
-    "createdBy": "mng_kembaran",
-    "description": "Langit Senja Cafe menawarkan pengalaman nongkrong yang nyaman dengan pemandangan persawahan dan langit sore yang indah. Kafe ini menjadi tempat favorit anak muda untuk bersantai sambil menikmati berbagai pilihan kopi, minuman kekinian, dan makanan ringan.",
+    "destinationTitle": "Curug Nangga",
+    "category": "Wisata Alam",
+    "createdBy": "mng_pekuncen",
+    "description": "Curug Nangga adalah sebuah fenomena alam yang unik, terkenal karena memiliki tujuh tingkatan air terjun yang berderet menyerupai tangga. Keindahannya yang spektakuler dengan latar belakang persawahan hijau menjadikannya salah satu air terjun paling ikonik di Banyumas.",
     "locations": {
-      "addresses": "Jl. Kertawibawa, Dusun I, Karangsari, Kec. Kembaran, Kabupaten Banyumas, Jawa Tengah",
-      "link": "https://maps.app.goo.gl/ge9MN9LoJitfsjWy6",
-      "subdistrict": "Kembaran",
+      "addresses": "Desa Petahunan, Kecamatan Pekuncen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/13eG2QjnPuJ1akYM6",
+      "subdistrict": "Pekuncen",
       "coordinates": {
-        "lat": -7.407998314277065,
-        "long": 109.27872375135918
+        "lat": -7.3614390232738005,
+        "long": 109.04860589519578
       }
     },
     "openingHour": [
       {
         "day": "monday",
-        "hours": "14:00 - 22:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "tuesday",
-        "hours": "14:00 - 22:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "wednesday",
-        "hours": "14:00 - 22:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "thursday",
-        "hours": "14:00 - 22:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "friday",
-        "hours": "14:00 - 23:00",
+        "hours": "08:00 - 16:00",
         "isClosed": false
       },
       {
         "day": "saturday",
-        "hours": "14:00 - 23:00",
+        "hours": "07:30 - 17:00",
         "isClosed": false
       },
       {
         "day": "sunday",
-        "hours": "14:00 - 22:00",
+        "hours": "07:30 - 17:00",
         "isClosed": false
       }
     ],
     "facility": [
       {
-        "name": "Area Indoor & Outdoor",
+        "name": "Toilet dan Kamar Ganti",
         "availability": true,
-        "number": 2,
+        "number": 4,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Makan",
+        "availability": true,
+        "number": 5,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@curugnangga_official"
+      }
+    ],
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 100,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 30,
+        "price": 5000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Peternakan Menggala",
+    "category": "Agrowisata",
+    "createdBy": "mng_pekuncen",
+    "description": "Peternakan Menggala adalah destinasi agrowisata yang berfokus pada peternakan domba dan kambing. Pengunjung dapat belajar tentang proses pemeliharaan, memberi makan ternak, dan melihat pengolahan produk susu. Tempat ini cocok untuk wisata edukasi keluarga.",
+    "locations": {
+      "addresses": "Tumiyang, Kecamatan Pekuncen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/QFWTSfH2o36KFHa17",
+      "subdistrict": "Pekuncen",
+      "coordinates": {
+        "lat": -7.34617946179656,
+        "long": 109.11938767579069
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "isClosed": true,
+        "hours": "Tutup"
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:30 - 17:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Edukasi Peternakan",
+        "availability": true,
+        "number": 1,
         "disabilityAccess": true,
         "photo": []
       },
       {
-        "name": "WiFi",
+        "name": "Toko Produk Olahan Susu",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Kafetaria",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700011"
+      }
+    ],
+    "ticket": {
+      "adult": 15000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 60,
+        "price": 2000
+      },
+      "car": {
+        "capacity": 25,
+        "price": 5000
+      },
+      "bus": {
+        "capacity": 2,
+        "price": 10000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Wisata Watu Kumpul",
+    "category": "Wisata Alam",
+    "createdBy": "mng_pekuncen",
+    "description": "Wisata Watu Kumpul menawarkan pemandangan alam dari puncak bukit yang dihiasi dengan formasi bebatuan unik yang tersebar ('watu kumpul'). Tempat ini menjadi lokasi yang menarik untuk trekking ringan dan menikmati panorama perbukitan di sekitarnya.",
+    "locations": {
+      "addresses": "Glempang, Pasiraman Lor, Kecamatan Pekuncen, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/dE1HSxjXyDYMPquK6",
+      "subdistrict": "Pekuncen",
+      "coordinates": {
+        "lat": -7.382271542373523,
+        "long": 109.04589515303466
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Gardu Pandang",
+        "availability": true,
+        "number": 2,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Kecil",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@watukumpul.official"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 30,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Senthong",
+    "category": "Wisata Alam",
+    "createdBy": "mng_gumelar",
+    "description": "Curug Senthong adalah air terjun yang tersembunyi di tengah lebatnya hutan di Gumelar. Medannya yang menantang menuju lokasi akan terbayar lunas dengan pemandangan air terjun yang indah dan suasana yang sangat tenang, cocok bagi para pencari petualangan.",
+    "locations": {
+      "addresses": "Desa Cilangkap, Kecamatan Gumelar, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/4fUfpMTYUws3VRsS7",
+      "subdistrict": "Gumelar",
+      "coordinates": {
+        "lat": -7.341664423204088,
+        "long": 109.03177124491349
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Area Parkir Warga",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Toilet Sederhana",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "phone",
+        "value": "628122700012"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 15,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Puncak Sujen",
+    "category": "Wisata Alam",
+    "createdBy": "mng_gumelar",
+    "description": "Puncak Sujen merupakan salah satu titik tertinggi di wilayah Gumelar yang menyajikan pemandangan alam perbukitan yang luas. Tempat ini sangat ideal untuk aktivitas hiking ringan dan menikmati keindahan matahari terbit atau terbenam dari ketinggian.",
+    "locations": {
+      "addresses": "Dusun I, Samudra Kulon, Kec. Gumelar, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/V1HHYF4kmtn8XxTj8",
+      "subdistrict": "Gumelar",
+      "coordinates": {
+        "lat": -7.3349579791471005,
+        "long": 109.02379135373353
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "24 Jam",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "24 Jam",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Jalur Hiking",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Puncak",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Area Parkir di Kaki Bukit",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@puncaksujen_gumelar"
+      }
+    ],
+    "ticket": {
+      "adult": 5000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 20,
+        "price": 2000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Curug Cipendok",
+    "category": "Wisata Alam",
+    "createdBy": "mng_cilongok",
+    "description": "Curug Cipendok adalah salah satu air terjun tertinggi di Banyumas, dengan ketinggian sekitar 92 meter. Terletak di kawasan hutan lindung, destinasi ini menawarkan suasana yang sejuk, asri, dan alami, cocok untuk melepas penat dari hiruk pikuk kota.",
+    "locations": {
+      "addresses": "Desa Karangtengah, Kecamatan Cilongok, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/r2ikhDJbGnBqD3qc6",
+      "subdistrict": "Cilongok",
+      "coordinates": {
+        "lat": -7.336749688256,
+        "long": 109.13733745355614
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 16:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Toilet dan Kamar Ganti",
+        "availability": true,
+        "number": 6,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Warung Makan",
+        "availability": true,
+        "number": 10,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Area Camping",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      }
+    ],
+    "contact": [
+      {
+        "platform": "instagram",
+        "value": "@curugcipendok.official"
+      },
+      {
+        "platform": "phone",
+        "value": "628122700009"
+      }
+    ],
+    "ticket": {
+      "adult": 15000
+    },
+    "parking": {
+      "motorcycle": {
+        "capacity": 200,
+        "price": 3000
+      },
+      "car": {
+        "capacity": 50,
+        "price": 10000
+      }
+    }
+  },
+  {
+    "destinationTitle": "Telaga Kumpe",
+    "category": "Wisata Alam",
+    "createdBy": "mng_cilongok",
+    "description": "Telaga Kumpe adalah sebuah danau kecil yang tenang dan indah, dikelilingi oleh perbukitan hijau. Pengunjung dapat menikmati suasana danau dengan menyewa perahu, berfoto di spot-spot menarik, atau bersantai di warung-warung tepi telaga.",
+    "locations": {
+      "addresses": "Gununglurah, Kecamatan Cilongok, Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/uAm83Lz1avpa2Nub8",
+      "subdistrict": "Cilongok",
+      "coordinates": {
+        "lat": -7.350069017119609,
+        "long": 109.14731856733626
+      }
+    },
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:30",
+        "isClosed": false
+      }
+    ],
+    "facility": [
+      {
+        "name": "Sewa Perahu",
+        "availability": true,
+        "number": 1,
+        "disabilityAccess": false,
+        "photo": []
+      },
+      {
+        "name": "Warung Tepi Telaga",
+        "availability": true,
+        "number": 4,
+        "disabilityAccess": false,
         "photo": []
       },
       {
@@ -184,108 +1228,7 @@
     "contact": [
       {
         "platform": "instagram",
-        "value": "@langitsenja.cafe"
-      }
-    ],
-    "ticket": {
-      "adult": 0
-    },
-    "parking": {
-      "motorcycle": {
-        "capacity": 40,
-        "price": 2000
-      },
-      "car": {
-        "capacity": 15,
-        "price": 3000
-      }
-    }
-  },
-  {
-    "destinationTitle": "Bumi Perkemahan Kendalisada",
-    "category": "Alam",
-    "createdBy": "mng_kalibagor",
-    "description": "Bumi Perkemahan Kendalisada adalah area perkemahan yang luas dan populer di Kalibagor, sering digunakan untuk kegiatan pramuka, LDK, dan acara luar ruang lainnya. Dengan latar belakang perbukitan dan udara yang sejuk, tempat ini ideal untuk melatih kemandirian dan menikmati alam.",
-    "locations": {
-      "addresses": "Desa Kaliori, Kecamatan Kalibagor, Kabupaten Banyumas, Jawa Tengah",
-      "link": "https://maps.app.goo.gl/5jndJ5xTZNG1hkGb8",
-      "subdistrict": "Kalibagor",
-      "coordinates": {
-        "lat": -7.4888443336296024,
-        "long": 109.29686055141474
-      }
-    },
-    "openingHour": [
-      {
-        "day": "monday",
-        "hours": "24 Jam",
-        "isClosed": false
-      },
-      {
-        "day": "tuesday",
-        "hours": "24 Jam",
-        "isClosed": false
-      },
-      {
-        "day": "wednesday",
-        "hours": "24 Jam",
-        "isClosed": false
-      },
-      {
-        "day": "thursday",
-        "hours": "24 Jam",
-        "isClosed": false
-      },
-      {
-        "day": "friday",
-        "hours": "24 Jam",
-        "isClosed": false
-      },
-      {
-        "day": "saturday",
-        "hours": "24 Jam",
-        "isClosed": false
-      },
-      {
-        "day": "sunday",
-        "hours": "24 Jam",
-        "isClosed": false
-      }
-    ],
-    "facility": [
-      {
-        "name": "Area Berkemah",
-        "availability": true,
-        "number": 5,
-        "disabilityAccess": false,
-        "photo": []
-      },
-      {
-        "name": "Aula Terbuka",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": false,
-        "photo": []
-      },
-      {
-        "name": "MCK",
-        "availability": true,
-        "number": 10,
-        "disabilityAccess": false,
-        "photo": []
-      },
-      {
-        "name": "Musholla",
-        "availability": true,
-        "number": 1,
-        "disabilityAccess": true,
-        "photo": []
-      }
-    ],
-    "contact": [
-      {
-        "platform": "phone",
-        "value": "628122700016"
+        "value": "@telagakumpe"
       }
     ],
     "ticket": {
@@ -293,80 +1236,76 @@
     },
     "parking": {
       "motorcycle": {
-        "capacity": 100,
-        "price": 3000
+        "capacity": 80,
+        "price": 2000
       },
       "car": {
-        "capacity": 40,
-        "price": 10000
-      },
-      "bus": {
-        "capacity": 10,
-        "price": 25000
+        "capacity": 20,
+        "price": 5000
       }
     }
   },
   {
-    "destinationTitle": "Goa Maria Kaliori",
-    "category": "Religi",
-    "createdBy": "mng_kalibagor",
-    "description": "Goa Maria Kaliori adalah sebuah tempat ziarah dan doa bagi umat Katolik yang terletak di lingkungan yang tenang dan asri. Dengan patung Bunda Maria di dalam goa alami, tempat ini menjadi tujuan untuk refleksi, ibadah, dan mencari ketenangan spiritual.",
+    "destinationTitle": "Mas Kemambang",
+    "category": "Wisata Kota dan Taman",
+    "createdBy": "mng_purwokerto_utara",
+    "description": "Taman Balai Kemambang, atau yang lebih dikenal sebagai Mas Kemambang, adalah taman rekreasi kota yang telah direvitalisasi. Dengan kolam ikan besar sebagai pusatnya, tempat ini menawarkan area bermain anak, jalur pejalan kaki yang nyaman, dan pujasera untuk keluarga.",
     "locations": {
-      "addresses": "Jalan, Dusun II, Kaliori, Kec. Kalibagor, Kabupaten Banyumas, Jawa Tengah",
-      "link": "https://maps.app.goo.gl/UMnEvHsogtponPwC7",
-      "subdistrict": "Kalibagor",
+      "addresses": "Jl. Karang Kobar No.9, Glempang, Bancarkembar, Kec. Purwokerto Utara, Kabupaten Banyumas",
+      "link": "https://maps.app.goo.gl/GasoxtFLfJarsoRj9",
+      "subdistrict": "Purwokerto Utara",
       "coordinates": {
-        "lat": -7.494979402633577,
-        "long": 109.30698216143355
+        "lat": -7.411831472968135,
+        "long": 109.23811999021414
       }
     },
     "openingHour": [
       {
         "day": "monday",
-        "hours": "07:00 - 18:00",
+        "hours": "09:00 - 21:00",
         "isClosed": false
       },
       {
         "day": "tuesday",
-        "hours": "07:00 - 18:00",
+        "hours": "09:00 - 21:00",
         "isClosed": false
       },
       {
         "day": "wednesday",
-        "hours": "07:00 - 18:00",
+        "hours": "09:00 - 21:00",
         "isClosed": false
       },
       {
         "day": "thursday",
-        "hours": "07:00 - 18:00",
+        "hours": "09:00 - 21:00",
         "isClosed": false
       },
       {
         "day": "friday",
-        "hours": "07:00 - 18:00",
+        "hours": "09:00 - 21:00",
         "isClosed": false
       },
       {
         "day": "saturday",
-        "hours": "07:00 - 18:00",
+        "hours": "08:00 - 22:00",
         "isClosed": false
       },
       {
         "day": "sunday",
-        "hours": "07:00 - 18:00",
+        "hours": "08:00 - 22:00",
         "isClosed": false
       }
     ],
     "facility": [
       {
-        "name": "Area Doa",
+        "name": "Food Court / Pujasera",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
         "photo": []
       },
       {
-        "name": "Toko Perlengkapan Rohani",
+        "name": "Taman Bermain Anak",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
@@ -380,7 +1319,7 @@
         "photo": []
       },
       {
-        "name": "Tempat Ibadah",
+        "name": "Musholla",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
@@ -389,96 +1328,92 @@
     ],
     "contact": [
       {
-        "platform": "phone",
-        "value": "62281682110"
+        "platform": "instagram",
+        "value": "@maskemambang.pwt"
       }
     ],
     "ticket": {
-      "adult": 0
+      "adult": 2000
     },
     "parking": {
       "motorcycle": {
-        "capacity": 60,
+        "capacity": 150,
         "price": 2000
       },
       "car": {
-        "capacity": 30,
-        "price": 5000
-      },
-      "bus": {
-        "capacity": 5,
-        "price": 10000
+        "capacity": 60,
+        "price": 3000
       }
     }
   },
   {
-    "destinationTitle": "Alun-alun Banyumas",
-    "category": "Sejarah",
-    "createdBy": "mng_banyumas",
-    "description": "Alun-alun Banyumas adalah jantung kota lama Banyumas yang sarat akan nilai sejarah. Dikelilingi oleh bangunan-bangunan kuno seperti Duplikat Pendopo Si Panji dan Masjid Agung Nur Sulaiman, tempat ini menjadi pusat kegiatan masyarakat, tempat bersantai, dan menikmati kuliner di malam hari.",
+    "destinationTitle": "Taman Andhang Pangrenan",
+    "category": "Wisata Kota dan Taman",
+    "createdBy": "mng_purwokerto_selatan",
+    "description": "Taman Andhang Pangrenan adalah ruang terbuka hijau yang dibangun di lokasi bekas terminal bus. Kini, taman ini menjadi salah satu pusat rekreasi dan olahraga favorit di Purwokerto, dilengkapi dengan jogging track, area bermain anak, panggung terbuka, dan pusat jajanan.",
     "locations": {
-      "addresses": "Jl. Mruyung, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
-      "link": "https://maps.app.goo.gl/pbmRfQCK2nTQTxTx5",
-      "subdistrict": "Banyumas",
+      "addresses": "Jl. Gerilya, Karangklesem, Kec. Purwokerto Sel., Kabupaten Banyumas, Jawa Tengah",
+      "link": "https://maps.app.goo.gl/EtUBz1V3hpnZEZtaA",
+      "subdistrict": "Purwokerto Selatan",
       "coordinates": {
-        "lat": -7.51689920604775,
-        "long": 109.29393336945525
+        "lat": -7.43877863771415,
+        "long": 109.24429202673952
       }
     },
     "openingHour": [
       {
         "day": "monday",
-        "hours": "24 Jam",
+        "hours": "07:00 - 18:00",
         "isClosed": false
       },
       {
         "day": "tuesday",
-        "hours": "24 Jam",
+        "hours": "07:00 - 18:00",
         "isClosed": false
       },
       {
         "day": "wednesday",
-        "hours": "24 Jam",
+        "hours": "07:00 - 18:00",
         "isClosed": false
       },
       {
         "day": "thursday",
-        "hours": "24 Jam",
+        "hours": "07:00 - 18:00",
         "isClosed": false
       },
       {
         "day": "friday",
-        "hours": "24 Jam",
+        "hours": "07:00 - 18:00",
         "isClosed": false
       },
       {
         "day": "saturday",
-        "hours": "24 Jam",
+        "hours": "06:00 - 19:00",
         "isClosed": false
       },
       {
         "day": "sunday",
-        "hours": "24 Jam",
+        "hours": "06:00 - 19:00",
         "isClosed": false
       }
     ],
     "facility": [
       {
-        "name": "Taman Publik",
+        "name": "Jogging Track",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
         "photo": []
       },
       {
-        "name": "Pusat Jajanan Malam",
+        "name": "Area Bermain Anak",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
         "photo": []
       },
       {
-        "name": "Masjid Agung",
+        "name": "Panggung Terbuka",
         "availability": true,
         "number": 1,
         "disabilityAccess": true,
@@ -487,130 +1422,39 @@
       {
         "name": "Toilet Umum",
         "availability": true,
+        "number": 4,
+        "disabilityAccess": true,
+        "photo": []
+      },
+      {
+        "name": "Musholla",
+        "availability": true,
         "number": 1,
-        "disabilityAccess": false,
+        "disabilityAccess": true,
         "photo": []
       }
     ],
     "contact": [
       {
         "platform": "instagram",
-        "value": "@banyumas.kotatua"
+        "value": "@taman_andhang_pangrenan"
       }
     ],
     "ticket": {
-      "adult": 0
+      "adult": 4000
     },
     "parking": {
       "motorcycle": {
-        "capacity": 200,
+        "capacity": 250,
         "price": 2000
       },
       "car": {
-        "capacity": 50,
-        "price": 3000
-      }
-    }
-  },
-  {
-    "destinationTitle": "Museum Wayang Sendang Mas",
-    "category": "Edukasi",
-    "createdBy": "mng_banyumas",
-    "description": "Museum Wayang Sendang Mas adalah sebuah museum yang didedikasikan untuk melestarikan seni pewayangan, khususnya Gagrag Banyumasan. Pengunjung dapat melihat berbagai koleksi wayang kulit, serta belajar tentang sejarah dan filosofi di balik setiap tokohnya. Lokasinya berada di kompleks Pendopo Sipanji.",
-    "locations": {
-      "addresses": "Jl. Gatot Subroto, Kauman, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
-      "link": "https://maps.app.goo.gl/hzPMrAKbhxGu3Gqv5",
-      "subdistrict": "Banyumas",
-      "coordinates": {
-        "lat": -7.514671731332787,
-        "long": 109.29446410755575
-      }
-    },
-    "openingHour": [
-      {
-        "day": "monday",
-        "isClosed": true,
-        "hours": "Tutup"
+        "capacity": 100,
+        "price": 4000
       },
-      {
-        "day": "tuesday",
-        "hours": "08:00 - 15:00",
-        "isClosed": false
-      },
-      {
-        "day": "wednesday",
-        "hours": "08:00 - 15:00",
-        "isClosed": false
-      },
-      {
-        "day": "thursday",
-        "hours": "08:00 - 15:00",
-        "isClosed": false
-      },
-      {
-        "day": "friday",
-        "hours": "08:00 - 14:00",
-        "isClosed": false
-      },
-      {
-        "day": "saturday",
-        "hours": "08:00 - 15:00",
-        "isClosed": false
-      },
-      {
-        "day": "sunday",
-        "hours": "08:00 - 15:00",
-        "isClosed": false
-      }
-    ],
-    "facility": [
-      {
-        "name": "Ruang Pamer Koleksi",
-        "availability": true,
-        "number": 1,
-        "disabilityAccess": true,
-        "photo": []
-      },
-      {
-        "name": "Pemandu Museum",
-        "availability": true,
-        "number": 1,
-        "disabilityAccess": true,
-        "photo": []
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true,
-        "photo": []
-      },
-      {
-        "name": "Tempat Ibadah (Masjid Agung terdekat)",
-        "availability": true,
-        "number": 1,
-        "disabilityAccess": true,
-        "photo": []
-      }
-    ],
-    "contact": [
-      {
-        "platform": "phone",
-        "value": "62281795171"
-      }
-    ],
-    "ticket": {
-      "adult": 5000,
-      "child": 3000
-    },
-    "parking": {
-      "motorcycle": {
-        "capacity": 30,
-        "price": 2000
-      },
-      "car": {
-        "capacity": 15,
-        "price": 5000
+      "bus": {
+        "capacity": 5,
+        "price": 10000
       }
     }
   }
