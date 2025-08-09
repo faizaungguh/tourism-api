@@ -253,7 +253,6 @@ const detailDestinationPipeline = [
             availability: '$$f.availability',
             number: '$$f.number',
             disabilityAccess: '$$f.disabilityAccess',
-            photo: '$$f.photo',
           },
         },
       },
@@ -281,216 +280,225 @@ const createSlug = (name) => {
     .replace(/[^\w-]+/g, '');
 };
 
-export const listDestination = (validatedQuery) => {
-  const { page, size } = validatedQuery;
-  const skip = (page - 1) * size;
-  const filterStage = buildFilterStage(validatedQuery);
-  const sortStage = buildSortStage(validatedQuery);
+export const destinationHelper = {
+  list: (validatedQuery) => {
+    const { page, size } = validatedQuery;
+    const skip = (page - 1) * size;
+    const filterStage = buildFilterStage(validatedQuery);
+    const sortStage = buildSortStage(validatedQuery);
 
-  return [
-    {
-      $lookup: {
-        from: 'categories',
-        localField: 'category',
-        foreignField: '_id',
-        as: 'categoryDetails',
+    return [
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'category',
+          foreignField: '_id',
+          as: 'categoryDetails',
+        },
       },
-    },
-    {
-      $lookup: {
-        from: 'subdistricts',
-        localField: 'locations.subdistrict',
-        foreignField: '_id',
-        as: 'subdistrictDetails',
+      {
+        $lookup: {
+          from: 'subdistricts',
+          localField: 'locations.subdistrict',
+          foreignField: '_id',
+          as: 'subdistrictDetails',
+        },
       },
-    },
-    { $unwind: '$categoryDetails' },
-    { $unwind: '$subdistrictDetails' },
-    ...filterStage,
-    {
-      $facet: {
-        metadata: [{ $count: 'totalItems' }],
-        data: [
-          sortStage,
-          { $skip: skip },
-          { $limit: size },
-          {
-            $project: {
-              _id: 0,
-              destinationId: 1,
-              destinationTitle: 1,
-              category: '$categoryDetails.name',
-              categorySlug: '$categoryDetails.slug',
-              subdistrict: '$subdistrictDetails.name',
-              subdistrictSlug: '$subdistrictDetails.slug',
-              address: '$locations.addresses',
+      { $unwind: '$categoryDetails' },
+      { $unwind: '$subdistrictDetails' },
+      ...filterStage,
+      {
+        $facet: {
+          metadata: [{ $count: 'totalItems' }],
+          data: [
+            sortStage,
+            { $skip: skip },
+            { $limit: size },
+            {
+              $project: {
+                _id: 0,
+                destinationId: 1,
+                destinationTitle: 1,
+                headlinePhoto: {
+                  $cond: {
+                    if: '$headlinePhoto',
+                    then: { $concat: [API_URL, '$headlinePhoto'] },
+                    else: '$$REMOVE',
+                  },
+                },
+                category: '$categoryDetails.name',
+                categorySlug: '$categoryDetails.slug',
+                subdistrict: '$subdistrictDetails.name',
+                subdistrictSlug: '$subdistrictDetails.slug',
+                address: '$locations.addresses',
+              },
             },
-          },
-        ],
+          ],
+        },
       },
-    },
-  ];
-};
+    ];
+  },
 
-export const createDestination = async (adminId, validatedRequest) => {
-  const [existingDestination, managerDoc] = await Promise.all([
-    Destination.findOne({ destinationTitle: validatedRequest.destinationTitle })
-      .select('destinationTitle')
-      .lean(),
-    Admin.findOne({ adminId }).select('_id').lean(),
-  ]);
+  create: async (adminId, validatedRequest) => {
+    const [existingDestination, managerDoc] = await Promise.all([
+      Destination.findOne({ destinationTitle: validatedRequest.destinationTitle })
+        .select('destinationTitle')
+        .lean(),
+      Admin.findOne({ adminId }).select('_id').lean(),
+    ]);
 
-  const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
-    categories: validatedRequest.categories,
-    subdistrict: validatedRequest.locations.subdistrict,
-  });
-
-  const errors = {};
-  if (existingDestination)
-    errors.destinationTitle = `Tempat wisata dengan nama ${validatedRequest.destinationTitle} sudah digunakan, masukkan nama lain.`;
-  if (!managerDoc) errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
-  if (!categoryDoc)
-    errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
-  if (!subdistrictDoc)
-    errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
-
-  if (Object.keys(errors).length > 0) {
-    throw new ResponseError(422, 'Data gagal ditambahkan.', errors);
-  }
-
-  const { categories, ...rest } = validatedRequest;
-  const destinationData = {
-    ...rest,
-    category: categoryDoc._id,
-    locations: {
-      ...validatedRequest.locations,
-      subdistrict: subdistrictDoc._id,
-    },
-    createdBy: managerDoc._id,
-  };
-
-  const newDestination = new Destination(destinationData);
-  return newDestination.save();
-};
-
-export const patchDestination = async (destinationSlug, adminId, validatedRequest) => {
-  const [admin, destinationToUpdate] = await Promise.all([
-    Admin.findOne({ adminId }).select('_id').lean(),
-    Destination.findOne({ slug: destinationSlug }).select(
-      '_id createdBy destinationTitle facility openingHour contact'
-    ),
-  ]);
-
-  if (!admin)
-    throw new ResponseError(404, 'Data tidak ditemukan.', {
-      message: `Data dengan ID ${adminId} tidak terdaftar`,
+    const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
+      categories: validatedRequest.categories,
+      subdistrict: validatedRequest.locations.subdistrict,
     });
 
-  if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
-    throw new ResponseError(403, 'Akses anda ditolak', {
-      message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
-    });
-  }
-
-  const updateOperation = { $set: {} };
-  const errors = {};
-
-  const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
-    categories: validatedRequest.categories,
-    subdistrict: validatedRequest.locations?.subdistrict,
-  });
-
-  if (validatedRequest.categories) {
-    if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
-    else updateOperation.$set.category = categoryDoc._id;
-  }
-  if (validatedRequest.locations?.subdistrict) {
+    const errors = {};
+    if (existingDestination)
+      errors.destinationTitle = `Tempat wisata dengan nama ${validatedRequest.destinationTitle} sudah digunakan, masukkan nama lain.`;
+    if (!managerDoc) errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
+    if (!categoryDoc)
+      errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
     if (!subdistrictDoc)
-      errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
-    else updateOperation.$set['locations.subdistrict'] = subdistrictDoc._id;
-  }
-  if (validatedRequest.destinationTitle) {
-    updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
-  }
-  if (Object.keys(errors).length > 0) {
-    throw new ResponseError(422, 'Data gagal diubah.', errors);
-  }
+      errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
 
-  if (validatedRequest.description) {
-    updateOperation.$set.description = validatedRequest.description;
-  }
-  if (validatedRequest.locations?.addresses) {
-    updateOperation.$set['locations.addresses'] = validatedRequest.locations.addresses;
-  }
-  if (validatedRequest.locations?.coordinates) {
-    updateOperation.$set['locations.coordinates'] = validatedRequest.locations.coordinates;
-  }
+    if (Object.keys(errors).length > 0) {
+      throw new ResponseError(422, 'Data gagal ditambahkan.', errors);
+    }
 
-  if (validatedRequest.ticket && typeof validatedRequest.ticket === 'object') {
-    Object.keys(validatedRequest.ticket).forEach((key) => {
-      updateOperation.$set[`ticket.${key}`] = validatedRequest.ticket[key];
+    const { categories, ...rest } = validatedRequest;
+    const destinationData = {
+      ...rest,
+      category: categoryDoc._id,
+      locations: {
+        ...validatedRequest.locations,
+        subdistrict: subdistrictDoc._id,
+      },
+      createdBy: managerDoc._id,
+    };
+
+    const newDestination = new Destination(destinationData);
+    return newDestination.save();
+  },
+
+  patch: async (destinationSlug, adminId, validatedRequest) => {
+    const [admin, destinationToUpdate] = await Promise.all([
+      Admin.findOne({ adminId }).select('_id').lean(),
+      Destination.findOne({ slug: destinationSlug }).select(
+        '_id createdBy destinationTitle facility openingHour contact'
+      ),
+    ]);
+
+    if (!admin)
+      throw new ResponseError(404, 'Data tidak ditemukan.', {
+        message: `Data dengan ID ${adminId} tidak terdaftar`,
+      });
+
+    if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
+      throw new ResponseError(403, 'Akses anda ditolak', {
+        message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
+      });
+    }
+
+    const updateOperation = { $set: {} };
+    const errors = {};
+
+    const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
+      categories: validatedRequest.categories,
+      subdistrict: validatedRequest.locations?.subdistrict,
     });
-  }
-  if (validatedRequest.parking && typeof validatedRequest.parking === 'object') {
-    Object.keys(validatedRequest.parking).forEach((vehicleType) => {
-      if (
-        validatedRequest.parking[vehicleType] &&
-        typeof validatedRequest.parking[vehicleType] === 'object'
-      ) {
-        for (const prop in validatedRequest.parking[vehicleType]) {
-          const path = `parking.${vehicleType}.${prop}`;
-          updateOperation.$set[path] = validatedRequest.parking[vehicleType][prop];
+
+    if (validatedRequest.categories) {
+      if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
+      else updateOperation.$set.category = categoryDoc._id;
+    }
+    if (validatedRequest.locations?.subdistrict) {
+      if (!subdistrictDoc)
+        errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
+      else updateOperation.$set['locations.subdistrict'] = subdistrictDoc._id;
+    }
+    if (validatedRequest.destinationTitle) {
+      updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
+    }
+    if (Object.keys(errors).length > 0) {
+      throw new ResponseError(422, 'Data gagal diubah.', errors);
+    }
+
+    if (validatedRequest.description) {
+      updateOperation.$set.description = validatedRequest.description;
+    }
+    if (validatedRequest.locations?.addresses) {
+      updateOperation.$set['locations.addresses'] = validatedRequest.locations.addresses;
+    }
+    if (validatedRequest.locations?.coordinates) {
+      updateOperation.$set['locations.coordinates'] = validatedRequest.locations.coordinates;
+    }
+
+    if (validatedRequest.ticket && typeof validatedRequest.ticket === 'object') {
+      Object.keys(validatedRequest.ticket).forEach((key) => {
+        updateOperation.$set[`ticket.${key}`] = validatedRequest.ticket[key];
+      });
+    }
+    if (validatedRequest.parking && typeof validatedRequest.parking === 'object') {
+      Object.keys(validatedRequest.parking).forEach((vehicleType) => {
+        if (
+          validatedRequest.parking[vehicleType] &&
+          typeof validatedRequest.parking[vehicleType] === 'object'
+        ) {
+          for (const prop in validatedRequest.parking[vehicleType]) {
+            const path = `parking.${vehicleType}.${prop}`;
+            updateOperation.$set[path] = validatedRequest.parking[vehicleType][prop];
+          }
         }
-      }
+      });
+    }
+
+    if (Object.keys(updateOperation.$set).length > 0) {
+      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation);
+    }
+
+    await _updateArrayField({
+      destinationId: destinationToUpdate._id,
+      existingArray: destinationToUpdate.openingHour,
+      updateArray: validatedRequest.openingHour,
+      fieldName: 'openingHour',
+      keyField: 'day',
+      preProcessingLogic: (item) => processOpeningHours([item]),
     });
-  }
 
-  if (Object.keys(updateOperation.$set).length > 0) {
-    await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation);
-  }
+    await _updateArrayField({
+      destinationId: destinationToUpdate._id,
+      existingArray: destinationToUpdate.facility,
+      updateArray: validatedRequest.facility,
+      fieldName: 'facility',
+      keyField: 'name',
+      preProcessingLogic: (facilityUpdate) => {
+        if (facilityUpdate.availability === false) {
+          facilityUpdate.number = 0;
+        }
 
-  await _updateArrayField({
-    destinationId: destinationToUpdate._id,
-    existingArray: destinationToUpdate.openingHour,
-    updateArray: validatedRequest.openingHour,
-    fieldName: 'openingHour',
-    keyField: 'day',
-    preProcessingLogic: (item) => processOpeningHours([item]),
-  });
+        if (facilityUpdate.name && !facilityUpdate._id) {
+          facilityUpdate.slug = createSlug(facilityUpdate.name);
+        }
+      },
+    });
 
-  await _updateArrayField({
-    destinationId: destinationToUpdate._id,
-    existingArray: destinationToUpdate.facility,
-    updateArray: validatedRequest.facility,
-    fieldName: 'facility',
-    keyField: 'name',
-    preProcessingLogic: (facilityUpdate) => {
-      if (facilityUpdate.availability === false) {
-        facilityUpdate.number = 0;
-      }
+    await _updateArrayField({
+      destinationId: destinationToUpdate._id,
+      existingArray: destinationToUpdate.contact,
+      updateArray: validatedRequest.contact,
+      fieldName: 'contact',
+      keyField: 'platform',
+    });
 
-      if (facilityUpdate.name && !facilityUpdate._id) {
-        facilityUpdate.slug = createSlug(facilityUpdate.name);
-      }
-    },
-  });
+    const updatedDocument = await Destination.findById(destinationToUpdate._id).lean();
+    return updatedDocument;
+  },
 
-  await _updateArrayField({
-    destinationId: destinationToUpdate._id,
-    existingArray: destinationToUpdate.contact,
-    updateArray: validatedRequest.contact,
-    fieldName: 'contact',
-    keyField: 'platform',
-  });
+  get: (identifier) => {
+    const matchQuery = mongoose.Types.ObjectId.isValid(identifier)
+      ? { _id: new mongoose.Types.ObjectId(identifier) }
+      : { slug: identifier };
 
-  const updatedDocument = await Destination.findById(destinationToUpdate._id).lean();
-  return updatedDocument;
-};
-
-export const getDestination = (identifier) => {
-  const matchQuery = mongoose.Types.ObjectId.isValid(identifier)
-    ? { _id: new mongoose.Types.ObjectId(identifier) }
-    : { slug: identifier };
-
-  return [{ $match: matchQuery }, ...detailDestinationPipeline];
+    return [{ $match: matchQuery }, ...detailDestinationPipeline];
+  },
 };

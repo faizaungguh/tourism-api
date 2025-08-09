@@ -5,6 +5,7 @@ import { categoryService } from '#services/data/category.mjs';
 import { subdistrictService } from '#services/data/subdistrict.mjs';
 import { destinationService } from '#services/data/destination.mjs';
 import { attractionService } from '#services/data/attraction.mjs';
+import { recommendationService } from './data/recommendation.mjs';
 
 export const dataService = {
   auth: {
@@ -47,6 +48,7 @@ export const dataService = {
     detail: destinationService.detail,
     update: destinationService.update,
     delete: destinationService.drop,
+    recomendation: recommendationService,
   },
 
   attraction: {

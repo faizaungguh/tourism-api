@@ -5,6 +5,7 @@ import { category as categoryData } from '#controllers/data/category.mjs';
 import { subdistrict as subdistrictData } from '#controllers/data/subdistrict.mjs';
 import { destination as destinationData } from '#controllers/data/destination.mjs';
 import { attraction as attractionData } from '#controllers/data/attraction.mjs';
+import { recommendation as recommendationData } from '#controllers/data/recommendation.mjs';
 
 export const data = {
   auth: {
@@ -48,6 +49,7 @@ export const data = {
     get: destinationData.detail,
     update: destinationData.update,
     delete: destinationData.drop,
+    recommendation: recommendationData,
   },
 
   attraction: {

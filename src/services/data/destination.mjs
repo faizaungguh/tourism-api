@@ -1,6 +1,6 @@
 import * as checker from '#validations/destination.mjs';
 import * as validate from '#validations/validate.mjs';
-import * as helper from '#helpers/data/destination.mjs';
+import { destinationHelper } from '#helpers/data/destination.mjs';
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -11,10 +11,10 @@ export const destinationService = {
   post: async (adminId, request) => {
     const validatedRequest = validate.requestCheck(checker.destinationValidation, request);
 
-    const savedDestination = await helper.createDestination(adminId, validatedRequest);
+    const savedDestination = await destinationHelper.create(adminId, validatedRequest);
 
     /** Ambil data yang baru disimpan dengan detail yang sudah di-populate */
-    const pipeline = helper.getDestination(savedDestination._id);
+    const pipeline = destinationHelper.get(savedDestination._id);
     const [result] = await Destination.aggregate(pipeline);
     return result;
   },
@@ -24,7 +24,7 @@ export const destinationService = {
     const validatedQuery = validate.requestCheck(checker.listDestinationValidation, query);
 
     /** Dapatkan aggregation pipeline dari helper */
-    const pipeline = helper.listDestination(validatedQuery);
+    const pipeline = destinationHelper.list(validatedQuery);
 
     const result = await Destination.aggregate(pipeline);
 
@@ -52,7 +52,7 @@ export const destinationService = {
       });
     }
 
-    const pipeline = helper.getDestination(destinationSlug);
+    const pipeline = destinationHelper.get(destinationSlug);
     const result = await Destination.aggregate(pipeline);
 
     if (!result || result.length === 0) {
@@ -74,7 +74,7 @@ export const destinationService = {
 
     const validatedRequest = validate.requestCheck(checker.patchDestinationValidation, request);
 
-    const updatedDestination = await helper.patchDestination(
+    const updatedDestination = await destinationHelper.patch(
       destinationSlug,
       adminId,
       validatedRequest
