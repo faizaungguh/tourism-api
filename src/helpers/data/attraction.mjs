@@ -1,7 +1,7 @@
 import { ResponseError } from '#errors/responseError.mjs';
-import { Attraction } from '#schemas/attraction.mjs';
-import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
+import { Destination } from '#schemas/destination.mjs';
+import { Attraction } from '#schemas/attraction.mjs';
 
 export const validateAttractionAccess = async (adminId, destinationSlug, attractionSlug) => {
   const [destination, admin, attraction] = await Promise.all([

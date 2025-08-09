@@ -1,5 +1,4 @@
 import { mediaService } from '#services/media.mjs';
-import { attraction as attractionHelper } from '#helpers/media/attraction.mjs';
 
 const API_URL = process.env.APP_URL || 'http://localhost:3000';
 

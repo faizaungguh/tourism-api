@@ -1,9 +1,9 @@
-import { managerService } from '#services/data/manager.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
+import { dataService } from '#services/data.mjs';
 
 export const manager = {
   list: async (req, res) => {
-    const { result, pagination } = await managerService.getAll(req.query);
+    const { result, pagination } = await dataService.manager.list(req.query);
     res.status(200).json({
       message: 'Menampilkan daftar Manajer',
       data: result,
@@ -21,7 +21,7 @@ export const manager = {
       });
     }
 
-    const result = await managerService.getDetail(id);
+    const result = await dataService.manager.detail(id);
     res.status(200).json({
       message: `Menampilkan Detail Manager '${result.name}'`,
       data: result,
@@ -38,7 +38,7 @@ export const manager = {
       });
     }
 
-    const result = await managerService.update(id, admin, req.body);
+    const result = await dataService.manager.update(id, admin, req.body);
     res.status(200).json({
       message: `Data manajer '${result.name}' berhasil diubah`,
       data: result,
@@ -55,7 +55,7 @@ export const manager = {
       });
     }
 
-    const result = await managerService.drop(id);
+    const result = await dataService.manager.delete(id);
     res.clearCookie('accessToken', { path: '/' });
     res.status(200).json({
       message: `Manajer '${result.name}' telah berhasil dihapus`,

@@ -20,16 +20,14 @@ export const galleryPhoto = validate.array().items(
       .trim()
       .pattern(/^[^<>]*$/)
       .messages({
-        'string.pattern.base':
-          'Keterangan foto tidak boleh mengandung skrip atau tag HTML.',
+        'string.pattern.base': 'Keterangan foto tidak boleh mengandung skrip atau tag HTML.',
       }),
     altText: validate
       .string()
       .trim()
       .pattern(/^[^<>]*$/)
       .messages({
-        'string.pattern.base':
-          'Teks alternatif foto tidak boleh mengandung skrip atau tag HTML.',
+        'string.pattern.base': 'Teks alternatif foto tidak boleh mengandung skrip atau tag HTML.',
       }),
   })
 );

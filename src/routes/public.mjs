@@ -1,8 +1,8 @@
 import express from 'express';
 import { shield } from '#configs/security.mjs';
-import { handler } from '#middlewares/error.mjs';
 import { media } from '#controllers/media.mjs';
 import { data } from '#controllers/data.mjs';
+import { handler } from '#middlewares/error.mjs';
 import { handleMedia } from '#middlewares/media.mjs';
 
 export const publicRouter = new express.Router();
@@ -42,7 +42,7 @@ publicRouter
   .all(handler.method(['GET']));
 
 /** Recommendation */
-// publicRouter.route('/destinations/recommendations')
+publicRouter.route('/destinations/recommendations').all(handler.method(['GET']));
 
 /** Media */
 publicRouter

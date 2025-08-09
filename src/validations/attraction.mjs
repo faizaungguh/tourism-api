@@ -1,5 +1,5 @@
 import validate from 'joi';
-import * as field from '#validations/fieldAttraction.mjs';
+import * as field from '#validations/field/attraction.mjs';
 
 export const createAttractionValidation = validate
   .object({

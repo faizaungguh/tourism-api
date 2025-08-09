@@ -1,12 +1,11 @@
 import express from 'express';
 import morgan from 'morgan';
-import cookieParser from 'cookie-parser';
 import { logger } from '#app/logging.mjs';
-import { publicRouter } from '#routes/public.mjs';
-import { authMiddleware } from '#middlewares/auth.mjs';
-import { privateRouter } from '#routes/api.mjs';
-import { handler } from '#middlewares/error.mjs';
 import { shield } from '#configs/security.mjs';
+import { publicRouter } from '#routes/public.mjs';
+import { privateRouter } from '#routes/api.mjs';
+import { authMiddleware } from '#middlewares/auth.mjs';
+import { handler } from '#middlewares/error.mjs';
 
 export const web = express();
 

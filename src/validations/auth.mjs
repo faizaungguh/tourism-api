@@ -1,5 +1,5 @@
 import validate from 'joi';
-import { field } from '#validations/fieldAdmin.mjs';
+import { field } from '#validations/field/admin.mjs';
 
 export const checker = {
   register: validate.object({

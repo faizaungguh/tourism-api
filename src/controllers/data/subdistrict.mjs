@@ -1,8 +1,8 @@
-import { subdistrictService } from '#services/data/subdistrict.mjs';
+import { dataService } from '#services/data.mjs';
 
 export const subdistrict = {
   post: async (req, res) => {
-    const result = await subdistrictService.createSubdistrict(req.body);
+    const result = await dataService.subdistrict.add(req.body);
     res.status(201).json({
       message: 'Kecamatan berhasil dibuat',
       data: result,
@@ -10,7 +10,7 @@ export const subdistrict = {
   },
 
   list: async (req, res) => {
-    const { result, pagination } = await subdistrictService.getAllSubdistrict(req.query);
+    const { result, pagination } = await dataService.subdistrict.list(req.query);
     res.status(200).json({
       message: 'Menampilkan List Kecamatan',
       result,
@@ -20,7 +20,7 @@ export const subdistrict = {
 
   update: async (req, res) => {
     const { slug } = req.params;
-    const result = await subdistrictService.updateSubdistrict(slug, req.body);
+    const result = await dataService.subdistrict.update(slug, req.body);
     res.status(200).json({
       message: 'Kecamatan berhasil diubah',
       data: result,
@@ -29,7 +29,7 @@ export const subdistrict = {
 
   drop: async (req, res) => {
     const { slug } = req.params;
-    await subdistrictService.deleteSubdistrict(slug);
+    await dataService.subdistrict.delete(slug);
     res.status(200).json({
       message: `Kecamatan ${slug} berhasil dihapus`,
     });

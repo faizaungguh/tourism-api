@@ -1,6 +1,6 @@
 import * as checker from '#validations/destination.mjs';
 import * as validate from '#validations/validate.mjs';
-import * as helper from '#helpers/data/destinationHelper.mjs';
+import * as helper from '#helpers/data/destination.mjs';
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
