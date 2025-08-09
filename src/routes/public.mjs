@@ -42,7 +42,10 @@ publicRouter
   .all(handler.method(['GET']));
 
 /** Recommendation */
-publicRouter.route('/destinations/recommendations').all(handler.method(['GET']));
+publicRouter
+  .route('/destinations/recommendations')
+  .get(data.destination.showRecommendation)
+  .all(handler.method(['GET']));
 
 /** Media */
 publicRouter

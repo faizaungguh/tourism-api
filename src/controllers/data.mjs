@@ -49,7 +49,7 @@ export const data = {
     get: destinationData.detail,
     update: destinationData.update,
     delete: destinationData.drop,
-    recommendation: recommendationData,
+    showRecommendation: recommendationData.show,
   },
 
   attraction: {
