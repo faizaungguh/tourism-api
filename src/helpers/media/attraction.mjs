@@ -13,7 +13,7 @@ async function _deleteFile(webPath) {
     await fs.unlink(absolutePath);
   } catch (err) {
     if (err.code !== 'ENOENT') {
-      console.error(`Failed to delete file at ${webPath}:`, err);
+      console.error(`Gagal untuk menghapus dokumen ${webPath}:`, err);
     }
   }
 }
@@ -46,7 +46,7 @@ export const attraction = {
       try {
         if (!req.files || req.files.length === 0) {
           throw new ResponseError(422, 'Proses dihentikan', {
-            message: 'Anda harus menyertakan setidaknya satu file gambar.',
+            message: 'Anda harus menyertakan setidaknya satu dokumen berupa gambar.',
           });
         }
 
@@ -83,7 +83,7 @@ export const attraction = {
       try {
         if (!req.file) {
           throw new ResponseError(422, 'Proses dihentikan', {
-            message: 'Anda harus menyertakan satu file gambar pengganti.',
+            message: 'Anda harus menyertakan satu dokumen gambar pengganti.',
           });
         }
 

@@ -54,7 +54,7 @@ export const destinationService = {
 
     const pipeline = destinationHelper.get(destinationSlug);
     const result = await Destination.aggregate(pipeline);
-
+    // console.log(pipeline);
     if (!result || result.length === 0) {
       throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan`,

@@ -51,7 +51,7 @@ export const admin = {
         const dynamicPath = options.getDynamicPath(req);
         if (!dynamicPath) {
           throw new ResponseError(404, 'Data tidak ditemukan', {
-            message: 'ID untuk path file tidak ditemukan di URL.',
+            message: 'ID untuk path dokumen tersebut tidak ditemukan di URL.',
           });
         }
 

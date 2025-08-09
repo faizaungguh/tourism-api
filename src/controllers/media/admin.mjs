@@ -52,7 +52,7 @@ export const admin = {
           console.error('Error sending admin profile photo:', err);
           next(
             new ResponseError(404, 'Data tidak ditemukan', {
-              message: 'File gambar fisik tidak ditemukan di server.',
+              message: 'Dokumen gambar tidak ditemukan di server.',
             })
           );
         }
