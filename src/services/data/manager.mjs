@@ -1,6 +1,6 @@
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
-import * as helper from '#helpers/data/admin.mjs';
+import { adminHelper } from '#helpers/data/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
@@ -8,7 +8,7 @@ export const managerService = {
   list: async (query) => {
     const validatedQuery = validate.requestCheck(checker.listAdminValidation, query);
 
-    const pipeline = helper.listAdmins(validatedQuery);
+    const pipeline = adminHelper.listAdmins(validatedQuery);
 
     pipeline.unshift({ $match: { role: 'manager' } });
 
@@ -61,7 +61,7 @@ export const managerService = {
     /** validasi update */
     const validatedRequest = validate.requestCheck(checker.patchAdminValidation, request);
 
-    const updatedManager = await helper.updateManager(id, admin.adminId, validatedRequest);
+    const updatedManager = await adminHelper.updateManager(id, admin.adminId, validatedRequest);
 
     return updatedManager;
   },

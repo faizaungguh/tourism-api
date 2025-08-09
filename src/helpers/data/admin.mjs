@@ -50,93 +50,95 @@ const _handlePasswordUpdate = async (validatedRequest, originalPasswordHash) => 
   delete validatedRequest.newPassword;
 };
 
-export const listAdmins = (validatedQuery) => {
-  const { page, size } = validatedQuery;
-  const skip = (page - 1) * size;
+export const adminHelper = {
+  listAdmins: (validatedQuery) => {
+    const { page, size } = validatedQuery;
+    const skip = (page - 1) * size;
 
-  const filterStage = buildFilterStage(validatedQuery);
-  const sortStage = buildSortStage(validatedQuery);
+    const filterStage = buildFilterStage(validatedQuery);
+    const sortStage = buildSortStage(validatedQuery);
 
-  return [
-    ...filterStage,
-    {
-      $facet: {
-        metadata: [{ $count: 'totalItems' }],
-        data: [
-          sortStage,
-          { $skip: skip },
-          { $limit: size },
-          {
-            $project: {
-              _id: 0,
-              __v: 0,
-              email: 0,
-              contactNumber: 0,
-              role: 0,
-              password: 0,
-              photo: 0,
+    return [
+      ...filterStage,
+      {
+        $facet: {
+          metadata: [{ $count: 'totalItems' }],
+          data: [
+            sortStage,
+            { $skip: skip },
+            { $limit: size },
+            {
+              $project: {
+                _id: 0,
+                __v: 0,
+                email: 0,
+                contactNumber: 0,
+                role: 0,
+                password: 0,
+                photo: 0,
+              },
             },
-          },
-        ],
+          ],
+        },
       },
-    },
-  ];
-};
+    ];
+  },
 
-export const updateAdmin = async (id, validatedRequest) => {
-  const originalAdmin = await Admin.findOne({ adminId: id }).select('+password');
+  updateAdmin: async (id, validatedRequest) => {
+    const originalAdmin = await Admin.findOne({ adminId: id }).select('+password');
 
-  if (!originalAdmin) {
-    throw new ResponseError(404, 'Data tidak ditemukan', {
-      message: `Admin dengan Id ${id} tidak ditemukan`,
-    });
-  }
+    if (!originalAdmin) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Admin dengan Id ${id} tidak ditemukan`,
+      });
+    }
 
-  if (validatedRequest.oldPassword || validatedRequest.newPassword) {
-    await _handlePasswordUpdate(validatedRequest, originalAdmin.password);
-  }
+    if (validatedRequest.oldPassword || validatedRequest.newPassword) {
+      await _handlePasswordUpdate(validatedRequest, originalAdmin.password);
+    }
 
-  /** Cek duplikasi username/email menggunakan helper */
-  await verify.checkDuplicate(validatedRequest, originalAdmin);
+    /** Cek duplikasi username/email menggunakan helper */
+    await verify.checkDuplicate(validatedRequest, originalAdmin);
 
-  return Admin.findOneAndUpdate({ adminId: id }, { $set: validatedRequest }, { new: true });
-};
+    return Admin.findOneAndUpdate({ adminId: id }, { $set: validatedRequest }, { new: true });
+  },
 
-export const updateManager = async (id, adminId, validatedRequest) => {
-  if (id !== adminId) {
-    throw new ResponseError(403, 'Akses anda ditolak.', {
-      message: 'Anda tidak diizinkan mengubah data manajer lain.',
-    });
-  }
+  updateManager: async (id, adminId, validatedRequest) => {
+    if (id !== adminId) {
+      throw new ResponseError(403, 'Akses anda ditolak.', {
+        message: 'Anda tidak diizinkan mengubah data manajer lain.',
+      });
+    }
 
-  if (validatedRequest.role && validatedRequest.role !== 'manager') {
-    throw new ResponseError(403, 'Data ubahan ditolak.', {
-      message: 'Role yang anda miliki tidak dapat diubah.',
-    });
-  }
+    if (validatedRequest.role && validatedRequest.role !== 'manager') {
+      throw new ResponseError(403, 'Data ubahan ditolak.', {
+        message: 'Role yang anda miliki tidak dapat diubah.',
+      });
+    }
 
-  const originalManager = await Admin.findOne({
-    adminId: id,
-    role: 'manager',
-  }).select('+password, -__v');
+    const originalManager = await Admin.findOne({
+      adminId: id,
+      role: 'manager',
+    }).select('+password, -__v');
 
-  if (!originalManager) {
-    throw new ResponseError(404, 'Data tidak ditemukan', {
-      message: `Manajer dengan Id ${id} tidak ditemukan`,
-    });
-  }
+    if (!originalManager) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Manajer dengan Id ${id} tidak ditemukan`,
+      });
+    }
 
-  if (validatedRequest.oldPassword || validatedRequest.newPassword) {
-    await _handlePasswordUpdate(validatedRequest, originalManager.password);
-  }
+    if (validatedRequest.oldPassword || validatedRequest.newPassword) {
+      await _handlePasswordUpdate(validatedRequest, originalManager.password);
+    }
 
-  await verify.checkDuplicate(validatedRequest, originalManager);
+    await verify.checkDuplicate(validatedRequest, originalManager);
 
-  const updatedManager = await Admin.findOneAndUpdate(
-    { adminId: id, role: 'manager' },
-    { $set: validatedRequest },
-    { new: true }
-  );
+    const updatedManager = await Admin.findOneAndUpdate(
+      { adminId: id, role: 'manager' },
+      { $set: validatedRequest },
+      { new: true }
+    );
 
-  return updatedManager.toObject();
+    return updatedManager.toObject();
+  },
 };

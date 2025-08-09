@@ -80,7 +80,7 @@ export const destinationService = {
       validatedRequest
     );
 
-    const pipeline = helper.getDestination(updatedDestination._id);
+    const pipeline = destinationHelper.get(updatedDestination._id);
     const [result] = await Destination.aggregate(pipeline);
 
     return result;

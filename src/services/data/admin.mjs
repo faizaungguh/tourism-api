@@ -1,6 +1,6 @@
 import * as checker from '#validations/admin.mjs';
 import * as validate from '#validations/validate.mjs';
-import * as helper from '#helpers/data/admin.mjs';
+import { adminHelper } from '#helpers/data/admin.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
@@ -20,7 +20,7 @@ export const adminService = {
     const validatedQuery = validate.requestCheck(checker.listAdminValidation, query);
 
     /** Dapatkan aggregation pipeline dari helper */
-    const pipeline = helper.listAdmins(validatedQuery);
+    const pipeline = adminHelper.listAdmins(validatedQuery);
 
     const result = await Admin.aggregate(pipeline);
 
@@ -68,7 +68,7 @@ export const adminService = {
 
     const validatedRequest = validate.requestCheck(checker.patchAdminValidation, request);
 
-    const updatedAdmin = await helper.updateAdmin(id, validatedRequest);
+    const updatedAdmin = await adminHelper.updateAdmin(id, validatedRequest);
 
     return updatedAdmin;
   },
