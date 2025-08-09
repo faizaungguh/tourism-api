@@ -1,15 +1,26 @@
 import mongoose from 'mongoose';
-import { createRequire } from 'module';
 import connectionDB from '#app/db.mjs';
-import { Admin } from './schema/admin.mjs';
-import { Subdistrict } from './schema/subdistrict.mjs';
-import { Category } from './schema/category.mjs';
+import { Admin } from '#schemas/admin.mjs';
+import { Subdistrict } from '#schemas/subdistrict.mjs';
+import { Category } from '#schemas/category.mjs';
+import { Destination } from '#schemas/destination.mjs';
+import { Attraction } from '#schemas/attraction.mjs';
+import subdistrictData from '../mocks/Subdistricts.json' with { type: 'json' };
+import categoryData from '../mocks/Categories.json' with { type: 'json' };
+import multiAdmin from '../mocks/Admin.json' with { type: 'json' };
+import adminDefault from '../mocks/Default.json' with { type: 'json' };
 
-const require = createRequire(import.meta.url);
-const subdistrictData = require('../mocks/Subdistricts.json');
-const categoryData = require('../mocks/Categories.json');
-const multiAdmin = require('../mocks/Admin.json');
-const adminDefault = require('../mocks/Default.json');
+/** Impor Mock Destination */
+import destData1 from '../mocks/seed-destinasion-01.json' with { type: 'json' };
+import destData2 from '../mocks/seed-destination-02.json' with { type: 'json' };
+import destData3 from '../mocks/seed-destination-03.json' with { type: 'json' };
+import destData4 from '../mocks/seed-destination-04.json' with { type: 'json' };
+import destData5 from '../mocks/seed-destination-05.json' with { type: 'json' };
+import attrData1 from '../mocks/seed-attraction-01.json' with { type: 'json' };
+import attrData2 from '../mocks/seed-attraction-02.json' with { type: 'json' };
+import attrData3 from '../mocks/seed-attraction-03.json' with { type: 'json' };
+import attrData4 from '../mocks/seed-attraction-04.json' with { type: 'json' };
+import attrData5 from '../mocks/seed-attraction-05.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -20,12 +31,8 @@ const importAdmin = async () => {
     await Admin.deleteMany();
 
     const createdAdmins = await Admin.create(adminDefault);
-    const adminCount = adminDefault.filter(
-      (adm) => adm.role === 'admin'
-    ).length;
-    const managerCount = adminDefault.filter(
-      (adm) => adm.role === 'manager'
-    ).length;
+    const adminCount = adminDefault.filter((adm) => adm.role === 'admin').length;
+    const managerCount = adminDefault.filter((adm) => adm.role === 'manager').length;
 
     console.log(
       `${adminCount} Admin dan ${managerCount} Manager berhasil diimpor! (Total: ${createdAdmins.length})`
@@ -99,18 +106,14 @@ const importAllData = async () => {
     await Admin.deleteMany();
     await Subdistrict.deleteMany();
     await Category.deleteMany();
-    console.log(
-      'Data lama (Admin, Manager, Kecamatan, Kategori) berhasil dihapus.'
-    );
+    console.log('Data lama (Admin, Manager, Kecamatan, Kategori) berhasil dihapus.');
 
     const createdAdmins = await Admin.create(multiAdmin);
     const subdistricts = await Subdistrict.create(subdistrictData);
     const categories = await Category.create(categoryData);
 
     const adminCount = multiAdmin.filter((adm) => adm.role === 'admin').length;
-    const managerCount = multiAdmin.filter(
-      (adm) => adm.role === 'manager'
-    ).length;
+    const managerCount = multiAdmin.filter((adm) => adm.role === 'manager').length;
 
     console.log('\n--- Ringkasan Impor ---');
     console.log(
@@ -140,6 +143,120 @@ const deleteAllData = async () => {
   }
 };
 
+const importTourData = async () => {
+  try {
+    await connectionDB();
+    console.log('🚀 Memulai impor data Destinasi dan Atraksi...');
+
+    await Attraction.deleteMany({});
+    await Destination.deleteMany({});
+    console.log('🧹 Data destinasi dan atraksi lama berhasil dihapus.');
+
+    const allDestinationsData = [
+      ...destData1,
+      ...destData2,
+      ...destData3,
+      ...destData4,
+      ...destData5,
+    ];
+    const allAttractionsData = [
+      ...attrData1, 
+      ...attrData2,
+      ...attrData3,
+      ...attrData4,
+      ...attrData5
+    ];
+
+    const destinationsToCreate = await Promise.all(
+      allDestinationsData.map(async (dest) => {
+        const manager = await Admin.findOne({ username: dest.managerUsername });
+        const category = await Category.findOne({ name: dest.categoryName });
+        const subdistrict = await Subdistrict.findOne({ name: dest.locations.subdistrictName });
+
+        if (!manager || !category || !subdistrict) {
+          console.warn(
+            `⚠️ Data pendukung tidak ditemukan untuk: ${dest.destinationTitle}. Melewati...`
+          );
+          return null;
+        }
+
+        return {
+          destinationTitle: dest.destinationTitle,
+          description: dest.description,
+          createdBy: manager._id,
+          category: category._id,
+          locations: {
+            addresses: dest.locations.addresses,
+            subdistrict: subdistrict._id,
+            coordinates: dest.locations.coordinates,
+          },
+          ticket: dest.ticket,
+          parking: dest.parking,
+          facility: dest.facility,
+          contact: dest.contact,
+        };
+      })
+    );
+
+    const validDestinations = destinationsToCreate.filter((d) => d !== null);
+    const createdDestinations = await Destination.create(validDestinations);
+    console.log(`✅ ${createdDestinations.length} Destinasi berhasil diimpor.`);
+
+    const attractionsByDestSlug = new Map();
+
+    for (const attr of allAttractionsData) {
+      if (!attractionsByDestSlug.has(attr.destinationSlug)) {
+        attractionsByDestSlug.set(attr.destinationSlug, []);
+      }
+      attractionsByDestSlug.get(attr.destinationSlug).push(attr);
+    }
+
+    let createdAttractionsCount = 0;
+    for (const destination of createdDestinations) {
+      const attractionsForDest = attractionsByDestSlug.get(destination.slug) || [];
+      if (attractionsForDest.length > 0) {
+        const attractionsToCreate = attractionsForDest.map((attr) => ({
+          name: attr.name,
+          description: attr.description,
+          destination: destination._id,
+
+          ticketType: attr.ticketType === 'gratis' ? 'gratis' : attr.ticketType,
+          ticket: attr.ticket,
+        }));
+
+        const newAttractions = await Attraction.create(attractionsToCreate);
+        createdAttractionsCount += newAttractions.length;
+
+        const attractionIds = newAttractions.map((a) => a._id);
+        await Destination.findByIdAndUpdate(destination._id, {
+          $push: { attractions: { $each: attractionIds } },
+        });
+      }
+    }
+
+    console.log(`✅ ${createdAttractionsCount} Atraksi berhasil diimpor dan ditautkan.`);
+    console.log('\n✨ Impor data wisata selesai!');
+    process.exit(0);
+  } catch (error) {
+    console.error('❌ Error saat mengimpor data wisata:', error);
+    process.exit(1);
+  }
+};
+
+const deleteTourData = async () => {
+  try {
+    await connectionDB();
+    console.log('🔥 Memulai penghapusan data Destinasi dan Atraksi...');
+    await Attraction.deleteMany({});
+    await Destination.deleteMany({});
+    console.log('🗑️ Data Destinasi dan Atraksi berhasil dihapus!');
+    process.exit(0);
+  } catch (error) {
+    console.error('❌ Error saat menghapus data wisata:', error);
+    process.exit(1);
+  }
+};
+
 if (process.argv[2] === '--import-admin') {
   importAdmin();
 } else if (process.argv[2] === '--delete-admin') {
@@ -152,4 +269,10 @@ if (process.argv[2] === '--import-admin') {
   importAllData();
 } else if (process.argv[2] === '--delete-all') {
   deleteAllData();
+} else if (process.argv[2] === '--import-tourist') {
+  importTourData();
+} else if (process.argv[2] === '--delete-tourist') {
+  deleteTourData();
+} else {
+  console.log('Perintah tidak valid. Gunakan flag seperti --import-all atau --delete-all');
 }

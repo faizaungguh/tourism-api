@@ -13,7 +13,7 @@ async function generateUniqueAbbreviation(name, model, currentDocId) {
     baseAbbr = words[0].substring(0, 2) + words[1].substring(0, 1) + words[2].substring(0, 1);
   }
 
-  baseAbbr = baseAbbr.toLowerCase().padEnd(4, 'X');
+  baseAbbr = baseAbbr.toUpperCase().padEnd(4, 'X');
 
   let finalAbbr = baseAbbr;
   let counter = 1;
@@ -34,7 +34,7 @@ const subdistrictSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     code: { type: String, unique: true },
-    abbrevation: { type: String, unique: true, lowercase: true, trim: true },
+    abbrevation: { type: String, unique: true, uppercase: true, trim: true },
     slug: { type: String, unique: true },
   },
   {
@@ -87,4 +87,5 @@ subdistrictSchema.pre('deleteOne', { document: true, query: false }, async funct
   next();
 });
 
-export const Subdistrict = mongoose.model('Subdistrict', subdistrictSchema);
+export const Subdistrict =
+  mongoose.models.Subdistrict || mongoose.model('Subdistrict', subdistrictSchema);

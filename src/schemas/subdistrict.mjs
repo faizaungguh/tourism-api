@@ -87,4 +87,5 @@ subdistrictSchema.pre('deleteOne', { document: true, query: false }, async funct
   next();
 });
 
-export const Subdistrict = mongoose.model('Subdistrict', subdistrictSchema);
+export const Subdistrict =
+  mongoose.models.Subdistrict || mongoose.model('Subdistrict', subdistrictSchema);
