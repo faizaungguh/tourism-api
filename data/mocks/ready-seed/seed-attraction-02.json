@@ -616,5 +616,265 @@
     },
     "photo": [],
     "destination": "rajawali-sinema"
+  },
+  {
+    "name": "Tur Edukasi Peternakan Sapi",
+    "description": "Mengikuti tur untuk belajar tentang proses peternakan sapi Lembu Benggolo, mulai dari pembibitan, pemberian pakan, hingga pemerahan susu.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 25000,
+      "child": 20000
+    },
+    "photo": [],
+    "destination": "lembu-benggolo-farm--resort"
+  },
+  {
+    "name": "Wahana Berkuda",
+    "description": "Menjelajahi area resort yang luas dengan menunggang kuda yang sudah terlatih, memberikan pengalaman petualangan yang seru untuk keluarga.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 50000
+    },
+    "photo": [],
+    "destination": "lembu-benggolo-farm--resort"
+  },
+  {
+    "name": "Kolam Renang Resort",
+    "description": "Bersantai dan berenang di kolam renang dengan pemandangan perbukitan yang asri, terbuka untuk pengunjung harian.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 30000,
+      "child": 20000
+    },
+    "photo": [],
+    "destination": "lembu-benggolo-farm--resort"
+  },
+  {
+    "name": "Wisata Kuliner Durian Bawor",
+    "description": "Menikmati langsung kelezatan durian Bawor yang terkenal dengan daging tebal dan rasa manis legit di lapak-lapak petani langsung dari kebunnya.",
+    "ticketType": "gratis",
+    "destination": "wisata-durian-bawor"
+  },
+  {
+    "name": "Edukasi Budidaya Durian",
+    "description": "Belajar dari petani lokal mengenai cara menanam, merawat, dan memanen durian varietas Bawor dan jenis unggulan lainnya.",
+    "ticketType": "gratis",
+    "destination": "wisata-durian-bawor"
+  },
+  {
+    "name": "Tur Edukasi Lebah Madu",
+    "description": "Mengikuti tur berpemandu untuk belajar tentang kehidupan lebah madu, proses produksi madu, dan melihat sarang lebah dari dekat secara aman.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000,
+      "child": 10000
+    },
+    "photo": [],
+    "destination": "prawita-garden---kebun-lebah"
+  },
+  {
+    "name": "Taman Bunga dan Spot Foto",
+    "description": "Area taman yang ditanami berbagai jenis bunga yang disukai lebah, menciptakan suasana asri dan banyak spot foto menarik.",
+    "ticketType": "gratis",
+    "destination": "prawita-garden---kebun-lebah"
+  },
+  {
+    "name": "Akses Harian Kolam Renang Pribadi",
+    "description": "Menikmati fasilitas kolam renang pribadi di The Gardenia Villa untuk pengunjung harian, lengkap dengan handuk dan akses ruang bilas.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 100000
+    },
+    "photo": [],
+    "destination": "the-gardenia-pool-villa"
+  },
+  {
+    "name": "Paket Makan Siang Tepi Kolam",
+    "description": "Paket khusus termasuk akses kolam renang dan set menu makan siang yang bisa dinikmati di gazebo tepi kolam.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 175000
+    },
+    "photo": [],
+    "destination": "the-gardenia-pool-villa"
+  },
+  {
+    "name": "Pemandian Air Panas Belerang",
+    "description": "Salah satu daya tarik utama, kolam pemandian air panas alami yang mengandung belerang, baik untuk relaksasi dan kesehatan kulit.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 15000
+    },
+    "photo": [],
+    "destination": "lokawisata-baturaden"
+  },
+  {
+    "name": "Wahana Sepeda Air",
+    "description": "Nikmati suasana danau buatan yang sejuk dengan menyewa sepeda air berbentuk angsa. Aktivitas rekreasi yang menyenangkan untuk keluarga.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 15000
+    },
+    "photo": [],
+    "destination": "lokawisata-baturaden"
+  },
+  {
+    "name": "Teater Alam Baturaden",
+    "description": "Menonton film simulasi petualangan alam di dalam teater berbentuk pesawat. Memberikan pengalaman sinematik yang unik.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000
+    },
+    "photo": [],
+    "destination": "lokawisata-baturaden"
+  },
+  {
+    "name": "Area Doa Utama Goa Maria",
+    "description": "Pusat dari tempat ziarah, di mana terdapat patung Bunda Maria di dalam sebuah goa. Tempat yang hening untuk berdoa dan berefleksi.",
+    "ticketType": "gratis",
+    "destination": "goa-maria-kaliori"
+  },
+  {
+    "name": "Jalur Jalan Salib",
+    "description": "Menyusuri jalur setapak yang dilengkapi dengan 14 perhentian yang menggambarkan kisah sengsara Yesus, digunakan untuk devosi jalan salib.",
+    "ticketType": "gratis",
+    "destination": "goa-maria-kaliori"
+  },
+  {
+    "name": "Koleksi Wayang Gagrag Banyumasan",
+    "description": "Pameran utama yang menampilkan koleksi lengkap wayang kulit dengan gaya khas Banyumasan yang unik dan berbeda dari gaya lainnya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 5000,
+      "child": 3000
+    },
+    "photo": [],
+    "destination": "museum-wayang-sendang-mas"
+  },
+  {
+    "name": "Pameran Gamelan dan Alat Musik Tradisional",
+    "description": "Melihat koleksi gamelan kuno dan berbagai alat musik tradisional yang digunakan untuk mengiringi pertunjukan wayang.",
+    "ticketType": "gratis",
+    "destination": "museum-wayang-sendang-mas"
+  },
+  {
+    "name": "Kolam Ombak",
+    "description": "Rasakan sensasi terombang-ambing seperti di pantai dalam wahana kolam ombak buatan yang seru untuk segala usia.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 30000,
+      "child": 25000
+    },
+    "photo": [],
+    "destination": "dreamland-water-park-ajibarang"
+  },
+  {
+    "name": "Seluncuran Ekstrem 'The Giant'",
+    "description": "Menara dengan berbagai jenis seluncuran air, mulai dari yang berkelok-kelok hingga seluncuran lurus berkecepatan tinggi.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 30000,
+      "child": 25000
+    },
+    "photo": [],
+    "destination": "dreamland-water-park-ajibarang"
+  },
+  {
+    "name": "Kolam Arus Santai",
+    "description": "Nikmati sensasi mengambang mengikuti arus di kolam arus yang mengelilingi area water park.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 30000,
+      "child": 25000
+    },
+    "photo": [],
+    "destination": "dreamland-water-park-ajibarang"
+  },
+  {
+    "name": "Pemandangan Air Terjun Kembar",
+    "description": "Daya tarik utama berupa dua aliran air terjun yang berdampingan, menyerupai sepasang pengantin. Pemandangan yang unik dan romantis.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 10000,
+      "child": 5000
+    },
+    "photo": [],
+    "destination": "curug-panganten"
+  },
+  {
+    "name": "Kolam Alami Bawah Curug",
+    "description": "Kolam penampungan air terjun yang dangkal dan aman untuk bermain air atau sekadar merendam kaki sambil menikmati pemandangan.",
+    "ticketType": "gratis",
+    "destination": "curug-panganten"
+  },
+  {
+    "name": "Workshop Membatik Tulis",
+    "description": "Pengalaman belajar membatik secara langsung dari para pengrajin. Peserta dapat mencoba proses mencanting dan membawa pulang hasil karyanya.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 50000
+    },
+    "photo": [],
+    "destination": "rumah-batik-anto-djamil"
+  },
+  {
+    "name": "Galeri Batik Banyumasan",
+    "description": "Melihat dan membeli berbagai koleksi batik tulis dan cap khas Banyumasan dengan motif-motif klasik dan kontemporer karya Anto Djamil.",
+    "ticketType": "gratis",
+    "destination": "rumah-batik-anto-djamil"
+  },
+  {
+    "name": "Menonton Film Reguler",
+    "description": "Nikmati pengalaman menonton film-film box office terbaru dengan kualitas audio dan visual terbaik di studio reguler.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 40000
+    },
+    "photo": [],
+    "destination": "rajawali-cinema-purwokerto"
+  },
+  {
+    "name": "Pengalaman Studio Premiere",
+    "description": "Rasakan kemewahan menonton dengan kursi yang lebih nyaman, selimut, dan layanan eksklusif di studio Premiere.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 75000
+    },
+    "photo": [],
+    "destination": "rajawali-cinema-purwokerto"
+  },
+  {
+    "name": "Festival Cicip Durian (Musiman)",
+    "description": "Nikmati pengalaman makan durian Bawor sepuasnya langsung di kebun saat musim panen raya. Paket ini termasuk mencicipi berbagai tingkat kematangan durian.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 150000
+    },
+    "photo": [],
+    "destination": "durian-bawor-kemranjen"
+  },
+  {
+    "name": "Tur Edukasi Kebun Durian",
+    "description": "Ikuti tur berpemandu untuk belajar tentang ciri khas durian Bawor, cara memilih durian yang bagus, dan melihat proses pembibitan pohon durian unggul.",
+    "ticketType": "berbayar",
+    "ticket": {
+      "adult": 20000,
+      "child": 10000
+    },
+    "photo": [],
+    "destination": "durian-bawor-kemranjen"
+  },
+  {
+    "name": "Pusat Kuliner & Oleh-Oleh Durian",
+    "description": "Area di mana pengunjung dapat bersantai sambil menikmati aneka olahan durian seperti es krim, jus, pancake, dan membeli oleh-oleh khas durian untuk dibawa pulang.",
+    "ticketType": "gratis",
+    "destination": "durian-bawor-kemranjen"
+  },
+  {
+    "name": "Spot Foto Kebun & Patung Durian",
+    "description": "Area dengan pemandangan kebun durian yang rimbun dan patung durian raksasa yang menjadi ikon tempat ini. Cocok untuk mengabadikan momen bersama keluarga.",
+    "ticketType": "gratis",
+    "destination": "durian-bawor-kemranjen"
   }
 ]

@@ -163,19 +163,34 @@ const importTourData = async () => {
     
     const allAttractionsData = [
       ...attrData1, 
-      ...attrData2,
+      ...attrData2, 
     ];
+    
+    const uniqueDestinationsData = [];
+    const seenSlugs = new Set();
+    for (const dest of allDestinationsData) {
+        const slug = dest.destinationTitle.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        if (!seenSlugs.has(slug)) {
+            uniqueDestinationsData.push(dest);
+            seenSlugs.add(slug);
+        } else {
+            console.warn(`🔥 Duplikasi destinasi dengan judul '${dest.destinationTitle}' ditemukan dan dilewati.`);
+        }
+    }
+
 
     const destinationsToCreate = await Promise.all(
-      allDestinationsData.map(async (dest) => {
+      uniqueDestinationsData.map(async (dest) => {
         const manager = await Admin.findOne({ username: dest.createdBy });
         const category = await Category.findOne({ name: dest.category });
         const subdistrict = await Subdistrict.findOne({ name: dest.locations.subdistrict });
 
+        if (!manager) console.warn(`- Manager '${dest.createdBy}' tidak ditemukan untuk ${dest.destinationTitle}`);
+        if (!category) console.warn(`- Kategori '${dest.category}' tidak ditemukan untuk ${dest.destinationTitle}`);
+        if (!subdistrict) console.warn(`- Kecamatan '${dest.locations.subdistrict}' tidak ditemukan untuk ${dest.destinationTitle}`);
+
         if (!manager || !category || !subdistrict) {
-          console.warn(
-            `⚠️ Data pendukung tidak ditemukan untuk: ${dest.destinationTitle}. Melewati...`
-          );
+          console.warn(`--> ⚠️ Destinasi '${dest.destinationTitle}' dilewati karena data pendukung tidak lengkap.`);
           return null;
         }
 
@@ -234,13 +249,33 @@ const importTourData = async () => {
     }
 
     console.log(`✅ ${createdAttractionsCount} Atraksi berhasil diimpor dan ditautkan.`);
+
+    
+    console.log('\n🔍 Melakukan validasi akhir: Memeriksa destinasi tanpa atraksi...');
+    
+    
+    const destinationsWithoutAttractions = await Destination.find({
+      attractions: { $size: 0 },
+    }).select('destinationTitle slug'); 
+
+    if (destinationsWithoutAttractions.length === 0) {
+      console.log('✅ Sukses! Semua destinasi yang diimpor memiliki setidaknya satu atraksi.');
+    } else {
+      console.warn(`\n⚠️ PERINGATAN: Ditemukan ${destinationsWithoutAttractions.length} destinasi yang tidak memiliki atraksi:`);
+      destinationsWithoutAttractions.forEach(dest => {
+        console.warn(`  - ${dest.destinationTitle} (slug: ${dest.slug})`);
+      });
+      console.warn('\n-> Periksa file seed-attraction-XX.json Anda dan pastikan setiap destinasi di atas memiliki data wahana yang sesuai.');
+    }
+    
+
     console.log('\n✨ Impor data wisata selesai!');
     process.exit(0);
   } catch (error) {
     console.error('❌ Error saat mengimpor data wisata:', error);
     process.exit(1);
   }
-};
+}
 
 const deleteTourData = async () => {
   try {
