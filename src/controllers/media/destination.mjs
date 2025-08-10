@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 import { mediaService } from '#services/media.mjs';
-import { destination as destinationHelper } from '#helpers/media/destination.mjs';
+import { helper } from '#helpers/helper.mjs';
 
 const API_URL = process.env.APP_URL || 'http://localhost:3000';
 
@@ -58,7 +58,7 @@ export const destination = {
       } catch (error) {
         if (req.processedPhotos && req.processedPhotos.length > 0) {
           for (const photo of req.processedPhotos) {
-            await destinationHelper.cleanupFile(photo.url);
+            await helper.Media.destination.cleanupFile(photo.url);
           }
         }
         next(error);
@@ -118,7 +118,7 @@ export const destination = {
         });
       } catch (error) {
         if (newPhotoData && newPhotoData.url) {
-          await destinationHelper.cleanupFile(newPhotoData.url);
+          await helper.Media.destination.cleanupFile(newPhotoData.url);
         }
         next(error);
       }
