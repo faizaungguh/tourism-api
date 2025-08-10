@@ -4,6 +4,7 @@ import { categoryChecker } from '#validations/data/category.mjs';
 import { subdistrictChecker } from '#validations/data/subdistrict.mjs';
 import { destinationChecker } from '#validations/data/destination.mjs';
 import { attractionChecker } from '#validations/data/attraction.mjs';
+import { recommendationChecker } from '#validations/data/recommendation.mjs';
 
 export const checker = {
   auth: {
@@ -33,6 +34,7 @@ export const checker = {
     create: destinationChecker.valid,
     list: destinationChecker.list,
     update: destinationChecker.patch,
+    recommendation: recommendationChecker.isValid,
   },
 
   attraction: {

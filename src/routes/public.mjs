@@ -43,7 +43,7 @@ publicRouter
 
 /** Recommendation */
 publicRouter
-  .route('/destinations/recommendations')
+  .route('/recommendations')
   .get(data.destination.showRecommendation)
   .all(handler.method(['GET']));
 
