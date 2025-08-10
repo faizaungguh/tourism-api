@@ -1,9 +1,6 @@
 import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
-import { admin as adminHelper } from '#helpers/media/admin.mjs';
-import { destination as destinationHelper } from '#helpers/media/destination.mjs';
-import { facility as facilityHelper } from '#helpers/media/facility.mjs';
-import { attraction as attractionHelper } from '#helpers/media/attraction.mjs';
+import { helper } from '#helpers/helper.mjs';
 
 const baseMulter = {
   storage: multer.memoryStorage(),
@@ -145,83 +142,101 @@ const destination = {
 export const handleMedia = {
   admin: {
     updateMedia: [
-      adminHelper.checkIsExist,
+      helper.Media.admin.checkIsExist,
       createMedia(admin.Media.uploader, admin.Media.limits),
-      adminHelper.photo.save({
+      helper.Media.admin.photo.save({
         subfolder: 'profile',
         getDynamicPath: (req) => req.params.id,
       }),
     ],
-    get: [adminHelper.checkIsExist],
+    get: [helper.Media.admin.checkIsExist],
   },
 
   destination: {
     updateMedia: [
-      destinationHelper.check.isAdminOwned,
+      helper.Media.destination.check.isAdminOwned,
       createMedia(destination.Media.uploader, destination.Media.limits),
-      destinationHelper.photos.save,
+      helper.Media.destination.photos.save,
     ],
 
     gallery: {
       add: [
-        destinationHelper.check.isAdminOwned,
+        helper.Media.destination.check.isAdminOwned,
         createMedia(destination.gallery.add.uploader, destination.gallery.add.limits),
-        destinationHelper.gallery.save,
+        helper.Media.destination.gallery.save,
       ],
-      list: [destinationHelper.check.isExist],
+      list: [helper.Media.destination.check.isExist],
       update: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isGalleryExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isGalleryExist,
         createMedia(destination.gallery.replace.uploader, destination.gallery.replace.limits),
-        destinationHelper.gallery.replace,
+        helper.Media.destination.gallery.replace,
       ],
-      deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.gallery.deleteAll],
-      deleteOne: [destinationHelper.check.isAdminOwned, destinationHelper.check.isGalleryExist],
+      deleteAll: [
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.gallery.deleteAll,
+      ],
+      deleteOne: [
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isGalleryExist,
+      ],
     },
 
     facility: {
       add: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isFacilityExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isFacilityExist,
         createMedia(destination.facility.add.uploader, destination.facility.add.limits),
-        facilityHelper.photo.save,
+        helper.Media.destination.facility.save,
       ],
-      list: [destinationHelper.check.isExist, destinationHelper.check.isFacilityExist],
+      list: [
+        helper.Media.destination.check.isExist,
+        helper.Media.destination.check.isFacilityExist,
+      ],
       update: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isFacilityExist,
-        destinationHelper.check.isFacilityPhotoExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isFacilityExist,
+        helper.Media.destination.check.isFacilityPhotoExist,
         createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
-        facilityHelper.photo.replace,
+        helper.Media.destination.facility.replace,
       ],
-      deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isFacilityExist],
+      deleteAll: [
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isFacilityExist,
+      ],
       deleteOne: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isFacilityExist,
-        destinationHelper.check.isFacilityPhotoExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isFacilityExist,
+        helper.Media.destination.check.isFacilityPhotoExist,
       ],
     },
 
     attraction: {
       add: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isAttractionExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isAttractionExist,
         createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
-        attractionHelper.photo.save,
+        helper.Media.attraction.photo.save,
       ],
-      list: [destinationHelper.check.isExist, destinationHelper.check.isAttractionExist],
+      list: [
+        helper.Media.destination.check.isExist,
+        helper.Media.destination.check.isAttractionExist,
+      ],
       update: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isAttractionExist,
-        destinationHelper.check.isAttractionPhotoExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isAttractionExist,
+        helper.Media.destination.check.isAttractionPhotoExist,
         createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
-        attractionHelper.photo.replace,
+        helper.Media.attraction.photo.replace,
       ],
-      deleteAll: [destinationHelper.check.isAdminOwned, destinationHelper.check.isAttractionExist],
+      deleteAll: [
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isAttractionExist,
+      ],
       deleteOne: [
-        destinationHelper.check.isAdminOwned,
-        destinationHelper.check.isAttractionExist,
-        destinationHelper.check.isAttractionPhotoExist,
+        helper.Media.destination.check.isAdminOwned,
+        helper.Media.destination.check.isAttractionExist,
+        helper.Media.destination.check.isAttractionPhotoExist,
       ],
     },
   },

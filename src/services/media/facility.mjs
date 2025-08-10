@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { facility as facilityHelper } from '#helpers/media/facility.mjs';
+import { helper } from '#helpers/helper.mjs';
 
 export const facilityService = {
   add: async (req) => {
@@ -118,6 +118,6 @@ export const facilityService = {
       });
     }
 
-    await facilityHelper.cleanupFile(photoToDelete.url);
+    await helper.Media.destination.cleanupFile(photoToDelete.url);
   },
 };

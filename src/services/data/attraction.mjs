@@ -1,6 +1,6 @@
 import { validate } from '#validations/validate.mjs';
 import { checker } from '#validations/checker.mjs';
-import { attractionHelper } from '#helpers/data/attraction.mjs';
+import { helper } from '#helpers/helper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { Destination } from '#schemas/destination.mjs';
@@ -27,7 +27,7 @@ export const attractionService = {
 
     const validatedRequest = validate.check.request(checker.attraction.create, request);
 
-    const newAttraction = await attractionHelper.create(destination._id, validatedRequest);
+    const newAttraction = await helper.Data.attraction.create(destination._id, validatedRequest);
 
     await Destination.findByIdAndUpdate(destination._id, {
       $push: { attractions: newAttraction._id },
@@ -38,7 +38,7 @@ export const attractionService = {
   },
 
   update: async (adminId, destinationSlug, attractionSlug, request) => {
-    const { attraction } = await attractionHelper.validateAccess(
+    const { attraction } = await helper.Data.attraction.validateAccess(
       adminId,
       destinationSlug,
       attractionSlug
@@ -46,14 +46,14 @@ export const attractionService = {
 
     const validatedRequest = validate.check.request(checker.attraction.update, request);
 
-    const updatedAttraction = await attractionHelper.patch(attraction, validatedRequest);
+    const updatedAttraction = await helper.Data.attraction.patch(attraction, validatedRequest);
 
     const { name, description, ticketType, ticket, slug } = updatedAttraction;
     return { name, description, ticketType, ticket, slug };
   },
 
   drop: async (adminId, destinationSlug, attractionSlug) => {
-    const { destination, attraction } = await attractionHelper.validateAccess(
+    const { destination, attraction } = await helper.Data.attraction.validateAccess(
       adminId,
       destinationSlug,
       attractionSlug

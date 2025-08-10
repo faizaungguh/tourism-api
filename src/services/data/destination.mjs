@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { checker } from '#validations/checker.mjs';
 import { validate } from '#validations/validate.mjs';
-import { destinationHelper } from '#helpers/data/destination.mjs';
+import { helper } from '#helpers/helper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
@@ -11,10 +11,10 @@ export const destinationService = {
   post: async (adminId, request) => {
     const validatedRequest = validate.check.request(checker.destination.create, request);
 
-    const savedDestination = await destinationHelper.create(adminId, validatedRequest);
+    const savedDestination = await helper.Data.destination.create(adminId, validatedRequest);
 
     /** Ambil data yang baru disimpan dengan detail yang sudah di-populate */
-    const pipeline = destinationHelper.get(savedDestination._id);
+    const pipeline = helper.Data.destination.get(savedDestination._id);
     const [result] = await Destination.aggregate(pipeline);
     return result;
   },
@@ -24,7 +24,7 @@ export const destinationService = {
     const validatedQuery = validate.check.request(checker.destination.list, query);
 
     /** Dapatkan aggregation pipeline dari helper */
-    const pipeline = destinationHelper.list(validatedQuery);
+    const pipeline = helper.Data.destination.list(validatedQuery);
 
     const result = await Destination.aggregate(pipeline);
 
@@ -52,7 +52,7 @@ export const destinationService = {
       });
     }
 
-    const pipeline = destinationHelper.get(destinationSlug);
+    const pipeline = helper.Data.destination.get(destinationSlug);
     const result = await Destination.aggregate(pipeline);
     // console.log(pipeline);
     if (!result || result.length === 0) {
@@ -74,13 +74,13 @@ export const destinationService = {
 
     const validatedRequest = validate.check.request(checker.destination.update, request);
 
-    const updatedDestination = await destinationHelper.patch(
+    const updatedDestination = await helper.Data.destination.patch(
       destinationSlug,
       adminId,
       validatedRequest
     );
 
-    const pipeline = destinationHelper.get(updatedDestination._id);
+    const pipeline = helper.Data.destination.get(updatedDestination._id);
     const [result] = await Destination.aggregate(pipeline);
 
     return result;

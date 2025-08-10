@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
-import { attraction as attractionHelper } from '#helpers/media/attraction.mjs';
+import { helper } from '#helpers/helper.mjs';
 
 export const attractionService = {
   add: async (destinationDoc, attractionDoc, photosToAdd) => {
@@ -109,6 +109,6 @@ export const attractionService = {
       });
     }
 
-    await attractionHelper.cleanupFile(photoToDelete.url);
+    await helper.Media.destination.cleanupFile(photoToDelete.url);
   },
 };
