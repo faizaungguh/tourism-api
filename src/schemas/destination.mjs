@@ -153,7 +153,7 @@ destinationSchema.pre('save', async function (next) {
     const names = this.facility.map((f) => f.name);
     if (new Set(names).size !== names.length) {
       return next(
-        new ResponseError(409, 'Duplikasi data', {
+        new ResponseError(409, 'Duplikasi data.', {
           message: 'Nama fasilitas tidak boleh duplikat.',
         })
       );

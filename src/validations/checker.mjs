@@ -35,6 +35,7 @@ export const checker = {
     list: destinationChecker.list,
     update: destinationChecker.patch,
     recommendation: recommendationChecker.isValid,
+    getRaw: destinationChecker.getRaw,
   },
 
   attraction: {

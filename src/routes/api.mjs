@@ -21,7 +21,7 @@ privateRouter
   .all(handler.method(['GET', 'POST']));
 
 privateRouter
-  .route('/admins/:id')
+  .route('/admin/:id')
   .all(authMiddleware.authorize('admin'))
   .get(data.admin.get)
   .put(data.admin.update)
@@ -35,7 +35,7 @@ privateRouter
   .all(handler.method(['GET']));
 
 privateRouter
-  .route('/managers/:id')
+  .route('/manager/:id')
   .get(authMiddleware.authorize('admin', 'manager'), data.manager.get)
   .put(authMiddleware.authorize('manager'), data.manager.update)
   .delete(authMiddleware.authorize('admin', 'manager'), data.manager.delete)
@@ -61,7 +61,7 @@ privateRouter
   .all(handler.method(['POST']));
 
 privateRouter
-  .route('/subdistricts/:slug')
+  .route('/subdistrict/:slug')
   .all(authMiddleware.authorize('admin'))
   .put(data.subdistrict.update)
   .delete(data.subdistrict.delete)
@@ -74,20 +74,26 @@ privateRouter
   .all(handler.method(['POST']));
 
 privateRouter
-  .route('/destinations/:slug')
+  .route('/destination/:slug')
   .all(authMiddleware.authorize('manager'))
   .put(data.destination.update)
   .delete(data.destination.delete)
   .all(handler.method(['PUT', 'DELETE']));
 
+privateRouter
+  .route('/destination-raw')
+  .all(authMiddleware.authorize('admin'))
+  .get(data.destination.getRaw)
+  .all(handler.method(['GET']));
+
 /** Attraction */
 privateRouter
-  .route('/destinations/:slug/attractions')
+  .route('/destination/:slug/attractions')
   .post(authMiddleware.authorize('manager'), data.attraction.add)
   .all(handler.method(['POST']));
 
 privateRouter
-  .route('/destinations/:destinations/attractions/:attractions')
+  .route('/destination/:destinations/attractions/:attractions')
   .all(authMiddleware.authorize('manager'))
   .put(data.attraction.update)
   .delete(data.attraction.delete)
@@ -107,34 +113,34 @@ privateRouter
 
 /** Destinasi - profilePhoto, headlinePhoto */
 privateRouter
-  .route('/destinations/:destinations/media')
+  .route('/destination/:destinations/media')
   .all(authMiddleware.authorize('manager'))
   .post(...handleMedia.destination.updateMedia, media.destination.updateMedia)
   .all(handler.method(['POST']));
 
 /** Destinasi - galleryPhoto */
 privateRouter
-  .route('/destinations/:destinations/gallery')
+  .route('/destination/:destinations/gallery')
   .all(authMiddleware.authorize('manager'))
   .post(...handleMedia.destination.gallery.add, media.destination.gallery.add)
   .delete(...handleMedia.destination.gallery.deleteAll, media.destination.gallery.deleteAll);
 
 privateRouter
-  .route('/destinations/:destinations/gallery/:id')
+  .route('/destination/:destinations/gallery/:id')
   .all(authMiddleware.authorize('manager'))
   .put(...handleMedia.destination.gallery.update, media.destination.gallery.update)
   .delete(...handleMedia.destination.gallery.deleteOne, media.destination.gallery.delete);
 
 /** Destinasi - facility - photo */
 privateRouter
-  .route('/destinations/:destinations/facility/:facility/media')
+  .route('/destination/:destinations/facility/:facility/media')
   .all(authMiddleware.authorize('manager'))
   .post(...handleMedia.destination.facility.add, media.destination.facility.add)
   .delete(...handleMedia.destination.facility.deleteAll, media.destination.facility.deleteAll)
   .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter
-  .route('/destinations/:destinations/facility/:facility/media/:id')
+  .route('/destination/:destinations/facility/:facility/media/:id')
   .all(authMiddleware.authorize('manager'))
   .put(...handleMedia.destination.facility.update, media.destination.facility.update)
   .delete(handleMedia.destination.facility.deleteOne, media.destination.facility.delete)
@@ -142,14 +148,14 @@ privateRouter
 
 /** Wahana - photo */
 privateRouter
-  .route('/destinations/:destinations/attractions/:attractions/media')
+  .route('/destination/:destinations/attractions/:attractions/media')
   .all(authMiddleware.authorize('manager'))
   .post(...handleMedia.destination.attraction.add, media.destination.attraction.add)
   .delete(...handleMedia.destination.attraction.deleteAll, media.destination.attraction.deleteAll)
   .all(handler.method(['POST', 'GET', 'DELETE']));
 
 privateRouter
-  .route('/destinations/:destinations/attractions/:attractions/media/:id')
+  .route('/destination/:destinations/attractions/:attractions/media/:id')
   .all(authMiddleware.authorize('manager'))
   .put(...handleMedia.destination.attraction.update, media.destination.attraction.update)
   .delete(...handleMedia.destination.attraction.deleteOne, media.destination.attraction.delete)

@@ -52,7 +52,7 @@ subdistrictSchema.pre('save', async function (next) {
     const existingSubdistrict = await this.constructor.findOne({ name: this.name });
     if (existingSubdistrict && existingSubdistrict._id.toString() !== this._id.toString()) {
       return next(
-        new ResponseError(409, 'Duplikasi data', {
+        new ResponseError(409, 'Duplikasi data.', {
           name: `Kecamatan dengan nama '${this.name}' sudah ada.`,
         })
       );
@@ -78,7 +78,7 @@ subdistrictSchema.pre('deleteOne', { document: true, query: false }, async funct
   });
 
   if (destinationCount > 0) {
-    const error = new ResponseError(422, 'Proses dihentikan', {
+    const error = new ResponseError(409, 'Duplikasi data.', {
       message: `Kecamatan tidak dapat dihapus karena masih digunakan oleh ${destinationCount} destinasi.`,
     });
     return next(error);

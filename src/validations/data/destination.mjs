@@ -47,4 +47,8 @@ export const destinationChecker = {
     category: validate.string().optional(),
     subdistrict: validate.string().optional(),
   }),
+
+  getRaw: validate.object({
+    limit: validate.number().integer().min(1).optional(),
+  }),
 };

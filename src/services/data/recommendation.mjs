@@ -135,4 +135,56 @@ export const recommendationService = {
 
     return finalResults;
   },
+
+  raw: async (query) => {
+    const validatedQuery = validate.check.request(checker.destination.getRaw, query);
+
+    const limit = validatedQuery.limit;
+
+    const pipeline = [
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'category',
+          foreignField: '_id',
+          as: 'categoryInfo',
+        },
+      },
+      {
+        $lookup: {
+          from: 'subdistricts',
+          localField: 'locations.subdistrict',
+          foreignField: '_id',
+          as: 'subdistrictInfo',
+        },
+      },
+
+      { $unwind: { path: '$categoryInfo', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$subdistrictInfo', preserveNullAndEmptyArrays: true } },
+
+      {
+        $project: {
+          _id: 0,
+          destinationName: '$destinationTitle',
+          category: '$categoryInfo.name',
+          subdistrict: '$subdistrictInfo.name',
+          lat: '$locations.coordinates.lat',
+          long: '$locations.coordinates.long',
+
+          attractionCount: { $size: { $ifNull: ['$attractions', []] } },
+          facilityCount: { $size: { $ifNull: ['$facility', []] } },
+
+          ticketPrice: '$ticket',
+          parkingCapacity: '$parking',
+        },
+      },
+    ];
+
+    if (limit) {
+      pipeline.push({ $limit: limit });
+    }
+
+    const destinations = await Destination.aggregate(pipeline);
+    return destinations;
+  },
 };

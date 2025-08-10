@@ -49,6 +49,7 @@ export const dataService = {
     update: destinationService.update,
     delete: destinationService.drop,
     showRecomendation: recommendationService.show,
+    raw: recommendationService.raw,
   },
 
   attraction: {

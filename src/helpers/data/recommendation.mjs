@@ -1,5 +1,4 @@
 export const recommendationHelper = {
-<<<<<<< HEAD
   show: {
     calculateHaversineDistance(lat1, lon1, lat2, lon2) {
       const R = 6371;
@@ -87,7 +86,4 @@ export const recommendationHelper = {
       return rankedAlternatives.sort((a, b) => b.score - a.score);
     },
   },
-=======
-  show,
->>>>>>> 6f11789d166c45f55c4b053c88903a816ef9d41f
 };

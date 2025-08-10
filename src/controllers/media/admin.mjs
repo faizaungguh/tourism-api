@@ -8,6 +8,7 @@ export const admin = {
     try {
       const { id } = req.params;
       const { adminId } = req.admin;
+      console.log(req.admin);
 
       if (adminId !== id) {
         throw new ResponseError(403, 'Akses ditolak.', {

@@ -193,13 +193,6 @@ export const handleMedia = {
         helper.Media.destination.check.isExist,
         helper.Media.destination.check.isFacilityExist,
       ],
-<<<<<<< HEAD
-=======
-      list: [
-        helper.Media.destination.check.isExist,
-        helper.Media.destination.check.isFacilityExist,
-      ],
->>>>>>> 6f11789d166c45f55c4b053c88903a816ef9d41f
       update: [
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isFacilityExist,
@@ -211,13 +204,6 @@ export const handleMedia = {
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isFacilityExist,
       ],
-<<<<<<< HEAD
-=======
-      deleteAll: [
-        helper.Media.destination.check.isAdminOwned,
-        helper.Media.destination.check.isFacilityExist,
-      ],
->>>>>>> 6f11789d166c45f55c4b053c88903a816ef9d41f
       deleteOne: [
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isFacilityExist,

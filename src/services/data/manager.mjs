@@ -1,4 +1,4 @@
-import * as checker from '#validations/data/admin.mjs';
+import { checker } from '#validations/checker.mjs';
 import { validate } from '#validations/validate.mjs';
 import { helper } from '#helpers/helper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
@@ -6,7 +6,7 @@ import { Admin } from '#schemas/admin.mjs';
 
 export const managerService = {
   list: async (query) => {
-    const validatedQuery = validate.check.request(checker.listAdminValidation, query);
+    const validatedQuery = validate.check.request(checker.admin.list, query);
 
     const pipeline = helper.Data.admin.list(validatedQuery);
 
@@ -59,7 +59,7 @@ export const managerService = {
     validate.check.isNotEmpty(request);
 
     /** validasi update */
-    const validatedRequest = validate.check.request(checker.patchAdminValidation, request);
+    const validatedRequest = validate.check.request(checker.admin.update, request);
 
     const updatedManager = await helper.Data.manager.update(id, admin.adminId, validatedRequest);
 

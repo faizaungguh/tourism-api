@@ -50,6 +50,7 @@ export const data = {
     update: destinationData.update,
     delete: destinationData.drop,
     showRecommendation: recommendationData.show,
+    getRaw: recommendationData.raw,
   },
 
   attraction: {
