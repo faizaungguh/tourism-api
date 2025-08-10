@@ -1,7 +1,7 @@
 import validate from 'joi';
 import { field } from '#validations/field/admin.mjs';
 
-export const checker = {
+export const authCheck = {
   register: validate.object({
     username: field.username,
     password: field.password,

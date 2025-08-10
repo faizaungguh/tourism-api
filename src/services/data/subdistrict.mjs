@@ -1,5 +1,5 @@
 import { validate } from '#validations/validate.mjs';
-import * as checker from '#validations/data/subdistrict.mjs';
+import { checker } from '#validations/checker.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
@@ -8,7 +8,7 @@ export const subdistrictService = {
     /** validasi request */
     validate.check.isNotEmpty(request);
 
-    const validatedRequest = validate.check.request(checker.subdistrictValidation, request);
+    const validatedRequest = validate.check.request(checker.subdistrict.create, request);
 
     /** ambil data yang telah valid */
     const data = new Subdistrict(validatedRequest);
@@ -22,7 +22,7 @@ export const subdistrictService = {
 
   list: async (query) => {
     /** validasi */
-    const validatedQuery = validate.check.request(checker.listSubdistrictValidation, query);
+    const validatedQuery = validate.check.request(checker.subdistrict.list, query);
     const { page, size, sort, sortBy } = validatedQuery;
     const skip = (page - 1) * size;
 
@@ -59,7 +59,7 @@ export const subdistrictService = {
   update: async (slug, request) => {
     validate.check.isNotEmpty(request);
 
-    const validatedRequest = validate.check.request(checker.subdistrictValidation, request);
+    const validatedRequest = validate.check.request(checker.subdistrict.update, request);
 
     const originalSubdistrict = await Subdistrict.findOne({ slug });
     if (!originalSubdistrict) {
