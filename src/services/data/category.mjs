@@ -1,14 +1,14 @@
-import * as validate from '#validations/validate.mjs';
-import * as checker from '#validations/category.mjs';
+import { validate } from '#validations/validate.mjs';
+import * as checker from '#validations/data/category.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Category } from '#schemas/category.mjs';
 
 export const categoryService = {
   post: async (request) => {
     /** validasi request */
-    validate.isNotEmpty(request);
+    validate.check.isNotEmpty(request);
 
-    const validatedRequest = validate.requestCheck(checker.categoryValidation, request);
+    const validatedRequest = validate.check.request(checker.categoryValidation, request);
 
     /** Buat instance baru dari model Category */
     const data = new Category(validatedRequest);
@@ -22,7 +22,7 @@ export const categoryService = {
 
   list: async (query) => {
     /** validasi */
-    const validatedQuery = validate.requestCheck(checker.listCategoryValidation, query);
+    const validatedQuery = validate.check.request(checker.listCategoryValidation, query);
     const { page, size, sort } = validatedQuery;
     const skip = (page - 1) * size;
 
@@ -49,7 +49,7 @@ export const categoryService = {
   },
 
   update: async (slug, request) => {
-    const validatedRequest = validate.requestCheck(checker.categoryValidation, request);
+    const validatedRequest = validate.check.request(checker.categoryValidation, request);
 
     const originalCategory = await Category.findOne({ slug });
     if (!originalCategory) {

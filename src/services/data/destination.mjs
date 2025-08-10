@@ -1,5 +1,5 @@
-import * as checker from '#validations/destination.mjs';
-import * as validate from '#validations/validate.mjs';
+import * as checker from '#validations/data/destination.mjs';
+import { validate } from '#validations/validate.mjs';
 import { destinationHelper } from '#helpers/data/destination.mjs';
 import path from 'path';
 import fs from 'fs/promises';
@@ -9,7 +9,7 @@ import { Admin } from '#schemas/admin.mjs';
 
 export const destinationService = {
   post: async (adminId, request) => {
-    const validatedRequest = validate.requestCheck(checker.destinationValidation, request);
+    const validatedRequest = validate.check.request(checker.destinationValidation, request);
 
     const savedDestination = await destinationHelper.create(adminId, validatedRequest);
 
@@ -21,7 +21,7 @@ export const destinationService = {
 
   list: async (query) => {
     /** Validasi dan ambil nilai default dari query */
-    const validatedQuery = validate.requestCheck(checker.listDestinationValidation, query);
+    const validatedQuery = validate.check.request(checker.listDestinationValidation, query);
 
     /** Dapatkan aggregation pipeline dari helper */
     const pipeline = destinationHelper.list(validatedQuery);
@@ -70,9 +70,9 @@ export const destinationService = {
         slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
       });
     }
-    validate.isNotEmpty(request);
+    validate.check.isNotEmpty(request);
 
-    const validatedRequest = validate.requestCheck(checker.patchDestinationValidation, request);
+    const validatedRequest = validate.check.request(checker.patchDestinationValidation, request);
 
     const updatedDestination = await destinationHelper.patch(
       destinationSlug,

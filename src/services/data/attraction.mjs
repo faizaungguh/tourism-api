@@ -1,5 +1,5 @@
-import * as validate from '#validations/validate.mjs';
-import * as checker from '#validations/attraction.mjs';
+import { validate } from '#validations/validate.mjs';
+import * as checker from '#validations/data/attraction.mjs';
 import { attractionHelper } from '#helpers/data/attraction.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
@@ -25,7 +25,7 @@ export const attractionService = {
       });
     }
 
-    const validatedRequest = validate.requestCheck(checker.createAttractionValidation, request);
+    const validatedRequest = validate.check.request(checker.createAttractionValidation, request);
 
     const newAttraction = await attractionHelper.create(destination._id, validatedRequest);
 
@@ -44,7 +44,7 @@ export const attractionService = {
       attractionSlug
     );
 
-    const validatedRequest = validate.requestCheck(checker.patchAttractionValidation, request);
+    const validatedRequest = validate.check.request(checker.patchAttractionValidation, request);
 
     const updatedAttraction = await attractionHelper.patch(attraction, validatedRequest);
 
