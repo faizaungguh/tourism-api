@@ -13,9 +13,8 @@ export const authMiddleware = {
 
     if (!token) {
       return next(
-        new ResponseError(401, 'Akun tidak terotentikasi', {
-          message:
-            'Anda tidak memiliki akses ke akun anda, silakan signin terlebih dahulu',
+        new ResponseError(401, 'Akses ditolak', {
+          message: 'Anda tidak memiliki akses ke akun anda, silakan signin terlebih dahulu',
         })
       );
     }
@@ -23,13 +22,11 @@ export const authMiddleware = {
     try {
       const decoded = jwt.verify(token, config.JWT_SECRET);
 
-      req.admin = await Admin.findOne({ adminId: decoded.id }).select(
-        'adminId role -_id'
-      );
+      req.admin = await Admin.findOne({ adminId: decoded.id }).select('adminId role -_id');
 
       if (!req.admin) {
         return next(
-          new ResponseError(401, 'Admin tidak ditemukan', {
+          new ResponseError(401, 'Akses ditolak', {
             message:
               'Data Admin yang anda masukkan salah, dan sekarang anda tidak memiliki akses ke akun anda',
           })
@@ -39,7 +36,7 @@ export const authMiddleware = {
       next();
     } catch (error) {
       return next(
-        new ResponseError(401, 'Token tidak valid', {
+        new ResponseError(401, 'Akses ditolak', {
           message:
             'Anda tidak memiliki akses untuk masuk ke dalam akun anda, karena token akses anda tidak valid atau sudah kedaluarsa',
         })

@@ -16,7 +16,7 @@ export const authHelper = {
     const admin = await Admin.findOne({ username: loginRequest.username });
 
     if (!admin || !(await admin.comparePassword(loginRequest.password))) {
-      throw new ResponseError(401, 'Pencocokan data gagal.', {
+      throw new ResponseError(401, 'Akses ditolak.', {
         message: 'Username atau password yang Anda masukkan salah.',
       });
     }
