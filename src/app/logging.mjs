@@ -1,7 +1,8 @@
 import winston from 'winston';
 import path from 'path';
+import { config } from '#configs/variable.mjs';
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+const isDevelopment = config.NODE_ENV === 'development';
 
 const transportConfigurations = [
   /** Konfigurasi untuk console, selalu aktif */

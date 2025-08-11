@@ -2,8 +2,8 @@ import express from 'express';
 import { data } from '#controllers/data.mjs';
 import { media } from '#controllers/media.mjs';
 import { authMiddleware } from '#middlewares/auth.mjs';
-import { handleMedia } from '#middlewares/media.mjs';
 import { handler } from '#middlewares/error.mjs';
+import { handleMedia } from '#middlewares/media.mjs';
 
 export const privateRouter = new express.Router();
 

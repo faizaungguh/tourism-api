@@ -21,7 +21,9 @@ export const facilityService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(500, 'Gagal menyimpan foto fasilitas ke database.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Gagal menyimpan foto fasilitas ke database.',
+      });
     }
 
     return processedFacilityPhotos;
@@ -60,7 +62,9 @@ export const facilityService = {
 
   dropAll: async (destinationDoc, facilityDoc) => {
     if (!destinationDoc || !facilityDoc) {
-      throw new ResponseError(500, 'Dokumen destinasi atau fasilitas tidak diterima oleh service.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Dokumen destinasi atau fasilitas tidak diterima oleh service.',
+      });
     }
 
     if (!facilityDoc.photo || facilityDoc.photo.length === 0) {
@@ -97,7 +101,9 @@ export const facilityService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(500, 'Gagal menghapus data foto fasilitas dari database.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Gagal menghapus data foto fasilitas dari database.',
+      });
     }
   },
 

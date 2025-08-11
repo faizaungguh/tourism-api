@@ -2,6 +2,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import cookieParser from 'cookie-parser';
+import { config } from '#configs/variable.mjs';
+import { ResponseError } from '#errors/responseError.mjs';
 
 const whitelist = ['http://localhost:3000'];
 
@@ -11,7 +13,7 @@ export const shield = {
       if (whitelist.indexOf(origin) !== -1 || !origin) {
         callback(null, true);
       } else {
-        callback(new Error('Tidak diizinkan oleh CORS'));
+        callback(new ResponseError(500, 'Tidak diizinkan oleh CORS'));
       }
     },
     credentials: true,
@@ -34,7 +36,7 @@ export const shield = {
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
+      secure: config === 'production',
       httpOnly: true,
     },
   }),

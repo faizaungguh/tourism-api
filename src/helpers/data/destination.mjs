@@ -4,8 +4,9 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { Category } from '#schemas/category.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
+import { config } from '#configs/variable.mjs';
 
-const API_URL = process.env.API_URL || 'http://localhost:3000';
+const API_URL = config.APP_URL || 'http://localhost:3000';
 
 const _findRelatedDocs = async ({ categories, subdistrict }) => {
   const promises = [];

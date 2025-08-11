@@ -106,10 +106,9 @@ export const destination = {
         }
 
         if (!destinationDoc.createdBy) {
-          throw new ResponseError(
-            500,
-            `Data admin untuk destinasi '${destinations}' rusak atau tidak ditemukan.`
-          );
+          throw new ResponseError(404, 'Data tidak ditemukan', {
+            message: `Data admin untuk destinasi '${destinations}' rusak atau tidak ditemukan.`,
+          });
         }
         if (destinationDoc.createdBy.adminId !== adminId) {
           throw new ResponseError(403, 'Akses ditolak', {
@@ -150,10 +149,9 @@ export const destination = {
         const { foundDestination } = req;
 
         if (!foundDestination) {
-          throw new ResponseError(
-            500,
-            'Middleware check.isExist untuk destinasi harus dijalankan terlebih dahulu.'
-          );
+          throw new ResponseError(404, 'Data tidak ditemukan', {
+            message: 'Masukkan data destinasi untuk memastikan data ada.',
+          });
         }
 
         const facilityDoc = foundDestination.facility.find((f) => f.slug === facilitySlug);

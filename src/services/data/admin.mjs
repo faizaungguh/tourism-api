@@ -3,6 +3,7 @@ import { validate } from '#validations/validate.mjs';
 import { helper } from '#helpers/helper.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
+import { config } from '#configs/variable.mjs';
 
 export const adminService = {
   post: async (request) => {
@@ -52,7 +53,7 @@ export const adminService = {
     }
 
     if (admin.photo) {
-      const baseUrl = process.env.APP_URL || 'http://localhost:3000';
+      const baseUrl = config.APP_URL || 'http://localhost:3000';
       const photoPath = admin.photo.replace(/\\/g, '/');
 
       admin.photo = new URL(photoPath, baseUrl).href;

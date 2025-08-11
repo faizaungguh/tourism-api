@@ -7,7 +7,9 @@ import { helper } from '#helpers/helper.mjs';
 export const attractionService = {
   add: async (destinationDoc, attractionDoc, photosToAdd) => {
     if (!destinationDoc || !attractionDoc || !photosToAdd) {
-      throw new ResponseError(500, 'Data tidak lengkap saat dikirim ke service.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Data tidak lengkap saat dikirim ke server.',
+      });
     }
 
     const destinationTitle = destinationDoc.destinationTitle;
@@ -26,7 +28,9 @@ export const attractionService = {
     );
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(500, 'Gagal menyimpan foto wahana ke database.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Gagal menyimpan foto wahana ke database.',
+      });
     }
 
     return photosWithCaption;
@@ -34,7 +38,9 @@ export const attractionService = {
 
   list: async (attractionDoc) => {
     if (!attractionDoc) {
-      throw new ResponseError(500, 'Dokumen wahana tidak diterima oleh service.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Dokumen wahana tidak diterima oleh server.',
+      });
     }
     return attractionDoc.photos || [];
   },
@@ -62,7 +68,9 @@ export const attractionService = {
 
   dropAll: async (destinationDoc, attractionDoc) => {
     if (!destinationDoc || !attractionDoc) {
-      throw new ResponseError(500, 'Dokumen destinasi atau wahana tidak diterima oleh service.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Dokumen destinasi atau wahana tidak diterima oleh service.',
+      });
     }
 
     if (!attractionDoc.photos || attractionDoc.photos.length === 0) {
@@ -91,7 +99,9 @@ export const attractionService = {
     const result = await Attraction.updateOne({ _id: attractionDoc._id }, { $set: { photos: [] } });
 
     if (result.modifiedCount === 0) {
-      throw new ResponseError(500, 'Gagal menghapus data foto wahana dari database.');
+      throw new ResponseError(422, 'Data tidak diproses', {
+        message: 'Gagal menghapus data foto wahana dari database.',
+      });
     }
   },
 

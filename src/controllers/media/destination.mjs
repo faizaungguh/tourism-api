@@ -3,8 +3,9 @@ import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 import { mediaService } from '#services/media.mjs';
 import { helper } from '#helpers/helper.mjs';
+import { config } from '#configs/variable.mjs';
 
-const API_URL = process.env.APP_URL || 'http://localhost:3000';
+const API_URL = config.APP_URL || 'http://localhost:3000';
 
 export const destination = {
   photoMedia: async (req, res, next) => {

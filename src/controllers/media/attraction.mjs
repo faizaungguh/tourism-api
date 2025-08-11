@@ -1,6 +1,7 @@
+import { config } from '#configs/variable.mjs';
 import { mediaService } from '#services/media.mjs';
 
-const API_URL = process.env.APP_URL || 'http://localhost:3000';
+const API_URL = config.APP_URL || 'http://localhost:3000';
 
 export const attraction = {
   add: async (req, res, next) => {
