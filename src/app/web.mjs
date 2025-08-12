@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import { logger } from '#app/logging.mjs';
-import { shield } from '#configs/security.mjs';
+import { coreSecurity, shield } from '#configs/security.mjs';
 import { publicRouter } from '#routes/public.mjs';
 import { privateRouter } from '#routes/api.mjs';
 import { authMiddleware } from '#middlewares/auth.mjs';
@@ -19,11 +19,11 @@ if (config.NODE_ENV === 'development') {
 /** Route public dan private */
 web.use(express.json({ limit: '15kb' }));
 web.use(express.static('public'));
-web.use(shield.cors, shield.session, shield.helm);
+web.use(coreSecurity);
 
 /** Route */
-web.use('/', shield.generalLimiter, publicRouter);
-web.use('/api', authMiddleware.protect, shield.adminLimiter, privateRouter);
+web.use('/', shield.limit.general, publicRouter);
+web.use('/api', authMiddleware.protect, shield.limit.admin, privateRouter);
 
 web.use(handler.notFoundEndpoint);
 web.use(handler.error);

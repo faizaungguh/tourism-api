@@ -10,12 +10,12 @@ export const publicRouter = new express.Router();
 /** Auth */
 publicRouter
   .route('/signup')
-  .post(shield.authLimiter, data.auth.register)
+  .post(shield.limit.auth, data.auth.register)
   .all(handler.method(['POST']));
 
 publicRouter
   .route('/signin')
-  .post(shield.authLimiter, data.auth.signin)
+  .post(shield.limit.auth, data.auth.signin)
   .all(handler.method(['POST']));
 
 /** Category */
