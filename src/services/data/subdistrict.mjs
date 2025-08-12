@@ -17,7 +17,10 @@ export const subdistrictService = {
     const savedSubdistrict = await data.save();
 
     /** kembalikan hasil yang telah dsiimpan */
-    return savedSubdistrict.toObject();
+    return {
+      name: savedSubdistrict.name,
+      code: savedSubdistrict.code,
+    };
   },
 
   list: async (query) => {

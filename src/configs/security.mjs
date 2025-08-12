@@ -1,11 +1,34 @@
-import cors from 'cors';
-import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
 import cookieParser from 'cookie-parser';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import validator from 'validator';
+import cors from 'cors';
+import hpp from 'hpp';
 import { config } from '#configs/variable.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
-import mongoSanitize from 'express-mongo-sanitize';
-import xss from '';
+
+const sanitizeValues = (obj) => {
+  if (!obj || typeof obj !== 'object') {
+    return;
+  }
+
+  for (const key in obj) {
+    const value = obj[key];
+
+    if (typeof value === 'string') {
+      obj[key] = validator.escape(value);
+    } else if (typeof value === 'object') {
+      sanitizeValues(value);
+    }
+  }
+};
+
+const sanitizer = (req, res, next) => {
+  if (req.body) sanitizeValues(req.body);
+  if (req.query) sanitizeValues(req.query);
+  if (req.params) sanitizeValues(req.params);
+  next();
+};
 
 const whitelist = ['http://localhost:3000'];
 
@@ -34,31 +57,24 @@ export const shield = {
     },
   }),
 
-  sanitize: mongoSanitize(),
+  sanitize: sanitizer,
 
   hpp: hpp({
     whitelist: ['category', 'subdistrict', 'role'],
   }),
 
-  session: cookieParser({
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: config === 'production',
-      httpOnly: true,
-    },
-  }),
+  cookieParser: cookieParser(config.SECRET),
 
   limit: {
     general: rateLimit({
-      windowMs: 1 * 60 * 1000,
+      windowMs: 2 * 60 * 1000,
       limit: 50,
       standardHeaders: 'draft-7',
       legacyHeaders: false,
       message: {
         status: 'error',
         message:
-          'Terlalu banyak permintaan akses dengan tidak wajar, akses akan diberikan lagi setelah 1 menit.',
+          'Terlalu banyak permintaan akses dengan tidak wajar, silakan coba lagi setelah 2 menit.',
       },
     }),
 
@@ -70,22 +86,28 @@ export const shield = {
       message: {
         status: 'error',
         message:
-          'Terlalu banyak percobaan masuk akun dengan tidak wajar, akses akan diberikan lagi setelah 15 menit.',
+          'Terlalu banyak percobaan masuk akun dengan tidak wajar, silakan coba lagi setelah 15 menit.',
       },
     }),
 
     admin: rateLimit({
-      windowMs: 1 * 60 * 1000,
-      limit: 50,
+      windowMs: 2 * 60 * 1000,
+      limit: 80,
       standardHeaders: 'draft-7',
       legacyHeaders: false,
       message: {
         status: 'error',
         message:
-          'Terlalu banyak percobaan masuk akun yang tidak wajar, akses akan diberikan lagi setelah 1 menit.',
+          'Terlalu banyak percobaan masuk akun yang tidak wajar, akses akan diberikan lagi setelah 2 menit.',
       },
     }),
   },
 };
 
-export const coreSecurity = [shield.sanitize, shield.hpp, shield.cors, shield.session, shield.helm];
+export const coreSecurity = [
+  shield.sanitize,
+  shield.hpp,
+  shield.cors,
+  shield.cookieParser,
+  shield.helm,
+];

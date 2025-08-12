@@ -17,7 +17,9 @@ export const categoryService = {
     const savedCategory = await data.save();
 
     /** Kembalikan hasil yang sudah disimpan */
-    return savedCategory.toObject();
+    return {
+      name: savedCategory.name,
+    };
   },
 
   list: async (query) => {

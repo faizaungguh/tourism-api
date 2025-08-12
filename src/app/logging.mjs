@@ -4,33 +4,52 @@ import { config } from '#configs/variable.mjs';
 
 const isDevelopment = config.NODE_ENV === 'development';
 
-const transportConfigurations = [
-  /** Konfigurasi untuk console, selalu aktif */
+const customLevels = {
+  levels: {
+    error: 0,
+    warn: 1,
+    info: 2,
+    http: 3,
+    debug: 4,
+  },
+  colors: {
+    error: 'red',
+    warn: 'yellow',
+    info: 'green',
+    http: 'magenta',
+    debug: 'blue',
+  },
+};
+
+winston.addColors(customLevels.colors);
+
+const formats = {
+  console: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    winston.format.printf(({ timestamp, level, message, stack, ...meta }) => {
+      let log = `${timestamp} ${level}: ${message}`;
+      if (stack) {
+        log += `\n${stack}`;
+      }
+      if (Object.keys(meta).length) {
+        log += `\n${JSON.stringify(meta, null, 2)}`;
+      }
+      return log;
+    })
+  ),
+  file: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+};
+
+const transports = [
   new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-      winston.format.colorize(),
-      winston.format.printf(({ timestamp, level, message, stack, ...meta }) => {
-        let log = `${timestamp} ${level}: ${message}`;
-        /** Jika ada stack trace (untuk error), tampilkan dengan rapi. */
-        if (stack) {
-          log += `\n${stack}`;
-        }
-        /** Jika ada metadata lain, tampilkan sebagai JSON. */
-        if (Object.keys(meta).length) {
-          log += `\n${JSON.stringify(meta, null, 2)}`;
-        }
-        return log;
-      })
-    ),
+    format: formats.console,
   }),
 ];
 
-/** Untuk environment production, tambahkan logging ke file */
 if (!isDevelopment) {
   const logDir = 'logs';
-
-  transportConfigurations.push(
+  transports.push(
     new winston.transports.File({
       filename: path.join(logDir, 'error.log'),
       level: 'error',
@@ -44,14 +63,22 @@ if (!isDevelopment) {
 }
 
 export const logger = winston.createLogger({
-  /** Level log disesuaikan dengan environment. 'debug' untuk development. */
+  levels: customLevels.levels,
   level: isDevelopment ? 'debug' : 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.errors({
-      stack: true,
-    }) /** Otomatis sertakan stack trace dari Error object */,
-    winston.format.json() /** Format default untuk file */
-  ),
-  transports: transportConfigurations,
+  format: winston.format.combine(winston.format.errors({ stack: true })),
+  transports: transports,
+  exceptionHandlers: [
+    new winston.transports.File({ filename: path.join('logs', 'exceptions.log') }),
+    new winston.transports.Console({ format: formats.console }),
+  ],
+  rejectionHandlers: [
+    new winston.transports.File({ filename: path.join('logs', 'rejections.log') }),
+    new winston.transports.Console({ format: formats.console }),
+  ],
 });
+
+export const stream = {
+  write: (message) => {
+    logger.http(message.trim());
+  },
+};

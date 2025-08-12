@@ -1,5 +1,10 @@
-import { ResponseError } from '#errors/responseError.mjs';
 import mongoose from 'mongoose';
+import validator from 'validator';
+import { ResponseError } from '#errors/responseError.mjs';
+
+const sanitizeHtml = (value) => {
+  return validator.escape(value.trim());
+};
 
 export const validate = {
   check: {
@@ -36,12 +41,18 @@ export const validate = {
           message: 'Anda harus menyertakan Id',
         });
       }
-      /** validasi apakah id yang dikirimkan adalah object id yang valid */
       if (!mongoose.Types.ObjectId.isValid(id)) {
         throw new ResponseError(422, 'Data tidak lengkap', {
           message: 'Anda harus menyertakan Id yang valid',
         });
       }
+    },
+  },
+
+  sanitizer: {
+    string: (value, helpers) => {
+      const sanitizedValue = sanitizeHtml(value);
+      return sanitizedValue;
     },
   },
 };

@@ -1,18 +1,14 @@
 import validate from 'joi';
+import { validate as validationHelper } from '#validations/validate.mjs';
 
 export const field = {
   adminId: validate.string().messages({
     'any.required': 'ID Admin wajib diisi.',
   }),
 
-  destinationTitle: validate
-    .string()
-    .trim()
-    .pattern(/^[^<>]*$/)
-    .messages({
-      'string.empty': 'Judul destinasi tidak boleh kosong.',
-      'string.pattern.base': 'Judul destinasi tidak boleh mengandung skrip atau tag HTML.',
-    }),
+  destinationTitle: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+    'string.empty': 'Judul destinasi tidak boleh kosong.',
+  }),
 
   categories: validate.string().trim().messages({
     'string.base': 'Kategori harus berupa teks.',
@@ -20,28 +16,19 @@ export const field = {
     'any.required': 'Kategori wajib diisi.',
   }),
 
-  description: validate
-    .string()
-    .pattern(/^[^<>]*$/)
-    .messages({
-      'string.empty': 'Deskripsi tidak boleh kosong.',
-      'string.pattern.base': 'Deskripsi tidak boleh mengandung skrip atau tag HTML.',
-    }),
+  description: validate.string().custom(validationHelper.sanitizer.string).messages({
+    'string.empty': 'Deskripsi tidak boleh kosong.',
+  }),
 
   locations: validate.object({
     addresses: validate.string().uri().messages({
       'string.empty': 'Alamat tidak boleh kosong.',
       'any.required': 'Alamat wajib diisi.',
-      'string.pattern.base': 'Berisi tautan langsung ke peta lokasi destinati wisata.',
     }),
-    link: validate
-      .string()
-      .pattern(/^[^<>]*$/)
-      .messages({
-        'string.empty': 'Tautan tidak boleh kosong.',
-        'any.required': 'Tautan wajib diisi.',
-        'string.pattern.base': 'Tautan tidak boleh mengandung skrip atau tag HTML.',
-      }),
+    link: validate.string().custom(validationHelper.sanitizer.string).messages({
+      'string.empty': 'Tautan tidak boleh kosong.',
+      'any.required': 'Tautan wajib diisi.',
+    }),
     subdistrict: validate.string().trim().required().messages({
       'string.base': 'Kecamatan harus berupa teks.',
       'string.empty': 'Kecamatan tidak boleh kosong.',
@@ -74,15 +61,10 @@ export const field = {
 
   facility: validate.array().items(
     validate.object({
-      name: validate
-        .string()
-        .trim()
-        .pattern(/^[^<>]*$/)
-        .messages({
-          'string.empty': 'Nama fasilitas tidak boleh kosong.',
-          'any.required': 'Nama fasilitas wajib diisi.',
-          'string.pattern.base': 'Nama fasilitas tidak boleh mengandung skrip atau tag HTML.',
-        }),
+      name: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+        'string.empty': 'Nama fasilitas tidak boleh kosong.',
+        'any.required': 'Nama fasilitas wajib diisi.',
+      }),
       availability: validate.boolean().default(false),
       number: validate.number().integer().min(0).default(0).messages({
         'number.base': 'Jumlah fasilitas harus berupa angka.',
@@ -113,15 +95,10 @@ export const field = {
           'any.only': 'Platform kontak tidak valid.',
           'any.required': 'Platform kontak wajib diisi.',
         }),
-      value: validate
-        .string()
-        .trim()
-        .pattern(/^[^<>]*$/)
-        .messages({
-          'string.empty': 'Nilai kontak tidak boleh kosong.',
-          'any.required': 'Nilai kontak wajib diisi.',
-          'string.pattern.base': 'Nilai kontak tidak boleh mengandung skrip atau tag HTML.',
-        }),
+      value: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+        'string.empty': 'Nilai kontak tidak boleh kosong.',
+        'any.required': 'Nilai kontak wajib diisi.',
+      }),
       _deleted: validate.boolean().optional(),
     })
   ),

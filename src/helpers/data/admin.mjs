@@ -123,7 +123,7 @@ export const adminHelper = {
     const originalManager = await Admin.findOne({
       adminId: id,
       role: 'manager',
-    }).select('+password, -__v');
+    }).select('+password');
 
     if (!originalManager) {
       throw new ResponseError(404, 'Data tidak ditemukan', {
@@ -143,6 +143,13 @@ export const adminHelper = {
       { new: true }
     );
 
-    return updatedManager.toObject();
+    return {
+      adminId: updatedManager.adminId,
+      username: updatedManager.username,
+      name: updatedManager.name,
+      email: updatedManager.email,
+      contactNumber: updatedManager.contactNumber,
+      role: updatedManager.role,
+    };
   },
 };

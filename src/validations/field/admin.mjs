@@ -1,4 +1,5 @@
 import validate from 'joi';
+import { validate as validationHelper } from '#validations/validate.mjs';
 
 export const field = {
   username: validate.string().alphanum().min(5).max(12).required().messages({
@@ -9,16 +10,10 @@ export const field = {
     'string.max': 'Username maksimal terdiri dari 12 karakter.',
     'any.required': 'Username wajib diisi',
   }),
-  name: validate
-    .string()
-    .pattern(/^[^<>]*$/)
-    .required()
-    .messages({
-      'string.empty': 'Name tidak boleh kosong.',
-      'string.pattern.base':
-        'Nama kategori tidak boleh mengandung skrip atau tag HTML.',
-      'any.required': 'Name wajib diisi',
-    }),
+  name: validate.string().custom(validationHelper.sanitizer.string).required().messages({
+    'string.empty': 'Name tidak boleh kosong.',
+    'any.required': 'Name wajib diisi',
+  }),
   password: validate
     .string()
     .min(6)
@@ -26,12 +21,10 @@ export const field = {
     .pattern(new RegExp('^[a-zA-Z0-9#@$&]+$'))
     .required()
     .messages({
-      'string.base':
-        'Password harus berupa huruf, angka, dan karakter #, @, $, &',
+      'string.base': 'Password harus berupa huruf, angka, dan karakter #, @, $, &',
       'string.empty': 'Password tidak boleh kosong',
       'string.min': 'Password minimal harus memiliki 6 karakter',
-      'string.pattern.base':
-        'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
+      'string.pattern.base': 'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
       'any.required': 'Password wajib diisi',
     }),
   email: validate
@@ -55,8 +48,7 @@ export const field = {
       'string.base': 'Nomor kontak harus berupa teks',
       'string.empty': 'Nomor kontak tidak boleh kosong',
       'string.min': 'Nomor kontak minimal 8 digit',
-      'string.pattern.base':
-        'Format nomor kontak tidak valid. Contoh: 081234567890',
+      'string.pattern.base': 'Format nomor kontak tidak valid. Contoh: 081234567890',
       'any.required': 'Nomor kontak wajib diisi',
     }),
 
@@ -67,16 +59,11 @@ export const field = {
     'string.min': 'Username minimal terdiri dari 5 karakter.',
     'string.max': 'Username maksimal terdiri dari 12 karakter.',
   }),
-  patchName: validate
-    .string()
-    .pattern(/^[^<>]*$/)
-    .required()
-    .messages({
-      'string.empty': 'Name tidak boleh kosong.',
-      'string.pattern.base':
-        'Nama kategori tidak boleh mengandung skrip atau tag HTML.',
-      'any.required': 'Name wajib diisi',
-    }),
+  patchName: validate.string().custom(validationHelper.sanitizer.string).required().messages({
+    'string.empty': 'Name tidak boleh kosong.',
+    'string.pattern.base': 'Nama kategori tidak boleh mengandung skrip atau tag HTML.',
+    'any.required': 'Name wajib diisi',
+  }),
   patchEmail: validate
     .string()
     .email({ tlds: { allow: false } })
@@ -93,31 +80,18 @@ export const field = {
     .messages({
       'string.base': 'Nomor kontak harus berupa teks',
       'string.min': 'Nomor kontak minimal 8 digit',
-      'string.pattern.base':
-        'Format nomor kontak tidak valid. Contoh: 081234567890',
+      'string.pattern.base': 'Format nomor kontak tidak valid. Contoh: 081234567890',
     }),
-  oldPassword: validate
-    .string()
-    .min(6)
-    .pattern(new RegExp('^[a-zA-Z0-9#@$&]+$'))
-    .messages({
-      'string.base':
-        'Password harus berupa huruf, angka, dan karakter #, @, $, &',
-      'string.min': 'Password minimal harus memiliki 6 karakter',
-      'string.pattern.base':
-        'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
-      'string.empty': 'Masukkan Password Lama anda.',
-    }),
-  newPassword: validate
-    .string()
-    .min(6)
-    .pattern(new RegExp('^[a-zA-Z0-9#@$&]+$'))
-    .messages({
-      'string.base':
-        'Password harus berupa huruf, angka, dan karakter #, @, $, &',
-      'string.empty': 'Masukkan Password Baru anda.',
-      'string.min': 'Password minimal harus memiliki 6 karakter',
-      'string.pattern.base':
-        'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
-    }),
+  oldPassword: validate.string().min(6).pattern(new RegExp('^[a-zA-Z0-9#@$&]+$')).messages({
+    'string.base': 'Password harus berupa huruf, angka, dan karakter #, @, $, &',
+    'string.min': 'Password minimal harus memiliki 6 karakter',
+    'string.pattern.base': 'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
+    'string.empty': 'Masukkan Password Lama anda.',
+  }),
+  newPassword: validate.string().min(6).pattern(new RegExp('^[a-zA-Z0-9#@$&]+$')).messages({
+    'string.base': 'Password harus berupa huruf, angka, dan karakter #, @, $, &',
+    'string.empty': 'Masukkan Password Baru anda.',
+    'string.min': 'Password minimal harus memiliki 6 karakter',
+    'string.pattern.base': 'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
+  }),
 };

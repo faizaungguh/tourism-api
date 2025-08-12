@@ -1,21 +1,15 @@
 import validate from 'joi';
+import { validate as validationHelper } from '#validations/validate.mjs';
 
 export const field = {
-  name: validate
-    .string()
-    .trim()
-    .pattern(/^[^<>]*$/)
-    .messages({
-      'string.pattern.base': 'Wahana Wisata tidak mengandung skrip atau tag HTML',
-    }),
+  name: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+    'string.pattern.base': 'Wahana Wisata tidak mengandung skrip atau tag HTML',
+  }),
 
-  description: validate
-    .string()
-    .pattern(/^[^<>]*$/)
-    .messages({
-      'string.empty': 'Deskripsi tidak boleh kosong.',
-      'string.pattern.base': 'Deskripsi tidak boleh mengandung skrip atau tag HTML.',
-    }),
+  description: validate.string().custom(validationHelper.sanitizer.string).messages({
+    'string.empty': 'Deskripsi tidak boleh kosong.',
+    'string.pattern.base': 'Deskripsi tidak boleh mengandung skrip atau tag HTML.',
+  }),
 
   ticketType: validate.string().valid('gratis', 'berbayar').messages({
     'any.only': 'harus menyertakan tipe tiket antara berbayar atau gratis',
