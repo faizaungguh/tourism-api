@@ -3,33 +3,46 @@ import { Admin } from '#schemas/admin.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 
-export const attractionHelper = {
-  validateAccess: async (adminId, destinationSlug, attractionSlug) => {
-    const [destination, admin, attraction] = await Promise.all([
-      Destination.findOne({ slug: destinationSlug }).select('_id createdBy').lean(),
-      Admin.findOne({ adminId: adminId }).select('_id').lean(),
-      Attraction.findOne({ slug: attractionSlug }).select('_id name destination'),
-    ]);
+const destinationOwner = async (adminId, destinationSlug) => {
+  const [destination, admin] = await Promise.all([
+    Destination.findOne({ slug: destinationSlug }).select('_id createdBy').lean(),
+    Admin.findOne({ adminId }).select('_id').lean(),
+  ]);
 
-    if (!destination) {
-      throw new ResponseError(404, 'Data tidak ditemukan', {
-        message: `Destinasi dengan slug '${destinationSlug}' tidak ditemukan.`,
-      });
-    }
-    if (!admin) {
-      throw new ResponseError(404, 'Data tidak ditemukan', {
-        message: `Admin dengan ID '${adminId}' tidak ditemukan.`,
-      });
-    }
+  if (!destination) {
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Destinasi dengan slug '${destinationSlug}' tidak ditemukan.`,
+    });
+  }
+
+  if (!admin) {
+    throw new ResponseError(404, 'Data tidak ditemukan', {
+      message: `Admin dengan ID '${adminId}' tidak ditemukan.`,
+    });
+  }
+
+  if (destination.createdBy.toString() !== admin._id.toString()) {
+    throw new ResponseError(403, 'Akses ditolak', {
+      message: 'Anda tidak memiliki izin untuk mengelola sumber daya di destinasi ini.',
+    });
+  }
+
+  return { destination, admin };
+};
+
+export const attractionHelper = {
+  destinationOwner,
+
+  validateAccess: async (adminId, destinationSlug, attractionSlug) => {
+    const { destination } = await destinationOwner(adminId, destinationSlug);
+
+    const attraction = await Attraction.findOne({ slug: attractionSlug }).select(
+      '_id name destination'
+    );
+
     if (!attraction) {
       throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Wahana dengan slug '${attractionSlug}' tidak ditemukan.`,
-      });
-    }
-
-    if (destination.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Akses ditolak', {
-        message: 'Anda tidak memiliki hak mengelola wahana di destinasi ini.',
       });
     }
 

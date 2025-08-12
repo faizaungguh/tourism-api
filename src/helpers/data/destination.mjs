@@ -8,6 +8,220 @@ import { config } from '#configs/variable.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
 
+const buildListPipeline = (validatedQuery) => {
+  const { page, size } = validatedQuery;
+  const skip = (page - 1) * size;
+  const filterStage = buildFilterStage(validatedQuery);
+  const sortStage = buildSortStage(validatedQuery);
+
+  return [
+    {
+      $lookup: {
+        from: 'categories',
+        localField: 'category',
+        foreignField: '_id',
+        as: 'categoryDetails',
+      },
+    },
+    {
+      $lookup: {
+        from: 'subdistricts',
+        localField: 'locations.subdistrict',
+        foreignField: '_id',
+        as: 'subdistrictDetails',
+      },
+    },
+    { $unwind: '$categoryDetails' },
+    { $unwind: '$subdistrictDetails' },
+    ...filterStage,
+    {
+      $facet: {
+        metadata: [{ $count: 'totalItems' }],
+        data: [
+          sortStage,
+          { $skip: skip },
+          { $limit: size },
+          {
+            $project: {
+              _id: 0,
+              destinationId: 1,
+              destinationTitle: 1,
+              headlinePhoto: {
+                $cond: {
+                  if: '$headlinePhoto',
+                  then: { $concat: [API_URL, '$headlinePhoto'] },
+                  else: '$$REMOVE',
+                },
+              },
+              category: '$categoryDetails.name',
+              categorySlug: '$categoryDetails.slug',
+              subdistrict: '$subdistrictDetails.name',
+              subdistrictSlug: '$subdistrictDetails.slug',
+              address: '$locations.addresses',
+            },
+          },
+        ],
+      },
+    },
+  ];
+};
+
+const detailDestinationPipeline = [
+  {
+    $lookup: {
+      from: 'categories',
+      localField: 'category',
+      foreignField: '_id',
+      as: 'categoryDetails',
+    },
+  },
+  {
+    $lookup: {
+      from: 'subdistricts',
+      localField: 'locations.subdistrict',
+      foreignField: '_id',
+      as: 'subdistrictDetails',
+    },
+  },
+  {
+    $lookup: {
+      from: 'admins',
+      localField: 'createdBy',
+      foreignField: '_id',
+      as: 'adminDetails',
+    },
+  },
+  {
+    $lookup: {
+      from: 'attractions',
+      localField: 'attractions',
+      foreignField: '_id',
+      as: 'attractionList',
+    },
+  },
+  { $unwind: { path: '$categoryDetails', preserveNullAndEmptyArrays: true } },
+  {
+    $unwind: { path: '$subdistrictDetails', preserveNullAndEmptyArrays: true },
+  },
+  { $unwind: { path: '$adminDetails', preserveNullAndEmptyArrays: true } },
+  {
+    $project: {
+      _id: 0,
+      destinationsId: 1,
+      destinationTitle: 1,
+      profilePhoto: {
+        $cond: {
+          if: '$profilePhoto',
+          then: { $concat: [API_URL, '$profilePhoto'] },
+          else: '$$REMOVE',
+        },
+      },
+      headlinePhoto: {
+        $cond: {
+          if: '$headlinePhoto',
+          then: { $concat: [API_URL, '$headlinePhoto'] },
+          else: '$$REMOVE',
+        },
+      },
+      galleryPhoto: {
+        $cond: {
+          if: { $and: [{ $isArray: '$galleryPhoto' }, { $gt: [{ $size: '$galleryPhoto' }, 0] }] },
+          then: {
+            $map: {
+              input: '$galleryPhoto',
+              as: 'photo',
+              in: {
+                url: { $concat: [API_URL, '$$photo.url'] },
+                photoId: '$$photo.photoId',
+                caption: '$$photo.caption',
+              },
+            },
+          },
+          else: '$$REMOVE',
+        },
+      },
+      description: 1,
+      category: '$categoryDetails.name',
+      categorySlug: '$categoryDetails.slug',
+      createdBy: '$adminDetails.name',
+      slug: 1,
+      locations: {
+        address: '$locations.addresses',
+        subdistrict: '$subdistrictDetails.name',
+        coordinates: '$locations.coordinates',
+        mapLink: '$locations.link',
+      },
+      attractions: {
+        $map: {
+          input: '$attractionList',
+          as: 'attraction',
+          in: {
+            name: '$$attraction.name',
+            slug: '$$attraction.slug',
+            description: '$$attraction.description',
+            ticketType: '$$attraction.ticketType',
+            ticket: '$$attraction.ticket',
+          },
+        },
+      },
+      openingHour: {
+        $map: {
+          input: '$openingHour',
+          as: 'oh',
+          in: {
+            day: '$$oh.day',
+            hours: '$$oh.hours',
+            isClosed: '$$oh.isClosed',
+          },
+        },
+      },
+      facility: {
+        $map: {
+          input: '$facility',
+          as: 'f',
+          in: {
+            name: '$$f.name',
+            availability: '$$f.availability',
+            number: '$$f.number',
+            disabilityAccess: '$$f.disabilityAccess',
+            photo: {
+              $cond: {
+                if: {
+                  $and: [{ $isArray: '$$f.photo' }, { $gt: [{ $size: '$$f.photo' }, 0] }],
+                },
+                then: {
+                  $map: {
+                    input: '$$f.photo',
+                    as: 'photo',
+                    in: {
+                      url: { $concat: [API_URL, '$$photo.url'] },
+                      photoId: '$$photo.photoId',
+                      caption: '$$photo.caption',
+                    },
+                  },
+                },
+                else: '$$REMOVE',
+              },
+            },
+          },
+        },
+      },
+      contact: {
+        $map: {
+          input: '$contact',
+          as: 'c',
+          in: {
+            platform: '$$c.platform',
+            value: '$$c.value',
+          },
+        },
+      },
+      ticketPrice: '$ticket',
+      parking: 1,
+    },
+  },
+];
+
 const _findRelatedDocs = async ({ categories, subdistrict }) => {
   const promises = [];
 
@@ -137,142 +351,6 @@ const buildSortStage = (validatedQuery) => {
   return { $sort: sortStage };
 };
 
-const detailDestinationPipeline = [
-  {
-    $lookup: {
-      from: 'categories',
-      localField: 'category',
-      foreignField: '_id',
-      as: 'categoryDetails',
-    },
-  },
-  {
-    $lookup: {
-      from: 'subdistricts',
-      localField: 'locations.subdistrict',
-      foreignField: '_id',
-      as: 'subdistrictDetails',
-    },
-  },
-  {
-    $lookup: {
-      from: 'admins',
-      localField: 'createdBy',
-      foreignField: '_id',
-      as: 'adminDetails',
-    },
-  },
-  {
-    $lookup: {
-      from: 'attractions',
-      localField: 'attractions',
-      foreignField: '_id',
-      as: 'attractionList',
-    },
-  },
-  { $unwind: { path: '$categoryDetails', preserveNullAndEmptyArrays: true } },
-  {
-    $unwind: { path: '$subdistrictDetails', preserveNullAndEmptyArrays: true },
-  },
-  { $unwind: { path: '$adminDetails', preserveNullAndEmptyArrays: true } },
-  {
-    $project: {
-      _id: 0,
-      destinationsId: 1,
-      destinationTitle: 1,
-      profilePhoto: {
-        $cond: {
-          if: '$profilePhoto',
-          then: { $concat: [API_URL, '$profilePhoto'] },
-          else: '$$REMOVE',
-        },
-      },
-      headlinePhoto: {
-        $cond: {
-          if: '$headlinePhoto',
-          then: { $concat: [API_URL, '$headlinePhoto'] },
-          else: '$$REMOVE',
-        },
-      },
-      galleryPhoto: {
-        $cond: {
-          if: { $and: [{ $isArray: '$galleryPhoto' }, { $gt: [{ $size: '$galleryPhoto' }, 0] }] },
-          then: {
-            $map: {
-              input: '$galleryPhoto',
-              as: 'photo',
-              in: {
-                url: { $concat: [API_URL, '$$photo.url'] },
-                photoId: '$$photo.photoId',
-                caption: '$$photo.caption',
-              },
-            },
-          },
-          else: '$$REMOVE',
-        },
-      },
-      description: 1,
-      category: '$categoryDetails.name',
-      categorySlug: '$categoryDetails.slug',
-      createdBy: '$adminDetails.name',
-      slug: 1,
-      locations: {
-        address: '$locations.addresses',
-        subdistrict: '$subdistrictDetails.name',
-        coordinates: '$locations.coordinates',
-      },
-      attractions: {
-        $map: {
-          input: '$attractionList',
-          as: 'attraction',
-          in: {
-            name: '$$attraction.name',
-            slug: '$$attraction.slug',
-            description: '$$attraction.description',
-            ticketType: '$$attraction.ticketType',
-            ticket: '$$attraction.ticket',
-          },
-        },
-      },
-      openingHour: {
-        $map: {
-          input: '$openingHour',
-          as: 'oh',
-          in: {
-            day: '$$oh.day',
-            hours: '$$oh.hours',
-            isClosed: '$$oh.isClosed',
-          },
-        },
-      },
-      facility: {
-        $map: {
-          input: '$facility',
-          as: 'f',
-          in: {
-            name: '$$f.name',
-            availability: '$$f.availability',
-            number: '$$f.number',
-            disabilityAccess: '$$f.disabilityAccess',
-          },
-        },
-      },
-      contact: {
-        $map: {
-          input: '$contact',
-          as: 'c',
-          in: {
-            platform: '$$c.platform',
-            value: '$$c.value',
-          },
-        },
-      },
-      ticketPrice: '$ticket',
-      parking: 1,
-    },
-  },
-];
-
 const createSlug = (name) => {
   if (!name) return '';
   return name
@@ -283,61 +361,22 @@ const createSlug = (name) => {
 
 export const destinationHelper = {
   list: (validatedQuery) => {
-    const { page, size } = validatedQuery;
-    const skip = (page - 1) * size;
-    const filterStage = buildFilterStage(validatedQuery);
-    const sortStage = buildSortStage(validatedQuery);
+    return buildListPipeline(validatedQuery);
+  },
 
-    return [
-      {
-        $lookup: {
-          from: 'categories',
-          localField: 'category',
-          foreignField: '_id',
-          as: 'categoryDetails',
-        },
-      },
-      {
-        $lookup: {
-          from: 'subdistricts',
-          localField: 'locations.subdistrict',
-          foreignField: '_id',
-          as: 'subdistrictDetails',
-        },
-      },
-      { $unwind: '$categoryDetails' },
-      { $unwind: '$subdistrictDetails' },
-      ...filterStage,
-      {
-        $facet: {
-          metadata: [{ $count: 'totalItems' }],
-          data: [
-            sortStage,
-            { $skip: skip },
-            { $limit: size },
-            {
-              $project: {
-                _id: 0,
-                destinationId: 1,
-                destinationTitle: 1,
-                headlinePhoto: {
-                  $cond: {
-                    if: '$headlinePhoto',
-                    then: { $concat: [API_URL, '$headlinePhoto'] },
-                    else: '$$REMOVE',
-                  },
-                },
-                category: '$categoryDetails.name',
-                categorySlug: '$categoryDetails.slug',
-                subdistrict: '$subdistrictDetails.name',
-                subdistrictSlug: '$subdistrictDetails.slug',
-                address: '$locations.addresses',
-              },
-            },
-          ],
-        },
-      },
-    ];
+  get: (identifier) => {
+    const matchConditions = [];
+
+    if (mongoose.Types.ObjectId.isValid(identifier)) {
+      matchConditions.push({ _id: new mongoose.Types.ObjectId(identifier) });
+    }
+
+    matchConditions.push({ slug: identifier });
+    matchConditions.push({ destinationsId: identifier });
+
+    const matchQuery = { $or: matchConditions };
+
+    return [{ $match: matchQuery }, ...detailDestinationPipeline];
   },
 
   create: async (adminId, validatedRequest) => {
@@ -354,11 +393,15 @@ export const destinationHelper = {
     });
 
     const errors = {};
+
     if (existingDestination)
       errors.destinationTitle = `Tempat wisata dengan nama ${validatedRequest.destinationTitle} sudah digunakan, masukkan nama lain.`;
+
     if (!managerDoc) errors.manager = `Manajer dengan ID "${adminId}" tidak ditemukan.`;
+
     if (!categoryDoc)
       errors.categories = `Kategori dengan nama "${validatedRequest.categories}" tidak ada.`;
+
     if (!subdistrictDoc)
       errors.subdistrict = `Kecamatan dengan nama "${validatedRequest.locations.subdistrict}" tidak ada.`;
 
@@ -493,13 +536,5 @@ export const destinationHelper = {
 
     const updatedDocument = await Destination.findById(destinationToUpdate._id).lean();
     return updatedDocument;
-  },
-
-  get: (identifier) => {
-    const matchQuery = mongoose.Types.ObjectId.isValid(identifier)
-      ? { _id: new mongoose.Types.ObjectId(identifier) }
-      : { slug: identifier };
-
-    return [{ $match: matchQuery }, ...detailDestinationPipeline];
   },
 };

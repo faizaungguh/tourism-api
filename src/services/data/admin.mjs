@@ -19,15 +19,12 @@ export const adminService = {
   list: async (query) => {
     /** validasi dan ambil nilai default dari query */
     const validatedQuery = validate.check.request(checker.admin.list, query);
-
     /** Dapatkan aggregation pipeline dari helper */
     const pipeline = helper.Data.admin.list(validatedQuery);
-
     const result = await Admin.aggregate(pipeline);
 
     const data = result[0].data;
     const totalItems = result[0].metadata[0] ? result[0].metadata[0].totalItems : 0;
-
     const { page, size } = validatedQuery;
 
     return {
@@ -44,7 +41,6 @@ export const adminService = {
   detail: async (id) => {
     /** cari admin berdasarkan adminId */
     const admin = await Admin.findOne({ adminId: id });
-
     /** jika admin tidak ditemukan, tampilkan pesan error */
     if (!admin) {
       throw new ResponseError(404, 'Data tidak ditemukan', {
@@ -68,7 +64,6 @@ export const adminService = {
     validate.check.isNotEmpty(request);
 
     const validatedRequest = validate.check.request(checker.admin.update, request);
-
     const updatedAdmin = await helper.Data.admin.update(id, validatedRequest);
 
     return updatedAdmin;

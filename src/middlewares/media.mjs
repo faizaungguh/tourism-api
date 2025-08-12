@@ -2,138 +2,110 @@ import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
 import { helper } from '#helpers/helper.mjs';
 
-const baseMulter = {
+const baseMulterConfig = {
   storage: multer.memoryStorage(),
   fileFilter: (req, file, callback) => {
     if (file.mimetype.startsWith('image/')) {
       callback(null, true);
     } else {
       callback(
-        new ResponseError(415, 'Data tidak diproses', {
-          photo:
-            'Dokumen yang didukung adalah berupa gambar dengan ekstensi seperti .jpg, .png, dan sebagainya.',
+        new ResponseError(415, 'Tipe file tidak didukung', {
+          photo: 'Hanya file gambar (seperti .jpg, .png) yang diizinkan.',
         })
       );
     }
   },
 };
 
-const createMedia = (uploader, limits) => (req, res, next) => {
-  uploader(req, res, (err) => {
-    if (err instanceof multer.MulterError) {
-      switch (err.code) {
-        case 'LIMIT_FILE_SIZE':
-          return next(
-            new ResponseError(413, 'Data tidak diproses', {
-              photo: `Ukuran dokumen yang Anda kirim terlalu besar, ukuran maksimal ${
-                limits.fileSize / 1024
-              }KB.`,
-            })
-          );
-        case 'LIMIT_UNEXPECTED_FILE':
-          return next(
-            new ResponseError(422, 'Proses dihentikan', {
-              photo: `Hanya satu file dengan nama field 'photo' yang diizinkan.`,
-            })
-          );
-        default:
-          return next(new ResponseError(422, `Proses dihentikan`, err.message));
+const createMedia = (config) => {
+  const uploader = multer({
+    ...baseMulterConfig,
+    limits: config.limits,
+  })[config.uploadType](config.fieldSettings, config.maxCount);
+
+  return (req, res, next) => {
+    uploader(req, res, (err) => {
+      if (err instanceof multer.MulterError) {
+        let message = 'Terjadi kesalahan saat mengupload file.';
+        switch (err.code) {
+          case 'LIMIT_FILE_SIZE':
+            message = `Ukuran file terlalu besar. Maksimal ${config.limits.fileSize / 1024}KB.`;
+            return next(new ResponseError(413, 'Data tidak diproses', { photo: message }));
+          case 'LIMIT_UNEXPECTED_FILE':
+            message = `Field file tidak sesuai. Pastikan nama field benar.`;
+            return next(new ResponseError(422, 'Data tidak diproses', { photo: message }));
+          case 'LIMIT_FILE_COUNT':
+            message = `Jumlah file yang diupload melebihi batas yang diizinkan.`;
+            return next(new ResponseError(413, 'Data tidak diproses', { photo: message }));
+          default:
+            return next(new ResponseError(422, 'Data tidak diproses', { photo: err.message }));
+        }
+      } else if (err) {
+        return next(err);
       }
-    } else if (err) {
-      return next(err);
-    }
-    next();
-  });
+      next();
+    });
+  };
 };
 
-const admin = {
-  Media: {
-    limits: { fileSize: 1024 * 200 },
-    get uploader() {
-      return multer({
-        ...baseMulter,
-        limits: this.limits,
-      }).single('photo');
+const mediaConfig = {
+  admin: {
+    profile: {
+      limits: { fileSize: 1024 * 100 },
+      uploadType: 'single',
+      fieldSettings: 'photo',
     },
   },
-};
 
-const destination = {
-  Media: {
-    limits: { fileSize: 1024 * 200 },
-    get uploader() {
-      return multer({
-        ...baseMulter,
-        limits: this.limits,
-      }).fields([
+  destination: {
+    mainPhotos: {
+      limits: { fileSize: 1024 * 200 },
+      uploadType: 'fields',
+      fieldSettings: [
         { name: 'profilePhoto', maxCount: 1 },
         { name: 'headlinePhoto', maxCount: 1 },
-      ]);
+      ],
     },
-  },
 
-  gallery: {
-    add: {
-      limits: { fileSize: 1024 * 200 },
-      get uploader() {
-        return multer({
-          ...baseMulter,
-          limits: this.limits,
-        }).array('galleryPhoto', 8);
+    gallery: {
+      Add: {
+        limits: { fileSize: 1024 * 350 },
+        uploadType: 'array',
+        fieldSettings: 'galleryPhoto',
+        maxCount: 8,
+      },
+      Replace: {
+        limits: { fileSize: 1024 * 350 },
+        uploadType: 'single',
+        fieldSettings: 'galleryPhoto',
       },
     },
 
-    replace: {
-      limits: { fileSize: 1024 * 200 },
-      get uploader() {
-        return multer({
-          ...baseMulter,
-          limits: this.limits,
-        }).single('galleryPhoto');
+    facility: {
+      Add: {
+        limits: { fileSize: 1024 * 350 },
+        uploadType: 'array',
+        fieldSettings: 'photo',
+        maxCount: 6,
       },
-    },
-  },
-
-  facility: {
-    add: {
-      limits: { fileSize: 1024 * 200 },
-      get uploader() {
-        return multer({
-          ...baseMulter,
-          limits: this.limits,
-        }).array('photo', 6);
+      Replace: {
+        limits: { fileSize: 1024 * 350 },
+        uploadType: 'single',
+        fieldSettings: 'photo',
       },
     },
 
-    replace: {
-      limits: { fileSize: 1024 * 200 },
-      get uploader() {
-        return multer({
-          ...baseMulter,
-          limits: this.limits,
-        }).single('photo');
+    attraction: {
+      Add: {
+        limits: { fileSize: 1024 * 350 },
+        uploadType: 'array',
+        fieldSettings: 'photo',
+        maxCount: 6,
       },
-    },
-  },
-
-  attraction: {
-    add: {
-      limits: { fileSize: 1024 * 200 },
-      get uploader() {
-        return multer({
-          ...baseMulter,
-          limits: this.limits,
-        }).array('photo', 6);
-      },
-    },
-
-    replace: {
-      limits: { fileSize: 1024 * 200 },
-      get uploader() {
-        return multer({
-          ...baseMulter,
-          limits: this.limits,
-        }).single('photo');
+      Replace: {
+        limits: { fileSize: 1024 * 350 },
+        uploadType: 'single',
+        fieldSettings: 'photo',
       },
     },
   },
@@ -143,7 +115,7 @@ export const handleMedia = {
   admin: {
     updateMedia: [
       helper.Media.admin.checkIsExist,
-      createMedia(admin.Media.uploader, admin.Media.limits),
+      createMedia(mediaConfig.admin.profile),
       helper.Media.admin.photo.save({
         subfolder: 'profile',
         getDynamicPath: (req) => req.params.id,
@@ -155,21 +127,21 @@ export const handleMedia = {
   destination: {
     updateMedia: [
       helper.Media.destination.check.isAdminOwned,
-      createMedia(destination.Media.uploader, destination.Media.limits),
+      createMedia(mediaConfig.destination.mainPhotos),
       helper.Media.destination.photos.save,
     ],
 
     gallery: {
       add: [
         helper.Media.destination.check.isAdminOwned,
-        createMedia(destination.gallery.add.uploader, destination.gallery.add.limits),
+        createMedia(mediaConfig.destination.gallery.Add),
         helper.Media.destination.gallery.save,
       ],
       list: [helper.Media.destination.check.isExist],
       update: [
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isGalleryExist,
-        createMedia(destination.gallery.replace.uploader, destination.gallery.replace.limits),
+        createMedia(mediaConfig.destination.gallery.Replace),
         helper.Media.destination.gallery.replace,
       ],
       deleteAll: [
@@ -186,7 +158,7 @@ export const handleMedia = {
       add: [
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isFacilityExist,
-        createMedia(destination.facility.add.uploader, destination.facility.add.limits),
+        createMedia(mediaConfig.destination.facility.Add),
         helper.Media.destination.facility.save,
       ],
       list: [
@@ -197,7 +169,7 @@ export const handleMedia = {
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isFacilityExist,
         helper.Media.destination.check.isFacilityPhotoExist,
-        createMedia(destination.facility.replace.uploader, destination.facility.replace.limits),
+        createMedia(mediaConfig.destination.facility.Replace),
         helper.Media.destination.facility.replace,
       ],
       deleteAll: [
@@ -215,7 +187,7 @@ export const handleMedia = {
       add: [
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isAttractionExist,
-        createMedia(destination.attraction.add.uploader, destination.attraction.add.limits),
+        createMedia(mediaConfig.destination.attraction.Add),
         helper.Media.attraction.photo.save,
       ],
       list: [
@@ -226,7 +198,7 @@ export const handleMedia = {
         helper.Media.destination.check.isAdminOwned,
         helper.Media.destination.check.isAttractionExist,
         helper.Media.destination.check.isAttractionPhotoExist,
-        createMedia(destination.attraction.replace.uploader, destination.attraction.replace.limits),
+        createMedia(mediaConfig.destination.attraction.Replace),
         helper.Media.attraction.photo.replace,
       ],
       deleteAll: [

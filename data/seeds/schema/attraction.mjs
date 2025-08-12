@@ -155,6 +155,7 @@ attractionSchema.pre('findOneAndDelete', async function (next) {
     next(error);
   }
 });
+
 attractionSchema.pre('deleteMany', { document: true }, async function (next) {
   try {
     const docToDelete = await this.model.findOne(this.getQuery());

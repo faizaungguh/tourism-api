@@ -1,7 +1,40 @@
 import bcrypt from 'bcrypt';
-import * as verify from '#helpers/data/duplication.mjs';
+import { checkDuplicate } from '#helpers/data/duplication.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
+
+const buildListPipeline = (validatedQuery) => {
+  const { page, size } = validatedQuery;
+  const skip = (page - 1) * size;
+
+  const filterStage = buildFilterStage(validatedQuery);
+  const sortStage = buildSortStage(validatedQuery);
+
+  return [
+    ...filterStage,
+    {
+      $facet: {
+        metadata: [{ $count: 'totalItems' }],
+        data: [
+          sortStage,
+          { $skip: skip },
+          { $limit: size },
+          {
+            $project: {
+              _id: 0,
+              __v: 0,
+              email: 0,
+              contactNumber: 0,
+              role: 0,
+              password: 0,
+              photo: 0,
+            },
+          },
+        ],
+      },
+    },
+  ];
+};
 
 const buildFilterStage = (validatedQuery) => {
   const { role } = validatedQuery;
@@ -52,36 +85,7 @@ const _handlePasswordUpdate = async (validatedRequest, originalPasswordHash) => 
 
 export const adminHelper = {
   listAdmins: (validatedQuery) => {
-    const { page, size } = validatedQuery;
-    const skip = (page - 1) * size;
-
-    const filterStage = buildFilterStage(validatedQuery);
-    const sortStage = buildSortStage(validatedQuery);
-
-    return [
-      ...filterStage,
-      {
-        $facet: {
-          metadata: [{ $count: 'totalItems' }],
-          data: [
-            sortStage,
-            { $skip: skip },
-            { $limit: size },
-            {
-              $project: {
-                _id: 0,
-                __v: 0,
-                email: 0,
-                contactNumber: 0,
-                role: 0,
-                password: 0,
-                photo: 0,
-              },
-            },
-          ],
-        },
-      },
-    ];
+    return buildListPipeline(validatedQuery);
   },
 
   updateAdmin: async (id, validatedRequest) => {
@@ -98,7 +102,7 @@ export const adminHelper = {
     }
 
     /** Cek duplikasi username/email menggunakan helper */
-    await verify.checkDuplicate(validatedRequest, originalAdmin);
+    await checkDuplicate(validatedRequest, originalAdmin);
 
     return Admin.findOneAndUpdate({ adminId: id }, { $set: validatedRequest }, { new: true });
   },
@@ -131,7 +135,7 @@ export const adminHelper = {
       await _handlePasswordUpdate(validatedRequest, originalManager.password);
     }
 
-    await verify.checkDuplicate(validatedRequest, originalManager);
+    await checkDuplicate(validatedRequest, originalManager);
 
     const updatedManager = await Admin.findOneAndUpdate(
       { adminId: id, role: 'manager' },

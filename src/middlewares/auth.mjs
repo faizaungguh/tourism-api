@@ -14,7 +14,7 @@ export const authMiddleware = {
     if (!token) {
       return next(
         new ResponseError(401, 'Akses ditolak', {
-          message: 'Anda tidak memiliki akses ke akun anda, silakan signin terlebih dahulu',
+          message: 'Anda tidak memiliki akses ke fitur ini, silakan signin terlebih dahulu',
         })
       );
     }

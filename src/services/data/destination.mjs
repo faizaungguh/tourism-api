@@ -54,7 +54,6 @@ export const destinationService = {
 
     const pipeline = helper.Data.destination.get(destinationSlug);
     const result = await Destination.aggregate(pipeline);
-    // console.log(pipeline);
     if (!result || result.length === 0) {
       throw new ResponseError(404, 'Data tidak ditemukan', {
         message: `Destinasi dengan slug "${destinationSlug}" tidak ditemukan`,
@@ -74,7 +73,7 @@ export const destinationService = {
 
     const validatedRequest = validate.check.request(checker.destination.update, request);
 
-    const updatedDestination = await helper.Data.destination.patch(
+    const updatedDestination = await helper.Data.destination.update(
       destinationSlug,
       adminId,
       validatedRequest

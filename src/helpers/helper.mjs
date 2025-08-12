@@ -36,6 +36,7 @@ export const helper = {
       create: attractionHelper.create,
       update: attractionHelper.patch,
       validateAccess: attractionHelper.validateAccess,
+      destinationOwner: attractionHelper.destinationOwner,
     },
   },
   Media: {
