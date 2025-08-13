@@ -1,8 +1,8 @@
 import { helper } from '#helpers/index.mjs';
 import { Category } from '#schemas/category.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { checker } from '#validations/checker.mjs';
-import { validations } from '#validations/validation.mjs';
+import { checker } from '#validations/utils/checker.mjs';
+import { validations } from '#validations/index.mjs';
 
 export const recommendationData = {
   show: async (query) => {

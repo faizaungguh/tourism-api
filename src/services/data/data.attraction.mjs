@@ -1,5 +1,5 @@
-import { validations } from '#validations/validation.mjs';
-import { checker } from '#validations/checker.mjs';
+import { validations } from '#validations/index.mjs';
+import { checker } from '#validations/utils/checker.mjs';
 import { helper } from '#helpers/index.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { Destination } from '#schemas/destination.mjs';

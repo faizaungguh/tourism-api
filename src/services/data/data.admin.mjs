@@ -1,5 +1,5 @@
-import { checker } from '#validations/checker.mjs';
-import { validations } from '#validations/validation.mjs';
+import { checker } from '#validations/utils/checker.mjs';
+import { validations } from '#validations/index.mjs';
 import { helper } from '#helpers/index.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';

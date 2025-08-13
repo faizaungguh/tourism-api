@@ -1,5 +1,5 @@
-import { validations } from '#validations/validation.mjs';
-import { checker } from '#validations/checker.mjs';
+import { validations } from '#validations/index.mjs';
+import { checker } from '#validations/utils/checker.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 

@@ -1,5 +1,5 @@
 import validate from 'joi';
-import { validate as validationHelper } from '#validations/validation.mjs';
+import { validate as validationHelper } from '#validations/index.mjs';
 
 export const categoryChecker = {
   valid: validate.object({
