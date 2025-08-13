@@ -1,6 +1,6 @@
 import { dataService } from '#services/data/index.mjs';
 
-export const auth = {
+export const authData = {
   register: async (req, res) => {
     const result = await dataService.auth.register(req.body);
     res.status(201).json({

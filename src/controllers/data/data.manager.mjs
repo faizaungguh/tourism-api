@@ -1,7 +1,7 @@
 import { ResponseError } from '#errors/responseError.mjs';
 import { dataService } from '#services/data/index.mjs';
 
-export const manager = {
+export const managerData = {
   list: async (req, res) => {
     const { result, pagination } = await dataService.manager.list(req.query);
     res.status(200).json({

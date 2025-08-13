@@ -1,6 +1,6 @@
 import { dataService } from '#services/data/index.mjs';
 
-export const attraction = {
+export const attractionData = {
   post: async (req, res) => {
     const adminId = req.admin.adminId;
     const request = req.body;

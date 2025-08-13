@@ -7,7 +7,7 @@ import { config } from '#configs/variable.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
 
-export const destination = {
+export const destinationMedia = {
   photoMedia: async (req, res, next) => {
     const { processedPhotos, foundDestination } = req;
     try {

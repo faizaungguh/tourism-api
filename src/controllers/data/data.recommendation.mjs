@@ -1,6 +1,6 @@
 import { dataService } from '#services/data/index.mjs';
 
-export const recommendation = {
+export const recommendationData = {
   show: async (req, res) => {
     const result = await dataService.destination.showRecomendation(req.query);
     res.status(200).json({

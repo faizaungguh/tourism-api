@@ -3,7 +3,7 @@ import { mediaService } from '#services/media/index.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
 
-export const facility = {
+export const facilityMedia = {
   add: async (req, res, next) => {
     try {
       const rawPhotos = await mediaService.destination.facility.add(req);

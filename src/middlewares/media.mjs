@@ -111,7 +111,7 @@ const mediaConfig = {
   },
 };
 
-export const handleMedia = {
+export const middlewareMedia = {
   admin: {
     updateMedia: [
       helper.Media.admin.checkIsExist,

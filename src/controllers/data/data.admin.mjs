@@ -1,6 +1,6 @@
 import { dataService } from '#services/data/index.mjs';
 
-export const admin = {
+export const adminData = {
   post: async (req, res) => {
     const result = await dataService.admin.add(req.body);
     res.status(201).json({

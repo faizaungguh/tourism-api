@@ -1,6 +1,6 @@
 import { dataService } from '#services/data/index.mjs';
 
-export const category = {
+export const categoryData = {
   post: async (req, res) => {
     const result = await dataService.category.add(req.body);
     res.status(201).json({

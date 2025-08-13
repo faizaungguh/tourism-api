@@ -1,6 +1,6 @@
 import { dataService } from '#services/data/index.mjs';
 
-export const subdistrict = {
+export const subdistrictData = {
   post: async (req, res) => {
     const result = await dataService.subdistrict.add(req.body);
     res.status(201).json({

@@ -3,7 +3,7 @@ import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
 import { mediaService } from '#services/media/index.mjs';
 
-export const admin = {
+export const adminMedia = {
   profileMedia: async (req, res, next) => {
     try {
       const { id } = req.params;
