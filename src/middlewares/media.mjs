@@ -1,6 +1,6 @@
 import multer from 'multer';
 import { ResponseError } from '#errors/responseError.mjs';
-import { helper } from '#helpers/helper.mjs';
+import { helper } from '#helpers/index.mjs';
 
 const baseMulterConfig = {
   storage: multer.memoryStorage(),
@@ -11,7 +11,7 @@ const baseMulterConfig = {
       callback(
         new ResponseError(415, 'Tipe file tidak didukung', {
           photo: 'Hanya file gambar (seperti .jpg, .png) yang diizinkan.',
-        })
+        }),
       );
     }
   },

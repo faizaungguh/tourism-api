@@ -1,14 +1,15 @@
-import { adminService as admin } from '#services/media/admin.mjs';
-import { destinationService as destination } from '#services/media/destination.mjs';
-import { facilityService as facility } from '#services/media/facility.mjs';
-import { attractionService as attraction } from '#services/media/attraction.mjs';
+import { admin } from '#controllers/media/media.admin.mjs';
+import { destination } from '#controllers/media/media.destination.mjs';
+import { facility } from '#controllers/media/media.facility.mjs';
+import { attraction } from '#controllers/media/media.attraction.mjs';
 
-export const mediaService = {
+export const media = {
   admin: {
-    updatePhoto: admin.profilePhoto,
-    getProfilePhoto: admin.getProfilePhoto,
+    addProfile: admin.profileMedia,
+    getProfile: admin.getProfileMedia,
   },
 
+  /** Destinasi Media */
   destination: {
     updateMedia: destination.photoMedia,
 

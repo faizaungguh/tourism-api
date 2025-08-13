@@ -1,4 +1,4 @@
-import { dataService } from '#services/data.mjs';
+import { dataService } from '#services/data/index.mjs';
 
 export const attraction = {
   post: async (req, res) => {
@@ -22,7 +22,7 @@ export const attraction = {
       adminId,
       destinationSlug,
       attractionSlug,
-      request
+      request,
     );
 
     res.status(200).json({

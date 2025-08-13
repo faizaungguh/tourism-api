@@ -39,6 +39,7 @@ export const helper = {
       destinationOwner: attractionHelper.destinationOwner,
     },
   },
+
   Media: {
     admin: {
       checkIsExist: admin.checkIsExist,

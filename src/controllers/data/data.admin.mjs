@@ -1,4 +1,4 @@
-import { dataService } from '#services/data.mjs';
+import { dataService } from '#services/data/index.mjs';
 
 export const admin = {
   post: async (req, res) => {

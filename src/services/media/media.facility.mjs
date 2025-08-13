@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { helper } from '#helpers/helper.mjs';
+import { helper } from '#helpers/index.mjs';
 
 export const facilityService = {
   add: async (req) => {
@@ -17,7 +17,7 @@ export const facilityService = {
         $push: {
           'facility.$.photo': { $each: processedFacilityPhotos },
         },
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {
@@ -47,13 +47,13 @@ export const facilityService = {
       },
       {
         arrayFilters: [{ 'fac.slug': facilitySlug }, { 'foto.photoId': oldPhotoId }],
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {
       throw new ResponseError(
         404,
-        'Gagal memperbarui foto di database. Data foto tidak ditemukan.'
+        'Gagal memperbarui foto di database. Data foto tidak ditemukan.',
       );
     }
 
@@ -79,7 +79,7 @@ export const facilityService = {
       process.cwd(),
       'public',
       'images',
-      `destinations/${subdistrictSlug}_${destinationSlug}/facility/${facilitySlug}`
+      `destinations/${subdistrictSlug}_${destinationSlug}/facility/${facilitySlug}`,
     );
 
     try {
@@ -97,7 +97,7 @@ export const facilityService = {
       },
       {
         $set: { 'facility.$.photo': [] },
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {
@@ -115,7 +115,7 @@ export const facilityService = {
       },
       {
         $pull: { 'facility.$.photo': { photoId: photoToDelete.photoId } },
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {

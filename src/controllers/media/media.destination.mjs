@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
-import { mediaService } from '#services/media.mjs';
-import { helper } from '#helpers/helper.mjs';
+import { mediaService } from '#services/media/index.mjs';
+import { helper } from '#helpers/index.mjs';
 import { config } from '#configs/variable.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
@@ -30,7 +30,7 @@ export const destination = {
             ? processedPhotos[key].substring(1)
             : processedPhotos[key];
           fs.unlink(path.join(rootDir, 'public', correctedPath)).catch((err) =>
-            console.error('Gagal membersihkan file:', err)
+            console.error('Gagal membersihkan file:', err),
           );
         }
       }
@@ -44,7 +44,7 @@ export const destination = {
         const { foundDestination, processedPhotos } = req;
         const result = await mediaService.destination.gallery.add(
           foundDestination,
-          processedPhotos
+          processedPhotos,
         );
 
         const formattedResult = result.map((photo) => ({
@@ -105,7 +105,7 @@ export const destination = {
         await mediaService.destination.gallery.update(
           req.foundDestination,
           oldPhotoId,
-          newPhotoData
+          newPhotoData,
         );
 
         const responseData = {

@@ -1,4 +1,4 @@
-import { validate } from '#validations/validate.mjs';
+import { validations } from '#validations/validation.mjs';
 import { checker } from '#validations/checker.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Category } from '#schemas/category.mjs';
@@ -6,9 +6,9 @@ import { Category } from '#schemas/category.mjs';
 export const categoryService = {
   post: async (request) => {
     /** validasi request */
-    validate.check.isNotEmpty(request);
+    validations.check.isNotEmpty(request);
 
-    const validatedRequest = validate.check.request(checker.category.create, request);
+    const validatedRequest = validations.check.request(checker.category.create, request);
 
     /** Buat instance baru dari model Category */
     const data = new Category(validatedRequest);
@@ -24,7 +24,7 @@ export const categoryService = {
 
   list: async (query) => {
     /** validasi */
-    const validatedQuery = validate.check.request(checker.category.list, query);
+    const validatedQuery = validations.check.request(checker.category.list, query);
     const { page, size, sort } = validatedQuery;
     const skip = (page - 1) * size;
 
@@ -51,7 +51,7 @@ export const categoryService = {
   },
 
   update: async (slug, request) => {
-    const validatedRequest = validate.check.request(checker.category.update, request);
+    const validatedRequest = validations.check.request(checker.category.update, request);
 
     const originalCategory = await Category.findOne({ slug });
     if (!originalCategory) {
@@ -65,7 +65,7 @@ export const categoryService = {
       {
         $set: validatedRequest,
       },
-      { new: true }
+      { new: true },
     );
 
     return result;

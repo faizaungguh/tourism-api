@@ -6,7 +6,7 @@ const sanitizeHtml = (value) => {
   return validator.escape(value.trim());
 };
 
-export const validate = {
+export const validations = {
   check: {
     request: (schema, request) => {
       const { error, value } = schema.validate(request, {

@@ -1,12 +1,12 @@
-import { helper } from '#helpers/helper.mjs';
+import { helper } from '#helpers/index.mjs';
 import { Category } from '#schemas/category.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { checker } from '#validations/checker.mjs';
-import { validate } from '#validations/validate.mjs';
+import { validations } from '#validations/validation.mjs';
 
 export const recommendationService = {
   show: async (query) => {
-    const validatedQuery = validate.check.request(checker.destination.recommendation, query);
+    const validatedQuery = validations.check.request(checker.destination.recommendation, query);
 
     const {
       category,
@@ -62,7 +62,7 @@ export const recommendationService = {
           lat,
           long,
           dest.locations.coordinates.lat,
-          dest.locations.coordinates.long
+          dest.locations.coordinates.long,
         );
       }
 
@@ -110,7 +110,7 @@ export const recommendationService = {
     const rankedDestinations = helper.Data.destination.recommendation.calculateTopsis(
       alternatives,
       weights,
-      criteriaTypes
+      criteriaTypes,
     );
 
     const limitedResults = rankedDestinations.slice(0, limit);
@@ -137,7 +137,7 @@ export const recommendationService = {
   },
 
   raw: async (query) => {
-    const validatedQuery = validate.check.request(checker.destination.getRaw, query);
+    const validatedQuery = validations.check.request(checker.destination.getRaw, query);
 
     const limit = validatedQuery.limit;
 

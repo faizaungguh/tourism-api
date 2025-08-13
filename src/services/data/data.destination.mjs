@@ -1,15 +1,15 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { checker } from '#validations/checker.mjs';
-import { validate } from '#validations/validate.mjs';
-import { helper } from '#helpers/helper.mjs';
+import { validations } from '#validations/validation.mjs';
+import { helper } from '#helpers/index.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
 export const destinationService = {
   post: async (adminId, request) => {
-    const validatedRequest = validate.check.request(checker.destination.create, request);
+    const validatedRequest = validations.check.request(checker.destination.create, request);
 
     const savedDestination = await helper.Data.destination.create(adminId, validatedRequest);
 
@@ -21,7 +21,7 @@ export const destinationService = {
 
   list: async (query) => {
     /** Validasi dan ambil nilai default dari query */
-    const validatedQuery = validate.check.request(checker.destination.list, query);
+    const validatedQuery = validations.check.request(checker.destination.list, query);
 
     /** Dapatkan aggregation pipeline dari helper */
     const pipeline = helper.Data.destination.list(validatedQuery);
@@ -69,14 +69,14 @@ export const destinationService = {
         slug: `Destinasi yang anda masukkan ${destinationSlug}, tidak valid`,
       });
     }
-    validate.check.isNotEmpty(request);
+    validations.check.isNotEmpty(request);
 
-    const validatedRequest = validate.check.request(checker.destination.update, request);
+    const validatedRequest = validations.check.request(checker.destination.update, request);
 
     const updatedDestination = await helper.Data.destination.update(
       destinationSlug,
       adminId,
-      validatedRequest
+      validatedRequest,
     );
 
     const pipeline = helper.Data.destination.get(updatedDestination._id);

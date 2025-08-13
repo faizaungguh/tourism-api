@@ -1,7 +1,7 @@
 import express from 'express';
 import { shield } from '#configs/security.mjs';
-import { media } from '#controllers/media.mjs';
-import { data } from '#controllers/data.mjs';
+import { media } from '#controllers/media/index.mjs';
+import { data } from '#controllers/data/index.mjs';
 import { handler } from '#middlewares/error.mjs';
 import { handleMedia } from '#middlewares/media.mjs';
 

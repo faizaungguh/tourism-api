@@ -1,5 +1,5 @@
 import { config } from '#configs/variable.mjs';
-import { mediaService } from '#services/media.mjs';
+import { mediaService } from '#services/media/index.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
 
@@ -55,7 +55,7 @@ export const facility = {
         foundDestination._id,
         foundFacility.slug,
         photoToUpdate.photoId,
-        newPhotoData
+        newPhotoData,
       );
 
       const formattedResult = {
@@ -92,7 +92,7 @@ export const facility = {
       await mediaService.destination.facility.delete(
         foundDestination,
         foundFacility,
-        photoToDelete
+        photoToDelete,
       );
 
       res.status(200).json({

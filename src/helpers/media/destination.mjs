@@ -4,7 +4,7 @@ import sharp from 'sharp';
 import { nanoid } from 'nanoid';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { mediaService } from '#services/media.mjs';
+import { mediaService } from '#services/media/index.mjs';
 
 async function _deleteFile(webPath) {
   if (!webPath) return;
@@ -73,7 +73,7 @@ export const destination = {
       try {
         const { destinations } = req.params;
         const destinationDoc = await Destination.findOne({ slug: destinations }).populate(
-          'attractions'
+          'attractions',
         );
 
         if (!destinationDoc) {
@@ -132,7 +132,7 @@ export const destination = {
         if (!photoToUpdate) {
           throw new ResponseError(
             404,
-            `Foto dengan ID "${photoId}" tidak ditemukan di galeri ini.`
+            `Foto dengan ID "${photoId}" tidak ditemukan di galeri ini.`,
           );
         }
 
@@ -159,7 +159,7 @@ export const destination = {
         if (!facilityDoc) {
           throw new ResponseError(
             404,
-            `Fasilitas dengan slug "${facilitySlug}" tidak ditemukan pada destinasi ini.`
+            `Fasilitas dengan slug "${facilitySlug}" tidak ditemukan pada destinasi ini.`,
           );
         }
 
@@ -198,7 +198,7 @@ export const destination = {
         if (!attractionDoc) {
           throw new ResponseError(
             404,
-            `Wahana dengan slug "${attractionSlug}" tidak ditemukan pada destinasi ini.`
+            `Wahana dengan slug "${attractionSlug}" tidak ditemukan pada destinasi ini.`,
           );
         }
 
@@ -286,7 +286,7 @@ export const destination = {
             413,
             `Kapasitas galeri tidak mencukupi. Anda hanya dapat mengunggah ${
               remainingSlots > 0 ? remainingSlots : 0
-            } foto lagi.`
+            } foto lagi.`,
           );
         }
 

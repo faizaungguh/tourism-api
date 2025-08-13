@@ -1,5 +1,5 @@
 import { ResponseError } from '#errors/responseError.mjs';
-import { dataService } from '#services/data.mjs';
+import { dataService } from '#services/data/index.mjs';
 
 export const manager = {
   list: async (req, res) => {

@@ -1,5 +1,5 @@
 import validate from 'joi';
-import { validate as validationHelper } from '#validations/validate.mjs';
+import { validate as validationHelper } from '#validations/validation.mjs';
 
 export const field = {
   adminId: validate.string().messages({
@@ -56,7 +56,7 @@ export const field = {
       hours: validate.string().optional().allow(''),
       isClosed: validate.boolean().default(false),
       _deleted: validate.boolean().optional(),
-    })
+    }),
   ),
 
   facility: validate.array().items(
@@ -74,7 +74,7 @@ export const field = {
       disabilityAccess: validate.boolean().default(false),
       photo: validate.array().items(validate.string().uri()).default([]),
       _deleted: validate.boolean().optional(),
-    })
+    }),
   ),
 
   contact: validate.array().items(
@@ -89,7 +89,7 @@ export const field = {
           'instagram',
           'facebook',
           'twitter',
-          'tiktok'
+          'tiktok',
         )
         .messages({
           'any.only': 'Platform kontak tidak valid.',
@@ -100,7 +100,7 @@ export const field = {
         'any.required': 'Nilai kontak wajib diisi.',
       }),
       _deleted: validate.boolean().optional(),
-    })
+    }),
   ),
 
   ticket: validate.object({

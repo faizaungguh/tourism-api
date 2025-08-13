@@ -1,5 +1,5 @@
 import { config } from '#configs/variable.mjs';
-import { mediaService } from '#services/media.mjs';
+import { mediaService } from '#services/media/index.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
 
@@ -11,7 +11,7 @@ export const attraction = {
       const result = await mediaService.destination.attraction.add(
         foundDestination,
         foundAttraction,
-        processedPhotos
+        processedPhotos,
       );
 
       const formattedResult = result.map((photo) => ({
@@ -60,7 +60,7 @@ export const attraction = {
       const result = await mediaService.destination.attraction.update(
         foundAttraction._id,
         photoToUpdate.photoId,
-        newPhotoData
+        newPhotoData,
       );
 
       res.status(200).json({

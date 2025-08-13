@@ -1,11 +1,11 @@
-import { auth as authData } from '#controllers/data/auth.mjs';
-import { admin as adminData } from '#controllers/data/admin.mjs';
-import { manager as managerData } from '#controllers/data/manager.mjs';
-import { category as categoryData } from '#controllers/data/category.mjs';
-import { subdistrict as subdistrictData } from '#controllers/data/subdistrict.mjs';
-import { destination as destinationData } from '#controllers/data/destination.mjs';
-import { attraction as attractionData } from '#controllers/data/attraction.mjs';
-import { recommendation as recommendationData } from '#controllers/data/recommendation.mjs';
+import { auth as authData } from '#controllers/data/data.auth.mjs';
+import { admin as adminData } from '#controllers/data/data.admin.mjs';
+import { manager as managerData } from '#controllers/data/data.manager.mjs';
+import { category as categoryData } from '#controllers/data/data.category.mjs';
+import { subdistrict as subdistrictData } from '#controllers/data/data.subdistrict.mjs';
+import { destination as destinationData } from '#controllers/data/data.destination.mjs';
+import { attraction as attractionData } from '#controllers/data/data.attraction.mjs';
+import { recommendation as recommendationData } from '#controllers/data/data.recommendation.mjs';
 
 export const data = {
   auth: {

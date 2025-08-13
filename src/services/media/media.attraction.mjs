@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
-import { helper } from '#helpers/helper.mjs';
+import { helper } from '#helpers/index.mjs';
 
 export const attractionService = {
   add: async (destinationDoc, attractionDoc, photosToAdd) => {
@@ -24,7 +24,7 @@ export const attractionService = {
       { _id: attractionDoc._id },
       {
         $push: { photos: { $each: photosWithCaption } },
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {
@@ -53,13 +53,13 @@ export const attractionService = {
           'photos.$.url': newPhotoData.url,
           'photos.$.photoId': newPhotoData.photoId,
         },
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {
       throw new ResponseError(
         404,
-        'Gagal memperbarui foto wahana di database. Data tidak ditemukan.'
+        'Gagal memperbarui foto wahana di database. Data tidak ditemukan.',
       );
     }
 
@@ -85,7 +85,7 @@ export const attractionService = {
       process.cwd(),
       'public',
       'images',
-      `destinations/${subdistrictSlug}_${destinationSlug}/attraction/${attractionSlug}`
+      `destinations/${subdistrictSlug}_${destinationSlug}/attraction/${attractionSlug}`,
     );
 
     try {
@@ -110,7 +110,7 @@ export const attractionService = {
       { _id: attractionDoc._id },
       {
         $pull: { photo: { photoId: photoToDelete.photoId } },
-      }
+      },
     );
 
     if (result.modifiedCount === 0) {

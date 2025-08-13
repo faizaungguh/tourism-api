@@ -1,15 +1,15 @@
 import { checker } from '#validations/checker.mjs';
-import { validate } from '#validations/validate.mjs';
-import { helper } from '#helpers/helper.mjs';
+import { validations } from '#validations/validation.mjs';
+import { helper } from '#helpers/index.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { config } from '#configs/variable.mjs';
 
 export const adminService = {
   post: async (request) => {
-    validate.check.isNotEmpty(request);
+    validations.check.isNotEmpty(request);
 
-    const validatedRequest = validate.check.request(checker.admin.create, request);
+    const validatedRequest = validations.check.request(checker.admin.create, request);
 
     validatedRequest.role = 'admin';
 
@@ -18,7 +18,7 @@ export const adminService = {
 
   list: async (query) => {
     /** validasi dan ambil nilai default dari query */
-    const validatedQuery = validate.check.request(checker.admin.list, query);
+    const validatedQuery = validations.check.request(checker.admin.list, query);
     /** Dapatkan aggregation pipeline dari helper */
     const pipeline = helper.Data.admin.list(validatedQuery);
     const result = await Admin.aggregate(pipeline);
@@ -61,9 +61,9 @@ export const adminService = {
 
   update: async (id, request) => {
     /** cek apakah ada data yang dikirim */
-    validate.check.isNotEmpty(request);
+    validations.check.isNotEmpty(request);
 
-    const validatedRequest = validate.check.request(checker.admin.update, request);
+    const validatedRequest = validations.check.request(checker.admin.update, request);
     const updatedAdmin = await helper.Data.admin.update(id, validatedRequest);
 
     return updatedAdmin;

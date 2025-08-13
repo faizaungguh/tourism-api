@@ -1,11 +1,11 @@
-import { adminService } from '#services/data/admin.mjs';
-import { authService } from '#services/data/auth.mjs';
-import { managerService } from '#services/data/manager.mjs';
-import { categoryService } from '#services/data/category.mjs';
-import { subdistrictService } from '#services/data/subdistrict.mjs';
-import { destinationService } from '#services/data/destination.mjs';
-import { attractionService } from '#services/data/attraction.mjs';
-import { recommendationService } from './data/recommendation.mjs';
+import { adminService } from '#services/data/data.admin.mjs';
+import { authService } from '#services/data/data.auth.mjs';
+import { managerService } from '#services/data/data.manager.mjs';
+import { categoryService } from '#services/data/data.category.mjs';
+import { subdistrictService } from '#services/data/data.subdistrict.mjs';
+import { destinationService } from '#services/data/data.destination.mjs';
+import { attractionService } from '#services/data/data.attraction.mjs';
+import { recommendationService } from '#services/data/data.recommendation.mjs';
 
 export const dataService = {
   auth: {

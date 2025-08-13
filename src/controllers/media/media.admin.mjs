@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
-import { mediaService } from '#services/media.mjs';
+import { mediaService } from '#services/media/index.mjs';
 
 export const admin = {
   profileMedia: async (req, res, next) => {
@@ -30,7 +30,7 @@ export const admin = {
     } catch (error) {
       if (req.processedFiles?.photo) {
         fs.unlink(path.join('public', req.processedFiles.photo)).catch((err) =>
-          console.error(`Gagal membersihkan file: ${req.processedFiles.photo}`, err)
+          console.error(`Gagal membersihkan file: ${req.processedFiles.photo}`, err),
         );
       }
       next(error);
@@ -52,7 +52,7 @@ export const admin = {
           next(
             new ResponseError(404, 'Data tidak ditemukan', {
               message: 'Dokumen gambar tidak ditemukan di server.',
-            })
+            }),
           );
         }
       });
