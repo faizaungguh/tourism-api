@@ -5,21 +5,22 @@ import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { Category } from '#schemas/category.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
-import subdistrictData from '../mocks/Subdistricts.json' with { type: 'json' };
-import categoryData from '../mocks/Categories.json' with { type: 'json' };
-import multiAdmin from '../mocks/Admin.json' with { type: 'json' };
-import adminDefault from '../mocks/Default.json' with { type: 'json' };
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
-/** Impor Mock Destination */
-import destData1 from '../mocks/ready-seed/seed-destination-01.json' with { type: 'json' };
-import destData2 from '../mocks/ready-seed/seed-destination-02.json' with { type: 'json' };
-import destData3 from '../mocks/ready-seed/seed-destination-03.json' with { type: 'json' };
-import destData4 from '../mocks/ready-seed/seed-destination-04.json' with { type: 'json' };
-import destData5 from '../mocks/ready-seed/seed-destination-05.json' with { type: 'json' };
-import destData6 from '../mocks/ready-seed/seed-destination-06.json' with { type: 'json' };
-import destData7 from '../mocks/ready-seed/seed-destination-07.json' with { type: 'json' };
-import attrData1 from '../mocks/ready-seed/seed-attraction-01.json' with { type: 'json' };
-import attrData2 from '../mocks/ready-seed/seed-attraction-02.json' with { type: 'json' };
+const subdistrictData = require('../mocks/Subdistricts.json');
+const categoryData = require('../mocks/Categories.json');
+const multiAdmin = require('../mocks/Admin.json');
+const adminDefault = require('../mocks/Default.json');
+const destData1 = require('../mocks/ready-seed/seed-destination-01.json');
+const destData2 = require('../mocks/ready-seed/seed-destination-02.json');
+const destData3 = require('../mocks/ready-seed/seed-destination-03.json');
+const destData4 = require('../mocks/ready-seed/seed-destination-04.json');
+const destData5 = require('../mocks/ready-seed/seed-destination-05.json');
+const destData6 = require('../mocks/ready-seed/seed-destination-06.json');
+const destData7 = require('../mocks/ready-seed/seed-destination-07.json');
+const attrData1 = require('../mocks/ready-seed/seed-attraction-01.json');
+const attrData2 = require('../mocks/ready-seed/seed-attraction-02.json');
 
 const importAdmin = async () => {
   try {
@@ -160,24 +161,26 @@ const importTourData = async () => {
       ...destData6,
       ...destData7,
     ];
-    
-    const allAttractionsData = [
-      ...attrData1, 
-      ...attrData2, 
-    ];
-    
+
+    const allAttractionsData = [...attrData1, ...attrData2];
+
     const uniqueDestinationsData = [];
     const seenSlugs = new Set();
     for (const dest of allDestinationsData) {
-        const slug = dest.destinationTitle.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-').replace(/[^\w-]+/g, '');
-        if (!seenSlugs.has(slug)) {
-            uniqueDestinationsData.push(dest);
-            seenSlugs.add(slug);
-        } else {
-            console.warn(`🔥 Duplikasi destinasi dengan judul '${dest.destinationTitle}' ditemukan dan dilewati.`);
-        }
+      const slug = dest.destinationTitle
+        .toLowerCase()
+        .replace(/ & /g, '-')
+        .replace(/ /g, '-')
+        .replace(/[^\w-]+/g, '');
+      if (!seenSlugs.has(slug)) {
+        uniqueDestinationsData.push(dest);
+        seenSlugs.add(slug);
+      } else {
+        console.warn(
+          `🔥 Duplikasi destinasi dengan judul '${dest.destinationTitle}' ditemukan dan dilewati.`
+        );
+      }
     }
-
 
     const destinationsToCreate = await Promise.all(
       uniqueDestinationsData.map(async (dest) => {
@@ -185,12 +188,23 @@ const importTourData = async () => {
         const category = await Category.findOne({ name: dest.category });
         const subdistrict = await Subdistrict.findOne({ name: dest.locations.subdistrict });
 
-        if (!manager) console.warn(`- Manager '${dest.createdBy}' tidak ditemukan untuk ${dest.destinationTitle}`);
-        if (!category) console.warn(`- Kategori '${dest.category}' tidak ditemukan untuk ${dest.destinationTitle}`);
-        if (!subdistrict) console.warn(`- Kecamatan '${dest.locations.subdistrict}' tidak ditemukan untuk ${dest.destinationTitle}`);
+        if (!manager)
+          console.warn(
+            `- Manager '${dest.createdBy}' tidak ditemukan untuk ${dest.destinationTitle}`
+          );
+        if (!category)
+          console.warn(
+            `- Kategori '${dest.category}' tidak ditemukan untuk ${dest.destinationTitle}`
+          );
+        if (!subdistrict)
+          console.warn(
+            `- Kecamatan '${dest.locations.subdistrict}' tidak ditemukan untuk ${dest.destinationTitle}`
+          );
 
         if (!manager || !category || !subdistrict) {
-          console.warn(`--> ⚠️ Destinasi '${dest.destinationTitle}' dilewati karena data pendukung tidak lengkap.`);
+          console.warn(
+            `--> ⚠️ Destinasi '${dest.destinationTitle}' dilewati karena data pendukung tidak lengkap.`
+          );
           return null;
         }
 
@@ -250,24 +264,25 @@ const importTourData = async () => {
 
     console.log(`✅ ${createdAttractionsCount} Atraksi berhasil diimpor dan ditautkan.`);
 
-    
     console.log('\n🔍 Melakukan validasi akhir: Memeriksa destinasi tanpa atraksi...');
-    
-    
+
     const destinationsWithoutAttractions = await Destination.find({
-      attractions: { $size: 0 },
-    }).select('destinationTitle slug'); 
+      $expr: { $eq: [{ $size: '$attractions' }, 0] },
+    }).select('destinationTitle slug');
 
     if (destinationsWithoutAttractions.length === 0) {
       console.log('✅ Sukses! Semua destinasi yang diimpor memiliki setidaknya satu atraksi.');
     } else {
-      console.warn(`\n⚠️ PERINGATAN: Ditemukan ${destinationsWithoutAttractions.length} destinasi yang tidak memiliki atraksi:`);
-      destinationsWithoutAttractions.forEach(dest => {
+      console.warn(
+        `\n⚠️ PERINGATAN: Ditemukan ${destinationsWithoutAttractions.length} destinasi yang tidak memiliki atraksi:`
+      );
+      destinationsWithoutAttractions.forEach((dest) => {
         console.warn(`  - ${dest.destinationTitle} (slug: ${dest.slug})`);
       });
-      console.warn('\n-> Periksa file seed-attraction-XX.json Anda dan pastikan setiap destinasi di atas memiliki data wahana yang sesuai.');
+      console.warn(
+        '\n-> Periksa file seed-attraction-XX.json Anda dan pastikan setiap destinasi di atas memiliki data wahana yang sesuai.'
+      );
     }
-    
 
     console.log('\n✨ Impor data wisata selesai!');
     process.exit(0);
@@ -275,7 +290,7 @@ const importTourData = async () => {
     console.error('❌ Error saat mengimpor data wisata:', error);
     process.exit(1);
   }
-}
+};
 
 const deleteTourData = async () => {
   try {
