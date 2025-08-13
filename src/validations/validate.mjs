@@ -54,5 +54,15 @@ export const validate = {
       const sanitizedValue = sanitizeHtml(value);
       return sanitizedValue;
     },
+    email: (value, helpers) => {
+      const options = {
+        gmail_remove_dots: true,
+        gmail_remove_subaddress: true,
+        outlookdotcom_remove_subaddress: true,
+        yahoo_remove_subaddress: true,
+      };
+
+      return validator.normalizeEmail(value, options);
+    },
   },
 };

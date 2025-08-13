@@ -29,7 +29,7 @@ export const field = {
     }),
   email: validate
     .string()
-    .email({ tlds: { allow: false } })
+    .custom(validationHelper.sanitizer.email)
     .pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
     .required()
     .messages({
