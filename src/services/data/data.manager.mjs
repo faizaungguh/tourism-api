@@ -5,7 +5,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { config } from '#configs/variable.mjs';
 
-export const managerService = {
+export const managerData = {
   list: async (query) => {
     const validatedQuery = validations.check.request(checker.admin.list, query);
 

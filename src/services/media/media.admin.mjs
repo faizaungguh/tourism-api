@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
 
-export const adminService = {
+export const adminMedia = {
   profilePhoto: async (admin, newPhotoPath) => {
     const oldPhotoPath = admin.photo;
 

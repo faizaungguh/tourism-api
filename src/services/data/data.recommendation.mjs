@@ -4,7 +4,7 @@ import { Destination } from '#schemas/destination.mjs';
 import { checker } from '#validations/checker.mjs';
 import { validations } from '#validations/validation.mjs';
 
-export const recommendationService = {
+export const recommendationData = {
   show: async (query) => {
     const validatedQuery = validations.check.request(checker.destination.recommendation, query);
 

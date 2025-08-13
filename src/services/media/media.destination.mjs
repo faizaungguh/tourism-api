@@ -16,7 +16,7 @@ async function deleteOldFile(webPath) {
   }
 }
 
-export const destinationService = {
+export const destinationMedia = {
   photoMedia: async (destinationDoc, newPhotos) => {
     const { profilePhoto, headlinePhoto } = newPhotos;
 
@@ -96,7 +96,7 @@ export const destinationService = {
       } catch (err) {
         console.error(
           `Gagal menghapus direktori galeri, namun proses akan tetap dilanjutkan: ${galleryPath}`,
-          err
+          err,
         );
       }
 

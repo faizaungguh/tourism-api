@@ -3,7 +3,7 @@ import { checker } from '#validations/checker.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Category } from '#schemas/category.mjs';
 
-export const categoryService = {
+export const categoryData = {
   post: async (request) => {
     /** validasi request */
     validations.check.isNotEmpty(request);

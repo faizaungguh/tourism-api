@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { ResponseError } from '#errors/responseError.mjs';
-import { mediaService } from '#services/media/index.mjs';
+import { mediaService } from '#services/index.mjs';
 import { helper } from '#helpers/index.mjs';
 import { config } from '#configs/variable.mjs';
 

@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import { customAlphabet, nanoid } from 'nanoid';
-import { Attraction } from './attraction.mjs';
-import { Subdistrict } from './subdistrict.mjs';
+import { Attraction } from '#schemas/attraction.mjs';
+import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
 const destinationSchema = new Schema(
@@ -101,10 +101,10 @@ const destinationSchema = new Schema(
     timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
-        delete ret.__v, delete ret._id;
+        (delete ret.__v, delete ret._id);
       },
     },
-  }
+  },
 );
 
 export function processOpeningHours(openingHours) {
@@ -155,7 +155,7 @@ destinationSchema.pre('save', async function (next) {
       return next(
         new ResponseError(409, 'Duplikasi data.', {
           message: 'Nama fasilitas tidak boleh duplikat.',
-        })
+        }),
       );
     }
 

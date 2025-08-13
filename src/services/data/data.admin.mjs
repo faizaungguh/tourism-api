@@ -5,7 +5,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { config } from '#configs/variable.mjs';
 
-export const adminService = {
+export const adminData = {
   post: async (request) => {
     validations.check.isNotEmpty(request);
 

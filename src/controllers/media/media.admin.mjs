@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { ResponseError } from '#errors/responseError.mjs';
-import { mediaService } from '#services/media/index.mjs';
+import { mediaService } from '#services/index.mjs';
 
 export const adminMedia = {
   profileMedia: async (req, res, next) => {

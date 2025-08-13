@@ -4,7 +4,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { helper } from '#helpers/index.mjs';
 
-export const facilityService = {
+export const facilityMedia = {
   add: async (req) => {
     const { foundDestination, foundFacility, processedFacilityPhotos } = req;
 

@@ -4,7 +4,7 @@ import { helper } from '#helpers/index.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { Destination } from '#schemas/destination.mjs';
 
-export const attractionService = {
+export const attractionData = {
   post: async (adminId, slug, request) => {
     const { destination } = await helper.Data.attraction.destinationOwner(adminId, slug);
 

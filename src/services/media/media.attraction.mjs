@@ -4,7 +4,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Attraction } from '#schemas/attraction.mjs';
 import { helper } from '#helpers/index.mjs';
 
-export const attractionService = {
+export const attractionMedia = {
   add: async (destinationDoc, attractionDoc, photosToAdd) => {
     if (!destinationDoc || !attractionDoc || !photosToAdd) {
       throw new ResponseError(422, 'Data tidak diproses', {

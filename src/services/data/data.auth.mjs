@@ -2,7 +2,7 @@ import { validations } from '#validations/validation.mjs';
 import { checker } from '#validations/checker.mjs';
 import { helper } from '#helpers/index.mjs';
 
-export const authService = {
+export const authData = {
   register: async (request) => {
     validations.check.isNotEmpty(request);
     const validatedRequest = validations.check.request(checker.auth.register, request);

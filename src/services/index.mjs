@@ -1,35 +1,34 @@
-import { authData } from '#controllers/data/data.auth.mjs';
-import { adminData } from '#controllers/data/data.admin.mjs';
-import { managerData } from '#controllers/data/data.manager.mjs';
-import { categoryData } from '#controllers/data/data.category.mjs';
-import { subdistrictData } from '#controllers/data/data.subdistrict.mjs';
-import { destinationData } from '#controllers/data/data.destination.mjs';
-import { attractionData } from '#controllers/data/data.attraction.mjs';
-import { recommendationData } from '#controllers/data/data.recommendation.mjs';
+import { adminData } from '#services/data/data.admin.mjs';
+import { authData } from '#services/data/data.auth.mjs';
+import { managerData } from '#services/data/data.manager.mjs';
+import { categoryData } from '#services/data/data.category.mjs';
+import { subdistrictData } from '#services/data/data.subdistrict.mjs';
+import { destinationData } from '#services/data/data.destination.mjs';
+import { attractionData } from '#services/data/data.attraction.mjs';
+import { recommendationData } from '#services/data/data.recommendation.mjs';
 
-import { adminMedia } from '#controllers/media/media.admin.mjs';
-import { destinationMedia } from '#controllers/media/media.destination.mjs';
-import { facilityMedia } from '#controllers/media/media.facility.mjs';
-import { attractionMedia } from '#controllers/media/media.attraction.mjs';
+import { adminMedia } from '#services/media/media.admin.mjs';
+import { destinationMedia } from '#services/media/media.destination.mjs';
+import { facilityMedia } from '#services/media/media.facility.mjs';
+import { attractionMedia } from '#services/media/media.attraction.mjs';
 
-export const dataController = {
+export const dataService = {
   auth: {
     register: authData.register,
-    signin: authData.signin,
-    signout: authData.signout,
+    signIn: authData.signin,
   },
 
   admin: {
     add: adminData.post,
     list: adminData.list,
-    get: adminData.get,
+    detail: adminData.detail,
     update: adminData.update,
     delete: adminData.drop,
   },
 
   manager: {
     list: managerData.list,
-    get: managerData.get,
+    detail: managerData.detail,
     update: managerData.update,
     delete: managerData.drop,
   },
@@ -51,11 +50,11 @@ export const dataController = {
   destination: {
     add: destinationData.post,
     list: destinationData.list,
-    get: destinationData.detail,
+    detail: destinationData.detail,
     update: destinationData.update,
     delete: destinationData.drop,
-    showRecommendation: recommendationData.show,
-    getRaw: recommendationData.raw,
+    showRecomendation: recommendationData.show,
+    raw: recommendationData.raw,
   },
 
   attraction: {
@@ -65,13 +64,12 @@ export const dataController = {
   },
 };
 
-export const mediaController = {
+export const mediaService = {
   admin: {
-    addProfile: adminMedia.profileMedia,
-    getProfile: adminMedia.getProfileMedia,
+    updatePhoto: adminMedia.profilePhoto,
+    getProfilePhoto: adminMedia.getProfilePhoto,
   },
 
-  /** Destinasi Media */
   destination: {
     updateMedia: destinationMedia.photoMedia,
 

@@ -1,5 +1,5 @@
 import { config } from '#configs/variable.mjs';
-import { mediaService } from '#services/media/index.mjs';
+import { mediaService } from '#services/index.mjs';
 
 const API_URL = config.APP_URL || 'http://localhost:3000';
 

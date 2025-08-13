@@ -3,7 +3,7 @@ import { checker } from '#validations/checker.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
 import { ResponseError } from '#errors/responseError.mjs';
 
-export const subdistrictService = {
+export const subdistrictData = {
   post: async (request) => {
     /** validasi request */
     validations.check.isNotEmpty(request);

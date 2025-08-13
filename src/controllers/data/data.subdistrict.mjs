@@ -1,4 +1,4 @@
-import { dataService } from '#services/data/index.mjs';
+import { dataService } from '#services/index.mjs';
 
 export const subdistrictData = {
   post: async (req, res) => {

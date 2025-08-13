@@ -4,7 +4,7 @@ import sharp from 'sharp';
 import { nanoid } from 'nanoid';
 import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
-import { mediaService } from '#services/media/index.mjs';
+import { mediaService } from '#services/index.mjs';
 
 async function _deleteFile(webPath) {
   if (!webPath) return;

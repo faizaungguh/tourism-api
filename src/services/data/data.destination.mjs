@@ -7,7 +7,7 @@ import { ResponseError } from '#errors/responseError.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { Admin } from '#schemas/admin.mjs';
 
-export const destinationService = {
+export const destinationData = {
   post: async (adminId, request) => {
     const validatedRequest = validations.check.request(checker.destination.create, request);
 
