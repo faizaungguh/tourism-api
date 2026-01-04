@@ -1,5 +1,5 @@
 import validate from 'joi';
-import { validate as validationHelper } from '#validations/index.mjs';
+import { validations } from '#validations/index.mjs';
 
 export const field = {
   username: validate.string().alphanum().min(5).max(12).required().messages({
@@ -10,7 +10,7 @@ export const field = {
     'string.max': 'Username maksimal terdiri dari 12 karakter.',
     'any.required': 'Username wajib diisi',
   }),
-  name: validate.string().custom(validationHelper.sanitizer.string).required().messages({
+  name: validate.string().custom(validations.sanitizer.string).required().messages({
     'string.empty': 'Name tidak boleh kosong.',
     'any.required': 'Name wajib diisi',
   }),
@@ -29,7 +29,7 @@ export const field = {
     }),
   email: validate
     .string()
-    .custom(validationHelper.sanitizer.email)
+    .custom(validations.sanitizer.email)
     .pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
     .required()
     .messages({
@@ -59,7 +59,7 @@ export const field = {
     'string.min': 'Username minimal terdiri dari 5 karakter.',
     'string.max': 'Username maksimal terdiri dari 12 karakter.',
   }),
-  patchName: validate.string().custom(validationHelper.sanitizer.string).required().messages({
+  patchName: validate.string().custom(validations.sanitizer.string).required().messages({
     'string.empty': 'Name tidak boleh kosong.',
     'string.pattern.base': 'Nama kategori tidak boleh mengandung skrip atau tag HTML.',
     'any.required': 'Name wajib diisi',

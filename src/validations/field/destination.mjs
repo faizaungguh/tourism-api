@@ -1,12 +1,12 @@
 import validate from 'joi';
-import { validate as validationHelper } from '#validations/index.mjs';
+import { validations } from '#validations/index.mjs';
 
 export const field = {
   adminId: validate.string().messages({
     'any.required': 'ID Admin wajib diisi.',
   }),
 
-  destinationTitle: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+  destinationTitle: validate.string().trim().custom(validations.sanitizer.string).messages({
     'string.empty': 'Judul destinasi tidak boleh kosong.',
   }),
 
@@ -16,7 +16,7 @@ export const field = {
     'any.required': 'Kategori wajib diisi.',
   }),
 
-  description: validate.string().custom(validationHelper.sanitizer.string).messages({
+  description: validate.string().custom(validations.sanitizer.string).messages({
     'string.empty': 'Deskripsi tidak boleh kosong.',
   }),
 
@@ -25,7 +25,7 @@ export const field = {
       'string.empty': 'Alamat tidak boleh kosong.',
       'any.required': 'Alamat wajib diisi.',
     }),
-    link: validate.string().custom(validationHelper.sanitizer.string).messages({
+    link: validate.string().custom(validations.sanitizer.string).messages({
       'string.empty': 'Tautan tidak boleh kosong.',
       'any.required': 'Tautan wajib diisi.',
     }),
@@ -61,7 +61,7 @@ export const field = {
 
   facility: validate.array().items(
     validate.object({
-      name: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+      name: validate.string().trim().custom(validations.sanitizer.string).messages({
         'string.empty': 'Nama fasilitas tidak boleh kosong.',
         'any.required': 'Nama fasilitas wajib diisi.',
       }),
@@ -95,7 +95,7 @@ export const field = {
           'any.only': 'Platform kontak tidak valid.',
           'any.required': 'Platform kontak wajib diisi.',
         }),
-      value: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+      value: validate.string().trim().custom(validations.sanitizer.string).messages({
         'string.empty': 'Nilai kontak tidak boleh kosong.',
         'any.required': 'Nilai kontak wajib diisi.',
       }),

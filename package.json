@@ -4,9 +4,13 @@
   "description": "REST API untuk Tourism Recommendation",
   "main": "app.js",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development PORT=3000 node --watch src/app.mjs",
     "start": "cross-env NODE_ENV=production PORT=3000 node src/app.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "imports": {
     "#app/*": "./src/app/*",
@@ -20,32 +24,36 @@
     "#services/*": "./src/services/*",
     "#validations/*": "./src/validations/*"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "restful-api",
+    "mongodb",
+    "jwt"
+  ],
+  "author": "faizaungguh",
+  "license": "MIT",
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.0",
-    "express": "^5.1.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "express-mongo-sanitize": "^2.2.0",
-    "express-rate-limit": "^8.0.1",
+    "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
     "hpp": "^0.2.3",
     "joi": "^17.13.3",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.16.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.21.0",
     "multer": "^2.0.2",
-    "nanoid": "^5.1.5",
-    "sharp": "^0.34.3",
-    "validator": "^13.15.15",
-    "winston": "^3.17.0"
+    "nanoid": "^5.1.6",
+    "sharp": "^0.34.5",
+    "validator": "^13.15.26",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "morgan": "^1.10.0",
-    "prettier": "^3.6.2"
+    "morgan": "^1.10.1",
+    "prettier": "^3.7.4"
   }
 }

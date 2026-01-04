@@ -1,9 +1,9 @@
 import validate from 'joi';
-import { validate as validationHelper } from '#validations/index.mjs';
+import { validations } from '#validations/index.mjs';
 
 export const categoryChecker = {
   valid: validate.object({
-    name: validate.string().required().custom(validationHelper.sanitizer.string).messages({
+    name: validate.string().required().custom(validations.sanitizer.string).messages({
       'string.base': 'Kategori harus berupa teks',
       'string.empty': 'Kategori tidak boleh kosong',
       'string.pattern.base': 'Nama kategori tidak boleh mengandung skrip atau tag HTML.',

@@ -1,12 +1,12 @@
 import validate from 'joi';
-import { validate as validationHelper } from '#validations/index.mjs';
+import { validations } from '#validations/index.mjs';
 
 export const field = {
-  name: validate.string().trim().custom(validationHelper.sanitizer.string).messages({
+  name: validate.string().trim().custom(validations.sanitizer.string).messages({
     'string.pattern.base': 'Wahana Wisata tidak mengandung skrip atau tag HTML',
   }),
 
-  description: validate.string().custom(validationHelper.sanitizer.string).messages({
+  description: validate.string().custom(validations.sanitizer.string).messages({
     'string.empty': 'Deskripsi tidak boleh kosong.',
     'string.pattern.base': 'Deskripsi tidak boleh mengandung skrip atau tag HTML.',
   }),
