@@ -43,8 +43,8 @@ publicRouter
 /** Recommendation */
 publicRouter
   .route('/recommendations')
-  .get(dataController.destination.showRecommendation)
-  .all(handler.method(['GET']));
+  .post(dataController.destination.showRecommendation)
+  .all(handler.method(['POST']));
 
 /** Media */
 publicRouter
