@@ -11,10 +11,12 @@ const checkWeightSum = (value, helpers) => {
 
   const totalWeight = weights.reduce((sum, current) => sum + (current || 0), 0);
 
-  if (totalWeight > 100) {
-    return helpers.error('any.custom', {
-      message: `Total semua bobot (weight) tidak boleh melebihi 100. Total saat ini adalah ${totalWeight}.`,
+  if (totalWeight !== 100) {
+    const error = helpers.error('any.custom', {
+      message: `Total semua bobot (weight) harus tepat 100. Total saat ini adalah ${totalWeight}.`,
     });
+    error.path = ['weight'];
+    return error;
   }
 
   return value;
