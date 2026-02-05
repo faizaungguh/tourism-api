@@ -16,6 +16,12 @@ import-attraction:
 import-facility:
 	node data/seeds/seeding.mjs --import-facility
 
+import-parking:
+	node data/seeds/seeding.mjs --import-parking
+
+import-parking:
+	node data/seeds/seeding.mjs --import-parking
+
 delete-facility:
 	node data/seeds/seeding.mjs --delete-facility
 

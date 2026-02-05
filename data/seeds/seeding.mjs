@@ -13,6 +13,7 @@ import destinationData from '../mocks/ready-seed/seed-destination.json' with { t
 import ticketPriceData from '../mocks/ready-seed/seed-ticketPrice.json' with { type: 'json' };
 import attractionData from '../mocks/ready-seed/seed-attraction.json' with { type: 'json' };
 import facilityData from '../mocks/ready-seed/seed-facility.json' with { type: 'json' };
+import parkingData from '../mocks/ready-seed/seed-parking.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -413,6 +414,82 @@ const deleteFacility = async () => {
   }
 };
 
+const importParking = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai import data Parkir Destinasi...');
+
+    const destinations = await Destination.find();
+    let updatedCount = 0;
+    let notFoundCount = 0;
+
+    for (const item of parkingData) {
+      const rawTitle = item.destinationTitle || '';
+      const jsonTitle = rawTitle.trim().toLowerCase();
+
+      if (!jsonTitle) continue;
+
+      // Mencari destinasi berdasarkan destinationTitle
+      const destination = destinations.find((dest) => {
+        const dbTitle = dest.destinationTitle.trim().toLowerCase();
+        const dbSlug = dest.slug || dbTitle.replace(/\s+/g, '-');
+
+        // 1. Cek exact match dengan title atau slug
+        if (dbTitle === jsonTitle || dbSlug === jsonTitle) return true;
+
+        // 2. Cek fleksibel
+        const jsonParts = jsonTitle.split(/[\s-]+/).filter(Boolean);
+        return jsonParts.length > 0 && jsonParts.every((part) => dbTitle.includes(part));
+      });
+
+      if (destination) {
+        destination.parking = {
+          motorcycle: item.motorcycle || { capacity: 0, price: 0 },
+          car: item.car || { capacity: 0, price: 0 },
+          bus: item.bus || { capacity: 0, price: 0 },
+        };
+        await destination.save();
+        updatedCount++;
+      } else {
+        // console.warn(`[SKIP] Destinasi "${rawTitle}" tidak ditemukan untuk import parkir.`);
+        notFoundCount++;
+      }
+    }
+
+    console.log(
+      `${updatedCount} Destinasi berhasil diperbarui data parkirnya! (${notFoundCount} dilewati)`,
+    );
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mengimpor data parkir:', error);
+    process.exit(1);
+  }
+};
+
+const deleteParking = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai reset data Parkir Destinasi...');
+
+    await Destination.updateMany(
+      {},
+      {
+        parking: {
+          motorcycle: { capacity: 0, price: 0 },
+          car: { capacity: 0, price: 0 },
+          bus: { capacity: 0, price: 0 },
+        },
+      },
+    );
+
+    console.log('Data Parkir Destinasi berhasil di-reset!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mereset data parkir:', error);
+    process.exit(1);
+  }
+};
+
 switch (process.argv[2]) {
   /** Admin */
   case '--import-admin':
@@ -455,6 +532,13 @@ switch (process.argv[2]) {
     break;
   case '--delete-facility':
     deleteFacility();
+    break;
+  /** Data Parkir */
+  case '--import-parking':
+    importParking();
+    break;
+  case '--delete-parking':
+    deleteParking();
     break;
   default:
     console.log(
