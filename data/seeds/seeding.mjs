@@ -14,6 +14,7 @@ import ticketPriceData from '../mocks/ready-seed/seed-ticketPrice.json' with { t
 import attractionData from '../mocks/ready-seed/seed-attraction.json' with { type: 'json' };
 import facilityData from '../mocks/ready-seed/seed-facility.json' with { type: 'json' };
 import parkingData from '../mocks/ready-seed/seed-parking.json' with { type: 'json' };
+import contactData from '../mocks/ready-seed/seed-contact.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -490,6 +491,94 @@ const deleteParking = async () => {
   }
 };
 
+const importContact = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai import data Kontak Destinasi...');
+
+    const destinations = await Destination.find();
+    let updatedCount = 0;
+    let notFoundCount = 0;
+
+    // Daftar platform yang diizinkan sesuai permintaan
+    const validPlatforms = [
+      'phone',
+      'email',
+      'instagram',
+      'youtube',
+      'whatsapp',
+      'website',
+      'facebook',
+      'tiktok',
+    ];
+
+    for (const item of contactData) {
+      const rawTitle = item.destinationTitle || '';
+      const jsonTitle = rawTitle.trim().toLowerCase();
+
+      if (!jsonTitle) continue;
+
+      // Mencari destinasi berdasarkan destinationTitle
+      const destination = destinations.find((dest) => {
+        const dbTitle = dest.destinationTitle.trim().toLowerCase();
+        const dbSlug = dest.slug || dbTitle.replace(/\s+/g, '-');
+
+        // 1. Cek exact match dengan title atau slug
+        if (dbTitle === jsonTitle || dbSlug === jsonTitle) return true;
+
+        // 2. Cek fleksibel
+        const jsonParts = jsonTitle.split(/[\s-]+/).filter(Boolean);
+        return jsonParts.length > 0 && jsonParts.every((part) => dbTitle.includes(part));
+      });
+
+      if (destination) {
+        const contacts = [];
+        for (const key of Object.keys(item)) {
+          const platform = key.trim().toLowerCase();
+          if (validPlatforms.includes(platform) && item[key]) {
+            contacts.push({
+              platform: platform,
+              value: String(item[key]).trim(),
+            });
+          }
+        }
+
+        if (contacts.length > 0) {
+          destination.contact = contacts;
+          await destination.save();
+          updatedCount++;
+        }
+      } else {
+        // console.warn(`[SKIP] Destinasi "${rawTitle}" tidak ditemukan untuk import kontak.`);
+        notFoundCount++;
+      }
+    }
+
+    console.log(
+      `${updatedCount} Destinasi berhasil diperbarui kontaknya! (${notFoundCount} dilewati)`,
+    );
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mengimpor data kontak:', error);
+    process.exit(1);
+  }
+};
+
+const deleteContact = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai reset data Kontak Destinasi...');
+
+    await Destination.updateMany({}, { contact: [] });
+
+    console.log('Data Kontak Destinasi berhasil di-reset!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mereset data kontak:', error);
+    process.exit(1);
+  }
+};
+
 switch (process.argv[2]) {
   /** Admin */
   case '--import-admin':
@@ -539,6 +628,13 @@ switch (process.argv[2]) {
     break;
   case '--delete-parking':
     deleteParking();
+    break;
+  /** Data Kontak */
+  case '--import-contact':
+    importContact();
+    break;
+  case '--delete-contact':
+    deleteContact();
     break;
   default:
     console.log(

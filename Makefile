@@ -19,8 +19,14 @@ import-facility:
 import-parking:
 	node data/seeds/seeding.mjs --import-parking
 
-import-parking:
-	node data/seeds/seeding.mjs --import-parking
+import-contact:
+	node data/seeds/seeding.mjs --import-contact
+
+delete-contact:
+	node data/seeds/seeding.mjs --delete-contact
+
+delete-parking:
+	node data/seeds/seeding.mjs --delete-parking
 
 delete-facility:
 	node data/seeds/seeding.mjs --delete-facility

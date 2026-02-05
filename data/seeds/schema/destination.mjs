@@ -80,6 +80,7 @@ const destinationSchema = new Schema(
             'facebook',
             'twitter',
             'tiktok',
+            'youtube',
           ],
         },
         value: { type: String, trim: true },
