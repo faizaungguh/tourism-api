@@ -1,0 +1,1307 @@
+[
+  {
+    "destinations": "LOKAWISATA BATURRADEN",
+    "motorcycle": {
+      "capacity": 500,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 250,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 50,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN APUNG MASKEMAMBANG",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "motorcycle": {
+      "capacity": 300,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 100,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "THR PANGSAR SUDIRMAN",
+    "motorcycle": {
+      "capacity": 200,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "OBYEK WISATA ANTAP",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "PAGUBUGAN MELUNG",
+    "motorcycle": {
+      "capacity": 120,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 40,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 8,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "PERTAPAN GERDUREN",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG SONG",
+    "motorcycle": {
+      "capacity": 70,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BUKIT MBULU WATU GEDE",
+    "motorcycle": {
+      "capacity": 90,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WISATA OUTBOND CANDI",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BUKIT WATU KUMPUL",
+    "motorcycle": {
+      "capacity": 60,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG NANGGA",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GUNUNG BATUR",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG PENGANTIN",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG TELU",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 8,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GROJOGAN RATU",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BUKIT PANGONAN INDAH",
+    "motorcycle": {
+      "capacity": 70,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "AGROWISATA TUNGGUL MAS",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 40,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GUA DAMAR",
+    "motorcycle": {
+      "capacity": 30,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GUA SERWITI",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "PRAWITA GARDEN",
+    "motorcycle": {
+      "capacity": 400,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 200,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 30,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG SENTONG",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "AGROWISATA KARANG PANGINYONGAN",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "OBYEK WISATA GERMANGGIS",
+    "motorcycle": {
+      "capacity": 60,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "EMBUNG KENDALISADA",
+    "motorcycle": {
+      "capacity": 70,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG PINANG",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WANA WISATA BATURRADEN",
+    "motorcycle": {
+      "capacity": 200,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 100,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 15,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "PANCURAN 7",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "PANCURAN 3",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TELAGA SUNYI",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "OFFROAD WANA WISATA",
+    "motorcycle": {
+      "capacity": 200,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 100,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG CIPENDOK",
+    "motorcycle": {
+      "capacity": 200,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TELAGA KUMPE",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 8,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WANA PRAMUKA",
+    "motorcycle": {
+      "capacity": 300,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 100,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 20,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG JENGGALA",
+    "motorcycle": {
+      "capacity": 70,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG BAYAN",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "HUTAN PINUS LIMPAK KUWUS",
+    "motorcycle": {
+      "capacity": 120,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 40,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "THE VILLAGE",
+    "motorcycle": {
+      "capacity": 300,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 150,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 20,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GALERY WATER KARANGMANGU (GWK)",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BATURRADEN ADVENTURE FOREST (BAF)",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "NEW SMALL WORLD",
+    "motorcycle": {
+      "capacity": 250,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 100,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 15,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "KOLAM RENANG TIRTA KARSA",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN BUKEN",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WISATA TAMAN HIAS REMBANGMAS",
+    "motorcycle": {
+      "capacity": 60,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN AGROWISATA SEGA",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "RANDU BENGKONG",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG GEMAWANG",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "KOLAM RENANG TIRTA ALAMI PANCASAN",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 25,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WISATA PERENG CILONGOK",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG GOMBLANG",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 40,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "KEBUN BUAH BATUR AGUNG",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "KIDUNG KAMPUNGKU",
+    "motorcycle": {
+      "capacity": 70,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "HUTAN PINUS SAWANGAN (HPS)",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 30,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG CEHENG",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "DREAMLAND WATER PARK",
+    "motorcycle": {
+      "capacity": 500,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 250,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 40,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "THE FOREST",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 8,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "DEPO BAY",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "HUTAN PINUS KALIURIP (HPK)",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "MUSEUM WAYANG BANYUMAS",
+    "motorcycle": {
+      "capacity": 30,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TIRTA HUSADA KALIBACIN",
+    "motorcycle": {
+      "capacity": 60,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "OBYEK WISATA WANASUTA",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BUKIT PANDANG MUNGGANG",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WATU MEJA",
+    "motorcycle": {
+      "capacity": 20,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GEDUNG KESENIAN SOETEDJO",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WATU JONGGOL PENGARITAN",
+    "motorcycle": {
+      "capacity": 30,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GURATAN WATU",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "WISATA BUNTON",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "EMBUNG RAWA BENER",
+    "motorcycle": {
+      "capacity": 60,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "MENARA PANDANG TERATAI",
+    "motorcycle": {
+      "capacity": 300,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 150,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 20,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BUKIT TENGTUNG",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "KOLAM RENANG TIRTA KEMBAR",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 25,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "MANGGALA RANCH",
+    "motorcycle": {
+      "capacity": 100,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "EMBUNG SABANG MAS BARON",
+    "motorcycle": {
+      "capacity": 30,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN BOTANI",
+    "motorcycle": {
+      "capacity": 80,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 20,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 3,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG GEDE",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG TIRTA SELA",
+    "motorcycle": {
+      "capacity": 30,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG KEMBAR",
+    "motorcycle": {
+      "capacity": 40,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 10,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "CURUG PETE",
+    "motorcycle": {
+      "capacity": 20,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "BHUMI BAMBU BATURRADEN",
+    "motorcycle": {
+      "capacity": 250,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "TAMAN PANEMON",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 40,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 5,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "MUSEUM BRI",
+    "motorcycle": {
+      "capacity": 50,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 15,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 2,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "SITUS WATU LUMPANG",
+    "motorcycle": {
+      "capacity": 20,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 0,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "LEMBU BENGGOLO FARM & RESORT",
+    "motorcycle": {
+      "capacity": 200,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 50,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 10,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "OEMAH GAMELAN",
+    "motorcycle": {
+      "capacity": 30,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 5,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 1,
+      "price": 5000
+    }
+  },
+  {
+    "destinations": "GOA MARIA KALIORI",
+    "motorcycle": {
+      "capacity": 150,
+      "price": 1000
+    },
+    "car": {
+      "capacity": 40,
+      "price": 2000
+    },
+    "bus": {
+      "capacity": 8,
+      "price": 5000
+    }
+  }
+]

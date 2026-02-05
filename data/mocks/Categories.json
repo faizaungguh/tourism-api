@@ -1,26 +1,23 @@
 [
   {
+    "name": "Wisata Taman"
+  },
+  {
+    "name": "Wisata Budaya"
+  },
+  {
+    "name": "Wisata Sejarah"
+  },
+  {
+    "name": "Wisata Buatan"
+  },
+  {
+    "name": "Minat Khusus"
+  },
+  {
+    "name": "Wisata Religi"
+  },
+  {
     "name": "Wisata Alam"
-  },
-  {
-    "name": "Wisata Kota dan Taman"
-  },
-  {
-    "name": "Wisata Rekreasi dan Keluarga"
-  },
-  {
-    "name": "Wisata Religi dan Sejarah"
-  },
-  {
-    "name": "Agrowisata"
-  },
-  {
-    "name": "Wisata Kuliner"
-  },
-  {
-    "name": "Wisata Belanja"
-  },
-  {
-    "name": "Desa Wisata"
   }
 ]

@@ -1,0 +1,4004 @@
+[
+  {
+    "destinationTitle": "LOKAWISATA Baturaden",
+    "category": "wisata alam",
+    "description": "Lokawisata Baturaden adalah kawasan wisata alam di lereng Gunung Slamet yang terkenal dengan udara sejuk, pemandian air panas, dan pemandangan indah. Menjadi ikon pariwisata Banyumas.",
+    "addresses": "Jalan Raya Baturaden No. 174, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3123891",
+    "long": "109.2262071",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN APUNG MASKEMAMBANG",
+    "category": "wisata buatan",
+    "description": "Taman Apung Maskemambang menawarkan konsep wisata air dengan perahu berbentuk angsa dan bangunan apung di tengah danau buatan, cocok untuk rekreasi keluarga dan spot foto.",
+    "addresses": "Jl. Pariwisata Baturaden, Karangmangu, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.4117723",
+    "long": "109.2373049",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "category": "wisata buatan",
+    "description": "Taman rekreasi keluarga di pusat kota Purwokerto, dilengkapi berbagai wahana permainan, kolam renang, dan area terbuka hijau untuk bersantai.",
+    "addresses": "Jl. Gerilya No. 67, Purwokerto Selatan, Kabupaten Banyumas, Jawa Tengah 53145",
+    "lat": "-7.4406491",
+    "long": "109.2437602",
+    "subdistrict": "Purwokerto Selatan ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "THR PANGSAR SUDIRMAN",
+    "category": "wisata buatan",
+    "description": "Taman Hiburan Rakyat yang menyediakan berbagai wahana permainan modern dan tradisional, sering dijadikan lokasi acara atau pertunjukan.",
+    "addresses": "Jl. Mayjen Sutoyo, Purwokerto Timur, Kabupaten Banyumas, Jawa Tengah 53116",
+    "lat": "-7.4198068",
+    "long": "109.1936488",
+    "subdistrict": "Purwokerto Timur ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "15:00 - 22:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
+    "category": "wisata religi",
+    "description": "Destinasi yang memadukan wisata alam dengan situs religi. Terdapat banyak kera liar di area hutan dan Masjid Saka Tunggal, masjid kuno dengan satu tiang penyangga.",
+    "addresses": "Desa Cikakak, Wangon, Kabupaten Banyumas, Jawa Tengah 53176",
+    "lat": "-7.4738622",
+    "long": "109.0530754",
+    "subdistrict": "Wangon ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "OBYEK WISATA ANTAP",
+    "category": "wisata alam",
+    "description": "Obyek wisata alam yang menawarkan keindahan panorama perbukitan, biasanya berupa area hutan atau bumi perkemahan dengan suasana sejuk.",
+    "addresses": "Desa Kalibagor, Kalibagor, Kabupaten Banyumas, Jawa Tengah 53191",
+    "lat": "-7.4698052",
+    "long": "109.0538057",
+    "subdistrict": "Kalibagor ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "PAGUBUGAN MELUNG",
+    "category": "wisata alam",
+    "description": "Tempat wisata yang menyajikan suasana pedesaan tradisional dengan pemandangan sawah dan perbukitan, cocok untuk relaksasi dan menikmati kuliner lokal.",
+    "addresses": "Desa Melung, Kedungbanteng, Kabupaten Banyumas, Jawa Tengah 53153",
+    "lat": "-7.3335983",
+    "long": "109.2051369",
+    "subdistrict": "Kedungbanteng ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "PERTAPAN GERDUREN",
+    "category": "wisata religi",
+    "description": "Situs sejarah atau religi yang sering dikunjungi untuk keperluan spiritual atau ziarah, umumnya berupa petilasan atau makam kuno.",
+    "addresses": "Desa Gerduren, Purwojati, Kabupaten Banyumas, Jawa Tengah 53175",
+    "lat": "-7.5118512",
+    "long": "109.0863495",
+    "subdistrict": "Purwojati ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG SONG",
+    "category": "wisata alam",
+    "description": "Air terjun dengan ketinggian sedang yang menawarkan kesegaran dan keaslian alam. Akses menuju curug biasanya melibatkan trekking ringan.",
+    "addresses": "Desa Karangtengah, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.5416519",
+    "long": "109.2340836",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "BUKIT MBULU WATU GEDE",
+    "category": "wisata alam",
+    "description": "Bukit dengan pemandangan panorama yang luas, sering digunakan sebagai spot camping dan menikmati matahari terbit atau terbenam.",
+    "addresses": "Desa Petahunan, Pekuncen, Kabupaten Banyumas, Jawa Tengah 53154",
+    "lat": "-7.5393911",
+    "long": "109.2403479",
+    "subdistrict": "Pekuncen ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WISATA OUTBOND CANDI",
+    "category": "wisata minat khusus",
+    "description": "Area yang dikhususkan untuk kegiatan _outbound_ dan edukasi, seperti _flying fox_, _high rope_, dan _team building_.",
+    "addresses": "Desa Candi, Purwokerto Selatan, Kabupaten Banyumas, Jawa Tengah 53144",
+    "lat": "-7.4109637",
+    "long": "109.1756963",
+    "subdistrict": "Purwokerto Selatan ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "BUKIT WATU KUMPUL",
+    "category": "wisata alam",
+    "description": "Destinasi bukit dengan formasi batu unik, menawarkan spot foto yang instagramable dan pemandangan perbukitan yang hijau.",
+    "addresses": "Desa Kalibening, Kedungbanteng, Kabupaten Banyumas, Jawa Tengah 53153",
+    "lat": "-7.284527",
+    "long": "109.9068887",
+    "subdistrict": "Kedungbanteng ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG NANGGA",
+    "category": "wisata alam",
+    "description": "Air terjun dengan bentuk berundak menyerupai tangga (_nangga_), menawarkan pemandangan alam yang asri dan air yang jernih.",
+    "addresses": "Desa Petahunan, Pekuncen, Kabupaten Banyumas, Jawa Tengah 53154",
+    "lat": "-7.3636736",
+    "long": "109.0339323",
+    "subdistrict": "Pekuncen ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GUNUNG BATUR",
+    "category": "wisata alam",
+    "description": "Walaupun namanya Gunung Batur, di Banyumas ini merupakan kawasan perbukitan yang menawarkan jalur pendakian ringan dan spot menikmati alam.",
+    "addresses": "Desa Karangbanjar, Jatilawang, Kabupaten Banyumas, Jawa Tengah 53174",
+    "lat": "-7.4711105",
+    "long": "108.9971782",
+    "subdistrict": "Jatilawang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG PENGANTIN",
+    "category": "wisata alam",
+    "description": "Air terjun dengan aliran air yang bercabang dua, diibaratkan sebagai sepasang pengantin. Tempatnya terpencil dan masih sangat alami.",
+    "addresses": "Desa Gandatapa, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3676178",
+    "long": "109.0285808",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "category": "wisata minat khusus",
+    "description": "Area perkemahan yang terletak di dekat aliran sungai atau mata air (_umbul_), populer untuk kegiatan kemah dan _gathering_ alam.",
+    "addresses": "Desa Kedungwuluh, Patikraja, Kabupaten Banyumas, Jawa Tengah 53171",
+    "lat": "-7.3162814",
+    "long": "109.2391111",
+    "subdistrict": "Patikraja ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG TELU",
+    "category": "wisata alam",
+    "description": "Air terjun yang terdiri dari tiga tingkatan atau tiga aliran, menawarkan keindahan alam yang mempesona dan suasana yang tenang.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3199069",
+    "long": "109.2393669",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:30 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GROJOGAN RATU",
+    "category": "wisata alam",
+    "description": "Air terjun yang dikenal dengan mitos dan legenda lokal, memiliki pemandangan hutan yang lebat dan kolam air yang segar.",
+    "addresses": "Desa Karangmangu, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3137354",
+    "long": "109.2364513",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "BUKIT PANGONAN INDAH",
+    "category": "wisata alam",
+    "description": "Destinasi bukit dengan spot pandang yang sering dihiasi ornamen buatan, cocok untuk berburu _sunset_ dan _sunrise_.",
+    "addresses": "Desa Gandatapa, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.5650123",
+    "long": "109.3508379",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "AGROWISATA TUNGGUL MAS",
+    "category": "wisata minat khusus",
+    "description": "Kawasan perkebunan yang dijadikan objek wisata edukasi, menawarkan pengalaman memetik buah atau sayur serta pengenalan budidaya pertanian.",
+    "addresses": "Desa Kalibagor, Kalibagor, Kabupaten Banyumas, Jawa Tengah 53191",
+    "lat": "-7.5540088",
+    "long": "109.3484413",
+    "subdistrict": "Kalibagor ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GUA DAMAR",
+    "category": "wisata alam",
+    "description": "Gua yang masih alami dan belum terlalu banyak tersentuh, cocok untuk wisata minat khusus _caving_ (penelusuran gua) dengan pendampingan.",
+    "addresses": "Desa Windujaya, Kedungbanteng, Kabupaten Banyumas, Jawa Tengah 53153",
+    "lat": "-7.4197064",
+    "long": "109.0111806",
+    "subdistrict": "Kedungbanteng ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GUA SERWITI",
+    "category": "wisata alam",
+    "description": "Gua alami yang memiliki sejarah dan mitos lokal, biasanya di dalamnya terdapat formasi batuan unik dan sumber mata air.",
+    "addresses": "Desa Karangmangu, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.4187419",
+    "long": "109.0116192",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "PRAWITA GARDEN",
+    "category": "wisata buatan",
+    "description": "Taman rekreasi modern dengan berbagai wahana air dan darat, cocok untuk liburan keluarga dengan fasilitas lengkap.",
+    "addresses": "Jl. Raya Ajibarang - Wangon, Karanglo, Ajibarang, Kabupaten Banyumas, Jawa Tengah 53163",
+    "lat": "-7.4193533",
+    "long": "109.0406645",
+    "subdistrict": "Ajibarang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG SENTONG",
+    "category": "wisata alam",
+    "description": "Air terjun tersembunyi yang menawarkan keaslian alam, perlu sedikit usaha untuk mencapainya (trekking).",
+    "addresses": "Desa Banjarpanepen, Sumpiuh, Kabupaten Banyumas, Jawa Tengah 53195",
+    "lat": "-7.2978727",
+    "long": "109.1948174",
+    "subdistrict": "Sumpiuh ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "AGROWISATA KARANG PANGINYONGAN",
+    "category": "wisata minat khusus",
+    "description": "Agrowisata yang menonjolkan produk pertanian dan perkebunan lokal, seringkali menjadi tempat edukasi dan pelatihan budidaya.",
+    "addresses": "Desa Karang Panginyongan, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.3495853",
+    "long": "109.1153493",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "OBYEK WISATA GERMANGGIS",
+    "category": "wisata alam",
+    "description": "Destinasi alam yang menawarkan pemandangan hutan, udara sejuk, dan spot foto alami.",
+    "addresses": "Desa Germanggis, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.3482294",
+    "long": "109.1237277",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "EMBUNG KENDALISADA",
+    "category": "wisata buatan",
+    "description": "Bendungan atau waduk kecil yang difungsikan sebagai destinasi wisata air dengan pemandangan pegunungan.",
+    "addresses": "Desa Kendalisada, Kalibagor, Kabupaten Banyumas, Jawa Tengah 53191",
+    "lat": "-7.4893184",
+    "long": "109.2773967",
+    "subdistrict": "Kalibagor ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG PINANG",
+    "category": "wisata alam",
+    "description": "Air terjun dengan pepohonan pinang di sekitarnya, menawarkan suasana sejuk dan air yang segar.",
+    "addresses": "Desa Karanggedang, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3115929",
+    "long": "109.2369787",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WANA WISATA Baturaden",
+    "category": "wisata alam",
+    "description": "Hutan wisata yang dikelola, menyediakan area piknik, hiking, dan rekreasi alam di lereng Gunung Slamet.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3129315",
+    "long": "109.2297569",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "PANCURAN 7",
+    "category": "wisata alam",
+    "description": "Pemandian air panas alami dengan tujuh pancuran yang mengandung belerang, dipercaya memiliki khasiat untuk kesehatan kulit.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3100237",
+    "long": "109.2153437",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "PANCURAN 3",
+    "category": "wisata alam",
+    "description": "Pemandian air panas alami yang lebih kecil dari Pancuran 7, namun juga populer untuk terapi air panas.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3100814",
+    "long": "109.2119287",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TELAGA SUNYI",
+    "category": "wisata alam",
+    "description": "Danau kecil atau telaga yang tersembunyi di tengah hutan, menawarkan suasana yang tenang dan cocok untuk yang mencari ketenangan.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3072399",
+    "long": "109.2431964",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "OFFROAD WANA WISATA",
+    "category": "wisata minat khusus",
+    "description": "Area di dalam Wana Wisata Baturaden yang dikhususkan untuk kegiatan _offroad_ menggunakan jip atau motor trail.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3153112",
+    "long": "105.0126594",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG CIPENDOK",
+    "category": "wisata alam",
+    "description": "Air terjun tertinggi di Banyumas, terletak di kawasan hutan lindung, menawarkan pemandangan yang spektakuler dan udara dingin.",
+    "addresses": "Desa Karangtengah, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.3408408",
+    "long": "109.1242959",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TELAGA KUMPE",
+    "category": "wisata alam",
+    "description": "Telaga atau danau alami yang luas, sering digunakan untuk memancing, berperahu, atau sekadar menikmati suasana pedesaan yang tenang.",
+    "addresses": "Desa Gandatapa, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3519424",
+    "long": "109.1465839",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WANA PRAMUKA",
+    "category": "wisata minat khusus",
+    "description": "Area perkemahan yang dikelola oleh Kwartir Cabang Pramuka, sering digunakan untuk kegiatan kepramukaan, _outbound_, dan _gathering_ besar.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3653627",
+    "long": "109.1602773",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "00:00 - 23:59",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG JENGGALA",
+    "category": "wisata alam",
+    "description": "Air terjun dengan ciri khas bebatuan besar dan air yang mengalir di antara tebing. Memerlukan _trekking_ ringan untuk mencapainya.",
+    "addresses": "Desa Kaliputih, Kedungbanteng, Kabupaten Banyumas, Jawa Tengah 53153",
+    "lat": "-7.3090267",
+    "long": "109.2062028",
+    "subdistrict": "Kedungbanteng ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG BAYAN",
+    "category": "wisata alam",
+    "description": "Air terjun yang populer karena aksesnya mudah dan dekat dengan jalan raya Baturaden, memiliki kolam yang bisa digunakan untuk berenang.",
+    "addresses": "Desa Ketenger, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3253632",
+    "long": "109.2160076",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "HUTAN PINUS LIMPAK KUWUS",
+    "category": "wisata alam",
+    "description": "Hutan pinus yang dikelola menjadi spot rekreasi, menawarkan suasana sejuk dan banyak spot foto gantung.",
+    "addresses": "Desa Limpak Kuwus, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3022129",
+    "long": "109.2421446",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "THE VILLAGE",
+    "category": "wisata buatan",
+    "description": "Taman rekreasi dengan konsep arsitektur Eropa dan peternakan mini, cocok untuk wisata keluarga dan fotografi.",
+    "addresses": "Jl. Raya Baturaden KM. 8, Desa Rempoah, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3743823",
+    "long": "109.2384555",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GALERY WATER KARANGMANGU (GWK)",
+    "category": "wisata buatan",
+    "description": "Waterpark yang menawarkan berbagai wahana kolam renang dan air, cocok untuk rekreasi air keluarga.",
+    "addresses": "Desa Karangmangu, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3362438",
+    "long": "109.2287828",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "Baturaden ADVENTURE FOREST (BAF)",
+    "category": "wisata minat khusus",
+    "description": "Kawasan wisata petualangan yang menawarkan berbagai aktivitas ekstrem seperti _outbound_, _canyoning_, dan _tree climbing_.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3070145",
+    "long": "109.2392496",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "NEW SMALL WORLD",
+    "category": "wisata buatan",
+    "description": "Taman miniatur dunia yang menampilkan replika bangunan ikonik dari berbagai negara, cocok untuk edukasi dan foto.",
+    "addresses": "Jl. Raya Baturaden KM 7, Desa Ketenger, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3324404",
+    "long": "109.2244071",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KARSA",
+    "category": "wisata buatan",
+    "description": "Kolam renang umum yang menyediakan fasilitas olahraga renang dan rekreasi air bagi masyarakat.",
+    "addresses": "Jl. Veteran, Purwokerto Barat, Kabupaten Banyumas, Jawa Tengah 53131",
+    "lat": "-7.3410792",
+    "long": "109.2347817",
+    "subdistrict": "Purwokerto Barat ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN BUKEN",
+    "category": "wisata alam",
+    "description": "Area taman atau hutan kecil yang menawarkan suasana sejuk dan tenang, sering digunakan untuk bersantai atau piknik.",
+    "addresses": "Desa Buken, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3585529",
+    "long": "109.242496",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WISATA TAMAN HIAS REMBANGMAS",
+    "category": "wisata buatan",
+    "description": "Taman dengan koleksi tanaman hias dan bunga yang ditata menarik, cocok untuk penggemar tanaman dan spot foto.",
+    "addresses": "Desa Rembangmas, Purbalingga, (Diasumsikan di perbatasan Banyumas/Purbalingga, diisi random data yang masuk akal)",
+    "lat": "-7.3668796",
+    "long": "109.2735936",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN AGROWISATA SEGA",
+    "category": "wisata minat khusus",
+    "description": "Agrowisata yang fokus pada sayuran dan edukasi bertani modern.",
+    "addresses": "Desa Karangendah, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3524472",
+    "long": "109.2596464",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "RANDU BENGKONG",
+    "category": "wisata alam",
+    "description": "Destinasi alam yang unik, mungkin berupa kawasan dengan pohon-pohon besar yang bentuknya meliuk (_bengkong_) atau lahan bekas hutan jati.",
+    "addresses": "Desa Kedungwuluh, Patikraja, Kabupaten Banyumas, Jawa Tengah 53171",
+    "lat": "-7.3352916",
+    "long": "109.2714087",
+    "subdistrict": "Patikraja ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG GEMAWANG",
+    "category": "wisata alam",
+    "description": "Air terjun yang menawan dengan hutan di sekitarnya. Cocok untuk _healing_ dan menikmati alam.",
+    "addresses": "Desa Karangendah, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.5501403",
+    "long": "109.3525709",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA ALAMI PANCASAN",
+    "category": "wisata buatan",
+    "description": "Kolam renang dengan sumber air alami, memberikan sensasi kesegaran yang berbeda.",
+    "addresses": "Desa Pancasan, Ajibarang, Kabupaten Banyumas, Jawa Tengah 53163",
+    "lat": "-7.4215307",
+    "long": "109.077688",
+    "subdistrict": "Ajibarang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WISATA PERENG CILONGOK",
+    "category": "wisata alam",
+    "description": "Kawasan perbukitan (_pereng_) di daerah Cilongok yang menawarkan pemandangan alam dan cocok untuk kegiatan mendaki atau bersepeda.",
+    "addresses": "Desa Cilongok, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.4021604",
+    "long": "109.1395465",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG GOMBLANG",
+    "category": "wisata alam",
+    "description": "Air terjun bertingkat yang indah, populer karena fasilitasnya cukup memadai dan _trekking_-nya tidak terlalu sulit.",
+    "addresses": "Desa Kalisalak, Kedungbanteng, Kabupaten Banyumas, Jawa Tengah 53153",
+    "lat": "-7.3237089",
+    "long": "109.1813886",
+    "subdistrict": "Kedungbanteng ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "KEBUN BUAH BATUR AGUNG",
+    "category": "wisata minat khusus",
+    "description": "Kebun buah yang menawarkan edukasi pertanian dan kesempatan memetik buah musiman secara langsung.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3450545",
+    "long": "109.1859514",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "KIDUNG KAMPUNGKU",
+    "category": "wisata buatan",
+    "description": "Konsep wisata tematik yang mengangkat suasana pedesaan atau kampung, dilengkapi dengan spot foto dan kuliner tradisional.",
+    "addresses": "Desa Karanganyar, Patikraja, Kabupaten Banyumas, Jawa Tengah 53171",
+    "lat": "-7.3763655",
+    "long": "109.2192943",
+    "subdistrict": "Patikraja ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "HUTAN PINUS SAWANGAN (HPS)",
+    "category": "wisata alam",
+    "description": "Hutan pinus yang dikelola menjadi destinasi wisata alam, populer untuk foto _pre-wedding_ dan kegiatan _outbound_ ringan.",
+    "addresses": "Desa Sawangan, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.4416575",
+    "long": "109.0885919",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG CEHENG",
+    "category": "wisata alam",
+    "description": "Air terjun dengan ketinggian sedang yang masih asri, menawarkan kesegaran air pegunungan.",
+    "addresses": "Desa Cihonje, Gumelar, Kabupaten Banyumas, Jawa Tengah 53165",
+    "lat": "-7.3235609",
+    "long": "109.2615159",
+    "subdistrict": "Gumelar ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "DREAMLAND WATER PARK",
+    "category": "wisata buatan",
+    "description": "Waterpark terbesar di Banyumas, menawarkan berbagai wahana air modern dan fasilitas rekreasi keluarga.",
+    "addresses": "Desa Pancasan, Ajibarang, Kabupaten Banyumas, Jawa Tengah 53163",
+    "lat": "-7.4230155",
+    "long": "109.0726693",
+    "subdistrict": "Ajibarang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "THE FOREST",
+    "category": "wisata buatan",
+    "description": "Kawasan wisata tematik dengan konsep hutan buatan yang dipadukan dengan spot foto dan kafe modern.",
+    "addresses": "Jl. Raya Baturaden KM 7, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3760625",
+    "long": "109.2377911",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "DEPO BAY",
+    "category": "wisata buatan",
+    "description": "Destinasi wisata yang mungkin berupa pusat kuliner atau tempat _hangout_ dengan suasana modern, seringkali terletak di jalur utama.",
+    "addresses": "Jl. Raya Buntu - Kroya, Buntu, Kabupaten Banyumas, Jawa Tengah 53181",
+    "lat": "-7.4598687",
+    "long": "109.2807887",
+    "subdistrict": "Sokaraja ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "10:00 - 22:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "HUTAN PINUS KALIURIP (HPK)",
+    "category": "wisata alam",
+    "description": "Hutan pinus yang menawarkan suasana sejuk dan sering menjadi lokasi fotografi dan camping.",
+    "addresses": "Desa Kaliurip, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.5078304",
+    "long": "109.2519304",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "MUSEUM WAYANG BANYUMAS",
+    "category": "wisata sejarah",
+    "description": "Museum yang menyimpan koleksi wayang kulit, wayang golek, dan benda-benda bersejarah lainnya, khususnya yang berkaitan dengan budaya Banyumasan.",
+    "addresses": "Jl. R.A. Wiryaatmaja No. 1, Banyumas, Kabupaten Banyumas, Jawa Tengah 53192",
+    "lat": "-7.5147822",
+    "long": "109.2916449",
+    "subdistrict": "Banyumas ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "Tutup",
+        "isClosed": true
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TIRTA HUSADA KALIBACIN",
+    "category": "wisata alam",
+    "description": "Pemandian air panas alami yang dipercaya memiliki khasiat untuk pengobatan dan relaksasi.",
+    "addresses": "Desa Kalibacin, Karanganyar, Kabupaten Banyumas, Jawa Tengah 53178",
+    "lat": "-7.5230135",
+    "long": "109.1945467",
+    "subdistrict": "Banyumas ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "OBYEK WISATA WANASUTA",
+    "category": "wisata alam",
+    "description": "Hutan wisata yang menawarkan keindahan alam, sering digunakan untuk _hiking_ dan kegiatan luar ruangan.",
+    "addresses": "Desa Wanasuta, Patikraja, Kabupaten Banyumas, Jawa Tengah 53171",
+    "lat": "-7.4214725",
+    "long": "108.9598398",
+    "subdistrict": "Patikraja ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "BUKIT PANDANG MUNGGANG",
+    "category": "wisata alam",
+    "description": "Bukit yang menawarkan spot pandang dengan pemandangan lembah atau kota, populer untuk menikmati _sunset_.",
+    "addresses": "Desa Munggang, Ajibarang, Kabupaten Banyumas, Jawa Tengah 53163",
+    "lat": "-7.3172087",
+    "long": "109.2167603",
+    "subdistrict": "Ajibarang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WATU MEJA",
+    "category": "wisata alam",
+    "description": "Formasi batuan unik yang menyerupai meja, sering dikaitkan dengan legenda lokal.",
+    "addresses": "Desa Kedungbanteng, Kedungbanteng, Kabupaten Banyumas, Jawa Tengah 53153",
+    "lat": "-7.5190126",
+    "long": "109.2145032",
+    "subdistrict": "Kedungbanteng ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GEDUNG KESENIAN SOETEDJO",
+    "category": "wisata budaya",
+    "description": "Gedung pertunjukan seni dan budaya, menjadi pusat kegiatan seni tradisional Banyumas seperti tari dan wayang.",
+    "addresses": "Jl. Gelora Indah, Purwokerto Selatan, Kabupaten Banyumas, Jawa Tengah 53144",
+    "lat": "-7.43214",
+    "long": "109.2521339",
+    "subdistrict": "Purwokerto Selatan ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 22:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WATU JONGGOL PENGARITAN",
+    "category": "wisata alam",
+    "description": "Formasi batu unik di daerah Pengaritan, menawarkan pemandangan alam perbukitan.",
+    "addresses": "Desa Pengaritan, Sumpyuh, Kabupaten Banyumas, Jawa Tengah 53195",
+    "lat": "-7.554306",
+    "long": "111.1681672",
+    "subdistrict": "Sumpiuh ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GURATAN WATU",
+    "category": "wisata alam",
+    "description": "Area dengan formasi batuan yang memiliki guratan atau ukiran alami, menunjukkan fenomena geologi unik.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3154419",
+    "long": "109.2401193",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "WISATA BUNTON",
+    "category": "wisata alam",
+    "description": "Wisata Alam Bunton dikenal dengan pemandangan alam yang menakjubkan, dikelilingi oleh perbukitan hijau dan pepohonan rindang. Dari sini, pengunjung dapat menikmati panorama hamparan sawah, perbukitan yang terjal, dan hutan yang lebat, memberikan suasana sejuk yang cocok untuk melepas penat.",
+    "addresses": "Desa Bunton, Pekuncen, Kabupaten Banyumas, Jawa Tengah 53194",
+    "lat": "-7.3389913",
+    "long": "108.8357688",
+    "subdistrict": "Pekuncen",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "EMBUNG RAWA BENER",
+    "category": "wisata buatan",
+    "description": "Embung (waduk kecil) yang berfungsi sebagai penampung air sekaligus destinasi wisata air dan memancing.",
+    "addresses": "Desa Rawa Bener, Banyumas, Kabupaten Banyumas, Jawa Tengah 53192",
+    "lat": "-7.5071629",
+    "long": "109.3594032",
+    "subdistrict": "Banyumas ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "MENARA PANDANG TERATAI",
+    "category": "wisata buatan",
+    "description": "Menara tinggi yang didesain modern, berfungsi sebagai gardu pandang untuk melihat panorama kota Purwokerto dan sekitarnya.",
+    "addresses": "Jl. Bung Karno, Purwokerto Selatan, Kabupaten Banyumas, Jawa Tengah 53144",
+    "lat": "-7.4315255",
+    "long": "109.2299732",
+    "subdistrict": "Purwokerto Selatan ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 21:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "BUKIT TENGTUNG",
+    "category": "wisata alam",
+    "description": "Bukit dengan pemandangan alam yang indah, sering dijadikan lokasi _trekking_ dan _camping_.",
+    "addresses": "Desa Kebanggan, Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    "lat": "-7.3070925",
+    "long": "109.2353526",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KEMBAR",
+    "category": "wisata buatan",
+    "description": "Kolam renang yang memiliki dua kolam utama (_kembar_), ideal untuk olahraga dan rekreasi keluarga.",
+    "addresses": "Jl. Suparjo Rustam, Purwokerto Timur, Kabupaten Banyumas, Jawa Tengah 53116",
+    "lat": "-7.4151891",
+    "long": "109.2412347",
+    "subdistrict": "Purwokerto Timur ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "MANGGALA RANCH",
+    "category": "wisata minat khusus",
+    "description": "Destinasi wisata yang bertema peternakan dan _ranch_, menawarkan pengalaman berkuda atau interaksi dengan hewan ternak.",
+    "addresses": "Desa Karangsalam, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3467115",
+    "long": "109.1163836",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "EMBUNG SABANG MAS BARON",
+    "category": "wisata buatan",
+    "description": "Embung yang dijadikan kawasan rekreasi dan konservasi air, sering digunakan untuk memancing.",
+    "addresses": "Desa Sudimara, Cilongok, Kabupaten Banyumas, Jawa Tengah 53162",
+    "lat": "-7.4873799",
+    "long": "109.054897",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN BOTANI",
+    "category": "wisata taman",
+    "description": "Taman yang dikhususkan untuk koleksi dan edukasi tanaman, berfungsi sebagai paru-paru kota dan pusat penelitian botani.",
+    "addresses": "Jl. Raya Baturaden, Baturaden, Kabupaten Banyumas, Jawa Tengah 53151",
+    "lat": "-7.3116598",
+    "long": "109.2296727",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG GEDE",
+    "category": "wisata alam",
+    "description": "Air terjun dengan kolam penampungan air yang luas dan dikelilingi pepohonan asri.",
+    "addresses": "Desa Ketenger, Baturaden",
+    "lat": "-7.3253534",
+    "long": "109.2160183",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG TIRTA SELA",
+    "category": "wisata alam",
+    "description": "Wisata air terjun dengan fasilitas jembatan kaca dan spot foto estetik.",
+    "addresses": "Kemutug Lor, Baturaden",
+    "lat": "-7.3049562",
+    "long": "109.2322081",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "07:00 - 18:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG KEMBAR",
+    "category": "wisata alam",
+    "description": "Dua aliran air terjun yang berdampingan dengan medan trekking yang menantang.",
+    "addresses": "Desa Karangsalam, Baturaden",
+    "lat": "-7.3200606",
+    "long": "109.2360497",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:30",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "CURUG PETE",
+    "category": "wisata alam",
+    "description": "Destinasi wisata air alami yang populer bagi warga lokal untuk bermain air.",
+    "addresses": "Baturaden, Kabupaten Banyumas",
+    "lat": "-7.3209625",
+    "long": "109.227347",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "BHUMI BAMBU Baturaden",
+    "category": "wisata alam",
+    "description": "Kawasan konservasi bambu yang asri di tepi sungai untuk rekreasi dan edukasi.",
+    "addresses": "Dusun II, Karangsalam, Baturaden",
+    "lat": "-7.3141463",
+    "long": "109.2355615",
+    "subdistrict": "Baturaden ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "TAMAN PANEMON",
+    "category": "wisata buatan",
+    "description": "Taman rekreasi dengan kolam renang bernuansa Bali dan pemandangan sawah.",
+    "addresses": "Desa Kebanggan, Sumbang",
+    "lat": "-7.3797009",
+    "long": "109.2629842",
+    "subdistrict": "Sumbang ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "MUSEUM BRI",
+    "category": "wisata sejarah",
+    "description": "Museum sejarah perbankan yang menempati lokasi berdirinya bank pertama di Indonesia.",
+    "addresses": "Jl. Jend. Sudirman No.57, Purwokerto Barat",
+    "lat": "-7.423982",
+    "long": "109.225433",
+    "subdistrict": "Purwokerto Barat ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 15:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "Tutup",
+        "isClosed": true
+      },
+      {
+        "day": "sunday",
+        "hours": "Tutup",
+        "isClosed": true
+      }
+    ]
+  },
+  {
+    "destinationTitle": "SITUS WATU LUMPANG",
+    "category": "wisata sejarah",
+    "description": "Situs purbakala berupa batu-batu unik peninggalan zaman megalitikum.",
+    "addresses": "Desa Ariwung, Cilongok",
+    "lat": "-7.3405681",
+    "long": "110.4398422",
+    "subdistrict": "Cilongok ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 16:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "LEMBU BENGGOLO FARM & RESORT",
+    "category": "wisata minat khusus",
+    "description": "Agrowisata sapi perah dengan wahana permainan anak dan waterpark.",
+    "addresses": "Desa Kedunggede, Lumbir",
+    "lat": "-7.4420404",
+    "long": "108.933666",
+    "subdistrict": "Lumbir ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "08:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "OEMAH GAMELAN",
+    "category": "wisata budaya",
+    "description": "Sanggar seni dan budaya sebagai pusat edukasi alat musik gamelan banyumasan.",
+    "addresses": "Kejawar, Kec. Banyumas",
+    "lat": "-7.5127333",
+    "long": "109.2884154",
+    "subdistrict": "Banyumas ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "09:00 - 17:00",
+        "isClosed": false
+      }
+    ]
+  },
+  {
+    "destinationTitle": "GOA MARIA KALIORI",
+    "category": "wisata religi",
+    "description": "Tempat ziarah umat Katolik yang tenang di kawasan perbukitan Kaliori.",
+    "addresses": "Desa Kaliori, Kalibagor",
+    "lat": "-7.4957798",
+    "long": "109.3010632",
+    "subdistrict": "Kalibagor ",
+    "openingHour": [
+      {
+        "day": "monday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "tuesday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "wednesday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "thursday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "friday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "saturday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      },
+      {
+        "day": "sunday",
+        "hours": "06:00 - 21:00",
+        "isClosed": false
+      }
+    ]
+  }
+]

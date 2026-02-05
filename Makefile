@@ -1,26 +1,17 @@
 import-admin:
-	node data/seeds/seeds.mjs --import-admin
+	node data/seeds/seeding.mjs --import-admin
 
 import-default:
-	node data/seeds/seeds.mjs --import-default
+	node data/seeds/seeding.mjs --import-data
 
-import-all:
-	node data/seeds/seeds.mjs --import-all
+import-destination:
+	node data/seeds/seeding.mjs --import-destination
 
-import-tourist-data:
-	node data/seeds/seeds.mjs --import-tourist
-
-delete-tourist-data:
-	node data/seeds/seeds.mjs --delete-tourist
+delete-destination:
+	node data/seeds/seeding.mjs --delete-destination
 
 delete-admin:
-	node data/seeds/seeds.mjs --delete-admin
+	node data/seeds/seeding.mjs --delete-admin
 
-delete-default:
-	node data/seeds/seeds.mjs --delete-default
-
-delete-all:
-	node data/seeds/seeds.mjs --delete-all && rm -rf public/images
-
-dev-default:
-	node data/seeds/seeds.mjs --delete-all && node data/seeds/seeds.mjs --import-all
+delete-data:
+	node data/seeds/seeding.mjs --delete-admin
