@@ -7,6 +7,12 @@ import-default:
 import-destination:
 	node data/seeds/seeding.mjs --import-destination
 
+import-ticket-destination:
+	node data/seeds/seeding.mjs --import-ticket-destination
+
+delete-ticket-destination:
+	node data/seeds/seeding.mjs --delete-ticket-destination
+
 delete-destination:
 	node data/seeds/seeding.mjs --delete-destination
 

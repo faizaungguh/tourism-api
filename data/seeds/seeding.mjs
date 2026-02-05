@@ -10,6 +10,7 @@ import adminDefault from '../mocks/Admin.json' with { type: 'json' };
 import subdistrictData from '../mocks/Subdistricts.json' with { type: 'json' };
 import categoryData from '../mocks/Categories.json' with { type: 'json' };
 import destinationData from '../mocks/ready-seed/seed-destination.json' with { type: 'json' };
+import ticketPriceData from '../mocks/ready-seed/seed-ticketPrice.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -194,6 +195,67 @@ const deleteDestination = async () => {
   }
 };
 
+const importTicketDestination = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai import data harga tiket destinasi...');
+
+    const destinations = await Destination.find();
+    let updatedCount = 0;
+    let notFoundCount = 0;
+
+    for (const item of ticketPriceData) {
+      const titleKey = Object.keys(item).find((k) => k.trim() === 'destinationTitle');
+      const priceKey = Object.keys(item).find((k) => k.trim() === 'ticketPrice');
+
+      const rawTitle = titleKey ? item[titleKey] : null;
+      const rawPrice = priceKey ? item[priceKey] : 0;
+
+      if (!rawTitle) {
+        continue;
+      }
+
+      const jsonTitle = rawTitle.trim().toLowerCase();
+      const destination = destinations.find(
+        (dest) => dest.destinationTitle.trim().toLowerCase() === jsonTitle,
+      );
+
+      if (destination) {
+        destination.ticket = {
+          adult: Number(rawPrice) || 0,
+          child: 0,
+        };
+        await destination.save();
+        updatedCount++;
+      } else {
+        console.warn(`[SKIP] Destinasi "${rawTitle}" tidak ditemukan.`);
+        notFoundCount++;
+      }
+    }
+
+    console.log(`${updatedCount} harga tiket berhasil diperbarui! (${notFoundCount} dilewati)`);
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mengimpor data harga tiket:', error);
+    process.exit(1);
+  }
+};
+
+const deleteTicketDestination = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai reset data harga tiket destinasi...');
+
+    await Destination.updateMany({}, { ticket: { adult: 0, child: 0 } });
+
+    console.log('Data harga tiket destinasi berhasil di-reset!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mereset data harga tiket:', error);
+    process.exit(1);
+  }
+};
+
 if (process.argv[2] === '--import-admin') {
   importAdmin();
 } else if (process.argv[2] === '--delete-admin') {
@@ -206,6 +268,10 @@ if (process.argv[2] === '--import-admin') {
   importDestination();
 } else if (process.argv[2] === '--delete-destination') {
   deleteDestination();
+} else if (process.argv[2] === '--import-ticket-destination') {
+  importTicketDestination();
+} else if (process.argv[2] === '--delete-ticket-destination') {
+  deleteTicketDestination();
 } else {
   console.log(
     'Perintah tidak valid. Gunakan flag: --import-admin, --delete-admin, --import-data, --delete-data',
