@@ -1,1651 +1,1493 @@
 [
   {
-    "destinations": "LOKAWISATA BATURRADEN",
-    "facility": [
-      {
-        "name": "Toilet bersih",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios souvenir",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Food court",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Gazebo istirahat",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat informasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN APUNG MASKEMAMBANG",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Food stall",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Gazebo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN REKREASI ANDHANG PANGRENAN",
-    "facility": [
-      {
-        "name": "Food Court",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Aula serbaguna",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "THR PANGSAR SUDIRMAN",
-    "facility": [
-      {
-        "name": "Food stalls",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
-    "facility": [
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios makanan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "OBYEK WISATA ANTAP",
-    "facility": [
-      {
-        "name": "Gazebo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios kecil",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "PAGUBUGAN MELUNG",
-    "facility": [
-      {
-        "name": "Restoran/Warung makan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "PERTAPAN GERDUREN",
-    "facility": [
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG SONG",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios kecil",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "BUKIT MBULU WATU GEDE",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "WISATA OUTBOND CANDI",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Aula",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Catering service",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "BUKIT WATU KUMPUL",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung kopi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG NANGGA",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios makanan sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GUNUNG BATUR",
-    "facility": [
-      {
-        "name": "Mushola sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG PENGANTIN",
-    "facility": [
-      {
-        "name": "Toilet sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG TELU",
-    "facility": [
-      {
-        "name": "Warung makan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GROJOGAN RATU",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "BUKIT PANGONAN INDAH",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios makanan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "AGROWISATA TUNGGUL MAS",
-    "facility": [
-      {
-        "name": "Kafe",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat oleh-oleh",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GUA DAMAR",
-    "facility": [
-      {
-        "name": "Pemandu lokal",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GUA SERWITI",
-    "facility": [
-      {
-        "name": "Pemandu lokal",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "PRAWITA GARDEN",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Food court",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Loker",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Gazebo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG SENTONG",
-    "facility": [
-      {
-        "name": "Warung sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "AGROWISATA KARANG PANGINYONGAN",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat oleh-oleh",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Gazebo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "OBYEK WISATA GERMANGGIS",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "EMBUNG KENDALISADA",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG PINANG",
-    "facility": [
-      {
-        "name": "Toilet sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "WANA WISATA BATURRADEN",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios makanan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "PANCURAN 7",
-    "facility": [
-      {
-        "name": "Warung makan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Ruang ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "PANCURAN 3",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TELAGA SUNYI",
-    "facility": [
-      {
-        "name": "Toilet sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "OFFROAD WANA WISATA",
-    "facility": [
-      {
-        "name": "Basecamp",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG CIPENDOK",
-    "facility": [
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TELAGA KUMPE",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung makan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "WANA PRAMUKA",
-    "facility": [
-      {
-        "name": "Aula",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Dapur umum",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG JENGGALA",
-    "facility": [
-      {
-        "name": "Warung sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG BAYAN",
-    "facility": [
-      {
-        "name": "Penginapan/Homestay",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung makan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "HUTAN PINUS LIMPAK KUWUS",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "THE VILLAGE",
-    "facility": [
-      {
-        "name": "Restoran",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kafe",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GALERY WATER KARANGMANGU (GWK)",
-    "facility": [
-      {
-        "name": "Loker",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kantin",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "BATURRADEN ADVENTURE FOREST (BAF)",
-    "facility": [
-      {
-        "name": "Peralatan keamanan lengkap",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Basecamp",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "NEW SMALL WORLD",
-    "facility": [
-      {
-        "name": "Kafe",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Restoran",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "KOLAM RENANG TIRTA KARSA",
-    "facility": [
-      {
-        "name": "Kantin",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Ruang ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN BUKEN",
-    "facility": [
-      {
-        "name": "Toilet sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "WISATA TAMAN HIAS REMBANGMAS",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN AGROWISATA SEGA",
-    "facility": [
-      {
-        "name": "Kafe",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG GEMAWANG",
-    "facility": [
-      {
-        "name": "Warung kecil",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "KOLAM RENANG TIRTA ALAMI PANCASAN",
-    "facility": [
-      {
-        "name": "Kantin",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Ruang ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG GOMBLANG",
-    "facility": [
-      {
-        "name": "Warung makan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Gazebo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "KEBUN BUAH BATUR AGUNG",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kios buah",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "KIDUNG KAMPUNGKU",
-    "facility": [
-      {
-        "name": "Restoran",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "HUTAN PINUS SAWANGAN (HPS)",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG CEHENG",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "DREAMLAND WATER PARK",
-    "facility": [
-      {
-        "name": "Food court",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Loker",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Ruang ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "THE FOREST",
-    "facility": [
-      {
-        "name": "Kafe/Restoran",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "DEPO BAY",
-    "facility": [
-      {
-        "name": "Food court",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "HUTAN PINUS KALIURIP (HPK)",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "MUSEUM WAYANG BANYUMAS",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat informasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TIRTA HUSADA KALIBACIN",
-    "facility": [
-      {
-        "name": "Ruang Ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "BUKIT PANDANG MUNGGANG",
-    "facility": [
-      {
-        "name": "Warung kecil",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GEDUNG KESENIAN SOETEDJO",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Ruang Rias",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "WISATA BUNTON",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "EMBUNG RAWA BENER",
-    "facility": [
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "MENARA PANDANG TERATAI",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Lift",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat Souvenir",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "KOLAM RENANG TIRTA KEMBAR",
-    "facility": [
-      {
-        "name": "Kantin",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Ruang ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "MANGGALA RANCH",
-    "facility": [
-      {
-        "name": "Kafe",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Sewa Kuda",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "EMBUNG SABANG MAS BARON",
-    "facility": [
-      {
-        "name": "Warung sederhana",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN BOTANI",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Perpustakaan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat informasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG GEDE",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Camping Ground",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Penginapan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG TIRTA SELA",
-    "facility": [
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG KEMBAR",
-    "facility": [
-      {
-        "name": "Mushola",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kamar Ganti",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "CURUG PETE",
-    "facility": [
-      {
-        "name": "Fasilitas terbatas",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "BHUMI BAMBU BATURRADEN",
-    "facility": [
-      {
-        "name": "Toilet (18)",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat Informasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Tempat Ibadah",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Jalur Evakuasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "TAMAN PANEMON",
-    "facility": [
-      {
-        "name": "Gazebo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kolam Renang",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Warung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Sewa mobil listrik",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "MUSEUM BRI",
-    "facility": [
-      {
-        "name": "Ruang Pameran",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pusat Informasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Parkir",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "SITUS WATU LUMPANG",
-    "facility": [
-      {
-        "name": "Papan Informasi",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kawasan terawat",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "LEMBU BENGGOLO FARM & RESORT",
-    "facility": [
-      {
-        "name": "Restoran",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Penginapan",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Fasilitas Olahraga",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Saung",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Live Music",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "OEMAH GAMELAN",
-    "facility": [
-      {
-        "name": "Sanggar Seni",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
-  },
-  {
-    "destinations": "GOA MARIA KALIORI",
-    "facility": [
-      {
-        "name": "Rumah Retret",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Kapel",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toko Souvenir",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Pendopo",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      },
-      {
-        "name": "Toilet",
-        "availability": true,
-        "number": 2,
-        "disabilityAccess": true
-      }
-    ]
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Toilet bersih",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Kios souvenir",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Food court",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Gazebo istirahat",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Area Hotspot",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LOKAWISATA BATURADEN",
+    "facility": " Pusat informasi.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN APUNG MASKEMAMBANG",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN APUNG MASKEMAMBANG",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN APUNG MASKEMAMBANG",
+    "facility": " Food stall",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN APUNG MASKEMAMBANG",
+    "facility": " Gazebo.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "facility": "Food Court",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "facility": " Aula serbaguna.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THR PANGSAR SUDIRMAN",
+    "facility": " Food stalls",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THR PANGSAR SUDIRMAN",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
+    "facility": " Kios makanan.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OBYEK WISATA ANTAP",
+    "facility": "Gazebo",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OBYEK WISATA ANTAP",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OBYEK WISATA ANTAP",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OBYEK WISATA ANTAP",
+    "facility": " Kios kecil",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PAGUBUGAN MELUNG",
+    "facility": "Restoran/Warung makan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PAGUBUGAN MELUNG",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PERTAPAN GERDUREN",
+    "facility": "Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PERTAPAN GERDUREN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG SONG",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG SONG",
+    "facility": " Kios kecil",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT MBULU WATU GEDE",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT MBULU WATU GEDE",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA OUTBOND CANDI",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA OUTBOND CANDI",
+    "facility": " Aula",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA OUTBOND CANDI",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA OUTBOND CANDI",
+    "facility": " Catering service.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT WATU KUMPUL",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT WATU KUMPUL",
+    "facility": " Warung kopi.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG NANGGA",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG NANGGA",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG NANGGA",
+    "facility": " Kios makanan sederhana",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GUNUNG BATUR",
+    "facility": " Mushola sederhana.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG PENGANTIN",
+    "facility": " Toilet sederhana.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "facility": " Sumber air bersih.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG TELU",
+    "facility": "Warung makan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG TELU",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG TELU",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GROJOGAN RATU",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GROJOGAN RATU",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT PANGONAN INDAH",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT PANGONAN INDAH",
+    "facility": " Kios makanan.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA TUNGGUL MAS",
+    "facility": "Kafe",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA TUNGGUL MAS",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA TUNGGUL MAS",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA TUNGGUL MAS",
+    "facility": " Pusat oleh-oleh.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GUA DAMAR",
+    "facility": " Pemandu lokal.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GUA SERWITI",
+    "facility": " Pemandu lokal",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GUA SERWITI",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PRAWITA GARDEN",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PRAWITA GARDEN",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PRAWITA GARDEN",
+    "facility": " Food court",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PRAWITA GARDEN",
+    "facility": " Loker",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PRAWITA GARDEN",
+    "facility": " Gazebo.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG SENTONG",
+    "facility": " Warung sederhana",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG SENTONG",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA KARANG PANGINYONGAN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA KARANG PANGINYONGAN",
+    "facility": " Pusat oleh-oleh",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "AGROWISATA KARANG PANGINYONGAN",
+    "facility": " Gazebo.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OBYEK WISATA GERMANGGIS",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OBYEK WISATA GERMANGGIS",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "EMBUNG KENDALISADA",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "EMBUNG KENDALISADA",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG PINANG",
+    "facility": " Toilet sederhana.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA WISATA BATURADEN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA WISATA BATURADEN",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA WISATA BATURADEN",
+    "facility": " Kios makanan.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PANCURAN 7",
+    "facility": " Warung makan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PANCURAN 7",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PANCURAN 7",
+    "facility": " Ruang ganti.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PANCURAN 3",
+    "facility": "Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "PANCURAN 3",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TELAGA SUNYI",
+    "facility": " Toilet sederhana.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OFFROAD WANA WISATA",
+    "facility": "Basecamp",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OFFROAD WANA WISATA",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG CIPENDOK",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG CIPENDOK",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG CIPENDOK",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TELAGA KUMPE",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TELAGA KUMPE",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TELAGA KUMPE",
+    "facility": " Warung makan.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA PRAMUKA",
+    "facility": "Aula",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA PRAMUKA",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA PRAMUKA",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WANA PRAMUKA",
+    "facility": " Dapur umum",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG JENGGALA",
+    "facility": " Warung sederhana",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG JENGGALA",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG BAYAN",
+    "facility": "Penginapan/Homestay",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG BAYAN",
+    "facility": " Warung makan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG BAYAN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "HUTAN PINUS LIMPAK KUWUS",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "HUTAN PINUS LIMPAK KUWUS",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE VILLAGE",
+    "facility": "Restoran",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE VILLAGE",
+    "facility": " Kafe",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE VILLAGE",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE VILLAGE",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GALERY WATER KARANGMANGU (GWK)",
+    "facility": "Loker",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GALERY WATER KARANGMANGU (GWK)",
+    "facility": " Kantin",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GALERY WATER KARANGMANGU (GWK)",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GALERY WATER KARANGMANGU (GWK)",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BATURADEN ADVENTURE FOREST (BAF)",
+    "facility": "Peralatan keamanan lengkap",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BATURADEN ADVENTURE FOREST (BAF)",
+    "facility": " Basecamp",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BATURADEN ADVENTURE FOREST (BAF)",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "NEW SMALL WORLD",
+    "facility": "Kafe",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "NEW SMALL WORLD",
+    "facility": " Restoran",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "NEW SMALL WORLD",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "NEW SMALL WORLD",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KARSA",
+    "facility": "Kantin",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KARSA",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KARSA",
+    "facility": " Ruang ganti",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN BUKEN",
+    "facility": " Toilet sederhana.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA TAMAN HIAS REMBANGMAS",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA TAMAN HIAS REMBANGMAS",
+    "facility": " Kios.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN AGROWISATA SEGA",
+    "facility": "Kafe",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN AGROWISATA SEGA",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GEMAWANG",
+    "facility": " Warung kecil.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA ALAMI PANCASAN",
+    "facility": "Kantin",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA ALAMI PANCASAN",
+    "facility": " Ruang ganti",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA ALAMI PANCASAN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GOMBLANG",
+    "facility": " Warung makan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GOMBLANG",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GOMBLANG",
+    "facility": " Gazebo.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KEBUN BUAH BATUR AGUNG",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KEBUN BUAH BATUR AGUNG",
+    "facility": " Kios buah.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KIDUNG KAMPUNGKU",
+    "facility": "Restoran",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KIDUNG KAMPUNGKU",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "HUTAN PINUS SAWANGAN (HPS)",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "HUTAN PINUS SAWANGAN (HPS)",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG CEHENG",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "DREAMLAND WATER PARK",
+    "facility": "Food court",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "DREAMLAND WATER PARK",
+    "facility": " Loker",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "DREAMLAND WATER PARK",
+    "facility": " Ruang ganti",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "DREAMLAND WATER PARK",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE FOREST",
+    "facility": "Kafe/Restoran",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE FOREST",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "THE FOREST",
+    "facility": " Area Hotspot.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "DEPO BAY",
+    "facility": "Food court",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "DEPO BAY",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "HUTAN PINUS KALIURIP (HPK)",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "HUTAN PINUS KALIURIP (HPK)",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MUSEUM WAYANG BANYUMAS",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MUSEUM WAYANG BANYUMAS",
+    "facility": " Pusat informasi.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TIRTA HUSADA KALIBACIN",
+    "facility": " Ruang Ganti",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TIRTA HUSADA KALIBACIN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TIRTA HUSADA KALIBACIN",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT PANDANG MUNGGANG",
+    "facility": " Warung kecil",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BUKIT PANDANG MUNGGANG",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GEDUNG KESENIAN SOETEDJO",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GEDUNG KESENIAN SOETEDJO",
+    "facility": " Ruang Rias.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "WISATA BUNTON",
+    "facility": " Warung.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "EMBUNG RAWA BENER",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "EMBUNG RAWA BENER",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MENARA PANDANG TERATAI",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MENARA PANDANG TERATAI",
+    "facility": " Lift",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MENARA PANDANG TERATAI",
+    "facility": " Pusat Souvenir.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KEMBAR",
+    "facility": "Kantin",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KEMBAR",
+    "facility": " Ruang ganti",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "KOLAM RENANG TIRTA KEMBAR",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MANGGALA RANCH",
+    "facility": "Kafe",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MANGGALA RANCH",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MANGGALA RANCH",
+    "facility": " Sewa Kuda.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "EMBUNG SABANG MAS BARON",
+    "facility": " Warung sederhana.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN BOTANI",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN BOTANI",
+    "facility": " Perpustakaan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN BOTANI",
+    "facility": " Pusat informasi.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GEDE",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GEDE",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GEDE",
+    "facility": " Camping Ground",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG GEDE",
+    "facility": " Penginapan.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG TIRTA SELA",
+    "facility": "Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG TIRTA SELA",
+    "facility": " Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG KEMBAR",
+    "facility": "Mushola",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG KEMBAR",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG KEMBAR",
+    "facility": " Kamar Ganti",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG KEMBAR",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "CURUG PETE",
+    "facility": "Fasilitas terbatas",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BHUMI BAMBU BATURADEN",
+    "facility": "Toilet (18)",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BHUMI BAMBU BATURADEN",
+    "facility": " Pusat Informasi",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BHUMI BAMBU BATURADEN",
+    "facility": " Tempat Ibadah",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "BHUMI BAMBU BATURADEN",
+    "facility": " Jalur Evakuasi.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN PANEMON",
+    "facility": "Gazebo",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN PANEMON",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN PANEMON",
+    "facility": " Kolam Renang",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN PANEMON",
+    "facility": " Warung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "TAMAN PANEMON",
+    "facility": " Sewa mobil listrik.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MUSEUM BRI",
+    "facility": "Ruang Pameran",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MUSEUM BRI",
+    "facility": " Pusat Informasi",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "MUSEUM BRI",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "SITUS WATU LUMPANG",
+    "facility": "Papan Informasi",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "SITUS WATU LUMPANG",
+    "facility": " Kawasan terawat.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LEMBU BENGGOLO FARM & RESORT",
+    "facility": "Restoran",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LEMBU BENGGOLO FARM & RESORT",
+    "facility": " Penginapan",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LEMBU BENGGOLO FARM & RESORT",
+    "facility": " Fasilitas Olahraga",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LEMBU BENGGOLO FARM & RESORT",
+    "facility": " Saung",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "LEMBU BENGGOLO FARM & RESORT",
+    "facility": " Live Music.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OEMAH GAMELAN",
+    "facility": "Sanggar Seni",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "OEMAH GAMELAN",
+    "facility": " Toilet",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GOA MARIA KALIORI",
+    "facility": "Rumah Retret",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GOA MARIA KALIORI",
+    "facility": " Kapel",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GOA MARIA KALIORI",
+    "facility": " Toko Souvenir",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GOA MARIA KALIORI",
+    "facility": " Pendopo",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
+  },
+  {
+    "destinationTitle": "GOA MARIA KALIORI",
+    "facility": " Toilet.",
+    "availability": "TRUE",
+    "number": 2,
+    "disabilityAccess ": "TRUE "
   }
 ]

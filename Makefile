@@ -13,6 +13,12 @@ import-ticket-destination:
 import-attraction:
 	node data/seeds/seeding.mjs --import-attraction
 
+import-facility:
+	node data/seeds/seeding.mjs --import-facility
+
+delete-facility:
+	node data/seeds/seeding.mjs --delete-facility
+
 delete-attraction:
 	node data/seeds/seeding.mjs --delete-attraction
 

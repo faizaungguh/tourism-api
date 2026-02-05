@@ -12,6 +12,7 @@ import categoryData from '../mocks/Categories.json' with { type: 'json' };
 import destinationData from '../mocks/ready-seed/seed-destination.json' with { type: 'json' };
 import ticketPriceData from '../mocks/ready-seed/seed-ticketPrice.json' with { type: 'json' };
 import attractionData from '../mocks/ready-seed/seed-attraction.json' with { type: 'json' };
+import facilityData from '../mocks/ready-seed/seed-facility.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -326,6 +327,92 @@ const deleteAttraction = async () => {
   }
 };
 
+const importFacility = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai import data Fasilitas Destinasi...');
+
+    const destinations = await Destination.find();
+    // Menggunakan Map untuk mengelompokkan fasilitas berdasarkan ID destinasi
+    const facilitiesMap = new Map();
+    let notFoundCount = 0;
+
+    for (const item of facilityData) {
+      const rawTitle = item.destinationTitle || '';
+      const jsonTitle = rawTitle.trim().toLowerCase();
+
+      if (!jsonTitle) continue;
+
+      // Mencari destinasi berdasarkan destinationTitle
+      const destination = destinations.find((dest) => {
+        const dbTitle = dest.destinationTitle.trim().toLowerCase();
+        const dbSlug = dest.slug || dbTitle.replace(/\s+/g, '-');
+
+        // 1. Cek exact match dengan title atau slug
+        if (dbTitle === jsonTitle || dbSlug === jsonTitle) return true;
+
+        // 2. Cek fleksibel
+        const jsonParts = jsonTitle.split(/[\s-]+/).filter(Boolean);
+        return jsonParts.length > 0 && jsonParts.every((part) => dbTitle.includes(part));
+      });
+
+      if (destination) {
+        const destId = destination._id.toString();
+        if (!facilitiesMap.has(destId)) {
+          facilitiesMap.set(destId, { destination, facilities: [] });
+        }
+
+        // Menangani key yang mungkin kotor (ada spasi di key atau value)
+        const daKey = Object.keys(item).find((k) => k.trim() === 'disabilityAccess');
+        const daValue = daKey ? String(item[daKey]).trim().toUpperCase() : 'FALSE';
+        const availValue = String(item.availability || '')
+          .trim()
+          .toUpperCase();
+
+        facilitiesMap.get(destId).facilities.push({
+          name: (item.facility || '').trim(),
+          availability: availValue === 'TRUE',
+          number: parseInt(item.number) || 0,
+          disabilityAccess: daValue === 'TRUE',
+        });
+      } else {
+        // console.warn(`[SKIP] Destinasi "${rawTitle}" tidak ditemukan untuk import fasilitas.`);
+        notFoundCount++;
+      }
+    }
+
+    let updatedCount = 0;
+    for (const { destination, facilities } of facilitiesMap.values()) {
+      destination.facility = facilities;
+      await destination.save();
+      updatedCount++;
+    }
+
+    console.log(
+      `${updatedCount} Destinasi berhasil diperbarui fasilitasnya! (${notFoundCount} item fasilitas dilewati)`,
+    );
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mengimpor data fasilitas:', error);
+    process.exit(1);
+  }
+};
+
+const deleteFacility = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai menghapus data Fasilitas Destinasi...');
+
+    await Destination.updateMany({}, { facility: [] });
+
+    console.log('Data Fasilitas Destinasi berhasil dihapus (direset)!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat menghapus data fasilitas:', error);
+    process.exit(1);
+  }
+};
+
 switch (process.argv[2]) {
   /** Admin */
   case '--import-admin':
@@ -361,6 +448,13 @@ switch (process.argv[2]) {
     break;
   case '--delete-attraction':
     deleteAttraction();
+    break;
+  /** Data Fasilitas */
+  case '--import-facility':
+    importFacility();
+    break;
+  case '--delete-facility':
+    deleteFacility();
     break;
   default:
     console.log(
