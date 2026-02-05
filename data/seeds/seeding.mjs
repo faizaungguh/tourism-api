@@ -11,6 +11,7 @@ import subdistrictData from '../mocks/Subdistricts.json' with { type: 'json' };
 import categoryData from '../mocks/Categories.json' with { type: 'json' };
 import destinationData from '../mocks/ready-seed/seed-destination.json' with { type: 'json' };
 import ticketPriceData from '../mocks/ready-seed/seed-ticketPrice.json' with { type: 'json' };
+import attractionData from '../mocks/ready-seed/seed-attraction.json' with { type: 'json' };
 
 const importAdmin = async () => {
   try {
@@ -256,24 +257,113 @@ const deleteTicketDestination = async () => {
   }
 };
 
-if (process.argv[2] === '--import-admin') {
-  importAdmin();
-} else if (process.argv[2] === '--delete-admin') {
-  deleteAdmin();
-} else if (process.argv[2] === '--import-data') {
-  importData();
-} else if (process.argv[2] === '--delete-data') {
-  deleteData();
-} else if (process.argv[2] === '--import-destination') {
-  importDestination();
-} else if (process.argv[2] === '--delete-destination') {
-  deleteDestination();
-} else if (process.argv[2] === '--import-ticket-destination') {
-  importTicketDestination();
-} else if (process.argv[2] === '--delete-ticket-destination') {
-  deleteTicketDestination();
-} else {
-  console.log(
-    'Perintah tidak valid. Gunakan flag: --import-admin, --delete-admin, --import-data, --delete-data',
-  );
+const importAttraction = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai import data Atraksi...');
+
+    await Attraction.deleteMany();
+
+    const destinations = await Destination.find();
+    const formattedAttractions = [];
+    let notFoundCount = 0;
+
+    for (const item of attractionData) {
+      const rawDestination = item.destination || '';
+      const jsonDest = rawDestination.trim().toLowerCase();
+
+      // Mencari destinasi berdasarkan destinationTitle
+      const destination = destinations.find((dest) => {
+        const dbTitle = dest.destinationTitle.trim().toLowerCase();
+        const dbSlug = dest.slug || dbTitle.replace(/\s+/g, '-');
+
+        // 1. Cek exact match dengan title atau slug
+        if (dbTitle === jsonDest || dbSlug === jsonDest) return true;
+
+        // 2. Cek fleksibel: pecah kata dari seed (misal "menara-teratai") dan cek apakah ada di title DB ("menara pandang teratai")
+        const jsonParts = jsonDest.split(/[\s-]+/).filter(Boolean);
+        return jsonParts.length > 0 && jsonParts.every((part) => dbTitle.includes(part));
+      });
+
+      if (!destination) {
+        console.warn(
+          `[SKIP] Destinasi "${rawDestination}" tidak ditemukan untuk atraksi: ${item.name}`,
+        );
+        notFoundCount++;
+        continue;
+      }
+
+      formattedAttractions.push({
+        name: item.name,
+        description: item.description || 'Objek Wisata di Kabupaten Banyumas',
+        ticketType: item.ticketType || 'gratis',
+        ticket: item.ticket,
+        destination: destination._id,
+      });
+    }
+
+    const attractions = await Attraction.create(formattedAttractions);
+    console.log(`${attractions.length} Atraksi berhasil diimpor! (${notFoundCount} dilewati)`);
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat mengimpor data atraksi:', error);
+    process.exit(1);
+  }
+};
+
+const deleteAttraction = async () => {
+  try {
+    await connectionDB();
+    console.log('Memulai menghapus data Atraksi...');
+
+    await Attraction.deleteMany();
+
+    console.log('Data Atraksi berhasil dihapus!');
+    process.exit(0);
+  } catch (error) {
+    console.error('Error saat menghapus data atraksi:', error);
+    process.exit(1);
+  }
+};
+
+switch (process.argv[2]) {
+  /** Admin */
+  case '--import-admin':
+    importAdmin();
+    break;
+  case '--delete-admin':
+    deleteAdmin();
+    break;
+  /** Default Subdistrict-Category */
+  case '--import-data':
+    importData();
+    break;
+  case '--delete-data':
+    deleteData();
+    break;
+  /** Data Destinasi */
+  case '--import-destination':
+    importDestination();
+    break;
+  case '--delete-destination':
+    deleteDestination();
+    break;
+  /** Data Tiket Destinasi */
+  case '--import-ticket-destination':
+    importTicketDestination();
+    break;
+  case '--delete-ticket-destination':
+    deleteTicketDestination();
+    break;
+  /** Data Wahana */
+  case '--import-attraction':
+    importAttraction();
+    break;
+  case '--delete-attraction':
+    deleteAttraction();
+    break;
+  default:
+    console.log(
+      'Perintah tidak valid. Gunakan flag: --import-admin, --delete-admin, --import-data, --delete-data',
+    );
 }

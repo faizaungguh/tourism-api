@@ -1,1226 +1,1054 @@
 [
   {
-    "destination": "LOKAWISATA BATURRADEN",
-    "attractions": [
-      {
-        "name": "Kolam Renang Air Panas"
-      },
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kebun Binatang Mini"
-      },
-      {
-        "name": "Sepeda Air"
-      },
-      {
-        "name": "Teater Alam"
-      },
-      {
-        "name": "Menara Pandang"
-      }
-    ]
+    "destination": "LOKAWISATA baturaden",
+    "name": "Kolam Renang Air Panas "
+  },
+  {
+    "destination": "LOKAWISATA baturaden",
+    "name": " Air Terjun "
+  },
+  {
+    "destination": "LOKAWISATA baturaden",
+    "name": " Kebun Binatang Mini "
+  },
+  {
+    "destination": "LOKAWISATA baturaden",
+    "name": " Sepeda Air "
+  },
+  {
+    "destination": "LOKAWISATA baturaden",
+    "name": " Teater Alam "
+  },
+  {
+    "destination": "LOKAWISATA baturaden",
+    "name": " Menara Pandang. "
   },
   {
     "destination": "TAMAN APUNG MASKEMAMBANG",
-    "attractions": [
-      {
-        "name": "Perahu Angsa"
-      },
-      {
-        "name": "Spot Foto Jembatan Kayu"
-      },
-      {
-        "name": "Area Bermain Anak"
-      },
-      {
-        "name": "Danau Buatan"
-      }
-    ]
+    "name": "Perahu Angsa "
+  },
+  {
+    "destination": "TAMAN APUNG MASKEMAMBANG",
+    "name": " Spot Foto Jembatan Kayu "
+  },
+  {
+    "destination": "TAMAN APUNG MASKEMAMBANG",
+    "name": " Area Bermain Anak "
+  },
+  {
+    "destination": "TAMAN APUNG MASKEMAMBANG",
+    "name": " Danau Buatan. "
   },
   {
     "destination": "TAMAN REKREASI ANDHANG PANGRENAN",
-    "attractions": [
-      {
-        "name": "Kolam Renang Anak & Dewasa"
-      },
-      {
-        "name": "Area Permainan Anak"
-      },
-      {
-        "name": "Panggung Hiburan"
-      },
-      {
-        "name": "Kebun Mini"
-      }
-    ]
+    "name": "Kolam Renang Anak & Dewasa "
+  },
+  {
+    "destination": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "name": " Area Permainan Anak "
+  },
+  {
+    "destination": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "name": " Panggung Hiburan "
+  },
+  {
+    "destination": "TAMAN REKREASI ANDHANG PANGRENAN",
+    "name": " Kebun Mini. "
   },
   {
     "destination": "THR PANGSAR SUDIRMAN",
-    "attractions": [
-      {
-        "name": "Komedi Putar"
-      },
-      {
-        "name": "Bianglala"
-      },
-      {
-        "name": "Kincir Angin"
-      },
-      {
-        "name": "Arena ketangkasan"
-      },
-      {
-        "name": "Panggung terbuka"
-      }
-    ]
+    "name": "Komedi Putar "
+  },
+  {
+    "destination": "THR PANGSAR SUDIRMAN",
+    "name": " Bianglala "
+  },
+  {
+    "destination": "THR PANGSAR SUDIRMAN",
+    "name": " Kincir Angin "
+  },
+  {
+    "destination": "THR PANGSAR SUDIRMAN",
+    "name": " Arena ketangkasan "
+  },
+  {
+    "destination": "THR PANGSAR SUDIRMAN",
+    "name": " Panggung terbuka. "
   },
   {
     "destination": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
-    "attractions": [
-      {
-        "name": "Interaksi dengan Kera"
-      },
-      {
-        "name": "Situs Masjid Saka Tunggal (Masjid Kuno)"
-      }
-    ]
+    "name": "Interaksi dengan Kera "
+  },
+  {
+    "destination": "TAMAN KERA DAN MASJID SAKA TUNGGAL",
+    "name": " Situs Masjid Saka Tunggal (Masjid Kuno). "
   },
   {
     "destination": "OBYEK WISATA ANTAP",
-    "attractions": [
-      {
-        "name": "Spot Foto Alam"
-      },
-      {
-        "name": "Trekking"
-      },
-      {
-        "name": "Area Perkemahan"
-      }
-    ]
+    "name": "Spot Foto Alam "
+  },
+  {
+    "destination": "OBYEK WISATA ANTAP",
+    "name": " Trekking "
+  },
+  {
+    "destination": "OBYEK WISATA ANTAP",
+    "name": " Area Perkemahan. "
   },
   {
     "destination": "PAGUBUGAN MELUNG",
-    "attractions": [
-      {
-        "name": "Spot Foto Pedesaan"
-      },
-      {
-        "name": "Kuliner Tradisional"
-      },
-      {
-        "name": "Area Sawah Terasering"
-      }
-    ]
+    "name": "Spot Foto Pedesaan "
+  },
+  {
+    "destination": "PAGUBUGAN MELUNG",
+    "name": " Kuliner Tradisional "
+  },
+  {
+    "destination": "PAGUBUGAN MELUNG",
+    "name": " Area Sawah Terasering. "
   },
   {
     "destination": "PERTAPAN GERDUREN",
-    "attractions": [
-      {
-        "name": "Situs Petilasan"
-      },
-      {
-        "name": "Area Ziarah"
-      }
-    ]
+    "name": "Situs Petilasan "
+  },
+  {
+    "destination": "PERTAPAN GERDUREN",
+    "name": " Area Ziarah. "
   },
   {
     "destination": "CURUG SONG",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kolam Alami"
-      },
-      {
-        "name": "Trekking Alam"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG SONG",
+    "name": " Kolam Alami "
+  },
+  {
+    "destination": "CURUG SONG",
+    "name": " Trekking Alam. "
   },
   {
     "destination": "BUKIT MBULU WATU GEDE",
-    "attractions": [
-      {
-        "name": "Spot Foto"
-      },
-      {
-        "name": "Camping Ground"
-      },
-      {
-        "name": "Pemandangan Alam"
-      }
-    ]
+    "name": "Spot Foto "
+  },
+  {
+    "destination": "BUKIT MBULU WATU GEDE",
+    "name": " Camping Ground "
+  },
+  {
+    "destination": "BUKIT MBULU WATU GEDE",
+    "name": " Pemandangan Alam. "
   },
   {
     "destination": "WISATA OUTBOND CANDI",
-    "attractions": [
-      {
-        "name": "Flying Fox"
-      },
-      {
-        "name": "High Rope"
-      },
-      {
-        "name": "Paintball"
-      },
-      {
-        "name": "Area Team Building"
-      }
-    ]
+    "name": "Flying Fox "
+  },
+  {
+    "destination": "WISATA OUTBOND CANDI",
+    "name": " High Rope "
+  },
+  {
+    "destination": "WISATA OUTBOND CANDI",
+    "name": " Paintball "
+  },
+  {
+    "destination": "WISATA OUTBOND CANDI",
+    "name": " Area Team Building. "
   },
   {
     "destination": "BUKIT WATU KUMPUL",
-    "attractions": [
-      {
-        "name": "Spot Foto Alam"
-      },
-      {
-        "name": "Batu-batu Besar Unik"
-      },
-      {
-        "name": "Trekking"
-      }
-    ]
+    "name": "Spot Foto Alam "
+  },
+  {
+    "destination": "BUKIT WATU KUMPUL",
+    "name": " Batu-batu Besar Unik "
+  },
+  {
+    "destination": "BUKIT WATU KUMPUL",
+    "name": " Trekking. "
   },
   {
     "destination": "CURUG NANGGA",
-    "attractions": [
-      {
-        "name": "Air Terjun Berundak"
-      },
-      {
-        "name": "Kolam Alami"
-      },
-      {
-        "name": "Area Mandi"
-      }
-    ]
+    "name": "Air Terjun Berundak "
+  },
+  {
+    "destination": "CURUG NANGGA",
+    "name": " Kolam Alami "
+  },
+  {
+    "destination": "CURUG NANGGA",
+    "name": " Area Mandi. "
   },
   {
     "destination": "GUNUNG BATUR",
-    "attractions": [
-      {
-        "name": "Jalur Pendakian"
-      },
-      {
-        "name": "Pemandangan Kota dari Ketinggian"
-      },
-      {
-        "name": "Camping Ground"
-      }
-    ]
+    "name": "Jalur Pendakian "
+  },
+  {
+    "destination": "GUNUNG BATUR",
+    "name": " Pemandangan Kota dari Ketinggian "
+  },
+  {
+    "destination": "GUNUNG BATUR",
+    "name": " Camping Ground. "
   },
   {
     "destination": "CURUG PENGANTIN",
-    "attractions": [
-      {
-        "name": "Air Terjun Dua Aliran"
-      },
-      {
-        "name": "Kolam Jernih"
-      },
-      {
-        "name": "Hutan Lindung"
-      }
-    ]
+    "name": "Air Terjun Dua Aliran "
+  },
+  {
+    "destination": "CURUG PENGANTIN",
+    "name": " Kolam Jernih "
+  },
+  {
+    "destination": "CURUG PENGANTIN",
+    "name": " Hutan Lindung. "
   },
   {
     "destination": "CAMP AREA UMBUL BENGKOK (CAUB)",
-    "attractions": [
-      {
-        "name": "Camping Ground"
-      },
-      {
-        "name": "River Tubing"
-      },
-      {
-        "name": "Area Outbound"
-      }
-    ]
+    "name": "Camping Ground "
+  },
+  {
+    "destination": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "name": " River Tubing "
+  },
+  {
+    "destination": "CAMP AREA UMBUL BENGKOK (CAUB)",
+    "name": " Area Outbound. "
   },
   {
     "destination": "CURUG TELU",
-    "attractions": [
-      {
-        "name": "Tiga Tingkat Air Terjun"
-      },
-      {
-        "name": "Kolam Alami"
-      },
-      {
-        "name": "Trekking Hutan"
-      }
-    ]
+    "name": "Tiga Tingkat Air Terjun "
+  },
+  {
+    "destination": "CURUG TELU",
+    "name": " Kolam Alami "
+  },
+  {
+    "destination": "CURUG TELU",
+    "name": " Trekking Hutan. "
   },
   {
     "destination": "GROJOGAN RATU",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Area Meditasi"
-      },
-      {
-        "name": "Spot Foto Alam"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "GROJOGAN RATU",
+    "name": " Area Meditasi "
+  },
+  {
+    "destination": "GROJOGAN RATU",
+    "name": " Spot Foto Alam. "
   },
   {
     "destination": "BUKIT PANGONAN INDAH",
-    "attractions": [
-      {
-        "name": "Spot Foto Dek Kayu"
-      },
-      {
-        "name": "Pemandangan Alam"
-      },
-      {
-        "name": "Camping Ground"
-      }
-    ]
+    "name": "Spot Foto Dek Kayu "
+  },
+  {
+    "destination": "BUKIT PANGONAN INDAH",
+    "name": " Pemandangan Alam "
+  },
+  {
+    "destination": "BUKIT PANGONAN INDAH",
+    "name": " Camping Ground. "
   },
   {
     "destination": "AGROWISATA TUNGGUL MAS",
-    "attractions": [
-      {
-        "name": "Kebun Buah Naga"
-      },
-      {
-        "name": "Kebun Sayur Hidroponik"
-      },
-      {
-        "name": "Edukasi Pertanian"
-      }
-    ]
+    "name": "Kebun Buah Naga "
+  },
+  {
+    "destination": "AGROWISATA TUNGGUL MAS",
+    "name": " Kebun Sayur Hidroponik "
+  },
+  {
+    "destination": "AGROWISATA TUNGGUL MAS",
+    "name": " Edukasi Pertanian. "
   },
   {
     "destination": "GUA DAMAR",
-    "attractions": [
-      {
-        "name": "Penelusuran Gua"
-      },
-      {
-        "name": "Formasi Stalaktit/Stalagmit"
-      }
-    ]
+    "name": "Penelusuran Gua "
+  },
+  {
+    "destination": "GUA DAMAR",
+    "name": " Formasi Stalaktit/Stalagmit. "
   },
   {
     "destination": "GUA SERWITI",
-    "attractions": [
-      {
-        "name": "Penelusuran Gua"
-      },
-      {
-        "name": "Sumber Air"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Penelusuran Gua "
+  },
+  {
+    "destination": "GUA SERWITI",
+    "name": " Sumber Air "
+  },
+  {
+    "destination": "GUA SERWITI",
+    "name": " Spot Foto. "
   },
   {
     "destination": "PRAWITA GARDEN",
-    "attractions": [
-      {
-        "name": "Waterpark"
-      },
-      {
-        "name": "Kolam Ombak"
-      },
-      {
-        "name": "Kolam Arus"
-      },
-      {
-        "name": "Bioskop 5D"
-      },
-      {
-        "name": "Outbound Area"
-      }
-    ]
+    "name": "Waterpark "
+  },
+  {
+    "destination": "PRAWITA GARDEN",
+    "name": " Kolam Ombak "
+  },
+  {
+    "destination": "PRAWITA GARDEN",
+    "name": " Kolam Arus "
+  },
+  {
+    "destination": "PRAWITA GARDEN",
+    "name": " Bioskop 5D "
+  },
+  {
+    "destination": "PRAWITA GARDEN",
+    "name": " Outbound Area. "
   },
   {
     "destination": "CURUG SENTONG",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kolam Alami"
-      },
-      {
-        "name": "Hutan"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG SENTONG",
+    "name": " Kolam Alami "
+  },
+  {
+    "destination": "CURUG SENTONG",
+    "name": " Hutan. "
   },
   {
     "destination": "AGROWISATA KARANG PANGINYONGAN",
-    "attractions": [
-      {
-        "name": "Kebun Buah"
-      },
-      {
-        "name": "Area Edukasi Pertanian"
-      },
-      {
-        "name": "Pusat Bibit"
-      }
-    ]
+    "name": "Kebun Buah "
+  },
+  {
+    "destination": "AGROWISATA KARANG PANGINYONGAN",
+    "name": " Area Edukasi Pertanian "
+  },
+  {
+    "destination": "AGROWISATA KARANG PANGINYONGAN",
+    "name": " Pusat Bibit. "
   },
   {
     "destination": "OBYEK WISATA GERMANGGIS",
-    "attractions": [
-      {
-        "name": "Spot Foto Alam"
-      },
-      {
-        "name": "Hutan Pinus"
-      },
-      {
-        "name": "Trekking"
-      }
-    ]
+    "name": "Spot Foto Alam "
+  },
+  {
+    "destination": "OBYEK WISATA GERMANGGIS",
+    "name": " Hutan Pinus "
+  },
+  {
+    "destination": "OBYEK WISATA GERMANGGIS",
+    "name": " Trekking. "
   },
   {
     "destination": "EMBUNG KENDALISADA",
-    "attractions": [
-      {
-        "name": "Perahu Keliling"
-      },
-      {
-        "name": "Spot Mancing"
-      },
-      {
-        "name": "Pemandangan Air"
-      }
-    ]
+    "name": "Perahu Keliling "
+  },
+  {
+    "destination": "EMBUNG KENDALISADA",
+    "name": " Spot Mancing "
+  },
+  {
+    "destination": "EMBUNG KENDALISADA",
+    "name": " Pemandangan Air. "
   },
   {
     "destination": "CURUG PINANG",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kolam Renang Alami"
-      }
-    ]
+    "name": "Air Terjun "
   },
   {
-    "destination": "WANA WISATA BATURRADEN",
-    "attractions": [
-      {
-        "name": "Hutan Pinus"
-      },
-      {
-        "name": "Jalur Trekking"
-      },
-      {
-        "name": "Area Piknik"
-      }
-    ]
+    "destination": "CURUG PINANG",
+    "name": " Kolam Renang Alami. "
+  },
+  {
+    "destination": "WANA WISATA baturaden",
+    "name": "Hutan Pinus "
+  },
+  {
+    "destination": "WANA WISATA baturaden",
+    "name": " Jalur Trekking "
+  },
+  {
+    "destination": "WANA WISATA baturaden",
+    "name": " Area Piknik. "
   },
   {
     "destination": "PANCURAN 7",
-    "attractions": [
-      {
-        "name": "Pemandian Air Panas Belerang"
-      },
-      {
-        "name": "Goa Belerang"
-      },
-      {
-        "name": "Pemandangan Alam"
-      }
-    ]
+    "name": "Pemandian Air Panas Belerang "
+  },
+  {
+    "destination": "PANCURAN 7",
+    "name": " Goa Belerang "
+  },
+  {
+    "destination": "PANCURAN 7",
+    "name": " Pemandangan Alam. "
   },
   {
     "destination": "PANCURAN 3",
-    "attractions": [
-      {
-        "name": "Pemandian Air Panas Belerang Tiga Pancuran"
-      }
-    ]
+    "name": "Pemandian Air Panas Belerang Tiga Pancuran. "
   },
   {
     "destination": "TELAGA SUNYI",
-    "attractions": [
-      {
-        "name": "Danau Alami"
-      },
-      {
-        "name": "Hutan Asri"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Danau Alami "
+  },
+  {
+    "destination": "TELAGA SUNYI",
+    "name": " Hutan Asri "
+  },
+  {
+    "destination": "TELAGA SUNYI",
+    "name": " Spot Foto. "
   },
   {
     "destination": "OFFROAD WANA WISATA",
-    "attractions": [
-      {
-        "name": "Jalur Offroad Jip"
-      },
-      {
-        "name": "Sewa Motor Trail"
-      },
-      {
-        "name": "Pemandangan Hutan"
-      }
-    ]
+    "name": "Jalur Offroad Jip "
+  },
+  {
+    "destination": "OFFROAD WANA WISATA",
+    "name": " Sewa Motor Trail "
+  },
+  {
+    "destination": "OFFROAD WANA WISATA",
+    "name": " Pemandangan Hutan. "
   },
   {
     "destination": "CURUG CIPENDOK",
-    "attractions": [
-      {
-        "name": "Air Terjun Tinggi"
-      },
-      {
-        "name": "Hutan Pinus"
-      },
-      {
-        "name": "Gardu Pandang"
-      }
-    ]
+    "name": "Air Terjun Tinggi "
+  },
+  {
+    "destination": "CURUG CIPENDOK",
+    "name": " Hutan Pinus "
+  },
+  {
+    "destination": "CURUG CIPENDOK",
+    "name": " Gardu Pandang. "
   },
   {
     "destination": "TELAGA KUMPE",
-    "attractions": [
-      {
-        "name": "Telaga"
-      },
-      {
-        "name": "Sewa Perahu"
-      },
-      {
-        "name": "Spot Mancing"
-      },
-      {
-        "name": "Warung Apung"
-      }
-    ]
+    "name": "Telaga "
+  },
+  {
+    "destination": "TELAGA KUMPE",
+    "name": " Sewa Perahu "
+  },
+  {
+    "destination": "TELAGA KUMPE",
+    "name": " Spot Mancing "
+  },
+  {
+    "destination": "TELAGA KUMPE",
+    "name": " Warung Apung. "
   },
   {
     "destination": "WANA PRAMUKA",
-    "attractions": [
-      {
-        "name": "Camping Ground"
-      },
-      {
-        "name": "Arena Outbound"
-      },
-      {
-        "name": "Gedung Pertemuan"
-      }
-    ]
+    "name": "Camping Ground "
+  },
+  {
+    "destination": "WANA PRAMUKA",
+    "name": " Arena Outbound "
+  },
+  {
+    "destination": "WANA PRAMUKA",
+    "name": " Gedung Pertemuan. "
   },
   {
     "destination": "CURUG JENGGALA",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Tebing Batu"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG JENGGALA",
+    "name": " Tebing Batu "
+  },
+  {
+    "destination": "CURUG JENGGALA",
+    "name": " Spot Foto. "
   },
   {
     "destination": "CURUG BAYAN",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kolam Renang Alami"
-      },
-      {
-        "name": "Jembatan Bambu"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG BAYAN",
+    "name": " Kolam Renang Alami "
+  },
+  {
+    "destination": "CURUG BAYAN",
+    "name": " Jembatan Bambu. "
   },
   {
     "destination": "HUTAN PINUS LIMPAK KUWUS",
-    "attractions": [
-      {
-        "name": "Hutan Pinus"
-      },
-      {
-        "name": "Spot Foto Gantung"
-      },
-      {
-        "name": "Ayunan Ekstrem"
-      }
-    ]
+    "name": "Hutan Pinus "
+  },
+  {
+    "destination": "HUTAN PINUS LIMPAK KUWUS",
+    "name": " Spot Foto Gantung "
+  },
+  {
+    "destination": "HUTAN PINUS LIMPAK KUWUS",
+    "name": " Ayunan Ekstrem. "
   },
   {
     "destination": "THE VILLAGE",
-    "attractions": [
-      {
-        "name": "Bangunan ala Eropa"
-      },
-      {
-        "name": "Mini Zoo"
-      },
-      {
-        "name": "Area Bermain Anak"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Bangunan ala Eropa "
+  },
+  {
+    "destination": "THE VILLAGE",
+    "name": " Mini Zoo "
+  },
+  {
+    "destination": "THE VILLAGE",
+    "name": " Area Bermain Anak "
+  },
+  {
+    "destination": "THE VILLAGE",
+    "name": " Spot Foto. "
   },
   {
     "destination": "GALERY WATER KARANGMANGU (GWK)",
-    "attractions": [
-      {
-        "name": "Kolam Renang Anak & Dewasa"
-      },
-      {
-        "name": "Water Slide"
-      },
-      {
-        "name": "Ember Tumpah"
-      }
-    ]
+    "name": "Kolam Renang Anak & Dewasa "
   },
   {
-    "destination": "BATURRADEN ADVENTURE FOREST (BAF)",
-    "attractions": [
-      {
-        "name": "Canyoning"
-      },
-      {
-        "name": "Tree Climbing"
-      },
-      {
-        "name": "High Rope"
-      },
-      {
-        "name": "Rafting Mini"
-      }
-    ]
+    "destination": "GALERY WATER KARANGMANGU (GWK)",
+    "name": " Water Slide "
+  },
+  {
+    "destination": "GALERY WATER KARANGMANGU (GWK)",
+    "name": " Ember Tumpah. "
+  },
+  {
+    "destination": "baturaden ADVENTURE FOREST (BAF)",
+    "name": "Canyoning "
+  },
+  {
+    "destination": "baturaden ADVENTURE FOREST (BAF)",
+    "name": " Tree Climbing "
+  },
+  {
+    "destination": "baturaden ADVENTURE FOREST (BAF)",
+    "name": " High Rope "
+  },
+  {
+    "destination": "baturaden ADVENTURE FOREST (BAF)",
+    "name": " Rafting Mini. "
   },
   {
     "destination": "NEW SMALL WORLD",
-    "attractions": [
-      {
-        "name": "Miniatur Menara Eiffel"
-      },
-      {
-        "name": "Kincir Angin Belanda"
-      },
-      {
-        "name": "Koloseum"
-      },
-      {
-        "name": "dll"
-      }
-    ]
+    "name": "Miniatur Menara Eiffel "
+  },
+  {
+    "destination": "NEW SMALL WORLD",
+    "name": " Kincir Angin Belanda "
+  },
+  {
+    "destination": "NEW SMALL WORLD",
+    "name": " Koloseum "
+  },
+  {
+    "destination": "NEW SMALL WORLD",
+    "name": " dll. "
   },
   {
     "destination": "KOLAM RENANG TIRTA KARSA",
-    "attractions": [
-      {
-        "name": "Kolam Renang Standar"
-      },
-      {
-        "name": "Kolam Anak"
-      }
-    ]
+    "name": "Kolam Renang Standar "
+  },
+  {
+    "destination": "KOLAM RENANG TIRTA KARSA",
+    "name": " Kolam Anak. "
   },
   {
     "destination": "TAMAN BUKEN",
-    "attractions": [
-      {
-        "name": "Hutan Mini"
-      },
-      {
-        "name": "Area Piknik"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Hutan Mini "
+  },
+  {
+    "destination": "TAMAN BUKEN",
+    "name": " Area Piknik "
+  },
+  {
+    "destination": "TAMAN BUKEN",
+    "name": " Spot Foto. "
   },
   {
     "destination": "WISATA TAMAN HIAS REMBANGMAS",
-    "attractions": [
-      {
-        "name": "Kebun Bunga"
-      },
-      {
-        "name": "Greenhouse"
-      },
-      {
-        "name": "Pusat Pembibitan"
-      }
-    ]
+    "name": "Kebun Bunga "
+  },
+  {
+    "destination": "WISATA TAMAN HIAS REMBANGMAS",
+    "name": " Greenhouse "
+  },
+  {
+    "destination": "WISATA TAMAN HIAS REMBANGMAS",
+    "name": " Pusat Pembibitan. "
   },
   {
     "destination": "TAMAN AGROWISATA SEGA",
-    "attractions": [
-      {
-        "name": "Kebun Sayur"
-      },
-      {
-        "name": "Edukasi Hidroponik"
-      },
-      {
-        "name": "Pusat Oleh-Oleh Hasil Bumi"
-      }
-    ]
+    "name": "Kebun Sayur "
+  },
+  {
+    "destination": "TAMAN AGROWISATA SEGA",
+    "name": " Edukasi Hidroponik "
+  },
+  {
+    "destination": "TAMAN AGROWISATA SEGA",
+    "name": " Pusat Oleh-Oleh Hasil Bumi. "
   },
   {
     "destination": "RANDU BENGKONG",
-    "attractions": [
-      {
-        "name": "Pohon Unik"
-      },
-      {
-        "name": "Spot Foto"
-      },
-      {
-        "name": "Area Piknik"
-      }
-    ]
+    "name": "Pohon Unik "
+  },
+  {
+    "destination": "RANDU BENGKONG",
+    "name": " Spot Foto "
+  },
+  {
+    "destination": "RANDU BENGKONG",
+    "name": " Area Piknik. "
   },
   {
     "destination": "CURUG GEMAWANG",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kolam Alami"
-      },
-      {
-        "name": "Hutan"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG GEMAWANG",
+    "name": " Kolam Alami "
+  },
+  {
+    "destination": "CURUG GEMAWANG",
+    "name": " Hutan. "
   },
   {
     "destination": "KOLAM RENANG TIRTA ALAMI PANCASAN",
-    "attractions": [
-      {
-        "name": "Kolam Renang Air Alami"
-      },
-      {
-        "name": "Area Bermain Air"
-      }
-    ]
+    "name": "Kolam Renang Air Alami "
+  },
+  {
+    "destination": "KOLAM RENANG TIRTA ALAMI PANCASAN",
+    "name": " Area Bermain Air. "
   },
   {
     "destination": "WISATA PERENG CILONGOK",
-    "attractions": [
-      {
-        "name": "Spot Foto Alam"
-      },
-      {
-        "name": "Trekking"
-      },
-      {
-        "name": "Jalur Sepeda Gunung"
-      }
-    ]
+    "name": "Spot Foto Alam "
+  },
+  {
+    "destination": "WISATA PERENG CILONGOK",
+    "name": " Trekking "
+  },
+  {
+    "destination": "WISATA PERENG CILONGOK",
+    "name": " Jalur Sepeda Gunung. "
   },
   {
     "destination": "CURUG GOMBLANG",
-    "attractions": [
-      {
-        "name": "Air Terjun Berundak"
-      },
-      {
-        "name": "Kolam Alami"
-      },
-      {
-        "name": "Gardu Pandang"
-      }
-    ]
+    "name": "Air Terjun Berundak "
+  },
+  {
+    "destination": "CURUG GOMBLANG",
+    "name": " Kolam Alami "
+  },
+  {
+    "destination": "CURUG GOMBLANG",
+    "name": " Gardu Pandang. "
   },
   {
     "destination": "KEBUN BUAH BATUR AGUNG",
-    "attractions": [
-      {
-        "name": "Kebun Buah"
-      },
-      {
-        "name": "Edukasi Pertanian"
-      },
-      {
-        "name": "Pusat Bibit"
-      }
-    ]
+    "name": "Kebun Buah "
+  },
+  {
+    "destination": "KEBUN BUAH BATUR AGUNG",
+    "name": " Edukasi Pertanian "
+  },
+  {
+    "destination": "KEBUN BUAH BATUR AGUNG",
+    "name": " Pusat Bibit. "
   },
   {
     "destination": "KIDUNG KAMPUNGKU",
-    "attractions": [
-      {
-        "name": "Rumah Tradisional"
-      },
-      {
-        "name": "Spot Foto"
-      },
-      {
-        "name": "Kuliner Tradisional"
-      }
-    ]
+    "name": "Rumah Tradisional "
+  },
+  {
+    "destination": "KIDUNG KAMPUNGKU",
+    "name": " Spot Foto "
+  },
+  {
+    "destination": "KIDUNG KAMPUNGKU",
+    "name": " Kuliner Tradisional. "
   },
   {
     "destination": "HUTAN PINUS SAWANGAN (HPS)",
-    "attractions": [
-      {
-        "name": "Hutan Pinus"
-      },
-      {
-        "name": "Spot Foto"
-      },
-      {
-        "name": "Area Hammock"
-      }
-    ]
+    "name": "Hutan Pinus "
+  },
+  {
+    "destination": "HUTAN PINUS SAWANGAN (HPS)",
+    "name": " Spot Foto "
+  },
+  {
+    "destination": "HUTAN PINUS SAWANGAN (HPS)",
+    "name": " Area Hammock. "
   },
   {
     "destination": "CURUG CEHENG",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Kolam Alami"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG CEHENG",
+    "name": " Kolam Alami. "
   },
   {
     "destination": "DREAMLAND WATER PARK",
-    "attractions": [
-      {
-        "name": "Kolam Ombak"
-      },
-      {
-        "name": "Kolam Arus"
-      },
-      {
-        "name": "Water Slide Ekstrem"
-      },
-      {
-        "name": "Kolam Anak"
-      }
-    ]
+    "name": "Kolam Ombak "
+  },
+  {
+    "destination": "DREAMLAND WATER PARK",
+    "name": " Kolam Arus "
+  },
+  {
+    "destination": "DREAMLAND WATER PARK",
+    "name": " Water Slide Ekstrem "
+  },
+  {
+    "destination": "DREAMLAND WATER PARK",
+    "name": " Kolam Anak. "
   },
   {
     "destination": "THE FOREST",
-    "attractions": [
-      {
-        "name": "Kafe Hutan"
-      },
-      {
-        "name": "Spot Foto Estetik"
-      },
-      {
-        "name": "Taman Bunga"
-      }
-    ]
+    "name": "Kafe Hutan "
+  },
+  {
+    "destination": "THE FOREST",
+    "name": " Spot Foto Estetik "
+  },
+  {
+    "destination": "THE FOREST",
+    "name": " Taman Bunga. "
   },
   {
     "destination": "DEPO BAY",
-    "attractions": [
-      {
-        "name": "Pusat Kuliner"
-      },
-      {
-        "name": "Area Duduk Outdoor"
-      },
-      {
-        "name": "Live Music"
-      }
-    ]
+    "name": "Pusat Kuliner "
+  },
+  {
+    "destination": "DEPO BAY",
+    "name": " Area Duduk Outdoor "
+  },
+  {
+    "destination": "DEPO BAY",
+    "name": " Live Music. "
   },
   {
     "destination": "HUTAN PINUS KALIURIP (HPK)",
-    "attractions": [
-      {
-        "name": "Hutan Pinus"
-      },
-      {
-        "name": "Spot Foto Hammock"
-      },
-      {
-        "name": "Area Camping"
-      }
-    ]
+    "name": "Hutan Pinus "
+  },
+  {
+    "destination": "HUTAN PINUS KALIURIP (HPK)",
+    "name": " Spot Foto Hammock "
+  },
+  {
+    "destination": "HUTAN PINUS KALIURIP (HPK)",
+    "name": " Area Camping. "
   },
   {
     "destination": "MUSEUM WAYANG BANYUMAS",
-    "attractions": [
-      {
-        "name": "Koleksi Wayang"
-      },
-      {
-        "name": "Artefak Sejarah"
-      },
-      {
-        "name": "Diorama Budaya"
-      }
-    ]
+    "name": "Koleksi Wayang "
+  },
+  {
+    "destination": "MUSEUM WAYANG BANYUMAS",
+    "name": " Artefak Sejarah "
+  },
+  {
+    "destination": "MUSEUM WAYANG BANYUMAS",
+    "name": " Diorama Budaya. "
   },
   {
     "destination": "TIRTA HUSADA KALIBACIN",
-    "attractions": [
-      {
-        "name": "Kolam Air Panas Belerang"
-      },
-      {
-        "name": "Terapi Air"
-      }
-    ]
+    "name": "Kolam Air Panas Belerang "
+  },
+  {
+    "destination": "TIRTA HUSADA KALIBACIN",
+    "name": " Terapi Air. "
   },
   {
     "destination": "OBYEK WISATA WANASUTA",
-    "attractions": [
-      {
-        "name": "Hutan"
-      },
-      {
-        "name": "Jalur Trekking"
-      },
-      {
-        "name": "Pemandangan Alam"
-      }
-    ]
+    "name": "Hutan "
+  },
+  {
+    "destination": "OBYEK WISATA WANASUTA",
+    "name": " Jalur Trekking "
+  },
+  {
+    "destination": "OBYEK WISATA WANASUTA",
+    "name": " Pemandangan Alam. "
   },
   {
     "destination": "BUKIT PANDANG MUNGGANG",
-    "attractions": [
-      {
-        "name": "Gardu Pandang"
-      },
-      {
-        "name": "Spot Foto"
-      },
-      {
-        "name": "Area Duduk"
-      }
-    ]
+    "name": "Gardu Pandang "
+  },
+  {
+    "destination": "BUKIT PANDANG MUNGGANG",
+    "name": " Spot Foto "
+  },
+  {
+    "destination": "BUKIT PANDANG MUNGGANG",
+    "name": " Area Duduk. "
   },
   {
     "destination": "WATU MEJA",
-    "attractions": [
-      {
-        "name": "Batu Unik"
-      },
-      {
-        "name": "Spot Foto Alam"
-      }
-    ]
+    "name": "Batu Unik "
+  },
+  {
+    "destination": "WATU MEJA",
+    "name": " Spot Foto Alam. "
   },
   {
     "destination": "GEDUNG KESENIAN SOETEDJO",
-    "attractions": [
-      {
-        "name": "Panggung Utama"
-      },
-      {
-        "name": "Ruang Latihan"
-      },
-      {
-        "name": "Area Pameran"
-      }
-    ]
+    "name": "Panggung Utama "
+  },
+  {
+    "destination": "GEDUNG KESENIAN SOETEDJO",
+    "name": " Ruang Latihan "
+  },
+  {
+    "destination": "GEDUNG KESENIAN SOETEDJO",
+    "name": " Area Pameran. "
   },
   {
     "destination": "WATU JONGGOL PENGARITAN",
-    "attractions": [
-      {
-        "name": "Batu Unik"
-      },
-      {
-        "name": "Spot Foto Alam"
-      }
-    ]
+    "name": "Batu Unik "
+  },
+  {
+    "destination": "WATU JONGGOL PENGARITAN",
+    "name": " Spot Foto Alam. "
   },
   {
     "destination": "GURATAN WATU",
-    "attractions": [
-      {
-        "name": "Batuan Berukir Alami"
-      },
-      {
-        "name": "Pemandangan Hutan"
-      }
-    ]
+    "name": "Batuan Berukir Alami "
+  },
+  {
+    "destination": "GURATAN WATU",
+    "name": " Pemandangan Hutan. "
   },
   {
     "destination": "WISATA BUNTON",
-    "attractions": [
-      {
-        "name": "Pemandangan Air"
-      },
-      {
-        "name": "Spot Mancing"
-      }
-    ]
+    "name": "Pemandangan Air "
+  },
+  {
+    "destination": "WISATA BUNTON",
+    "name": " Spot Mancing. "
   },
   {
     "destination": "EMBUNG RAWA BENER",
-    "attractions": [
-      {
-        "name": "Embung"
-      },
-      {
-        "name": "Spot Mancing"
-      },
-      {
-        "name": "Perahu Dayung"
-      }
-    ]
+    "name": "Embung "
+  },
+  {
+    "destination": "EMBUNG RAWA BENER",
+    "name": " Spot Mancing "
+  },
+  {
+    "destination": "EMBUNG RAWA BENER",
+    "name": " Perahu Dayung. "
   },
   {
     "destination": "MENARA PANDANG TERATAI",
-    "attractions": [
-      {
-        "name": "Menara Pandang"
-      },
-      {
-        "name": "Kafe Puncak"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Menara Pandang "
+  },
+  {
+    "destination": "MENARA PANDANG TERATAI",
+    "name": " Kafe Puncak "
+  },
+  {
+    "destination": "MENARA PANDANG TERATAI",
+    "name": " Spot Foto. "
   },
   {
     "destination": "BUKIT TENGTUNG",
-    "attractions": [
-      {
-        "name": "Pemandangan Alam"
-      },
-      {
-        "name": "Camping Ground"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Pemandangan Alam "
+  },
+  {
+    "destination": "BUKIT TENGTUNG",
+    "name": " Camping Ground "
+  },
+  {
+    "destination": "BUKIT TENGTUNG",
+    "name": " Spot Foto. "
   },
   {
     "destination": "KOLAM RENANG TIRTA KEMBAR",
-    "attractions": [
-      {
-        "name": "Kolam Renang Standar"
-      },
-      {
-        "name": "Kolam Renang Anak"
-      }
-    ]
+    "name": "Kolam Renang Standar "
+  },
+  {
+    "destination": "KOLAM RENANG TIRTA KEMBAR",
+    "name": " Kolam Renang Anak. "
   },
   {
     "destination": "MANGGALA RANCH",
-    "attractions": [
-      {
-        "name": "Area Berkuda"
-      },
-      {
-        "name": "Mini Zoo"
-      },
-      {
-        "name": "Peternakan"
-      }
-    ]
+    "name": "Area Berkuda "
+  },
+  {
+    "destination": "MANGGALA RANCH",
+    "name": " Mini Zoo "
+  },
+  {
+    "destination": "MANGGALA RANCH",
+    "name": " Peternakan. "
   },
   {
     "destination": "EMBUNG SABANG MAS BARON",
-    "attractions": [
-      {
-        "name": "Embung"
-      },
-      {
-        "name": "Spot Mancing"
-      },
-      {
-        "name": "Spot Foto"
-      }
-    ]
+    "name": "Embung "
+  },
+  {
+    "destination": "EMBUNG SABANG MAS BARON",
+    "name": " Spot Mancing "
+  },
+  {
+    "destination": "EMBUNG SABANG MAS BARON",
+    "name": " Spot Foto. "
   },
   {
     "destination": "TAMAN BOTANI",
-    "attractions": [
-      {
-        "name": "Koleksi Tumbuhan Langka"
-      },
-      {
-        "name": "Rumah Kaca"
-      },
-      {
-        "name": "Jalur Edukasi"
-      }
-    ]
+    "name": "Koleksi Tumbuhan Langka "
+  },
+  {
+    "destination": "TAMAN BOTANI",
+    "name": " Rumah Kaca "
+  },
+  {
+    "destination": "TAMAN BOTANI",
+    "name": " Jalur Edukasi. "
   },
   {
     "destination": "CURUG GEDE",
-    "attractions": [
-      {
-        "name": "Pemandangan Alam Eksotis"
-      },
-      {
-        "name": "trekking"
-      },
-      {
-        "name": "spot foto instagramable"
-      },
-      {
-        "name": "kolam alami"
-      }
-    ]
+    "name": "Pemandangan Alam Eksotis "
+  },
+  {
+    "destination": "CURUG GEDE",
+    "name": " trekking "
+  },
+  {
+    "destination": "CURUG GEDE",
+    "name": " spot foto instagramable "
+  },
+  {
+    "destination": "CURUG GEDE",
+    "name": " kolam alami. "
   },
   {
     "destination": "CURUG TIRTA SELA",
-    "attractions": [
-      {
-        "name": "Air Terjun"
-      },
-      {
-        "name": "Jembatan Kaca"
-      },
-      {
-        "name": "spot foto estetik"
-      }
-    ]
+    "name": "Air Terjun "
+  },
+  {
+    "destination": "CURUG TIRTA SELA",
+    "name": " Jembatan Kaca "
+  },
+  {
+    "destination": "CURUG TIRTA SELA",
+    "name": " spot foto estetik. "
   },
   {
     "destination": "CURUG KEMBAR",
-    "attractions": [
-      {
-        "name": "Keindahan Alam Asri"
-      },
-      {
-        "name": "Dua Aliran Air Terjun"
-      }
-    ]
+    "name": "Keindahan Alam Asri "
+  },
+  {
+    "destination": "CURUG KEMBAR",
+    "name": " Dua Aliran Air Terjun. "
   },
   {
     "destination": "CURUG PETE",
-    "attractions": [
-      {
-        "name": "Air terjun jernih"
-      },
-      {
-        "name": "trekking alam ringan"
-      },
-      {
-        "name": "suasana tenang"
-      }
-    ]
+    "name": "Air terjun jernih "
   },
   {
-    "destination": "BHUMI BAMBU BATURRADEN",
-    "attractions": [
-      {
-        "name": "Pemandian Alam"
-      },
-      {
-        "name": "Wisata Tirta"
-      },
-      {
-        "name": "Konservasi Bambu"
-      }
-    ]
+    "destination": "CURUG PETE",
+    "name": " trekking alam ringan "
+  },
+  {
+    "destination": "CURUG PETE",
+    "name": " suasana tenang. "
+  },
+  {
+    "destination": "BHUMI BAMBU baturaden",
+    "name": "Pemandian Alam "
+  },
+  {
+    "destination": "BHUMI BAMBU baturaden",
+    "name": " Wisata Tirta "
+  },
+  {
+    "destination": "BHUMI BAMBU baturaden",
+    "name": " Konservasi Bambu. "
   },
   {
     "destination": "TAMAN PANEMON",
-    "attractions": [
-      {
-        "name": "Kolam Renang Ala Pantai"
-      },
-      {
-        "name": "Spot Foto"
-      },
-      {
-        "name": "Taman Bunga"
-      },
-      {
-        "name": "Terapi Ikan"
-      }
-    ]
+    "name": "Kolam Renang Ala Pantai "
+  },
+  {
+    "destination": "TAMAN PANEMON",
+    "name": " Spot Foto "
+  },
+  {
+    "destination": "TAMAN PANEMON",
+    "name": " Taman Bunga "
+  },
+  {
+    "destination": "TAMAN PANEMON",
+    "name": " Terapi Ikan. "
   },
   {
     "destination": "MUSEUM BRI",
-    "attractions": [
-      {
-        "name": "Sejarah Perbankan Indonesia"
-      },
-      {
-        "name": "Koleksi Patih R Aria Wiriatmadja"
-      }
-    ]
+    "name": "Sejarah Perbankan Indonesia "
+  },
+  {
+    "destination": "MUSEUM BRI",
+    "name": " Koleksi Patih R Aria Wiriatmadja. "
   },
   {
     "destination": "SITUS WATU LUMPANG",
-    "attractions": [
-      {
-        "name": "Peninggalan Megalitik (Watu Kentheng)"
-      },
-      {
-        "name": "Cagar Budaya"
-      }
-    ]
+    "name": "Peninggalan Megalitik (Watu Kentheng) "
+  },
+  {
+    "destination": "SITUS WATU LUMPANG",
+    "name": " Cagar Budaya. "
   },
   {
     "destination": "LEMBU BENGGOLO FARM & RESORT",
-    "attractions": [
-      {
-        "name": "Edukasi Satwa"
-      },
-      {
-        "name": "Mini Zoo"
-      },
-      {
-        "name": "Rainbow Slide"
-      },
-      {
-        "name": "ATV"
-      },
-      {
-        "name": "Sepeda Listrik"
-      }
-    ]
+    "name": "Edukasi Satwa "
+  },
+  {
+    "destination": "LEMBU BENGGOLO FARM & RESORT",
+    "name": " Mini Zoo "
+  },
+  {
+    "destination": "LEMBU BENGGOLO FARM & RESORT",
+    "name": " Rainbow Slide "
+  },
+  {
+    "destination": "LEMBU BENGGOLO FARM & RESORT",
+    "name": " ATV "
+  },
+  {
+    "destination": "LEMBU BENGGOLO FARM & RESORT",
+    "name": " Sepeda Listrik. "
   },
   {
     "destination": "OEMAH GAMELAN",
-    "attractions": [
-      {
-        "name": "Pelatihan Gamelan"
-      },
-      {
-        "name": "Budaya Lokal"
-      },
-      {
-        "name": "Kerajinan Gamelan"
-      }
-    ]
+    "name": "Pelatihan Gamelan "
+  },
+  {
+    "destination": "OEMAH GAMELAN",
+    "name": " Budaya Lokal "
+  },
+  {
+    "destination": "OEMAH GAMELAN",
+    "name": " Kerajinan Gamelan. "
   },
   {
     "destination": "GOA MARIA KALIORI",
-    "attractions": [
-      {
-        "name": "Ziarah Religi"
-      },
-      {
-        "name": "Patung Bunda Maria"
-      },
-      {
-        "name": "Jalan Salib"
-      },
-      {
-        "name": "Taman Rosario"
-      }
-    ]
+    "name": "Ziarah Religi "
+  },
+  {
+    "destination": "GOA MARIA KALIORI",
+    "name": " Patung Bunda Maria "
+  },
+  {
+    "destination": "GOA MARIA KALIORI",
+    "name": " Jalan Salib "
+  },
+  {
+    "destination": "GOA MARIA KALIORI",
+    "name": " Taman Rosario. "
   }
 ]

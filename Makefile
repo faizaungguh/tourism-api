@@ -10,6 +10,12 @@ import-destination:
 import-ticket-destination:
 	node data/seeds/seeding.mjs --import-ticket-destination
 
+import-attraction:
+	node data/seeds/seeding.mjs --import-attraction
+
+delete-attraction:
+	node data/seeds/seeding.mjs --delete-attraction
+
 delete-ticket-destination:
 	node data/seeds/seeding.mjs --delete-ticket-destination
 
