@@ -271,23 +271,21 @@ class Seeder {
       console.log('Memulai import data Atraksi...');
 
       await Attraction.deleteMany();
+      await Destination.updateMany({}, { attraction: [] });
 
       const destinations = await Destination.find();
       const formattedAttractions = [];
       let notFoundCount = 0;
 
       for (const item of attractionData) {
-        const rawDestination = item.destination || '';
+        const rawDestination = item.destinationTitle || '';
         const jsonDest = rawDestination.trim().toLowerCase();
+
+        if (!jsonDest) continue;
 
         const destination = destinations.find((dest) => {
           const dbTitle = dest.destinationTitle.trim().toLowerCase();
-          const dbSlug = dest.slug || dbTitle.replace(/\s+/g, '-');
-
-          if (dbTitle === jsonDest || dbSlug === jsonDest) return true;
-
-          const jsonParts = jsonDest.split(/[\s-]+/).filter(Boolean);
-          return jsonParts.length > 0 && jsonParts.every((part) => dbTitle.includes(part));
+          return dbTitle === jsonDest;
         });
 
         if (!destination) {
@@ -308,6 +306,18 @@ class Seeder {
       }
 
       const attractions = await Attraction.create(formattedAttractions);
+
+      const updates = {};
+      for (const attr of attractions) {
+        const destId = attr.destination.toString();
+        if (!updates[destId]) updates[destId] = [];
+        updates[destId].push(attr._id);
+      }
+
+      for (const [destId, attrIds] of Object.entries(updates)) {
+        await Destination.findByIdAndUpdate(destId, { attractions: attrIds });
+      }
+
       console.log(`${attractions.length} Atraksi berhasil diimpor! (${notFoundCount} dilewati)`);
       process.exit(0);
     } catch (error) {
