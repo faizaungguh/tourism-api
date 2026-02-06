@@ -1,47 +1,53 @@
+#? ADMIN
 import-admin:
 	node data/seeds/seeding.mjs --import-admin
-
-import-default:
-	node data/seeds/seeding.mjs --import-data
-
-import-destination:
-	node data/seeds/seeding.mjs --import-destination
-
-import-ticket-destination:
-	node data/seeds/seeding.mjs --import-ticket-destination
-
-import-attraction:
-	node data/seeds/seeding.mjs --import-attraction
-
-import-facility:
-	node data/seeds/seeding.mjs --import-facility
-
-import-parking:
-	node data/seeds/seeding.mjs --import-parking
-
-import-contact:
-	node data/seeds/seeding.mjs --import-contact
-
-delete-contact:
-	node data/seeds/seeding.mjs --delete-contact
-
-delete-parking:
-	node data/seeds/seeding.mjs --delete-parking
-
-delete-facility:
-	node data/seeds/seeding.mjs --delete-facility
-
-delete-attraction:
-	node data/seeds/seeding.mjs --delete-attraction
-
-delete-ticket-destination:
-	node data/seeds/seeding.mjs --delete-ticket-destination
-
-delete-destination:
-	node data/seeds/seeding.mjs --delete-destination
-
 delete-admin:
 	node data/seeds/seeding.mjs --delete-admin
 
+#? DEFAULT
+import-default:
+	node data/seeds/seeding.mjs --import-data
+
+#? DESTINATION
+import-destination:
+	node data/seeds/seeding.mjs --import-destination
+delete-destination:
+	node data/seeds/seeding.mjs --delete-destination
+
+#? TIKET DESTINATION
+import-ticket-destination:
+	node data/seeds/seeding.mjs --import-ticket-destination
+delete-ticket-destination:
+	node data/seeds/seeding.mjs --delete-ticket-destination
+
+#? ATTRACTION
+import-attraction:
+	node data/seeds/seeding.mjs --import-attraction
+delete-attraction:
+	node data/seeds/seeding.mjs --delete-attraction
+
+#? FACILITY
+import-facility:
+	node data/seeds/seeding.mjs --import-facility
+delete-facility:
+	node data/seeds/seeding.mjs --delete-facility
+
+#? PARKING
+import-parking:
+	node data/seeds/seeding.mjs --import-parking
+delete-parking:
+	node data/seeds/seeding.mjs --delete-parking
+
+#? CONTACT 
+import-contact:
+	node data/seeds/seeding.mjs --import-contact
+delete-contact:
+	node data/seeds/seeding.mjs --delete-contact
+
+#? FULLPACK 
 delete-data:
 	node data/seeds/seeding.mjs --delete-admin
+
+.DEFAULT:
+	@echo "Perintah tidak valid. Target '$@' tidak ditemukan."
+	@exit 1
