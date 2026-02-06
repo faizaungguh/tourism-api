@@ -6,7 +6,7 @@ delete-admin:
 
 #? DEFAULT
 import-default:
-	node data/seeds/seeding.mjs --import-data
+	node data/seeds/seeding.mjs --import-default
 
 #? DESTINATION
 import-destination:
@@ -45,8 +45,11 @@ delete-contact:
 	node data/seeds/seeding.mjs --delete-contact
 
 #? FULLPACK 
+import-fullpack:
+	node data/seeds/seeding.mjs --import-fullpack
+	
 delete-data:
-	node data/seeds/seeding.mjs --delete-admin
+	node data/seeds/seeding.mjs --delete-all
 
 .DEFAULT:
 	@echo "Perintah tidak valid. Target '$@' tidak ditemukan."

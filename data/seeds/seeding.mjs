@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import connectionDB from '#app/db.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
@@ -18,7 +17,7 @@ import contactData from '../mocks/ready-seed/seed-contact.json' with { type: 'js
 
 class Seeder {
   /** Admin */
-  static async importAdmin() {
+  static async importAdmin(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data...');
@@ -33,7 +32,7 @@ class Seeder {
       console.log(
         `${adminCount} Admin dan ${managerCount} Manager berhasil diimpor! (Total: ${createdAdmins.length})`,
       );
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data:', error);
       process.exit(1);
@@ -57,7 +56,7 @@ class Seeder {
   }
 
   /** Default Data*/
-  static async importDefault() {
+  static async importDefault(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data referensi (Kecamatan & Kategori)...');
@@ -71,7 +70,7 @@ class Seeder {
       console.log(
         `${subdistricts.length} Kecamatan dan ${categories.length} Kategori berhasil diimpor!`,
       );
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data:', error);
       process.exit(1);
@@ -96,7 +95,7 @@ class Seeder {
   }
 
   /** Destinasi*/
-  static async importDestination() {
+  static async importDestination(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data Destinasi...');
@@ -180,7 +179,7 @@ class Seeder {
 
       const destinations = await Destination.create(formattedDestinations);
       console.log(`${destinations.length} Destinasi berhasil diimpor!`);
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data destinasi:', error);
       process.exit(1);
@@ -204,7 +203,7 @@ class Seeder {
   }
 
   /** Harga Tiket*/
-  static async importTicketDestination() {
+  static async importTicketDestination(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data harga tiket destinasi...');
@@ -243,7 +242,7 @@ class Seeder {
       }
 
       console.log(`${updatedCount} harga tiket berhasil diperbarui! (${notFoundCount} dilewati)`);
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data harga tiket:', error);
       process.exit(1);
@@ -264,8 +263,9 @@ class Seeder {
       process.exit(1);
     }
   }
+
   /** Wahana*/
-  static async importAttraction() {
+  static async importAttraction(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data Atraksi...');
@@ -319,7 +319,7 @@ class Seeder {
       }
 
       console.log(`${attractions.length} Atraksi berhasil diimpor! (${notFoundCount} dilewati)`);
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data atraksi:', error);
       process.exit(1);
@@ -340,8 +340,9 @@ class Seeder {
       process.exit(1);
     }
   }
+
   /** Fasilitas*/
-  static async importFacility() {
+  static async importFacility(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data Fasilitas Destinasi...');
@@ -399,7 +400,7 @@ class Seeder {
       console.log(
         `${updatedCount} Destinasi berhasil diperbarui fasilitasnya! (${notFoundCount} item fasilitas dilewati)`,
       );
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data fasilitas:', error);
       process.exit(1);
@@ -422,7 +423,7 @@ class Seeder {
   }
 
   /** Parkir*/
-  static async importParking() {
+  static async importParking(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data Parkir Destinasi...');
@@ -463,7 +464,7 @@ class Seeder {
       console.log(
         `${updatedCount} Destinasi berhasil diperbarui data parkirnya! (${notFoundCount} dilewati)`,
       );
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data parkir:', error);
       process.exit(1);
@@ -495,7 +496,7 @@ class Seeder {
   }
 
   /** Kontak*/
-  static async importContact() {
+  static async importContact(exit = true) {
     try {
       await connectionDB();
       console.log('Memulai import data Kontak Destinasi...');
@@ -556,7 +557,7 @@ class Seeder {
       console.log(
         `${updatedCount} Destinasi berhasil diperbarui kontaknya! (${notFoundCount} dilewati)`,
       );
-      process.exit(0);
+      if (exit) process.exit(0);
     } catch (error) {
       console.error('Error saat mengimpor data kontak:', error);
       process.exit(1);
@@ -574,6 +575,26 @@ class Seeder {
       process.exit(0);
     } catch (error) {
       console.error('Error saat mereset data kontak:', error);
+      process.exit(1);
+    }
+  }
+
+  /** Delete All Data */
+  static async deleteAll() {
+    try {
+      await connectionDB();
+      console.log('Memulai menghapus SEMUA data...');
+
+      await Attraction.deleteMany();
+      await Destination.deleteMany();
+      await Category.deleteMany();
+      await Subdistrict.deleteMany();
+      await Admin.deleteMany();
+
+      console.log('SEMUA data berhasil dihapus!');
+      process.exit(0);
+    } catch (error) {
+      console.error('Error saat menghapus semua data:', error);
       process.exit(1);
     }
   }
@@ -636,8 +657,23 @@ switch (process.argv[2]) {
   case '--delete-contact':
     Seeder.deleteContact();
     break;
+  case '--delete-all':
+    Seeder.deleteAll();
+    break;
+  case '--import-fullpack':
+    await Seeder.importAdmin(false);
+    await Seeder.importDefault(false);
+    await Seeder.importDestination(false);
+    await Seeder.importTicketDestination(false);
+    await Seeder.importFacility(false);
+    await Seeder.importParking(false);
+    await Seeder.importContact(false);
+    await Seeder.importAttraction(false);
+    console.log('FULLPACK SEEDING SELESAI!');
+    process.exit(0);
+    break;
   default:
     console.error(
-      'Perintah tidak valid. Gunakan flag: --import-admin --delete-admin --import-data --delete-data --import-destination --delete-destination --import-ticket-destination --delete-ticket-destination --import-attraction --delete-attraction --import-facility --delete-facility --import-parking --delete-parking --import-contact --delete-contact',
+      'Perintah tidak valid. Gunakan flag: --import-admin --delete-admin --import-data --delete-data --import-destination --delete-destination --import-ticket-destination --delete-ticket-destination --import-attraction --delete-attraction --import-facility --delete-facility --import-parking --delete-parking --import-contact --delete-contact --delete-all',
     );
 }

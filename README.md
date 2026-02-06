@@ -186,3 +186,66 @@ pnpm dev
 ```
 
 ---
+
+## Seeding cheatsheet
+
+command di bawah merupakan tools tambahan untuk memudahkan menjalankan perintah seeding yang sudah dibuat, harus menginstall Makefile terlebih dahulu,  atau bisa menggunakan command node
+
+### 1. Fullpack
+Command ini akan sekaligus mengimpor data dari seed `.json` ke Database
+#### Makefile
+```Makefile
+make import-fullpack
+```
+#### Nodejs
+```nodejs
+node data/seeds/seeding.mjs --import-fullpack
+```
+Command ini akan sekaligus menghapus data pada Database
+#### Makefile
+```Makefile
+make delete-data
+```
+#### Nodejs
+```nodejs
+node data/seeds/seeding.mjs --delete-all
+```
+
+### 2. Default (Admin, Subdistrict, Category)
+Command ini akan sekaligus mengimpor data Admin, Subdistrict, dan Category dari seed `.json` ke Database
+#### Makefile
+```Makefile
+make import-admin import-default
+```
+#### Nodejs
+```nodejs
+node data/seeds/seeding.mjs --import-admin && node data/seeds/seeding.mjs --import-default
+```
+
+### 3. Satu per Satu
+Command ini akan sekaligus mengimpor data Admin, Subdistrict, Category, + Destinasi dan Attraction dari seed `.json` ke Database
+#### Makefile
+```Makefile
+make import-admin
+```
+```Makefile
+make import-default
+```
+```Makefile
+make import-destination 
+```
+```Makefile
+make import-ticket-destination 
+```
+```Makefile
+make import-attraction 
+```
+```Makefile
+make import-facility 
+```
+```Makefile
+make import-parking 
+```
+```Makefile
+make import-contact
+```
