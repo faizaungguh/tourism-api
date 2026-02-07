@@ -91,6 +91,64 @@ const createSlug = (name) => {
     .replace(/[^\w-]+/g, '');
 };
 
+const _buildUpdateSet = (validatedRequest, categoryDoc, subdistrictDoc) => {
+  const updateSet = {};
+  const errors = {};
+
+  /** Category */
+  if (validatedRequest.categories) {
+    if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
+    else updateSet.category = categoryDoc._id;
+  }
+
+  /** Subdistrict */
+  if (validatedRequest.locations?.subdistrict) {
+    if (!subdistrictDoc)
+      errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
+    else updateSet['locations.subdistrict'] = subdistrictDoc._id;
+  }
+
+  /** */
+  if (validatedRequest.destinationTitle) {
+    updateSet.destinationTitle = validatedRequest.destinationTitle;
+  }
+
+  if (Object.keys(errors).length > 0) {
+    throw new ResponseError(422, 'Proses dihentikan', errors);
+  }
+
+  /** Deskripsi */
+  if (validatedRequest.description) updateSet.description = validatedRequest.description;
+
+  /** Alamat */
+  if (validatedRequest.locations?.addresses)
+    updateSet['locations.addresses'] = validatedRequest.locations.addresses;
+
+  /** Koordinat */
+  if (validatedRequest.locations?.coordinates)
+    updateSet['locations.coordinates'] = validatedRequest.locations.coordinates;
+
+  /** Tiket */
+  if (validatedRequest.ticket && typeof validatedRequest.ticket === 'object') {
+    Object.entries(validatedRequest.ticket).forEach(([key, value]) => {
+      updateSet[`ticket.${key}`] = value;
+    });
+  }
+
+  /** Parkir */
+  if (validatedRequest.parking && typeof validatedRequest.parking === 'object') {
+    Object.entries(validatedRequest.parking).forEach(([type, data]) => {
+      if (data && typeof data === 'object') {
+        Object.entries(data).forEach(([prop, value]) => {
+          updateSet[`parking.${type}.${prop}`] = value;
+        });
+      }
+    });
+  }
+
+  return updateSet;
+};
+
 export const destinationHelper = {
   list: (validatedQuery) => {
     return destinationPipeline.buildList(validatedQuery);
@@ -170,101 +228,50 @@ export const destinationHelper = {
       });
 
     if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
-      throw new ResponseError(403, 'Akse ditolak', {
-        message: `Anda tidak memiliki hak untuk mengelola ${validatedRequest.destinationTitle}`,
+      throw new ResponseError(403, 'Akses ditolak', {
+        message: `Anda tidak memiliki hak untuk mengelola ${destinationToUpdate.destinationTitle}`,
       });
     }
-
-    const updateOperation = { $set: {} };
-    const errors = {};
 
     const { categoryDoc, subdistrictDoc } = await _findRelatedDocs({
       categories: validatedRequest.categories,
       subdistrict: validatedRequest.locations?.subdistrict,
     });
 
-    if (validatedRequest.categories) {
-      if (!categoryDoc) errors.categories = `Kategori "${validatedRequest.categories}" tidak ada.`;
-      else updateOperation.$set.category = categoryDoc._id;
-    }
-    if (validatedRequest.locations?.subdistrict) {
-      if (!subdistrictDoc)
-        errors.subdistrict = `Kecamatan "${validatedRequest.locations.subdistrict}" tidak ada.`;
-      else updateOperation.$set['locations.subdistrict'] = subdistrictDoc._id;
-    }
-    if (validatedRequest.destinationTitle) {
-      updateOperation.$set.destinationTitle = validatedRequest.destinationTitle;
-    }
-    if (Object.keys(errors).length > 0) {
-      throw new ResponseError(422, 'Proses dihentikan', errors);
+    const updateSet = _buildUpdateSet(validatedRequest, categoryDoc, subdistrictDoc);
+
+    if (Object.keys(updateSet).length > 0) {
+      await Destination.findOneAndUpdate({ _id: destinationToUpdate._id }, { $set: updateSet });
     }
 
-    if (validatedRequest.description) {
-      updateOperation.$set.description = validatedRequest.description;
-    }
-    if (validatedRequest.locations?.addresses) {
-      updateOperation.$set['locations.addresses'] = validatedRequest.locations.addresses;
-    }
-    if (validatedRequest.locations?.coordinates) {
-      updateOperation.$set['locations.coordinates'] = validatedRequest.locations.coordinates;
-    }
-
-    if (validatedRequest.ticket && typeof validatedRequest.ticket === 'object') {
-      Object.keys(validatedRequest.ticket).forEach((key) => {
-        updateOperation.$set[`ticket.${key}`] = validatedRequest.ticket[key];
-      });
-    }
-    if (validatedRequest.parking && typeof validatedRequest.parking === 'object') {
-      Object.keys(validatedRequest.parking).forEach((vehicleType) => {
-        if (
-          validatedRequest.parking[vehicleType] &&
-          typeof validatedRequest.parking[vehicleType] === 'object'
-        ) {
-          for (const prop in validatedRequest.parking[vehicleType]) {
-            const path = `parking.${vehicleType}.${prop}`;
-            updateOperation.$set[path] = validatedRequest.parking[vehicleType][prop];
-          }
-        }
-      });
-    }
-
-    if (Object.keys(updateOperation.$set).length > 0) {
-      await Destination.updateOne({ _id: destinationToUpdate._id }, updateOperation);
-    }
-
-    await _updateArrayField({
-      destinationId: destinationToUpdate._id,
-      existingArray: destinationToUpdate.openingHour,
-      updateArray: validatedRequest.openingHour,
-      fieldName: 'openingHour',
-      keyField: 'day',
-      preProcessingLogic: (item) => processOpeningHours([item]),
-    });
-
-    await _updateArrayField({
-      destinationId: destinationToUpdate._id,
-      existingArray: destinationToUpdate.facility,
-      updateArray: validatedRequest.facility,
-      fieldName: 'facility',
-      keyField: 'name',
-      preProcessingLogic: (facilityUpdate) => {
-        if (facilityUpdate.availability === false) {
-          facilityUpdate.number = 0;
-        }
-
-        if (facilityUpdate.name && !facilityUpdate._id) {
-          facilityUpdate.slug = createSlug(facilityUpdate.name);
-        }
+    const arrayUpdates = [
+      {
+        field: 'openingHour',
+        key: 'day',
+        logic: (item) => processOpeningHours([item]),
       },
-    });
+      {
+        field: 'facility',
+        key: 'name',
+        logic: (facilityUpdate) => {
+          if (facilityUpdate.availability === false) facilityUpdate.number = 0;
+          if (facilityUpdate.name && !facilityUpdate._id)
+            facilityUpdate.slug = createSlug(facilityUpdate.name);
+        },
+      },
+      { field: 'contact', key: 'platform' },
+    ];
 
-    await _updateArrayField({
-      destinationId: destinationToUpdate._id,
-      existingArray: destinationToUpdate.contact,
-      updateArray: validatedRequest.contact,
-      fieldName: 'contact',
-      keyField: 'platform',
-    });
+    for (const { field, key, logic } of arrayUpdates) {
+      await _updateArrayField({
+        destinationId: destinationToUpdate._id,
+        existingArray: destinationToUpdate[field],
+        updateArray: validatedRequest[field],
+        fieldName: field,
+        keyField: key,
+        preProcessingLogic: logic,
+      });
+    }
 
     const updatedDocument = await Destination.findById(destinationToUpdate._id).lean();
     return updatedDocument;
