@@ -23,6 +23,8 @@ export const destinationData = {
     /** Validasi dan ambil nilai default dari query */
     const validatedQuery = validations.check.request(checker.destination.list, query);
 
+    await helper.Data.destination.validateCategory(validatedQuery.category);
+
     /** Dapatkan aggregation pipeline dari helper */
     const pipeline = helper.Data.destination.list(validatedQuery);
 
@@ -30,6 +32,8 @@ export const destinationData = {
 
     const data = result[0].data;
     const totalItems = result[0].metadata[0] ? result[0].metadata[0].totalItems : 0;
+
+    helper.Data.destination.validateCategoryEmpty(validatedQuery.category, totalItems);
 
     const { page, size } = validatedQuery;
 

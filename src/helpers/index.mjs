@@ -29,6 +29,8 @@ export const helper = {
       get: destinationHelper.get,
       list: destinationHelper.list,
       update: destinationHelper.patch,
+      validateCategory: destinationHelper.validateCategoryAvailability,
+      validateCategoryEmpty: destinationHelper.validateCategoryEmptyResult,
       recommendation: recommendationHelper.show,
     },
 

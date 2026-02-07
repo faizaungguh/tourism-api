@@ -274,14 +274,14 @@ const _updateArrayField = async ({
   if (deletions.length > 0) {
     await Destination.updateOne(
       { _id: destinationId },
-      { $pull: { [fieldName]: { [keyField]: { $in: deletions } } } }
+      { $pull: { [fieldName]: { [keyField]: { $in: deletions } } } },
     );
   }
 
   if (additions.length > 0) {
     await Destination.updateOne(
       { _id: destinationId },
-      { $push: { [fieldName]: { $each: additions } } }
+      { $push: { [fieldName]: { $each: additions } } },
     );
   }
 
@@ -293,7 +293,7 @@ const _updateArrayField = async ({
       });
       await Destination.updateOne(
         { _id: destinationId, [`${fieldName}.${keyField}`]: itemUpdate[keyField] },
-        updateOp
+        updateOp,
       );
     }
   }
@@ -364,6 +364,28 @@ export const destinationHelper = {
     return buildListPipeline(validatedQuery);
   },
 
+  validateCategoryAvailability: async (categoryQuery) => {
+    if (!categoryQuery) return;
+
+    const categoryDoc = await Category.findOne({
+      $or: [{ name: new RegExp(`^${categoryQuery}$`, 'i') }, { slug: categoryQuery }],
+    });
+
+    if (!categoryDoc) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Mohon maaf, tidak ada Kategori dengan nilai "${categoryQuery}".`,
+      });
+    }
+  },
+
+  validateCategoryEmptyResult: (categoryQuery, totalItems) => {
+    if (categoryQuery && totalItems === 0) {
+      throw new ResponseError(404, 'Data tidak ditemukan', {
+        message: `Belum ada destinasi untuk kategori "${categoryQuery}".`,
+      });
+    }
+  },
+
   get: (identifier) => {
     const matchConditions = [];
 
@@ -428,7 +450,7 @@ export const destinationHelper = {
     const [admin, destinationToUpdate] = await Promise.all([
       Admin.findOne({ adminId }).select('_id').lean(),
       Destination.findOne({ slug: destinationSlug }).select(
-        '_id createdBy destinationTitle facility openingHour contact'
+        '_id createdBy destinationTitle facility openingHour contact',
       ),
     ]);
 
