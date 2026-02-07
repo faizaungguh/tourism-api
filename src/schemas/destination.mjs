@@ -214,6 +214,19 @@ destinationSchema.pre('save', async function (next) {
   }
 
   if (this.isModified('destinationTitle') || this.isNew) {
+    const existing = await this.constructor
+      .findOne({ destinationTitle: this.destinationTitle })
+      .select('_id')
+      .lean();
+
+    if (existing && existing._id.toString() !== this._id.toString()) {
+      return next(
+        new ResponseError(409, 'Konflik data', {
+          message: `Judul destinasi "${this.destinationTitle}" sudah digunakan.`,
+        }),
+      );
+    }
+
     const baseSlug = this.destinationTitle
       .toLowerCase()
       .replace(/ /g, '-')
@@ -222,12 +235,8 @@ destinationSchema.pre('save', async function (next) {
     let slug = baseSlug;
     let isUnique = false;
     while (!isUnique) {
-      const query = { slug: slug };
-      if (!this.isNew) {
-        query._id = { $ne: this._id };
-      }
-      const existing = await this.constructor.findOne(query);
-      if (!existing) {
+      const existing = await this.constructor.findOne({ slug: slug }).select('_id').lean();
+      if (!existing || existing._id.toString() === this._id.toString()) {
         isUnique = true;
       } else {
         slug = `${baseSlug}-${nanoid(5)}`;
@@ -242,12 +251,34 @@ destinationSchema.pre('save', async function (next) {
 destinationSchema.pre('findOneAndUpdate', async function (next) {
   const update = this.getUpdate();
   processOpeningHours(update.$set?.openingHour);
+  let docToUpdate;
 
   if (
     update.$set &&
     (update.$set.galleryPhoto || update.$set.facility || update.$set.destinationTitle)
   ) {
-    const docToUpdate = await this.model.findOne(this.getQuery()).lean();
+    docToUpdate = await this.model.findOne(this.getQuery()).lean();
+
+    if (!docToUpdate) return next();
+
+    if (
+      update.$set.destinationTitle &&
+      update.$set.destinationTitle !== docToUpdate.destinationTitle
+    ) {
+      const existing = await this.model
+        .findOne({ destinationTitle: update.$set.destinationTitle })
+        .select('_id')
+        .lean();
+
+      if (existing && existing._id.toString() !== docToUpdate._id.toString()) {
+        return next(
+          new ResponseError(409, 'Konflik data', {
+            message: `Judul destinasi "${update.$set.destinationTitle}" sudah digunakan.`,
+          }),
+        );
+      }
+    }
+
     const destinationTitle = update.$set.destinationTitle || docToUpdate.destinationTitle;
 
     const tempDoc = {
@@ -263,6 +294,11 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
   }
 
   if (update.$set && update.$set.destinationTitle) {
+    if (!docToUpdate) {
+      docToUpdate = await this.model.findOne(this.getQuery()).select('_id').lean();
+    }
+    if (!docToUpdate) return next();
+
     const baseSlug = update.$set.destinationTitle
       .toLowerCase()
       .replace(/ /g, '-')
@@ -271,12 +307,8 @@ destinationSchema.pre('findOneAndUpdate', async function (next) {
     let slug = baseSlug;
     let isUnique = false;
     while (!isUnique) {
-      const query = {
-        slug: slug,
-        _id: { $ne: this.getQuery()._id },
-      };
-      const existing = await this.model.findOne(query);
-      if (!existing) {
+      const existing = await this.model.findOne({ slug: slug }).select('_id').lean();
+      if (!existing || existing._id.toString() === docToUpdate._id.toString()) {
         isUnique = true;
       } else {
         slug = `${baseSlug}-${nanoid(5)}`;
