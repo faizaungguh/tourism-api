@@ -1,0 +1,24 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan Hapus]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: DELETE <br/> URL: /api-adestinations/:slug/]
+    
+    subgraph "Prosedur Validasi Keamanan"
+        %% Tahap 1: Cek Eksistensi
+        Endpoint --> CheckExist{Destinasi Ada?}
+        
+        %% Tahap 2: Cek Otorisasi
+        CheckExist -- Ya --> Auth{Pemilik/Pengelola?}
+    end
+        CheckExist -- Tidak --> Error404[Response 404: Not Found]
+        Auth -- Bukan --> Error403[Response 403: Forbidden]
+
+    %% Tahap Akhir: Eksekusi
+    Auth -- Ya --> Delete[Hapus Dokumen dari Database]
+    Delete --> Success200[Response 200: Data Berhasil Dihapus]
+    
+    Success200 --> End([Selesai])
+    Error404 --> End
+    Error403 --> End

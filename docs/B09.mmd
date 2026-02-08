@@ -1,0 +1,27 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan Rekomendasi]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: GET <br/> URL: /recommendation//]
+    
+    subgraph "Validasi Input Kriteria"
+        %% Tahap 1: Ekstraksi & Validasi Query
+        Endpoint --> Query[Ekstraksi req.query: Lat, Long, Kategori, Bobot]
+        Query --> Validate{Kriteria Sesuai?}
+    end
+        Validate -- Tidak --> Error400[Response 400 Bad Request: <br/> 'Kriteria tidak valid']
+
+    subgraph "Engine Rekomendasi (Backend)"
+        %% Tahap 2: Proses Matematika
+        Validate -- Ya --> Fetch[Ambil Data Destinasi dari MongoDB]
+        Fetch --> Haversine[Kalkulasi Jarak Haversine]
+        Haversine --> TOPSIS[Proses Perangkingan TOPSIS]
+    end
+
+    %% Tahap Akhir: Output
+    TOPSIS --> Sort[Urutkan Berdasarkan Skor Tertinggi]
+    Sort --> Success200[Response 200 OK: <br/> Daftar Rekomendasi Wisata]
+    
+    Success200 --> End([Selesai])
+    Error400 --> End

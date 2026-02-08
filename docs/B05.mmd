@@ -1,0 +1,16 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan Sign Out]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: DELETE <br/> URL: /api/signout/]
+    
+    subgraph "Proses Pembersihan Sesi"
+        %% Tahap 1: Penghapusan Token
+        Endpoint --> Clear[Hapus Token JWT dari Cookie]
+    end
+
+    %% Tahap Akhir: Respon
+    Clear --> Success200[Response 200 OK: <br/> 'Logout Berhasil']
+    
+    Success200 --> End([Selesai])

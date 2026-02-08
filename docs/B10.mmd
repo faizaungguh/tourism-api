@@ -1,0 +1,15 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Input[Input Kata Kunci Pencarian]
+    Input --> API[/Method : GET,</br> Endpoint : /destinations?search=/]
+    
+    subgraph "Proses Request"
+        API --> Query[Proses Pencarian di Database]
+        Query --> Decision{Data Ditemukan?}
+    end
+    
+    Decision -- Ya --> Result200[Response 200 OK: Daftar Destinasi Wisata]
+    Decision -- Tidak --> Error404[Response 404 Not Found: Data Kosong]
+    
+    Result200 --> End([Selesai])
+    Error404 --> End

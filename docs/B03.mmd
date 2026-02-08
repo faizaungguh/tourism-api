@@ -1,0 +1,15 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Input[Menerima Permintaan Menampilkan Detail Destinasi]
+    Input --> Request[/MethodL GET </br> Endpoint: /destinations/:slug/]
+    
+    subgraph "Proses Menampilkan Detail Destinasi"
+        Request --> Query[Pencarian Dokumen berdasarkan Slug di Database]
+        Query --> Decision{Data Ditemukan?}
+    end
+    
+    Decision -- Ya --> Success200[Response 200 OK: Detail Objek Wisata]
+    Decision -- Tidak --> Error404[Response 404 Not Found: Destinasi Tidak Ada]
+    
+    Success200 --> End([Selesai])
+    Error404 --> End

@@ -1,0 +1,29 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan Update]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: PUT <br/> URL: /api/destinations/:slug/]
+    
+    subgraph "Prosedur Validasi Kronologis"
+        %% Tahap 1: Cek Eksistensi
+        Endpoint --> CheckExist{Destinasi Ada?}
+        
+        %% Tahap 2: Cek Otorisasi
+        CheckExist -- Ya --> Auth{Pemilik atau bukan?}
+        
+        %% Tahap 3: Cek Data Input
+        Auth -- Ya --> Validate{Request Body Benar?}
+    Update --> Success200[Response 200: Update Berhasil]
+    end
+    CheckExist -- Tidak --> Error404[Response 404: Not Found]
+    Auth -- Bukan --> Error403[Response 403: Forbidden]
+    Validate -- Salah --> Error422[Response 422: Unprocessable Entity]
+    
+    %% Tahap Akhir: Eksekusi
+    Validate -- Benar --> Update[Update Dokumen di Database]
+    
+    Success200 --> End([Selesai])
+    Error404 --> End
+    Error403 --> End
+    Error422 --> End

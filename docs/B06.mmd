@@ -1,0 +1,26 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan Tambah Destinasi]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: POST <br/> URL: /api/destinations//]
+    
+    subgraph "Prosedur Keamanan & Validasi"
+        %% Tahap 1: Cek Autentikasi
+        Endpoint --> CheckAuth{Sudah Sign In?}
+        
+        %% Tahap 2: Input & Validasi Data
+        CheckAuth -- Ya --> Body[Mengirimkan req.body]
+        Body --> Validate{Data Valid?}
+        Validate -- Ya --> Create[Membuat Dokumen Baru di MongoDB]
+    end
+    
+    CheckAuth -- Tidak --> Error401[Response 401 Unauthorized: <br/> 'Akses ditolak, silakan login']
+    Validate -- Tidak --> Error422[Response 422 Unprocessable Entity: <br/> 'Data tidak valid']
+
+    %% Tahap Akhir: Eksekusi
+    Create --> Success201[Response 201 Created: <br/> 'Destinasi berhasil ditambahkan']
+    
+    Success201 --> End([Selesai])
+    Error401 --> End
+    Error422 --> End

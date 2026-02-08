@@ -1,0 +1,25 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan Sign In]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: POST <br/> URL: /sign-in/]
+    
+    subgraph "Proses Autentikasi Backend"
+        %% Tahap 1: Pengiriman Data
+        Endpoint --> Body[Kirim req.body: Username & Password]
+        
+        %% Tahap 2: Validasi Kredensial
+        Body --> CheckUser[Pencarian User & Verifikasi Password]
+        CheckUser --> Decision{Kredensial Cocok?}
+    Decision -- Ya --> JWT[Generate Token JWT]
+    end
+
+    %% Tahap Akhir: Respon
+    Decision -- Tidak --> Error401[Response 401 Unauthorized: <br/> 'Login Gagal']
+    
+    JWT --> Cookie[Simpan Token ke dalam Cookie]
+    Cookie --> Success200[Response 200 OK: <br/> 'Login Berhasil']
+    
+    Success200 --> End([Selesai])
+    Error401 --> End

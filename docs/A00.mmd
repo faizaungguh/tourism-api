@@ -1,0 +1,44 @@
+%%{init: {'theme': 'neutral'}}%%
+graph LR
+    subgraph "Usecase Diagram API Pariwisasta"
+        subgraph "API Publik"
+            B01((B-01: Melihat Semua<br/>Destinasi))
+            B02((B-02: Filter<br/>Kategori))
+            B03((B-03: Detail<br/>Destinasi))
+            B09((B-09: Rekomendasi<br/>TOPSIS))
+            B10((B-10: Pencarian<br/>Wisata))
+            B04((B-04: Sign In))
+        end
+        subgraph "API Privat"
+            B05((B-05: Sign Out))
+            B06((B-06: Membuat Data<br/>Baru))
+            B07((B-07: Mengubah Data))
+            B08((B-08: Menghapus Data))
+        end
+    end
+
+    Pengguna([Pengguna])
+    Admin([Admin])
+
+    %% Relasi Generalisasi (Admin adalah Pengguna dengan hak akses lebih)
+    Admin --> Pengguna
+
+    %% Interaksi Pengguna
+    Pengguna --- B01
+    Pengguna --- B02
+    Pengguna --- B03
+    Pengguna --- B09
+    Pengguna --- B10
+    Pengguna --- B04
+
+    %% Interaksi Admin (Fitur Khusus)
+    Admin --- B05
+    Admin --- B06
+    Admin --- B07
+    Admin --- B08
+
+    %% Relasi Include (Fitur privat wajib login)
+    B05 -.->|include| B04
+    B06 -.->|include| B04
+    B07 -.->|include| B04
+    B08 -.->|include| B04

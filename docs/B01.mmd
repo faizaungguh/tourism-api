@@ -1,0 +1,21 @@
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    Start([Mulai]) --> Req[Menerima Permintaan List Destinasi]
+    
+    %% Step Penentu Method & URL
+    Req --> Endpoint[/HTTP Method: GET <br/> Endpoint: /destinations/]
+    
+    subgraph "Proses Mendapatkan Daftar Destinasi Wisata"
+        %% Tahap 1: Cek Database
+        Endpoint --> Query[Kueri Seluruh Koleksi di Database]
+        
+        %% Tahap 2: Validasi Hasil
+        Query --> Decision{Apakah Data Ada?}
+    end
+
+    %% Tahap Akhir: Respon
+    Decision -- Tidak --> Error404[Response 404 Not Found: <br/> 'Data tidak ditemukan']
+    Decision -- Ya --> Success200[Response 200 OK: <br/> Menampilkan Daftar Destinasi]
+    
+    Success200 --> End([Selesai])
+    Error404 --> End
