@@ -6,7 +6,7 @@ flowchart TD
     subgraph "Proses Menampilkan Destinasi Wisata berdasarkan Kategori"
         API --> CheckCat{Kategori Terdaftar?}
         
-        CheckCat -- Ya --> Fetch[Kueri Destinasi berdasarkan Kategori]
+        CheckCat -- Ya --> Fetch[Cek Destinasi berdasarkan Kategori]
         Fetch --> CheckData{Data Ditemukan?}
         
     end

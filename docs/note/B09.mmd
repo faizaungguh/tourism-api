@@ -10,7 +10,7 @@ flowchart TD
         Endpoint --> Query[Ekstraksi req.query: Lat, Long, Kategori, Bobot]
         Query --> Validate{Kriteria Sesuai?}
     end
-        Validate -- Tidak --> Error400[Response 400 Bad Request: <br/> 'Kriteria tidak valid']
+        Validate -- Tidak --> Error400[Response 422 Unprocessing Entity: <br/> 'Kriteria tidak valid']
 
     subgraph "Engine Rekomendasi (Backend)"
         %% Tahap 2: Proses Matematika

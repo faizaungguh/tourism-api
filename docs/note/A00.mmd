@@ -21,7 +21,7 @@ graph LR
     Admin([Admin])
 
     %% Relasi Generalisasi (Admin adalah Pengguna dengan hak akses lebih)
-    Admin --> Pengguna
+    %% Admin --> Pengguna
 
     %% Interaksi Pengguna
     Pengguna --- B01
@@ -32,6 +32,7 @@ graph LR
     Pengguna --- B04
 
     %% Interaksi Admin (Fitur Khusus)
+    Admin --> B04
     Admin --- B05
     Admin --- B06
     Admin --- B07
