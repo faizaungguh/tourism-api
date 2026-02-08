@@ -39,16 +39,14 @@ export const destinationChecker = {
     }),
 
   list: validate.object({
-    page: validate.number().min(1).positive().default(1),
-    size: validate.number().min(1).max(100).positive().default(10),
-    sort: validate.string().valid('asc', 'desc').default('desc'),
-    sortBy: validate.string().valid('destinationTitle', 'category', 'subdistrict').optional(),
-    search: validate.string().optional().allow(''),
-    category: validate.string().optional(),
-    subdistrict: validate.string().optional(),
+    page: field.page,
+    size: field.size,
+    sort: field.sort,
+    sortBy: field.sortBy,
+    search: field.search,
+    category: field.category,
+    subdistrict: field.subdistrict,
   }),
 
-  getRaw: validate.object({
-    limit: validate.number().integer().min(1).optional(),
-  }),
+  getRaw: field.getRaw,
 };

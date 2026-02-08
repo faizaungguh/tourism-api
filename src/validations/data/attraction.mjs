@@ -7,13 +7,7 @@ export const attractionChecker = {
       name: field.name.required(),
       description: field.description.required(),
       ticketType: field.ticketType.required(),
-      ticket: validate.when('ticketType', {
-        is: 'berbayar',
-        then: field.ticket.required().messages({
-          'any.required': 'Detail harga tiket wajib diisi jika tipe tiket adalah berbayar.',
-        }),
-        otherwise: validate.forbidden(),
-      }),
+      ticket: field.conditionalTicket,
     })
     .messages({
       'object.unknown':

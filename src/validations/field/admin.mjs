@@ -104,4 +104,9 @@ export const field = {
     .string()
     .valid('username', 'email', 'name', 'createdAt', 'adminId')
     .default('createdAt'),
+
+  /** getRaw */
+  getRaw: validate.object({
+    limit: validate.number().integer().min(1).optional(),
+  }),
 };
