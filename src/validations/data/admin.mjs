@@ -11,14 +11,11 @@ export const adminCheck = {
   }),
 
   list: validate.object({
-    page: validate.number().min(1).positive().default(1),
-    size: validate.number().min(1).max(100).positive().default(10),
-    sort: validate.string().valid('asc', 'desc').default('desc'),
-    role: validate.string().valid('admin', 'manager'),
-    sortBy: validate
-      .string()
-      .valid('username', 'email', 'name', 'createdAt', 'adminId')
-      .default('createdAt'),
+    page: field.page,
+    size: field.size,
+    sort: field.sort,
+    role: field.role,
+    sortBy: field.sortBy,
   }),
 
   patch: validate

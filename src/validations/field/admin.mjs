@@ -94,4 +94,14 @@ export const field = {
     'string.min': 'Password minimal harus memiliki 6 karakter',
     'string.pattern.base': 'Password hanya boleh berisi huruf, angka, dan karakter #, @, $, &',
   }),
+
+  /** list */
+  page: validate.number().min(1).positive().default(1),
+  size: validate.number().min(1).max(100).positive().default(10),
+  sort: validate.string().valid('asc', 'desc').default('desc'),
+  role: validate.string().valid('admin', 'manager'),
+  sortBy: validate
+    .string()
+    .valid('username', 'email', 'name', 'createdAt', 'adminId')
+    .default('createdAt'),
 };
