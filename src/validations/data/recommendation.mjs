@@ -32,14 +32,14 @@ export const recommendationChecker = {
           'alternatives.types': 'Kategori harus berupa teks atau kumpulan teks.',
         }),
 
-      lat: validate.number().min(-90).max(90),
-      long: validate.number().min(-180).max(180),
+      lat: validate.number().min(-90).max(90).required(),
+      long: validate.number().min(-180).max(180).required(),
 
-      weight_distance: validate.number().min(0).max(100).default(0),
-      weight_attractions: validate.number().min(0).max(100).default(0),
-      weight_facilities: validate.number().min(0).max(100).default(0),
-      weight_ticketPrice: validate.number().min(0).max(100).default(0),
-      weight_parkingCapacity: validate.number().min(0).max(100).default(0),
+      weight_distance: validate.number().min(0).max(100).default(0).required(),
+      weight_attractions: validate.number().min(0).max(100).default(0).required(),
+      weight_facilities: validate.number().min(0).max(100).default(0).required(),
+      weight_ticketPrice: validate.number().min(0).max(100).default(0).required(),
+      weight_parkingCapacity: validate.number().min(0).max(100).default(0).required(),
 
       limit: validate.number().integer().min(1).max(20).default(10),
       fields: validate.string(),

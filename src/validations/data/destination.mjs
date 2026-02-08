@@ -33,9 +33,9 @@ export const destinationChecker = {
     })
     .min(1)
     .messages({
-      'object.min': 'Setidaknya satu field harus diisi untuk update.',
+      'object.min': 'Setidaknya satu field harus diisi untuk dapat mengubah data.',
       'object.unknown':
-        'Input {#label} tidak diizinkan. destinationTitle categories,description, locations, openingHour, facility, contact, ticket,dang parking yang diperbolehkan.',
+        'Input {#label} tidak diizinkan. destinationTitle, categories, description, locations, openingHour, facility, contact, ticket, dang parking yang diperbolehkan.',
     }),
 
   list: validate.object({

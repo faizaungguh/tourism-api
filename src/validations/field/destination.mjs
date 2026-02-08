@@ -21,7 +21,7 @@ export const field = {
   }),
 
   locations: validate.object({
-    addresses: validate.string().uri().messages({
+    addresses: validate.string().custom(validations.sanitizer.string).messages({
       'string.empty': 'Alamat tidak boleh kosong.',
       'any.required': 'Alamat wajib diisi.',
     }),

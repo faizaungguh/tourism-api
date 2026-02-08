@@ -93,6 +93,7 @@ export const destinationPipeline = {
                 _id: 0,
                 destinationId: 1,
                 destinationTitle: 1,
+                slug: 1,
                 headlinePhoto: {
                   $cond: {
                     if: '$headlinePhoto',
@@ -193,7 +194,7 @@ export const destinationPipeline = {
         createdBy: '$adminDetails.name',
         slug: 1,
         locations: {
-          address: '$locations.addresses',
+          addresses: '$locations.addresses',
           subdistrict: '$subdistrictDetails.name',
           coordinates: '$locations.coordinates',
           mapLink: '$locations.link',
