@@ -227,6 +227,11 @@ export const destinationHelper = {
         message: `Data dengan ID ${adminId} tidak terdaftar`,
       });
 
+    if (!destinationToUpdate)
+      throw new ResponseError(404, 'Data tidak ditemukan.', {
+        message: `Destinasi wisata tidak ditemukan.`,
+      });
+
     if (destinationToUpdate.createdBy.toString() !== admin._id.toString()) {
       throw new ResponseError(403, 'Akses ditolak', {
         message: `Anda tidak memiliki hak untuk mengelola ${destinationToUpdate.destinationTitle}`,
