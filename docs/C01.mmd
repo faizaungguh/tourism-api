@@ -1,0 +1,134 @@
+%%{init: {'theme': 'neutral'}}%%
+erDiagram
+ADMIN ||--o{ DESTINATION : "manages"
+    CATEGORY ||--o{ DESTINATION : "classifies"
+    OPENINGHOUR ||--o{ DESTINATION : "defines_schedule"
+    
+    SUBDISTRICT ||--o{ LOCATION : "belongs_to_area"
+    COORDINATE ||--o{ LOCATION : "pinpoints_on_map"
+    LOCATION ||--o{ DESTINATION : "located_at"
+    
+    DESTINATION ||--o{ ATTRACTION : "contains_features"
+    FACILITY ||--o{ DESTINATION : "provides_amenities"
+    CONTACT ||--o{ DESTINATION : "reachable_via"
+    
+    TICKETDESTINATION ||--o{ DESTINATION : "sets_entry_fee"
+    PARKING ||--o{ DESTINATION : "provides_parking"
+    
+    MOTORCYCLE ||--o{ PARKING : "slots_for_motorcycle"
+    CAR ||--o{ PARKING : "slots_for_car"
+    BUS ||--o{ PARKING : "slots_for_bus"
+    
+    TICKETATTRACTION ||--o{ ATTRACTION : "sets_activity_fee"
+
+    ADMIN {
+        ObjectId _id PK
+        string adminId
+        string username "required"
+        string password "required"
+        string name
+        string email
+        string contactNumber
+        string role
+    }
+
+    DESTINATION {
+        ObjectId _id PK
+        string destinationId "required"
+        string destinationTitle "required"
+        string description
+        string slug
+        ObjectId attractions FK
+        ObjectId categoryId FK
+        ObjectId createdBy FK
+        Object locations 
+        Object openingHour 
+        Array facilities 
+        Array contact 
+        Object ticket 
+        Object parking 
+    }
+
+    OPENINGHOUR {
+        string day
+        string hours
+        boolean isClosed
+    }
+
+    LOCATION {
+        string addresses
+        string link
+        ObjectId subdistrict FK
+        Object coordinate
+    }
+
+    COORDINATE {
+        string lat
+        string long
+    }
+
+    FACILITY {
+        string name
+        string slug
+        Boolean availability
+        number number
+        Boolean disabilityAccess
+    }
+
+    CONTACT {
+        string platform
+        string value
+    }
+
+    TICKETDESTINATION {
+        number adult
+        number child
+        number disability
+    }
+
+    PARKING {
+        Object motorcycle
+        Object car
+        Object bus
+    }
+
+    MOTORCYCLE {
+        number capacity
+        number price 
+    }
+
+    CAR {
+        number capacity
+        number price 
+    }
+
+    BUS {
+        number capacity
+        number price 
+    }
+
+    CATEGORY {
+        ObjectId _id PK
+        string name
+        string slug
+    }
+
+    SUBDISTRICT {
+        ObjectId _id PK
+        string name
+        string code
+    }
+
+    ATTRACTION {
+        ObjectId _id PK
+        string name
+        string description
+        string ticketType
+        Object ticket
+    }
+
+    TICKETATTRACTION {
+        number adult
+        number child
+        number disability
+    }
