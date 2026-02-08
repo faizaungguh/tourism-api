@@ -1,16 +1,16 @@
-import { adminData } from '#services/data/data.admin.mjs';
-import { authData } from '#services/data/data.auth.mjs';
-import { managerData } from '#services/data/data.manager.mjs';
-import { categoryData } from '#services/data/data.category.mjs';
-import { subdistrictData } from '#services/data/data.subdistrict.mjs';
-import { destinationData } from '#services/data/data.destination.mjs';
-import { attractionData } from '#services/data/data.attraction.mjs';
-import { recommendationData } from '#services/data/data.recommendation.mjs';
+import { adminData } from '#services/data/admin.mjs';
+import { authData } from '#services/data/auth.mjs';
+import { managerData } from '#services/data/manager.mjs';
+import { categoryData } from '#services/data/category.mjs';
+import { subdistrictData } from '#services/data/subdistrict.mjs';
+import { destinationData } from '#services/data/destination.mjs';
+import { attractionData } from '#services/data/attraction.mjs';
+import { recommendationData } from '#services/data/recommendation.mjs';
 
-import { adminMedia } from '#services/media/media.admin.mjs';
-import { destinationMedia } from '#services/media/media.destination.mjs';
-import { facilityMedia } from '#services/media/media.facility.mjs';
-import { attractionMedia } from '#services/media/media.attraction.mjs';
+import { adminMedia } from '#services/media/admin.mjs';
+import { destinationMedia } from '#services/media/destination.mjs';
+import { facilityMedia } from '#services/media/facility.mjs';
+import { attractionMedia } from '#services/media/attraction.mjs';
 
 export const dataService = {
   auth: {
