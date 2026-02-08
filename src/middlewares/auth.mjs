@@ -15,7 +15,7 @@ export const authMiddleware = {
       return next(
         new ResponseError(401, 'Akses ditolak', {
           message: 'Anda tidak memiliki akses ke fitur ini, silakan signin terlebih dahulu',
-        })
+        }),
       );
     }
 
@@ -29,7 +29,7 @@ export const authMiddleware = {
           new ResponseError(401, 'Akses ditolak', {
             message:
               'Data Admin yang anda masukkan salah, dan sekarang anda tidak memiliki akses ke akun anda',
-          })
+          }),
         );
       }
 
@@ -39,7 +39,7 @@ export const authMiddleware = {
         new ResponseError(401, 'Akses ditolak', {
           message:
             'Anda tidak memiliki akses untuk masuk ke dalam akun anda, karena token akses anda tidak valid atau sudah kedaluarsa',
-        })
+        }),
       );
     }
   },
@@ -50,8 +50,8 @@ export const authMiddleware = {
         const allowedRoles = roles.join(' atau ');
         return next(
           new ResponseError(403, 'Akses ditolak', {
-            error: `Anda tidak memiliki izin. Role yang diizinkan: ${allowedRoles}.`,
-          })
+            message: `Anda tidak memiliki izin. Role yang diizinkan: ${allowedRoles}.`,
+          }),
         );
       }
 
