@@ -1,3 +1,4 @@
+import readline from 'node:readline';
 import connectionDB from '#app/db.mjs';
 import { Admin } from '#schemas/admin.mjs';
 import { Subdistrict } from '#schemas/subdistrict.mjs';
@@ -581,22 +582,34 @@ class Seeder {
 
   /** Delete All Data */
   static async deleteAll() {
-    try {
-      await connectionDB();
-      console.log('Memulai menghapus SEMUA data...');
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
 
-      await Attraction.deleteMany();
-      await Destination.deleteMany();
-      await Category.deleteMany();
-      await Subdistrict.deleteMany();
-      await Admin.deleteMany();
+    rl.question('Anda yakin akan menghapus semua database ini? [y/N] ', async (answer) => {
+      rl.close();
+      if (answer.trim().toLowerCase() === 'y') {
+        try {
+          await connectionDB();
+          console.log('Memulai menghapus SEMUA data...');
 
-      console.log('SEMUA data berhasil dihapus!');
-      process.exit(0);
-    } catch (error) {
-      console.error('Error saat menghapus semua data:', error);
-      process.exit(1);
-    }
+          const collections = Admin.db.collections;
+          for (const key in collections) {
+            await collections[key].deleteMany({});
+          }
+
+          console.log('SEMUA data berhasil dihapus!');
+          process.exit(0);
+        } catch (error) {
+          console.error('Error saat menghapus semua data:', error);
+          process.exit(1);
+        }
+      } else {
+        console.log('Penghapusan dibatalkan.');
+        process.exit(0);
+      }
+    });
   }
 }
 
