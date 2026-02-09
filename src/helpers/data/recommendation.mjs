@@ -27,20 +27,41 @@ export const recommendationHelper = {
       /**
        * * 4. Perhitungan Jarak Akhir (d)
        */
-      return R * c;
+      return {
+        distance: R * c,
+        dLat,
+        dLon,
+        a,
+        c,
+      };
     },
 
     calculateDistances(userLat, userLon, destinations) {
       console.log('--- MENGHITUNG JARAK (HAVERSINE) ---');
+      const haversineDetails = [];
+
       const results = destinations.map((dest) => {
-        const distance = this.calculateHaversineDistance(
+        const { distance, dLat, dLon, a, c } = this.calculateHaversineDistance(
           userLat,
           userLon,
           dest.locations.coordinates.lat,
           dest.locations.coordinates.long,
         );
+
+        haversineDetails.push({
+          Destinasi: dest.destinationTitle,
+          'dLat (rad)': dLat.toFixed(5),
+          'dLon (rad)': dLon.toFixed(5),
+          'Nilai a': a.toExponential(5),
+          'Nilai c (rad)': c.toFixed(5),
+          'Jarak (km)': distance.toFixed(5),
+        });
+
         return { ...dest, distance };
       });
+
+      console.log('--- Detail Perhitungan Haversine ---');
+      console.table(haversineDetails);
 
       results.sort((a, b) => a.distance - b.distance);
 
