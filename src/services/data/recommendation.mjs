@@ -3,6 +3,7 @@ import { Category } from '#schemas/category.mjs';
 import { Destination } from '#schemas/destination.mjs';
 import { checker } from '#validations/utils/checker.mjs';
 import { validations } from '#validations/index.mjs';
+import Joi from 'joi';
 
 export const recommendationData = {
   show: async (query) => {
@@ -137,7 +138,11 @@ export const recommendationData = {
   },
 
   raw: async (query) => {
-    const validatedQuery = validations.check.request(checker.destination.getRaw, query);
+    const schema = Joi.object({
+      limit: Joi.number().integer().min(1).optional(),
+      export: Joi.string().valid('csv', 'excel').optional(),
+    });
+    const validatedQuery = validations.check.request(schema, query);
 
     const limit = validatedQuery.limit;
 

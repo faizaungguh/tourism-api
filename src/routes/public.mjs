@@ -46,6 +46,11 @@ publicRouter
   .get(dataController.destination.showRecommendation)
   .all(handler.method(['GET']));
 
+publicRouter
+  .route('/recommendations/raw')
+  .get(dataController.destination.getRaw)
+  .all(handler.method(['GET']));
+
 /** Media */
 publicRouter
   .route('/admin/:id/media')
