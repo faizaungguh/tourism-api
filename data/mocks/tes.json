@@ -1,0 +1,104 @@
+{
+  "destinationTitle": "Lokawisata Baturaden",
+  "description": "Lokawisata Baturaden adalah destinasi wisata pegunungan legendaris di kaki Gunung Slamet. Dengan udara yang sejuk dan pemandangan alam yang indah, tempat ini menawarkan berbagai fasilitas rekreasi seperti pemandian air panas, kolam renang, sepeda air, dan taman botani, menjadikannya pilihan utama untuk liburan keluarga.",
+  "categories": "Wisata Alam",
+  "locations": {
+    "addresses": "Dusun I Karangmangu, Karangmangu, Kec. Baturaden, Kabupaten Banyumas, Jawa Tengah",
+    "link": "https://maps.app.goo.gl/eFqfhjNJLJyBDRcp9",
+    "subdistrict": "Baturaden",
+    "coordinates": {
+      "lat": -7.297714992203012,
+      "long": 109.22136054387057
+    }
+  },
+  "openingHour": [
+    {
+      "day": "monday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    },
+    {
+      "day": "tuesday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    },
+    {
+      "day": "wednesday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    },
+    {
+      "day": "thursday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    },
+    {
+      "day": "friday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    },
+    {
+      "day": "saturday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    },
+    {
+      "day": "sunday",
+      "hours": "07:00 - 17:00",
+      "isClosed": false
+    }
+  ],
+  "facility": [
+    {
+      "name": "Pemandian Air Panas",
+      "availability": true,
+      "number": 2,
+      "disabilityAccess": false,
+      "photo": []
+    },
+    {
+      "name": "Food Court",
+      "availability": true,
+      "number": 1,
+      "disabilityAccess": true,
+      "photo": []
+    },
+    {
+      "name": "Musholla",
+      "availability": true,
+      "number": 2,
+      "disabilityAccess": true,
+      "photo": []
+    },
+    {
+      "name": "Toilet",
+      "availability": true,
+      "number": 10,
+      "disabilityAccess": true,
+      "photo": []
+    }
+  ],
+  "contact": [
+    {
+      "platform": "instagram",
+      "value": "@baturaden.official"
+    }
+  ],
+  "ticket": {
+    "adult": 25000
+  },
+  "parking": {
+    "motorcycle": {
+      "capacity": 500,
+      "price": 3000
+    },
+    "car": {
+      "capacity": 200,
+      "price": 5000
+    },
+    "bus": {
+      "capacity": 30,
+      "price": 25000
+    }
+  }
+}

@@ -36,7 +36,7 @@ publicRouter
   .all(handler.method(['GET']));
 
 publicRouter
-  .route('/destinations/:slug')
+  .route('/destination/:slug')
   .get(dataController.destination.get)
   .all(handler.method(['GET']));
 

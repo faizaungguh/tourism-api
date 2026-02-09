@@ -30,7 +30,37 @@ export const recommendationHelper = {
       return R * c;
     },
 
-    calculateTopsis(alternatives, weights, criteriaTypes) {
+    calculateDistances(userLat, userLon, destinations) {
+      console.log('--- MENGHITUNG JARAK (HAVERSINE) ---');
+      const results = destinations.map((dest) => {
+        const distance = this.calculateHaversineDistance(
+          userLat,
+          userLon,
+          dest.locations.coordinates.lat,
+          dest.locations.coordinates.long,
+        );
+        return { ...dest, distance };
+      });
+
+      results.sort((a, b) => a.distance - b.distance);
+
+      const tableData = results.map((item, index) => ({
+        Ranking: index + 1,
+        destinationTitle: item.destinationTitle,
+        'Jarak (km)': parseFloat(item.distance.toFixed(5)),
+      }));
+
+      console.table(tableData);
+      console.log('--- PERHITUNGAN JARAK SELESAI ---\n');
+
+      return results;
+    },
+
+    calculateTopsis(alternatives, weights, criteriaTypes, userLat, userLon) {
+      if (userLat != null && userLon != null) {
+        alternatives = this.calculateDistances(userLat, userLon, alternatives);
+      }
+
       console.log('--- MEMULAI PERHITUNGAN TOPSIS ---');
       console.log(
         'Alternatif yang diterima:',
