@@ -41,10 +41,10 @@ const subdistrictSchema = new mongoose.Schema(
     timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
-        delete ret.__v, delete ret._id;
+        (delete ret.__v, delete ret._id);
       },
     },
-  }
+  },
 );
 
 subdistrictSchema.pre('save', async function (next) {
@@ -54,7 +54,7 @@ subdistrictSchema.pre('save', async function (next) {
       return next(
         new ResponseError(409, 'Duplikasi data.', {
           name: `Kecamatan dengan nama '${this.name}' sudah ada.`,
-        })
+        }),
       );
     }
   }

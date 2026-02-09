@@ -20,10 +20,10 @@ const adminSchema = new Schema(
     timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
-        delete ret.__v, delete ret._id, delete ret.password;
+        (delete ret.__v, delete ret._id, delete ret.password);
       },
     },
-  }
+  },
 );
 
 const counterSchema = new mongoose.Schema({
@@ -71,7 +71,7 @@ adminSchema.pre('save', async function (next) {
       const counter = await Counter.findByIdAndUpdate(
         { _id: counterId },
         { $inc: { seq: 1 } },
-        { new: true, upsert: true }
+        { new: true, upsert: true },
       );
       const formattedSequence = String(counter.seq).padStart(4, '0');
       this.adminId = `${prefix}-${formattedSequence}`;

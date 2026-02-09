@@ -15,10 +15,11 @@ export const destinationData = {
   list: async (req, res) => {
     const { result, pagination } = await dataService.destination.list(req.query);
 
+    const statusCode = pagination.totalItems > 0 ? 200 : 404;
     const message =
       pagination.totalItems > 0 ? 'Menampilkan List Data Destinasi' : 'Data tidak ditemukan';
 
-    res.status(200).json({
+    res.status(statusCode).json({
       message,
       result,
       pagination,

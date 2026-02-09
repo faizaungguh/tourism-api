@@ -33,11 +33,11 @@ const attractionSchema = new Schema(
     toJSON: {
       virtuals: true,
       transform: function (doc, ret) {
-        delete ret.__v, delete ret._id;
+        (delete ret.__v, delete ret._id);
       },
     },
     toObject: { virtuals: true },
-  }
+  },
 );
 
 attractionSchema.add({ slug: { type: String, lowercase: true } });
@@ -62,7 +62,7 @@ attractionSchema.pre('save', async function (next) {
         new ResponseError(422, 'Proses dihentikan', {
           message:
             'Harga tiket dewasa wajib diisi dan harus lebih besar dari 0 untuk wahana berbayar.',
-        })
+        }),
       );
     }
   }
@@ -145,7 +145,7 @@ attractionSchema.pre('findOneAndDelete', async function (next) {
           process.cwd(),
           'public',
           'images',
-          `destinations/${destinationDoc.locations.subdistrict.abbrevation}_${destinationDoc.slug}/attraction/${docToDelete.slug}`
+          `destinations/${destinationDoc.locations.subdistrict.abbrevation}_${destinationDoc.slug}/attraction/${docToDelete.slug}`,
         );
         await fs.rm(attractionDir, { recursive: true, force: true });
       }
@@ -173,7 +173,7 @@ attractionSchema.pre('deleteMany', { document: true }, async function (next) {
           process.cwd(),
           'public',
           'images',
-          `destinations/${destinationDoc.locations.subdistrict.abbrevation}_${destinationDoc.slug}/attraction/`
+          `destinations/${destinationDoc.locations.subdistrict.abbrevation}_${destinationDoc.slug}/attraction/`,
         );
         await fs.rm(attractionDir, { recursive: true, force: true });
       }
