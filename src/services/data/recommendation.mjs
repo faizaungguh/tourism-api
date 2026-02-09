@@ -35,7 +35,7 @@ export const recommendationData = {
       }
     }
 
-    const destinations = await Destination.find(filter)
+    let destinations = await Destination.find(filter)
       .populate('category', 'name')
       .populate({
         path: 'locations.subdistrict',
@@ -47,6 +47,14 @@ export const recommendationData = {
       return [];
     }
 
+    if (lat && long) {
+      destinations = helper.Data.destination.recommendation.calculateDistances(
+        lat,
+        long,
+        destinations,
+      );
+    }
+
     const alternatives = destinations.map((dest) => {
       const totalAttractions = dest.attractions?.length || 0;
       const totalFacilities = dest.facility?.length || 0;
@@ -56,15 +64,7 @@ export const recommendationData = {
         (dest.parking?.bus?.capacity || 0);
       const ticketPrice = dest.ticket?.adult || 0;
 
-      let distance = null;
-      if (lat && long && dest.locations?.coordinates?.lat && dest.locations?.coordinates?.long) {
-        distance = helper.Data.destination.recommendation.calculateHaversineDistance(
-          lat,
-          long,
-          dest.locations.coordinates.lat,
-          dest.locations.coordinates.long,
-        );
-      }
+      const distance = dest.distance ?? null;
 
       return {
         id: dest.destinationsId,

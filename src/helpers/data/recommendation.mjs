@@ -56,11 +56,7 @@ export const recommendationHelper = {
       return results;
     },
 
-    calculateTopsis(alternatives, weights, criteriaTypes, userLat, userLon) {
-      if (userLat != null && userLon != null) {
-        alternatives = this.calculateDistances(userLat, userLon, alternatives);
-      }
-
+    calculateTopsis(alternatives, weights, criteriaTypes) {
       console.log('--- MEMULAI PERHITUNGAN TOPSIS ---');
       console.log(
         'Alternatif yang diterima:',
